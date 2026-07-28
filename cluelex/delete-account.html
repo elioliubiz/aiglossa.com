@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">账号注销说明 - 词径</title>
+    <style>
+        /* 1. 默认：浅色主题（Light Mode）变量 */
+        :root {
+            --primary-color: #4f46e5;
+            --text-color: #1f2937;
+            --text-secondary: #6b7280;
+            --text-muted: #9ca3af;
+            --bg-color: #f9fafb;
+            --card-bg: #ffffff;
+            --border-color: #e5e7eb;
+            --warning-bg: #fef2f2;
+            --warning-border: #fecaca;
+            --warning-text: #991b1b;
+        }
+
+        /* 2. 自动跟随系统：暗黑主题（Dark Mode）变量重写 */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary-color: #818cf8; /* 暗黑模式下的主色调稍微调亮，保证对比度 */
+                --text-color: #f3f4f6;
+                --text-secondary: #9ca3af;
+                --text-muted: #6b7280;
+                --bg-color: #111827;
+                --card-bg: #1f2937;
+                --border-color: #374151;
+                --warning-bg: #451a03; /* 暗黑模式下的警告背景色（深棕/暗橙调） */
+                --warning-border: #78350f;
+                --warning-text: #fcd34d;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            line-height: 1.6;
+            padding: 20px;
+            transition: background-color 0.3s ease, color 0.3s ease; /* 平滑切换过渡动画 */
+        }
+
+        [dir="rtl"] body {
+            font-family: "Geeza Pro", "Tahoma", "Arial", sans-serif;
+        }
+
+        .container {
+            max-width: 720px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .header {
+            flex: 1;
+            text-align: start;
+        }
+
+        .header h1 {
+            font-size: 24px;
+            color: var(--text-color);
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .lang-switch {
+            flex-shrink: 0;
+        }
+
+        .lang-switch select {
+            padding: 6px 12px;
+            font-size: 13px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: var(--card-bg); /* 跟随卡片背景 */
+            color: var(--text-color);
+            cursor: pointer;
+            outline: none;
+        }
+
+        .alert-box {
+            background-color: var(--warning-bg);
+            border: 1px solid var(--warning-border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 24px;
+            color: var(--warning-text);
+            font-size: 14px;
+        }
+
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 6px;
+        }
+
+        .section p, .section li {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .section ul {
+            padding-inline-start: 20px;
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        @media (max-width: 650px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+            .top-bar {
+                flex-direction: column-reverse;
+                align-items: stretch;
+                gap: 15px;
+            }
+            .lang-switch {
+                text-align: end;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="top-bar">
+        <div class="header">
+            <h1 data-i18n="main_title">账号注销说明</h1>
+            <p data-i18n="sub_title">在您决定注销账号前，请仔细阅读以下条款与重要提示</p>
+        </div>
+        <div class="lang-switch">
+            <select id="langSelect" onchange="changeLanguage(this.value)">
+                <option value="zh-Hans">简体中文</option>
+                <option value="zh-Hant">繁體中文</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="ja">日本語</option>
+                <option value="ko">한국어</option>
+                <option value="de">Deutsch</option>
+                <option value="fr">Français</option>
+                <option value="pt">Português</option>
+                <option value="ar">العربية</option>
+                <option value="hi">हिन्दी</option>
+                <option value="ru">Русский</option>
+                <option value="it">Italiano</option>
+                <option value="nl">Nederlands</option>
+                <option value="th">ไทย</option>
+                <option value="vi">Tiếng Việt</option>
+                <option value="id">Bahasa Indonesia</option>
+                <option value="ms">Bahasa Melayu</option>
+                <option value="tr">Türkçe</option>
+                <option value="pl">Polski</option>
+                <option value="he">עברית</option>
+                <option value="ta">தமிழ்</option>
+                <option value="te">తెలుగు</option>
+                <option value="bn">বাংলা</option>
+                <option value="sv">Svenska</option>
+                <option value="el">Ελληνικά</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="alert-box">
+        <strong data-i18n="alert_title">⚠️ 重要提示：</strong><span data-i18n="alert_text">账号注销申请提交后将进入<strong>15天缓冲期</strong>。在缓冲期内，您的账号数据将被暂时封存，若您在此期间再次登录账号，注销申请将自动终止。</span>
+    </div>
+
+    <div class="section">
+        <h2 data-i18n="sec1_title">一、 注销流程与缓冲期说明</h2>
+        <p><span data-i18n="sec1_desc">为了保障您的账号安全和防止误操作，我们设立了注销缓冲期：</span></p>
+        <ul>
+            <li><strong data-i18n="sec1_li1_strong">数据保留期：</strong><span data-i18n="sec1_li1_text">提交注销申请后的 15 天内，您的个人资料与相关数据将被安全保存，不会立即被永久删除。</span></li>
+            <li><strong data-i18n="sec1_li2_strong">撤销注销机制：</strong><span data-i18n="sec1_li2_text">在 15 天缓冲期内，如果您改变主意，只需正常登录 App 并根据提示操作，即可自动终止并撤销本次注销申请，账号恢复正常使用。</span></li>
+            <li><strong data-i18n="sec1_li3_strong">正式注销：</strong><span data-i18n="sec1_li3_text">若在 15 天缓冲期内未进行任何登录操作，期满后您的账号及所有相关数据将被永久清除且无法找回。</span></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2 data-i18n="sec2_title">二、 注销后将会产生的影响（缓冲期满后）</h2>
+        <p><span data-i18n="sec2_desc">当 15 天缓冲期结束且未被撤销时，将发生以下最终变化：</span></p>
+        <ul>
+            <li><strong data-i18n="sec2_li1_strong">身份与数据彻底清除：</strong><span data-i18n="sec2_li1_text">您的账号信息、个人资料、头像及密码等将被永久删除。</span></li>
+            <li><strong data-i18n="sec2_li2_strong">内容与记录清空：</strong><span data-i18n="sec2_li2_text">您在使用期间产生的各类业务数据、互动记录及相关内容将被清空。</span></li>
+            <li><strong data-i18n="sec2_li3_strong">权益失效：</strong><span data-i18n="sec2_li3_text">账号关联的所有会员权益、优惠券、积分（如有）及未完成的服务将自动作废，不予退款或补偿。</span></li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2 data-i18n="sec3_title">三、 账号注销条件</h2>
+        <p><span data-i18n="sec3_desc">为了保障您的账号安全和财产权益，申请注销前需满足以下条件：</span></p>
+        <ul>
+            <li data-i18n="sec3_li1">账号处于正常使用状态，无被封禁、冻结等安全风险。</li>
+            <li data-i18n="sec3_li2">账号内不存在未完成的交易、纠纷或未了结的投诉。</li>
+            <li data-i18n="sec3_li3">已处理完所有资产与权益结算。</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2 data-i18n="sec4_title">四、 联系我们</h2>
+        <p><span data-i18n="sec4_desc">如果在注销或撤销过程中遇到任何问题或疑问，您可以随时通过以下方式与我们联系，我们将尽快协助您处理：</span></p>
+        <p>email：support@cluelex.com</p>
+    </div>
+<!--
+    <div class="footer">
+        <p id="footerText">&copy; 2026 App. All Rights Reserved.</p>
+    </div> -->
+</div>
+
+<script>
+    // 完整多语言数据字典（27种语言）
+    const translations = {
+        "zh-Hans": {
+            "page_title": "账号注销说明 - 词径",
+            "main_title": "词径 App 账号注销说明",
+            "sub_title": "在您决定注销账号前，请仔细阅读以下条款与重要提示",
+            "alert_title": "⚠️ 重要提示：",
+            "alert_text": "账号注销申请提交后将进入<strong>15天缓冲期</strong>。在缓冲期内，您的账号数据将被暂时封存，若您在此期间再次登录账号，注销申请将自动终止。",
+            "sec1_title": "一、 注销流程与缓冲期说明",
+            "sec1_desc": "为了保障您的账号安全和防止误操作，我们设立了注销缓冲期：",
+            "sec1_li1_strong": "数据保留期：",
+            "sec1_li1_text": "提交注销申请后的 15 天内，您的个人资料与相关数据将被安全保存，不会立即被永久删除。",
+            "sec1_li2_strong": "撤销注销机制：",
+            "sec1_li2_text": "在 15 天缓冲期内，如果您改变主意，只需正常登录 App 并根据提示操作，即可自动终止并撤销本次注销申请，账号恢复正常使用。",
+            "sec1_li3_strong": "正式注销：",
+            "sec1_li3_text": "若在 15 天缓冲期内未进行任何登录操作，期满后您的账号及所有相关数据将被永久清除且无法找回。",
+            "sec2_title": "二、 注销后将会产生的影响（缓冲期满后）",
+            "sec2_desc": "当 15 天缓冲期结束且未被撤销时，将发生以下最终变化：",
+            "sec2_li1_strong": "身份与数据彻底清除：",
+            "sec2_li1_text": "您的账号信息、个人资料、头像及密码等将被永久删除。",
+            "sec2_li2_strong": "内容与记录清空：",
+            "sec2_li2_text": "您在使用期间产生的各类业务数据、互动记录及相关内容将被清空。",
+            "sec2_li3_strong": "权益失效：",
+            "sec2_li3_text": "账号关联的所有会员权益、优惠券、积分（如有）及未完成的服务将自动作废，不予退款或补偿。",
+            "sec3_title": "三、 账号注销条件",
+            "sec3_desc": "为了保障您的账号安全和财产权益，申请注销前需满足以下条件：",
+            "sec3_li1": "账号处于正常使用状态，无被封禁、冻结等安全风险。",
+            "sec3_li2": "账号内不存在未完成的交易、纠纷或未了结的投诉。",
+            "sec3_li3": "已处理完所有资产与权益结算。",
+            "sec4_title": "四、 联系我们",
+            "sec4_desc": "如果在注销或撤销过程中遇到任何问题或疑问，您可以随时通过以下方式与我们联系，我们将尽快协助您处理：",
+            "footer": "&copy; 2026 词径 App. All Rights Reserved."
+        },
+        "zh-Hant": {
+            "page_title": "帳號註銷說明 - 詞徑",
+            "main_title": "詞徑 App 帳號註銷說明",
+            "sub_title": "在您決定註銷帳號前，請仔細閱讀以下條款與重要提示",
+            "alert_title": "⚠️ 重要提示：",
+            "alert_text": "帳號註銷申請提交後將進入<strong>15天緩衝期</strong>。在緩衝期內，您的帳號數據將被暫時封存，若您在此期間再次登入帳號，註銷申請將自動終止。",
+            "sec1_title": "一、 註銷流程與緩衝期說明",
+            "sec1_desc": "為了保障您的帳號安全和防止誤操作，我們設立了註銷緩衝期：",
+            "sec1_li1_strong": "數據保留期：",
+            "sec1_li1_text": "提交註銷申請後的 15 天內，您的個人資料與相關數據將被安全保存，不會立即被永久刪除。",
+            "sec1_li2_strong": "撤銷註銷機制：",
+            "sec1_li2_text": "在 15 天緩衝期內，如果您改變主意，只需正常登入 App 並根據提示操作，即可自動終止並撤銷本次註銷申請，帳號恢復正常使用。",
+            "sec1_li3_strong": "正式註銷：",
+            "sec1_li3_text": "若在 15 天緩衝期內未進行任何登入操作，期滿後您的帳號及所有相關數據將被永久清除且無法找回。",
+            "sec2_title": "二、 註銷後將會產生的影響（緩衝期滿後）",
+            "sec2_desc": "當 15 天緩衝期結束且未被撤銷時，將發生以下最終變化：",
+            "sec2_li1_strong": "身份與數據徹底清除：",
+            "sec2_li1_text": "您的帳號資訊、個人資料、頭像及密碼等將被永久刪除。",
+            "sec2_li2_strong": "內容與記錄清空：",
+            "sec2_li2_text": "您在使用期間產生的各類業務數據、互動記錄及相關內容將被清空。",
+            "sec2_li3_strong": "權益失效：",
+            "sec2_li3_text": "帳號關聯的所有會員權益、優惠券、積分（如有）及未完成的服務將自動作廢，不予退款或補償。",
+            "sec3_title": "三、 帳號註銷條件",
+            "sec3_desc": "為了保障您的帳號安全和財產權益，申請註銷前需滿足以下條件：",
+            "sec3_li1": "帳號處於正常使用狀態，無被封禁、凍結等安全風險。",
+            "sec3_li2": "帳號內不存在未完成的交易、糾紛或未了結的投訴。",
+            "sec3_li3": "已處理完所有資產與權益結算。",
+            "sec4_title": "四、 聯絡我們",
+            "sec4_desc": "如果在註銷或撤銷過程中遇到任何問題或疑問，您可以隨時通過以下方式與我們聯繫，我們將儘快協助您處理：",
+            "footer": "&copy; 2026 詞徑 App. All Rights Reserved."
+        },
+        "en": {
+            "page_title": "Account Deletion Guide - Cluelex",
+            "main_title": "Cluelex App Account Deletion Guide",
+            "sub_title": "Please read the following terms and important notices carefully before deleting your account.",
+            "alert_title": "⚠️ Important Notice:",
+            "alert_text": "After submitting your account deletion request, a <strong>15-day grace period</strong> will begin. During this period, your account data will be temporarily frozen. If you log back into your account during this time, the deletion request will be automatically terminated.",
+            "sec1_title": "1. Deletion Process & Grace Period",
+            "sec1_desc": "To ensure your account security and prevent accidental operation, we have established a grace period for account deletion:",
+            "sec1_li1_strong": "Data Retention Period:",
+            "sec1_li1_text": "Within 15 days after submitting the deletion request, your personal data and related information will be securely retained and will not be permanently deleted immediately.",
+            "sec1_li2_strong": "Cancellation Mechanism:",
+            "sec1_li2_text": "During the 15-day grace period, if you change your mind, simply log back into the App and follow the prompts to automatically terminate and cancel the deletion request, restoring your account to normal use.",
+            "sec1_li3_strong": "Official Deletion:",
+            "sec1_li3_text": "If no login operation is performed within the 15-day grace period, your account and all related data will be permanently erased and cannot be recovered upon expiration.",
+            "sec2_title": "2. Impact of Account Deletion (After Grace Period)",
+            "sec2_desc": "Once the 15-day grace period expires without cancellation, the following final changes will occur:",
+            "sec2_li1_strong": "Complete Identity & Data Erasure:",
+            "sec2_li1_text": "Your account information, profile, avatar, and password will be permanently deleted.",
+            "sec2_li2_strong": "Content & Record Clearing:",
+            "sec2_li2_text": "All business data, interaction logs, and related content generated during your use will be cleared.",
+            "sec2_li3_strong": "Loss of Benefits:",
+            "sec2_li3_text": "All membership privileges, coupons, points (if any), and unfinished services associated with the account will automatically expire without refund or compensation.",
+            "sec3_title": "3. Account Deletion Conditions",
+            "sec3_desc": "To ensure your account security and property rights, the following conditions must be met before applying for deletion:",
+            "sec3_li1": "The account is in normal status, free from security risks such as bans or freezes.",
+            "sec3_li2": "There are no unfinished transactions, disputes, or unresolved complaints within the account.",
+            "sec3_li3": "All assets and rights settlements have been completed.",
+            "sec4_title": "4. Contact Us",
+            "sec4_desc": "If you encounter any problems or have questions during the deletion or cancellation process, you can contact us at any time through the following method, and we will assist you as soon as possible:",
+            "footer": "&copy; 2026 Cluelex App. All Rights Reserved."
+        },
+        "es": {
+            "page_title": "Guía de Eliminación de Cuenta - Cluelex",
+            "main_title": "Guía de Eliminación de Cuenta de Cluelex App",
+            "sub_title": "Antes de decidir eliminar su cuenta, lea atentamente los siguientes términos y avisos importantes.",
+            "alert_title": "⚠️ Aviso importante:",
+            "alert_text": "Después de enviar la solicitud de eliminación de cuenta, comenzará un <strong>período de gracia de 15 días</strong>. Durante este período, sus datos de cuenta se congelarán temporalmente. Si vuelve a iniciar sesión durante este tiempo, la solicitud de eliminación se cancelará automáticamente.",
+            "sec1_title": "1. Proceso de Eliminación y Período de Gracia",
+            "sec1_desc": "Para garantizar la seguridad de su cuenta y evitar operaciones accidentales, hemos establecido un período de gracia para la eliminación:",
+            "sec1_li1_strong": "Período de Retención de Datos:",
+            "sec1_li1_text": "Dentro de los 15 días posteriores a la solicitud, sus datos personales se conservarán de forma segura y no se eliminarán permanentemente de inmediato.",
+            "sec1_li2_strong": "Mecanismo de Cancelación:",
+            "sec1_li2_text": "Durante el período de gracia de 15 días, si cambia de opinión, simplemente inicie sesión en la App y siga las instrucciones para cancelar automáticamente la solicitud y restaurar su cuenta.",
+            "sec1_li3_strong": "Eliminación Oficial:",
+            "sec1_li3_text": "Si no se realiza ningún inicio de sesión durante el período de gracia, su cuenta y todos los datos se eliminarán permanentemente y no se podrán recuperar.",
+            "sec2_title": "2. Impacto de la Eliminación de la Cuenta (Después del Período de Gracia)",
+            "sec2_desc": "Cuando finalice el período de gracia de 15 días sin cancelación, ocurrirán los siguientes cambios finales:",
+            "sec2_li1_strong": "Eliminación Completa de Identidad y Datos:",
+            "sec2_li1_text": "Su información de cuenta, perfil, avatar y contraseña se eliminarán permanentemente.",
+            "sec2_li2_strong": "Borrado de Contenido y Registros:",
+            "sec2_li2_text": "Se eliminarán todos los datos comerciales, registros de interacción y contenido relacionado generados durante su uso.",
+            "sec2_li3_strong": "Pérdida de Beneficios:",
+            "sec2_li3_text": "Todos los privilegios de membresía, cupones, puntos (si los hay) y servicios pendientes asociados a la cuenta caducarán automáticamente sin reembolso ni compensación.",
+            "sec3_title": "3. Condiciones para la Eliminación de la Cuenta",
+            "sec3_desc": "Para garantizar la seguridad de su cuenta y sus derechos de propiedad, se deben cumplir las siguientes condiciones antes de solicitar la eliminación:",
+            "sec3_li1": "La cuenta se encuentra en estado normal, sin riesgos de seguridad como suspensiones o congelamientos.",
+            "sec3_li2": "No existen transacciones pendientes, disputas o quejas sin resolver dentro de la cuenta.",
+            "sec3_li3": "Se han completado todos los acuerdos de activos y derechos.",
+            "sec4_title": "4. Contáctenos",
+            "sec4_desc": "Si encuentra algún problema o tiene preguntas durante el proceso de eliminación o cancelación, puede contactarnos en cualquier momento a través del siguiente medio y lo ayudaremos lo antes posible:",
+            "footer": "&copy; 2026 Cluelex App. Todos los derechos reservados."
+        },
+        "ja": {
+            "page_title": "アカウント削除ガイド - 詞径",
+            "main_title": "詞径 App アカウント削除ガイド",
+            "sub_title": "アカウントを削除する前に、以下の利用規約と重要な注意事項をよくお読みください。",
+            "alert_title": "⚠️ 重要なお知らせ：",
+            "alert_text": "アカウント削除リクエストを送信すると、<strong>15日間の猶予期間</strong>が開始されます。この期間中、アカウントデータは一時的に凍結されます。この期間中に再度ログインすると、削除リクエストは自動的に中止されます。",
+            "sec1_title": "1. 削除プロセスと猶予期間の説明",
+            "sec1_desc": "アカウントのセキュリティと誤操作を防ぐため、アカウント削除の猶予期間を設けています：",
+            "sec1_li1_strong": "データ保持期間：",
+            "sec1_li1_text": "削除リクエスト提出後15日間、個人データと関連情報は安全に保持され、すぐに完全に削除されることはありません。",
+            "sec1_li2_strong": "キャンセルメカニズム：",
+            "sec1_li2_text": "15日間の猶予期間中に気が変わった場合は、Appにログインして指示に従うだけで、削除リクエストが自動的に終了し、アカウントが通常通り使用できるようになります。",
+            "sec1_li3_strong": "正式な削除：",
+            "sec1_li3_text": "猶予期間中にログイン操作が行われなかった場合、期間満了後にアカウントと関連データは完全に消去され、復元できません。",
+            "sec2_title": "2. アカウント削除の影響（猶予期間終了後）",
+            "sec2_desc": "15日間の猶予期間が終了し、キャンセルされなかった場合、以下の最終的な変更が発生します：",
+            "sec2_li1_strong": "アイデンティティとデータの完全消去：",
+            "sec2_li1_text": "アカウント情報、プロフィール、アバター、パスワードが完全に削除されます。",
+            "sec2_li2_strong": "コンテンツと記録の消去：",
+            "sec2_li2_text": "使用中に生成されたビジネスデータ、インタラクションログ、関連コンテンツがすべて消去されます。",
+            "sec2_li3_strong": "特典の喪失：",
+            "sec2_li3_text": "アカウントに関連するすべてのメンバーシップ特典、クーポン、ポイント（該当する場合）、未完了のサービスは自動的に失効し、返金や補償はありません。",
+            "sec3_title": "3. アカウント削除の条件",
+            "sec3_desc": "アカウントのセキュリティと財産権を保護するため、削除を申請する前に以下の条件を満たす必要があります：",
+            "sec3_li1": "アカウントは通常の状態であり、停止や凍結などのセキュリティリスクがないこと。",
+            "sec3_li2": "アカウント内に未完了の取引、紛争、未解決の苦情がないこと。",
+            "sec3_li3": "すべての資産と権利の決済が完了していること。",
+            "sec4_title": "4. お問い合わせ",
+            "sec4_desc": "削除またはキャンセルのプロセスで問題が発生した場合やご質問がある場合は、いつでも以下の方法でお問い合わせください。できるだけ早く対応いたします：",
+            "footer": "&copy; 2026 詞径 App. All Rights Reserved."
+        },
+        "ko": {
+            "page_title": "계정 삭제 가이드 - 클루렉스",
+            "main_title": "클루렉스 앱 계정 삭제 가이드",
+            "sub_title": "계정을 삭제하기 전에 다음 약관과 중요한 알림을 주의 깊게 읽어보세요.",
+            "alert_title": "⚠️ 중요 알림:",
+            "alert_text": "계정 삭제 요청을 제출하면 <strong>15일의 유예 기간</strong>이 시작됩니다. 이 기간 동안 계정 데이터는 일시적으로 동결됩니다. 이 기간 동안 다시 로그인하면 삭제 요청이 자동으로 중단됩니다.",
+            "sec1_title": "1. 삭제 프로세스 및 유예 기간 설명",
+            "sec1_desc": "계정 보안을 보장하고 실수로 인한 작업을 방지하기 위해 계정 삭제 유예 기간을 설정했습니다:",
+            "sec1_li1_strong": "데이터 보존 기간:",
+            "sec1_li1_text": "삭제 요청 후 15일 이내에 개인 데이터와 관련 정보는 안전하게 보존되며 즉시 영구 삭제되지 않습니다.",
+            "sec1_li2_strong": "취소 메커니즘:",
+            "sec1_li2_text": "15일의 유예 기간 동안 마음이 바뀌면 앱에 로그인하여 지시에 따르기만 하면 삭제 요청이 자동으로 종료되고 계정이 정상적으로 사용됩니다.",
+            "sec1_li3_strong": "공식 삭제:",
+            "sec1_li3_text": "유예 기간 동안 로그인 작업이 없으면 기간 만료 후 계정과 모든 관련 데이터가 영구적으로 삭제되며 복구할 수 없습니다.",
+            "sec2_title": "2. 계정 삭제의 영향 (유예 기간 종료 후)",
+            "sec2_desc": "15일의 유예 기간이 종료되고 취소되지 않으면 다음과 같은 최종 변경이 발생합니다:",
+            "sec2_li1_strong": "신원 및 데이터 완전 삭제:",
+            "sec2_li1_text": "계정 정보, 프로필, 아바타 및 비밀번호가 영구적으로 삭제됩니다.",
+            "sec2_li2_strong": "콘텐츠 및 기록 삭제:",
+            "sec2_li2_text": "사용 중 생성된 모든 비즈니스 데이터, 상호 작용 로그 및 관련 콘텐츠가 삭제됩니다.",
+            "sec2_li3_strong": "혜택 상실:",
+            "sec2_li3_text": "계정과 연결된 모든 멤버십 혜택, 쿠폰, 포인트(해당되는 경우) 및 미완료 서비스는 자동으로 만료되며 환불이나 보상이 없습니다.",
+            "sec3_title": "3. 계정 삭제 조건",
+            "sec3_desc": "계정 보안과 재산권을 보호하기 위해 삭제를 신청하기 전에 다음 조건을 충족해야 합니다:",
+            "sec3_li1": "계정이 정상 상태이며 정지 또는 동결과 같은 보안 위험이 없어야 합니다.",
+            "sec3_li2": "계정 내에 미완료 거래, 분쟁 또는 해결되지 않은 불만이 없어야 합니다.",
+            "sec3_li3": "모든 자산 및 권리 정산이 완료되어야 합니다.",
+            "sec4_title": "4. 문의하기",
+            "sec4_desc": "삭제 또는 취소 과정에서 문제가 발생하거나 질문이 있는 경우 언제든지 다음 방법으로 문의해 주시면 최대한 빨리 도와드리겠습니다:",
+            "footer": "&copy; 2026 클루렉스 앱. 모든 권리 보유."
+        },
+        "de": {
+            "page_title": "Anleitung zur Kontolöschung - Cluelex",
+            "main_title": "Cluelex App Anleitung zur Kontolöschung",
+            "sub_title": "Bitte lesen Sie die folgenden Bedingungen und wichtigen Hinweise sorgfältig durch, bevor Sie Ihr Konto löschen.",
+            "alert_title": "⚠️ Wichtiger Hinweis:",
+            "alert_text": "Nach dem Absenden Ihres Kontolöschungsantrags beginnt eine <strong>15-tägige Gnadenfrist</strong>. Während dieser Zeit werden Ihre Kontodaten vorübergehend eingefroren. Wenn Sie sich in dieser Zeit wieder anmelden, wird der Löschungsantrag automatisch beendet.",
+            "sec1_title": "1. Löschungsprozess und Gnadenfrist",
+            "sec1_desc": "Um die Sicherheit Ihres Kontos zu gewährleisten und versehentliche Operationen zu verhindern, haben wir eine Gnadenfrist für die Kontolöschung eingerichtet:",
+            "sec1_li1_strong": "Datenaufbewahrungsfrist:",
+            "sec1_li1_text": "Innerhalb von 15 Tagen nach dem Löschungsantrag werden Ihre persönlichen Daten und zugehörigen Informationen sicher aufbewahrt und nicht sofort endgültig gelöscht.",
+            "sec1_li2_strong": "Stornierungsmechanismus:",
+            "sec1_li2_text": "Wenn Sie sich während der 15-tägigen Gnadenfrist umentscheiden, melden Sie sich einfach in der App an und folgen Sie den Anweisungen, um den Löschungsantrag automatisch zu beenden und Ihr Konto wiederherzustellen.",
+            "sec1_li3_strong": "Offizielle Löschung:",
+            "sec1_li3_text": "Wenn innerhalb der Gnadenfrist keine Anmeldung erfolgt, werden Ihr Konto und alle zugehörigen Daten nach Ablauf der Frist endgültig gelöscht und können nicht wiederhergestellt werden.",
+            "sec2_title": "2. Auswirkungen der Kontolöschung (nach der Gnadenfrist)",
+            "sec2_desc": "Wenn die 15-tägige Gnadenfrist ohne Stornierung abläuft, treten folgende endgültige Änderungen ein:",
+            "sec2_li1_strong": "Vollständige Löschung von Identität und Daten:",
+            "sec2_li1_text": "Ihre Kontoinformationen, Ihr Profil, Ihr Avatar und Ihr Passwort werden endgültig gelöscht.",
+            "sec2_li2_strong": "Löschung von Inhalten und Aufzeichnungen:",
+            "sec2_li2_text": "Alle während Ihrer Nutzung erstellten Geschäftsdaten, Interaktionsprotokolle und zugehörigen Inhalte werden gelöscht.",
+            "sec2_li3_strong": "Verlust von Vorteilen:",
+            "sec2_li3_text": "Alle mit dem Konto verbundenen Mitgliedschaftsvorteile, Gutscheine, Punkte (falls vorhanden) und nicht abgeschlossene Dienste verfallen automatisch ohne Rückerstattung oder Entschädigung.",
+            "sec3_title": "3. Bedingungen für die Kontolöschung",
+            "sec3_desc": "Um die Sicherheit Ihres Kontos und Ihre Eigentumsrechte zu gewährleisten, müssen vor der Beantragung der Löschung die folgenden Bedingungen erfüllt sein:",
+            "sec3_li1": "Das Konto befindet sich in einem normalen Zustand, ohne Sicherheitsrisiken wie Sperrungen oder Einfrierungen.",
+            "sec3_li2": "Es gibt keine unvollendeten Transaktionen, Streitigkeiten oder ungelösten Beschwerden im Konto.",
+            "sec3_li3": "Alle Vermögens- und Rechtsabrechnungen wurden abgeschlossen.",
+            "sec4_title": "4. Kontaktieren Sie uns",
+            "sec4_desc": "Wenn Sie während des Löschungs- oder Stornierungsvorgangs auf Probleme stoßen oder Fragen haben, können Sie uns jederzeit über die folgende Methode kontaktieren. Wir werden Ihnen so schnell wie möglich helfen:",
+            "footer": "&copy; 2026 Cluelex App. Alle Rechte vorbehalten."
+        },
+        "fr": {
+            "page_title": "Guide de suppression de compte - Cluelex",
+            "main_title": "Guide de suppression de compte de l'application Cluelex",
+            "sub_title": "Veuillez lire attentivement les conditions et les avis importants avant de supprimer votre compte.",
+            "alert_title": "⚠️ Avis important :",
+            "alert_text": "Après avoir soumis votre demande de suppression de compte, une <strong>période de grâce de 15 jours</strong> commencera. Pendant cette période, vos données de compte seront temporairement gelées. Si vous vous reconnectez pendant cette période, la demande de suppression sera automatiquement annulée.",
+            "sec1_title": "1. Processus de suppression et période de grâce",
+            "sec1_desc": "Pour garantir la sécurité de votre compte et prévenir les opérations accidentelles, nous avons établi une période de grâce pour la suppression de compte :",
+            "sec1_li1_strong": "Période de conservation des données :",
+            "sec1_li1_text": "Dans les 15 jours suivant la demande de suppression, vos données personnelles et informations connexes seront conservées en toute sécurité et ne seront pas supprimées définitivement immédiatement.",
+            "sec1_li2_strong": "Mécanisme d'annulation :",
+            "sec1_li2_text": "Pendant la période de grâce de 15 jours, si vous changez d'avis, connectez-vous simplement à l'application et suivez les instructions pour annuler automatiquement la demande de suppression et restaurer votre compte.",
+            "sec1_li3_strong": "Suppression officielle :",
+            "sec1_li3_text": "Si aucune connexion n'est effectuée pendant la période de grâce, votre compte et toutes les données associées seront définitivement effacés et ne pourront pas être récupérés.",
+            "sec2_title": "2. Impact de la suppression de compte (après la période de grâce)",
+            "sec2_desc": "Lorsque la période de grâce de 15 jours expire sans annulation, les changements finaux suivants se produiront :",
+            "sec2_li1_strong": "Effacement complet de l'identité et des données :",
+            "sec2_li1_text": "Vos informations de compte, profil, avatar et mot de passe seront définitivement supprimés.",
+            "sec2_li2_strong": "Effacement du contenu et des enregistrements :",
+            "sec2_li2_text": "Toutes les données commerciales, journaux d'interaction et contenu connexe générés lors de votre utilisation seront effacés.",
+            "sec2_li3_strong": "Perte des avantages :",
+            "sec2_li3_text": "Tous les privilèges d'adhésion, coupons, points (le cas échéant) et services non terminés associés au compte expireront automatiquement sans remboursement ni compensation.",
+            "sec3_title": "3. Conditions de suppression de compte",
+            "sec3_desc": "Pour garantir la sécurité de votre compte et vos droits de propriété, les conditions suivantes doivent être remplies avant de demander la suppression :",
+            "sec3_li1": "Le compte est en état normal, sans risques de sécurité tels que des suspensions ou des gelés.",
+            "sec3_li2": "Il n'y a pas de transactions inachevées, de litiges ou de plaintes non résolues dans le compte.",
+            "sec3_li3": "Tous les règlements d'actifs et de droits ont été effectués.",
+            "sec4_title": "4. Contactez-nous",
+            "sec4_desc": "Si vous rencontrez des problèmes ou avez des questions lors du processus de suppression ou d'annulation, vous pouvez nous contacter à tout moment via le moyen suivant, et nous vous aiderons dès que possible :",
+            "footer": "&copy; 2026 Cluelex App. Tous droits réservés."
+        },
+        "pt": {
+            "page_title": "Guia de Exclusão de Conta - Cluelex",
+            "main_title": "Guia de Exclusão de Conta do App Cluelex",
+            "sub_title": "Antes de decidir excluir sua conta, leia atentamente os seguintes termos e avisos importantes.",
+            "alert_title": "⚠️ Aviso importante:",
+            "alert_text": "Após enviar sua solicitação de exclusão de conta, um <strong>período de carência de 15 dias</strong> terá início. Durante este período, seus dados de conta serão temporariamente congelados. Se você fizer login novamente durante este período, a solicitação de exclusão será automaticamente cancelada.",
+            "sec1_title": "1. Processo de Exclusão e Período de Carência",
+            "sec1_desc": "Para garantir a segurança da sua conta e evitar operações acidentais, estabelecemos um período de carência para exclusão de conta:",
+            "sec1_li1_strong": "Período de Retenção de Dados:",
+            "sec1_li1_text": "Dentro de 15 dias após a solicitação de exclusão, seus dados pessoais e informações relacionadas serão mantidos em segurança e não serão excluídos permanentemente imediatamente.",
+            "sec1_li2_strong": "Mecanismo de Cancelamento:",
+            "sec1_li2_text": "Durante o período de carência de 15 dias, se você mudar de ideia, basta fazer login no App e seguir as instruções para cancelar automaticamente a solicitação de exclusão e restaurar sua conta.",
+            "sec1_li3_strong": "Exclusão Oficial:",
+            "sec1_li3_text": "Se nenhuma operação de login for realizada durante o período de carência, sua conta e todos os dados relacionados serão permanentemente apagados e não poderão ser recuperados.",
+            "sec2_title": "2. Impacto da Exclusão da Conta (Após o Período de Carência)",
+            "sec2_desc": "Quando o período de carência de 15 dias terminar sem cancelamento, as seguintes alterações finais ocorrerão:",
+            "sec2_li1_strong": "Eliminação Completa de Identidade e Dados:",
+            "sec2_li1_text": "Suas informações de conta, perfil, avatar e senha serão permanentemente excluídos.",
+            "sec2_li2_strong": "Limpeza de Conteúdo e Registros:",
+            "sec2_li2_text": "Todos os dados comerciais, registros de interação e conteúdo relacionado gerados durante o uso serão limpos.",
+            "sec2_li3_strong": "Perda de Benefícios:",
+            "sec2_li3_text": "Todos os privilégios de associação, cupons, pontos (se houver) e serviços não concluídos associados à conta expirarão automaticamente sem reembolso ou compensação.",
+            "sec3_title": "3. Condições para Exclusão da Conta",
+            "sec3_desc": "Para garantir a segurança da sua conta e seus direitos de propriedade, as seguintes condições devem ser atendidas antes de solicitar a exclusão:",
+            "sec3_li1": "A conta está em estado normal, sem riscos de segurança, como suspensões ou congelamentos.",
+            "sec3_li2": "Não há transações inacabadas, disputas ou reclamações não resolvidas na conta.",
+            "sec3_li3": "Todos os acordos de ativos e direitos foram concluídos.",
+            "sec4_title": "4. Fale Conosco",
+            "sec4_desc": "Se você encontrar problemas ou tiver dúvidas durante o processo de exclusão ou cancelamento, entre em contato conosco a qualquer momento através do seguinte método, e ajudaremos você o mais rápido possível:",
+            "footer": "&copy; 2026 Cluelex App. Todos os direitos reservados."
+        },
+        "ar": {
+            "page_title": "دليل حذف الحساب - كلويليكس",
+            "main_title": "دليل حذف حساب تطبيق كلويليكس",
+            "sub_title": "يرجى قراءة البنود والتنبيهات الهامة التالية بعناية قبل حذف حسابك.",
+            "alert_title": "⚠️ تنبيه مهم:",
+            "alert_text": "بعد تقديم طلب حذف حسابك، ستبدأ <strong>فترة سماح مدتها 15 يومًا</strong>. خلال هذه الفترة، سيتم تجميد بيانات حسابك مؤقتًا. إذا قمت بتسجيل الدخول مرة أخرى خلال هذه الفترة، سيتم إنهاء طلب الحذف تلقائيًا.",
+            "sec1_title": "١. عملية الحذف وفترة السماح",
+            "sec1_desc": "لضمان أمان حسابك ومنع العمليات العرضية، أنشأنا فترة سماح لحذف الحساب:",
+            "sec1_li1_strong": "فترة الاحتفاظ بالبيانات:",
+            "sec1_li1_text": "في غضون 15 يومًا بعد تقديم طلب الحذف، سيتم الاحتفاظ ببياناتك الشخصية والمعلومات ذات الصلة بشكل آمن، ولن يتم حذفها نهائيًا على الفور.",
+            "sec1_li2_strong": "آلية الإلغاء:",
+            "sec1_li2_text": "خلال فترة السماح البالغة 15 يومًا، إذا غيرت رأيك، ما عليك سوى تسجيل الدخول إلى التطبيق واتباع التعليمات لإلغاء طلب الحذف تلقائيًا واستعادة حسابك.",
+            "sec1_li3_strong": "الحذف الرسمي:",
+            "sec1_li3_text": "إذا لم يتم تنفيذ أي عملية تسجيل دخول خلال فترة السماح، فسيتم مسح حسابك وجميع البيانات المرتبطة به نهائيًا بعد انتهاء الفترة ولا يمكن استردادها.",
+            "sec2_title": "٢. تأثير حذف الحساب (بعد انتهاء فترة السماح)",
+            "sec2_desc": "عند انتهاء فترة السماح البالغة 15 يومًا دون إلغاء، ستحدث التغييرات النهائية التالية:",
+            "sec2_li1_strong": "محو الهوية والبيانات بالكامل:",
+            "sec2_li1_text": "سيتم حذف معلومات حسابك وملفك الشخصي وصورتك الرمزية وكلمة المرور نهائيًا.",
+            "sec2_li2_strong": "مسح المحتوى والسجلات:",
+            "sec2_li2_text": "سيتم مسح جميع بيانات الأعمال وسجلات التفاعل والمحتوى ذي الصلة التي تم إنشاؤها أثناء استخدامك.",
+            "sec2_li3_strong": "فقدان المزايا:",
+            "sec2_li3_text": "ستنتهي صلاحية جميع امتيازات العضوية والقسائم والنقاط (إن وجدت) والخدمات غير المكتملة المرتبطة بالحساب تلقائيًا دون استرداد أو تعويض.",
+            "sec3_title": "٣. شروط حذف الحساب",
+            "sec3_desc": "لضمان أمان حسابك وحقوق الملكية الخاصة بك، يجب استيفاء الشروط التالية قبل التقدم بطلب الحذف:",
+            "sec3_li1": "الحساب في حالة طبيعية، خالٍ من المخاطر الأمنية مثل الحظر أو التجميد.",
+            "sec3_li2": "لا توجد معاملات غير مكتملة أو نزاعات أو شكاوى غير محلولة داخل الحساب.",
+            "sec3_li3": "تم الانتهاء من جميع تسويات الأصول والحقوق.",
+            "sec4_title": "٤. اتصل بنا",
+            "sec4_desc": "إذا واجهت أي مشاكل أو كان لديك أسئلة أثناء عملية الحذف أو الإلغاء، يمكنك الاتصال بنا في أي وقت عبر الطريقة التالية، وسنساعدك في أقرب وقت ممكن:",
+            "footer": "&copy; 2026 كلويليكس التطبيق. جميع الحقوق محفوظة."
+        },
+        "hi": {
+            "page_title": "खाता हटाने की मार्गदर्शिका - क्लूलेक्स",
+            "main_title": "क्लूलेक्स ऐप खाता हटाने की मार्गदर्शिका",
+            "sub_title": "अपना खाता हटाने का निर्णय लेने से पहले, कृपया निम्नलिखित शर्तों और महत्वपूर्ण सूचनाओं को ध्यान से पढ़ें।",
+            "alert_title": "⚠️ महत्वपूर्ण सूचना:",
+            "alert_text": "आपके खाता हटाने का अनुरोध सबमिट करने के बाद <strong>15-दिवसीय अनुग्रह अवधि</strong> शुरू होगी। इस अवधि के दौरान, आपका खाता डेटा अस्थायी रूप से फ़्रीज़ कर दिया जाएगा। यदि आप इस अवधि के दौरान फिर से लॉग इन करते हैं, तो हटाने का अनुरोध स्वचालित रूप से समाप्त हो जाएगा।",
+            "sec1_title": "१. हटाने की प्रक्रिया और अनुग्रह अवधि",
+            "sec1_desc": "आपके खाते की सुरक्षा सुनिश्चित करने और गलत संचालन को रोकने के लिए, हमने खाता हटाने के लिए एक अनुग्रह अवधि स्थापित की है:",
+            "sec1_li1_strong": "डेटा प्रतिधारण अवधि:",
+            "sec1_li1_text": "हटाने का अनुरोध सबमिट करने के 15 दिनों के भीतर, आपका व्यक्तिगत डेटा और संबंधित जानकारी सुरक्षित रूप से बनाए रखी जाएगी और तुरंत स्थायी रूप से नहीं हटाई जाएगी।",
+            "sec1_li2_strong": "रद्द करने की प्रणाली:",
+            "sec1_li2_text": "15-दिवसीय अनुग्रह अवधि के दौरान, यदि आप अपना मन बदलते हैं, तो बस ऐप में लॉग इन करें और निर्देशों का पालन करें, हटाने का अनुरोध स्वचालित रूप से समाप्त हो जाएगा और आपका खाता सामान्य उपयोग पर वापस आ जाएगा।",
+            "sec1_li3_strong": "आधिकारिक हटाना:",
+            "sec1_li3_text": "यदि अनुग्रह अवधि के दौरान कोई लॉगिन संचालन नहीं किया जाता है, तो अवधि समाप्त होने पर आपका खाता और सभी संबंधित डेटा स्थायी रूप से मिटा दिया जाएगा और पुनर्प्राप्त नहीं किया जा सकता है।",
+            "sec2_title": "२. खाता हटाने का प्रभाव (अनुग्रह अवधि के बाद)",
+            "sec2_desc": "जब 15-दिवसीय अनुग्रह अवधि रद्द किए बिना समाप्त हो जाती है, तो निम्नलिखित अंतिम परिवर्तन होंगे:",
+            "sec2_li1_strong": "पहचान और डेटा का पूर्ण विलोपन:",
+            "sec2_li1_text": "आपकी खाता जानकारी, प्रोफ़ाइल, अवतार और पासवर्ड स्थायी रूप से हटा दिए जाएंगे।",
+            "sec2_li2_strong": "सामग्री और रिकॉर्ड साफ़ करना:",
+            "sec2_li2_text": "आपके उपयोग के दौरान उत्पन्न सभी व्यावसायिक डेटा, इंटरैक्शन लॉग और संबंधित सामग्री साफ़ कर दी जाएगी।",
+            "sec2_li3_strong": "लाभों की हानि:",
+            "sec2_li3_text": "खाते से जुड़े सभी सदस्यता विशेषाधिकार, कूपन, अंक (यदि कोई हैं) और अधूरी सेवाएं स्वतः समाप्त हो जाएंगी, बिना किसी धनवापसी या मुआवजे के।",
+            "sec3_title": "३. खाता हटाने की शर्तें",
+            "sec3_desc": "आपके खाते की सुरक्षा और संपत्ति अधिकारों को सुनिश्चित करने के लिए, हटाने के लिए आवेदन करने से पहले निम्नलिखित शर्तों को पूरा करना होगा:",
+            "sec3_li1": "खाता सामान्य स्थिति में है, प्रतिबंध या फ़्रीज़ जैसे सुरक्षा जोखिमों से मुक्त है।",
+            "sec3_li2": "खाते के भीतर कोई अधूरा लेन-देन, विवाद या अनसुलझी शिकायत नहीं है।",
+            "sec3_li3": "सभी संपत्ति और अधिकार निपटान पूरे कर लिए गए हैं।",
+            "sec4_title": "४. हमसे संपर्क करें",
+            "sec4_desc": "यदि आपको हटाने या रद्द करने की प्रक्रिया के दौरान कोई समस्या आती है या कोई प्रश्न है, तो आप निम्न विधि के माध्यम से किसी भी समय हमसे संपर्क कर सकते हैं, और हम जल्द से जल्द आपकी सहायता करेंगे:",
+            "footer": "&copy; 2026 क्लूलेक्स ऐप. सभी अधिकार सुरक्षित."
+        },
+        "ru": {
+            "page_title": "Руководство по удалению учетной записи - Клюлекс",
+            "main_title": "Руководство по удалению учетной записи в приложении Клюлекс",
+            "sub_title": "Пожалуйста, внимательно прочитайте следующие условия и важные уведомления перед удалением учетной записи.",
+            "alert_title": "⚠️ Важное уведомление:",
+            "alert_text": "После подачи запроса на удаление учетной записи начнется <strong>льготный период в 15 дней</strong>. В течение этого периода ваши данные учетной записи будут временно заморожены. Если вы снова войдете в систему в течение этого периода, запрос на удаление будет автоматически прекращен.",
+            "sec1_title": "1. Процесс удаления и льготный период",
+            "sec1_desc": "Чтобы обеспечить безопасность вашей учетной записи и предотвратить случайные операции, мы установили льготный период для удаления учетной записи:",
+            "sec1_li1_strong": "Срок хранения данных:",
+            "sec1_li1_text": "В течение 15 дней после подачи запроса на удаление ваши личные данные и соответствующая информация будут надежно сохранены и не будут немедленно удалены навсегда.",
+            "sec1_li2_strong": "Механизм отмены:",
+            "sec1_li2_text": "В течение 15-дневного льготного периода, если вы передумаете, просто войдите в приложение и следуйте инструкциям, чтобы автоматически прекратить и отменить запрос на удаление, восстановив нормальное использование учетной записи.",
+            "sec1_li3_strong": "Официальное удаление:",
+            "sec1_li3_text": "Если в течение льготного периода не будет выполнено ни одного входа в систему, по истечении срока ваша учетная запись и все связанные данные будут безвозвратно удалены и не подлежат восстановлению.",
+            "sec2_title": "2. Последствия удаления учетной записи (после льготного периода)",
+            "sec2_desc": "Когда 15-дневный льготный период истечет без отмены, произойдут следующие окончательные изменения:",
+            "sec2_li1_strong": "Полное удаление личности и данных:",
+            "sec2_li1_text": "Ваша информация об учетной записи, профиль, аватар и пароль будут удалены навсегда.",
+            "sec2_li2_strong": "Очистка контента и записей:",
+            "sec2_li2_text": "Все бизнес-данные, журналы взаимодействий и связанный контент, созданные во время использования, будут удалены.",
+            "sec2_li3_strong": "Потеря преимуществ:",
+            "sec2_li3_text": "Все членские привилегии, купоны, баллы (если есть) и незавершенные услуги, связанные с учетной записью, автоматически аннулируются без возврата средств или компенсации.",
+            "sec3_title": "3. Условия удаления учетной записи",
+            "sec3_desc": "Для обеспечения безопасности вашей учетной записи и имущественных прав перед подачей заявки на удаление необходимо выполнить следующие условия:",
+            "sec3_li1": "Учетная запись находится в нормальном состоянии, без рисков безопасности, таких как блокировка или заморозка.",
+            "sec3_li2": "В учетной записи нет незавершенных транзакций, споров или неразрешенных жалоб.",
+            "sec3_li3": "Все расчеты по активам и правам завершены.",
+            "sec4_title": "4. Свяжитесь с нами",
+            "sec4_desc": "Если у вас возникли проблемы или вопросы в процессе удаления или отмены, вы можете связаться с нами в любое время через следующий способ, и мы поможем вам как можно скорее:",
+            "footer": "&copy; 2026 Клюлекс App. Все права защищены."
+        },
+        "it": {
+            "page_title": "Guida alla cancellazione dell'account - Cluelex",
+            "main_title": "Guida alla cancellazione dell'account di Cluelex App",
+            "sub_title": "Prima di decidere di cancellare il tuo account, leggi attentamente i seguenti termini e avvisi importanti.",
+            "alert_title": "⚠️ Avviso importante:",
+            "alert_text": "Dopo aver inviato la richiesta di cancellazione dell'account, inizierà un <strong>periodo di grazia di 15 giorni</strong>. Durante questo periodo, i tuoi dati dell'account saranno temporaneamente congelati. Se accedi di nuovo durante questo periodo, la richiesta di cancellazione verrà automaticamente terminata.",
+            "sec1_title": "1. Processo di cancellazione e periodo di grazia",
+            "sec1_desc": "Per garantire la sicurezza del tuo account e prevenire operazioni accidentali, abbiamo stabilito un periodo di grazia per la cancellazione dell'account:",
+            "sec1_li1_strong": "Periodo di conservazione dei dati:",
+            "sec1_li1_text": "Entro 15 giorni dalla richiesta di cancellazione, i tuoi dati personali e le informazioni correlate saranno conservati in modo sicuro e non saranno cancellati immediatamente in modo permanente.",
+            "sec1_li2_strong": "Meccanismo di annullamento:",
+            "sec1_li2_text": "Durante il periodo di grazia di 15 giorni, se cambi idea, basta accedere all'app e seguire le istruzioni per annullare automaticamente la richiesta di cancellazione e ripristinare il tuo account.",
+            "sec1_li3_strong": "Cancellazione ufficiale:",
+            "sec1_li3_text": "Se non viene eseguita alcuna operazione di accesso durante il periodo di grazia, il tuo account e tutti i dati correlati verranno cancellati permanentemente e non potranno essere recuperati.",
+            "sec2_title": "2. Impatto della cancellazione dell'account (dopo il periodo di grazia)",
+            "sec2_desc": "Quando il periodo di grazia di 15 giorni scade senza annullamento, si verificheranno le seguenti modifiche finali:",
+            "sec2_li1_strong": "Cancellazione completa di identità e dati:",
+            "sec2_li1_text": "Le tue informazioni dell'account, profilo, avatar e password verranno cancellati definitivamente.",
+            "sec2_li2_strong": "Cancellazione di contenuti e registri:",
+            "sec2_li2_text": "Tutti i dati aziendali, i registri di interazione e i contenuti correlati generati durante l'utilizzo verranno cancellati.",
+            "sec2_li3_strong": "Perdita di benefici:",
+            "sec2_li3_text": "Tutti i privilegi di abbonamento, coupon, punti (se presenti) e servizi non completati associati all'account scadranno automaticamente senza rimborso o compensazione.",
+            "sec3_title": "3. Condizioni per la cancellazione dell'account",
+            "sec3_desc": "Per garantire la sicurezza del tuo account e i tuoi diritti di proprietà, prima di richiedere la cancellazione devono essere soddisfatte le seguenti condizioni:",
+            "sec3_li1": "L'account è in stato normale, senza rischi di sicurezza come sospensioni o blocchi.",
+            "sec3_li2": "Non ci sono transazioni incomplete, controversie o reclami irrisolti all'interno dell'account.",
+            "sec3_li3": "Tutti i regolamenti di beni e diritti sono stati completati.",
+            "sec4_title": "4. Contattaci",
+            "sec4_desc": "Se incontri problemi o hai domande durante il processo di cancellazione o annullamento, puoi contattarci in qualsiasi momento tramite il seguente metodo e ti assisteremo il prima possibile:",
+            "footer": "&copy; 2026 Cluelex App. Tutti i diritti riservati."
+        },
+        "nl": {
+            "page_title": "Handleiding voor het verwijderen van accounts - Cluelex",
+            "main_title": "Handleiding voor het verwijderen van accounts van Cluelex App",
+            "sub_title": "Lees de volgende voorwaarden en belangrijke opmerkingen zorgvuldig door voordat u uw account verwijdert.",
+            "alert_title": "⚠️ Belangrijke opmerking:",
+            "alert_text": "Na het indienen van uw verzoek tot accountverwijdering begint een <strong>bedenktijd van 15 dagen</strong>. Gedurende deze periode worden uw accountgegevens tijdelijk bevroren. Als u zich tijdens deze periode opnieuw aanmeldt, wordt het verwijderingsverzoek automatisch beëindigd.",
+            "sec1_title": "1. Verwijderingsproces en bedenktijd",
+            "sec1_desc": "Om de beveiliging van uw account te waarborgen en onbedoelde handelingen te voorkomen, hebben we een bedenktijd ingesteld voor accountverwijdering:",
+            "sec1_li1_strong": "Gegevensbewaartermijn:",
+            "sec1_li1_text": "Binnen 15 dagen na het indienen van het verwijderingsverzoek worden uw persoonlijke gegevens en gerelateerde informatie veilig bewaard en niet onmiddellijk permanent verwijderd.",
+            "sec1_li2_strong": "Annuleringsmechanisme:",
+            "sec1_li2_text": "Als u tijdens de 15-daagse bedenktijd van gedachten verandert, log dan gewoon in op de App en volg de instructies om het verwijderingsverzoek automatisch te beëindigen en uw account te herstellen.",
+            "sec1_li3_strong": "Officiële verwijdering:",
+            "sec1_li3_text": "Als er tijdens de bedenktijd geen aanmeldingshandeling wordt uitgevoerd, worden uw account en alle gerelateerde gegevens na afloop permanent gewist en kunnen ze niet worden hersteld.",
+            "sec2_title": "2. Impact van accountverwijdering (na de bedenktijd)",
+            "sec2_desc": "Wanneer de 15-daagse bedenktijd zonder annulering verloopt, treden de volgende definitieve wijzigingen op:",
+            "sec2_li1_strong": "Volledige verwijdering van identiteit en gegevens:",
+            "sec2_li1_text": "Uw accountgegevens, profiel, avatar en wachtwoord worden permanent verwijderd.",
+            "sec2_li2_strong": "Wissen van inhoud en gegevens:",
+            "sec2_li2_text": "Alle bedrijfsgegevens, interactielogboeken en gerelateerde inhoud die tijdens uw gebruik zijn gegenereerd, worden gewist.",
+            "sec2_li3_strong": "Verlies van voordelen:",
+            "sec2_li3_text": "Alle aan het account gekoppelde lidmaatschapsvoordelen, coupons, punten (indien aanwezig) en onvoltooide diensten verlopen automatisch zonder restitutie of compensatie.",
+            "sec3_title": "3. Voorwaarden voor accountverwijdering",
+            "sec3_desc": "Om de beveiliging van uw account en uw eigendomsrechten te waarborgen, moet aan de volgende voorwaarden worden voldaan voordat u een verzoek tot verwijdering indient:",
+            "sec3_li1": "Het account verkeert in normale staat, zonder veiligheidsrisico's zoals schorsingen of bevriezingen.",
+            "sec3_li2": "Er zijn geen onvoltooide transacties, geschillen of onopgeloste klachten in het account.",
+            "sec3_li3": "Alle afrekeningen van activa en rechten zijn voltooid.",
+            "sec4_title": "4. Neem contact met ons op",
+            "sec4_desc": "Als u problemen ondervindt of vragen heeft tijdens het verwijderings- of annuleringsproces, kunt u ons op elk moment via de volgende methode contacteren, en we zullen u zo snel mogelijk helpen:",
+            "footer": "&copy; 2026 Cluelex App. Alle rechten voorbehouden."
+        },
+        "th": {
+            "page_title": "คู่มือการลบบัญชี - คลูเล็กซ์",
+            "main_title": "คู่มือการลบบัญชีของแอปคลูเล็กซ์",
+            "sub_title": "ก่อนตัดสินใจลบบัญชีของคุณ โปรดอ่านข้อกำหนดและประกาศสำคัญต่อไปนี้อย่างละเอียด",
+            "alert_title": "⚠️ ประกาศสำคัญ:",
+            "alert_text": "หลังจากส่งคำขอลบบัญชีของคุณแล้ว จะเริ่ม <strong>ระยะเวลาผ่อนผัน 15 วัน</strong> ในช่วงเวลานี้ ข้อมูลบัญชีของคุณจะถูกระงับไว้ชั่วคราว หากคุณเข้าสู่ระบบอีกครั้งในช่วงเวลานี้ คำขอลบจะถูกยกเลิกโดยอัตโนมัติ",
+            "sec1_title": "๑. กระบวนการลบและระยะเวลาผ่อนผัน",
+            "sec1_desc": "เพื่อความปลอดภัยของบัญชีของคุณและป้องกันการดำเนินการโดยไม่ตั้งใจ เราได้กำหนดระยะเวลาผ่อนผันสำหรับการลบบัญชี:",
+            "sec1_li1_strong": "ระยะเวลาการเก็บรักษาข้อมูล:",
+            "sec1_li1_text": "ภายใน 15 วันหลังจากส่งคำขอลบ ข้อมูลส่วนบุคคลและข้อมูลที่เกี่ยวข้องของคุณจะถูกเก็บรักษาอย่างปลอดภัย และจะไม่ถูกลบอย่างถาวรในทันที",
+            "sec1_li2_strong": "กลไกการยกเลิก:",
+            "sec1_li2_text": "ในช่วงระยะเวลาผ่อนผัน 15 วัน หากคุณเปลี่ยนใจ เพียงเข้าสู่ระบบแอปและปฏิบัติตามคำแนะนำเพื่อยกเลิกคำขอลบโดยอัตโนมัติและเรียกคืนบัญชีของคุณ",
+            "sec1_li3_strong": "การลบอย่างเป็นทางการ:",
+            "sec1_li3_text": "หากไม่มีการดำเนินการเข้าสู่ระบบในช่วงระยะเวลาผ่อนผัน บัญชีของคุณและข้อมูลที่เกี่ยวข้องทั้งหมดจะถูกลบอย่างถาวรเมื่อหมดระยะเวลาและไม่สามารถกู้คืนได้",
+            "sec2_title": "๒. ผลกระทบของการลบบัญชี (หลังจากระยะเวลาผ่อนผัน)",
+            "sec2_desc": "เมื่อระยะเวลาผ่อนผัน 15 วันสิ้นสุดลงโดยไม่มีการยกเลิก การเปลี่ยนแปลงขั้นสุดท้ายต่อไปนี้จะเกิดขึ้น:",
+            "sec2_li1_strong": "การลบข้อมูลประจำตัวและข้อมูลทั้งหมด:",
+            "sec2_li1_text": "ข้อมูลบัญชี โปรไฟล์ รูปโปรไฟล์ และรหัสผ่านของคุณจะถูกลบอย่างถาวร",
+            "sec2_li2_strong": "การล้างเนื้อหาและบันทึก:",
+            "sec2_li2_text": "ข้อมูลทางธุรกิจ บันทึกการโต้ตอบ และเนื้อหาที่เกี่ยวข้องทั้งหมดที่สร้างขึ้นระหว่างการใช้งานของคุณจะถูกล้าง",
+            "sec2_li3_strong": "การสูญเสียสิทธิประโยชน์:",
+            "sec2_li3_text": "สิทธิพิเศษในการเป็นสมาชิก คูปอง คะแนน (ถ้ามี) และบริการที่ยังไม่เสร็จสิ้นทั้งหมดที่เกี่ยวข้องกับบัญชีจะหมดอายุโดยอัตโนมัติโดยไม่มีการคืนเงินหรือชดเชย",
+            "sec3_title": "๓. เงื่อนไขการลบบัญชี",
+            "sec3_desc": "เพื่อความปลอดภัยของบัญชีและสิทธิ์ในทรัพย์สินของคุณ ต้องปฏิบัติตามเงื่อนไขต่อไปนี้ก่อนสมัครลบ:",
+            "sec3_li1": "บัญชีอยู่ในสถานะปกติ ปราศจากความเสี่ยงด้านความปลอดภัย เช่น การแบนหรือการระงับ",
+            "sec3_li2": "ไม่มีธุรกรรมที่ยังไม่เสร็จ ข้อพิพาท หรือข้อร้องเรียนที่ยังไม่ได้รับการแก้ไขภายในบัญชี",
+            "sec3_li3": "การชำระบัญชีสินทรัพย์และสิทธิ์ทั้งหมดเสร็จสมบูรณ์แล้ว",
+            "sec4_title": "๔. ติดต่อเรา",
+            "sec4_desc": "หากคุณพบปัญหาใดๆ หรือมีคำถามในระหว่างกระบวนการลบหรือยกเลิก คุณสามารถติดต่อเราได้ตลอดเวลาผ่านวิธีการดังต่อไปนี้ และเราจะช่วยเหลือคุณโดยเร็วที่สุด:",
+            "footer": "&copy; 2026 คลูเล็กซ์ แอป. สงวนลิขสิทธิ์."
+        },
+        "vi": {
+            "page_title": "Hướng dẫn xóa tài khoản - Cluelex",
+            "main_title": "Hướng dẫn xóa tài khoản của ứng dụng Cluelex",
+            "sub_title": "Vui lòng đọc kỹ các điều khoản và thông báo quan trọng sau đây trước khi xóa tài khoản của bạn.",
+            "alert_title": "⚠️ Thông báo quan trọng:",
+            "alert_text": "Sau khi gửi yêu cầu xóa tài khoản, <strong>thời gian chờ 15 ngày</strong> sẽ bắt đầu. Trong thời gian này, dữ liệu tài khoản của bạn sẽ bị tạm thời đóng băng. Nếu bạn đăng nhập lại trong thời gian này, yêu cầu xóa sẽ tự động bị hủy.",
+            "sec1_title": "1. Quy trình xóa và thời gian chờ",
+            "sec1_desc": "Để đảm bảo an toàn cho tài khoản của bạn và ngăn chặn thao tác nhầm lẫn, chúng tôi đã thiết lập thời gian chờ để xóa tài khoản:",
+            "sec1_li1_strong": "Thời gian lưu giữ dữ liệu:",
+            "sec1_li1_text": "Trong vòng 15 ngày sau khi gửi yêu cầu xóa, dữ liệu cá nhân và thông tin liên quan của bạn sẽ được lưu giữ an toàn và sẽ không bị xóa vĩnh viễn ngay lập tức.",
+            "sec1_li2_strong": "Cơ chế hủy bỏ:",
+            "sec1_li2_text": "Trong thời gian chờ 15 ngày, nếu bạn thay đổi ý định, chỉ cần đăng nhập vào ứng dụng và làm theo hướng dẫn để tự động chấm dứt và hủy yêu cầu xóa, khôi phục tài khoản của bạn về trạng thái bình thường.",
+            "sec1_li3_strong": "Xóa chính thức:",
+            "sec1_li3_text": "Nếu không có thao tác đăng nhập nào trong thời gian chờ, tài khoản của bạn và tất cả dữ liệu liên quan sẽ bị xóa vĩnh viễn sau khi hết hạn và không thể khôi phục.",
+            "sec2_title": "2. Tác động của việc xóa tài khoản (Sau thời gian chờ)",
+            "sec2_desc": "Khi thời gian chờ 15 ngày kết thúc mà không bị hủy, những thay đổi cuối cùng sau đây sẽ xảy ra:",
+            "sec2_li1_strong": "Xóa hoàn toàn danh tính và dữ liệu:",
+            "sec2_li1_text": "Thông tin tài khoản, hồ sơ, hình đại diện và mật khẩu của bạn sẽ bị xóa vĩnh viễn.",
+            "sec2_li2_strong": "Xóa nội dung và bản ghi:",
+            "sec2_li2_text": "Tất cả dữ liệu kinh doanh, nhật ký tương tác và nội dung liên quan được tạo ra trong quá trình sử dụng của bạn sẽ bị xóa.",
+            "sec2_li3_strong": "Mất quyền lợi:",
+            "sec2_li3_text": "Tất cả các đặc quyền thành viên, phiếu giảm giá, điểm tích lũy (nếu có) và dịch vụ chưa hoàn thành liên kết với tài khoản sẽ tự động hết hạn mà không được hoàn lại tiền hoặc bồi thường.",
+            "sec3_title": "3. Điều kiện xóa tài khoản",
+            "sec3_desc": "Để đảm bảo an toàn cho tài khoản và quyền tài sản của bạn, các điều kiện sau phải được đáp ứng trước khi yêu cầu xóa:",
+            "sec3_li1": "Tài khoản ở trạng thái bình thường, không có rủi ro bảo mật như bị cấm hoặc đóng băng.",
+            "sec3_li2": "Không có giao dịch chưa hoàn thành, tranh chấp hoặc khiếu nại chưa được giải quyết trong tài khoản.",
+            "sec3_li3": "Tất cả các khoản thanh toán tài sản và quyền lợi đã được hoàn tất.",
+            "sec4_title": "4. Liên hệ với chúng tôi",
+            "sec4_desc": "Nếu bạn gặp bất kỳ vấn đề nào hoặc có thắc mắc trong quá trình xóa hoặc hủy bỏ, bạn có thể liên hệ với chúng tôi bất kỳ lúc nào thông qua phương thức sau đây và chúng tôi sẽ hỗ trợ bạn sớm nhất có thể:",
+            "footer": "&copy; 2026 Cluelex App. Tất cả các quyền được bảo lưu."
+        },
+        "id": {
+            "page_title": "Panduan Penghapusan Akun - Cluelex",
+            "main_title": "Panduan Penghapusan Akun Aplikasi Cluelex",
+            "sub_title": "Sebelum memutuskan untuk menghapus akun Anda, baca dengan cermat syarat dan ketentuan berikut serta pemberitahuan penting.",
+            "alert_title": "⚠️ Pemberitahuan Penting:",
+            "alert_text": "Setelah mengirimkan permintaan penghapusan akun, <strong>masa tenggang 15 hari</strong> akan dimulai. Selama periode ini, data akun Anda akan dibekukan sementara. Jika Anda masuk lagi selama periode ini, permintaan penghapusan akan secara otomatis dihentikan.",
+            "sec1_title": "1. Proses Penghapusan dan Masa Tenggang",
+            "sec1_desc": "Untuk memastikan keamanan akun Anda dan mencegah operasi yang tidak disengaja, kami telah menetapkan masa tenggang untuk penghapusan akun:",
+            "sec1_li1_strong": "Masa Retensi Data:",
+            "sec1_li1_text": "Dalam 15 hari setelah mengirimkan permintaan penghapusan, data pribadi dan informasi terkait Anda akan disimpan dengan aman dan tidak akan segera dihapus secara permanen.",
+            "sec1_li2_strong": "Mekanisme Pembatalan:",
+            "sec1_li2_text": "Selama masa tenggang 15 hari, jika Anda berubah pikiran, cukup masuk ke Aplikasi dan ikuti petunjuk untuk secara otomatis menghentikan dan membatalkan permintaan penghapusan, mengembalikan akun Anda ke penggunaan normal.",
+            "sec1_li3_strong": "Penghapusan Resmi:",
+            "sec1_li3_text": "Jika tidak ada operasi masuk yang dilakukan selama masa tenggang, akun Anda dan semua data terkait akan dihapus secara permanen setelah berakhir dan tidak dapat dipulihkan.",
+            "sec2_title": "2. Dampak Penghapusan Akun (Setelah Masa Tenggang)",
+            "sec2_desc": "Ketika masa tenggang 15 hari berakhir tanpa pembatalan, perubahan akhir berikut akan terjadi:",
+            "sec2_li1_strong": "Penghapusan Identitas dan Data Secara Lengkap:",
+            "sec2_li1_text": "Informasi akun, profil, avatar, dan kata sandi Anda akan dihapus secara permanen.",
+            "sec2_li2_strong": "Penghapusan Konten dan Catatan:",
+            "sec2_li2_text": "Semua data bisnis, log interaksi, dan konten terkait yang dihasilkan selama penggunaan Anda akan dihapus.",
+            "sec2_li3_strong": "Kehilangan Manfaat:",
+            "sec2_li3_text": "Semua hak istimewa keanggotaan, kupon, poin (jika ada), dan layanan yang belum selesai yang terkait dengan akun akan secara otomatis kedaluwarsa tanpa pengembalian uang atau kompensasi.",
+            "sec3_title": "3. Syarat Penghapusan Akun",
+            "sec3_desc": "Untuk memastikan keamanan akun dan hak properti Anda, kondisi berikut harus dipenuhi sebelum mengajukan penghapusan:",
+            "sec3_li1": "Akun dalam status normal, bebas dari risiko keamanan seperti pemblokiran atau pembekuan.",
+            "sec3_li2": "Tidak ada transaksi yang belum selesai, sengketa, atau keluhan yang belum terselesaikan di dalam akun.",
+            "sec3_li3": "Semua penyelesaian aset dan hak telah selesai.",
+            "sec4_title": "4. Hubungi Kami",
+            "sec4_desc": "Jika Anda mengalami masalah atau memiliki pertanyaan selama proses penghapusan atau pembatalan, Anda dapat menghubungi kami kapan saja melalui metode berikut, dan kami akan membantu Anda sesegera mungkin:",
+            "footer": "&copy; 2026 Cluelex App. Semua hak dilindungi."
+        },
+        "ms": {
+            "page_title": "Panduan Penghapusan Akaun - Cluelex",
+            "main_title": "Panduan Penghapusan Akaun Aplikasi Cluelex",
+            "sub_title": "Sila baca syarat dan notis penting berikut dengan teliti sebelum memutuskan untuk memadamkan akaun anda.",
+            "alert_title": "⚠️ Notis Penting:",
+            "alert_text": "Selepas menghantar permintaan penghapusan akaun, <strong>tempoh tangguh 15 hari</strong> akan bermula. Dalam tempoh ini, data akaun anda akan dibekukan sementara. Jika anda log masuk semula dalam tempoh ini, permintaan penghapusan akan ditamatkan secara automatik.",
+            "sec1_title": "1. Proses Penghapusan dan Tempoh Tangguh",
+            "sec1_desc": "Untuk memastikan keselamatan akaun anda dan mencegah operasi yang tidak disengajakan, kami telah menetapkan tempoh tangguh untuk penghapusan akaun:",
+            "sec1_li1_strong": "Tempoh Pengekalan Data:",
+            "sec1_li1_text": "Dalam tempoh 15 hari selepas menghantar permintaan penghapusan, data peribadi dan maklumat berkaitan anda akan disimpan dengan selamat dan tidak akan dipadamkan secara kekal dengan segera.",
+            "sec1_li2_strong": "Mekanisme Pembatalan:",
+            "sec1_li2_text": "Semasa tempoh tangguh 15 hari, jika anda berubah fikiran, hanya log masuk ke Aplikasi dan ikut arahan untuk menamatkan dan membatalkan permintaan penghapusan secara automatik, memulihkan akaun anda untuk kegunaan biasa.",
+            "sec1_li3_strong": "Penghapusan Rasmi:",
+            "sec1_li3_text": "Jika tiada operasi log masuk dilakukan dalam tempoh tangguh, akaun anda dan semua data berkaitan akan dipadamkan secara kekal selepas tamat tempoh dan tidak dapat dipulihkan.",
+            "sec2_title": "2. Kesan Penghapusan Akaun (Selepas Tempoh Tangguh)",
+            "sec2_desc": "Apabila tempoh tangguh 15 hari tamat tanpa pembatalan, perubahan akhir berikut akan berlaku:",
+            "sec2_li1_strong": "Penghapusan Identiti dan Data Secara Menyeluruh:",
+            "sec2_li1_text": "Maklumat akaun, profil, avatar dan kata laluan anda akan dipadamkan secara kekal.",
+            "sec2_li2_strong": "Pemadaman Kandungan dan Rekod:",
+            "sec2_li2_text": "Semua data perniagaan, log interaksi dan kandungan berkaitan yang dihasilkan semasa penggunaan anda akan dipadamkan.",
+            "sec2_li3_strong": "Kehilangan Faedah:",
+            "sec2_li3_text": "Semua keistimewaan keahlian, kupon, mata (jika ada) dan perkhidmatan yang belum selesai yang berkaitan dengan akaun akan tamat secara automatik tanpa bayaran balik atau pampasan.",
+            "sec3_title": "3. Syarat Penghapusan Akaun",
+            "sec3_desc": "Untuk memastikan keselamatan akaun dan hak harta anda, syarat berikut mesti dipenuhi sebelum memohon penghapusan:",
+            "sec3_li1": "Akaun dalam keadaan normal, bebas daripada risiko keselamatan seperti larangan atau pembekuan.",
+            "sec3_li2": "Tiada transaksi yang belum selesai, pertikaian, atau aduan yang belum diselesaikan dalam akaun.",
+            "sec3_li3": "Semua penyelesaian aset dan hak telah selesai.",
+            "sec4_title": "4. Hubungi Kami",
+            "sec4_desc": "Jika anda menghadapi sebarang masalah atau mempunyai pertanyaan semasa proses penghapusan atau pembatalan, anda boleh menghubungi kami pada bila-bila masa melalui kaedah berikut, dan kami akan membantu anda secepat mungkin:",
+            "footer": "&copy; 2026 Cluelex App. Hak cipta terpelihara."
+        },
+        "tr": {
+            "page_title": "Hesap Silme Kılavuzu - Cluelex",
+            "main_title": "Cluelex Uygulaması Hesap Silme Kılavuzu",
+            "sub_title": "Hesabınızı silmeye karar vermeden önce lütfen aşağıdaki şartları ve önemli uyarıları dikkatlice okuyun.",
+            "alert_title": "⚠️ Önemli Uyarı:",
+            "alert_text": "Hesap silme talebinizi gönderdikten sonra <strong>15 günlük bir bekleme süresi</strong> başlayacaktır. Bu süre boyunca hesap verileriniz geçici olarak dondurulacaktır. Bu süre içinde tekrar giriş yaparsanız, silme talebi otomatik olarak sonlandırılacaktır.",
+            "sec1_title": "1. Silme Süreci ve Bekleme Süresi",
+            "sec1_desc": "Hesap güvenliğinizi sağlamak ve yanlışlıkla yapılan işlemleri önlemek için hesap silme için bir bekleme süresi belirledik:",
+            "sec1_li1_strong": "Veri Saklama Süresi:",
+            "sec1_li1_text": "Silme talebinden sonraki 15 gün içinde, kişisel verileriniz ve ilgili bilgileriniz güvenli bir şekilde saklanacak ve hemen kalıcı olarak silinmeyecektir.",
+            "sec1_li2_strong": "İptal Mekanizması:",
+            "sec1_li2_text": "15 günlük bekleme süresi boyunca fikrinizi değiştirirseniz, Uygulamada oturum açın ve talimatları izleyerek silme talebini otomatik olarak sonlandırın ve hesabınızı normal kullanıma geri döndürün.",
+            "sec1_li3_strong": "Resmi Silme:",
+            "sec1_li3_text": "Bekleme süresi boyunca herhangi bir giriş işlemi yapılmazsa, süre sonunda hesabınız ve tüm ilgili verileriniz kalıcı olarak silinecek ve kurtarılamayacaktır.",
+            "sec2_title": "2. Hesap Silmenin Etkileri (Bekleme Süresinden Sonra)",
+            "sec2_desc": "15 günlük bekleme süresi iptal edilmeden sona erdiğinde, aşağıdaki nihai değişiklikler meydana gelecektir:",
+            "sec2_li1_strong": "Kimlik ve Verilerin Tamamen Silinmesi:",
+            "sec2_li1_text": "Hesap bilgileriniz, profiliniz, avatarınız ve şifreniz kalıcı olarak silinecektir.",
+            "sec2_li2_strong": "İçerik ve Kayıtların Temizlenmesi:",
+            "sec2_li2_text": "Kullanımınız sırasında oluşturulan tüm iş verileri, etkileşim kayıtları ve ilgili içerikler silinecektir.",
+            "sec2_li3_strong": "Avantajların Kaybı:",
+            "sec2_li3_text": "Hesapla ilişkili tüm üyelik ayrıcalıkları, kuponlar, puanlar (varsa) ve tamamlanmamış hizmetler, geri ödeme veya tazminat olmaksızın otomatik olarak sona erecektir.",
+            "sec3_title": "3. Hesap Silme Koşulları",
+            "sec3_desc": "Hesap güvenliğinizi ve mülkiyet haklarınızı sağlamak için, silme başvurusunda bulunmadan önce aşağıdaki koşulların karşılanması gerekir:",
+            "sec3_li1": "Hesap normal durumda, yasaklama veya dondurma gibi güvenlik risklerinden uzak.",
+            "sec3_li2": "Hesap içinde tamamlanmamış işlem, anlaşmazlık veya çözülmemiş şikayet bulunmamaktadır.",
+            "sec3_li3": "Tüm varlık ve hak uzlaşmaları tamamlanmıştır.",
+            "sec4_title": "4. Bize Ulaşın",
+            "sec4_desc": "Silme veya iptal işlemi sırasında herhangi bir sorunla karşılaşırsanız veya sorularınız varsa, aşağıdaki yöntemle bizimle iletişime geçebilirsiniz, size en kısa sürede yardımcı olacağız:",
+            "footer": "&copy; 2026 Cluelex App. Tüm hakları saklıdır."
+        },
+        "pl": {
+            "page_title": "Przewodnik po usunięciu konta - Cluelex",
+            "main_title": "Przewodnik po usunięciu konta w aplikacji Cluelex",
+            "sub_title": "Przed podjęciem decyzji o usunięciu konta zapoznaj się uważnie z poniższymi warunkami i ważnymi ostrzeżeniami.",
+            "alert_title": "⚠️ Ważne ostrzeżenie:",
+            "alert_text": "Po złożeniu wniosku o usunięcie konta rozpocznie się <strong>15-dniowy okres karencji</strong>. W tym czasie dane Twojego konta zostaną tymczasowo zamrożone. Jeśli w tym okresie zalogujesz się ponownie, wniosek o usunięcie zostanie automatycznie anulowany.",
+            "sec1_title": "1. Proces usuwania i okres karencji",
+            "sec1_desc": "Aby zapewnić bezpieczeństwo Twojego konta i zapobiec przypadkowym operacjom, ustanowiliśmy okres karencji dla usuwania konta:",
+            "sec1_li1_strong": "Okres przechowywania danych:",
+            "sec1_li1_text": "W ciągu 15 dni od złożenia wniosku o usunięcie, Twoje dane osobowe i powiązane informacje będą bezpiecznie przechowywane i nie zostaną natychmiast trwale usunięte.",
+            "sec1_li2_strong": "Mechanizm anulowania:",
+            "sec1_li2_text": "W 15-dniowym okresie karencji, jeśli zmienisz zdanie, wystarczy zalogować się do aplikacji i postępować zgodnie z instrukcjami, aby automatycznie zakończyć i anulować wniosek o usunięcie, przywracając konto do normalnego użytkowania.",
+            "sec1_li3_strong": "Oficjalne usunięcie:",
+            "sec1_li3_text": "Jeśli w okresie karencji nie zostanie wykonana żadna operacja logowania, po upływie terminu Twoje konto i wszystkie powiązane dane zostaną trwale usunięte i nie będą mogły zostać odzyskane.",
+            "sec2_title": "2. Wpływ usunięcia konta (po okresie karencji)",
+            "sec2_desc": "Gdy 15-dniowy okres karencji zakończy się bez anulowania, nastąpią następujące ostateczne zmiany:",
+            "sec2_li1_strong": "Całkowite usunięcie tożsamości i danych:",
+            "sec2_li1_text": "Twoje informacje o koncie, profil, awatar i hasło zostaną trwale usunięte.",
+            "sec2_li2_strong": "Wyczyszczenie treści i rejestrów:",
+            "sec2_li2_text": "Wszystkie dane biznesowe, dzienniki interakcji i powiązane treści wygenerowane podczas użytkowania zostaną usunięte.",
+            "sec2_li3_strong": "Utrata korzyści:",
+            "sec2_li3_text": "Wszystkie przywileje członkowskie, kupony, punkty (jeśli istnieją) i niezrealizowane usługi powiązane z kontem automatycznie wygasną bez zwrotu pieniędzy lub odszkodowania.",
+            "sec3_title": "3. Warunki usunięcia konta",
+            "sec3_desc": "Aby zapewnić bezpieczeństwo Twojego konta i prawa majątkowe, przed złożeniem wniosku o usunięcie muszą być spełnione następujące warunki:",
+            "sec3_li1": "Konto jest w normalnym stanie, wolne od zagrożeń bezpieczeństwa, takich jak blokady lub zamrożenia.",
+            "sec3_li2": "Na koncie nie ma niezakończonych transakcji, sporów ani nierozwiązanych reklamacji.",
+            "sec3_li3": "Wszystkie rozliczenia aktywów i praw zostały zakończone.",
+            "sec4_title": "4. Skontaktuj się z nami",
+            "sec4_desc": "Jeśli napotkasz jakiekolwiek problemy lub masz pytania podczas procesu usuwania lub anulowania, możesz skontaktować się z nami w dowolnym momencie za pomocą następującej metody, a my pomożemy Ci tak szybko, jak to możliwe:",
+            "footer": "&copy; 2026 Cluelex App. Wszelkie prawa zastrzeżone."
+        },
+        "he": {
+            "page_title": "מדריך למחיקת חשבון - קלולקס",
+            "main_title": "מדריך למחיקת חשבון באפליקציית קלולקס",
+            "sub_title": "אנא קרא בעיון את התנאים וההודעות החשובות הבאות לפני מחיקת חשבונך.",
+            "alert_title": "⚠️ הודעה חשובה:",
+            "alert_text": "לאחר הגשת בקשת מחיקת החשבון, תתחיל <strong>תקופת חסד של 15 יום</strong>. במהלך תקופה זו, נתוני חשבונך יוקפאו זמנית. אם תתחבר שוב במהלך תקופה זו, בקשת המחיקה תבוטל אוטומטית.",
+            "sec1_title": "1. תהליך המחיקה ותקופת החסד",
+            "sec1_desc": "כדי להבטיח את אבטחת חשבונך ולמנוע פעולות מקריות, קבענו תקופת חסד למחיקת חשבון:",
+            "sec1_li1_strong": "תקופת שמירת נתונים:",
+            "sec1_li1_text": "בתוך 15 ימים לאחר הגשת בקשת המחיקה, הנתונים האישיים שלך והמידע הקשור יישמרו בבטחה ולא יימחקו לצמיתות באופן מיידי.",
+            "sec1_li2_strong": "מנגנון ביטול:",
+            "sec1_li2_text": "במהלך תקופת החסד של 15 יום, אם תשנה את דעתך, פשוט היכנס לאפליקציה ופעל לפי ההוראות כדי לבטל אוטומטית את בקשת המחיקה ולהחזיר את חשבונך לשימוש רגיל.",
+            "sec1_li3_strong": "מחיקה רשמית:",
+            "sec1_li3_text": "אם לא תתבצע פעולת התחברות במהלך תקופת החסד, בתום התקופה חשבונך וכל הנתונים הקשורים יימחקו לצמיתות ולא יהיה ניתן לשחזרם.",
+            "sec2_title": "2. השפעת מחיקת החשבון (לאחר תקופת החסד)",
+            "sec2_desc": "כאשר תקופת החסד של 15 יום מסתיימת ללא ביטול, השינויים הסופיים הבאים יתרחשו:",
+            "sec2_li1_strong": "מחיקה מוחלטת של זהות ונתונים:",
+            "sec2_li1_text": "פרטי החשבון, הפרופיל, התמונה והסיסמה שלך יימחקו לצמיתות.",
+            "sec2_li2_strong": "ניקוי תוכן ורישומים:",
+            "sec2_li2_text": "כל נתוני העסק, יומני האינטראקציה והתוכן הקשור שנוצרו במהלך השימוש שלך יימחקו.",
+            "sec2_li3_strong": "אובדן הטבות:",
+            "sec2_li3_text": "כל זכויות החברות, הקופונים, הנקודות (אם קיימות) והשירותים הלא גמורים הקשורים לחשבון יפקעו אוטומטית ללא החזר כספי או פיצוי.",
+            "sec3_title": "3. תנאים למחיקת חשבון",
+            "sec3_desc": "כדי להבטיח את אבטחת חשבונך וזכויות הקניין שלך, יש לעמוד בתנאים הבאים לפני הגשת בקשה למחיקה:",
+            "sec3_li1": "החשבון במצב תקין, ללא סיכוני אבטחה כגון חסימות או הקפאות.",
+            "sec3_li2": "אין עסקאות לא גמורות, מחלוקות או תלונות לא פתורות בתוך החשבון.",
+            "sec3_li3": "כל הסדרי הנכסים והזכויות הושלמו.",
+            "sec4_title": "4. צור קשר",
+            "sec4_desc": "אם נתקלת בבעיות כלשהן או שיש לך שאלות במהלך תהליך המחיקה או הביטול, תוכל ליצור איתנו קשר בכל עת באמצעות השיטה הבאה, ונעזור לך בהקדם האפשרי:",
+            "footer": "&copy; 2026 קלולקס אפליקציה. כל הזכויות שמורות."
+        },
+        "ta": {
+            "page_title": "கணக்கு நீக்கல் வழிகாட்டி - க்ளூலெக்ஸ்",
+            "main_title": "க்ளூலெக்ஸ் பயன்பாட்டு கணக்கு நீக்கல் வழிகாட்டி",
+            "sub_title": "உங்கள் கணக்கை நீக்க முடிவு செய்வதற்கு முன், பின்வரும் விதிமுறைகள் மற்றும் முக்கிய அறிவிப்புகளை கவனமாக படிக்கவும்.",
+            "alert_title": "⚠️ முக்கிய அறிவிப்பு:",
+            "alert_text": "உங்கள் கணக்கு நீக்கல் கோரிக்கையை சமர்ப்பித்த பிறகு <strong>15 நாள் அவகாச காலம்</strong> தொடங்கும். இந்த காலகட்டத்தில், உங்கள் கணக்கு தரவு தற்காலிகமாக உறையவைக்கப்படும். இந்த காலகட்டத்தில் நீங்கள் மீண்டும் உள்நுழைந்தால், நீக்கல் கோரிக்கை தானாகவே நிறுத்தப்படும்.",
+            "sec1_title": "௧. நீக்கல் செயல்முறை மற்றும் அவகாச காலம்",
+            "sec1_desc": "உங்கள் கணக்கின் பாதுகாப்பை உறுதி செய்வதற்கும் தவறான செயல்பாடுகளை தடுப்பதற்கும், கணக்கு நீக்கலுக்கான அவகாச காலத்தை நாங்கள் நிறுவியுள்ளோம்:",
+            "sec1_li1_strong": "தரவு தக்கவைப்பு காலம்:",
+            "sec1_li1_text": "நீக்கல் கோரிக்கையை சமர்ப்பித்த 15 நாட்களுக்குள், உங்கள் தனிப்பட்ட தரவு மற்றும் தொடர்புடைய தகவல்கள் பாதுகாப்பாக வைக்கப்படும், உடனடியாக நிரந்தரமாக நீக்கப்படாது.",
+            "sec1_li2_strong": "ரத்து செய்யும் வழிமுறை:",
+            "sec1_li2_text": "15 நாள் அவகாச காலத்தில், நீங்கள் உங்கள் மனதை மாற்றிக்கொண்டால், பயன்பாட்டில் உள்நுழைந்து வழிமுறைகளைப் பின்பற்றவும், நீக்கல் கோரிக்கையை தானாகவே நிறுத்தி உங்கள் கணக்கை இயல்பு நிலைக்கு மீட்டெடுக்கவும்.",
+            "sec1_li3_strong": "அதிகாரப்பூர்வ நீக்கம்:",
+            "sec1_li3_text": "அவகாச காலத்தில் எந்த உள்நுழைவு செயல்பாடும் செய்யப்படாவிட்டால், காலம் முடிவடைந்ததும் உங்கள் கணக்கு மற்றும் அனைத்து தொடர்புடைய தரவுகளும் நிரந்தரமாக அழிக்கப்பட்டு மீட்டெடுக்க முடியாது.",
+            "sec2_title": "௨. கணக்கு நீக்கலின் தாக்கம் (அவகாச காலத்திற்குப் பிறகு)",
+            "sec2_desc": "15 நாள் அவகாச காலம் ரத்து செய்யப்படாமல் முடிவடையும் போது, பின்வரும் இறுதி மாற்றங்கள் நிகழும்:",
+            "sec2_li1_strong": "அடையாளம் மற்றும் தரவுகளின் முழுமையான அழிப்பு:",
+            "sec2_li1_text": "உங்கள் கணக்கு தகவல், சுயவிவரம், அவதார் மற்றும் கடவுச்சொல் நிரந்தரமாக நீக்கப்படும்.",
+            "sec2_li2_strong": "உள்ளடக்கம் மற்றும் பதிவுகளை அழித்தல்:",
+            "sec2_li2_text": "உங்கள் பயன்பாட்டின் போது உருவாக்கப்பட்ட அனைத்து வணிக தரவுகள், தொடர்பு பதிவுகள் மற்றும் தொடர்புடைய உள்ளடக்கங்கள் அழிக்கப்படும்.",
+            "sec2_li3_strong": "நன்மைகள் இழப்பு:",
+            "sec2_li3_text": "கணக்குடன் இணைக்கப்பட்ட அனைத்து உறுப்பினர் சலுகைகள், கூப்பன்கள், புள்ளிகள் (இருந்தால்) மற்றும் முடிக்கப்படாத சேவைகள் தானாகவே காலாவதியாகும், பணத்தை திரும்பப் பெறவோ அல்லது இழப்பீடு வழங்கவோ முடியாது.",
+            "sec3_title": "௩. கணக்கு நீக்கல் நிபந்தனைகள்",
+            "sec3_desc": "உங்கள் கணக்கின் பாதுகாப்பு மற்றும் சொத்து உரிமைகளை உறுதி செய்வதற்காக, நீக்குவதற்கு விண்ணப்பிக்கும் முன் பின்வரும் நிபந்தனைகள் பூர்த்தி செய்யப்பட வேண்டும்:",
+            "sec3_li1": "கணக்கு இயல்பான நிலையில் உள்ளது, தடை அல்லது உறைதல் போன்ற பாதுகாப்பு அபாயங்கள் இல்லை.",
+            "sec3_li2": "கணக்கில் முடிக்கப்படாத பரிவர்த்தனைகள், சச்சரவுகள் அல்லது தீர்க்கப்படாத புகார்கள் இல்லை.",
+            "sec3_li3": "அனைத்து சொத்து மற்றும் உரிமை தீர்வுகள் முடிக்கப்பட்டுள்ளன.",
+            "sec4_title": "௪. எங்களை தொடர்பு கொள்ள",
+            "sec4_desc": "நீக்கல் அல்லது ரத்து செய்யும் செயல்பாட்டின் போது ஏதேனும் சிக்கல்கள் இருந்தால் அல்லது கேள்விகள் இருந்தால், பின்வரும் முறை மூலம் எங்களை எந்த நேரத்திலும் தொடர்பு கொள்ளலாம், மேலும் நாங்கள் உங்களுக்கு விரைவில் உதவுவோம்:",
+            "footer": "&copy; 2026 க்ளூலெக்ஸ் பயன்பாடு. அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டவை."
+        },
+        "te": {
+            "page_title": "ఖాతా తొలగింపు గైడ్ - క్లూలెక్స్",
+            "main_title": "క్లూలెక్స్ యాప్ ఖాతా తొలగింపు గైడ్",
+            "sub_title": "మీ ఖాతాను తొలగించాలని నిర్ణయించుకునే ముందు, దయచేసి కింది నిబంధనలు మరియు ముఖ్యమైన నోటీసులను జాగ్రత్తగా చదవండి.",
+            "alert_title": "⚠️ ముఖ్యమైన నోటీసు:",
+            "alert_text": "మీ ఖాతా తొలగింపు అభ్యర్థనను సమర్పించిన తర్వాత <strong>15-రోజుల గ్రేస్ పీరియడ్</strong> ప్రారంభమవుతుంది. ఈ కాలంలో, మీ ఖాతా డేటా తాత్కాలికంగా స్తంభింపజేయబడుతుంది. ఈ కాలంలో మీరు మళ్లీ లాగిన్ చేస్తే, తొలగింపు అభ్యర్థన స్వయంచాలకంగా ముగించబడుతుంది.",
+            "sec1_title": "౧. తొలగింపు ప్రక్రియ మరియు గ్రేస్ పీరియడ్",
+            "sec1_desc": "మీ ఖాతా భద్రతను నిర్ధారించడానికి మరియు అనుకోకుండా జరిగే ఆపరేషన్లను నివారించడానికి, మేము ఖాతా తొలగింపు కోసం గ్రేస్ పీరియడ్ను ఏర్పాటు చేశాము:",
+            "sec1_li1_strong": "డేటా నిలుపుదల కాలం:",
+            "sec1_li1_text": "తొలగింపు అభ్యర్థనను సమర్పించిన 15 రోజులలోపు, మీ వ్యక్తిగత డేటా మరియు సంబంధిత సమాచారం సురక్షితంగా ఉంచబడుతుంది మరియు వెంటనే శాశ్వతంగా తొలగించబడదు.",
+            "sec1_li2_strong": "రద్దు విధానం:",
+            "sec1_li2_text": "15-రోజుల గ్రేస్ పీరియడ్లో, మీరు మీ మనసు మార్చుకుంటే, యాప్లో లాగిన్ చేసి సూచనలను అనుసరించండి, తొలగింపు అభ్యర్థనను స్వయంచాలకంగా ముగించి మీ ఖాతాను సాధారణ వినియోగానికి పునరుద్ధరించండి.",
+            "sec1_li3_strong": "అధికారిక తొలగింపు:",
+            "sec1_li3_text": "గ్రేస్ పీరియడ్లో ఎటువంటి లాగిన్ ఆపరేషన్ చేయకపోతే, గడువు ముగిసిన తర్వాత మీ ఖాతా మరియు అన్ని సంబంధిత డేటా శాశ్వతంగా తొలగించబడుతుంది మరియు తిరిగి పొందలేరు.",
+            "sec2_title": "౨. ఖాతా తొలగింపు ప్రభావం (గ్రేస్ పీరియడ్ తర్వాత)",
+            "sec2_desc": "15-రోజుల గ్రేస్ పీరియడ్ రద్దు చేయకుండా ముగిసినప్పుడు, ఈ క్రింది తుది మార్పులు సంభవిస్తాయి:",
+            "sec2_li1_strong": "గుర్తింపు మరియు డేటా పూర్తిగా తొలగింపు:",
+            "sec2_li1_text": "మీ ఖాతా సమాచారం, ప్రొఫైల్, అవతార్ మరియు పాస్వర్డ్ శాశ్వతంగా తొలగించబడతాయి.",
+            "sec2_li2_strong": "కంటెంట్ మరియు రికార్డుల క్లియరింగ్:",
+            "sec2_li2_text": "మీ ఉపయోగం సమయంలో సృష్టించబడిన అన్ని వ్యాపార డేటా, పరస్పర లాగ్లు మరియు సంబంధిత కంటెంట్ క్లియర్ చేయబడతాయి.",
+            "sec2_li3_strong": "ప్రయోజనాల నష్టం:",
+            "sec2_li3_text": "ఖాతాతో అనుబంధించబడిన అన్ని సభ్యత్వ ప్రత్యేకతలు, కూపన్లు, పాయింట్లు (ఏవైనా ఉంటే) మరియు అసంపూర్తి సేవలు స్వయంచాలకంగా గడువు ముగుస్తాయి, రీఫండ్ లేదా పరిహారం లేకుండా.",
+            "sec3_title": "౩. ఖాతా తొలగింపు షరతులు",
+            "sec3_desc": "మీ ఖాతా భద్రత మరియు ఆస్తి హక్కులను నిర్ధారించడానికి, తొలగింపు కోసం దరఖాస్తు చేయడానికి ముందు ఈ క్రింది షరతులను తీర్చాలి:",
+            "sec3_li1": "ఖాతా సాధారణ స్థితిలో ఉంది, నిషేధం లేదా స్తంభింపు వంటి భద్రతా ప్రమాదాలు లేవు.",
+            "sec3_li2": "ఖాతాలో అసంపూర్తి లావాదేవీలు, వివాదాలు లేదా పరిష్కరించని ఫిర్యాదులు లేవు.",
+            "sec3_li3": "అన్ని ఆస్తి మరియు హక్కుల పరిష్కారాలు పూర్తి చేయబడ్డాయి.",
+            "sec4_title": "౪. మమ్మల్ని సంప్రదించండి",
+            "sec4_desc": "తొలగింపు లేదా రద్దు ప్రక్రియలో మీకు ఏవైనా సమస్యలు ఉంటే లేదా ప్రశ్నలు ఉంటే, మీరు ఎప్పుడైనా కింది పద్ధతి ద్వారా మమ్మల్ని సంప్రదించవచ్చు, మరియు మేము వీలైనంత త్వరగా మీకు సహాయం చేస్తాము:",
+            "footer": "&copy; 2026 క్లూలెక్స్ యాప్. అన్ని హక్కులు ప్రత్యేకించబడ్డాయి."
+        },
+        "bn": {
+            "page_title": "অ্যাকাউন্ট মুছে ফেলার নির্দেশিকা - ক্লুলেক্স",
+            "main_title": "ক্লুলেক্স অ্যাপ অ্যাকাউন্ট মুছে ফেলার নির্দেশিকা",
+            "sub_title": "আপনার অ্যাকাউন্ট মুছে ফেলার সিদ্ধান্ত নেওয়ার আগে, দয়া করে নিম্নলিখিত শর্তাবলী এবং গুরুত্বপূর্ণ বিজ্ঞপ্তিগুলি মনোযোগ সহকারে পড়ুন।",
+            "alert_title": "⚠️ গুরুত্বপূর্ণ বিজ্ঞপ্তি:",
+            "alert_text": "আপনার অ্যাকাউন্ট মুছে ফেলার অনুরোধ জমা দেওয়ার পরে একটি <strong>১৫ দিনের গ্রেস পিরিয়ড</strong> শুরু হবে। এই সময়কালে, আপনার অ্যাকাউন্টের ডেটা অস্থায়ীভাবে হিমায়িত করা হবে। আপনি যদি এই সময়ের মধ্যে আবার লগ ইন করেন, তবে মুছে ফেলার অনুরোধটি স্বয়ংক্রিয়ভাবে বাতিল হয়ে যাবে।",
+            "sec1_title": "১. মুছে ফেলার প্রক্রিয়া এবং গ্রেস পিরিয়ড",
+            "sec1_desc": "আপনার অ্যাকাউন্টের সুরক্ষা নিশ্চিত করতে এবং দুর্ঘটনাজনিত অপারেশন প্রতিরোধ করতে, আমরা অ্যাকাউন্ট মুছে ফেলার জন্য একটি গ্রেস পিরিয়ড স্থাপন করেছি:",
+            "sec1_li1_strong": "ডেটা ধারণ সময়কাল:",
+            "sec1_li1_text": "মুছে ফেলার অনুরোধ জমা দেওয়ার ১৫ দিনের মধ্যে, আপনার ব্যক্তিগত ডেটা এবং সম্পর্কিত তথ্য নিরাপদে সংরক্ষণ করা হবে এবং অবিলম্বে স্থায়ীভাবে মুছে ফেলা হবে না।",
+            "sec1_li2_strong": "বাতিল করার প্রক্রিয়া:",
+            "sec1_li2_text": "১৫ দিনের গ্রেস পিরিয়ডের মধ্যে, যদি আপনি আপনার মন পরিবর্তন করেন, তাহলে অ্যাপে লগ ইন করুন এবং নির্দেশাবলী অনুসরণ করুন, মুছে ফেলার অনুরোধটি স্বয়ংক্রিয়ভাবে বাতিল হয়ে যাবে এবং আপনার অ্যাকাউন্ট স্বাভাবিক ব্যবহারে ফিরে আসবে।",
+            "sec1_li3_strong": "অফিসিয়াল মুছে ফেলা:",
+            "sec1_li3_text": "গ্রেস পিরিয়ডের মধ্যে যদি কোনও লগইন অপারেশন না করা হয়, তবে মেয়াদ শেষ হওয়ার পরে আপনার অ্যাকাউন্ট এবং সমস্ত সম্পর্কিত ডেটা স্থায়ীভাবে মুছে ফেলা হবে এবং পুনরুদ্ধার করা যাবে না।",
+            "sec2_title": "২. অ্যাকাউন্ট মুছে ফেলার প্রভাব (গ্রেস পিরিয়ডের পরে)",
+            "sec2_desc": "যখন ১৫ দিনের গ্রেস পিরিয়ড বাতিল না করেই শেষ হয়, তখন নিম্নলিখিত চূড়ান্ত পরিবর্তনগুলি ঘটবে:",
+            "sec2_li1_strong": "পরিচয় এবং ডেটা সম্পূর্ণরূপে মুছে ফেলা:",
+            "sec2_li1_text": "আপনার অ্যাকাউন্টের তথ্য, প্রোফাইল, অবতার এবং পাসওয়ার্ড স্থায়ীভাবে মুছে ফেলা হবে।",
+            "sec2_li2_strong": "কন্টেন্ট এবং রেকর্ড সাফ করা:",
+            "sec2_li2_text": "আপনার ব্যবহারের সময় তৈরি করা সমস্ত ব্যবসায়িক ডেটা, ইন্টারঅ্যাকশন লগ এবং সম্পর্কিত কন্টেন্ট সাফ করা হবে।",
+            "sec2_li3_strong": "সুবিধা হারানো:",
+            "sec2_li3_text": "অ্যাকাউন্টের সাথে যুক্ত সমস্ত সদস্যতা সুবিধা, কুপন, পয়েন্ট (যদি থাকে) এবং অসমাপ্ত পরিষেবাগুলি স্বয়ংক্রিয়ভাবে বাতিল হয়ে যাবে, কোনও ফেরত বা ক্ষতিপূরণ ছাড়াই।",
+            "sec3_title": "৩. অ্যাকাউন্ট মুছে ফেলার শর্তাবলী",
+            "sec3_desc": "আপনার অ্যাকাউন্টের সুরক্ষা এবং সম্পত্তির অধিকার নিশ্চিত করতে, মুছে ফেলার জন্য আবেদন করার আগে নিম্নলিখিত শর্তগুলি পূরণ করতে হবে:",
+            "sec3_li1": "অ্যাকাউন্টটি স্বাভাবিক অবস্থায় রয়েছে, নিষিদ্ধ বা হিমায়িত করার মতো সুরক্ষা ঝুঁকি নেই।",
+            "sec3_li2": "অ্যাকাউন্টের মধ্যে কোনও অসমাপ্ত লেনদেন, বিরোধ বা অমীমাংসিত অভিযোগ নেই।",
+            "sec3_li3": "সমস্ত সম্পদ এবং অধিকার নিষ্পত্তি সম্পন্ন হয়েছে।",
+            "sec4_title": "৪. আমাদের সাথে যোগাযোগ করুন",
+            "sec4_desc": "মুছে ফেলা বা বাতিল করার প্রক্রিয়া চলাকালীন আপনার কোনও সমস্যা হলে বা প্রশ্ন থাকলে, আপনি নিম্নলিখিত পদ্ধতিতে যে কোনও সময় আমাদের সাথে যোগাযোগ করতে পারেন, এবং আমরা যত তাড়াতাড়ি সম্ভব আপনাকে সহায়তা করব:",
+            "footer": "&copy; ২০২৬ ক্লুলেক্স অ্যাপ। সমস্ত অধিকার সংরক্ষিত।"
+        },
+        "sv": {
+            "page_title": "Guide för borttagning av konto - Cluelex",
+            "main_title": "Guide för borttagning av konto i Cluelex App",
+            "sub_title": "Läs följande villkor och viktiga meddelanden noggrant innan du bestämmer dig för att ta bort ditt konto.",
+            "alert_title": "⚠️ Viktigt meddelande:",
+            "alert_text": "Efter att du skickat in din begäran om kontoborttagning börjar en <strong>15-dagars frist</strong>. Under denna period kommer dina kontodata att tillfälligt frysas. Om du loggar in igen under denna period, kommer borttagningsbegäran automatiskt att avslutas.",
+            "sec1_title": "1. Borttagningsprocess och frist",
+            "sec1_desc": "För att säkerställa säkerheten för ditt konto och förhindra oavsiktliga operationer har vi inrättat en frist för kontoborttagning:",
+            "sec1_li1_strong": "Period för datalagring:",
+            "sec1_li1_text": "Inom 15 dagar efter att du skickat in din begäran om borttagning, kommer dina personuppgifter och relaterad information att förvaras säkert och inte omedelbart raderas permanent.",
+            "sec1_li2_strong": "Mekanism för avbokning:",
+            "sec1_li2_text": "Under 15-dagarsfristen, om du ångrar dig, logga bara in i appen och följ instruktionerna för att automatiskt avsluta och avbryta borttagningsbegäran och återställa ditt konto till normal användning.",
+            "sec1_li3_strong": "Officiell borttagning:",
+            "sec1_li3_text": "Om ingen inloggning utförs under fristen, kommer ditt konto och alla relaterade data att permanent raderas efter utgången och kan inte återställas.",
+            "sec2_title": "2. Påverkan av kontoborttagning (efter fristen)",
+            "sec2_desc": "När 15-dagarsfristen löper ut utan avbokning, kommer följande slutgiltiga förändringar att ske:",
+            "sec2_li1_strong": "Fullständig radering av identitet och data:",
+            "sec2_li1_text": "Din kontoinformation, profil, avatar och lösenord kommer att raderas permanent.",
+            "sec2_li2_strong": "Rensning av innehåll och poster:",
+            "sec2_li2_text": "Alla affärsdata, interaktionsloggar och relaterat innehåll som genererats under din användning kommer att rensas.",
+            "sec2_li3_strong": "Förlust av förmåner:",
+            "sec2_li3_text": "Alla medlemsförmåner, kuponger, poäng (om några) och oavslutade tjänster som är kopplade till kontot kommer automatiskt att upphöra utan återbetalning eller kompensation.",
+            "sec3_title": "3. Villkor för kontoborttagning",
+            "sec3_desc": "För att säkerställa säkerheten för ditt konto och dina äganderätter måste följande villkor vara uppfyllda innan du ansöker om borttagning:",
+            "sec3_li1": "Kontot är i normalt skick, fritt från säkerhetsrisker som avstängningar eller frysningar.",
+            "sec3_li2": "Det finns inga ofullständiga transaktioner, tvister eller olösta klagomål inom kontot.",
+            "sec3_li3": "Alla tillgångs- och rättighetsavräkningar har slutförts.",
+            "sec4_title": "4. Kontakta oss",
+            "sec4_desc": "Om du stöter på några problem eller har frågor under borttagnings- eller avbokningsprocessen, kan du när som helst kontakta oss via följande metod, så hjälper vi dig så snart som möjligt:",
+            "footer": "&copy; 2026 Cluelex App. Alla rättigheter förbehållna."
+        },
+        "el": {
+            "page_title": "Οδηγός διαγραφής λογαριασμού - Κλούλεξ",
+            "main_title": "Οδηγός διαγραφής λογαριασμού της εφαρμογής Κλούλεξ",
+            "sub_title": "Πριν αποφασίσετε να διαγράψετε τον λογαριασμό σας, διαβάστε προσεκτικά τους ακόλουθους όρους και σημαντικές ειδοποιήσεις.",
+            "alert_title": "⚠️ Σημαντική ειδοποίηση:",
+            "alert_text": "Μετά την υποβολή του αιτήματος διαγραφής λογαριασμού σας, θα ξεκινήσει μια <strong>περίοδος χάριτος 15 ημερών</strong>. Κατά τη διάρκεια αυτής της περιόδου, τα δεδομένα του λογαριασμού σας θα παγώσουν προσωρινά. Εάν συνδεθείτε ξανά κατά τη διάρκεια αυτής της περιόδου, το αίτημα διαγραφής θα ακυρωθεί αυτόματα.",
+            "sec1_title": "1. Διαδικασία διαγραφής και περίοδος χάριτος",
+            "sec1_desc": "Για να διασφαλίσουμε την ασφάλεια του λογαριασμού σας και να αποτρέψουμε τυχαίες λειτουργίες, θεσπίσαμε μια περίοδο χάριτος για τη διαγραφή λογαριασμού:",
+            "sec1_li1_strong": "Περίοδος διατήρησης δεδομένων:",
+            "sec1_li1_text": "Εντός 15 ημερών από την υποβολή του αιτήματος διαγραφής, τα προσωπικά σας δεδομένα και οι σχετικές πληροφορίες θα διατηρηθούν με ασφάλεια και δεν θα διαγραφούν οριστικά άμεσα.",
+            "sec1_li2_strong": "Μηχανισμός ακύρωσης:",
+            "sec1_li2_text": "Κατά τη διάρκεια της περιόδου χάριτος των 15 ημερών, εάν αλλάξετε γνώμη, απλώς συνδεθείτε στην εφαρμογή και ακολουθήστε τις οδηγίες για να τερματίσετε αυτόματα το αίτημα διαγραφής και να επαναφέρετε τον λογαριασμό σας στην κανονική χρήση.",
+            "sec1_li3_strong": "Επίσημη διαγραφή:",
+            "sec1_li3_text": "Εάν δεν πραγματοποιηθεί καμία λειτουργία σύνδεσης κατά τη διάρκεια της περιόδου χάριτος, μετά τη λήξη της, ο λογαριασμός σας και όλα τα σχετικά δεδομένα θα διαγραφούν οριστικά και δεν θα μπορούν να ανακτηθούν.",
+            "sec2_title": "2. Επιπτώσεις της διαγραφής λογαριασμού (μετά την περίοδο χάριτος)",
+            "sec2_desc": "Όταν η περίοδος χάριτος των 15 ημερών λήξει χωρίς ακύρωση, θα συμβούν οι ακόλουθες τελικές αλλαγές:",
+            "sec2_li1_strong": "Πλήρης διαγραφή ταυτότητας και δεδομένων:",
+            "sec2_li1_text": "Οι πληροφορίες λογαριασμού σας, το προφίλ, το avatar και ο κωδικός πρόσβασης θα διαγραφούν οριστικά.",
+            "sec2_li2_strong": "Εκκαθάριση περιεχομένου και αρχείων:",
+            "sec2_li2_text": "Όλα τα επιχειρηματικά δεδομένα, τα αρχεία καταγραφής αλληλεπιδράσεων και το σχετικό περιεχόμενο που δημιουργήθηκαν κατά τη χρήση σας θα εκκαθαριστούν.",
+            "sec2_li3_strong": "Απώλεια παροχών:",
+            "sec2_li3_text": "Όλα τα προνόμια συνδρομής, κουπόνια, πόντοι (εάν υπάρχουν) και μη ολοκληρωμένες υπηρεσίες που σχετίζονται με τον λογαριασμό θα λήξουν αυτόματα χωρίς επιστροφή χρημάτων ή αποζημίωση.",
+            "sec3_title": "3. Προϋποθέσεις διαγραφής λογαριασμού",
+            "sec3_desc": "Για να διασφαλιστεί η ασφάλεια του λογαριασμού σας και τα δικαιώματα ιδιοκτησίας σας, πρέπει να πληρούνται οι ακόλουθες προϋποθέσεις πριν από την αίτηση διαγραφής:",
+            "sec3_li1": "Ο λογαριασμός βρίσκεται σε κανονική κατάσταση, χωρίς κινδύνους ασφαλείας όπως αποκλεισμούς ή παγώματα.",
+            "sec3_li2": "Δεν υπάρχουν ημιτελείς συναλλαγές, διαφορές ή ανεπίλυτα παράπονα εντός του λογαριασμού.",
+            "sec3_li3": "Όλοι οι διακανονισμοί περιουσιακών στοιχείων και δικαιωμάτων έχουν ολοκληρωθεί.",
+            "sec4_title": "4. Επικοινωνήστε μαζί μας",
+            "sec4_desc": "Εάν αντιμετωπίσετε προβλήματα ή έχετε ερωτήσεις κατά τη διάρκεια της διαδικασίας διαγραφής ή ακύρωσης, μπορείτε να επικοινωνήσετε μαζί μας ανά πάσα στιγμή μέσω της ακόλουθης μεθόδου και θα σας βοηθήσουμε το συντομότερο δυνατό:",
+            "footer": "&copy; 2026 Κλούλεξ Εφαρμογή. Όλα τα δικαιώματα διατηρούνται."
+        }
+    };
+
+    function changeLanguage(lang) {
+        if (!translations[lang]) lang = 'zh-Hans';
+        
+        const isRtl = (lang === 'ar' || lang === "he");
+
+        document.documentElement.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+        document.documentElement.setAttribute('lang', lang);
+        
+        document.getElementById('langSelect').value = lang;
+        
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang][key]) {
+                el.innerHTML = translations[lang][key];
+            }
+        });
+
+        document.title = translations[lang]["page_title"];
+        document.getElementById('footerText').innerHTML = translations[lang]["footer"];
+
+        localStorage.setItem('cluelex_lang', lang);
+    }
+
+    window.onload = function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let lang = urlParams.get('lang');
+
+        if (!lang) {
+            lang = localStorage.getItem('cluelex_lang');
+        }
+
+        if (!lang) {
+            const browserLang = navigator.language || navigator.userLanguage;
+            const lowerLang = browserLang.toLowerCase();
+            
+            if (lowerLang.includes('ar')) {
+                lang = 'ar';
+            } else if (lowerLang.includes('tw') || lowerLang.includes('hk') || lowerLang.includes('hant')) {
+                lang = 'zh-Hant';
+            } else if (lowerLang.includes('en')) {
+                lang = 'en';
+            } else {
+                lang = 'zh-Hans';
+            }
+        }
+
+        changeLanguage(lang);
+    };
+</script>
+
+</body>
+</html>
