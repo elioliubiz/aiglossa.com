@@ -1,0 +1,540 @@
+{
+  "_meta": {
+    "baseUrl": "https://aiglossa.com",
+    "default": "en",
+    "note": "官网文案。凡是 App 里已有的说法（files.guide.*）与协议页已有的标题（page_title）一律沿用官方译法，保证官网、App、协议页三处用词一致；只有站点特有的串（示例卡、语言说明、SEO）是新写的。"
+  },
+
+  "_languages": {
+    "en":       { "name": "English",         "hreflang": "en",      "dir": "ltr", "ogLocale": "en_US", "path": "/" },
+    "zh-Hans":  { "name": "简体中文",         "hreflang": "zh-Hans", "dir": "ltr", "ogLocale": "zh_CN", "path": "/zh-Hans/" },
+    "zh-Hant":  { "name": "繁體中文",         "hreflang": "zh-Hant", "dir": "ltr", "ogLocale": "zh_TW", "path": "/zh-Hant/" },
+    "ja":       { "name": "日本語",           "hreflang": "ja",      "dir": "ltr", "ogLocale": "ja_JP", "path": "/ja/" },
+    "ko":       { "name": "한국어",           "hreflang": "ko",      "dir": "ltr", "ogLocale": "ko_KR", "path": "/ko/" },
+    "es":       { "name": "Español",         "hreflang": "es",      "dir": "ltr", "ogLocale": "es_ES", "path": "/es/" },
+    "fr":       { "name": "Français",        "hreflang": "fr",      "dir": "ltr", "ogLocale": "fr_FR", "path": "/fr/" },
+    "de":       { "name": "Deutsch",         "hreflang": "de",      "dir": "ltr", "ogLocale": "de_DE", "path": "/de/" },
+    "it":       { "name": "Italiano",        "hreflang": "it",      "dir": "ltr", "ogLocale": "it_IT", "path": "/it/" },
+    "pt":       { "name": "Português",       "hreflang": "pt",      "dir": "ltr", "ogLocale": "pt_PT", "path": "/pt/" },
+    "ru":       { "name": "Русский",         "hreflang": "ru",      "dir": "ltr", "ogLocale": "ru_RU", "path": "/ru/" },
+    "ar":       { "name": "العربية",          "hreflang": "ar",      "dir": "rtl", "ogLocale": "ar_AR", "path": "/ar/" },
+    "th":       { "name": "ไทย",             "hreflang": "th",      "dir": "ltr", "ogLocale": "th_TH", "path": "/th/" },
+    "vi":       { "name": "Tiếng Việt",      "hreflang": "vi",      "dir": "ltr", "ogLocale": "vi_VN", "path": "/vi/" },
+    "id":       { "name": "Bahasa Indonesia","hreflang": "id",      "dir": "ltr", "ogLocale": "id_ID", "path": "/id/" },
+    "tr":       { "name": "Türkçe",          "hreflang": "tr",      "dir": "ltr", "ogLocale": "tr_TR", "path": "/tr/" }
+  },
+
+  "locales": {
+    "en": {
+      "title": "Scholan — read foreign books with a head start",
+      "description": "Add an EPUB or PDF in any language and Scholan first generates a preparatory analysis: the words worth noticing, with their meanings. Skim it once, then read without constant interruptions.",
+      "h1": ["Read foreign books", "with a head start"],
+      "lede": "Scholan is not just a reader. It first generates a preparatory analysis — the words worth noticing plus their meanings. Skim it once, then read without constant interruptions.",
+      "cardA": {
+        "label": "Français · page 12", "pages": "324 pages",
+        "rows": [
+          { "w": "éphémère", "m": "fleeting, short-lived", "l": 4 },
+          { "w": "flâner", "m": "to wander, to stroll", "l": 3 },
+          { "w": "lucide", "m": "clear-headed, lucid", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · page 8", "pages": "210 pages",
+        "rows": [
+          { "w": "懐かしい", "m": "nostalgic, fondly remembered", "l": 3 },
+          { "w": "木漏れ日", "m": "sunlight filtering through leaves", "l": 5 },
+          { "w": "曖昧", "m": "ambiguous, vague", "l": 4 }
+        ]
+      },
+      "langs": "The source language is up to you — English, French, Japanese, Arabic… whatever your book is in. The interface and the meanings come in 16 languages.",
+      "steps": [
+        { "n": "01", "h": "Import your book", "p": "Your own EPUB or PDF, in any language. On iPad you can also drag a book from Files straight onto your shelf." },
+        { "n": "02", "h": "Generate the preparatory analysis", "p": "Priced by text length, kept for good; try Preview first if unsure. Every page comes with its own preview word list — just scan it for an impression." },
+        { "n": "03", "h": "Tap words as you read", "p": "Tap any word for its meaning, with pronunciation; words you have seen are much easier to recognise." }
+      ],
+      "closing": "The point is not memorising: repeated preview plus reading makes words familiar naturally.",
+      "langLabel": "Language",
+      "legal": { "privacy": "Privacy Policy", "terms": "Terms of Service" }
+    },
+
+    "zh-Hans": {
+      "title": "Scholan — 读外文书，先看预备分析",
+      "description": "导入一本 EPUB 或 PDF，Scholan 会先生成一份「预备分析」——这本书里值得留意的词与释义。先略看一遍，读的时候就不必频繁停下来查。原文不限语种。",
+      "h1": ["读外文书", "先看预备分析"],
+      "lede": "Scholan 不是普通阅读器。它会先为这本书生成一份「预备分析」——值得留意的词与释义；先略看一遍，读的时候就不必频繁停下来查。",
+      "cardA": {
+        "label": "Français · 第 12 页", "pages": "324 页",
+        "rows": [
+          { "w": "éphémère", "m": "短暂的，转瞬即逝的", "l": 4 },
+          { "w": "flâner", "m": "闲逛，漫步", "l": 3 },
+          { "w": "lucide", "m": "清醒的，明白事理的", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · 第 8 页", "pages": "210 页",
+        "rows": [
+          { "w": "懐かしい", "m": "令人怀念的，令人眷恋的", "l": 3 },
+          { "w": "木漏れ日", "m": "透过树叶洒下的阳光", "l": 5 },
+          { "w": "曖昧", "m": "含糊的，模棱两可的", "l": 4 }
+        ]
+      },
+      "langs": "原文不限语种——英文、法文、日文、阿拉伯文……你的书是什么语言，就用什么语言分析；界面与释义支持 16 种语言。",
+      "steps": [
+        { "n": "01", "h": "导入你的书", "p": "你自己的 EPUB 或 PDF，原文是什么语言都可以。iPad 分屏时还能直接从「文件」把书拖进书架。" },
+        { "n": "02", "h": "生成预备分析", "p": "按正文字数计费，结果长期可用；不确定就先做「预览分析」试水。每一页都有预览生词表，扫视一遍有印象即可。" },
+        { "n": "03", "h": "边读边点词", "p": "阅读时点词看释义、可以发音；再遇到见过的词会明显更容易认出来。" }
+      ],
+      "closing": "本意不是让你背单词，而是靠「预览 + 阅读」的反复接触自然熟悉。",
+      "langLabel": "语言",
+      "legal": { "privacy": "隐私协议", "terms": "用户协议" }
+    },
+
+    "zh-Hant": {
+      "title": "Scholan — 讀外文書，先看預備分析",
+      "description": "匯入一本 EPUB 或 PDF，Scholan 會先產生一份「預備分析」——這本書裡值得留意的詞與釋義。先略看一遍，讀的時候就不必頻繁停下來查。原文不限語種。",
+      "h1": ["讀外文書", "先看預備分析"],
+      "lede": "Scholan 不是普通閱讀器。它會先為這本書生成一份「預備分析」——值得留意的詞與釋義；先略看一遍，讀的時候就不必頻繁停下來查。",
+      "cardA": {
+        "label": "Français · 第 12 頁", "pages": "324 頁",
+        "rows": [
+          { "w": "éphémère", "m": "短暫的，轉瞬即逝的", "l": 4 },
+          { "w": "flâner", "m": "閒逛，漫步", "l": 3 },
+          { "w": "lucide", "m": "清醒的，明白事理的", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · 第 8 頁", "pages": "210 頁",
+        "rows": [
+          { "w": "懐かしい", "m": "令人懷念的，令人眷戀的", "l": 3 },
+          { "w": "木漏れ日", "m": "透過樹葉灑下的陽光", "l": 5 },
+          { "w": "曖昧", "m": "含糊的，模稜兩可的", "l": 4 }
+        ]
+      },
+      "langs": "原文不限語種——英文、法文、日文、阿拉伯文……你的書是什麼語言，就用什麼語言分析；介面與釋義支援 16 種語言。",
+      "steps": [
+        { "n": "01", "h": "匯入你的書", "p": "你自己的 EPUB 或 PDF，原文是什麼語言都可以。iPad 分割顯示時還能直接從「檔案」把書拖進書架。" },
+        { "n": "02", "h": "生成預備分析", "p": "按正文字數計費，結果長期可用；不確定就先做「預覽分析」試水。每一頁都有預覽生詞表，掃視一遍有印象即可。" },
+        { "n": "03", "h": "邊讀邊點詞", "p": "閱讀時點詞看釋義、可以發音；再遇到見過的詞會明顯更容易認出來。" }
+      ],
+      "closing": "本意不是讓你背單詞，而是靠「預覽 + 閱讀」的反覆接觸自然熟悉。",
+      "langLabel": "語言",
+      "legal": { "privacy": "隱私協議", "terms": "用戶協議" }
+    },
+
+    "ja": {
+      "title": "Scholan — 予習してから外国語の本を読む",
+      "description": "EPUBまたはPDFを読み込むと、Scholanがまず「準備分析」——この本で注目すべき単語とその意味——を生成します。一度ざっと目を通せば、後は途中で何度も止まらずに読み進められます。原文の言語は問いません。",
+      "h1": ["予習してから", "外国語の本を読む"],
+      "lede": "Scholanは単なるリーダーではありません。まず準備分析として「注目すべき単語」とその意味を生成します。一度ざっと目を通せば、後は途中で何度も止まらずに読み進められます。",
+      "cardA": {
+        "label": "Français · 12 ページ", "pages": "324 ページ",
+        "rows": [
+          { "w": "éphémère", "m": "つかの間の、はかない", "l": 4 },
+          { "w": "flâner", "m": "ぶらぶら歩く、散策する", "l": 3 },
+          { "w": "lucide", "m": "冷静な、明晰な", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "English · 8 ページ", "pages": "210 ページ",
+        "rows": [
+          { "w": "ephemeral", "m": "つかの間の、はかない", "l": 4 },
+          { "w": "to wander", "m": "ぶらぶら歩く、さまよう", "l": 3 },
+          { "w": "lucid", "m": "明快な、明晰な", "l": 4 }
+        ]
+      },
+      "langs": "原文の言語は問いません——英語、フランス語、日本語、アラビア語……どんな言語の本でもその言語のまま分析します。インターフェースと語義は16言語に対応。",
+      "steps": [
+        { "n": "01", "h": "本を読み込む", "p": "お手持ちのEPUBまたはPDF。原文の言語は問いません。iPadでは「ファイル」から本を書棚へ直接ドラッグできます。" },
+        { "n": "02", "h": "準備分析を生成", "p": "本文の長さに応じた価格で、ずっと残ります。迷ったらまずプレビューを。各ページにプレビュー用の単語リストが付きます。ざっと眺めるだけで全体像がつかめます。" },
+        { "n": "03", "h": "読みながら単語をタップ", "p": "単語をタップすると意味と発音を確認できます。一度見た単語は格段に認識しやすくなります。" }
+      ],
+      "closing": "大切なのは暗記ではありません。プレビューと読書を繰り返すうちに、単語は自然に身についていきます。",
+      "langLabel": "言語",
+      "legal": { "privacy": "プライバシーポリシー", "terms": "利用規約" }
+    },
+
+    "ko": {
+      "title": "Scholan — 미리 준비하고 외국어 원서 읽기",
+      "description": "EPUB 또는 PDF를 가져오면 Scholan이 먼저 「준비 분석」—이 책에서 주목할 만한 단어와 그 뜻—을 만들어 줍니다. 한 번 훑어보고 나면 중간에 자주 멈추지 않고 읽을 수 있습니다. 원문 언어는 가리지 않습니다.",
+      "h1": ["미리 준비하고", "외국어 원서 읽기"],
+      "lede": "Scholan는 단순한 리더가 아닙니다. 먼저 준비 분석으로 주목할 만한 단어와 그 뜻을 만들어 줍니다. 한 번 훑어보고 나면 중간에 자주 멈추지 않고 읽을 수 있습니다.",
+      "cardA": {
+        "label": "Français · 12쪽", "pages": "324쪽",
+        "rows": [
+          { "w": "éphémère", "m": "덧없는, 순간적인", "l": 4 },
+          { "w": "flâner", "m": "어슬렁거리다, 거닐다", "l": 3 },
+          { "w": "lucide", "m": "명석한, 냉정한", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · 8쪽", "pages": "210쪽",
+        "rows": [
+          { "w": "懐かしい", "m": "그리운, 정겨운", "l": 3 },
+          { "w": "木漏れ日", "m": "나뭇잎 사이로 비치는 햇살", "l": 5 },
+          { "w": "曖昧", "m": "모호한, 애매한", "l": 4 }
+        ]
+      },
+      "langs": "원문 언어는 제한이 없습니다——영어, 프랑스어, 일본어, 아랍어…… 책이 어떤 언어든 그 언어 그대로 분석합니다. 인터페이스와 뜻풀이는 16개 언어를 지원합니다.",
+      "steps": [
+        { "n": "01", "h": "책 가져오기", "p": "직접 가진 EPUB 또는 PDF, 원문 언어는 가리지 않습니다. iPad에서는 「파일」에서 책을 서재로 바로 끌어다 놓을 수 있습니다." },
+        { "n": "02", "h": "준비 분석 생성", "p": "본문 길이에 따라 가격이 정해지고 계속 남아 있습니다. 고민된다면 먼저 미리보기를. 페이지마다 미리보기 단어 목록이 함께 제공됩니다. 한 번 훑어보면 감이 잡힙니다." },
+        { "n": "03", "h": "읽으며 단어 누르기", "p": "단어를 누르면 뜻과 발음을 볼 수 있습니다. 한 번 본 단어는 훨씬 쉽게 알아봅니다." }
+      ],
+      "closing": "중요한 것은 암기가 아닙니다. 미리보기와 읽기를 반복하다 보면 단어는 자연스럽게 익숙해집니다.",
+      "langLabel": "언어",
+      "legal": { "privacy": "개인정보처리방침", "terms": "이용약관" }
+    },
+
+    "es": {
+      "title": "Scholan — lee libros en otros idiomas con ventaja",
+      "description": "Añade un EPUB o un PDF en cualquier idioma y Scholan genera primero un análisis preparatorio: las palabras que merece la pena conocer y sus significados. Hojéalo una vez y luego lee sin interrupciones constantes.",
+      "h1": ["Lee libros en otros idiomas", "con ventaja"],
+      "lede": "Scholan no es solo un lector. Primero genera un análisis preparatorio: las palabras que merece la pena conocer y sus significados. Hojéalo una vez y luego lee sin interrupciones constantes.",
+      "cardA": {
+        "label": "Français · página 12", "pages": "324 páginas",
+        "rows": [
+          { "w": "éphémère", "m": "efímero, fugaz", "l": 4 },
+          { "w": "flâner", "m": "callejear, pasear sin rumbo", "l": 3 },
+          { "w": "lucide", "m": "lúcido, claro", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · página 8", "pages": "210 páginas",
+        "rows": [
+          { "w": "懐かしい", "m": "nostálgico, que evoca recuerdos", "l": 3 },
+          { "w": "木漏れ日", "m": "luz del sol filtrándose entre las hojas", "l": 5 },
+          { "w": "曖昧", "m": "ambiguo, impreciso", "l": 4 }
+        ]
+      },
+      "langs": "El idioma original es libre: inglés, francés, japonés, árabe… sea cual sea tu libro. La interfaz y los significados están en 16 idiomas.",
+      "steps": [
+        { "n": "01", "h": "Importa tu libro", "p": "Tu propio archivo EPUB o PDF, en cualquier idioma. En iPad también puedes arrastrar un libro desde Archivos a tu biblioteca." },
+        { "n": "02", "h": "Genera el análisis preparatorio", "p": "El precio depende de la longitud del texto y el análisis es para siempre; si dudas, prueba primero la vista previa. Cada página incluye su lista de vocabulario de vista previa; échale un vistazo para hacerte una idea." },
+        { "n": "03", "h": "Toca las palabras mientras lees", "p": "Toca cualquier palabra para ver su significado y su pronunciación; las palabras que ya has visto se reconocen mucho más fácilmente." }
+      ],
+      "closing": "No se trata de memorizar: ver la vista previa una y otra vez y leer hace que las palabras te resulten familiares de forma natural.",
+      "langLabel": "Idioma",
+      "legal": { "privacy": "Política de Privacidad", "terms": "Términos de Servicio" }
+    },
+
+    "fr": {
+      "title": "Scholan — lisez des livres en langue étrangère avec de l'avance",
+      "description": "Importez un EPUB ou un PDF, dans n'importe quelle langue : Scholan génère d'abord une analyse préparatoire — les mots qui méritent votre attention, avec leur signification.",
+      "h1": ["Lisez en langue étrangère", "avec de l'avance"],
+      "lede": "Scholan n'est pas qu'un lecteur. Il génère d'abord une analyse préparatoire : les mots qui méritent votre attention, avec leur signification. Parcourez-la une fois, puis lisez sans interruptions constantes.",
+      "cardA": {
+        "label": "English · page 12", "pages": "324 pages",
+        "rows": [
+          { "w": "ephemeral", "m": "éphémère, fugace", "l": 4 },
+          { "w": "to wander", "m": "errer, flâner", "l": 3 },
+          { "w": "lucid", "m": "lucide, clair", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · page 8", "pages": "210 pages",
+        "rows": [
+          { "w": "懐かしい", "m": "nostalgique, qui évoque des souvenirs", "l": 3 },
+          { "w": "木漏れ日", "m": "lumière filtrant à travers les feuilles", "l": 5 },
+          { "w": "曖昧", "m": "ambigu, vague", "l": 4 }
+        ]
+      },
+      "langs": "La langue d'origine est libre : anglais, japonais, arabe… quel que soit votre livre. L'interface et les définitions existent en 16 langues.",
+      "steps": [
+        { "n": "01", "h": "Importez votre livre", "p": "Votre propre fichier EPUB ou PDF, dans n'importe quelle langue. Sur iPad, vous pouvez aussi glisser un livre depuis Fichiers vers votre bibliothèque." },
+        { "n": "02", "h": "Générez l'analyse préparatoire", "p": "Facturée selon la longueur du texte, conservée à vie ; en cas de doute, essayez d'abord l'aperçu. Chaque page est accompagnée de sa liste de vocabulaire d'aperçu — parcourez-la pour vous faire une idée." },
+        { "n": "03", "h": "Touchez les mots pendant la lecture", "p": "Touchez un mot pour voir sa signification, avec la prononciation ; les mots déjà vus se reconnaissent bien plus facilement." }
+      ],
+      "closing": "L'objectif n'est pas de mémoriser : la répétition des aperçus et la lecture rendent les mots familiers naturellement.",
+      "langLabel": "Langue",
+      "legal": { "privacy": "Politique de Confidentialité", "terms": "Conditions d'utilisation" }
+    },
+
+    "de": {
+      "title": "Scholan — fremdsprachige Bücher mit Vorsprung lesen",
+      "description": "Füge ein EPUB oder PDF in beliebiger Sprache hinzu: Scholan erstellt zuerst eine vorbereitende Analyse – die Wörter, die sich lohnen, samt ihrer Bedeutungen.",
+      "h1": ["Fremdsprachige Bücher", "mit Vorsprung lesen"],
+      "lede": "Scholan ist nicht nur ein Reader. Die App erzeugt zuerst eine vorbereitende Analyse – die Wörter, die sich lohnen, samt ihrer Bedeutungen. Sieh sie einmal durch und lies dann ohne ständige Unterbrechungen.",
+      "cardA": {
+        "label": "Français · Seite 12", "pages": "324 Seiten",
+        "rows": [
+          { "w": "éphémère", "m": "flüchtig, kurzlebig", "l": 4 },
+          { "w": "flâner", "m": "bummeln, schlendern", "l": 3 },
+          { "w": "lucide", "m": "klar, besonnen", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · Seite 8", "pages": "210 Seiten",
+        "rows": [
+          { "w": "懐かしい", "m": "nostalgisch, wehmütig", "l": 3 },
+          { "w": "木漏れ日", "m": "durch Blätter fallendes Sonnenlicht", "l": 5 },
+          { "w": "曖昧", "m": "mehrdeutig, vage", "l": 4 }
+        ]
+      },
+      "langs": "Die Ausgangssprache ist frei: Englisch, Französisch, Japanisch, Arabisch … ganz gleich, in welcher Sprache dein Buch ist. Oberfläche und Bedeutungen gibt es in 16 Sprachen.",
+      "steps": [
+        { "n": "01", "h": "Buch importieren", "p": "Deine eigene EPUB- oder PDF-Datei, in beliebiger Sprache. Auf dem iPad kannst du ein Buch auch direkt aus „Dateien“ in dein Regal ziehen." },
+        { "n": "02", "h": "Vorbereitende Analyse erstellen", "p": "Preis richtet sich nach der Textlänge, dauerhaft verfügbar; probiere bei Unsicherheit zuerst die Vorschau. Jede Seite kommt mit ihrer Vorschau-Vokabelliste – einfach überfliegen für einen Eindruck." },
+        { "n": "03", "h": "Wörter beim Lesen antippen", "p": "Tippe ein beliebiges Wort an, um Bedeutung und Aussprache zu sehen; Wörter, die du schon gesehen hast, erkennst du viel leichter." }
+      ],
+      "closing": "Es geht nicht ums Auswendiglernen: wiederholte Vorschau plus Lesen machen die Wörter ganz von selbst vertraut.",
+      "langLabel": "Sprache",
+      "legal": { "privacy": "Datenschutzerklärung", "terms": "Nutzungsbedingungen" }
+    },
+
+    "it": {
+      "title": "Scholan — leggi libri in lingua con un vantaggio",
+      "description": "Aggiungi un EPUB o un PDF in qualsiasi lingua: Scholan genera prima un'analisi preparatoria, le parole che vale la pena notare con i loro significati.",
+      "h1": ["Leggi libri in lingua", "con un vantaggio"],
+      "lede": "Scholan non è solo un lettore. Genera prima un'analisi preparatoria: le parole che vale la pena notare con i loro significati. Dagli una scorsa, poi leggi senza continue interruzioni.",
+      "cardA": {
+        "label": "Français · pagina 12", "pages": "324 pagine",
+        "rows": [
+          { "w": "éphémère", "m": "effimero, fugace", "l": 4 },
+          { "w": "flâner", "m": "bighellonare, gironzolare", "l": 3 },
+          { "w": "lucide", "m": "lucido, consapevole", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · pagina 8", "pages": "210 pagine",
+        "rows": [
+          { "w": "懐かしい", "m": "nostalgico, che rievoca ricordi", "l": 3 },
+          { "w": "木漏れ日", "m": "luce del sole che filtra tra le foglie", "l": 5 },
+          { "w": "曖昧", "m": "ambiguo, vago", "l": 4 }
+        ]
+      },
+      "langs": "La lingua originale è libera: inglese, francese, giapponese, arabo… qualunque sia il tuo libro. L'interfaccia e i significati sono disponibili in 16 lingue.",
+      "steps": [
+        { "n": "01", "h": "Importa il tuo libro", "p": "Il tuo file EPUB o PDF, in qualsiasi lingua. Su iPad puoi anche trascinare un libro da File nella tua libreria." },
+        { "n": "02", "h": "Genera l'analisi preparatoria", "p": "Il prezzo dipende dalla lunghezza del testo ed è definitivo; se hai dubbi, prova prima l'anteprima. Ogni pagina ha il suo elenco di vocaboli in anteprima: dagli una scorsa per farti un'idea." },
+        { "n": "03", "h": "Tocca le parole mentre leggi", "p": "Tocca una parola per il significato, con la pronuncia; le parole già viste si riconoscono molto più facilmente." }
+      ],
+      "closing": "Il punto non è memorizzare: anteprima ripetuta e lettura rendono le parole familiari in modo naturale.",
+      "langLabel": "Lingua",
+      "legal": { "privacy": "Informativa sulla Privacy", "terms": "Termini di Servizio" }
+    },
+
+    "pt": {
+      "title": "Scholan — leia livros em outros idiomas com vantagem",
+      "description": "Adicione um EPUB ou PDF em qualquer idioma e o Scholan gera primeiro uma análise preparatória: as palavras que vale a pena notar e seus significados.",
+      "h1": ["Leia livros em outros idiomas", "com vantagem"],
+      "lede": "O Scholan não é apenas um leitor. Ele primeiro gera uma análise preparatória — as palavras que vale a pena notar e seus significados. Dê uma olhada uma vez e depois leia sem interrupções constantes.",
+      "cardA": {
+        "label": "Français · página 12", "pages": "324 páginas",
+        "rows": [
+          { "w": "éphémère", "m": "efêmero, passageiro", "l": 4 },
+          { "w": "flâner", "m": "vagar, passear sem pressa", "l": 3 },
+          { "w": "lucide", "m": "lúcido, esclarecido", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · página 8", "pages": "210 páginas",
+        "rows": [
+          { "w": "懐かしい", "m": "nostálgico, que traz lembranças", "l": 3 },
+          { "w": "木漏れ日", "m": "luz do sol filtrada pelas folhas", "l": 5 },
+          { "w": "曖昧", "m": "ambíguo, vago", "l": 4 }
+        ]
+      },
+      "langs": "O idioma original é livre: inglês, francês, japonês, árabe… seja qual for o seu livro. A interface e os significados estão disponíveis em 16 idiomas.",
+      "steps": [
+        { "n": "01", "h": "Importe seu livro", "p": "Seu próprio arquivo EPUB ou PDF, em qualquer idioma. No iPad você também pode arrastar um livro do app Arquivos para a sua estante." },
+        { "n": "02", "h": "Gere a análise preparatória", "p": "O preço depende do tamanho do texto e a análise é sua para sempre; na dúvida, experimente primeiro a prévia. Cada página vem com sua lista de vocabulário de prévia — basta dar uma olhada para ter uma ideia." },
+        { "n": "03", "h": "Toque nas palavras enquanto lê", "p": "Toque em qualquer palavra para ver o significado e a pronúncia; palavras que você já viu são muito mais fáceis de reconhecer." }
+      ],
+      "closing": "A ideia não é memorizar: ver a prévia repetidamente e ler torna as palavras familiares naturalmente.",
+      "langLabel": "Idioma",
+      "legal": { "privacy": "Política de Privacidade", "terms": "Termos de Serviço" }
+    },
+
+    "ru": {
+      "title": "Scholan — читайте иностранные книги с преимуществом",
+      "description": "Добавьте EPUB или PDF на любом языке — Scholan сначала создаст подготовительный анализ: слова, на которые стоит обратить внимание, и их значения.",
+      "h1": ["Читайте иностранные книги", "с преимуществом"],
+      "lede": "Scholan — не просто читалка. Сначала она создаёт подготовительный анализ: слова, на которые стоит обратить внимание, и их значения. Просмотрите его один раз, а затем читайте без постоянных отвлечений.",
+      "cardA": {
+        "label": "Français · стр. 12", "pages": "324 стр.",
+        "rows": [
+          { "w": "éphémère", "m": "мимолётный, недолговечный", "l": 4 },
+          { "w": "flâner", "m": "бродить, прогуливаться", "l": 3 },
+          { "w": "lucide", "m": "ясный, здравомыслящий", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · стр. 8", "pages": "210 стр.",
+        "rows": [
+          { "w": "懐かしい", "m": "ностальгический, вызывающий воспоминания", "l": 3 },
+          { "w": "木漏れ日", "m": "солнечный свет сквозь листву", "l": 5 },
+          { "w": "曖昧", "m": "двусмысленный, неясный", "l": 4 }
+        ]
+      },
+      "langs": "Язык оригинала не ограничен: английский, французский, японский, арабский… любой. Интерфейс и значения слов доступны на 16 языках.",
+      "steps": [
+        { "n": "01", "h": "Импортируйте книгу", "p": "Ваш собственный файл EPUB или PDF, на любом языке. На iPad книгу можно перетащить в библиотеку прямо из «Файлов»." },
+        { "n": "02", "h": "Создайте подготовительный анализ", "p": "Цена зависит от длины текста, результат остаётся навсегда; если сомневаетесь, сначала попробуйте предварительный анализ. К каждой странице прилагается свой список слов — просто просмотрите его для общего впечатления." },
+        { "n": "03", "h": "Нажимайте на слова во время чтения", "p": "Нажмите на любое слово, чтобы увидеть значение и произношение; слова, которые вы уже видели, узнаются намного легче." }
+      ],
+      "closing": "Цель не в заучивании: повторный просмотр вместе с чтением делает слова знакомыми естественным образом.",
+      "langLabel": "Язык",
+      "legal": { "privacy": "Политика конфиденциальности", "terms": "Условия обслуживания" }
+    },
+
+    "ar": {
+      "title": "Scholan — اقرأ الكتب الأجنبية بأفضلية مسبقة",
+      "description": "استورد ملف EPUB أو PDF بأي لغة، وسينشئ Scholan أولًا تحليلًا تحضيريًا: الكلمات الجديرة بالانتباه مع معانيها. تصفّحه مرة واحدة، ثم اقرأ دون انقطاعات متكررة.",
+      "h1": ["اقرأ الكتب الأجنبية", "بأفضلية مسبقة"],
+      "lede": "Scholan ليس مجرد قارئ. إنه ينشئ أولًا تحليلًا تحضيريًا — الكلمات الجديرة بالانتباه مع معانيها. تصفّحه مرة واحدة، ثم اقرأ دون انقطاعات متكررة.",
+      "cardA": {
+        "label": "Français · الصفحة 12", "pages": "324 صفحة",
+        "rows": [
+          { "w": "éphémère", "m": "زائل، عابر", "l": 4 },
+          { "w": "flâner", "m": "يتجوّل، يتمشّى", "l": 3 },
+          { "w": "lucide", "m": "واضح الذهن", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · الصفحة 8", "pages": "210 صفحة",
+        "rows": [
+          { "w": "懐かしい", "m": "يستدعي الحنين", "l": 3 },
+          { "w": "木漏れ日", "m": "ضوء يتخلّل أوراق الشجر", "l": 5 },
+          { "w": "曖昧", "m": "غامض، ملتبس", "l": 4 }
+        ]
+      },
+      "langs": "لغة الكتاب الأصلية غير مقيّدة: الإنجليزية، الفرنسية، اليابانية، العربية… أيًّا كانت. الواجهة والمعاني متوفرة بـ16 لغة.",
+      "steps": [
+        { "n": "01", "h": "استورد كتابك", "p": "ملف EPUB أو PDF الخاص بك، بأي لغة. على iPad يمكنك أيضًا سحب الكتاب من تطبيق «الملفات» إلى رفّك." },
+        { "n": "02", "h": "أنشئ التحليل التحضيري", "p": "يُسعّر حسب طول النص ويبقى دائمًا؛ جرّب المعاينة أولًا إن لم تكن متأكدًا. كل صفحة تأتي مع قائمة مفرداتها للمعاينة — تصفّحها لتكوين انطباع." },
+        { "n": "03", "h": "اضغط الكلمات أثناء القراءة", "p": "اضغط أي كلمة لترى معناها مع النطق؛ والكلمات التي رأيتها سابقًا يصبح التعرّف عليها أسهل بكثير." }
+      ],
+      "closing": "الهدف ليس الحفظ: تكرار المعاينة مع القراءة يجعل الكلمات مألوفة بشكل طبيعي.",
+      "langLabel": "اللغة",
+      "legal": { "privacy": "سياسة الخصوصية", "terms": "شروط الخدمة" }
+    },
+
+    "th": {
+      "title": "Scholan — อ่านหนังสือต่างภาษาได้เปรียบตั้งแต่เริ่ม",
+      "description": "นำเข้าไฟล์ EPUB หรือ PDF ได้ทุกภาษา Scholan จะสร้างการวิเคราะห์เตรียมความพร้อมก่อน นั่นคือคำที่ควรรู้พร้อมความหมาย อ่านผ่านตาสักครั้ง แล้วอ่านต่อเนื่องได้โดยไม่สะดุด",
+      "h1": ["อ่านหนังสือต่างภาษา", "ได้เปรียบตั้งแต่เริ่ม"],
+      "lede": "Scholan ไม่ใช่แค่อ่านหนังสือ แต่จะสร้างการวิเคราะห์เตรียมความพร้อมก่อน นั่นคือคำที่ควรรู้พร้อมความหมาย อ่านผ่านตาสักครั้ง จากนั้นอ่านได้ต่อเนื่องโดยไม่สะดุด",
+      "cardA": {
+        "label": "Français · หน้า 12", "pages": "324 หน้า",
+        "rows": [
+          { "w": "éphémère", "m": "ชั่วคราว, ไม่จีรัง", "l": 4 },
+          { "w": "flâner", "m": "เดินเล่น, เดินเรื่อยเปื่อย", "l": 3 },
+          { "w": "lucide", "m": "สุขุม, มีสติ", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · หน้า 8", "pages": "210 หน้า",
+        "rows": [
+          { "w": "懐かしい", "m": "คิดถึง, ชวนให้หวนคำนึง", "l": 3 },
+          { "w": "木漏れ日", "m": "แสงแดดที่ลอดผ่านใบไม้", "l": 5 },
+          { "w": "曖昧", "m": "คลุมเครือ, กำกวม", "l": 4 }
+        ]
+      },
+      "langs": "ภาษาต้นฉบับไม่จำกัด — อังกฤษ ฝรั่งเศส ญี่ปุ่น อาหรับ… หนังสือของคุณเป็นภาษาใด ก็วิเคราะห์ภาษานั้น ส่วนอินเทอร์เฟซและคำแปลรองรับ 16 ภาษา",
+      "steps": [
+        { "n": "01", "h": "นำเข้าหนังสือ", "p": "ไฟล์ EPUB หรือ PDF ของคุณเอง ภาษาใดก็ได้ บน iPad ลากหนังสือจากแอปไฟล์เข้าชั้นหนังสือได้เลย" },
+        { "n": "02", "h": "สร้างการวิเคราะห์เตรียมความพร้อม", "p": "คิดราคาตามความยาวข้อความ ใช้ได้ตลอดไป หากไม่แน่ใจลองวิเคราะห์ตัวอย่างก่อน ทุกหน้าจะมีรายการคำศัพท์ตัวอย่างของหน้านั้น เพียงกวาดตาดูก็พอเห็นภาพ" },
+        { "n": "03", "h": "แตะคำขณะอ่าน", "p": "แตะคำใดก็ได้เพื่อดูความหมายพร้อมการออกเสียง คำที่เคยเห็นจะจำได้ง่ายขึ้นมาก" }
+      ],
+      "closing": "จุดสำคัญไม่ใช่การท่องจำ การดูตัวอย่างซ้ำ ๆ แล้วอ่านจริงจะทำให้คุ้นเคยกับคำเองตามธรรมชาติ",
+      "langLabel": "ภาษา",
+      "legal": { "privacy": "นโยบายความเป็นส่วนตัว", "terms": "ข้อกำหนดการให้บริการ" }
+    },
+
+    "vi": {
+      "title": "Scholan — đọc sách ngoại văn với lợi thế từ đầu",
+      "description": "Thêm tệp EPUB hoặc PDF bằng bất kỳ ngôn ngữ nào, Scholan sẽ tạo trước bản phân tích chuẩn bị: những từ đáng chú ý cùng nghĩa của chúng.",
+      "h1": ["Đọc sách ngoại văn", "với lợi thế từ đầu"],
+      "lede": "Scholan không chỉ là trình đọc. Ứng dụng tạo trước một bản phân tích chuẩn bị — những từ đáng chú ý cùng nghĩa của chúng. Đọc lướt một lần, rồi đọc liền mạch không bị ngắt quãng.",
+      "cardA": {
+        "label": "Français · trang 12", "pages": "324 trang",
+        "rows": [
+          { "w": "éphémère", "m": "phù du, chóng tàn", "l": 4 },
+          { "w": "flâner", "m": "đi dạo, lang thang", "l": 3 },
+          { "w": "lucide", "m": "sáng suốt, tỉnh táo", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · trang 8", "pages": "210 trang",
+        "rows": [
+          { "w": "懐かしい", "m": "hoài niệm, gợi nhớ", "l": 3 },
+          { "w": "木漏れ日", "m": "ánh nắng xuyên qua kẽ lá", "l": 5 },
+          { "w": "曖昧", "m": "mơ hồ, nước đôi", "l": 4 }
+        ]
+      },
+      "langs": "Ngôn ngữ gốc không giới hạn: tiếng Anh, tiếng Pháp, tiếng Nhật, tiếng Ả Rập… sách của bạn bằng ngôn ngữ nào cũng được. Giao diện và nghĩa từ có 16 thứ tiếng.",
+      "steps": [
+        { "n": "01", "h": "Nhập sách của bạn", "p": "Tệp EPUB hoặc PDF của riêng bạn, bất kể ngôn ngữ nào. Trên iPad, bạn cũng có thể kéo sách từ Tệp vào giá sách." },
+        { "n": "02", "h": "Tạo bản phân tích chuẩn bị", "p": "Tính giá theo độ dài văn bản, dùng vĩnh viễn; nếu chưa chắc hãy thử Phân tích xem trước. Mỗi trang đều kèm danh sách từ vựng xem trước — chỉ cần đọc lướt là đã có ấn tượng." },
+        { "n": "03", "h": "Chạm vào từ khi đọc", "p": "Chạm vào bất kỳ từ nào để xem nghĩa kèm cách phát âm; những từ đã gặp sẽ dễ nhận ra hơn nhiều." }
+      ],
+      "closing": "Mấu chốt không phải ghi nhớ: xem trước lặp lại kết hợp với đọc sẽ giúp bạn quen từ một cách tự nhiên.",
+      "langLabel": "Ngôn ngữ",
+      "legal": { "privacy": "Chính sách Quyền riêng tư", "terms": "Điều khoản Dịch vụ" }
+    },
+
+    "id": {
+      "title": "Scholan — baca buku asing dengan bekal awal",
+      "description": "Tambahkan EPUB atau PDF dalam bahasa apa pun, dan Scholan lebih dulu membuat analisis persiapan: kata-kata yang perlu diperhatikan beserta artinya.",
+      "h1": ["Baca buku asing", "dengan bekal awal"],
+      "lede": "Scholan bukan sekadar pembaca. Scholan lebih dulu membuat analisis pratinjau — kata-kata yang perlu diperhatikan beserta artinya. Baca sekilas sekali, lalu membaca tanpa sering terhenti.",
+      "cardA": {
+        "label": "Français · halaman 12", "pages": "324 halaman",
+        "rows": [
+          { "w": "éphémère", "m": "fana, sekilas", "l": 4 },
+          { "w": "flâner", "m": "berjalan-jalan, keluyuran", "l": 3 },
+          { "w": "lucide", "m": "jernih, waras", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · halaman 8", "pages": "210 halaman",
+        "rows": [
+          { "w": "懐かしい", "m": "mengenang, membangkitkan kenangan", "l": 3 },
+          { "w": "木漏れ日", "m": "cahaya matahari menembus dedaunan", "l": 5 },
+          { "w": "曖昧", "m": "ambigu, kabur", "l": 4 }
+        ]
+      },
+      "langs": "Bahasa aslinya bebas: Inggris, Prancis, Jepang, Arab… apa pun bahasa bukumu. Antarmuka dan artinya tersedia dalam 16 bahasa.",
+      "steps": [
+        { "n": "01", "h": "Impor buku Anda", "p": "File EPUB atau PDF milik Anda, dalam bahasa apa pun. Di iPad, Anda juga bisa menyeret buku dari File ke rak." },
+        { "n": "02", "h": "Buat analisis persiapan", "p": "Harga sesuai panjang teks, tersimpan selamanya; coba Pratinjau dulu jika ragu. Setiap halaman disertai daftar kosakata pratinjau — cukup pindai untuk mendapat gambaran." },
+        { "n": "03", "h": "Ketuk kata saat membaca", "p": "Ketuk kata mana pun untuk melihat artinya, lengkap dengan pelafalan; kata yang pernah Anda lihat jauh lebih mudah dikenali." }
+      ],
+      "closing": "Intinya bukan menghafal: pratinjau berulang plus membaca membuat kata-kata familiar secara alami.",
+      "langLabel": "Bahasa",
+      "legal": { "privacy": "Kebijakan Privasi", "terms": "Ketentuan Layanan" }
+    },
+
+    "tr": {
+      "title": "Scholan — yabancı kitapları avantajlı başlayarak oku",
+      "description": "Herhangi bir dilde EPUB veya PDF ekle; Scholan önce bir hazırlık analizi oluşturur: dikkate değer kelimeler ve anlamları.",
+      "h1": ["Yabancı kitapları", "avantajlı başlayarak oku"],
+      "lede": "Scholan yalnızca bir okuyucu değil. Önce bir hazırlık analizi oluşturur — dikkate değer kelimeler ve anlamları. Bir kez göz at, sonra sürekli kesintiye uğramadan oku.",
+      "cardA": {
+        "label": "Français · sayfa 12", "pages": "324 sayfa",
+        "rows": [
+          { "w": "éphémère", "m": "gelip geçici, kısa ömürlü", "l": 4 },
+          { "w": "flâner", "m": "amaçsızca dolaşmak, gezinmek", "l": 3 },
+          { "w": "lucide", "m": "aklı başında, berrak", "l": 4 }
+        ]
+      },
+      "cardB": {
+        "label": "日本語 · sayfa 8", "pages": "210 sayfa",
+        "rows": [
+          { "w": "懐かしい", "m": "nostaljik, hatıraları canlandıran", "l": 3 },
+          { "w": "木漏れ日", "m": "yaprakların arasından süzülen güneş ışığı", "l": 5 },
+          { "w": "曖昧", "m": "belirsiz, müphem", "l": 4 }
+        ]
+      },
+      "langs": "Kaynak dil serbest: İngilizce, Fransızca, Japonca, Arapça… kitabın hangi dilde olursa olsun. Arayüz ve anlamlar 16 dilde.",
+      "steps": [
+        { "n": "01", "h": "Kitabını içe aktar", "p": "Kendi EPUB veya PDF dosyan, her dilde. iPad'de kitabı Dosyalar'dan rafına sürükleyebilirsin." },
+        { "n": "02", "h": "Hazırlık analizini oluştur", "p": "Fiyat metin uzunluğuna göre belirlenir, kalıcı olarak senin olur; emin değilsen önce önizlemeyi dene. Her sayfa kendi önizleme kelime listesiyle gelir — bir izlenim edinmek için göz gezdirmen yeterli." },
+        { "n": "03", "h": "Okurken kelimelere dokun", "p": "Anlamı ve telaffuzu için herhangi bir kelimeye dokun; daha önce gördüğün kelimeleri tanımak çok daha kolaydır." }
+      ],
+      "closing": "Amaç ezberlemek değil: tekrarlanan önizleme ve okuma, kelimeleri kendiliğinden tanıdık hâle getirir.",
+      "langLabel": "Dil",
+      "legal": { "privacy": "Gizlilik Politikası", "terms": "Hizmet Koşulları" }
+    }
+  }
+}
