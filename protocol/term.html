@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 语言在脚本里按 ?lang= 替换正文；正文写的是中文兜底文案，因此替换完成前正文不能可见，
+         否则会先画一屏中文、再被脚本改成目标语言（可见的闪烁）。
+         下面这段必须放在 <head> 里：它在正文解析之前就把标记挂上，抢在首屏绘制之前生效。
+         兜底计时器：脚本若因故没跑完，2 秒后也要把内容放出来，不能一直白屏。 -->
+    <script>
+        document.documentElement.setAttribute('data-i18n-pending', '');
+        setTimeout(function () {
+            document.documentElement.removeAttribute('data-i18n-pending');
+        }, 2000);
+    </script>
     <title data-i18n="page_title">用户协议</title>
     <style>
+        /* 语言未就绪前不渲染正文（标记由 <head> 里那段脚本挂上、由 changeLanguage 摘掉）。
+           只隐藏 body 的子元素而不是 body 本身：背景色画在 body 上，连 body 一起隐藏会让
+           深色模式先闪一屏白底。 */
+        html[data-i18n-pending] body > * {
+            visibility: hidden;
+        }
+
         /* 1. 默认：浅色主题（Light Mode）变量 */
         :root {
             --primary-color: #4f46e5;
@@ -1850,9 +1867,11 @@
             document.getElementById('footerText').innerHTML = translations[lang]["footer"];
 
             localStorage.setItem('site_lang', lang);
+            // 语言已应用：摘掉 <head> 挂的隐藏标记，放开正文渲染（必须放在最后一步）。
+            document.documentElement.removeAttribute('data-i18n-pending');
         }
 
-        window.onload = function() {
+        (function () {
             const urlParams = new URLSearchParams(window.location.search);
             let lang = urlParams.get('lang');
 
@@ -1876,7 +1895,7 @@
             }
 
             changeLanguage(lang);
-        };
+        })();
     </script>
 
 </body>
