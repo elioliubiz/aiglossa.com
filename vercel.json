@@ -1,0 +1,45 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": false,
+  "redirects": [
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "aiglossa.com" }],
+      "destination": "/en/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [{ "type": "host", "value": "scholan.aiglossa.com" }],
+      "destination": "/en/",
+      "permanent": true
+    },
+    {
+      "source": "/protocol/privacy.html",
+      "destination": "/en/protocol/privacy.html",
+      "permanent": true
+    },
+    {
+      "source": "/protocol/term.html",
+      "destination": "/en/protocol/term.html",
+      "permanent": true
+    },
+    {
+      "source": "/protocol/delete-account.html",
+      "destination": "/en/protocol/delete-account.html",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "aiglossa.com" }],
+      "destination": "/sites/root/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "scholan.aiglossa.com" }],
+      "destination": "/sites/scholan/:path*"
+    }
+  ]
+}

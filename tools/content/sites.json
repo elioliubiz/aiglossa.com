@@ -1,0 +1,18 @@
+{
+  "root": {
+    "host": "aiglossa.com",
+    "legal": true,
+    "pages": [
+      "brand",
+      "protocol"
+    ]
+  },
+  "scholan": {
+    "host": "scholan.aiglossa.com",
+    "legal": false,
+    "pages": [
+      "marketing",
+      "support"
+    ]
+  }
+}

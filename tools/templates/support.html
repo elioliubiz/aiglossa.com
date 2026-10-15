@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="{{lang}}" dir="{{dir}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="{{canonical}}">
+{{alternates}}
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{{prefix}}assets/protocol.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="top-bar">
+            <div class="header">
+                <h1>{{title}}</h1>
+                <p>{{sub_title}}</p>
+            </div>
+{{switcher}}
+        </div>
+
+        <div class="section">
+            <h2>{{faq_title}}</h2>
+
+            <p><strong>{{q1}}</strong></p>
+            <p>{{a1}}</p>
+
+            <p><strong>{{q2}}</strong></p>
+            <p>{{a2}}</p>
+
+            <p><strong>{{q3}}</strong></p>
+            <p>{{a3}}</p>
+
+            <p><strong>{{q4}}</strong></p>
+            <p>{{a4}}</p>
+
+            <p><strong>{{q5}}</strong></p>
+            <p>{{a5}}</p>
+
+            <p><strong>{{q6}}</strong></p>
+            <p>{{a6}}</p>
+            <p><a href="{{legal_delete_href}}">{{legal_delete_label}}</a></p>
+        </div>
+
+        <div class="section">
+            <h2>{{contact_title}}</h2>
+            <p>{{contact_text}}</p>
+            <p>{{contact_note}}</p>
+        </div>
+
+        <div class="footer">
+            <p><a href="{{legal_privacy_href}}">{{legal_privacy}}</a> · <a href="{{legal_terms_href}}">{{legal_terms}}</a></p>
+            <p id="footerText">{{footer}}</p>
+        </div>
+    </div>
+
+</body>
+</html>
