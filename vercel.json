@@ -32,6 +32,16 @@
   ],
   "rewrites": [
     {
+      "source": "/:lang/",
+      "has": [{ "type": "host", "value": "aiglossa.com" }],
+      "destination": "/sites/root/:lang/index.html"
+    },
+    {
+      "source": "/:lang/",
+      "has": [{ "type": "host", "value": "scholan.aiglossa.com" }],
+      "destination": "/sites/scholan/:lang/index.html"
+    },
+    {
       "source": "/:path*",
       "has": [{ "type": "host", "value": "aiglossa.com" }],
       "destination": "/sites/root/:path*"
