@@ -28,7 +28,10 @@
   // 只在默认语言页做"送回已选语言"；且仅当路径就是根路径时。
   // file: 协议下直接跳过——本地双击预览时不该被跳走（也没有站点根可跳）。
   var path = location.pathname.replace(/index\.html$/, '');
-  if (location.protocol !== 'file:' && (path === '/' || path === '')) {
+  // 语言一律带前缀后，默认语言页是 /<default>/（根路径由 301 负责）：
+  // 把它一起认作"入口页"，才保得住"用户点过的语言，下次进站仍送他去那儿"。
+  var defaultPath = '/' + defaultLang + '/';
+  if (location.protocol !== 'file:' && (path === '/' || path === '' || path === defaultPath)) {
     var saved = read();
     if (saved && saved !== defaultLang) {
       location.replace('/' + encodeURIComponent(saved) + '/');

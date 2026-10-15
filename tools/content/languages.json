@@ -1,0 +1,101 @@
+{
+  "default": "en",
+  "languages": {
+    "ar": {
+      "name": "العربية",
+      "hreflang": "ar",
+      "dir": "rtl",
+      "ogLocale": "ar_AR"
+    },
+    "de": {
+      "name": "Deutsch",
+      "hreflang": "de",
+      "dir": "ltr",
+      "ogLocale": "de_DE"
+    },
+    "en": {
+      "name": "English",
+      "hreflang": "en",
+      "dir": "ltr",
+      "ogLocale": "en_US"
+    },
+    "es": {
+      "name": "Español",
+      "hreflang": "es",
+      "dir": "ltr",
+      "ogLocale": "es_ES"
+    },
+    "fr": {
+      "name": "Français",
+      "hreflang": "fr",
+      "dir": "ltr",
+      "ogLocale": "fr_FR"
+    },
+    "id": {
+      "name": "Bahasa Indonesia",
+      "hreflang": "id",
+      "dir": "ltr",
+      "ogLocale": "id_ID"
+    },
+    "it": {
+      "name": "Italiano",
+      "hreflang": "it",
+      "dir": "ltr",
+      "ogLocale": "it_IT"
+    },
+    "ja": {
+      "name": "日本語",
+      "hreflang": "ja",
+      "dir": "ltr",
+      "ogLocale": "ja_JP"
+    },
+    "ko": {
+      "name": "한국어",
+      "hreflang": "ko",
+      "dir": "ltr",
+      "ogLocale": "ko_KR"
+    },
+    "pt": {
+      "name": "Português",
+      "hreflang": "pt",
+      "dir": "ltr",
+      "ogLocale": "pt_PT"
+    },
+    "ru": {
+      "name": "Русский",
+      "hreflang": "ru",
+      "dir": "ltr",
+      "ogLocale": "ru_RU"
+    },
+    "th": {
+      "name": "ไทย",
+      "hreflang": "th",
+      "dir": "ltr",
+      "ogLocale": "th_TH"
+    },
+    "tr": {
+      "name": "Türkçe",
+      "hreflang": "tr",
+      "dir": "ltr",
+      "ogLocale": "tr_TR"
+    },
+    "vi": {
+      "name": "Tiếng Việt",
+      "hreflang": "vi",
+      "dir": "ltr",
+      "ogLocale": "vi_VN"
+    },
+    "zh-Hans": {
+      "name": "简体中文",
+      "hreflang": "zh-Hans",
+      "dir": "ltr",
+      "ogLocale": "zh_CN"
+    },
+    "zh-Hant": {
+      "name": "繁體中文",
+      "hreflang": "zh-Hant",
+      "dir": "ltr",
+      "ogLocale": "zh_TW"
+    }
+  }
+}

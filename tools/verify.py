@@ -1,11 +1,18 @@
 #!/usr/bin/env python3
-"""官网生成结果的结构自检。
+"""站点产物校验（只读，不写文件）。
 
 用法：python3 tools/verify.py
 
-build.py 保证的是"内容与示例书语言规则"，这个脚本保证的是"每个语言页的结构完整"：
-语言/方向属性、hreflang 互指、语言切换器条数、法律页链接带上本页语言参数、
-以及没有残留的模板占位符。加语言或改模板后跑一次即可。
+与 `build.py --check` 互补：那边校验**源数据与模板**（文案齐不齐、占位符对不对得上），
+这边校验**生成结果是否自洽**：
+
+1. `sites/<site>/<lang>/<page>` 与 content/sites.json + 页面登记表完全对应（不多不少）；
+2. 每个页面的 hreflang 自洽：16 种语言 + x-default，且都指向**本站点的同一页**；
+3. canonical 用本站点 host；页面里没有残留 `{{占位符}}`，也没有旧实现的 `?lang=` 链接；
+4. 协议页只出现在声明了 protocol 的站点（法律文本所有 App 共用一份，不复制到各子域）；
+5. vercel.json 里每个站点都有 Host 重写与根路径 301。
+
+改模板、加语言、加站点后各跑一次。退出码非 0 表示有问题。
 """
 
 from __future__ import annotations
@@ -16,68 +23,116 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-STRINGS = ROOT / "tools" / "strings.json"
+CONTENT = ROOT / "tools" / "content"
+SITES_DIR = ROOT / "sites"
+PROTOCOL_PAGES = ("privacy", "term", "delete-account")
+# 页面登记（与 build.py 的 PAGES 对应）：页面名 -> [(产物文件, URL 路径)]。
+# 两者刻意分开：营销页的 URL 是 `<lang>/`，产物文件却是 `<lang>/index.html`。
+PAGES: dict[str, list[tuple[str, str]]] = {
+    "brand": [("index.html", "")],
+    "marketing": [("index.html", "")],
+    "support": [("support.html", "support.html")],
+}
 
 
-def page_path(spec: dict) -> Path:
-    if spec["path"] == "/":
-        return ROOT / "index.html"
-    return ROOT / spec["path"].strip("/") / "index.html"
+def outputs_for(page: str) -> list[tuple[str, str]]:
+    if page == "protocol":
+        return [(f"protocol/{name}.html", f"protocol/{name}.html") for name in PROTOCOL_PAGES]
+    return PAGES[page]
 
 
 def main() -> int:
-    data = json.loads(STRINGS.read_text(encoding="utf-8"))
-    languages: dict = data["_languages"]
-    locales: dict = data["locales"]
-    built = [code for code in languages if code in locales]
+    languages = json.loads((CONTENT / "languages.json").read_text(encoding="utf-8"))
+    codes = list(languages["languages"])
+    default = languages["default"]
+    sites = json.loads((CONTENT / "sites.json").read_text(encoding="utf-8"))
+    vercel = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
 
     problems: list[str] = []
-    rows: list[tuple[str, str, int, int, str]] = []
+    want_hreflang = sorted([languages["languages"][c]["hreflang"] for c in codes] + ["x-default"])
 
-    for code in built:
-        spec = languages[code]
-        path = page_path(spec)
-        if not path.exists():
-            problems.append(f"{code}: 页面不存在（{path.relative_to(ROOT)}），先跑 tools/build.py")
+    # 1) 产物与声明一一对应
+    expected: set[Path] = set()
+    for site, spec in sites.items():
+        for page in spec["pages"]:
+            for lang in codes:
+                for file_rel, _ in outputs_for(page):
+                    expected.add(SITES_DIR / site / lang / file_rel)
+    actual = set(SITES_DIR.rglob("*.html"))
+    for path in sorted(expected - actual):
+        problems.append(f"声明了但产物缺失：{path.relative_to(ROOT)}")
+    for path in sorted(actual - expected):
+        problems.append(f"产物多余（sites.json 未声明）：{path.relative_to(ROOT)}")
+
+    # 2/3) 逐页检查 hreflang / canonical / 占位符 / 旧链接
+    for site, spec in sites.items():
+        base = f'https://{spec["host"]}'
+        for page in spec["pages"]:
+            for file_rel, url_rel in outputs_for(page):
+                for lang in codes:
+                    f = SITES_DIR / site / lang / file_rel
+                    if not f.exists():
+                        continue
+                    text = f.read_text(encoding="utf-8")
+                    where = f"{site}/{lang}/{file_rel}"
+
+                    if "{{" in text:
+                        problems.append(f"{where}: 残留未替换的占位符")
+                    if "?lang=" in text:
+                        problems.append(f"{where}: 残留旧实现的 ?lang= 链接")
+
+                    html_tag = re.search(r'<html lang="([^"]+)" dir="([^"]+)"', text)
+                    if not html_tag:
+                        problems.append(f"{where}: 缺 <html lang/dir>")
+                    else:
+                        if html_tag.group(1) != languages["languages"][lang]["hreflang"]:
+                            problems.append(f"{where}: html lang={html_tag.group(1)}，应为 {languages['languages'][lang]['hreflang']}")
+                        if html_tag.group(2) != languages["languages"][lang]["dir"]:
+                            problems.append(f"{where}: html dir={html_tag.group(2)}，应为 {languages['languages'][lang]['dir']}")
+
+                    alternates = re.findall(r'<link rel="alternate" hreflang="([^"]+)" href="([^"]+)"', text)
+                    got = sorted(code for code, _ in alternates)
+                    if got != want_hreflang:
+                        problems.append(f"{where}: hreflang 集合不符（缺 {set(want_hreflang) - set(got)}，多 {set(got) - set(want_hreflang)}）")
+                    for code, href in alternates:
+                        # x-default 不是语言码，按规定指向**默认语言**的同一页。
+                        target_lang = default if code == "x-default" else code
+                        want = f"{base}/{target_lang}/{url_rel}" if url_rel else f"{base}/{target_lang}/"
+                        if href != want:
+                            problems.append(f"{where}: hreflang {code} 指向 {href}，应为 {want}")
+
+                    canonical = re.search(r'<link rel="canonical" href="([^"]+)"', text)
+                    want_canonical = f"{base}/{lang}/{url_rel}" if url_rel else f"{base}/{lang}/"
+                    if not canonical or canonical.group(1) != want_canonical:
+                        problems.append(f"{where}: canonical 为 {canonical.group(1) if canonical else '缺失'}，应为 {want_canonical}")
+
+    # 4) 协议页只在声明了它的站点
+    for site, spec in sites.items():
+        if "protocol" in spec["pages"]:
             continue
+        for lang in codes:
+            if (SITES_DIR / site / lang / "protocol").exists():
+                problems.append(f"{site}: 未声明 protocol，但产物里有协议页")
 
-        page = path.read_text(encoding="utf-8")
-        head = re.search(r'<html lang="([^"]+)" dir="([^"]+)"', page)
-        alternates = len(re.findall(r'rel="alternate"', page))
-        switcher = len(re.findall(r"<li><a href=", page))
-        legal = sorted(set(re.findall(r"protocol/[a-z-]+\.html\?lang=([A-Za-z-]+)", page)))
-        leftovers = sorted(set(re.findall(r"\{[a-z_]+\}", page)))
-
-        if not head:
-            problems.append(f"{code}: <html lang/dir> 缺失")
-        else:
-            if head.group(1) != spec["hreflang"]:
-                problems.append(f"{code}: html lang={head.group(1)}，应为 {spec['hreflang']}")
-            if head.group(2) != spec["dir"]:
-                problems.append(f"{code}: dir={head.group(2)}，应为 {spec['dir']}")
-        if alternates != len(built) + 1:
-            problems.append(f"{code}: hreflang {alternates} 条，应为 {len(built)} + x-default")
-        if switcher != len(built):
-            problems.append(f"{code}: 语言切换器 {switcher} 项，应为 {len(built)}")
-        if legal != [code]:
-            problems.append(f"{code}: 法律页参数 {legal}，应为本页语言 {code}")
-        if leftovers:
-            problems.append(f"{code}: 模板占位符未替换 {leftovers}")
-
-        rows.append((code, f"{head.group(1)}/{head.group(2)}" if head else "?", alternates, switcher, ",".join(legal)))
-
-    print(f'  {"code":9s} {"lang/dir":16s} {"hreflang":9s} {"切换器":7s} {"法律页参数"}')
-    for code, langdir, alternates, switcher, legal in rows:
-        print(f"  {code:9s} {langdir:16s} {alternates:<9} {switcher:<7} {legal}")
+    # 5) vercel.json 覆盖每个站点
+    rewrites = json.dumps(vercel.get("rewrites", []), ensure_ascii=False)
+    redirects = json.dumps(vercel.get("redirects", []), ensure_ascii=False)
+    for site, spec in sites.items():
+        if spec["host"] not in rewrites:
+            problems.append(f"vercel.json 缺 {spec['host']} 的 Host 重写")
+        if spec["host"] not in redirects:
+            problems.append(f"vercel.json 缺 {spec['host']} 的根路径 301")
 
     if problems:
-        print("\n✗ 发现问题：", file=sys.stderr)
         for problem in problems:
-            print(f"  - {problem}", file=sys.stderr)
+            print("✗ " + problem, file=sys.stderr)
+        print(f"\n共 {len(problems)} 个问题", file=sys.stderr)
         return 1
 
-    missing = [code for code in languages if code not in locales]
-    print(f"\n✓ {len(built)}/{len(languages)} 种语言结构自检通过。未完成：{'、'.join(missing) if missing else '无'}")
+    print("✓ 校验通过")
+    print("  站点 × 页面：" + "、".join(f"{k}[{'/'.join(v['pages'])}]" for k, v in sites.items()))
+    print(f"  语言 {len(codes)} 种（默认 {default}，根路径 301 到 /{default}/）")
+    print(f"  产物 HTML {len(actual)} 个：hreflang 集合、canonical、vercel.json 均自洽")
     return 0
 
 

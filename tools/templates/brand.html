@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="{{lang}}" dir="{{dir}}" data-default-lang="{{default}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title>
+<meta name="description" content="{{lede}}">
+<link rel="canonical" href="{{canonical}}">
+{{alternates}}
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="aiglossa">
+<meta property="og:title" content="{{title}}">
+<meta property="og:description" content="{{lede}}">
+<meta property="og:url" content="{{canonical}}">
+<meta property="og:locale" content="{{og_locale}}">
+<meta property="og:image" content="{{site_base}}/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="aiglossa">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{{site_base}}/assets/og.png">
+<meta name="theme-color" content="#0b0d12">
+<link rel="icon" href="{{prefix}}assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon.png">
+<link rel="stylesheet" href="{{prefix}}assets/site.css">
+</head>
+<body>
+<main>
+  <section class="hero">
+    <div class="wrap center">
+      <p class="kicker">AIGLOSSA</p>
+      <h1>{{h1}}</h1>
+      <p class="lede">{{lede}}</p>
+    </div>
+  </section>
+
+  <div class="band">
+    <div class="wrap">
+      <p class="apps-title">{{apps_title}}</p>
+      <div class="apps">
+        <div class="app">
+          <div class="app-head">
+            <b>Scholan</b>
+            <span>{{scholan_meta}}</span>
+          </div>
+          <p>{{scholan_desc}}</p>
+          <div class="app-links">
+            <a href="{{scholan_href}}">{{learn_more}}</a>
+            <a href="{{scholan_support_href}}">{{support_label}}</a>
+          </div>
+        </div>
+      </div>
+      <p class="closing">{{about_text}}</p>
+      <p class="closing"><a href="mailto:support@aiglossa.com">support@aiglossa.com</a></p>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="brand">aiglossa.com</span>
+    <nav class="legal">
+      <a href="{{legal_privacy_href}}">{{legal_privacy}}</a>
+      <a href="{{legal_terms_href}}">{{legal_terms}}</a>
+    </nav>
+    <details class="switcher">
+      <summary>{{lang_label}} · {{current_name}}</summary>
+      <ul>
+{{switcher}}
+      </ul>
+    </details>
+  </div>
+</footer>
+
+<script src="{{prefix}}assets/site.js" defer></script>
+</body>
+</html>

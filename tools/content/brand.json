@@ -1,0 +1,162 @@
+{
+  "zh-Hans": {
+    "title": "aiglossa — 独立开发的阅读与语言应用",
+    "h1": "让语言，在真实的阅读里学会",
+    "lede": "这里是 aiglossa，我自己做应用的地方。每一个应用都围绕同一件事：把语言学习放回真实的阅读里，而不是背单词表。",
+    "apps_title": "应用",
+    "scholan_meta": "iOS · 16 种语言",
+    "learn_more": "了解 Scholan",
+    "support_label": "支持",
+    "about_text": "我是一个独立开发者。做这些应用，是因为自己在学外语时遇到的那些麻烦——生词太多，读两句就要查一次，查完又忘了。所以我把「先看懂，再读顺」做成了产品。有想法或遇到问题，都欢迎写信给我。"
+  },
+  "zh-Hant": {
+    "title": "aiglossa — 獨立開發的閱讀與語言應用",
+    "h1": "讓語言，在真實的閱讀裡學會",
+    "lede": "這裡是 aiglossa，我自己做應用的地方。每一個應用都圍繞同一件事：把語言學習放回真實的閱讀裡，而不是背單字表。",
+    "apps_title": "應用",
+    "scholan_meta": "iOS · 16 種語言",
+    "learn_more": "了解 Scholan",
+    "support_label": "支援",
+    "about_text": "我是一個獨立開發者。做這些應用，是因為自己學外語時遇到的麻煩——生詞太多，讀兩句就要查一次，查完又忘了。所以我把「先看懂，再讀順」做成了產品。有想法或遇到問題，都歡迎寫信給我。"
+  },
+  "en": {
+    "title": "aiglossa — reading and language apps, built independently",
+    "h1": "Learn a language by actually reading it",
+    "lede": "This is aiglossa, where I build my own apps. Every one of them circles a single idea: put language learning back into real reading, instead of vocabulary lists.",
+    "apps_title": "Apps",
+    "scholan_meta": "iOS · 16 languages",
+    "learn_more": "About Scholan",
+    "support_label": "Support",
+    "about_text": "I am an independent developer. These apps exist because of the friction I kept hitting while learning a language myself — too many unknown words, a lookup every other sentence, and nothing remembered afterwards. So I turned understand first, then read smoothly into a product. Ideas and problems are both welcome by email."
+  },
+  "ja": {
+    "title": "aiglossa — 個人開発の読書と言語アプリ",
+    "h1": "言語は、実際に読みながら身につく",
+    "lede": "ここは aiglossa、私がアプリを作っている場所です。どのアプリも同じ考えの上にあります——語学を単語帳ではなく、実際の読書に戻すこと。",
+    "apps_title": "アプリ",
+    "scholan_meta": "iOS · 16 言語",
+    "learn_more": "Scholan について",
+    "support_label": "サポート",
+    "about_text": "私は個人開発者です。自分が外国語を学ぶときに感じた面倒——知らない単語が多すぎる、2 文ごとに調べる、調べても覚えていない——がきっかけで作りました。そこで「まず理解して、それからすらすら読む」を製品にしています。感想も不具合も、メールをいただければ嬉しいです。"
+  },
+  "ko": {
+    "title": "aiglossa — 1인 개발 독서·언어 앱",
+    "h1": "언어는 실제로 읽으면서 익힙니다",
+    "lede": "여기는 aiglossa, 제가 앱을 만드는 곳입니다. 모든 앱이 같은 생각 위에 있습니다 — 언어 공부를 단어장이 아니라 실제 독서로 되돌리는 것.",
+    "apps_title": "앱",
+    "scholan_meta": "iOS · 16개 언어",
+    "learn_more": "Scholan 알아보기",
+    "support_label": "지원",
+    "about_text": "저는 1인 개발자입니다. 외국어를 배우면서 겪은 불편함 — 모르는 단어가 너무 많고, 두 문장마다 찾아보고, 찾아도 기억나지 않는 일 — 때문에 만들었습니다. 그래서 '먼저 이해하고, 그다음 술술 읽기'를 제품으로 만들고 있습니다. 의견도 문제도 메일로 보내주시면 반갑습니다."
+  },
+  "de": {
+    "title": "aiglossa — Lese- und Sprach-Apps, unabhängig entwickelt",
+    "h1": "Eine Sprache lernt man, indem man sie wirklich liest",
+    "lede": "Das ist aiglossa, wo ich meine eigenen Apps baue. Alle kreisen um eine Idee: Sprachenlernen zurück in echtes Lesen zu holen statt in Vokabellisten.",
+    "apps_title": "Apps",
+    "scholan_meta": "iOS · 16 Sprachen",
+    "learn_more": "Mehr über Scholan",
+    "support_label": "Support",
+    "about_text": "Ich bin unabhängiger Entwickler. Diese Apps entstehen aus dem Ärger, den ich beim eigenen Sprachenlernen hatte – zu viele unbekannte Wörter, ein Nachschlagen in jedem zweiten Satz, und danach nichts behalten. Deshalb habe ich „erst verstehen, dann flüssig lesen“ zu einem Produkt gemacht. Ideen und Probleme sind per E-Mail willkommen."
+  },
+  "fr": {
+    "title": "aiglossa — applis de lecture et de langues, développées en solo",
+    "h1": "Une langue s'apprend en la lisant vraiment",
+    "lede": "Voici aiglossa, où je développe mes propres applis. Toutes tournent autour d'une idée : remettre l'apprentissage des langues dans la lecture réelle, plutôt que dans des listes de vocabulaire.",
+    "apps_title": "Applis",
+    "scholan_meta": "iOS · 16 langues",
+    "learn_more": "En savoir plus sur Scholan",
+    "support_label": "Assistance",
+    "about_text": "Je suis développeur indépendant. Ces applis viennent des frictions que je rencontrais en apprenant une langue : trop de mots inconnus, une recherche toutes les deux phrases, et rien retenu ensuite. J'ai donc fait de « comprendre d'abord, lire couramment ensuite » un produit. Idées et problèmes sont bienvenus par e-mail."
+  },
+  "es": {
+    "title": "aiglossa — apps de lectura e idiomas, desarrolladas en solitario",
+    "h1": "Un idioma se aprende leyéndolo de verdad",
+    "lede": "Esto es aiglossa, donde desarrollo mis propias apps. Todas giran en torno a una idea: devolver el aprendizaje de idiomas a la lectura real, en lugar de a las listas de vocabulario.",
+    "apps_title": "Apps",
+    "scholan_meta": "iOS · 16 idiomas",
+    "learn_more": "Conocer Scholan",
+    "support_label": "Soporte",
+    "about_text": "Soy desarrollador independiente. Estas apps nacen de la fricción que encontraba al aprender idiomas: demasiadas palabras desconocidas, consultar cada dos frases y no recordar nada después. Por eso convertí «entender primero, leer con fluidez después» en un producto. Las ideas y los problemas son bienvenidos por correo."
+  },
+  "pt": {
+    "title": "aiglossa — apps de leitura e idiomas, desenvolvidas de forma independente",
+    "h1": "Um idioma aprende-se lendo-o de verdade",
+    "lede": "Isto é a aiglossa, onde desenvolvo os meus próprios apps. Todos giram em torno de uma ideia: devolver a aprendizagem de idiomas à leitura real, em vez de listas de vocabulário.",
+    "apps_title": "Apps",
+    "scholan_meta": "iOS · 16 idiomas",
+    "learn_more": "Conhecer o Scholan",
+    "support_label": "Suporte",
+    "about_text": "Sou programador independente. Estes apps nascem do atrito que sentia ao aprender idiomas: palavras desconhecidas a mais, uma consulta a cada duas frases e nada retido depois. Por isso transformei «entender primeiro, ler fluentemente depois» num produto. Ideias e problemas são bem-vindos por e-mail."
+  },
+  "it": {
+    "title": "aiglossa — app di lettura e lingue, sviluppate da soli",
+    "h1": "Una lingua si impara leggendola davvero",
+    "lede": "Questo è aiglossa, dove sviluppo le mie app. Girano tutte attorno a un'idea: riportare l'apprendimento delle lingue nella lettura reale, invece che nelle liste di vocaboli.",
+    "apps_title": "App",
+    "scholan_meta": "iOS · 16 lingue",
+    "learn_more": "Scopri Scholan",
+    "support_label": "Supporto",
+    "about_text": "Sono uno sviluppatore indipendente. Queste app nascono dagli attriti che incontravo imparando le lingue: troppe parole sconosciute, una ricerca ogni due frasi e nulla ricordato dopo. Così ho trasformato «capire prima, leggere scorrevolmente dopo» in un prodotto. Idee e problemi sono benvenuti via email."
+  },
+  "ru": {
+    "title": "aiglossa — приложения для чтения и языков, сделанные в одиночку",
+    "h1": "Язык учится, когда вы действительно читаете на нём",
+    "lede": "Это aiglossa — место, где я делаю свои приложения. Все они об одной идее: вернуть изучение языка в настоящее чтение, а не в списки слов.",
+    "apps_title": "Приложения",
+    "scholan_meta": "iOS · 16 языков",
+    "learn_more": "О Scholan",
+    "support_label": "Поддержка",
+    "about_text": "Я независимый разработчик. Эти приложения выросли из того, что мешало мне самому учить язык: слишком много незнакомых слов, поиск каждые две фразы и ничего не остаётся в памяти. Поэтому я превратил «сначала понять, потом читать свободно» в продукт. Идеи и проблемы — пишите на почту."
+  },
+  "ar": {
+    "title": "aiglossa — تطبيقات قراءة ولغات، بتطوير فردي",
+    "h1": "اللغة تُتعلَّم حين تقرأ بها فعلًا",
+    "lede": "هذه aiglossa، حيث أطوّر تطبيقاتي. كلها تدور حول فكرة واحدة: إعادة تعلّم اللغة إلى القراءة الحقيقية بدل قوائم المفردات.",
+    "apps_title": "التطبيقات",
+    "scholan_meta": "iOS · 16 لغة",
+    "learn_more": "تعرّف على Scholan",
+    "support_label": "الدعم",
+    "about_text": "أنا مطوّر مستقل. جاءت هذه التطبيقات من العقبات التي واجهتها وأنا أتعلّم لغة: كلمات مجهولة أكثر من اللازم، وبحث كل جملتين، ثم لا يبقى شيء. لذلك حوّلت «افهم أولًا، ثم اقرأ بسلاسة» إلى منتج. الأفكار والمشكلات مرحّب بها عبر البريد."
+  },
+  "th": {
+    "title": "aiglossa — แอปอ่านหนังสือและเรียนภาษา พัฒนาโดยคนเดียว",
+    "h1": "ภาษาจะติดตัวเมื่อได้อ่านของจริง",
+    "lede": "นี่คือ aiglossa ที่ฉันพัฒนาแอปด้วยตัวเอง ทุกตัวตั้งอยู่บนแนวคิดเดียวกัน คือพาการเรียนภาษากลับไปสู่การอ่านจริง ไม่ใช่ท่องศัพท์",
+    "apps_title": "แอป",
+    "scholan_meta": "iOS · 16 ภาษา",
+    "learn_more": "รู้จัก Scholan",
+    "support_label": "ช่วยเหลือ",
+    "about_text": "ฉันเป็นนักพัฒนาอิสระ แอปเหล่านี้เกิดจากความติดขัดตอนเรียนภาษาด้วยตัวเอง — คำแปลกใหม่มากเกินไป ต้องเปิดหาทุกสองประโยค แล้วก็จำไม่ได้ สิ่งที่เหลืออยู่จึงกลายเป็นผลิตภัณฑ์: «เข้าใจก่อน แล้วค่อยอ่านให้ลื่น» มีไอเดียหรือเจอปัญหา ส่งอีเมลมาได้เลย"
+  },
+  "vi": {
+    "title": "aiglossa — ứng dụng đọc và học ngôn ngữ, phát triển độc lập",
+    "h1": "Học một ngôn ngữ bằng cách thật sự đọc nó",
+    "lede": "Đây là aiglossa, nơi tôi tự làm ứng dụng. Tất cả đều xoay quanh một ý: đưa việc học ngôn ngữ trở lại với việc đọc thật, thay vì danh sách từ vựng.",
+    "apps_title": "Ứng dụng",
+    "scholan_meta": "iOS · 16 ngôn ngữ",
+    "learn_more": "Tìm hiểu Scholan",
+    "support_label": "Hỗ trợ",
+    "about_text": "Tôi là nhà phát triển độc lập. Những ứng dụng này ra đời từ chính những vướng mắc khi tôi học ngoại ngữ: quá nhiều từ lạ, cứ hai câu lại phải tra, và tra xong vẫn không nhớ. Nên tôi biến «hiểu trước, rồi đọc trôi chảy» thành sản phẩm. Có ý tưởng hay gặp lỗi, cứ gửi email cho tôi."
+  },
+  "id": {
+    "title": "aiglossa — aplikasi baca dan bahasa, dikembangkan sendiri",
+    "h1": "Bahasa dipelajari dengan benar-benar membacanya",
+    "lede": "Ini aiglossa, tempat saya membuat aplikasi sendiri. Semuanya berputar pada satu gagasan: mengembalikan pembelajaran bahasa ke bacaan nyata, bukan daftar kosakata.",
+    "apps_title": "Aplikasi",
+    "scholan_meta": "iOS · 16 bahasa",
+    "learn_more": "Kenali Scholan",
+    "support_label": "Dukungan",
+    "about_text": "Saya pengembang independen. Aplikasi ini lahir dari kesulitan yang saya alami saat belajar bahasa: terlalu banyak kata asing, mencari arti tiap dua kalimat, dan tidak ada yang melekat. Karena itu saya menjadikan «pahami dulu, lalu baca dengan lancar» sebagai produk. Ide dan masalah silakan dikirim lewat email."
+  },
+  "tr": {
+    "title": "aiglossa — tek başına geliştirilen okuma ve dil uygulamaları",
+    "h1": "Bir dil, gerçekten okuyarak öğrenilir",
+    "lede": "Burası aiglossa; uygulamalarımı kendim geliştirdiğim yer. Hepsi tek bir fikrin etrafında: dil öğrenmeyi kelime listelerine değil, gerçek okumaya geri döndürmek.",
+    "apps_title": "Uygulamalar",
+    "scholan_meta": "iOS · 16 dil",
+    "learn_more": "Scholan'ı keşfet",
+    "support_label": "Destek",
+    "about_text": "Bağımsız bir geliştiriciyim. Bu uygulamalar, dil öğrenirken yaşadığım sürtünmeden doğdu: çok fazla bilinmeyen sözcük, iki cümlede bir sözlüğe bakmak ve sonrasında akılda hiçbir şey kalmaması. Bu yüzden «önce anla, sonra akıcı oku»yu bir ürüne dönüştürdüm. Fikirler ve sorunlar için e-posta beklerim."
+  }
+}
