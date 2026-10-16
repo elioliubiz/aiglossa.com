@@ -53,16 +53,28 @@ def main() -> int:
 
     # 1) 产物与声明一一对应
     expected: set[Path] = set()
+    declared_extras: list[Path] = []
     for site, spec in sites.items():
         for page in spec["pages"]:
             for lang in codes:
                 for file_rel, _ in outputs_for(page):
                     expected.add(SITES_DIR / site / lang / file_rel)
+        # 手写产物（不按语言分目录、不来自模板）：例如通用链接的回落页，以及
+        # `.well-known/apple-app-site-association`。它们同样必须在 sites.json 里声明，
+        # 否则"产物必须被声明"这条检查就形同虚设。
+        for file_rel in spec.get("extra", []):
+            declared_extras.append(SITES_DIR / site / file_rel)
+    # .html 的手写产物参与"多余/缺失"全量比对；其余（无扩展名的 AASA 等）只查存在，
+    # 因为它们不在 `rglob("*.html")` 的范围里，混进同一个集合会误报"缺失"。
+    expected.update(path for path in declared_extras if path.suffix == ".html")
     actual = set(SITES_DIR.rglob("*.html"))
     for path in sorted(expected - actual):
         problems.append(f"声明了但产物缺失：{path.relative_to(ROOT)}")
     for path in sorted(actual - expected):
         problems.append(f"产物多余（sites.json 未声明）：{path.relative_to(ROOT)}")
+    for path in declared_extras:
+        if not path.exists():
+            problems.append(f"声明的手写产物缺失：{path.relative_to(ROOT)}")
 
     # 2/3) 逐页检查 hreflang / canonical / 占位符 / 旧链接
     for site, spec in sites.items():

@@ -5,6 +5,10 @@
     "pages": [
       "brand",
       "protocol"
+    ],
+    "extra": [
+      "inapp.html",
+      ".well-known/apple-app-site-association"
     ]
   },
   "scholan": {
