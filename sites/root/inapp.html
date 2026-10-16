@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<!-- 通用链接的回落页：只在**没有安装 App** 时才会被看到（装了 App 由系统直接交给 App，不会打开这里）。 -->
+<meta name="robots" content="noindex">
+<title>Scholan</title>
+<style>
+  :root { color-scheme: light dark; --bg: #F2F2F7; --card: #FFFFFF; --fg: #1C1C1E; --muted: #6B7280; --accent: #7441FE; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #000000; --card: #1C1C1E; --fg: #F2F2F7; --muted: #98989F; } }
+  * { -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", system-ui, sans-serif;
+    line-height: 1.6; min-height: 100vh; display: flex; align-items: center; justify-content: center;
+    padding: 24px calc(20px + env(safe-area-inset-left));
+    -webkit-text-size-adjust: 100%; touch-action: manipulation;
+  }
+  .card { width: 100%; max-width: 420px; background: var(--card); border-radius: 20px; padding: 28px 22px; text-align: center; }
+  h1 { font-size: 20px; margin: 0 0 10px; }
+  p { margin: 0; color: var(--muted); font-size: 15px; }
+  .btn {
+    display: inline-block; margin-top: 20px; padding: 13px 30px; border-radius: 999px;
+    background: var(--accent); color: #FFFFFF; font-weight: 600; text-decoration: none;
+  }
+  .btn:active { opacity: .85; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1 id="t-title">Open this link in the Scholan app</h1>
+    <p id="t-body">This link carries an action that runs inside the app. If you don't have Scholan yet, you can get it from the App Store.</p>
+    <a class="btn" id="t-btn" href="https://apps.apple.com/app/id6811801616">Get Scholan</a>
+  </div>
+  <script>
+    // 只做一件事：按浏览器语言切中/英两份文案。刻意不引任何外部资源——为一个回落页再下载
+    // 字体或脚本不划算，而且这里断网也要能看。
+    (function () {
+      var zh = {
+        title: '请在 Scholan App 内打开这个链接',
+        body: '这个链接里带着一个动作，只能在 App 内执行。如果还没有安装 Scholan，可以在 App Store 下载。',
+        btn: '前往 App Store'
+      };
+      if ((navigator.language || 'en').toLowerCase().indexOf('zh') !== 0) return;
+      document.documentElement.lang = 'zh-Hans';
+      document.getElementById('t-title').textContent = zh.title;
+      document.getElementById('t-body').textContent = zh.body;
+      document.getElementById('t-btn').textContent = zh.btn;
+    })();
+  </script>
+</body>
+</html>

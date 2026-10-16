@@ -4,13 +4,23 @@
   "redirects": [
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "aiglossa.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "aiglossa.com"
+        }
+      ],
       "destination": "/en/",
       "permanent": true
     },
     {
       "source": "/",
-      "has": [{ "type": "host", "value": "scholan.aiglossa.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "scholan.aiglossa.com"
+        }
+      ],
       "destination": "/en/",
       "permanent": true
     },
@@ -32,24 +42,71 @@
   ],
   "rewrites": [
     {
+      "source": "/inapp",
+      "has": [
+        {
+          "type": "host",
+          "value": "aiglossa.com"
+        }
+      ],
+      "destination": "/sites/root/inapp.html"
+    },
+    {
       "source": "/:lang/",
-      "has": [{ "type": "host", "value": "aiglossa.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "aiglossa.com"
+        }
+      ],
       "destination": "/sites/root/:lang/index.html"
     },
     {
       "source": "/:lang/",
-      "has": [{ "type": "host", "value": "scholan.aiglossa.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "scholan.aiglossa.com"
+        }
+      ],
       "destination": "/sites/scholan/:lang/index.html"
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "aiglossa.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "aiglossa.com"
+        }
+      ],
       "destination": "/sites/root/:path*"
     },
     {
       "source": "/:path*",
-      "has": [{ "type": "host", "value": "scholan.aiglossa.com" }],
+      "has": [
+        {
+          "type": "host",
+          "value": "scholan.aiglossa.com"
+        }
+      ],
       "destination": "/sites/scholan/:path*"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/.well-known/apple-app-site-association",
+      "has": [
+        {
+          "type": "host",
+          "value": "aiglossa.com"
+        }
+      ],
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ]
     }
   ]
 }
