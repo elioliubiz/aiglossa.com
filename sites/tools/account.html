@@ -191,7 +191,7 @@
       if (data.code !== 200) { showMsg($("account-msg"), data.msg || "Failed to load", "err"); return; }
       $("coins").textContent = data.data.coins;
       $("tracks-hint").textContent = "About " + data.data.tracks_left +
-        " track" + (data.data.tracks_left === 1 ? "" : "s") + " available (45 credits per track).";
+        " × 30s track" + (data.data.tracks_left === 1 ? "" : "s") + " left (45 credits each, longer tracks cost more).";
     }).catch(function () {
       showMsg($("account-msg"), "Network error", "err");
     });
@@ -260,7 +260,7 @@
         if (data.code === 200) {
           $("coins").textContent = data.data.coins;
           $("tracks-hint").textContent = "About " + data.data.tracks_left +
-            " track" + (data.data.tracks_left === 1 ? "" : "s") + " available (45 credits per track).";
+            " × 30s track" + (data.data.tracks_left === 1 ? "" : "s") + " left (45 credits each, longer tracks cost more).";
           if (String(data.data.coins) !== String(initial)) {
             clearInterval(timer);
             showMsg($("account-msg"), "Credits added. Thank you!", "ok");
