@@ -133,3 +133,29 @@ footer{padding:56px 0 72px;background:#0e1118;border-top:1px solid rgba(255,255,
 .app-links a:hover{color:#fff}
 .closing a{color:var(--accent);text-decoration:none}
 .closing a:hover{color:#fff}
+
+/* ---------- 工具站（tools 子域）：行动按钮 + 价格 ---------- */
+.cta{
+  display:inline-flex;align-items:center;gap:8px;margin-top:34px;
+  padding:13px 26px;border-radius:999px;background:var(--accent);color:#0b0d12;
+  font-size:14px;font-weight:600;text-decoration:none;
+  transition:background .2s ease,transform .2s ease;
+}
+.cta:hover{background:var(--accent-soft);transform:translateY(-1px)}
+.section-title{
+  font-size:13px;font-weight:600;letter-spacing:.1em;color:var(--accent);
+  text-transform:uppercase;margin-bottom:40px;
+}
+.pricing-section{padding:120px 0}
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:940px;margin:40px 0 0}
+.pricing .tier{
+  border:1px solid var(--line);border-radius:18px;padding:28px 24px;
+  background:rgba(255,255,255,.04);text-align:start;
+}
+.pricing .name{font-size:13px;font-weight:600;letter-spacing:.06em;color:var(--accent)}
+.pricing .amount{font-size:32px;font-weight:600;letter-spacing:-.02em;color:#fff;margin-top:12px}
+.pricing .unit{font-size:13px;color:var(--muted);margin-top:6px}
+@media(max-width:900px){
+  .pricing{grid-template-columns:1fr}
+  .pricing-section{padding:80px 0}
+}

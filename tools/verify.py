@@ -32,6 +32,7 @@ PAGES: dict[str, list[tuple[str, str]]] = {
     "brand": [("index.html", "")],
     "marketing": [("index.html", "")],
     "support": [("support.html", "support.html")],
+    "tools": [("index.html", "")],
 }
 
 
@@ -49,14 +50,14 @@ def main() -> int:
     vercel = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
 
     problems: list[str] = []
-    want_hreflang = sorted([languages["languages"][c]["hreflang"] for c in codes] + ["x-default"])
 
     # 1) 产物与声明一一对应
     expected: set[Path] = set()
     declared_extras: list[Path] = []
     for site, spec in sites.items():
+        site_codes = spec.get("langs", codes)
         for page in spec["pages"]:
-            for lang in codes:
+            for lang in site_codes:
                 for file_rel, _ in outputs_for(page):
                     expected.add(SITES_DIR / site / lang / file_rel)
         # 手写产物（不按语言分目录、不来自模板）：例如通用链接的回落页，以及
@@ -79,9 +80,12 @@ def main() -> int:
     # 2/3) 逐页检查 hreflang / canonical / 占位符 / 旧链接
     for site, spec in sites.items():
         base = f'https://{spec["host"]}'
+        site_codes = spec.get("langs", codes)
+        site_default = default if default in site_codes else site_codes[0]
+        want_hreflang = sorted([languages["languages"][c]["hreflang"] for c in site_codes] + ["x-default"])
         for page in spec["pages"]:
             for file_rel, url_rel in outputs_for(page):
-                for lang in codes:
+                for lang in site_codes:
                     f = SITES_DIR / site / lang / file_rel
                     if not f.exists():
                         continue
@@ -107,8 +111,8 @@ def main() -> int:
                     if got != want_hreflang:
                         problems.append(f"{where}: hreflang 集合不符（缺 {set(want_hreflang) - set(got)}，多 {set(got) - set(want_hreflang)}）")
                     for code, href in alternates:
-                        # x-default 不是语言码，按规定指向**默认语言**的同一页。
-                        target_lang = default if code == "x-default" else code
+                        # x-default 不是语言码，按规定指向**该站点的默认语言**的同一页。
+                        target_lang = site_default if code == "x-default" else code
                         want = f"{base}/{target_lang}/{url_rel}" if url_rel else f"{base}/{target_lang}/"
                         if href != want:
                             problems.append(f"{where}: hreflang {code} 指向 {href}，应为 {want}")
@@ -122,7 +126,7 @@ def main() -> int:
     for site, spec in sites.items():
         if "protocol" in spec["pages"]:
             continue
-        for lang in codes:
+        for lang in spec.get("langs", codes):
             if (SITES_DIR / site / lang / "protocol").exists():
                 problems.append(f"{site}: 未声明 protocol，但产物里有协议页")
 

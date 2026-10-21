@@ -49,6 +49,8 @@ PAGES = {
     "brand": ("brand.html", "brand", ""),
     "marketing": ("marketing.html", "marketing", ""),
     "support": ("support.html", "support", "support.html"),
+    # 工具站：英文优先的产品，因此该站点在 sites.json 里用 "langs": ["en"] 收窄语言集合。
+    "tools": ("tools.html", "tools", ""),
 }
 
 
@@ -91,6 +93,19 @@ def render_steps(steps: list[dict]) -> str:
             f'          <span class="n">{esc(step["n"])}</span>\n'
             f'          <h3>{esc(step["h"])}</h3>\n'
             f'          <p>{esc(step["p"])}</p>\n'
+            "        </div>"
+        )
+    return "\n".join(out)
+
+
+def render_pricing(tiers: list[dict]) -> str:
+    out = []
+    for tier in tiers:
+        out.append(
+            '        <div class="tier">\n'
+            f'          <div class="name">{esc(tier["name"])}</div>\n'
+            f'          <div class="amount">{esc(tier["price"])}</div>\n'
+            f'          <div class="unit">{esc(tier["unit"])}</div>\n'
             "        </div>"
         )
     return "\n".join(out)
@@ -224,20 +239,23 @@ def main() -> int:
     seen_targets: set[Path] = set()
 
     def emit(site: str, lang: str, depth: int, page_path: str, template_name: str,
-             values_builder) -> None:
+             values_builder, site_langs: list[str]) -> None:
         site_base = f'https://{sites[site]["host"]}'.rstrip("/")
+        # 站点可以收窄语言集合（sites.json 的 "langs"）：没有它时就是全部语言。
+        # x-default 必须指向该站点的默认语言，而默认语言不一定等于全局默认（en）。
+        site_default = default if default in site_langs else site_langs[0]
         where = f"{site}.{lang}.{page_path or 'index'}"
         template_path = TEMPLATES / template_name
         values = {
             "lang": languages[lang]["hreflang"],
             "dir": languages[lang]["dir"],
-            "default": default,
+            "default": site_default,
             "og_locale": languages[lang]["ogLocale"],
             "prefix": "../" * depth,
             "site_base": site_base,
             "canonical": url_for(site_base, lang, page_path),
-            "alternates": alternates_for(site_base, languages, default, page_path, order),
-            "switcher": switcher_details(depth, lang, page_path, languages, order),
+            "alternates": alternates_for(site_base, languages, site_default, page_path, site_langs),
+            "switcher": switcher_details(depth, lang, page_path, languages, site_langs),
         }
         values.update(values_builder(lang, site_base))
         page = render(template_path.read_text(encoding="utf-8"), values, where)
@@ -251,24 +269,30 @@ def main() -> int:
         written.append(f'{where:34s} -> {target.relative_to(ROOT)}')
 
     for site, spec in sites.items():
+        # 站点语言集合：默认全部语言；声明了 "langs" 就只用声明的那些。
+        site_langs = spec.get("langs", order)
+        unknown = [c for c in site_langs if c not in languages]
+        if unknown:
+            print(f"✗ {site}: langs 里有未定义的语言 {unknown}", file=sys.stderr)
+            return 1
         for page in spec["pages"]:
             if page == "protocol":
                 protocol = json.loads((CONTENT / "protocol.json").read_text(encoding="utf-8"))
                 for name in PROTOCOL_PAGES:
                     copy = protocol[name]
-                    missing = [c for c in order if c not in copy]
+                    missing = [c for c in site_langs if c not in copy]
                     if missing:
                         print(f"✗ protocol.{name} 缺语言：{missing}", file=sys.stderr)
                         return 1
-                    for lang in order:
+                    for lang in site_langs:
                         emit(site, lang, 2, f"protocol/{name}.html", f"protocol/{name}.html",
                              lambda lang, base, copy=copy, name=name: {
                                  # 正文按原样插入（旧实现用 innerHTML，文案里本来就带 &copy; 之类的实体）；
                                  # 只有进 <title> 的 page_title 需要转义。
                                  **copy[lang],
                                  "page_title": esc(copy[lang]["page_title"]),
-                                 "switcher": switcher_select(2, lang, f"protocol/{name}.html", languages, order),
-                             })
+                                 "switcher": switcher_select(2, lang, f"protocol/{name}.html", languages, site_langs),
+                             }, site_langs)
                 continue
 
             if page not in PAGES:
@@ -283,7 +307,7 @@ def main() -> int:
                 print(f"✗ 缺文案源：tools/content/{source_key}.json", file=sys.stderr)
                 return 1
             source = json.loads(source_path.read_text(encoding="utf-8"))
-            missing = [c for c in order if c not in source]
+            missing = [c for c in site_langs if c not in source]
             if missing:
                 print(f"✗ {source_key} 缺语言：{missing}", file=sys.stderr)
                 return 1
@@ -342,6 +366,32 @@ def main() -> int:
                         "legal_terms_href": f"{legal_base}/{lang}/protocol/term.html",
                     }
                 values_builder = marketing_values
+            elif page == "tools":
+                def tools_values(lang: str, base: str, source=source) -> dict[str, str]:
+                    # 工具站：法务标签/语言名复用 marketing.json 与 languages.json 的既有译文，
+                    # 只有产品文案（标题、步骤、价格）是这里独有的，不重复翻译同一句话。
+                    locale = source[lang]
+                    return {
+                        "title": esc(locale["title"]),
+                        "description": esc(locale["description"]),
+                        "h1": esc(locale["h1"]),
+                        "lede": esc(locale["lede"]),
+                        "how_title": esc(locale["how_title"]),
+                        "steps": render_steps(locale["steps"]),
+                        "pricing_title": esc(locale["pricing_title"]),
+                        "pricing": render_pricing(locale["pricing"]),
+                        "note": esc(locale["note"]),
+                        "cta_label": esc(locale["cta_label"]),
+                        "cta_href": f'mailto:{locale["cta_mail"]}',
+                        "lang_label": esc(marketing[lang]["langLabel"]),
+                        "current_name": esc(languages[lang]["name"]),
+                        "brand": esc("aiglossa · " + sites[site]["host"]),
+                        "legal_privacy": esc(marketing[lang]["legal"]["privacy"]),
+                        "legal_terms": esc(marketing[lang]["legal"]["terms"]),
+                        "legal_privacy_href": f"{legal_base}/{lang}/protocol/privacy.html",
+                        "legal_terms_href": f"{legal_base}/{lang}/protocol/term.html",
+                    }
+                values_builder = tools_values
             else:
                 protocol = json.loads((CONTENT / "protocol.json").read_text(encoding="utf-8"))
 
@@ -364,8 +414,8 @@ def main() -> int:
 
                 values_builder = support_values
 
-            for lang in order:
-                emit(site, lang, depth, page_path, template_name, values_builder)
+            for lang in site_langs:
+                emit(site, lang, depth, page_path, template_name, values_builder, site_langs)
 
         if not args.check and ASSETS.is_dir():
             target_assets = SITES_DIR / site / "assets"
@@ -377,7 +427,7 @@ def main() -> int:
     print(("校验通过（未写文件）" if args.check else "已生成页面") + "：")
     for line in written:
         print("  " + line)
-    print(f"\n共 {len(order)} 种语言 × {len(sites)} 个站点。")
+    print(f"\n共 {len(sites)} 个站点，各站语言集合见上（全局默认 {default}）。")
     return 0
 
 

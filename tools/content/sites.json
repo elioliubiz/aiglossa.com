@@ -18,5 +18,15 @@
       "marketing",
       "support"
     ]
+  },
+  "tools": {
+    "host": "tools.aiglossa.com",
+    "legal": false,
+    "langs": [
+      "en"
+    ],
+    "pages": [
+      "tools"
+    ]
   }
 }
