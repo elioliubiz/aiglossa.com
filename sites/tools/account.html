@@ -37,6 +37,13 @@
   .balance small{font-size:14px;font-weight:400;color:var(--muted);margin-left:6px}
   .row-between{display:flex;align-items:center;justify-content:space-between;gap:16px}
   .hidden{display:none !important}
+  .packs{display:grid;gap:10px;margin-top:22px}
+  .pack{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
+        padding:14px 18px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);
+        color:var(--fg);font-size:14px;font-family:inherit;cursor:pointer;text-align:start}
+  .pack:hover{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.06)}
+  .pack b{font-weight:600}
+  .pack span{color:var(--muted);font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
@@ -83,6 +90,9 @@
         <div class="balance"><span id="coins">—</span><small>credits</small></div>
         <p class="hint" id="tracks-hint">—</p>
         <p class="hint" id="account-email" style="margin-bottom:0"></p>
+
+        <div class="packs" id="packs"></div>
+
         <div class="msg" id="account-msg" role="status" aria-live="polite"></div>
       </div>
 
@@ -164,6 +174,7 @@
     $("signin-card").classList.add("hidden");
     $("account-card").classList.remove("hidden");
     $("account-email").textContent = localStorage.getItem(EMAIL_KEY) || "";
+    renderPacks();
     loadCredits();
   }
 
@@ -193,6 +204,72 @@
     if (data.data.user && data.data.user.email) localStorage.setItem(EMAIL_KEY, data.data.user.email);
     showMsg($("signin-msg"), "", "");
     renderSignedIn();
+  }
+
+  // --- 充值：额度包 ---
+  var PACKS = [
+    { credits: 180,  price: "$2.39" },
+    { credits: 360,  price: "$3.99" },
+    { credits: 750,  price: "$7.99" },
+    { credits: 1500, price: "$15.99" },
+    { credits: 4000, price: "$39.99" }
+  ];
+
+  function renderPacks() {
+    var box = $("packs");
+    if (box.dataset.ready) return;
+    box.dataset.ready = "1";
+    PACKS.forEach(function (p) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "pack";
+      btn.innerHTML = "<b>" + p.credits + " credits</b><span>" + p.price + "</span>";
+      btn.addEventListener("click", function () { buy(p.credits, btn); });
+      box.appendChild(btn);
+    });
+  }
+
+  function buy(credits, btn) {
+    btn.disabled = true;
+    showMsg($("account-msg"), "Opening checkout…", "");
+    call("/ai/music/checkout", { credits: credits }, true).then(function (data) {
+      if (data.code === 401) { setToken(""); renderSignedOut(); return; }
+      if (data.code !== 200) {
+        showMsg($("account-msg"), data.msg || "Could not start checkout", "err");
+        btn.disabled = false;
+        return;
+      }
+      // 整页跳转到 Creem 托管的结账页；付款完成后回到本页（?paid=1）。
+      location.href = data.data.checkout_url;
+    }).catch(function () {
+      showMsg($("account-msg"), "Network error", "err");
+      btn.disabled = false;
+    });
+  }
+
+  // 付款回跳后，webhook 可能比页面晚几秒到账：轮询到余额变化为止（最多 30 秒）。
+  function pollAfterPayment() {
+    var tries = 0;
+    var initial = $("coins").textContent;
+    showMsg($("account-msg"), "Payment received — credits will appear in a moment…", "ok");
+    var timer = setInterval(function () {
+      tries += 1;
+      call("/ai/music/credits", {}, true).then(function (data) {
+        if (data.code === 200) {
+          $("coins").textContent = data.data.coins;
+          $("tracks-hint").textContent = "About " + data.data.tracks_left +
+            " track" + (data.data.tracks_left === 1 ? "" : "s") + " available (45 credits per track).";
+          if (String(data.data.coins) !== String(initial)) {
+            clearInterval(timer);
+            showMsg($("account-msg"), "Credits added. Thank you!", "ok");
+          }
+        }
+        if (tries >= 15) {
+          clearInterval(timer);
+          showMsg($("account-msg"), "Still processing — refresh this page in a minute.", "");
+        }
+      }).catch(function () {});
+    }, 2000);
   }
 
   // --- Google（GIS 回调）---
@@ -239,7 +316,12 @@
   });
 
   // 启动
-  if (token()) renderSignedIn(); else renderSignedOut();
+  if (token()) {
+    renderSignedIn();
+    if (new URLSearchParams(location.search).get("paid")) pollAfterPayment();
+  } else {
+    renderSignedOut();
+  }
 })();
 </script>
 </body>
