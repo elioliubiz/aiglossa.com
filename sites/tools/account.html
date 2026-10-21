@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-default-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in — aiglossa tools</title>
+<meta name="description" content="Sign in to aiglossa tools to see your credits and download generated music.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://tools.aiglossa.com/account.html">
+<meta name="theme-color" content="#0b0d12">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  .auth-card{max-width:520px;margin:56px auto 0;padding:32px;border:1px solid var(--line);
+             border-radius:18px;background:rgba(255,255,255,.04);text-align:start}
+  .auth-card h1{font-size:24px;margin-bottom:8px}
+  .auth-card .hint{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:24px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+  .field input{width:100%;padding:11px 13px;border-radius:10px;border:1px solid var(--line);
+               background:#0e1118;color:var(--fg);font-size:15px;font-family:inherit}
+  .field input:focus{outline:none;border-color:var(--accent)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;
+       padding:12px 18px;border-radius:999px;border:0;cursor:pointer;
+       background:var(--accent);color:#0b0d12;font-size:14px;font-weight:600;font-family:inherit}
+  .btn:hover{background:var(--accent-soft)}
+  .btn[disabled]{opacity:.5;cursor:not-allowed}
+  .btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.24);background:transparent}
+  .divider{display:flex;align-items:center;gap:12px;margin:22px 0;color:var(--dim);font-size:12px}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+  .msg{margin-top:16px;font-size:13.5px;line-height:1.6;min-height:20px}
+  .msg.err{color:#ff9d9d}
+  .msg.ok{color:#9dffb0}
+  .balance{font-size:40px;font-weight:600;letter-spacing:-.02em;margin:10px 0 4px}
+  .balance small{font-size:14px;font-weight:400;color:var(--muted);margin-left:6px}
+  .row-between{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .hidden{display:none !important}
+</style>
+</head>
+<body>
+<main>
+  <section class="hero" style="min-height:auto;padding:80px 0 60px">
+    <div class="wrap">
+      <p class="kicker">AIGLOSSA TOOLS</p>
+
+      <!-- 未登录 -->
+      <div class="auth-card" id="signin-card">
+        <h1>Sign in</h1>
+        <p class="hint">Sign in only to keep your credits. No subscription, no marketing email.</p>
+
+        <div id="g_id_onload"
+             data-client_id="801915920503-8nhv7tktogpn6nha9fkv1nctb7o2hsfc.apps.googleusercontent.com"
+             data-callback="onGoogleCredential"
+             data-auto_prompt="false"></div>
+        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_black"
+             data-text="signin_with" data-size="large" data-logo_alignment="left"></div>
+
+        <div class="divider">or use email</div>
+
+        <form id="email-form" autocomplete="on">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+          </div>
+          <div class="field hidden" id="code-field">
+            <label for="code">6-digit code</label>
+            <input id="code" name="code" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="123456">
+          </div>
+          <button class="btn" type="submit" id="email-submit">Send code</button>
+        </form>
+
+        <div class="msg" id="signin-msg" role="status" aria-live="polite"></div>
+      </div>
+
+      <!-- 已登录 -->
+      <div class="auth-card hidden" id="account-card">
+        <div class="row-between">
+          <h1>Credits</h1>
+          <button class="btn btn-ghost" id="logout" style="width:auto;padding:8px 16px">Sign out</button>
+        </div>
+        <div class="balance"><span id="coins">—</span><small>credits</small></div>
+        <p class="hint" id="tracks-hint">—</p>
+        <p class="hint" id="account-email" style="margin-bottom:0"></p>
+        <div class="msg" id="account-msg" role="status" aria-live="polite"></div>
+      </div>
+
+      <p class="hint" style="max-width:520px;margin:24px auto 0;text-align:center">
+        <a href="./" style="color:var(--accent);text-decoration:none">← Back to tools</a>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span class="brand">aiglossa · tools.aiglossa.com</span>
+    <nav class="legal">
+      <a href="https://aiglossa.com/en/protocol/privacy.html">Privacy Policy</a>
+      <a href="https://aiglossa.com/en/protocol/term.html">Terms of Service</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+(function () {
+  "use strict";
+
+  // 环境判断：只看 hostname。正式站连 api，其余（localhost / 预览）一律连 dev。
+  var API = location.hostname === "tools.aiglossa.com"
+    ? "https://api.aiglossa.com"
+    : "https://dev.aiglossa.com";
+
+  var APP_KEY = "tools";
+  var TOKEN_KEY = "aig_token";
+  var DEVICE_KEY = "aig_device";
+  var EMAIL_KEY = "aig_email";
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  function deviceId() {
+    var id = localStorage.getItem(DEVICE_KEY);
+    if (!id) {
+      id = (crypto.randomUUID ? crypto.randomUUID()
+        : "web-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 10));
+      localStorage.setItem(DEVICE_KEY, id);
+    }
+    return id;
+  }
+
+  function token() { return localStorage.getItem(TOKEN_KEY) || ""; }
+  function setToken(t) { t ? localStorage.setItem(TOKEN_KEY, t) : localStorage.removeItem(TOKEN_KEY); }
+
+  // 统一请求：所有 web 请求都带 X-Client: web（后端据此走明文通道）。
+  // Origin 由浏览器自动携带，服务端按白名单校验。
+  function call(path, body, authed) {
+    var headers = { "Content-Type": "application/json", "X-Client": "web" };
+    if (authed && token()) headers["Authorization"] = "Bearer " + token();
+
+    var payload = Object.assign({
+      app_key: APP_KEY,
+      device: deviceId(),
+      timestamp: Math.floor(Date.now() / 1000)
+    }, body || {});
+
+    return fetch(API + path, {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(payload)
+    }).then(function (res) {
+      // 业务码在响应体的 code 字段里（HTTP 仍是 200），401 表示登录失效。
+      return res.json().catch(function () { return { code: res.status, msg: "Bad response" }; });
+    });
+  }
+
+  function showMsg(el, text, kind) {
+    el.textContent = text || "";
+    el.className = "msg" + (kind ? " " + kind : "");
+  }
+
+  function renderSignedIn() {
+    $("signin-card").classList.add("hidden");
+    $("account-card").classList.remove("hidden");
+    $("account-email").textContent = localStorage.getItem(EMAIL_KEY) || "";
+    loadCredits();
+  }
+
+  function renderSignedOut() {
+    $("account-card").classList.add("hidden");
+    $("signin-card").classList.remove("hidden");
+  }
+
+  function loadCredits() {
+    call("/ai/music/credits", {}, true).then(function (data) {
+      if (data.code === 401) { setToken(""); renderSignedOut(); return; }
+      if (data.code !== 200) { showMsg($("account-msg"), data.msg || "Failed to load", "err"); return; }
+      $("coins").textContent = data.data.coins;
+      $("tracks-hint").textContent = "About " + data.data.tracks_left +
+        " track" + (data.data.tracks_left === 1 ? "" : "s") + " available (45 credits per track).";
+    }).catch(function () {
+      showMsg($("account-msg"), "Network error", "err");
+    });
+  }
+
+  function acceptToken(data) {
+    if (data.code !== 200) {
+      showMsg($("signin-msg"), data.msg || "Sign-in failed", "err");
+      return;
+    }
+    setToken(data.data.access_token);
+    if (data.data.user && data.data.user.email) localStorage.setItem(EMAIL_KEY, data.data.user.email);
+    showMsg($("signin-msg"), "", "");
+    renderSignedIn();
+  }
+
+  // --- Google（GIS 回调）---
+  window.onGoogleCredential = function (response) {
+    if (!response || !response.credential) return;
+    showMsg($("signin-msg"), "Signing in…", "");
+    call("/auth/social/login", { provider: "google", id_token: response.credential })
+      .then(acceptToken)
+      .catch(function () { showMsg($("signin-msg"), "Network error", "err"); });
+  };
+
+  // --- 邮箱验证码：两步（发码 → 登录）---
+  var codeSent = false;
+  $("email-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var email = $("email").value.trim();
+    if (!email) return;
+
+    if (!codeSent) {
+      showMsg($("signin-msg"), "Sending…", "");
+      call("/auth/code/send", { account: email, purpose: "login" }).then(function (data) {
+        if (data.code !== 200) { showMsg($("signin-msg"), data.msg || "Failed to send", "err"); return; }
+        codeSent = true;
+        $("code-field").classList.remove("hidden");
+        $("email-submit").textContent = "Sign in";
+        $("code").focus();
+        showMsg($("signin-msg"), "Code sent. Check your inbox.", "ok");
+      }).catch(function () { showMsg($("signin-msg"), "Network error", "err"); });
+      return;
+    }
+
+    var code = $("code").value.trim();
+    if (!code) return;
+    showMsg($("signin-msg"), "Signing in…", "");
+    call("/auth/login", { provider: "code", account: email, code: code })
+      .then(acceptToken)
+      .catch(function () { showMsg($("signin-msg"), "Network error", "err"); });
+  });
+
+  $("logout").addEventListener("click", function () {
+    call("/auth/logout", {}, true).catch(function () {});
+    setToken("");
+    renderSignedOut();
+  });
+
+  // 启动
+  if (token()) renderSignedIn(); else renderSignedOut();
+})();
+</script>
+</body>
+</html>
