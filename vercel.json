@@ -25,6 +25,17 @@
       "permanent": true
     },
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
+      "destination": "/en/",
+      "permanent": true
+    },
+    {
       "source": "/protocol/privacy.html",
       "destination": "/en/protocol/privacy.html",
       "permanent": true
@@ -90,6 +101,16 @@
         }
       ],
       "destination": "/sites/scholan/:path*"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/tools/:path*"
     }
   ],
   "headers": [

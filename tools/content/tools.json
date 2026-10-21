@@ -1,0 +1,47 @@
+{
+  "en": {
+    "title": "Tools — exact-length background music",
+    "description": "Generate royalty-free background music at an exact length — 15, 30 or 60 seconds — loop-ready, with stems and a commercial license. Built for video editors, podcasters and game developers.",
+    "h1": "Music that fits the cut",
+    "lede": "A royalty-free track at exactly the length you need — 15, 30 or 60 seconds. Loop-ready, stem-separated, with a commercial license included.",
+    "how_title": "How it works",
+    "steps": [
+      {
+        "n": "01",
+        "h": "Describe it",
+        "p": "Pick a mood, a tempo and a length — or drop in an image and let it set the tone."
+      },
+      {
+        "n": "02",
+        "h": "Generate",
+        "p": "A few seconds later you get a track that starts and ends exactly where your cut does."
+      },
+      {
+        "n": "03",
+        "h": "Download",
+        "p": "WAV, MP3 and separated stems, with a license you can hand to a client."
+      }
+    ],
+    "pricing_title": "Pricing",
+    "pricing": [
+      {
+        "name": "Starter",
+        "price": "$9",
+        "unit": "10 tracks"
+      },
+      {
+        "name": "Creator",
+        "price": "$29",
+        "unit": "40 tracks"
+      },
+      {
+        "name": "Studio",
+        "price": "$99",
+        "unit": "200 tracks"
+      }
+    ],
+    "note": "In early development. The first tracks will be free — write to us and we will let you know the moment the generator opens.",
+    "cta_label": "Get early access",
+    "cta_mail": "support@aiglossa.com"
+  }
+}
