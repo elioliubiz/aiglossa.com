@@ -4,92 +4,130 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Create music — aiglossa tools</title>
-<meta name="description" content="Generate background music with exact length and seamless loops." />
+<meta name="description" content="Background music with exact length and seamless loops. Listen first, no sign-up needed." />
 <link rel="stylesheet" href="/assets/site.css" />
 <style>
-  .panel{max-width:760px;margin:0 auto;padding:48px 24px 80px}
-  .kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
-  h1{font-size:30px;line-height:1.2;margin:14px 0 8px;font-weight:600}
-  .sub{color:var(--muted);font-size:15px;margin-bottom:28px}
-  .card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:16px;padding:26px}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
-  .chip{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;
-        color:var(--fg);font-size:13px;font-family:inherit;cursor:pointer}
-  .chip:hover{border-color:rgba(255,255,255,.24)}
-  .chip[aria-pressed="true"]{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}
-  .field{margin-bottom:18px}
-  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px}
-  .opts{display:flex;flex-wrap:wrap;gap:8px}
-  .opt{padding:8px 14px;border-radius:10px;border:1px solid var(--line);background:transparent;
-       color:var(--fg);font-size:13px;font-family:inherit;cursor:pointer}
-  .opt[aria-pressed="true"]{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.34)}
-  .opt small{display:block;color:var(--muted);font-size:11px}
-  input[type=range]{width:100%}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;
-       padding:15px 20px;border-radius:12px;border:0;background:var(--accent);color:#0b0d12;
-       font-size:15px;font-weight:600;font-family:inherit;cursor:pointer}
-  .btn[disabled]{opacity:.55;cursor:not-allowed}
-  .btn.secondary{background:transparent;border:1px solid var(--line);color:var(--fg);font-weight:500}
-  .msg{min-height:20px;font-size:13px;margin-top:14px}
+  :root{--warm:#ff8a4c;--warm-soft:rgba(255,138,76,.16)}
+  .page{max-width:1080px;margin:0 auto;padding:0 24px 96px}
+  .bar{display:flex;align-items:center;justify-content:space-between;gap:16px;
+       padding:18px 0;border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+  .bar a{color:var(--fg);text-decoration:none}
+  .brand{letter-spacing:.18em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+  .intro{padding:56px 0 20px;max-width:720px}
+  h1{font-size:clamp(30px,4.6vw,44px);line-height:1.1;letter-spacing:-.02em;margin:0 0 14px;font-weight:600;background:none;-webkit-text-fill-color:currentColor;color:var(--fg)}
+  .lede{color:var(--muted);font-size:16px;line-height:1.55;margin:0}
+  h2{font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+     font-weight:500;margin:56px 0 18px}
+
+  .samples{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  @media(max-width:760px){.samples{grid-template-columns:1fr}}
+  .sample{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid var(--line);
+          border-radius:14px;background:rgba(255,255,255,.02);cursor:pointer;text-align:left;
+          color:var(--fg);font-family:inherit;transition:border-color .15s,background .15s}
+  .sample:hover{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.05)}
+  .sample[data-active="true"]{border-color:var(--warm);background:var(--warm-soft)}
+  .play{width:38px;height:38px;flex:0 0 38px;border-radius:50%;border:1px solid var(--line);
+        background:rgba(255,255,255,.06);display:grid;place-items:center;color:var(--fg);font-size:11px}
+  .sample[data-active="true"] .play{background:var(--warm);border-color:var(--warm);color:#17110d}
+  .s-name{font-size:14px;font-weight:500;margin-bottom:3px}
+  .s-meta{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .wave{flex:1;height:26px;display:flex;align-items:center;gap:2px;opacity:.45}
+  .wave i{display:block;width:2px;border-radius:1px;background:currentColor}
+
+  .studio{margin-top:18px;border:1px solid var(--line);border-radius:18px;padding:26px;
+          background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015))}
+  .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 26px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .field label{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+               color:var(--muted);margin-bottom:9px}
+  .opts{display:flex;flex-wrap:wrap;gap:7px}
+  .opt{padding:7px 12px;border-radius:9px;border:1px solid var(--line);background:transparent;
+       color:var(--fg);font-size:13px;font-family:inherit;cursor:pointer;transition:all .12s}
+  .opt:hover{border-color:rgba(255,255,255,.24)}
+  .opt[aria-pressed="true"]{background:rgba(255,138,76,.18);border-color:rgba(255,138,76,.55);color:#ffd9c4}
+  .hint{font-size:11px;color:var(--muted);margin-top:6px;font-variant-numeric:tabular-nums}
+  input[type=range]{width:100%;accent-color:var(--warm)}
+
+  .actions{display:flex;align-items:center;gap:14px;margin-top:26px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;
+       border-radius:12px;border:0;background:var(--warm);color:#17110d;font-size:15px;font-weight:600;
+       font-family:inherit;cursor:pointer;text-decoration:none}
+  .btn[disabled]{opacity:.5;cursor:not-allowed}
+  .btn.ghost{background:transparent;border:1px solid var(--line);color:var(--fg);font-weight:500}
+  .cost{font-size:12px;color:var(--muted)}
+  .msg{font-size:13px;margin-top:14px;min-height:18px}
   .msg.err{color:#ff9b9b}.msg.ok{color:#9be7b0}
-  .result{margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}
-  audio{width:100%;margin:12px 0}
+
+  .result{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+  .result.hidden{display:none}
+  audio{width:100%;margin-bottom:10px}
   .meta{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
-  .row{display:flex;gap:10px;margin-top:14px}
-  .hidden{display:none !important}
-  .hint{font-size:12px;color:var(--muted)}
+  .row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+  #saveRow{display:flex;gap:10px;margin-top:10px}
+  #saveRow.hidden{display:none}
+  #recipeName{flex:1;padding:12px 14px;border-radius:10px;border:1px solid var(--line);
+              background:rgba(255,255,255,.04);color:var(--fg);font-family:inherit;font-size:14px}
+  .note{margin-top:34px;font-size:12px;color:var(--muted)}
+  .note a{color:var(--fg)}
 </style>
 </head>
 <body>
-  <main class="panel">
-    <div class="kicker">AIGLOSSA TOOLS</div>
-    <h1>Create music</h1>
-    <p class="sub">Pick a recipe or tune the parameters. Exact length, seamless loop. 45 credits per track.</p>
+<div class="page">
+  <div class="bar">
+    <span class="brand">aiglossa tools</span>
+    <span id="account"><a href="account.html">Sign in</a></span>
+  </div>
 
-    <div class="card" id="gate">
-      <p class="sub" style="margin:0 0 16px">Sign in to create and keep your credits.</p>
-      <a class="btn secondary" href="account.html" style="text-decoration:none">Sign in</a>
+  <header class="intro">
+    <h1>Music that fits the cut, exactly.</h1>
+    <p class="lede">30.0 seconds means 30.0 seconds. Loops that don't click at the seam.
+      Listen to a few below — no account needed.</p>
+  </header>
+
+  <h2>Hear what you get</h2>
+  <div class="samples" id="samples"></div>
+
+  <h2>Make your own</h2>
+  <div class="studio">
+    <div class="grid" id="form"></div>
+    <div class="actions">
+      <button class="btn" id="go" type="button">Generate</button>
+      <span class="cost">45 credits per track · <span id="balance">—</span></span>
     </div>
+    <div class="msg" id="msg" role="status" aria-live="polite"></div>
 
-    <div class="card hidden" id="studio">
-      <div class="chips" id="recipes"></div>
-      <div id="form"></div>
-      <button class="btn" id="go" type="button">Generate · 45 credits</button>
-      <div class="msg" id="msg" role="status" aria-live="polite"></div>
-
-      <div class="result hidden" id="result">
-        <audio id="player" controls preload="metadata"></audio>
-        <div class="meta" id="meta"></div>
-        <div class="row">
-          <a class="btn secondary" id="download" href="#" download style="text-decoration:none;width:auto">Download</a>
-          <button class="btn secondary" id="save" type="button">Save as recipe</button>
-        </div>
-        <div class="row hidden" id="saveRow">
-          <input id="recipeName" type="text" maxlength="100" placeholder="Recipe name"
-                 style="flex:1;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--fg);font-family:inherit;font-size:14px" />
-          <button class="btn secondary" id="saveConfirm" type="button" style="width:auto">Save</button>
-        </div>
+    <div class="result hidden" id="result">
+      <audio id="player" controls preload="metadata"></audio>
+      <div class="meta" id="meta"></div>
+      <div class="row">
+        <a class="btn ghost" id="download" href="#" download>Download</a>
+        <button class="btn ghost" id="save" type="button">Save as recipe</button>
+        <button class="btn ghost" id="again" type="button">Generate another</button>
+      </div>
+      <div id="saveRow" class="hidden">
+        <input id="recipeName" type="text" maxlength="100" placeholder="Recipe name" />
+        <button class="btn" id="saveConfirm" type="button">Save</button>
       </div>
     </div>
+  </div>
 
-    <p class="hint" style="margin-top:26px"><a href="./">← Back to tools</a></p>
-  </main>
+  <p class="note"><a href="./">← All tools</a></p>
+</div>
 
 <script>
 (function () {
   "use strict";
-
   var TOKEN_KEY = "aig_token";
   var API = location.hostname === "tools.aiglossa.com"
     ? "https://api.aiglossa.com"
     : "https://dev.aiglossa.com";
   var $ = function (id) { return document.getElementById(id); };
   var token = function () { return localStorage.getItem(TOKEN_KEY) || ""; };
-  var device = function () {
+  function device() {
     var v = localStorage.getItem("aig_device");
     if (!v) { v = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())); localStorage.setItem("aig_device", v); }
     return v;
-  };
+  }
 
   function call(path, body, auth) {
     var headers = { "Content-Type": "application/json", "X-Client": "web" };
@@ -98,33 +136,74 @@
     return fetch(API + path, { method: "POST", headers: headers, body: JSON.stringify(payload) })
       .then(function (r) { return r.json(); });
   }
+  function msg(t, kind) { var el = $("msg"); el.textContent = t || ""; el.className = "msg" + (kind ? " " + kind : ""); }
 
-  function msg(text, kind) {
-    var el = $("msg");
-    el.textContent = text || "";
-    el.className = "msg" + (kind ? " " + kind : "");
+  var schema = null, values = {}, currentRecipe = null, audio = null, activeCard = null;
+
+  // ---------- 样例试听（不需要登录） ----------
+  function waveBars(seed) {
+    var out = "", n = 34;
+    for (var i = 0; i < n; i++) {
+      var h = 4 + Math.abs(Math.sin((i + 1) * (seed + 1) * 0.7)) * 18;
+      out += '<i style="height:' + h.toFixed(1) + 'px"></i>';
+    }
+    return out;
   }
 
-  var schema = null;
-  var values = {};
-  var currentRecipe = null;
+  function renderSamples(items) {
+    var box = $("samples");
+    box.innerHTML = "";
+    items.filter(function (r) { return r.sample_url; }).forEach(function (r, idx) {
+      var card = document.createElement("button");
+      card.type = "button";
+      card.className = "sample";
+      card.dataset.active = "false";
+      card.innerHTML =
+        '<span class="play">▶</span>' +
+        '<span style="flex:1;min-width:0">' +
+          '<div class="s-name">' + r.name + '</div>' +
+          '<div class="s-meta">' + r.params.duration_seconds + 's · ' + r.params.bpm + ' BPM' +
+            (r.params.loop ? ' · loop' : '') + '</div>' +
+        '</span>' +
+        '<span class="wave">' + waveBars(idx) + '</span>';
+      card.addEventListener("click", function () { toggleSample(r, card); });
+      box.appendChild(card);
+    });
+  }
 
-  // ---- 表单渲染：只认 type，不认具体参数（后端加字段时这里不用改） ----
+  function toggleSample(recipe, card) {
+    if (audio && activeCard === card && !audio.paused) {
+      audio.pause(); card.dataset.active = "false"; card.querySelector(".play").textContent = "▶";
+      return;
+    }
+    if (!audio) {
+      audio = new Audio();
+      audio.addEventListener("ended", function () {
+        if (activeCard) { activeCard.dataset.active = "false"; activeCard.querySelector(".play").textContent = "▶"; }
+      });
+    }
+    // 样例是站点静态文件（tools 站自己托管），与 API 无关
+    window.__sampleAudio = audio; // 调试用：合成点击不算用户手势，真实点击才播放
+    audio.src = recipe.sample_url;
+    audio.play();
+    if (activeCard) { activeCard.dataset.active = "false"; activeCard.querySelector(".play").textContent = "▶"; }
+    activeCard = card; card.dataset.active = "true"; card.querySelector(".play").textContent = "❚❚";
+    loadRecipe(recipe);
+  }
+
+  // ---------- 表单（只认 type，加参数不用改这里） ----------
   function renderForm() {
     var box = $("form");
     box.innerHTML = "";
     schema.fields.forEach(function (f) {
       var wrap = document.createElement("div");
-      wrap.className = "field";
-      wrap.dataset.key = f.key;
-
+      wrap.className = "field"; wrap.dataset.key = f.key;
       var label = document.createElement("label");
       label.textContent = (f.label && (f.label.en || f.label["zh-Hans"])) || f.key;
       wrap.appendChild(label);
 
       if (f.type === "enum") {
-        var opts = document.createElement("div");
-        opts.className = "opts";
+        var opts = document.createElement("div"); opts.className = "opts";
         f.options.forEach(function (o) {
           var b = document.createElement("button");
           b.type = "button"; b.className = "opt";
@@ -133,33 +212,27 @@
           b.addEventListener("click", function () {
             values[f.key] = o.value;
             opts.querySelectorAll(".opt").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
-            b.setAttribute("aria-pressed", "true");
-            applyVisibility();
+            b.setAttribute("aria-pressed", "true"); applyVisibility();
           });
           opts.appendChild(b);
         });
         wrap.appendChild(opts);
       } else if (f.type === "multi") {
-        var mopts = document.createElement("div");
-        mopts.className = "opts";
+        var m = document.createElement("div"); m.className = "opts";
         f.options.forEach(function (o) {
           var b = document.createElement("button");
           b.type = "button"; b.className = "opt";
           b.textContent = (o.label && (o.label.en || o.label["zh-Hans"])) || o.value;
           b.setAttribute("aria-pressed", String((values[f.key] || []).indexOf(o.value) >= 0));
           b.addEventListener("click", function () {
-            var cur = values[f.key] || [];
-            var i = cur.indexOf(o.value);
+            var cur = values[f.key] || [], i = cur.indexOf(o.value);
             if (i >= 0) { cur.splice(i, 1); b.setAttribute("aria-pressed", "false"); }
-            else {
-              if (cur.length >= (f.max || 99)) { msg("Up to " + f.max + " instruments", "err"); return; }
-              cur.push(o.value); b.setAttribute("aria-pressed", "true");
-            }
+            else { if (cur.length >= (f.max || 99)) { msg("Up to " + f.max, "err"); return; } cur.push(o.value); b.setAttribute("aria-pressed", "true"); }
             values[f.key] = cur; msg("");
           });
-          mopts.appendChild(b);
+          m.appendChild(b);
         });
-        wrap.appendChild(mopts);
+        wrap.appendChild(m);
       } else if (f.type === "bool") {
         var t = document.createElement("button");
         t.type = "button"; t.className = "opt";
@@ -169,68 +242,57 @@
         wrap.appendChild(t);
       } else if (f.type === "int") {
         var input = document.createElement("input");
-        input.type = "range";
-        input.min = f.min; input.max = f.max; input.step = f.step || 1; input.value = values[f.key];
-        var out = document.createElement("div");
-        out.className = "hint"; out.textContent = values[f.key] + " BPM";
+        input.type = "range"; input.min = f.min; input.max = f.max; input.step = f.step || 1; input.value = values[f.key];
+        var out = document.createElement("div"); out.className = "hint"; out.textContent = values[f.key] + " BPM";
         input.addEventListener("input", function () { values[f.key] = Number(input.value); out.textContent = input.value + " BPM"; });
         wrap.appendChild(input); wrap.appendChild(out);
       }
-
       box.appendChild(wrap);
     });
     applyVisibility();
   }
 
-  // visible_when：例如循环时隐藏 BPM 滑块（此时 BPM 必须取整小节值）
   function applyVisibility() {
     schema.fields.forEach(function (f) {
       if (!f.visible_when) return;
       var el = document.querySelector('.field[data-key="' + f.key + '"]');
       if (!el) return;
       var show = Object.keys(f.visible_when).every(function (k) { return values[k] === f.visible_when[k]; });
-      el.classList.toggle("hidden", !show);
+      el.style.display = show ? "" : "none";
     });
     if (values.loop) {
-      var legal = (f_by_key("bpm") && f_by_key("bpm").bpm_by_duration || {})[String(values.duration_seconds)] || [];
+      var bpmField = schema.fields.filter(function (f) { return f.key === "bpm"; })[0] || {};
+      var legal = (bpmField.bpm_by_duration || {})[String(values.duration_seconds)] || [];
       if (legal.length && legal.indexOf(values.bpm) < 0) values.bpm = legal[0];
     }
+    syncGoLabel();
   }
 
-  function f_by_key(key) {
-    return (schema.fields || []).filter(function (f) { return f.key === key; })[0];
+  function schemaDefaults() {
+    var d = {};
+    schema.fields.forEach(function (f) { d[f.key] = f.type === "multi" ? (f.default || []).slice() : f.default; });
+    return d;
   }
 
-  // ---- 配方 ----
-  function renderRecipes(items) {
-    var box = $("recipes");
-    box.innerHTML = "";
-    // 自己的配方排在前面：系统配方有 8 个，slice 会把用户刚存的挤掉（实测踩过）。
-    var ordered = items.filter(function (r) { return !r.is_system; })
-      .concat(items.filter(function (r) { return r.is_system; }));
-    ordered.slice(0, 14).forEach(function (r) {
-      var b = document.createElement("button");
-      b.type = "button"; b.className = "chip";
-      b.textContent = (r.is_system ? "" : "★ ") + r.name;
-      b.title = r.is_system ? "System recipe" : "Your recipe";
-      b.addEventListener("click", function () {
-        box.querySelectorAll(".chip").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
-        b.setAttribute("aria-pressed", "true");
-        currentRecipe = r;
-        values = Object.assign({}, r.params);
-        renderForm();
-        msg("Recipe loaded: " + r.name, "ok");
-      });
-      box.appendChild(b);
-    });
+  function loadRecipe(r) {
+    currentRecipe = r;
+    values = Object.assign(schemaDefaults(), r.params);
+    renderForm();
   }
 
+  function syncGoLabel() {
+    var l = $("go");
+    if (l) l.textContent = token() ? "Generate · 45 credits" : "Sign in to generate";
+  }
+
+  // ---------- 生成 ----------
   function generate() {
+    if (!token()) { location.href = "account.html"; return; }
     $("go").disabled = true;
     $("result").classList.add("hidden");
-    msg("Generating… this takes about 20–30 seconds.");
-    var body = currentRecipe ? { recipe_id: currentRecipe.id } : { params: values };
-    var started = Date.now();
+    msg("Generating… about 25 seconds.");
+    var body = currentRecipe && currentRecipe.id ? { recipe_id: currentRecipe.id } : { params: values };
+    var t0 = Date.now();
     call("/ai/music/generate", body, true).then(function (d) {
       $("go").disabled = false;
       if (d.code === 401) { localStorage.removeItem(TOKEN_KEY); location.reload(); return; }
@@ -240,53 +302,47 @@
       $("download").href = API + x.url;
       $("meta").textContent = (x.duration_ms / 1000).toFixed(1) + "s · " + x.credits + " credits · balance " + x.balance;
       $("result").classList.remove("hidden");
-      msg("Done in " + Math.round((Date.now() - started) / 1000) + "s", "ok");
+      $("balance").textContent = x.balance + " credits left";
+      msg("Done in " + Math.round((Date.now() - t0) / 1000) + "s", "ok");
     }).catch(function () { $("go").disabled = false; msg("Network error", "err"); });
   }
 
   function saveRecipe() {
     $("saveRow").classList.remove("hidden");
     $("recipeName").value = currentRecipe ? currentRecipe.name + " copy" : "My recipe";
-    $("recipeName").focus();
-    $("recipeName").select();
+    $("recipeName").focus(); $("recipeName").select();
   }
 
   function confirmSave() {
     var name = ($("recipeName").value || "").trim();
-    if (!name) { msg("Give the recipe a name", "err"); return; }
+    if (!name) { msg("Give it a name", "err"); return; }
     call("/ai/music/recipes/save", { name: name, params: values }, true).then(function (d) {
       if (d.code !== 200) { msg(d.msg || "Save failed", "err"); return; }
       $("saveRow").classList.add("hidden");
       msg("Saved: " + name, "ok");
-      call("/ai/music/recipes/list", {}, true).then(function (r) {
-        if (r.code === 200) renderRecipes(r.data || []);
-      });
     });
   }
 
-  // ---- 启动 ----
-  if (!token()) {
-    $("gate").classList.remove("hidden");
-    return;
+  // ---------- 启动 ----------
+  if (token()) {
+    $("account").innerHTML = '<a href="account.html">Account</a>';
+    call("/ai/music/credits", {}, true).then(function (d) {
+      if (d.code === 200) $("balance").textContent = d.data.coins + " credits left";
+    });
   }
-  $("gate").classList.add("hidden");
-  $("studio").classList.remove("hidden");
-
   call("/ai/music/schema", {}, false).then(function (d) {
     if (d.code !== 200) { msg("Could not load options", "err"); return; }
     schema = d.data;
-    schema.fields.forEach(function (f) {
-      if (f.type === "multi") values[f.key] = (values[f.key] || f.default || []).slice();
-      else values[f.key] = f.default;
-    });
+    values = schemaDefaults();
     renderForm();
-    call("/ai/music/recipes/list", {}, true).then(function (r) {
-      if (r.code === 200) renderRecipes(r.data || []);
+    call("/ai/music/recipes/list", {}, false).then(function (r) {
+      if (r.code === 200) renderSamples(r.data || []);
     });
   });
 
   $("go").addEventListener("click", generate);
   $("save").addEventListener("click", saveRecipe);
+  $("again").addEventListener("click", function () { $("result").classList.add("hidden"); generate(); });
   $("saveConfirm").addEventListener("click", confirmSave);
   $("recipeName").addEventListener("keydown", function (e) { if (e.key === "Enter") confirmSave(); });
 })();
