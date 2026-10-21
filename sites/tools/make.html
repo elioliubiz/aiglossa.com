@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Create music — aiglossa tools</title>
+<meta name="description" content="Generate background music with exact length and seamless loops." />
+<link rel="stylesheet" href="/assets/site.css" />
+<style>
+  .panel{max-width:760px;margin:0 auto;padding:48px 24px 80px}
+  .kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  h1{font-size:30px;line-height:1.2;margin:14px 0 8px;font-weight:600}
+  .sub{color:var(--muted);font-size:15px;margin-bottom:28px}
+  .card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:16px;padding:26px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .chip{padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;
+        color:var(--fg);font-size:13px;font-family:inherit;cursor:pointer}
+  .chip:hover{border-color:rgba(255,255,255,.24)}
+  .chip[aria-pressed="true"]{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.3)}
+  .field{margin-bottom:18px}
+  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:8px}
+  .opts{display:flex;flex-wrap:wrap;gap:8px}
+  .opt{padding:8px 14px;border-radius:10px;border:1px solid var(--line);background:transparent;
+       color:var(--fg);font-size:13px;font-family:inherit;cursor:pointer}
+  .opt[aria-pressed="true"]{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.34)}
+  .opt small{display:block;color:var(--muted);font-size:11px}
+  input[type=range]{width:100%}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;
+       padding:15px 20px;border-radius:12px;border:0;background:var(--accent);color:#0b0d12;
+       font-size:15px;font-weight:600;font-family:inherit;cursor:pointer}
+  .btn[disabled]{opacity:.55;cursor:not-allowed}
+  .btn.secondary{background:transparent;border:1px solid var(--line);color:var(--fg);font-weight:500}
+  .msg{min-height:20px;font-size:13px;margin-top:14px}
+  .msg.err{color:#ff9b9b}.msg.ok{color:#9be7b0}
+  .result{margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}
+  audio{width:100%;margin:12px 0}
+  .meta{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .row{display:flex;gap:10px;margin-top:14px}
+  .hidden{display:none !important}
+  .hint{font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+  <main class="panel">
+    <div class="kicker">AIGLOSSA TOOLS</div>
+    <h1>Create music</h1>
+    <p class="sub">Pick a recipe or tune the parameters. Exact length, seamless loop. 45 credits per track.</p>
+
+    <div class="card" id="gate">
+      <p class="sub" style="margin:0 0 16px">Sign in to create and keep your credits.</p>
+      <a class="btn secondary" href="account.html" style="text-decoration:none">Sign in</a>
+    </div>
+
+    <div class="card hidden" id="studio">
+      <div class="chips" id="recipes"></div>
+      <div id="form"></div>
+      <button class="btn" id="go" type="button">Generate · 45 credits</button>
+      <div class="msg" id="msg" role="status" aria-live="polite"></div>
+
+      <div class="result hidden" id="result">
+        <audio id="player" controls preload="metadata"></audio>
+        <div class="meta" id="meta"></div>
+        <div class="row">
+          <a class="btn secondary" id="download" href="#" download style="text-decoration:none;width:auto">Download</a>
+          <button class="btn secondary" id="save" type="button">Save as recipe</button>
+        </div>
+        <div class="row hidden" id="saveRow">
+          <input id="recipeName" type="text" maxlength="100" placeholder="Recipe name"
+                 style="flex:1;padding:12px 14px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--fg);font-family:inherit;font-size:14px" />
+          <button class="btn secondary" id="saveConfirm" type="button" style="width:auto">Save</button>
+        </div>
+      </div>
+    </div>
+
+    <p class="hint" style="margin-top:26px"><a href="./">← Back to tools</a></p>
+  </main>
+
+<script>
+(function () {
+  "use strict";
+
+  var TOKEN_KEY = "aig_token";
+  var API = location.hostname === "tools.aiglossa.com"
+    ? "https://api.aiglossa.com"
+    : "https://dev.aiglossa.com";
+  var $ = function (id) { return document.getElementById(id); };
+  var token = function () { return localStorage.getItem(TOKEN_KEY) || ""; };
+  var device = function () {
+    var v = localStorage.getItem("aig_device");
+    if (!v) { v = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())); localStorage.setItem("aig_device", v); }
+    return v;
+  };
+
+  function call(path, body, auth) {
+    var headers = { "Content-Type": "application/json", "X-Client": "web" };
+    if (auth) headers["Authorization"] = "Bearer " + token();
+    var payload = Object.assign({ app_key: "tools", device: device(), timestamp: Math.floor(Date.now() / 1000) }, body || {});
+    return fetch(API + path, { method: "POST", headers: headers, body: JSON.stringify(payload) })
+      .then(function (r) { return r.json(); });
+  }
+
+  function msg(text, kind) {
+    var el = $("msg");
+    el.textContent = text || "";
+    el.className = "msg" + (kind ? " " + kind : "");
+  }
+
+  var schema = null;
+  var values = {};
+  var currentRecipe = null;
+
+  // ---- 表单渲染：只认 type，不认具体参数（后端加字段时这里不用改） ----
+  function renderForm() {
+    var box = $("form");
+    box.innerHTML = "";
+    schema.fields.forEach(function (f) {
+      var wrap = document.createElement("div");
+      wrap.className = "field";
+      wrap.dataset.key = f.key;
+
+      var label = document.createElement("label");
+      label.textContent = (f.label && (f.label.en || f.label["zh-Hans"])) || f.key;
+      wrap.appendChild(label);
+
+      if (f.type === "enum") {
+        var opts = document.createElement("div");
+        opts.className = "opts";
+        f.options.forEach(function (o) {
+          var b = document.createElement("button");
+          b.type = "button"; b.className = "opt";
+          b.textContent = (o.label && (o.label.en || o.label["zh-Hans"])) || o.value;
+          b.setAttribute("aria-pressed", String(values[f.key] === o.value));
+          b.addEventListener("click", function () {
+            values[f.key] = o.value;
+            opts.querySelectorAll(".opt").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+            b.setAttribute("aria-pressed", "true");
+            applyVisibility();
+          });
+          opts.appendChild(b);
+        });
+        wrap.appendChild(opts);
+      } else if (f.type === "multi") {
+        var mopts = document.createElement("div");
+        mopts.className = "opts";
+        f.options.forEach(function (o) {
+          var b = document.createElement("button");
+          b.type = "button"; b.className = "opt";
+          b.textContent = (o.label && (o.label.en || o.label["zh-Hans"])) || o.value;
+          b.setAttribute("aria-pressed", String((values[f.key] || []).indexOf(o.value) >= 0));
+          b.addEventListener("click", function () {
+            var cur = values[f.key] || [];
+            var i = cur.indexOf(o.value);
+            if (i >= 0) { cur.splice(i, 1); b.setAttribute("aria-pressed", "false"); }
+            else {
+              if (cur.length >= (f.max || 99)) { msg("Up to " + f.max + " instruments", "err"); return; }
+              cur.push(o.value); b.setAttribute("aria-pressed", "true");
+            }
+            values[f.key] = cur; msg("");
+          });
+          mopts.appendChild(b);
+        });
+        wrap.appendChild(mopts);
+      } else if (f.type === "bool") {
+        var t = document.createElement("button");
+        t.type = "button"; t.className = "opt";
+        var sync = function () { t.textContent = values[f.key] ? "On" : "Off"; t.setAttribute("aria-pressed", String(!!values[f.key])); };
+        sync();
+        t.addEventListener("click", function () { values[f.key] = !values[f.key]; sync(); applyVisibility(); });
+        wrap.appendChild(t);
+      } else if (f.type === "int") {
+        var input = document.createElement("input");
+        input.type = "range";
+        input.min = f.min; input.max = f.max; input.step = f.step || 1; input.value = values[f.key];
+        var out = document.createElement("div");
+        out.className = "hint"; out.textContent = values[f.key] + " BPM";
+        input.addEventListener("input", function () { values[f.key] = Number(input.value); out.textContent = input.value + " BPM"; });
+        wrap.appendChild(input); wrap.appendChild(out);
+      }
+
+      box.appendChild(wrap);
+    });
+    applyVisibility();
+  }
+
+  // visible_when：例如循环时隐藏 BPM 滑块（此时 BPM 必须取整小节值）
+  function applyVisibility() {
+    schema.fields.forEach(function (f) {
+      if (!f.visible_when) return;
+      var el = document.querySelector('.field[data-key="' + f.key + '"]');
+      if (!el) return;
+      var show = Object.keys(f.visible_when).every(function (k) { return values[k] === f.visible_when[k]; });
+      el.classList.toggle("hidden", !show);
+    });
+    if (values.loop) {
+      var legal = (f_by_key("bpm") && f_by_key("bpm").bpm_by_duration || {})[String(values.duration_seconds)] || [];
+      if (legal.length && legal.indexOf(values.bpm) < 0) values.bpm = legal[0];
+    }
+  }
+
+  function f_by_key(key) {
+    return (schema.fields || []).filter(function (f) { return f.key === key; })[0];
+  }
+
+  // ---- 配方 ----
+  function renderRecipes(items) {
+    var box = $("recipes");
+    box.innerHTML = "";
+    // 自己的配方排在前面：系统配方有 8 个，slice 会把用户刚存的挤掉（实测踩过）。
+    var ordered = items.filter(function (r) { return !r.is_system; })
+      .concat(items.filter(function (r) { return r.is_system; }));
+    ordered.slice(0, 14).forEach(function (r) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "chip";
+      b.textContent = (r.is_system ? "" : "★ ") + r.name;
+      b.title = r.is_system ? "System recipe" : "Your recipe";
+      b.addEventListener("click", function () {
+        box.querySelectorAll(".chip").forEach(function (x) { x.setAttribute("aria-pressed", "false"); });
+        b.setAttribute("aria-pressed", "true");
+        currentRecipe = r;
+        values = Object.assign({}, r.params);
+        renderForm();
+        msg("Recipe loaded: " + r.name, "ok");
+      });
+      box.appendChild(b);
+    });
+  }
+
+  function generate() {
+    $("go").disabled = true;
+    $("result").classList.add("hidden");
+    msg("Generating… this takes about 20–30 seconds.");
+    var body = currentRecipe ? { recipe_id: currentRecipe.id } : { params: values };
+    var started = Date.now();
+    call("/ai/music/generate", body, true).then(function (d) {
+      $("go").disabled = false;
+      if (d.code === 401) { localStorage.removeItem(TOKEN_KEY); location.reload(); return; }
+      if (d.code !== 200) { msg(d.msg || "Generation failed", "err"); return; }
+      var x = d.data;
+      $("player").src = API + x.url;
+      $("download").href = API + x.url;
+      $("meta").textContent = (x.duration_ms / 1000).toFixed(1) + "s · " + x.credits + " credits · balance " + x.balance;
+      $("result").classList.remove("hidden");
+      msg("Done in " + Math.round((Date.now() - started) / 1000) + "s", "ok");
+    }).catch(function () { $("go").disabled = false; msg("Network error", "err"); });
+  }
+
+  function saveRecipe() {
+    $("saveRow").classList.remove("hidden");
+    $("recipeName").value = currentRecipe ? currentRecipe.name + " copy" : "My recipe";
+    $("recipeName").focus();
+    $("recipeName").select();
+  }
+
+  function confirmSave() {
+    var name = ($("recipeName").value || "").trim();
+    if (!name) { msg("Give the recipe a name", "err"); return; }
+    call("/ai/music/recipes/save", { name: name, params: values }, true).then(function (d) {
+      if (d.code !== 200) { msg(d.msg || "Save failed", "err"); return; }
+      $("saveRow").classList.add("hidden");
+      msg("Saved: " + name, "ok");
+      call("/ai/music/recipes/list", {}, true).then(function (r) {
+        if (r.code === 200) renderRecipes(r.data || []);
+      });
+    });
+  }
+
+  // ---- 启动 ----
+  if (!token()) {
+    $("gate").classList.remove("hidden");
+    return;
+  }
+  $("gate").classList.add("hidden");
+  $("studio").classList.remove("hidden");
+
+  call("/ai/music/schema", {}, false).then(function (d) {
+    if (d.code !== 200) { msg("Could not load options", "err"); return; }
+    schema = d.data;
+    schema.fields.forEach(function (f) {
+      if (f.type === "multi") values[f.key] = (values[f.key] || f.default || []).slice();
+      else values[f.key] = f.default;
+    });
+    renderForm();
+    call("/ai/music/recipes/list", {}, true).then(function (r) {
+      if (r.code === 200) renderRecipes(r.data || []);
+    });
+  });
+
+  $("go").addEventListener("click", generate);
+  $("save").addEventListener("click", saveRecipe);
+  $("saveConfirm").addEventListener("click", confirmSave);
+  $("recipeName").addEventListener("keydown", function (e) { if (e.key === "Enter") confirmSave(); });
+})();
+</script>
+</body>
+</html>

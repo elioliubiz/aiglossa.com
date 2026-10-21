@@ -29,7 +29,8 @@
       "tools"
     ],
     "extra": [
-      "account.html"
+      "account.html",
+      "make.html"
     ]
   }
 }
