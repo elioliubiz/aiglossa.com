@@ -83,6 +83,16 @@
       "destination": "/sites/scholan/:lang/index.html"
     },
     {
+      "source": "/:lang/",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/tools/:lang/index.html"
+    },
+    {
       "source": "/:path*",
       "has": [
         {
