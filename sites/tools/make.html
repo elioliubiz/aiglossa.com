@@ -92,7 +92,7 @@
     <div class="grid" id="form"></div>
     <div class="actions">
       <button class="btn" id="go" type="button">Generate</button>
-      <span class="cost">45 credits per track · <span id="balance">—</span></span>
+      <span class="cost"><span id="costLabel">45 credits per 30s track</span> · <span id="balance">—</span></span>
     </div>
     <div class="msg" id="msg" role="status" aria-live="polite"></div>
 
@@ -208,6 +208,7 @@
           var b = document.createElement("button");
           b.type = "button"; b.className = "opt";
           b.textContent = (o.label && (o.label.en || o.label["zh-Hans"])) || o.value;
+          if (o.cost) b.textContent += " · " + o.cost + "c";
           b.setAttribute("aria-pressed", String(values[f.key] === o.value));
           b.addEventListener("click", function () {
             values[f.key] = o.value;
@@ -280,9 +281,19 @@
     renderForm();
   }
 
+  function currentCost() {
+    var f = schema && schema.fields.filter(function (x) { return x.key === "duration_seconds"; })[0];
+    if (!f) return 45;
+    var opt = (f.options || []).filter(function (o) { return o.value === values.duration_seconds; })[0];
+    return (opt && opt.cost) || 45;
+  }
+
   function syncGoLabel() {
     var l = $("go");
-    if (l) l.textContent = token() ? "Generate · 45 credits" : "Sign in to generate";
+    if (!l) return;
+    l.textContent = token() ? "Generate · " + currentCost() + " credits" : "Sign in to generate · " + currentCost() + " credits";
+    var c = $("costLabel");
+    if (c) c.textContent = "45 credits per 30s track · longer tracks cost more";
   }
 
   // ---------- 生成 ----------
