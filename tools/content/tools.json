@@ -1,47 +1,35 @@
 {
   "en": {
-    "title": "Tools — exact-length background music",
-    "description": "Generate royalty-free background music at an exact length — 15, 30 or 60 seconds — loop-ready, with stems and a commercial license. Built for video editors, podcasters and game developers.",
-    "h1": "Music that fits the cut",
-    "lede": "A royalty-free track at exactly the length you need — 15, 30 or 60 seconds. Loop-ready, stem-separated, with a commercial license included.",
-    "how_title": "How it works",
-    "steps": [
+    "title": "Tools — aiglossa",
+    "description": "Small, precise creative tools. First up: background music at an exact length, from a photo or a prompt.",
+    "h1": "Tools",
+    "lede": "Small utilities for everyday creative work. One at a time, done properly.",
+    "tools": [
       {
-        "n": "01",
-        "h": "Describe it",
-        "p": "Pick a mood, a tempo and a length — or drop in an image and let it set the tone."
+        "name": "AI Music",
+        "status": "Live",
+        "href": "/make.html",
+        "desc": "Turn a photo or a prompt into a track at the exact length you need. The lyrics name what's in your picture.",
+        "meta": "30–90s · seamless loops · vocals in 10 languages"
       },
       {
-        "n": "02",
-        "h": "Generate",
-        "p": "A few seconds later you get a track that starts and ends exactly where your cut does."
+        "name": "Image tool",
+        "status": "Coming soon",
+        "href": "",
+        "desc": "Product shots and simple edits, with the same idea: exact output, no surprises.",
+        "meta": "In design"
       },
       {
-        "n": "03",
-        "h": "Download",
-        "p": "WAV, MP3 and separated stems, with a license you can hand to a client."
+        "name": "Text tools",
+        "status": "Coming soon",
+        "href": "",
+        "desc": "Small text utilities for subtitles, titles and translation checks.",
+        "meta": "In design"
       }
     ],
-    "pricing_title": "Pricing",
-    "pricing": [
-      {
-        "name": "Starter",
-        "price": "$9",
-        "unit": "10 tracks"
-      },
-      {
-        "name": "Creator",
-        "price": "$29",
-        "unit": "40 tracks"
-      },
-      {
-        "name": "Studio",
-        "price": "$99",
-        "unit": "200 tracks"
-      }
-    ],
-    "note": "In early development. The first tracks will be free — write to us and we will let you know the moment the generator opens.",
-    "cta_label": "Create music",
-    "cta_mail": "support@aiglossa.com"
+    "note": "Credits are shared across tools — one balance, never expires, no subscription.",
+    "cta_label": "Open AI Music",
+    "cta_href": "/make.html",
+    "langLabel": "English"
   }
 }

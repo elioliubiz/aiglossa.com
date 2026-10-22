@@ -93,8 +93,16 @@
 
         <a class="btn secondary" href="make.html"
            style="display:block;text-align:center;text-decoration:none;margin-top:22px;padding:14px;border-radius:12px;border:1px solid var(--line);color:var(--fg)">Create music →</a>
-        <div class="packs" id="packs"></div>
+      </div>
 
+      <!-- 价格：**始终可见**。审核方与未登录用户都要能先看到"卖什么、多少钱"。 -->
+      <div class="auth-card" id="pricing-card">
+        <div class="row-between">
+          <h1>Credits</h1>
+          <span class="hint" style="margin:0">Never expire · no subscription</span>
+        </div>
+        <p class="hint">Prepaid credits. A 30-second track costs 45 credits; longer tracks cost more.</p>
+        <div class="packs" id="packs"></div>
         <div class="msg" id="account-msg" role="status" aria-live="polite"></div>
       </div>
 
@@ -234,6 +242,11 @@
   }
 
   function buy(credits, btn) {
+    if (!token()) {
+      showMsg($("account-msg"), "Sign in first — then you can buy credits.", "err");
+      $("signin-card").scrollIntoView({ behavior: "smooth", block: "center" });
+      return;
+    }
     btn.disabled = true;
     showMsg($("account-msg"), "Opening checkout…", "");
     call("/ai/music/checkout", { credits: credits }, true).then(function (data) {
@@ -320,6 +333,7 @@
   });
 
   // 启动
+  renderPacks();   // 价格对所有人可见，与是否登录无关
   if (token()) {
     renderSignedIn();
     if (new URLSearchParams(location.search).get("paid")) pollAfterPayment();
