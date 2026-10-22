@@ -224,7 +224,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "Crea un brano — aiglossa tools", "description": "Trasforma una foto o una descrizione in un brano della durata esatta. Il testo nomina ciò che c'è nell'immagine.", "h1": "Crea un brano", "sub": "Da una foto o una descrizione. Durata esatta, loop senza stacchi.", "drop": "Trascina o scegli una foto<br>il testo nominerà ciò che contiene", "generate": "Genera brano", "how_credits": "Come funzionano i crediti →", "grp_photo": "Creato da una foto", "grp_recipe": "Da una ricetta · nessuna foto", "download": "Scarica", "save_recipe": "Salva come ricetta", "remove_photo": "Rimuovi foto", "photo_here": "La tua foto qui", "note": "Tutto ciò che è a destra è stato creato qui", "legal_aup": "Uso accettabile", "legal_refund": "Rimborsi", "sign_in_first": "Accedi per generare", "generating": "Generazione… circa 20 secondi.", "just_generated": "Appena generato", "your_track": "Il tuo brano", "from_recipe": "Da una ricetta", "from_photo": "Da una foto"}</script>
+<script type="application/json" id="ui">{"title": "Crea un brano — aiglossa tools", "description": "Trasforma una foto o una descrizione in un brano della durata esatta. Il testo nomina ciò che c'è nell'immagine.", "h1": "Crea un brano", "sub": "Da una foto o una descrizione. Durata esatta, loop senza stacchi.", "drop": "Trascina o scegli una foto<br>il testo nominerà ciò che contiene", "generate": "Genera brano", "how_credits": "Come funzionano i crediti →", "grp_photo": "Creato da una foto", "grp_recipe": "Da una ricetta · nessuna foto", "download": "Scarica", "save_recipe": "Salva come ricetta", "remove_photo": "Rimuovi foto", "photo_here": "La tua foto qui", "note": "Tutto ciò che è a destra è stato creato qui", "legal_aup": "Uso accettabile", "legal_refund": "Rimborsi", "sign_in_first": "Accedi per generare", "generating": "Generazione… circa 20 secondi.", "just_generated": "Appena generato", "your_track": "Il tuo brano", "from_recipe": "Da una ricetta", "from_photo": "Da una foto", "err_load": "Impossibile caricare le opzioni", "done_in": "Pronto in {n} s", "gen_cost": "Genera · {n}", "err_gen": "Generazione non riuscita", "my_track": "Il mio brano", "err_net": "Errore di rete", "recipe_name": "Nome della ricetta", "err_save": "Salvataggio non riuscito", "saved": "Salvato: {name}", "up_to": "Fino a {n}", "credits": "crediti"}</script>
 <script>
 (function () {
   "use strict";
@@ -361,7 +361,7 @@
     wrap.className = "sect"; wrap.dataset.key = f.key;
     var head = document.createElement("div"); head.className = "lbl";
     var right = "";
-    if (f.key === "duration_seconds") right = '<span class="r" id="cost">' + cost() + '</span>';
+    if (f.key === "duration_seconds") right = '<span class="r" id="cost">' + cost() + " " + UI.credits + '</span>';
     if (f.type === "multi") right = '<span class="r">up to ' + f.max + '</span>';
     if (f.key === "vocal_language") right = '<span class="r">vocal tracks</span>';
     head.innerHTML = "<span>" + label(f) + "</span>" + right;
@@ -410,7 +410,7 @@
           var cur = values[f.key] || [], i = cur.indexOf(o.value);
           if (i >= 0) { cur.splice(i, 1); b.classList.remove("on"); }
           else {
-            if (cur.length >= (f.max || 99)) { msg("Up to " + f.max, "err"); return; }
+            if (cur.length >= (f.max || 99)) { msg(UI.up_to.replace("{n}", f.max), "err"); return; }
             cur.push(o.value); b.classList.add("on");
           }
           values[f.key] = cur;
@@ -458,14 +458,14 @@
 
   function cost() {
     var f = schema && schema.fields.filter(function (x) { return x.key === "duration_seconds"; })[0];
-    if (!f) return "45 credits";
+    if (!f) return 45;
     var o = (f.options || []).filter(function (x) { return x.value === values.duration_seconds; })[0];
-    return ((o && o.cost) || 45) + " credits";
+    return (o && o.cost) || 45;
   }
 
   function syncCost() {
-    var c = $("cost"); if (c) c.textContent = cost();
-    var go = $("go"); if (go) go.textContent = token() ? "Generate · " + cost() : UI.sign_in_first;
+    var c = $("cost"); if (c) c.textContent = cost() + " " + UI.credits;
+    var go = $("go"); if (go) go.textContent = token() ? UI.gen_cost.replace("{n}", cost() + " " + UI.credits) : UI.sign_in_first;
   }
 
   function fmtDur(sec) { var m = Math.floor(sec / 60), r = sec % 60; return m + ":" + (r < 10 ? "0" : "") + r; }
@@ -501,9 +501,9 @@
     call("/ai/music/generate", body, true).then(function (d) {
       $("go").disabled = false;
       if (d.code === 401) { localStorage.removeItem(TOKEN_KEY); location.reload(); return; }
-      if (d.code !== 200) { msg(d.msg || "Generation failed", "err"); return; }
+      if (d.code !== 200) { msg(d.msg || UI.err_gen, "err"); return; }
       var x = d.data;
-      msg("Done in " + Math.round((Date.now() - t0) / 1000) + "s", "ok");
+      msg(UI.done_in.replace("{n}", Math.round((Date.now() - t0) / 1000)), "ok");
       var lines = (x.lyrics || "").replace(/\[[0-9.:]+\]\s?/g, "").split("\n").filter(function (l) { return l.trim(); });
       current = {
         kind: "result", audio: API + x.url,
@@ -515,15 +515,15 @@
       audio.src = current.audio; audio.play().catch(function () {});
       setTimeout(renderBig, 60);
       Array.prototype.forEach.call($("recipes").children, function (x) { x.classList.remove("on"); });
-    }).catch(function () { $("go").disabled = false; msg("Network error", "err"); });
+    }).catch(function () { $("go").disabled = false; msg(UI.err_net, "err"); });
   }
 
   function saveRecipe() {
     if (!token()) { location.href = "account.html"; return; }
-    var name = window.prompt("Recipe name", "My track");
+    var name = window.prompt(UI.recipe_name, UI.my_track);
     if (!name) return;
     call("/ai/music/recipes/save", { name: name, params: values }, true).then(function (d) {
-      msg(d.code === 200 ? "Saved: " + name : (d.msg || "Save failed"), d.code === 200 ? "ok" : "err");
+      msg(d.code === 200 ? UI.saved.replace("{name}", name) : (d.msg || UI.err_save), d.code === 200 ? "ok" : "err");
     });
   }
 
@@ -551,7 +551,7 @@
   // ---- 启动 ----
   $("go").addEventListener("click", generate);
   call("/ai/music/schema", {}, false).then(function (d) {
-    if (d.code !== 200) { msg("Could not load options", "err"); return; }
+    if (d.code !== 200) { msg(UI.err_load, "err"); return; }
     schema = d.data;
     schema.fields.forEach(function (f) { values[f.key] = f.type === "multi" ? (f.default || []).slice() : f.default; });
     // 先定"当前这首"，再渲染照片墙——否则墙里会出现和大画幅重复的那一张
