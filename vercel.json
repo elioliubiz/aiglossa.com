@@ -49,6 +49,17 @@
       "source": "/protocol/delete-account.html",
       "destination": "/en/protocol/delete-account.html",
       "permanent": true
+    },
+    {
+      "source": "/pricing.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
+      "destination": "/en/pricing.html",
+      "permanent": true
     }
   ],
   "rewrites": [

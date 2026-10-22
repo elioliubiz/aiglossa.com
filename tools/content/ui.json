@@ -1,9 +1,8 @@
 {
-  "pricing": {
-    "en": {
+  "en": {
+    "pricing": {
       "title": "Credits & pricing — aiglossa tools",
       "description": "Prepaid credits for aiglossa tools. A 30-second track costs 45 credits; longer tracks cost more.",
-      "kicker": "Aigloss tools",
       "h1": "Credits",
       "lede": "Prepaid credits, shared across every tool. They never expire and there is no subscription — you only pay for what you generate.",
       "side_title": "How credits work",
@@ -11,34 +10,329 @@
       "li2": "Failed generations are refunded automatically.",
       "li3": "Credits never expire and work across all tools.",
       "li4": "Payments are processed by Creem, our merchant of record.",
-      "li5_unused": "Unused credits can be refunded within 14 days — see the",
-      "li5_refund": "Refund Policy",
-      "li5_end": ".",
+      "li5": "Unused credits can be refunded within 14 days.",
+      "refund_link": "Refund Policy",
       "back": "← Back to tools",
-      "open": "Opening checkout…",
+      "opening": "Opening checkout…",
       "err": "Could not start checkout",
       "neterr": "Network error",
-      "per": "≈ {n} × 30s tracks"
-    },
-    "ja": {
+      "per": "≈ {n} × 30s tracks",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "ja": {
+    "pricing": {
       "title": "クレジットと料金 — aiglossa tools",
       "description": "aiglossa tools のプリペイドクレジット。30秒の曲は45クレジット、長い曲はそれ以上です。",
-      "kicker": "Aigloss tools",
       "h1": "クレジット",
       "lede": "プリペイドのクレジットは全ツール共通。期限なし、サブスクなし。生成した分だけ支払います。",
       "side_title": "クレジットの仕組み",
-      "li1": "30秒の曲＝45クレジット、45秒＝64、60秒＝85、75秒＝103、90秒＝120。",
+      "li1": "30秒＝45クレジット、45秒＝64、60秒＝85、75秒＝103、90秒＝120。",
       "li2": "生成に失敗した場合は自動で返金されます。",
       "li3": "クレジットは期限なしで、すべてのツールで使えます。",
       "li4": "支払いは merchant of record である Creem が処理します。",
-      "li5_unused": "未使用のクレジットは14日以内なら返金できます —",
-      "li5_refund": "返金ポリシー",
-      "li5_end": "をご覧ください。",
+      "li5": "未使用のクレジットは14日以内なら返金できます。",
+      "refund_link": "返金ポリシー",
       "back": "← ツール一覧へ",
-      "open": "決済ページを開いています…",
+      "opening": "決済ページを開いています…",
       "err": "決済を開始できませんでした",
       "neterr": "通信エラー",
-      "per": "30秒×約 {n} 曲"
+      "per": "30秒×約 {n} 曲",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "ko": {
+    "pricing": {
+      "title": "크레딧 및 가격 — aiglossa tools",
+      "description": "aiglossa tools의 선불 크레딧. 30초 곡은 45크레딧, 더 긴 곡은 더 듭니다.",
+      "h1": "크레딧",
+      "lede": "선불 크레딧은 모든 도구에서 공용입니다. 만료 없음, 구독 없음. 생성한 만큼만 지불합니다.",
+      "side_title": "크레딧 계산 방식",
+      "li1": "30초 = 45크레딧, 45초 = 64, 60초 = 85, 75초 = 103, 90초 = 120.",
+      "li2": "생성에 실패하면 자동으로 환불됩니다.",
+      "li3": "크레딧은 만료되지 않으며 모든 도구에서 쓸 수 있습니다.",
+      "li4": "결제는 merchant of record인 Creem이 처리합니다.",
+      "li5": "사용하지 않은 크레딧은 14일 이내에 환불받을 수 있습니다.",
+      "refund_link": "환불 정책",
+      "back": "← 도구 목록으로",
+      "opening": "결제 페이지를 여는 중…",
+      "err": "결제를 시작할 수 없습니다",
+      "neterr": "네트워크 오류",
+      "per": "30초 × 약 {n}곡",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "zh-Hans": {
+    "pricing": {
+      "title": "额度与价格 — aiglossa tools",
+      "description": "aiglossa tools 的预付额度。30 秒的曲子 45 额度，更长的曲子更贵。",
+      "h1": "额度",
+      "lede": "预付额度，所有工具通用。永不过期、没有订阅——只为实际生成付费。",
+      "side_title": "额度怎么算",
+      "li1": "30 秒 = 45 额度，45 秒 = 64，60 秒 = 85，75 秒 = 103，90 秒 = 120。",
+      "li2": "生成失败会自动退回额度。",
+      "li3": "额度永不过期，所有工具通用。",
+      "li4": "支付由 merchant of record（记录商户）Creem 处理。",
+      "li5": "未使用的额度可在 14 天内申请退款。",
+      "refund_link": "退款政策",
+      "back": "← 返回工具列表",
+      "opening": "正在打开结账页…",
+      "err": "无法开始结账",
+      "neterr": "网络错误",
+      "per": "约 {n} 首 30 秒",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "zh-Hant": {
+    "pricing": {
+      "title": "額度與價格 — aiglossa tools",
+      "description": "aiglossa tools 的預付額度。30 秒的曲子 45 額度，更長的曲子更貴。",
+      "h1": "額度",
+      "lede": "預付額度，所有工具通用。永不過期、沒有訂閱——只為實際生成付費。",
+      "side_title": "額度怎麼算",
+      "li1": "30 秒 = 45 額度，45 秒 = 64，60 秒 = 85，75 秒 = 103，90 秒 = 120。",
+      "li2": "生成失敗會自動退回額度。",
+      "li3": "額度永不過期，所有工具通用。",
+      "li4": "付款由 merchant of record（記錄商戶）Creem 處理。",
+      "li5": "未使用的額度可在 14 天內申請退款。",
+      "refund_link": "退款政策",
+      "back": "← 返回工具列表",
+      "opening": "正在開啟結帳頁…",
+      "err": "無法開始結帳",
+      "neterr": "網路錯誤",
+      "per": "約 {n} 首 30 秒",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "es": {
+    "pricing": {
+      "title": "Créditos y precios — aiglossa tools",
+      "description": "Créditos prepago para aiglossa tools. Una pista de 30 s cuesta 45 créditos; las más largas cuestan más.",
+      "h1": "Créditos",
+      "lede": "Créditos prepago, comunes a todas las herramientas. No caducan y no hay suscripción: solo pagas lo que generas.",
+      "side_title": "Cómo funcionan los créditos",
+      "li1": "Pista de 30 s = 45 créditos, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.",
+      "li2": "Las generaciones fallidas se reembolsan automáticamente.",
+      "li3": "Los créditos no caducan y sirven para todas las herramientas.",
+      "li4": "Los pagos los procesa Creem, nuestro merchant of record.",
+      "li5": "Los créditos sin usar se pueden reembolsar en un plazo de 14 días.",
+      "refund_link": "Política de reembolsos",
+      "back": "← Volver a las herramientas",
+      "opening": "Abriendo el pago…",
+      "err": "No se pudo iniciar el pago",
+      "neterr": "Error de red",
+      "per": "≈ {n} pistas de 30 s",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "fr": {
+    "pricing": {
+      "title": "Crédits et tarifs — aiglossa tools",
+      "description": "Crédits prépayés pour aiglossa tools. Un morceau de 30 s coûte 45 crédits ; les plus longs coûtent davantage.",
+      "h1": "Crédits",
+      "lede": "Des crédits prépayés, communs à tous les outils. Sans expiration et sans abonnement : vous payez seulement ce que vous générez.",
+      "side_title": "Comment marchent les crédits",
+      "li1": "Morceau de 30 s = 45 crédits, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.",
+      "li2": "Les générations échouées sont remboursées automatiquement.",
+      "li3": "Les crédits n'expirent pas et servent pour tous les outils.",
+      "li4": "Les paiements sont traités par Creem, notre merchant of record.",
+      "li5": "Les crédits non utilisés peuvent être remboursés sous 14 jours.",
+      "refund_link": "Politique de remboursement",
+      "back": "← Retour aux outils",
+      "opening": "Ouverture du paiement…",
+      "err": "Impossible de lancer le paiement",
+      "neterr": "Erreur réseau",
+      "per": "≈ {n} morceaux de 30 s",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "de": {
+    "pricing": {
+      "title": "Credits & Preise — aiglossa tools",
+      "description": "Guthaben für aiglossa tools. Ein 30-Sekunden-Track kostet 45 Credits; längere kosten mehr.",
+      "h1": "Credits",
+      "lede": "Vorausbezahlte Credits, gültig für alle Tools. Kein Ablaufdatum, kein Abo – du zahlst nur, was du erzeugst.",
+      "side_title": "So funktionieren Credits",
+      "li1": "30-s-Track = 45 Credits, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.",
+      "li2": "Fehlgeschlagene Generierungen werden automatisch erstattet.",
+      "li3": "Credits verfallen nicht und gelten für alle Tools.",
+      "li4": "Zahlungen werden von Creem, unserem Merchant of Record, abgewickelt.",
+      "li5": "Nicht genutzte Credits können innerhalb von 14 Tagen erstattet werden.",
+      "refund_link": "Rückerstattungsrichtlinie",
+      "back": "← Zurück zu den Tools",
+      "opening": "Bezahlvorgang wird geöffnet…",
+      "err": "Bezahlvorgang konnte nicht gestartet werden",
+      "neterr": "Netzwerkfehler",
+      "per": "≈ {n} × 30-s-Tracks",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "pt": {
+    "pricing": {
+      "title": "Créditos e preços — aiglossa tools",
+      "description": "Créditos pré-pagos para aiglossa tools. Uma faixa de 30 s custa 45 créditos; as mais longas custam mais.",
+      "h1": "Créditos",
+      "lede": "Créditos pré-pagos, compartilhados entre todas as ferramentas. Não expiram e não há assinatura: você paga só o que gerar.",
+      "side_title": "Como funcionam os créditos",
+      "li1": "Faixa de 30 s = 45 créditos, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.",
+      "li2": "Gerações que falham são reembolsadas automaticamente.",
+      "li3": "Os créditos não expiram e valem para todas as ferramentas.",
+      "li4": "Os pagamentos são processados pela Creem, nosso merchant of record.",
+      "li5": "Créditos não usados podem ser reembolsados em até 14 dias.",
+      "refund_link": "Política de reembolso",
+      "back": "← Voltar às ferramentas",
+      "opening": "Abrindo o pagamento…",
+      "err": "Não foi possível iniciar o pagamento",
+      "neterr": "Erro de rede",
+      "per": "≈ {n} faixas de 30 s",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "it": {
+    "pricing": {
+      "title": "Crediti e prezzi — aiglossa tools",
+      "description": "Crediti prepagati per aiglossa tools. Un brano da 30 s costa 45 crediti; quelli più lunghi costano di più.",
+      "h1": "Crediti",
+      "lede": "Crediti prepagati, condivisi tra tutti gli strumenti. Non scadono e non c'è abbonamento: paghi solo ciò che generi.",
+      "side_title": "Come funzionano i crediti",
+      "li1": "Brano da 30 s = 45 crediti, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.",
+      "li2": "Le generazioni fallite vengono rimborsate automaticamente.",
+      "li3": "I crediti non scadono e valgono per tutti gli strumenti.",
+      "li4": "I pagamenti sono gestiti da Creem, il nostro merchant of record.",
+      "li5": "I crediti non utilizzati possono essere rimborsati entro 14 giorni.",
+      "refund_link": "Politica di rimborso",
+      "back": "← Torna agli strumenti",
+      "opening": "Apertura del pagamento…",
+      "err": "Impossibile avviare il pagamento",
+      "neterr": "Errore di rete",
+      "per": "≈ {n} brani da 30 s",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "ru": {
+    "pricing": {
+      "title": "Кредиты и цены — aiglossa tools",
+      "description": "Предоплатные кредиты для aiglossa tools. Трек на 30 секунд стоит 45 кредитов; длинные — дороже.",
+      "h1": "Кредиты",
+      "lede": "Предоплатные кредиты, общие для всех инструментов. Без срока действия и без подписки — платите только за то, что создаёте.",
+      "side_title": "Как работают кредиты",
+      "li1": "Трек 30 с = 45 кредитов, 45 с = 64, 60 с = 85, 75 с = 103, 90 с = 120.",
+      "li2": "Неудачные генерации возвращаются автоматически.",
+      "li3": "Кредиты не сгорают и действуют во всех инструментах.",
+      "li4": "Платежи обрабатывает Creem — наш merchant of record.",
+      "li5": "Неиспользованные кредиты можно вернуть в течение 14 дней.",
+      "refund_link": "Политика возврата",
+      "back": "← Назад к инструментам",
+      "opening": "Открываем оплату…",
+      "err": "Не удалось начать оплату",
+      "neterr": "Ошибка сети",
+      "per": "≈ {n} треков по 30 с",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "ar": {
+    "pricing": {
+      "title": "الأرصدة والأسعار — aiglossa tools",
+      "description": "أرصدة مدفوعة مسبقًا لأدوات aiglossa. المقطع 30 ثانية يكلف 45 رصيدًا، والأطول أكثر.",
+      "h1": "الأرصدة",
+      "lede": "أرصدة مدفوعة مسبقًا، مشتركة بين كل الأدوات. لا تنتهي ولا يوجد اشتراك — تدفع فقط مقابل ما تنشئه.",
+      "side_title": "كيف تعمل الأرصدة",
+      "li1": "مقطع 30 ثانية = 45 رصيدًا، 45 ثانية = 64، 60 ثانية = 85، 75 ثانية = 103، 90 ثانية = 120.",
+      "li2": "الأجيال الفاشلة تُرد تلقائيًا.",
+      "li3": "الأرصدة لا تنتهي وتعمل في كل الأدوات.",
+      "li4": "المدفوعات تعالجها Creem، وهي تاجر السجل لدينا.",
+      "li5": "يمكن استرداد الأرصدة غير المستخدمة خلال 14 يومًا.",
+      "refund_link": "سياسة الاسترداد",
+      "back": "← العودة إلى الأدوات",
+      "opening": "جارٍ فتح الدفع…",
+      "err": "تعذّر بدء الدفع",
+      "neterr": "خطأ في الشبكة",
+      "per": "≈ {n} مقطعًا بمدة 30 ثانية",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "th": {
+    "pricing": {
+      "title": "เครดิตและราคา — aiglossa tools",
+      "description": "เครดิตแบบชำระล่วงหน้าสำหรับ aiglossa tools เพลง 30 วินาทีใช้ 45 เครดิต เพลงยาวกว่านั้นใช้มากกว่า",
+      "h1": "เครดิต",
+      "lede": "เครดิตแบบชำระล่วงหน้า ใช้ร่วมกันทุกเครื่องมือ ไม่หมดอายุ ไม่มีสมาชิกรายเดือน จ่ายตามที่สร้างจริง",
+      "side_title": "เครดิตคิดอย่างไร",
+      "li1": "เพลง 30 วินาที = 45 เครดิต, 45 วินาที = 64, 60 วินาที = 85, 75 วินาที = 103, 90 วินาที = 120",
+      "li2": "การสร้างที่ล้มเหลวจะคืนเครดิตอัตโนมัติ",
+      "li3": "เครดิตไม่หมดอายุและใช้ได้กับทุกเครื่องมือ",
+      "li4": "การชำระเงินดำเนินการโดย Creem ซึ่งเป็นผู้ค้าบนบันทึกของเรา",
+      "li5": "เครดิตที่ยังไม่ใช้สามารถขอคืนได้ภายใน 14 วัน",
+      "refund_link": "นโยบายการคืนเงิน",
+      "back": "← กลับไปที่เครื่องมือ",
+      "opening": "กำลังเปิดหน้าชำระเงิน…",
+      "err": "ไม่สามารถเริ่มชำระเงินได้",
+      "neterr": "เครือข่ายขัดข้อง",
+      "per": "≈ {n} เพลง 30 วินาที",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "vi": {
+    "pricing": {
+      "title": "Tín dụng và giá — aiglossa tools",
+      "description": "Tín dụng trả trước cho aiglossa tools. Một bản 30 giây tốn 45 tín dụng; bản dài hơn tốn nhiều hơn.",
+      "h1": "Tín dụng",
+      "lede": "Tín dụng trả trước, dùng chung cho mọi công cụ. Không hết hạn và không có đăng ký định kỳ — chỉ trả cho những gì bạn tạo.",
+      "side_title": "Tín dụng hoạt động thế nào",
+      "li1": "Bản 30 giây = 45 tín dụng, 45 giây = 64, 60 giây = 85, 75 giây = 103, 90 giây = 120.",
+      "li2": "Các lần tạo thất bại được hoàn tín dụng tự động.",
+      "li3": "Tín dụng không hết hạn và dùng được cho mọi công cụ.",
+      "li4": "Thanh toán do Creem, đơn vị ghi nhận thương vụ của chúng tôi, xử lý.",
+      "li5": "Tín dụng chưa dùng có thể được hoàn trong 14 ngày.",
+      "refund_link": "Chính sách hoàn tiền",
+      "back": "← Quay lại công cụ",
+      "opening": "Đang mở trang thanh toán…",
+      "err": "Không thể bắt đầu thanh toán",
+      "neterr": "Lỗi mạng",
+      "per": "≈ {n} bản 30 giây",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "id": {
+    "pricing": {
+      "title": "Kredit & harga — aiglossa tools",
+      "description": "Kredit prabayar untuk aiglossa tools. Trek 30 detik berharga 45 kredit; yang lebih panjang lebih mahal.",
+      "h1": "Kredit",
+      "lede": "Kredit prabayar, dipakai bersama semua alat. Tidak kedaluwarsa dan tanpa langganan — kamu hanya membayar yang kamu buat.",
+      "side_title": "Cara kerja kredit",
+      "li1": "Trek 30 dtk = 45 kredit, 45 dtk = 64, 60 dtk = 85, 75 dtk = 103, 90 dtk = 120.",
+      "li2": "Pembuatan yang gagal dikembalikan otomatis.",
+      "li3": "Kredit tidak kedaluwarsa dan berlaku di semua alat.",
+      "li4": "Pembayaran diproses oleh Creem, merchant of record kami.",
+      "li5": "Kredit yang belum terpakai bisa dikembalikan dalam 14 hari.",
+      "refund_link": "Kebijakan pengembalian",
+      "back": "← Kembali ke alat",
+      "opening": "Membuka pembayaran…",
+      "err": "Tidak bisa memulai pembayaran",
+      "neterr": "Kesalahan jaringan",
+      "per": "≈ {n} trek 30 dtk",
+      "kicker": "aiglossa tools"
+    }
+  },
+  "tr": {
+    "pricing": {
+      "title": "Krediler ve fiyatlar — aiglossa tools",
+      "description": "aiglossa tools için ön ödemeli kredi. 30 saniyelik parça 45 kredi; daha uzunları daha pahalı.",
+      "h1": "Krediler",
+      "lede": "Ön ödemeli kredi, tüm araçlarda geçerli. Süresi dolmaz, abonelik yok — yalnızca ürettiğiniz kadar ödersiniz.",
+      "side_title": "Krediler nasıl işler",
+      "li1": "30 sn parça = 45 kredi, 45 sn = 64, 60 sn = 85, 75 sn = 103, 90 sn = 120.",
+      "li2": "Başarısız üretimler otomatik iade edilir.",
+      "li3": "Krediler süresi dolmaz ve tüm araçlarda geçerlidir.",
+      "li4": "Ödemeler merchant of record'umuz Creem tarafından işlenir.",
+      "li5": "Kullanılmayan krediler 14 gün içinde iade edilebilir.",
+      "refund_link": "İade politikası",
+      "back": "← Araçlara dön",
+      "opening": "Ödeme açılıyor…",
+      "err": "Ödeme başlatılamadı",
+      "neterr": "Ağ hatası",
+      "per": "≈ {n} × 30 sn parça",
+      "kicker": "aiglossa tools"
     }
   }
 }
