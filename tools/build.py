@@ -116,8 +116,9 @@ def render_tools(items: list[dict], site_base: str) -> str:
             f'      <p class="tool-meta">{meta}</p>\n'
         )
         if href:
+            # 用 {{prefix}} 而不是生产的绝对地址：本地预览时绝对地址会指到线上（点开 404）
             out.append(
-                f'    <a class="tool" href="{site_base}{href}">\n{body}'
+                f'    <a class="tool" href="{{{{prefix}}}}{href.lstrip("/")}">\n{body}'
                 f'      <span class="tool-go">Open →</span>\n    </a>'
             )
         else:
@@ -285,6 +286,11 @@ def main() -> int:
             "switcher": switcher_details(depth, lang, page_path, languages, site_langs),
         }
         values.update(values_builder(lang, site_base))
+        # builder 生成的 HTML 片段里可能含 {{prefix}}（如工具卡链接）：
+        # render() 只做一遍替换，插入的文本不会被重新扫描，所以这里再处理一次。
+        for key in ("tools", "cta_href"):
+            if key in values:
+                values[key] = values[key].replace("{{prefix}}", values["prefix"])
         page = render(template_path.read_text(encoding="utf-8"), values, where)
         target = SITES_DIR / site / lang / (page_path or "index.html")
         if target in seen_targets:
@@ -406,7 +412,7 @@ def main() -> int:
                         "tools": render_tools(locale["tools"], base),
                         "note": esc(locale["note"]),
                         "cta_label": esc(locale["cta_label"]),
-                        "cta_href": f'{base}{locale["cta_href"]}',
+                        "cta_href": "{{prefix}}" + locale["cta_href"].lstrip("/"),
                         "lang_label": esc(marketing[lang]["langLabel"]),
                         "current_name": esc(languages[lang]["name"]),
                         "brand": esc("aiglossa · " + sites[site]["host"]),
