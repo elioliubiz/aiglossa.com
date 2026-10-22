@@ -34,13 +34,14 @@
   .wave{flex:1;height:26px;display:flex;align-items:center;gap:2px;opacity:.45}
   .wave i{display:block;width:2px;border-radius:1px;background:currentColor}
 
-  .proof{display:grid;grid-template-columns:300px minmax(0,1fr);gap:24px;align-items:start;
-         border:1px solid var(--line);border-radius:18px;padding:20px;background:rgba(255,255,255,.02)}
-  @media(max-width:760px){.proof{grid-template-columns:1fr}}
-  .proof img{width:100%;border-radius:12px;display:block;object-fit:cover;max-height:300px}
-  .proof-body audio{width:100%;margin-bottom:14px}
-  .proof-lyrics{font-size:14px;line-height:1.75;color:var(--fg);margin:0 0 10px}
+  .proofs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  @media(max-width:760px){.proofs{grid-template-columns:1fr}}
+  .proof{margin:0;border:1px solid var(--line);border-radius:18px;padding:16px;background:rgba(255,255,255,.02)}
+  .proof img{width:100%;height:180px;border-radius:12px;display:block;object-fit:cover}
+  .proof audio{width:100%;margin:14px 0 12px}
+  .proof-lyrics{font-size:14px;line-height:1.7;color:var(--fg);margin:0 0 10px}
   .proof-lyrics mark{background:rgba(255,138,76,.22);color:#ffd9c4;padding:0 3px;border-radius:3px}
+  .proof-tag{font-size:11px;color:var(--muted);margin:0;letter-spacing:.04em}
   .proof-note{font-size:12px;color:var(--muted);margin:0}
   .proof-note a{color:var(--warm);text-decoration:none}
 
@@ -99,22 +100,61 @@
   </header>
 
   <h2>One photo in</h2>
-  <div class="proof">
-    <img src="samples/demo-sea.jpg" alt="A photograph of the sea" />
-    <div class="proof-body">
-      <audio controls preload="none" src="samples/demo-sea.mp3"></audio>
-      <p class="proof-lyrics">
-        Gentle <mark>sea</mark> breathes on the sand<br />
-        Your quiet touch upon my hand<br />
-        Every <mark>wave</mark> that meets the <mark>beach</mark><br />
-        Puts our worried minds at peace
-      </p>
-      <p class="proof-note">
-        Generated from the photo on the left — listen for what the lyrics name.
-        <a href="#studio">Try your own photo ↓</a>
-      </p>
-    </div>
+  <p class="lede" style="margin:-6px 0 18px;font-size:14px">
+    Each track below was generated from the photo next to it. Listen for what the lyrics name.
+  </p>
+  <div class="proofs">
+    <figure class="proof">
+      <img src="samples/demo-sea.jpg" alt="Sea and beach" />
+      <figcaption>
+        <audio controls preload="none" src="samples/demo-sea.mp3"></audio>
+        <p class="proof-lyrics">
+          Gentle <mark>sea</mark> breathes on the sand<br />
+          Every <mark>wave</mark> that meets the <mark>beach</mark>
+        </p>
+        <p class="proof-tag">English · 30s</p>
+      </figcaption>
+    </figure>
+
+    <figure class="proof">
+      <img src="samples/demo-city.jpg" alt="City street at night in the rain" />
+      <figcaption>
+        <audio controls preload="none" src="samples/demo-city.mp3"></audio>
+        <p class="proof-lyrics">
+          A yellow <mark>taxi</mark> cuts through the <mark>neon</mark> haze<br />
+          Shadows lengthen on the <mark>rain</mark>-slicked street
+        </p>
+        <p class="proof-tag">English · 45s</p>
+      </figcaption>
+    </figure>
+
+    <figure class="proof">
+      <img src="samples/demo-coffee.jpg" alt="A book and a cup of coffee" />
+      <figcaption>
+        <audio controls preload="none" src="samples/demo-coffee.mp3"></audio>
+        <p class="proof-lyrics">
+          Huele a <mark>café</mark><br />
+          Mi <mark>libro</mark>, un amigo
+        </p>
+        <p class="proof-tag">Español · 30s</p>
+      </figcaption>
+    </figure>
+
+    <figure class="proof">
+      <img src="samples/demo-bike.jpg" alt="A bicycle against an old wall" />
+      <figcaption>
+        <audio controls preload="none" src="samples/demo-bike.mp3"></audio>
+        <p class="proof-lyrics">
+          古い<mark>壁</mark>にもたれた<mark>自転車</mark><br />
+          開いた窓から光がさして
+        </p>
+        <p class="proof-tag">日本語 · 30s</p>
+      </figcaption>
+    </figure>
   </div>
+  <p class="proof-note" style="margin-top:14px">
+    All four were generated here — same pipeline you'll use below. <a href="#studio">Try your own photo ↓</a>
+  </p>
 
   <h2>Hear what you get</h2>
   <div class="samples" id="samples"></div>
