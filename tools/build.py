@@ -98,6 +98,33 @@ def render_steps(steps: list[dict]) -> str:
     return "\n".join(out)
 
 
+def render_tools(items: list[dict], site_base: str) -> str:
+    """工具列表卡片。live 的给链接，coming soon 的不可点。"""
+    out = []
+    for item in items:
+        name = esc(item["name"])
+        desc = esc(item["desc"])
+        meta = esc(item.get("meta", ""))
+        status = esc(item.get("status", ""))
+        href = item.get("href") or ""
+        live = status.lower().startswith("live")
+        cls = "live" if live else "soon"
+        badge = f'<span class="badge {cls}">{status}</span>' if status else ""
+        body = (
+            f'      <div class="tool-top"><span class="tool-name">{name}</span>{badge}</div>\n'
+            f'      <p class="tool-desc">{desc}</p>\n'
+            f'      <p class="tool-meta">{meta}</p>\n'
+        )
+        if href:
+            out.append(
+                f'    <a class="tool" href="{site_base}{href}">\n{body}'
+                f'      <span class="tool-go">Open →</span>\n    </a>'
+            )
+        else:
+            out.append(f'    <div class="tool soon">\n{body}      <span class="tool-go">Coming soon</span>\n    </div>')
+    return "\n".join(out)
+
+
 def render_pricing(tiers: list[dict]) -> str:
     out = []
     for tier in tiers:
@@ -376,13 +403,10 @@ def main() -> int:
                         "description": esc(locale["description"]),
                         "h1": esc(locale["h1"]),
                         "lede": esc(locale["lede"]),
-                        "how_title": esc(locale["how_title"]),
-                        "steps": render_steps(locale["steps"]),
-                        "pricing_title": esc(locale["pricing_title"]),
-                        "pricing": render_pricing(locale["pricing"]),
+                        "tools": render_tools(locale["tools"], base),
                         "note": esc(locale["note"]),
                         "cta_label": esc(locale["cta_label"]),
-                        "cta_href": f'mailto:{locale["cta_mail"]}',
+                        "cta_href": f'{base}{locale["cta_href"]}',
                         "lang_label": esc(marketing[lang]["langLabel"]),
                         "current_name": esc(languages[lang]["name"]),
                         "brand": esc("aiglossa · " + sites[site]["host"]),

@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tools — exact-length background music</title>
-<meta name="description" content="Generate royalty-free background music at an exact length — 15, 30 or 60 seconds — loop-ready, with stems and a commercial license. Built for video editors, podcasters and game developers.">
+<title>Tools — aiglossa</title>
+<meta name="description" content="Small, precise creative tools. First up: background music at an exact length, from a photo or a prompt.">
 <link rel="canonical" href="https://tools.aiglossa.com/en/">
 <link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/">
 <link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="aiglossa">
-<meta property="og:title" content="Tools — exact-length background music">
-<meta property="og:description" content="Generate royalty-free background music at an exact length — 15, 30 or 60 seconds — loop-ready, with stems and a commercial license. Built for video editors, podcasters and game developers.">
+<meta property="og:title" content="Tools — aiglossa">
+<meta property="og:description" content="Small, precise creative tools. First up: background music at an exact length, from a photo or a prompt.">
 <meta property="og:url" content="https://tools.aiglossa.com/en/">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://tools.aiglossa.com/assets/og.png">
@@ -19,71 +19,75 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="aiglossa tools">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://tools.aiglossa.com/assets/og.png">
-<meta name="theme-color" content="#0b0d12">
-<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/site.css">
+<style>
+  .hub-hero{padding:96px 0 40px}
+  .hub-hero h1{font-size:clamp(38px,6vw,64px);line-height:1.04;letter-spacing:-.03em;margin:14px 0 16px;
+               background:none;-webkit-text-fill-color:currentColor;color:#fff}
+  /* site.css 的 .lede 是 margin:auto 居中（营销页用），工具索引要左对齐 */
+  .hub-hero .lede{margin:24px 0 0;max-width:46ch}
+  .tools{padding:8px 0 8px}
+  .tool-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+  @media(max-width:900px){.tool-grid{grid-template-columns:1fr}}
+  .tool{display:flex;flex-direction:column;gap:10px;padding:24px;border:1px solid rgba(255,255,255,.1);
+        border-radius:18px;background:rgba(255,255,255,.025);text-decoration:none;color:inherit;
+        transition:border-color .15s,background .15s,transform .15s}
+  a.tool:hover{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.05);transform:translateY(-2px)}
+  .tool.soon{opacity:.62}
+  .tool-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .tool-name{font-size:19px;font-weight:600;letter-spacing:-.01em}
+  .badge{font:10px/1 -apple-system,sans-serif;letter-spacing:.14em;text-transform:uppercase;
+         padding:6px 9px;border-radius:999px;border:1px solid rgba(255,255,255,.18);color:var(--muted,#96a0b5)}
+  .badge.live{border-color:rgba(255,138,76,.5);color:#ffb27a;background:rgba(255,138,76,.12)}
+  .tool-desc{font-size:14px;line-height:1.6;color:var(--muted,#96a0b5);margin:0}
+  .tool-meta{font:11.5px/1.4 -apple-system,sans-serif;color:var(--muted,#96a0b5);opacity:.8;margin:0}
+  .tool-go{margin-top:auto;padding-top:8px;font-size:13px;color:#ff8a4c}
+  .tool.soon .tool-go{color:var(--muted,#96a0b5)}
+  .closing-band{padding:26px 0 72px;border-top:1px solid rgba(255,255,255,.07);margin-top:34px}
+  .closing-band .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .closing-band p{margin:0;color:var(--muted,#96a0b5);font-size:14px}
+  .closing-band .cta{white-space:nowrap}
+</style>
 </head>
 <body>
 <main>
-  <section class="hero">
-    <div class="wrap center">
+  <section class="hub-hero">
+    <div class="wrap">
       <p class="kicker">AIGLOSSA TOOLS</p>
-      <h1>Music that fits the cut</h1>
-      <p class="lede">A royalty-free track at exactly the length you need — 15, 30 or 60 seconds. Loop-ready, stem-separated, with a commercial license included.</p>
-      <a class="cta" href="../make.html">Create music</a>
-      <p class="lede" style="margin-top:28px;font-size:14px">
-        Already have credits?
-        <a href="../account.html" style="color:var(--accent);text-decoration:none">Sign in →</a>
-      </p>
+      <h1>Tools</h1>
+      <p class="lede">Small utilities for everyday creative work. One at a time, done properly.</p>
     </div>
   </section>
 
-  <div class="band">
+  <section class="tools">
     <div class="wrap">
-      <h2 class="section-title">How it works</h2>
-      <div class="steps">
-        <div>
-          <span class="n">01</span>
-          <h3>Describe it</h3>
-          <p>Pick a mood, a tempo and a length — or drop in an image and let it set the tone.</p>
-        </div>
-        <div>
-          <span class="n">02</span>
-          <h3>Generate</h3>
-          <p>A few seconds later you get a track that starts and ends exactly where your cut does.</p>
-        </div>
-        <div>
-          <span class="n">03</span>
-          <h3>Download</h3>
-          <p>WAV, MP3 and separated stems, with a license you can hand to a client.</p>
-        </div>
+      <div class="tool-grid">
+    <a class="tool" href="https://tools.aiglossa.com/make.html">
+      <div class="tool-top"><span class="tool-name">AI Music</span><span class="badge live">Live</span></div>
+      <p class="tool-desc">Turn a photo or a prompt into a track at the exact length you need. The lyrics name what&#x27;s in your picture.</p>
+      <p class="tool-meta">30–90s · seamless loops · vocals in 10 languages</p>
+      <span class="tool-go">Open →</span>
+    </a>
+    <div class="tool soon">
+      <div class="tool-top"><span class="tool-name">Image tool</span><span class="badge soon">Coming soon</span></div>
+      <p class="tool-desc">Product shots and simple edits, with the same idea: exact output, no surprises.</p>
+      <p class="tool-meta">In design</p>
+      <span class="tool-go">Coming soon</span>
+    </div>
+    <div class="tool soon">
+      <div class="tool-top"><span class="tool-name">Text tools</span><span class="badge soon">Coming soon</span></div>
+      <p class="tool-desc">Small text utilities for subtitles, titles and translation checks.</p>
+      <p class="tool-meta">In design</p>
+      <span class="tool-go">Coming soon</span>
+    </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <section class="pricing-section">
+  <section class="closing-band">
     <div class="wrap">
-      <h2 class="section-title">Pricing</h2>
-      <div class="pricing">
-        <div class="tier">
-          <div class="name">Starter</div>
-          <div class="amount">$9</div>
-          <div class="unit">10 tracks</div>
-        </div>
-        <div class="tier">
-          <div class="name">Creator</div>
-          <div class="amount">$29</div>
-          <div class="unit">40 tracks</div>
-        </div>
-        <div class="tier">
-          <div class="name">Studio</div>
-          <div class="amount">$99</div>
-          <div class="unit">200 tracks</div>
-        </div>
-      </div>
-      <p class="closing">In early development. The first tracks will be free — write to us and we will let you know the moment the generator opens.</p>
+      <p>Credits are shared across tools — one balance, never expires, no subscription.</p>
+      <a class="cta" href="https://tools.aiglossa.com/make.html">Open AI Music</a>
     </div>
   </section>
 </main>
