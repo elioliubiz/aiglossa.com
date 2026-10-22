@@ -38,7 +38,6 @@
   .balance small{font-size:14px;font-weight:400;color:var(--muted);margin-left:6px}
   .row-between{display:flex;align-items:center;justify-content:space-between;gap:16px}
   .hidden{display:none !important}
-  .packs{display:grid;gap:10px;margin-top:22px}
   .pack{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
         padding:14px 18px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);
         color:var(--fg);font-size:14px;font-family:inherit;cursor:pointer;text-align:start}
@@ -94,16 +93,8 @@
 
         <a class="btn secondary" href="make.html"
            style="display:block;text-align:center;text-decoration:none;margin-top:22px;padding:14px;border-radius:12px;border:1px solid var(--line);color:var(--fg)">Create music →</a>
-      </div>
-
-      <!-- 价格：**始终可见**。审核方与未登录用户都要能先看到"卖什么、多少钱"。 -->
-      <div class="auth-card" id="pricing-card">
-        <div class="row-between">
-          <h1>Credits</h1>
-          <span class="hint" style="margin:0">Never expire · no subscription</span>
-        </div>
-        <p class="hint">Prepaid credits. A 30-second track costs 45 credits; longer tracks cost more.</p>
-        <div class="packs" id="packs"></div>
+        <a class="btn" href="pricing.html"
+           style="display:block;text-align:center;text-decoration:none;margin-top:10px;padding:14px;border-radius:12px;background:var(--accent);color:#1a0e04;font-weight:600">Buy credits →</a>
         <div class="msg" id="account-msg" role="status" aria-live="polite"></div>
       </div>
 
@@ -121,6 +112,7 @@
       <a href="https://aiglossa.com/en/protocol/privacy.html">Privacy Policy</a>
       <a href="https://aiglossa.com/en/protocol/term.html">Terms of Service</a>
       <a href="acceptable-use.html">Acceptable Use</a>
+      <a href="pricing.html">Pricing</a>
       <a href="refund.html">Refunds</a>
     </nav>
   </div>
@@ -187,7 +179,6 @@
     $("signin-card").classList.add("hidden");
     $("account-card").classList.remove("hidden");
     $("account-email").textContent = localStorage.getItem(EMAIL_KEY) || "";
-    renderPacks();
     loadCredits();
   }
 
@@ -217,52 +208,8 @@
     if (data.data.user && data.data.user.email) localStorage.setItem(EMAIL_KEY, data.data.user.email);
     showMsg($("signin-msg"), "", "");
     renderSignedIn();
-  }
-
-  // --- 充值：额度包 ---
-  var PACKS = [
-    { credits: 180,  price: "$2.39" },
-    { credits: 360,  price: "$3.99" },
-    { credits: 750,  price: "$7.99" },
-    { credits: 1500, price: "$15.99" },
-    { credits: 4000, price: "$39.99" }
-  ];
-
-  function renderPacks() {
-    var box = $("packs");
-    if (box.dataset.ready) return;
-    box.dataset.ready = "1";
-    PACKS.forEach(function (p) {
-      var btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "pack";
-      btn.innerHTML = "<b>" + p.credits + " credits</b><span>" + p.price + "</span>";
-      btn.addEventListener("click", function () { buy(p.credits, btn); });
-      box.appendChild(btn);
-    });
-  }
-
-  function buy(credits, btn) {
-    if (!token()) {
-      showMsg($("account-msg"), "Sign in first — then you can buy credits.", "err");
-      $("signin-card").scrollIntoView({ behavior: "smooth", block: "center" });
-      return;
-    }
-    btn.disabled = true;
-    showMsg($("account-msg"), "Opening checkout…", "");
-    call("/ai/music/checkout", { credits: credits }, true).then(function (data) {
-      if (data.code === 401) { setToken(""); renderSignedOut(); return; }
-      if (data.code !== 200) {
-        showMsg($("account-msg"), data.msg || "Could not start checkout", "err");
-        btn.disabled = false;
-        return;
-      }
-      // 整页跳转到 Creem 托管的结账页；付款完成后回到本页（?paid=1）。
-      location.href = data.data.checkout_url;
-    }).catch(function () {
-      showMsg($("account-msg"), "Network error", "err");
-      btn.disabled = false;
-    });
+    var next = new URLSearchParams(location.search).get("next");
+    if (next && /^[a-z0-9-]+\.html$/i.test(next)) location.href = next;
   }
 
   // 付款回跳后，webhook 可能比页面晚几秒到账：轮询到余额变化为止（最多 30 秒）。
@@ -334,7 +281,6 @@
   });
 
   // 启动
-  renderPacks();   // 价格对所有人可见，与是否登录无关
   if (token()) {
     renderSignedIn();
     if (new URLSearchParams(location.search).get("paid")) pollAfterPayment();

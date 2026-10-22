@@ -30,6 +30,7 @@
     ],
     "extra": [
       "account.html",
+      "pricing.html",
       "make.html",
       "refund.html",
       "acceptable-use.html"
