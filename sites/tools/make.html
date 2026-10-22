@@ -103,16 +103,46 @@
   .rec:hover .wv i{opacity:.85}
   .rec .rn{font-size:12.5px;font-weight:600;margin:0 0 2px}
   .rec .rd{font:10px/1.3 -apple-system,sans-serif;color:var(--mut);margin:0}
+  .thumbs{display:contents}
   .tile.add{display:grid;place-items:center;background:rgba(255,255,255,.02);border:1px dashed rgba(242,241,236,.2);
             color:var(--mut);font-size:12px;text-align:center}
   .hidden{display:none !important}
+  .only-mobile{display:none}
+  .rec-wrap{position:relative}
+  .swipe{color:var(--acc)}
+
   @media(max-width:1080px){
-    .app{grid-template-columns:1fr;height:auto}
-    .rail{border-right:0;border-bottom:1px solid var(--line)}
-    .photos{grid-template-columns:repeat(2,1fr);grid-auto-rows:130px}
-    .tile.big{grid-column:span 2;grid-row:span 2}
-    .recipes{grid-template-columns:repeat(2,1fr)}
-    .works{padding:16px}
+    /* 移动端：例子在上、参数在下 */
+    .app{grid-template-columns:1fr;height:auto;display:flex;flex-direction:column}
+    .works{order:-1;padding:16px 0 8px;min-width:0;max-width:100vw;overflow-x:hidden}
+    .rail{border-right:0;border-top:1px solid var(--line);padding:18px 16px 26px;min-width:0}
+    .only-desktop{display:none}
+    .only-mobile{display:inline}
+
+    /* 照片组：一张大卡 + 一条缩略图 */
+    .photos{display:flex;flex-direction:column;gap:10px;min-width:0}
+    .tile.big{width:100%}
+    .whead{padding:0 16px}
+    .tile.big{height:250px}
+    .thumbs{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;
+            scroll-padding-left:16px;padding:0 16px 4px;scrollbar-width:none;max-width:100vw}
+    .thumbs::-webkit-scrollbar{display:none}
+    .thumbs .tile{flex:0 0 66px;height:66px;border-radius:9px;scroll-snap-align:start}
+    .thumbs .tile .meta{display:none}
+    .thumbs .tile .pl{width:20px;height:20px;top:5px;right:5px;font-size:7px}
+    .thumbs .tile.add{font-size:9px;line-height:1.15}
+
+    /* 配方组：两排横滑（R2） */
+    .rec-wrap:after{content:"";position:absolute;top:0;right:0;bottom:0;width:36px;
+                    background:linear-gradient(90deg,transparent,var(--bg));pointer-events:none}
+    .recipes{display:grid;grid-template-rows:repeat(2,86px);grid-auto-flow:column;
+             grid-auto-columns:calc(46vw - 22px);gap:9px;overflow-x:auto;scroll-snap-type:x mandatory;
+             scroll-padding-left:16px;padding:0 16px 4px;scrollbar-width:none;max-width:100vw}
+    .recipes::-webkit-scrollbar{display:none}
+    .rec{scroll-snap-align:start;padding:9px 11px;overflow:hidden}
+    .rec .wv{height:22px;margin-bottom:6px}
+    .rec .rn{font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .rec .rd{font-size:9.5px}
   }
 </style>
 </head>
@@ -132,15 +162,19 @@
 
     <button class="go" id="go" type="button">Generate track</button>
     <div class="msg" id="msg" role="status" aria-live="polite"></div>
-    <p class="note" id="note">Everything on the right was made here</p>
+    <p class="note" id="note"><span class="only-desktop">Everything on the right was made here</span><span class="only-mobile">Everything above was made here</span></p>
   </aside>
 
   <main class="works">
     <div class="whead"><span class="t">Made from a photo</span><span class="n">4 from a photo · 8 from a recipe</span></div>
     <div class="photos" id="photos"></div>
 
-    <div class="whead" style="margin-top:24px"><span class="t">From a recipe · no photo needed</span><span class="n">8 presets · instrumental</span></div>
-    <div class="recipes" id="recipes"></div>
+    <div class="whead" style="margin-top:24px">
+      <span class="t">From a recipe · no photo needed</span>
+      <span class="n only-desktop">8 presets · instrumental</span>
+      <span class="n only-mobile swipe">8 presets · swipe →</span>
+    </div>
+    <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
   </main>
 </div>
 
@@ -194,8 +228,10 @@
     var box = $("photos"); box.innerHTML = "";
     var big = document.createElement("div"); big.className = "tile big"; big.id = "big"; box.appendChild(big);
 
-    // 大画幅展示"当前这首"，小图展示其余的三首 + 一个上传位，
-    // 永远正好 4 格：既避免同一张图重复出现，也不会留空。
+    // 小图统一包一层：桌面端用 display:contents 让它们照旧参与 4 列网格；
+    // 移动端则变成一条横滑缩略图。
+    var thumbs = document.createElement("div"); thumbs.className = "thumbs"; box.appendChild(thumbs);
+
     var curAudio = current && current.audio;
     var smalls = DEMOS.filter(function (d) { return d.audio !== curAudio; });
     while (smalls.length < 4) smalls.push(null);
@@ -206,7 +242,7 @@
         add.className = "tile add";
         add.innerHTML = "<div>＋<br>Your photo here</div>";
         add.addEventListener("click", function () { $("file").click(); });
-        box.appendChild(add);
+        thumbs.appendChild(add);
         return;
       }
       var el = document.createElement("div");
@@ -214,7 +250,7 @@
       el.innerHTML = '<img src="' + d.img + '" alt=""><div class="shade"></div><span class="pl">▶</span>' +
         '<div class="meta"><p class="t">' + d.title + '</p><p class="d">' + d.meta + '</p></div>';
       el.addEventListener("click", function () { select(Object.assign({ kind: "demo" }, d)); });
-      box.appendChild(el);
+      thumbs.appendChild(el);
     });
 
     renderBig();
