@@ -22,16 +22,6 @@
   "tools": {
     "host": "tools.aiglossa.com",
     "legal": false,
-    "langs": [
-      "en",
-      "ja",
-      "ko",
-      "zh-Hans",
-      "es",
-      "fr",
-      "de",
-      "pt"
-    ],
     "pages": [
       "tools"
     ],

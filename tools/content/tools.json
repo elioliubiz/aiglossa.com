@@ -1,4 +1,68 @@
 {
+  "ar": {
+    "title": "الأدوات — aiglossa",
+    "description": "أدوات إبداعية صغيرة ودقيقة. الأولى: موسيقى خلفية بالمدة المطلوبة تمامًا، من صورة أو وصف.",
+    "h1": "الأدوات",
+    "lede": "أدوات صغيرة للعمل الإبداعي اليومي. واحدة في كل مرة، بإتقان.",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "متاح",
+        "href": "/make.html",
+        "desc": "حوّل صورة أو وصفًا إلى مقطع بالمدة التي تحتاجها بالضبط. الكلمات تذكر ما في صورتك.",
+        "meta": "30–90 ثانية · حلقات بلا فواصل · غناء بعشر لغات"
+      },
+      {
+        "name": "أداة الصور",
+        "status": "قريبًا",
+        "href": "",
+        "desc": "صور المنتجات وتعديلات بسيطة، بالفكرة نفسها: نتيجة دقيقة بلا مفاجآت.",
+        "meta": "قيد التصميم"
+      },
+      {
+        "name": "أدوات النصوص",
+        "status": "قريبًا",
+        "href": "",
+        "desc": "أدوات نصية صغيرة للترجمة والترجمات والعناوين.",
+        "meta": "قيد التصميم"
+      }
+    ],
+    "note": "الأرصدة مشتركة بين كل الأدوات: رصيد واحد، بلا انتهاء وبلا اشتراك.",
+    "cta_label": "افتح AI Music",
+    "cta_href": "/make.html"
+  },
+  "de": {
+    "title": "Tools — aiglossa",
+    "description": "Kleine, präzise Kreativwerkzeuge. Zuerst: Hintergrundmusik in exakt der benötigten Länge – aus einem Foto oder einer Beschreibung.",
+    "h1": "Tools",
+    "lede": "Kleine Werkzeuge für die tägliche kreative Arbeit. Eins nach dem anderen, richtig gemacht.",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "Verfügbar",
+        "href": "/make.html",
+        "desc": "Aus einem Foto oder einer Beschreibung wird ein Track in exakt der Länge, die du brauchst. Der Gesang benennt, was auf dem Bild ist.",
+        "meta": "30–90 s · nahtlose Loops · Gesang in 10 Sprachen"
+      },
+      {
+        "name": "Bild-Tool",
+        "status": "Demnächst",
+        "href": "",
+        "desc": "Produktfotos und einfache Bearbeitungen – gleiches Prinzip: exaktes Ergebnis, keine Überraschungen.",
+        "meta": "In Planung"
+      },
+      {
+        "name": "Text-Tools",
+        "status": "Demnächst",
+        "href": "",
+        "desc": "Kleine Textwerkzeuge für Untertitel, Titel und Übersetzungsprüfung.",
+        "meta": "In Planung"
+      }
+    ],
+    "note": "Credits gelten für alle Tools: ein Guthaben, kein Ablaufdatum, kein Abo.",
+    "cta_label": "AI Music öffnen",
+    "cta_href": "/make.html"
+  },
   "en": {
     "title": "Tools — aiglossa",
     "description": "Small, precise creative tools. First up: background music at an exact length, from a photo or a prompt.",
@@ -29,102 +93,6 @@
     ],
     "note": "Credits are shared across tools — one balance, never expires, no subscription.",
     "cta_label": "Open AI Music",
-    "cta_href": "/make.html"
-  },
-  "ja": {
-    "title": "ツール — aiglossa",
-    "description": "小さくて精密な制作ツール。第一弾は、写真やプロンプトから正確な長さのBGMを作るツールです。",
-    "h1": "ツール",
-    "lede": "日々の制作のための小さな道具。一つずつ、きちんと作ります。",
-    "tools": [
-      {
-        "name": "AI Music",
-        "status": "提供中",
-        "href": "/make.html",
-        "desc": "写真やプロンプトから、必要な長さちょうどの曲を作ります。歌詞には写真の中のものが歌われます。",
-        "meta": "30〜90秒・シームレスループ・10言語のボーカル"
-      },
-      {
-        "name": "画像ツール",
-        "status": "近日公開",
-        "href": "",
-        "desc": "商品写真の加工と簡単な編集。同じ考え方で、出力は正確に、驚きはなし。",
-        "meta": "設計中"
-      },
-      {
-        "name": "テキストツール",
-        "status": "近日公開",
-        "href": "",
-        "desc": "字幕・タイトル・翻訳チェックのための小さなテキストツール。",
-        "meta": "設計中"
-      }
-    ],
-    "note": "クレジットは全ツール共通。一つの残高で、期限なし、サブスクなし。",
-    "cta_label": "AI Music を開く",
-    "cta_href": "/make.html"
-  },
-  "ko": {
-    "title": "도구 — aiglossa",
-    "description": "작고 정밀한 제작 도구. 첫 번째는 사진이나 프롬프트로 정확한 길이의 배경 음악을 만드는 도구입니다.",
-    "h1": "도구",
-    "lede": "일상적인 창작을 위한 작은 도구들. 하나씩, 제대로 만듭니다.",
-    "tools": [
-      {
-        "name": "AI Music",
-        "status": "제공 중",
-        "href": "/make.html",
-        "desc": "사진이나 프롬프트로 필요한 길이에 딱 맞는 곡을 만듭니다. 가사에는 사진 속 요소가 담깁니다.",
-        "meta": "30~90초 · 이음새 없는 루프 · 10개 언어 보컬"
-      },
-      {
-        "name": "이미지 도구",
-        "status": "출시 예정",
-        "href": "",
-        "desc": "제품 사진과 간단한 편집. 같은 원칙: 정확한 결과, 뜻밖의 일은 없음.",
-        "meta": "설계 중"
-      },
-      {
-        "name": "텍스트 도구",
-        "status": "출시 예정",
-        "href": "",
-        "desc": "자막, 제목, 번역 검수를 위한 작은 텍스트 도구.",
-        "meta": "설계 중"
-      }
-    ],
-    "note": "크레딧은 모든 도구에서 공용입니다. 하나의 잔액, 만료 없음, 구독 없음.",
-    "cta_label": "AI Music 열기",
-    "cta_href": "/make.html"
-  },
-  "zh-Hans": {
-    "title": "工具 — aiglossa",
-    "description": "小而精确的创作工具。第一个：用照片或描述，生成精确长度的背景音乐。",
-    "h1": "工具",
-    "lede": "为日常创作准备的小工具。一次做一个，认真做。",
-    "tools": [
-      {
-        "name": "AI Music",
-        "status": "已上线",
-        "href": "/make.html",
-        "desc": "用照片或描述生成精确长度的曲子。歌词会唱出照片里的东西。",
-        "meta": "30–90 秒 · 无缝循环 · 10 种语言人声"
-      },
-      {
-        "name": "图片工具",
-        "status": "即将推出",
-        "href": "",
-        "desc": "产品图与简单编辑，同样的思路：输出精确，没有意外。",
-        "meta": "设计中"
-      },
-      {
-        "name": "文本工具",
-        "status": "即将推出",
-        "href": "",
-        "desc": "字幕、标题、译文检查的小工具。",
-        "meta": "设计中"
-      }
-    ],
-    "note": "额度在所有工具间通用：一份余额、永不过期、没有订阅。",
-    "cta_label": "打开 AI Music",
     "cta_href": "/make.html"
   },
   "es": {
@@ -191,36 +159,132 @@
     "cta_label": "Ouvrir AI Music",
     "cta_href": "/make.html"
   },
-  "de": {
-    "title": "Tools — aiglossa",
-    "description": "Kleine, präzise Kreativwerkzeuge. Zuerst: Hintergrundmusik in exakt der benötigten Länge – aus einem Foto oder einer Beschreibung.",
-    "h1": "Tools",
-    "lede": "Kleine Werkzeuge für die tägliche kreative Arbeit. Eins nach dem anderen, richtig gemacht.",
+  "id": {
+    "title": "Alat — aiglossa",
+    "description": "Alat kreatif kecil dan presisi. Pertama: musik latar dengan durasi tepat, dari foto atau deskripsi.",
+    "h1": "Alat",
+    "lede": "Utilitas kecil untuk pekerjaan kreatif sehari-hari. Satu per satu, dikerjakan dengan benar.",
     "tools": [
       {
         "name": "AI Music",
-        "status": "Verfügbar",
+        "status": "Tersedia",
         "href": "/make.html",
-        "desc": "Aus einem Foto oder einer Beschreibung wird ein Track in exakt der Länge, die du brauchst. Der Gesang benennt, was auf dem Bild ist.",
-        "meta": "30–90 s · nahtlose Loops · Gesang in 10 Sprachen"
+        "desc": "Ubah foto atau deskripsi menjadi lagu dengan durasi tepat yang kamu butuhkan. Liriknya menyebut apa yang ada di fotomu.",
+        "meta": "30–90 dtk · loop mulus · vokal dalam 10 bahasa"
       },
       {
-        "name": "Bild-Tool",
-        "status": "Demnächst",
+        "name": "Alat gambar",
+        "status": "Segera hadir",
         "href": "",
-        "desc": "Produktfotos und einfache Bearbeitungen – gleiches Prinzip: exaktes Ergebnis, keine Überraschungen.",
-        "meta": "In Planung"
+        "desc": "Foto produk dan penyuntingan sederhana, dengan gagasan sama: hasil presisi, tanpa kejutan.",
+        "meta": "Dalam desain"
       },
       {
-        "name": "Text-Tools",
-        "status": "Demnächst",
+        "name": "Alat teks",
+        "status": "Segera hadir",
         "href": "",
-        "desc": "Kleine Textwerkzeuge für Untertitel, Titel und Übersetzungsprüfung.",
-        "meta": "In Planung"
+        "desc": "Utilitas teks kecil untuk subtitel, judul, dan pemeriksaan terjemahan.",
+        "meta": "Dalam desain"
       }
     ],
-    "note": "Credits gelten für alle Tools: ein Guthaben, kein Ablaufdatum, kein Abo.",
-    "cta_label": "AI Music öffnen",
+    "note": "Kredit dipakai bersama di semua alat: satu saldo, tanpa kedaluwarsa, tanpa langganan.",
+    "cta_label": "Buka AI Music",
+    "cta_href": "/make.html"
+  },
+  "it": {
+    "title": "Strumenti — aiglossa",
+    "description": "Strumenti creativi piccoli e precisi. Il primo: musica di sottofondo della durata esatta, da una foto o una descrizione.",
+    "h1": "Strumenti",
+    "lede": "Piccole utilità per il lavoro creativo quotidiano. Una alla volta, fatte bene.",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "Disponibile",
+        "href": "/make.html",
+        "desc": "Trasforma una foto o una descrizione in un brano della durata esatta che ti serve. Il testo nomina ciò che c'è nella tua immagine.",
+        "meta": "30–90 s · loop senza stacchi · voci in 10 lingue"
+      },
+      {
+        "name": "Strumento immagine",
+        "status": "In arrivo",
+        "href": "",
+        "desc": "Foto di prodotto e modifiche semplici, con la stessa idea: risultato esatto, nessuna sorpresa.",
+        "meta": "In progettazione"
+      },
+      {
+        "name": "Strumenti di testo",
+        "status": "In arrivo",
+        "href": "",
+        "desc": "Piccole utilità di testo per sottotitoli, titoli e revisione delle traduzioni.",
+        "meta": "In progettazione"
+      }
+    ],
+    "note": "I crediti sono condivisi tra tutti gli strumenti: un saldo, senza scadenza e senza abbonamento.",
+    "cta_label": "Apri AI Music",
+    "cta_href": "/make.html"
+  },
+  "ja": {
+    "title": "ツール — aiglossa",
+    "description": "小さくて精密な制作ツール。第一弾は、写真やプロンプトから正確な長さのBGMを作るツールです。",
+    "h1": "ツール",
+    "lede": "日々の制作のための小さな道具。一つずつ、きちんと作ります。",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "提供中",
+        "href": "/make.html",
+        "desc": "写真やプロンプトから、必要な長さちょうどの曲を作ります。歌詞には写真の中のものが歌われます。",
+        "meta": "30〜90秒・シームレスループ・10言語のボーカル"
+      },
+      {
+        "name": "画像ツール",
+        "status": "近日公開",
+        "href": "",
+        "desc": "商品写真の加工と簡単な編集。同じ考え方で、出力は正確に、驚きはなし。",
+        "meta": "設計中"
+      },
+      {
+        "name": "テキストツール",
+        "status": "近日公開",
+        "href": "",
+        "desc": "字幕・タイトル・翻訳チェックのための小さなテキストツール。",
+        "meta": "設計中"
+      }
+    ],
+    "note": "クレジットは全ツール共通。一つの残高で、期限なし、サブスクなし。",
+    "cta_label": "AI Music を開く",
+    "cta_href": "/make.html"
+  },
+  "ko": {
+    "title": "도구 — aiglossa",
+    "description": "작고 정밀한 제작 도구. 첫 번째는 사진이나 프롬프트로 정확한 길이의 배경 음악을 만드는 도구입니다.",
+    "h1": "도구",
+    "lede": "일상적인 창작을 위한 작은 도구들. 하나씩, 제대로 만듭니다.",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "제공 중",
+        "href": "/make.html",
+        "desc": "사진이나 프롬프트로 필요한 길이에 딱 맞는 곡을 만듭니다. 가사에는 사진 속 요소가 담깁니다.",
+        "meta": "30~90초 · 이음새 없는 루프 · 10개 언어 보컬"
+      },
+      {
+        "name": "이미지 도구",
+        "status": "출시 예정",
+        "href": "",
+        "desc": "제품 사진과 간단한 편집. 같은 원칙: 정확한 결과, 뜻밖의 일은 없음.",
+        "meta": "설계 중"
+      },
+      {
+        "name": "텍스트 도구",
+        "status": "출시 예정",
+        "href": "",
+        "desc": "자막, 제목, 번역 검수를 위한 작은 텍스트 도구.",
+        "meta": "설계 중"
+      }
+    ],
+    "note": "크레딧은 모든 도구에서 공용입니다. 하나의 잔액, 만료 없음, 구독 없음.",
+    "cta_label": "AI Music 열기",
     "cta_href": "/make.html"
   },
   "pt": {
@@ -253,6 +317,198 @@
     ],
     "note": "Os créditos são compartilhados entre todas as ferramentas: um saldo, sem expiração, sem assinatura.",
     "cta_label": "Abrir AI Music",
+    "cta_href": "/make.html"
+  },
+  "ru": {
+    "title": "Инструменты — aiglossa",
+    "description": "Небольшие точные инструменты для творчества. Первый: фоновая музыка точно нужной длины — по фото или описанию.",
+    "h1": "Инструменты",
+    "lede": "Маленькие утилиты для повседневной творческой работы. По одной, но как следует.",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "Доступно",
+        "href": "/make.html",
+        "desc": "Превратите фото или описание в трек точно нужной длины. В тексте песни называются предметы с вашего изображения.",
+        "meta": "30–90 с · бесшовные лупы · вокал на 10 языках"
+      },
+      {
+        "name": "Инструмент для изображений",
+        "status": "Скоро",
+        "href": "",
+        "desc": "Предметные фото и простая обработка — тот же принцип: точный результат, без сюрпризов.",
+        "meta": "В разработке"
+      },
+      {
+        "name": "Текстовые инструменты",
+        "status": "Скоро",
+        "href": "",
+        "desc": "Небольшие текстовые утилиты для субтитров, заголовков и проверки переводов.",
+        "meta": "В разработке"
+      }
+    ],
+    "note": "Кредиты общие для всех инструментов: один баланс, без срока действия и без подписки.",
+    "cta_label": "Открыть AI Music",
+    "cta_href": "/make.html"
+  },
+  "th": {
+    "title": "เครื่องมือ — aiglossa",
+    "description": "เครื่องมือสร้างสรรค์ขนาดเล็กที่แม่นยำ ตัวแรก: เพลงประกอบความยาวตรงตามที่ต้องการ จากรูปหรือคำอธิบาย",
+    "h1": "เครื่องมือ",
+    "lede": "เครื่องมือเล็ก ๆ สำหรับงานสร้างสรรค์ประจำวัน ทีละอย่าง แต่ทำให้ดี",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "เปิดใช้แล้ว",
+        "href": "/make.html",
+        "desc": "เปลี่ยนรูปหรือคำอธิบายเป็นเพลงที่มีความยาวตรงตามที่ต้องการ เนื้อเพลงจะเอ่ยถึงสิ่งที่อยู่ในภาพของคุณ",
+        "meta": "30–90 วินาที · ลูปไร้รอยต่อ · เสียงร้อง 10 ภาษา"
+      },
+      {
+        "name": "เครื่องมือภาพ",
+        "status": "เร็ว ๆ นี้",
+        "href": "",
+        "desc": "ภาพสินค้าและการแก้ไขง่าย ๆ แนวคิดเดียวกัน: ผลลัพธ์แม่นยำ ไม่มีเซอร์ไพรส์",
+        "meta": "กำลังออกแบบ"
+      },
+      {
+        "name": "เครื่องมือข้อความ",
+        "status": "เร็ว ๆ นี้",
+        "href": "",
+        "desc": "เครื่องมือข้อความเล็ก ๆ สำหรับคำบรรยาย หัวข้อ และตรวจงานแปล",
+        "meta": "กำลังออกแบบ"
+      }
+    ],
+    "note": "เครดิตใช้ร่วมกันทุกเครื่องมือ: ยอดเดียว ไม่หมดอายุ ไม่มีสมาชิกรายเดือน",
+    "cta_label": "เปิด AI Music",
+    "cta_href": "/make.html"
+  },
+  "tr": {
+    "title": "Araçlar — aiglossa",
+    "description": "Küçük, hassas yaratıcı araçlar. İlki: bir fotoğraftan veya açıklamadan tam istediğiniz uzunlukta fon müziği.",
+    "h1": "Araçlar",
+    "lede": "Günlük yaratıcı işler için küçük yardımcılar. Tek tek, hakkını vererek.",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "Kullanımda",
+        "href": "/make.html",
+        "desc": "Bir fotoğrafı veya açıklamayı tam ihtiyacınız olan uzunlukta bir parçaya dönüştürün. Şarkı sözleri fotoğrafınızdakileri adlandırır.",
+        "meta": "30–90 sn · kesintisiz döngüler · 10 dilde vokal"
+      },
+      {
+        "name": "Görsel aracı",
+        "status": "Yakında",
+        "href": "",
+        "desc": "Ürün fotoğrafları ve basit düzenlemeler, aynı fikir: kesin sonuç, sürpriz yok.",
+        "meta": "Tasarımda"
+      },
+      {
+        "name": "Metin araçları",
+        "status": "Yakında",
+        "href": "",
+        "desc": "Altyazı, başlık ve çeviri kontrolü için küçük metin araçları.",
+        "meta": "Tasarımda"
+      }
+    ],
+    "note": "Krediler tüm araçlarda ortaktır: tek bakiye, süresiz, abonelik yok.",
+    "cta_label": "AI Music'i aç",
+    "cta_href": "/make.html"
+  },
+  "vi": {
+    "title": "Công cụ — aiglossa",
+    "description": "Công cụ sáng tạo nhỏ gọn và chính xác. Đầu tiên: nhạc nền đúng độ dài, từ ảnh hoặc mô tả.",
+    "h1": "Công cụ",
+    "lede": "Tiện ích nhỏ cho công việc sáng tạo hằng ngày. Làm từng cái, làm cho tử tế.",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "Đang hoạt động",
+        "href": "/make.html",
+        "desc": "Biến ảnh hoặc mô tả thành bản nhạc đúng độ dài bạn cần. Lời bài hát gọi tên những gì có trong ảnh.",
+        "meta": "30–90 giây · vòng lặp liền mạch · giọng hát 10 ngôn ngữ"
+      },
+      {
+        "name": "Công cụ ảnh",
+        "status": "Sắp ra mắt",
+        "href": "",
+        "desc": "Ảnh sản phẩm và chỉnh sửa đơn giản, cùng ý tưởng: kết quả chính xác, không bất ngờ.",
+        "meta": "Đang thiết kế"
+      },
+      {
+        "name": "Công cụ văn bản",
+        "status": "Sắp ra mắt",
+        "href": "",
+        "desc": "Tiện ích văn bản nhỏ cho phụ đề, tiêu đề và kiểm tra bản dịch.",
+        "meta": "Đang thiết kế"
+      }
+    ],
+    "note": "Tín dụng dùng chung cho mọi công cụ: một số dư, không hết hạn, không đăng ký định kỳ.",
+    "cta_label": "Mở AI Music",
+    "cta_href": "/make.html"
+  },
+  "zh-Hans": {
+    "title": "工具 — aiglossa",
+    "description": "小而精确的创作工具。第一个：用照片或描述，生成精确长度的背景音乐。",
+    "h1": "工具",
+    "lede": "为日常创作准备的小工具。一次做一个，认真做。",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "已上线",
+        "href": "/make.html",
+        "desc": "用照片或描述生成精确长度的曲子。歌词会唱出照片里的东西。",
+        "meta": "30–90 秒 · 无缝循环 · 10 种语言人声"
+      },
+      {
+        "name": "图片工具",
+        "status": "即将推出",
+        "href": "",
+        "desc": "产品图与简单编辑，同样的思路：输出精确，没有意外。",
+        "meta": "设计中"
+      },
+      {
+        "name": "文本工具",
+        "status": "即将推出",
+        "href": "",
+        "desc": "字幕、标题、译文检查的小工具。",
+        "meta": "设计中"
+      }
+    ],
+    "note": "额度在所有工具间通用：一份余额、永不过期、没有订阅。",
+    "cta_label": "打开 AI Music",
+    "cta_href": "/make.html"
+  },
+  "zh-Hant": {
+    "title": "工具 — aiglossa",
+    "description": "小而精確的創作工具。第一個：用照片或描述，生成精確長度的背景音樂。",
+    "h1": "工具",
+    "lede": "為日常創作準備的小工具。一次做一個，認真做。",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "已上線",
+        "href": "/make.html",
+        "desc": "用照片或描述生成精確長度的曲子。歌詞會唱出照片裡的東西。",
+        "meta": "30–90 秒 · 無縫循環 · 10 種語言人聲"
+      },
+      {
+        "name": "圖片工具",
+        "status": "即將推出",
+        "href": "",
+        "desc": "產品圖與簡單編輯，同樣的思路：輸出精確，沒有意外。",
+        "meta": "設計中"
+      },
+      {
+        "name": "文字工具",
+        "status": "即將推出",
+        "href": "",
+        "desc": "字幕、標題、譯文檢查的小工具。",
+        "meta": "設計中"
+      }
+    ],
+    "note": "額度在所有工具間通用：一份餘額、永不過期、沒有訂閱。",
+    "cta_label": "開啟 AI Music",
     "cta_href": "/make.html"
   }
 }
