@@ -161,6 +161,12 @@
       "your_track": "あなたの曲",
       "from_recipe": "レシピから",
       "from_photo": "写真から制作"
+    },
+    "refund": {
+      "title": "Refund Policy — aiglossa tools",
+      "description": "How refunds work for credits purchased on aiglossa tools.",
+      "h1": "Refund Policy",
+      "body": "<h1>返金ポリシー</h1>\n  <p class=\"updated\">最終更新: 2026年10月22日</p>\n\n  <p>本ポリシーは、<strong>aiglossa tools</strong>（tools.aiglossa.com）で購入したクレジットの返金について説明します。対象は、merchant of record である <strong>Creem</strong> が処理する当社の決済を通じた購入です。</p>\n\n  <h2>1. 購入するもの</h2>\n  <p>購入するのは<strong>プリペイドのクレジット</strong>であり、サブスクリプションではありません。クレジットは支払い直後にアカウントに追加され、<strong>期限はありません</strong>。曲を生成するとクレジットを消費します（30秒の曲で45クレジット、長い曲はそれ以上で、生成前に表示されます）。</p>\n\n  <h2>2. 生成失敗は自動で返金</h2>\n  <p>生成が音声を出力できなかった場合、クレジットは自動で残高に戻ります。曲が納品されなかった生成に対して請求することはありません。</p>\n\n  <h2>3. 未使用クレジット — 14日間の撤回権</h2>\n  <p>EU・英国その他、法定の撤回権がある地域にお住まいの場合、購入から<strong>14日以内</strong>に<strong>未使用</strong>クレジットの返金を請求できます。返金は Creem を通じて元の支払い方法に行います。</p>\n  <p>曲を生成すると、デジタルコンテンツの即時提供を求めたものとみなされ、消費済みのクレジット分は返金対象外となることに同意したものとされます。</p>\n\n  <h2>4. 返金できない場合</h2>\n  <ul>\n    <li>すでに生成に使われたクレジット。</li>\n    <li>購入から14日を超えた請求（未使用クレジットの場合）。</li>\n    <li><a href=\"acceptable-use.html\">利用規約（AUP）</a>違反で停止されたアカウント。</li>\n  </ul>\n\n  <h2>5. 曲に満足できない場合</h2>\n  <p>単に好みに合わないという理由は不具合ではありません。音楽は主観的で、設定を変えて再生成できます。無音・途中で切れる・支払った長さと違うなど、明らかな不具合があると思われる場合はご連絡ください。調査のうえ、不具合であればクレジットを返金します。</p>\n\n  <h2>6. 返金の請求方法</h2>\n  <p><a href=\"mailto:support@aiglossa.com\">support@aiglossa.com</a> まで以下をお送りください:</p>\n  <ul>\n    <li>アカウントのメールアドレス、</li>\n    <li>Creem の注文番号またはレシート番号、</li>\n    <li>問題の簡単な説明。</li>\n  </ul>\n  <p>3営業日以内の返信を心がけています。承認された返金は Creem から元の支払い方法へ行われ、着金までの期間は銀行・カード会社により異なります。</p>\n\n  <h2>7. チャージバック</h2>\n  <p>チャージバックを申請する前に、まずご連絡ください。ほとんどの問題は直接のほうが早く解決できます。受け取った購入についてチャージバックを申請した場合、調査中アカウントが停止されることがあります。</p>\n\n  <hr />\n  <p class=\"muted\">本ポリシーは製品の変更に応じて更新されることがあります。上部の日付が現行版を示します。購入には購入時点の版が適用されます。</p>\n  <p class=\"muted\"><a href=\"./\">← aiglossa tools に戻る</a></p>"
     }
   },
   "ko": {
@@ -237,6 +243,12 @@
       "your_track": "내 곡",
       "from_recipe": "레시피에서",
       "from_photo": "사진에서 제작"
+    },
+    "refund": {
+      "title": "Refund Policy — aiglossa tools",
+      "description": "How refunds work for credits purchased on aiglossa tools.",
+      "h1": "Refund Policy",
+      "body": "<h1>환불 정책</h1>\n  <p class=\"updated\">최종 수정: 2026년 10월 22일</p>\n\n  <p>이 정책은 <strong>aiglossa tools</strong>(tools.aiglossa.com)에서 구매한 크레딧의 환불 방식을 설명합니다. merchant of record인 <strong>Creem</strong>이 처리하는 당사 결제를 통한 구매에 적용됩니다.</p>\n\n  <h2>1. 구매하는 것</h2>\n  <p>구매하는 것은 <strong>선불 크레딧</strong>이며 구독이 아닙니다. 크레딧은 결제 직후 계정에 추가되고 <strong>만료되지 않습니다</strong>. 곡을 생성하면 크레딧이 차감됩니다(30초 곡은 45크레딧, 더 긴 곡은 더 들며 생성 전에 표시됩니다).</p>\n\n  <h2>2. 생성 실패는 자동 환불</h2>\n  <p>생성이 오디오를 만들지 못하면 크레딧은 자동으로 잔액에 반환됩니다. 곡이 제공되지 않은 생성에 대해 청구하지 않습니다.</p>\n\n  <h2>3. 미사용 크레딧 — 14일 철회권</h2>\n  <p>EU, 영국 또는 법정 철회권이 있는 지역에 계신 경우 구매 후 <strong>14일 이내</strong>에 <strong>미사용</strong> 크레딧의 환불을 요청할 수 있습니다. 환불은 Creem을 통해 원래 결제 수단으로 이루어집니다.</p>\n  <p>곡을 생성하면 디지털 콘텐츠의 즉시 제공을 요청한 것으로 간주되며, 사용된 크레딧에 해당하는 금액은 환불되지 않는다는 점에 동의하게 됩니다.</p>\n\n  <h2>4. 환불할 수 없는 경우</h2>\n  <ul>\n    <li>이미 생성에 사용된 크레딧.</li>\n    <li>구매 후 14일이 지난 요청(미사용 크레딧의 경우).</li>\n    <li><a href=\"acceptable-use.html\">허용 사용 정책</a> 위반으로 정지된 계정.</li>\n  </ul>\n\n  <h2>5. 곡이 마음에 들지 않는다면?</h2>\n  <p>단순히 취향에 맞지 않는 것은 결함이 아닙니다. 음악은 주관적이며 다른 설정으로 다시 생성할 수 있습니다. 무음, 잘림, 결제한 길이와 다름 등 명백한 결함이 있다고 판단되면 연락해 주세요. 조사 후 결함이면 크레딧을 환불합니다.</p>\n\n  <h2>6. 환불 요청 방법</h2>\n  <p><a href=\"mailto:support@aiglossa.com\">support@aiglossa.com</a>으로 다음을 보내주세요:</p>\n  <ul>\n    <li>계정 이메일 주소,</li>\n    <li>Creem의 주문 번호 또는 영수증 번호,</li>\n    <li>문제에 대한 간단한 설명.</li>\n  </ul>\n  <p>영업일 기준 3일 이내에 답변드리려 합니다. 승인된 환불은 Creem이 원래 결제 수단으로 처리하며, 입금까지의 기간은 은행이나 카드사에 따라 다릅니다.</p>\n\n  <h2>7. 지불 거절(차지백)</h2>\n  <p>차지백을 신청하기 전에 먼저 연락해 주세요. 대부분의 문제는 직접 해결하는 편이 더 빠릅니다. 수령한 구매에 대해 차지백을 신청하면 분쟁 조사 동안 계정이 정지될 수 있습니다.</p>\n\n  <hr />\n  <p class=\"muted\">이 정책은 제품 변경에 따라 갱신될 수 있습니다. 상단의 날짜가 현재 버전을 나타냅니다. 구매에는 구매 시점의 버전이 적용됩니다.</p>\n  <p class=\"muted\"><a href=\"./\">← aiglossa tools로 돌아가기</a></p>"
     }
   },
   "zh-Hans": {
@@ -313,6 +325,12 @@
       "your_track": "你的曲子",
       "from_recipe": "来自配方",
       "from_photo": "由照片生成"
+    },
+    "refund": {
+      "title": "Refund Policy — aiglossa tools",
+      "description": "How refunds work for credits purchased on aiglossa tools.",
+      "h1": "Refund Policy",
+      "body": "<h1>退款政策</h1>\n  <p class=\"updated\">最后更新：2026 年 10 月 22 日</p>\n\n  <p>本政策说明在 <strong>aiglossa tools</strong>（tools.aiglossa.com）购买的额度如何退款。适用于通过我方结账流程完成的购买，该流程由作为 merchant of record（记录商户）的 <strong>Creem</strong> 处理。</p>\n\n  <h2>1. 你购买的是什么</h2>\n  <p>你购买的是<strong>预付额度</strong>，不是订阅。额度在支付后立即到账，并<strong>永不过期</strong>。生成曲子会消耗额度（30 秒曲子 45 额度；更长的曲子更贵，生成前会显示）。</p>\n\n  <h2>2. 生成失败自动退款</h2>\n  <p>如果生成未能产出音频，额度会自动退回余额。对于没有交付曲子的生成，我们不会扣费。</p>\n\n  <h2>3. 未使用额度 —— 14 天撤回权</h2>\n  <p>如果你位于欧盟、英国或其他有法定撤回权的地区，可在购买后 <strong>14 天内</strong>申请退还<strong>未使用</strong>的额度。我们通过 Creem 退回原支付方式。</p>\n  <p>一旦生成曲子，即视为你要求我们立即提供数字内容，并认可已消耗的额度对应金额不再可退。</p>\n\n  <h2>4. 无法退款的情形</h2>\n  <ul>\n    <li>已用于生成曲子的额度。</li>\n    <li>购买超过 14 天后提出的申请（针对未使用额度）。</li>\n    <li>因违反<a href=\"acceptable-use.html\">可接受使用政策</a>而被停用的账号。</li>\n  </ul>\n\n  <h2>5. 对曲子不满意？</h2>\n  <p>仅仅不喜欢不属于缺陷——音乐是主观的，你可以换参数重新生成。如果你认为曲子有问题（例如静音、被截断，或音频长度与付费长度不符），请联系我们，我们会核查；确属缺陷则退还额度。</p>\n\n  <h2>6. 如何申请退款</h2>\n  <p>请发邮件至 <a href=\"mailto:support@aiglossa.com\">support@aiglossa.com</a>，并附上：</p>\n  <ul>\n    <li>你账号的邮箱地址，</li>\n    <li>Creem 的订单号或收据号，</li>\n    <li>问题的简要说明。</li>\n  </ul>\n  <p>我们力争在 3 个工作日内回复。批准的退款由 Creem 退至原支付方式；到账时间取决于你的银行或发卡行。</p>\n\n  <h2>7. 拒付（chargeback）</h2>\n  <p>请先联系我们，再发起拒付——多数问题直接沟通解决得更快。对已收到的购买发起拒付，可能导致账号在争议调查期间被停用。</p>\n\n  <hr />\n  <p class=\"muted\">本政策可能随产品变化而更新，顶部日期为当前版本。购买适用下单时生效的版本。</p>\n  <p class=\"muted\"><a href=\"./\">← 返回 aiglossa tools</a></p>"
     }
   },
   "zh-Hant": {
@@ -389,6 +407,12 @@
       "your_track": "你的曲子",
       "from_recipe": "來自配方",
       "from_photo": "由照片生成"
+    },
+    "refund": {
+      "title": "Refund Policy — aiglossa tools",
+      "description": "How refunds work for credits purchased on aiglossa tools.",
+      "h1": "Refund Policy",
+      "body": "<h1>退款政策</h1>\n  <p class=\"updated\">最後更新：2026 年 10 月 22 日</p>\n\n  <p>本政策說明在 <strong>aiglossa tools</strong>（tools.aiglossa.com）購買的額度如何退款。適用於透過我方結帳流程完成的購買，該流程由作為 merchant of record（記錄商戶）的 <strong>Creem</strong> 處理。</p>\n\n  <h2>1. 你購買的是什麼</h2>\n  <p>你購買的是<strong>預付額度</strong>，不是訂閱。額度在付款後立即到帳，並<strong>永不過期</strong>。生成曲子會消耗額度（30 秒曲子 45 額度；更長的曲子更貴，生成前會顯示）。</p>\n\n  <h2>2. 生成失敗自動退款</h2>\n  <p>如果生成未能產出音訊，額度會自動退回餘額。對於沒有交付曲子的生成，我們不會收費。</p>\n\n  <h2>3. 未使用額度 —— 14 天撤回權</h2>\n  <p>如果你位於歐盟、英國或其他有法定撤回權的地區，可在購買後 <strong>14 天內</strong>申請退還<strong>未使用</strong>的額度。我們透過 Creem 退回原付款方式。</p>\n  <p>一旦生成曲子，即視為你要求我們立即提供數位內容，並認可已消耗的額度對應金額不再可退。</p>\n\n  <h2>4. 無法退款的情形</h2>\n  <ul>\n    <li>已用於生成曲子的額度。</li>\n    <li>購買超過 14 天後提出的申請（針對未使用額度）。</li>\n    <li>因違反<a href=\"acceptable-use.html\">可接受使用政策</a>而被停用的帳號。</li>\n  </ul>\n\n  <h2>5. 對曲子不滿意？</h2>\n  <p>僅僅不喜歡不屬於瑕疵——音樂是主觀的，你可以換參數重新生成。如果你認為曲子有問題（例如靜音、被截斷，或音訊長度與付費長度不符），請聯絡我們，我們會查核；確屬瑕疵則退還額度。</p>\n\n  <h2>6. 如何申請退款</h2>\n  <p>請寄信至 <a href=\"mailto:support@aiglossa.com\">support@aiglossa.com</a>，並附上：</p>\n  <ul>\n    <li>你帳號的電子郵件地址，</li>\n    <li>Creem 的訂單號或收據號，</li>\n    <li>問題的簡要說明。</li>\n  </ul>\n  <p>我們力求在 3 個工作天內回覆。核准的退款由 Creem 退至原付款方式；到帳時間取決於你的銀行或發卡行。</p>\n\n  <h2>7. 拒付（chargeback）</h2>\n  <p>請先聯絡我們，再發起拒付——多數問題直接溝通解決得更快。對已收到的購買發起拒付，可能導致帳號在爭議調查期間被停用。</p>\n\n  <hr />\n  <p class=\"muted\">本政策可能隨產品變化而更新，頂部日期為目前版本。購買適用下單時生效的版本。</p>\n  <p class=\"muted\"><a href=\"./\">← 返回 aiglossa tools</a></p>"
     }
   },
   "es": {
@@ -465,6 +489,12 @@
       "your_track": "Tu pista",
       "from_recipe": "Desde una receta",
       "from_photo": "Desde una foto"
+    },
+    "refund": {
+      "title": "Refund Policy — aiglossa tools",
+      "description": "How refunds work for credits purchased on aiglossa tools.",
+      "h1": "Refund Policy",
+      "body": "<h1>Política de reembolsos</h1>\n  <p class=\"updated\">Última actualización: 22 de octubre de 2026</p>\n\n  <p>Esta política explica cómo funcionan los reembolsos de los créditos comprados en <strong>aiglossa tools</strong> (tools.aiglossa.com). Se aplica a las compras realizadas a través de nuestro pago, procesado por <strong>Creem</strong> como merchant of record.</p>\n\n  <h2>1. Qué estás comprando</h2>\n  <p>Compras <strong>créditos prepago</strong>, no una suscripción. Los créditos se añaden a tu cuenta inmediatamente después del pago y <strong>no caducan</strong>. Generar una pista consume créditos (una pista de 30 s cuesta 45 créditos; las más largas cuestan más, y se muestra antes de generar).</p>\n\n  <h2>2. Las generaciones fallidas se reembolsan automáticamente</h2>\n  <p>Si una generación no produce audio, los créditos vuelven a tu saldo automáticamente. Nunca se te cobra por una generación que no entregó una pista.</p>\n\n  <h2>3. Créditos sin usar — derecho de desistimiento de 14 días</h2>\n  <p>Si estás en la UE, el Reino Unido u otra jurisdicción con derecho de desistimiento legal, puedes solicitar el reembolso de los créditos <strong>sin usar</strong> dentro de los <strong>14 días</strong> siguientes a la compra. Reembolsamos al método de pago original a través de Creem.</p>\n  <p>Al generar una pista, nos pides el suministro inmediato del contenido digital y aceptas que, una vez gastados los créditos, el importe correspondiente ya no es reembolsable.</p>\n\n  <h2>4. Cuándo no podemos reembolsar</h2>\n  <ul>\n    <li>Créditos ya gastados en pistas generadas.</li>\n    <li>Solicitudes hechas más de 14 días después de la compra (para créditos sin usar).</li>\n    <li>Cuentas suspendidas por infringir nuestra <a href=\"acceptable-use.html\">Política de uso aceptable</a>.</li>\n  </ul>\n\n  <h2>5. ¿No te gusta una pista?</h2>\n  <p>Que una pista generada no te guste no es un defecto: la música es subjetiva y puedes volver a generarla con otros ajustes. Si crees que una pista está defectuosa (por ejemplo, silencio, corte, o una duración distinta de la pagada), escríbenos y lo investigaremos; si es defectuosa, reembolsaremos los créditos.</p>\n\n  <h2>6. Cómo solicitar un reembolso</h2>\n  <p>Escríbenos a <a href=\"mailto:support@aiglossa.com\">support@aiglossa.com</a> con:</p>\n  <ul>\n    <li>el correo de tu cuenta,</li>\n    <li>el número de pedido o recibo de Creem,</li>\n    <li>una breve descripción del problema.</li>\n  </ul>\n  <p>Procuramos responder en 3 días hábiles. Creem emite los reembolsos aprobados al método de pago original; el plazo depende de tu banco o emisor de la tarjeta.</p>\n\n  <h2>7. Contracargos</h2>\n  <p>Contáctanos antes de abrir un contracargo: la mayoría de los problemas se resuelven más rápido directamente. Abrir un contracargo por una compra recibida puede provocar la suspensión de la cuenta mientras se investiga la disputa.</p>\n\n  <hr />\n  <p class=\"muted\">Esta política puede actualizarse conforme cambie el producto. La fecha superior indica la versión vigente. Las compras se rigen por la versión vigente en el momento de la compra.</p>\n  <p class=\"muted\"><a href=\"./\">← Volver a aiglossa tools</a></p>"
     }
   },
   "fr": {
@@ -541,6 +571,12 @@
       "your_track": "Votre morceau",
       "from_recipe": "Depuis une recette",
       "from_photo": "Depuis une photo"
+    },
+    "refund": {
+      "title": "Refund Policy — aiglossa tools",
+      "description": "How refunds work for credits purchased on aiglossa tools.",
+      "h1": "Refund Policy",
+      "body": "<h1>Politique de remboursement</h1>\n  <p class=\"updated\">Dernière mise à jour : 22 octobre 2026</p>\n\n  <p>Cette politique explique le fonctionnement des remboursements des crédits achetés sur <strong>aiglossa tools</strong> (tools.aiglossa.com). Elle s'applique aux achats effectués via notre paiement, traité par <strong>Creem</strong> en tant que merchant of record.</p>\n\n  <h2>1. Ce que vous achetez</h2>\n  <p>Vous achetez des <strong>crédits prépayés</strong>, pas un abonnement. Les crédits sont ajoutés à votre compte immédiatement après le paiement et <strong>n'expirent jamais</strong>. Générer un morceau consomme des crédits (un morceau de 30 s coûte 45 crédits ; les plus longs coûtent davantage, indiqué avant la génération).</p>\n\n  <h2>2. Les générations échouées sont remboursées automatiquement</h2>\n  <p>Si une génération ne produit pas d'audio, les crédits sont automatiquement restitués à votre solde. Vous n'êtes jamais facturé pour une génération qui n'a pas livré de morceau.</p>\n\n  <h2>3. Crédits non utilisés — droit de rétractation de 14 jours</h2>\n  <p>Si vous êtes dans l'UE, au Royaume-Uni ou dans une autre juridiction disposant d'un droit de rétractation légal, vous pouvez demander le remboursement des crédits <strong>non utilisés</strong> dans les <strong>14 jours</strong> suivant l'achat. Nous remboursons sur le moyen de paiement d'origine via Creem.</p>\n  <p>En générant un morceau, vous demandez la fourniture immédiate du contenu numérique et reconnaissez que, une fois les crédits dépensés, le montant correspondant n'est plus remboursable.</p>\n\n  <h2>4. Quand nous ne pouvons pas rembourser</h2>\n  <ul>\n    <li>Les crédits déjà dépensés pour des morceaux générés.</li>\n    <li>Les demandes faites plus de 14 jours après l'achat (pour les crédits non utilisés).</li>\n    <li>Les comptes suspendus pour violation de notre <a href=\"acceptable-use.html\">Politique d'usage acceptable</a>.</li>\n  </ul>\n\n  <h2>5. Un morceau ne vous plaît pas ?</h2>\n  <p>Un morceau généré qui ne vous plaît pas n'est pas un défaut : la musique est subjective et vous pouvez régénérer avec d'autres réglages. Si vous pensez qu'un morceau est défectueux (silence, coupure, durée différente de celle payée), contactez-nous : nous enquêterons et rembourserons les crédits s'il est défectueux.</p>\n\n  <h2>6. Comment demander un remboursement</h2>\n  <p>Écrivez-nous à <a href=\"mailto:support@aiglossa.com\">support@aiglossa.com</a> avec :</p>\n  <ul>\n    <li>l'adresse e-mail de votre compte,</li>\n    <li>le numéro de commande ou de reçu Creem,</li>\n    <li>une brève description du problème.</li>\n  </ul>\n  <p>Nous visons une réponse sous 3 jours ouvrés. Les remboursements approuvés sont émis par Creem sur le moyen de paiement d'origine ; le délai dépend de votre banque ou de l'émetteur de la carte.</p>\n\n  <h2>7. Rétrofacturations</h2>\n  <p>Contactez-nous avant d'ouvrir une rétrofacturation : la plupart des problèmes se règlent plus vite directement. Ouvrir une rétrofacturation pour un achat reçu peut entraîner la suspension du compte pendant l'enquête.</p>\n\n  <hr />\n  <p class=\"muted\">Cette politique peut être mise à jour selon l'évolution du produit. La date en haut indique la version en vigueur. Les achats sont régis par la version en vigueur au moment de l'achat.</p>\n  <p class=\"muted\"><a href=\"./\">← Retour à aiglossa tools</a></p>"
     }
   },
   "de": {
