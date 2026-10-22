@@ -60,6 +60,17 @@
       ],
       "destination": "/en/pricing.html",
       "permanent": true
+    },
+    {
+      "source": "/account.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
+      "destination": "/en/account.html",
+      "permanent": true
     }
   ],
   "rewrites": [

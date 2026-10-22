@@ -24,10 +24,10 @@
     "legal": false,
     "pages": [
       "tools",
-      "pricing"
+      "pricing",
+      "account"
     ],
     "extra": [
-      "account.html",
       "make.html",
       "refund.html",
       "acceptable-use.html"
