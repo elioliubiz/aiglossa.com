@@ -11,21 +11,6 @@ python3 tools/verify.py     # 校验产物、hreflang、canonical、断链
 
 产物**提交进仓库**（Vercel 零构建）。改动后必须两件事都做：`build.py` 跑一遍，`verify.py` 必须干净，再提交。
 
-### 测试服
-
-```bash
-./tools/deploy_dev.sh      # build + verify + rsync 到 dev.aiglossa.com
-```
-
-`https://dev.aiglossa.com` 同一域名两件事：
-
-| 路径 | 来源 |
-|---|---|
-| `/en/`、`/make.html`、`/assets/`… | nginx 静态文件 `/var/www/glossa-dev-site`（`sites/tools/` 的副本） |
-| `/ai/*`、`/auth/*`、`/health`、`/docs` | 反代到 FastAPI `127.0.0.1:8001` |
-
-因为同源，页面直接调 `https://dev.aiglossa.com/ai/...`，不需要跨域；`WEB_ORIGINS` 里已包含该域名（`/opt/glossa-shared/common.env`）。
-
 ## 多语言是硬约束（最重要的一条）
 
 **16 种语言**，`tools/content/languages.json` 是唯一来源：
