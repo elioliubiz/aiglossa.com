@@ -53,6 +53,17 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 - 指向源码站的链接（如法律页）显式带语言：`https://aiglossa.com/<lang>/protocol/privacy.html`。
 - 生成器里的片段若要拼前缀，用 `{{prefix}}`；`render()` 只替换一遍，插入片段里的占位符需要 `emit()` 里补替换（见 `build.py`）。
 
+## 边界：哪些域名不属于这个仓库
+
+| 域名 | 归属 | 这个仓库能不能动 |
+|---|---|---|
+| `aiglossa.com`、`scholan.aiglossa.com`、`tools.aiglossa.com` | 本仓库构建，Vercel 部署 | ✅ |
+| `dev.aiglossa.com`、`api.aiglossa.com` | **后端仓库**（FastAPI）在服务器上自建 | ❌ |
+
+`dev` / `api` 两个域名由服务器上的 nginx + systemd 管理，**与本前端工程无关**：不要把静态站部署到它们上面，也不要改它们的 nginx 配置或 `WEB_ORIGINS`。前端页面调用它们时只当 API 用（`https://dev.aiglossa.com/ai/...`）。
+
+测试前端就走本地 `http://localhost:8000` 或 Vercel 的 preview 地址。
+
 ## 工具站（tools.aiglossa.com）现状
 
 | 页面 | 多语言 |
