@@ -37,6 +37,8 @@ PAGES: dict[str, list[tuple[str, str]]] = {
 
 
 def outputs_for(page: str) -> list[tuple[str, str]]:
+    if page == "pricing":
+        return [("pricing.html", "pricing.html")]
     if page == "protocol":
         return [(f"protocol/{name}.html", f"protocol/{name}.html") for name in PROTOCOL_PAGES]
     return PAGES[page]

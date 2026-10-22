@@ -23,11 +23,11 @@
     "host": "tools.aiglossa.com",
     "legal": false,
     "pages": [
-      "tools"
+      "tools",
+      "pricing"
     ],
     "extra": [
       "account.html",
-      "pricing.html",
       "make.html",
       "refund.html",
       "acceptable-use.html"
