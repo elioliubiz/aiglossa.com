@@ -71,6 +71,28 @@
       ],
       "destination": "/en/account.html",
       "permanent": true
+    },
+    {
+      "source": "/refund.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
+      "destination": "/en/refund.html",
+      "permanent": true
+    },
+    {
+      "source": "/acceptable-use.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
+      "destination": "/en/acceptable-use.html",
+      "permanent": true
     }
   ],
   "rewrites": [

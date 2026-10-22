@@ -53,6 +53,9 @@ PAGES = {
     # 工具站的独立页面（每语言一份，深度 1）：/{lang}/pricing.html
     "pricing": ("pages/pricing.html", "ui", "pricing.html"),
     "account": ("pages/account.html", "ui", "account.html"),
+    # 法律页：正文整体从 ui.json 取（与 protocol 页同样的做法），页面数固定
+    "refund": ("pages/legal.html", "ui", "refund.html"),
+    "acceptable-use": ("pages/legal.html", "ui", "acceptable-use.html"),
 }
 
 
@@ -225,6 +228,9 @@ def switcher_select(depth: int, current: str, page_path: str, languages: dict, o
         "                </select>\n"
         "            </div>"
     )
+
+
+UNTRANSLATED: list[str] = []
 
 
 def main() -> int:
@@ -401,6 +407,24 @@ def main() -> int:
                         "legal_terms_href": f"{legal_base}/{lang}/protocol/term.html",
                     }
                 values_builder = marketing_values
+            elif page in ("refund", "acceptable-use"):
+                def legal_values(lang: str, base: str, page=page, source=source) -> dict[str, str]:
+                    # 未翻译的语言回退到英文，并在构建报告里显式列出（不静默）
+                    copy = source[lang].get(page) or source["en"][page]
+                    if page not in source[lang]:
+                        UNTRANSLATED.append(f"{page} · {lang}")
+                    return {
+                        "title": esc(copy["title"]),
+                        "description": esc(copy["description"]),
+                        "body": copy["body"],
+                        "legal_privacy": esc(marketing[lang]["legal"]["privacy"]),
+                        "legal_terms": esc(marketing[lang]["legal"]["terms"]),
+                        "refund_label": esc(source[lang]["pricing"]["refund_link"]),
+                        "lang_label": esc(marketing[lang]["langLabel"]),
+                        "current_name": esc(languages[lang]["name"]),
+                    }
+
+                values_builder = legal_values
             elif page in ("pricing", "account"):
                 def tool_page_values(lang: str, base: str, page=page, source=source) -> dict[str, str]:
                     copy = source[lang][page]
@@ -473,6 +497,10 @@ def main() -> int:
     for line in written:
         print("  " + line)
     print(f"\n共 {len(sites)} 个站点，各站语言集合见上（全局默认 {default}）。")
+    if UNTRANSLATED:
+        print(f"\n⚠ 未翻译、回退英文的页面（{len(UNTRANSLATED)} 处）：")
+        for item in UNTRANSLATED:
+            print("   " + item)
     return 0
 
 
