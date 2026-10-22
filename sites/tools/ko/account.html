@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr" data-default-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>로그인 — aiglossa tools</title>
+<meta name="description" content="aiglossa tools에 로그인하면 크레딧을 확인하고 생성한 음악을 내려받을 수 있습니다.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://tools.aiglossa.com/ko/account.html">
+<link rel="alternate" hreflang="ar" href="https://tools.aiglossa.com/ar/account.html">
+<link rel="alternate" hreflang="de" href="https://tools.aiglossa.com/de/account.html">
+<link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/account.html">
+<link rel="alternate" hreflang="es" href="https://tools.aiglossa.com/es/account.html">
+<link rel="alternate" hreflang="fr" href="https://tools.aiglossa.com/fr/account.html">
+<link rel="alternate" hreflang="id" href="https://tools.aiglossa.com/id/account.html">
+<link rel="alternate" hreflang="it" href="https://tools.aiglossa.com/it/account.html">
+<link rel="alternate" hreflang="ja" href="https://tools.aiglossa.com/ja/account.html">
+<link rel="alternate" hreflang="ko" href="https://tools.aiglossa.com/ko/account.html">
+<link rel="alternate" hreflang="pt" href="https://tools.aiglossa.com/pt/account.html">
+<link rel="alternate" hreflang="ru" href="https://tools.aiglossa.com/ru/account.html">
+<link rel="alternate" hreflang="th" href="https://tools.aiglossa.com/th/account.html">
+<link rel="alternate" hreflang="tr" href="https://tools.aiglossa.com/tr/account.html">
+<link rel="alternate" hreflang="vi" href="https://tools.aiglossa.com/vi/account.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/account.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/account.html">
+<link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/account.html">
+<meta name="theme-color" content="#0e0f11">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="../assets/theme.css">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+  body{min-height:100vh;display:flex;flex-direction:column}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:16px;
+       padding-block:20px;padding-inline:32px;border-block-end:1px solid var(--line)}
+  .top .brand{font:11px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .top a{color:var(--muted);text-decoration:none;font-size:13px}
+  .top a:hover{color:var(--fg)}
+  .split{flex:1;display:grid;grid-template-columns:1.05fr .95fr;min-height:0}
+  .showcase{position:relative;overflow:hidden;border-inline-end:1px solid var(--line);
+            padding-block:56px;padding-inline:48px;display:flex;flex-direction:column;
+            justify-content:center;gap:26px}
+  .showcase h2{font-size:clamp(22px,2.4vw,30px);line-height:1.2;letter-spacing:-.02em;margin:0;font-weight:600;max-width:20ch}
+  .showcase p{color:var(--muted);font-size:14.5px;line-height:1.7;margin:0;max-width:38ch}
+  .proof{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);max-width:460px;margin:0}
+  .proof img{display:block;width:100%;height:240px;object-fit:cover}
+  .proof .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,10,.05),rgba(10,12,10,.9))}
+  .proof .body{position:absolute;inset-inline:16px;bottom:14px;color:#fff}
+  .proof .k{font:9.5px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;opacity:.75;margin:0 0 8px}
+  .proof .ly{font:400 15px/1.4 "Iowan Old Style",Palatino,Georgia,serif;margin:0}
+  .proof .ly b{font-weight:400;box-shadow:inset 0 -.42em 0 rgba(255,122,26,.5)}
+  .pane{display:flex;align-items:center;justify-content:center;padding-block:48px;padding-inline:24px}
+  .form{width:100%;max-width:380px}
+  .form h1{font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px;font-weight:600}
+  .form .sub{color:var(--muted);font-size:13.5px;margin:0 0 26px}
+  .divider{display:flex;align-items:center;gap:12px;color:var(--dim);font-size:12px;margin-block:20px}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
+  .field{margin-block-end:14px}
+  .field label{display:block;font-size:12px;color:var(--muted);margin-block-end:6px}
+  .field input{width:100%;padding-block:12px;padding-inline:13px;border-radius:10px;
+               border:1px solid var(--line);background:#121317;color:var(--fg);font-size:15px;font-family:inherit}
+  .field input:focus{outline:none;border-color:var(--accent)}
+  .btn{display:inline-flex;align-items:center;justify-content:center;width:100%;
+       padding-block:12px;padding-inline:18px;border-radius:10px;border:0;cursor:pointer;
+       background:var(--accent);color:#1a0e04;font:600 14px/1 inherit;text-decoration:none}
+  .btn:hover{background:var(--accent-soft)}
+  .btn[disabled]{opacity:.5;cursor:not-allowed}
+  .btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.04)}
+  .msg{font-size:13px;margin-block-start:12px;min-height:18px}
+  .msg.err{color:#ff9b9b}.msg.ok{color:#9be7b0}
+  .legal{margin-block-start:14px;font-size:11.5px;color:var(--dim);line-height:1.6}
+  .legal a{color:var(--muted)}
+  .hidden{display:none !important}
+  .balance{font-size:44px;font-weight:600;letter-spacing:-.03em;margin-block:18px 2px}
+  .balance small{font-size:14px;font-weight:400;color:var(--muted);margin-inline-start:8px;letter-spacing:0}
+  .hint{font-size:12.5px;color:var(--muted);margin-block-start:6px}
+  .links{margin-block-start:26px;display:grid;gap:10px}
+  footer{border-block-start:1px solid var(--line);padding-block:26px}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  footer nav a{color:var(--muted);font-size:12.5px;text-decoration:none;margin-inline-end:14px}
+  .switcher{position:relative}
+  .switcher summary{list-style:none;cursor:pointer;font-size:12.5px;color:var(--muted);
+                    border:1px solid var(--line);border-radius:999px;padding-block:7px;padding-inline:14px}
+  .switcher summary::-webkit-details-marker{display:none}
+  .switcher ul{position:absolute;inset-inline-end:0;bottom:calc(100% + 8px);z-index:5;margin:0;
+               padding:6px;list-style:none;background:#16181c;border:1px solid var(--line);
+               border-radius:12px;max-height:260px;overflow:auto;min-width:160px;
+               box-shadow:0 12px 32px rgba(0,0,0,.5)}
+  .switcher li a{display:block;padding-block:7px;padding-inline:10px;border-radius:8px;
+                 color:var(--muted);text-decoration:none;font-size:13px}
+  .switcher li a[aria-current]{color:var(--fg);background:rgba(255,255,255,.06)}
+  @media(max-width:900px){
+    .split{grid-template-columns:1fr}
+    .showcase{display:none}
+    .pane{align-items:flex-start;justify-content:flex-start;padding-block:34px 56px;padding-inline:20px}
+    .form{max-width:420px;margin-inline:auto}
+  }
+</style>
+<script type="application/json" id="ui">{"title": "로그인 — aiglossa tools", "description": "aiglossa tools에 로그인하면 크레딧을 확인하고 생성한 음악을 내려받을 수 있습니다.", "back": "도구 목록으로", "h1": "로그인", "sub": "비밀번호가 없습니다. Google 또는 이메일로 받은 6자리 코드를 사용하세요.", "divider": "또는 이메일로", "email_label": "이메일", "email_ph": "you@example.com", "code_label": "6자리 코드", "code_ph": "123456", "send_code": "코드 보내기", "first_time": "처음이신가요? 계정은 자동으로 만들어집니다.", "agree": "계속하면 다음에 동의하는 것으로 간주됩니다:", "terms": "이용약관", "privacy": "개인정보처리방침", "signed_h1": "내 크레딧", "signout": "로그아웃", "credits_unit": "크레딧", "create": "음악 만들기 →", "buy": "크레딧 구매 →", "err_load": "불러오지 못했습니다", "err_net": "네트워크 오류", "err_signin": "로그인에 실패했습니다", "paid_wait": "결제가 확인되었습니다 — 곧 크레딧이 반영됩니다…", "paid_ok": "크레딧이 추가되었습니다. 감사합니다!", "paid_late": "처리 중입니다 — 1분 후 새로고침하세요.", "show_h2": "크레딧을 유지하려면 로그인하세요.", "show_p": "크레딧은 모든 도구에서 공용이며 만료되지 않습니다. 로그인은 구매를 계정에 연결하기 위한 것일 뿐, 다른 정보는 저장하지 않습니다.", "proof_k": "여기서 제작 · 영어 · 0:30"}</script>
+</head>
+<body>
+<div class="top">
+  <span class="brand">aiglossa tools</span>
+  <a href="./">도구 목록으로</a>
+</div>
+
+<div class="split">
+  <section class="showcase">
+    <h2>크레딧을 유지하려면 로그인하세요.</h2>
+    <p>크레딧은 모든 도구에서 공용이며 만료되지 않습니다. 로그인은 구매를 계정에 연결하기 위한 것일 뿐, 다른 정보는 저장하지 않습니다.</p>
+    <figure class="proof">
+      <img src="../samples/demo-sea.jpg" alt="">
+      <div class="shade"></div>
+      <div class="body">
+        <p class="k">여기서 제작 · 영어 · 0:30</p>
+        <p class="ly">Gentle <b>sea</b> breathes on the sand. Every <b>wave</b> that meets the <b>beach</b>.</p>
+      </div>
+    </figure>
+  </section>
+
+  <section class="pane">
+    <div class="form" id="signin-card">
+      <h1>로그인</h1>
+      <p class="sub">비밀번호가 없습니다. Google 또는 이메일로 받은 6자리 코드를 사용하세요.</p>
+
+      <div id="g_id_onload"
+           data-client_id="801915920503-8nhv7tktogpn6nha9fkv1nctb7o2hsfc.apps.googleusercontent.com"
+           data-callback="onGoogleCredential"
+           data-auto_prompt="false"></div>
+      <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="filled_black"
+           data-text="signin_with" data-size="large" data-logo_alignment="left"></div>
+
+      <div class="divider">또는 이메일로</div>
+
+      <form id="email-form" autocomplete="on">
+        <div class="field">
+          <label for="email">이메일</label>
+          <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+        </div>
+        <div class="field hidden" id="code-field">
+          <label for="code">6자리 코드</label>
+          <input id="code" name="code" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="123456">
+        </div>
+        <button class="btn" type="submit" id="email-submit">코드 보내기</button>
+      </form>
+
+      <div class="msg" id="signin-msg" role="status" aria-live="polite"></div>
+
+      <p class="legal">처음이신가요? 계정은 자동으로 만들어집니다.</p>
+      <p class="legal">계속하면 다음에 동의하는 것으로 간주됩니다:
+        <a href="https://aiglossa.com/ko/protocol/term.html">이용약관</a> ·
+        <a href="https://aiglossa.com/ko/protocol/privacy.html">개인정보처리방침</a></p>
+    </div>
+
+    <div class="form hidden" id="account-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h1>내 크레딧</h1>
+        <button class="btn ghost" id="logout" style="width:auto;padding:8px 14px">로그아웃</button>
+      </div>
+      <div class="balance"><span id="coins">—</span><small>크레딧</small></div>
+      <p class="hint" id="tracks-hint"></p>
+      <p class="hint" id="account-email"></p>
+
+      <div class="links">
+        <a class="btn" href="make.html">음악 만들기 →</a>
+        <a class="btn ghost" href="pricing.html">크레딧 구매 →</a>
+      </div>
+
+      <div class="msg" id="account-msg" role="status" aria-live="polite"></div>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">aiglossa · tools.aiglossa.com</span>
+    <nav>
+      <a href="https://aiglossa.com/ko/protocol/privacy.html">개인정보처리방침</a>
+      <a href="https://aiglossa.com/ko/protocol/term.html">이용약관</a>
+      <a href="refund.html">환불 정책</a>
+    </nav>
+    <details class="switcher">
+      <summary>언어 · 한국어</summary>
+      <ul>
+        <li><a href="../ar/account.html" data-lang="ar">العربية</a></li>
+        <li><a href="../de/account.html" data-lang="de">Deutsch</a></li>
+        <li><a href="../en/account.html" data-lang="en">English</a></li>
+        <li><a href="../es/account.html" data-lang="es">Español</a></li>
+        <li><a href="../fr/account.html" data-lang="fr">Français</a></li>
+        <li><a href="../id/account.html" data-lang="id">Bahasa Indonesia</a></li>
+        <li><a href="../it/account.html" data-lang="it">Italiano</a></li>
+        <li><a href="../ja/account.html" data-lang="ja">日本語</a></li>
+        <li><a href="../ko/account.html" data-lang="ko" aria-current="true">한국어</a></li>
+        <li><a href="../pt/account.html" data-lang="pt">Português</a></li>
+        <li><a href="../ru/account.html" data-lang="ru">Русский</a></li>
+        <li><a href="../th/account.html" data-lang="th">ไทย</a></li>
+        <li><a href="../tr/account.html" data-lang="tr">Türkçe</a></li>
+        <li><a href="../vi/account.html" data-lang="vi">Tiếng Việt</a></li>
+        <li><a href="../zh-Hans/account.html" data-lang="zh-Hans">简体中文</a></li>
+        <li><a href="../zh-Hant/account.html" data-lang="zh-Hant">繁體中文</a></li>
+      </ul>
+    </details>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var UI = JSON.parse(document.getElementById("ui").textContent);
+  var TOKEN_KEY = "aig_token", EMAIL_KEY = "aig_email";
+  var API = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "https://dev.aiglossa.com";
+  var $ = function (id) { return document.getElementById(id); };
+  function token() { return localStorage.getItem(TOKEN_KEY) || ""; }
+  function setToken(t) { if (t) localStorage.setItem(TOKEN_KEY, t); else localStorage.removeItem(TOKEN_KEY); }
+  function device() {
+    var v = localStorage.getItem("aig_device");
+    if (!v) { v = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())); localStorage.setItem("aig_device", v); }
+    return v;
+  }
+  function call(path, body, auth) {
+    var h = { "Content-Type": "application/json", "X-Client": "web" };
+    if (auth) h["Authorization"] = "Bearer " + token();
+    var payload = Object.assign({ app_key: "tools", device: device(), timestamp: Math.floor(Date.now() / 1000) }, body || {});
+    return fetch(API + path, { method: "POST", headers: h, body: JSON.stringify(payload) }).then(function (r) { return r.json(); });
+  }
+  function showMsg(el, text, kind) { if (!el) return; el.textContent = text || ""; el.className = "msg" + (kind ? " " + kind : ""); }
+
+  function renderSignedIn() {
+    $("signin-card").classList.add("hidden");
+    $("account-card").classList.remove("hidden");
+    $("account-email").textContent = localStorage.getItem(EMAIL_KEY) || "";
+    loadCredits();
+  }
+  function renderSignedOut() {
+    $("account-card").classList.add("hidden");
+    $("signin-card").classList.remove("hidden");
+  }
+  function loadCredits() {
+    call("/ai/music/credits", {}, true).then(function (data) {
+      if (data.code === 401) { setToken(""); renderSignedOut(); return; }
+      if (data.code !== 200) { showMsg($("account-msg"), data.msg || UI.err_load, "err"); return; }
+      $("coins").textContent = data.data.coins;
+      $("tracks-hint").textContent = data.data.tracks_left + " × 30s";
+    }).catch(function () { showMsg($("account-msg"), UI.err_net, "err"); });
+  }
+  function acceptToken(data) {
+    if (data.code !== 200) { showMsg($("signin-msg"), data.msg || UI.err_signin, "err"); return; }
+    setToken(data.data.access_token);
+    if (data.data.user && data.data.user.email) localStorage.setItem(EMAIL_KEY, data.data.user.email);
+    showMsg($("signin-msg"), "", "");
+    renderSignedIn();
+    var next = new URLSearchParams(location.search).get("next");
+    if (next && /^[a-z0-9-]+\.html$/i.test(next)) location.href = next;
+  }
+
+  window.onGoogleCredential = function (res) {
+    call("/auth/google", { credential: res.credential }).then(acceptToken)
+      .catch(function () { showMsg($("signin-msg"), UI.err_net, "err"); });
+  };
+
+  var codeSent = false;
+  $("email-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var email = $("email").value.trim();
+    if (!codeSent) {
+      $("email-submit").disabled = true;
+      call("/auth/email/start", { email: email }).then(function (data) {
+        $("email-submit").disabled = false;
+        if (data.code !== 200) { showMsg($("signin-msg"), data.msg || UI.err_signin, "err"); return; }
+        codeSent = true;
+        $("code-field").classList.remove("hidden");
+        $("email-submit").textContent = UI.send_code;
+        $("code").focus();
+      }).catch(function () { $("email-submit").disabled = false; showMsg($("signin-msg"), UI.err_net, "err"); });
+      return;
+    }
+    call("/auth/email/verify", { email: email, code: $("code").value.trim() }).then(acceptToken)
+      .catch(function () { showMsg($("signin-msg"), UI.err_net, "err"); });
+  });
+
+  $("logout").addEventListener("click", function () {
+    call("/auth/logout", {}, true).catch(function () {});
+    setToken(""); renderSignedOut();
+  });
+
+  function pollAfterPayment() {
+    var tries = 0, initial = $("coins").textContent;
+    showMsg($("account-msg"), UI.paid_wait, "ok");
+    var timer = setInterval(function () {
+      tries += 1;
+      call("/ai/music/credits", {}, true).then(function (data) {
+        if (data.code === 200 && data.data.coins !== initial) {
+          $("coins").textContent = data.data.coins;
+          showMsg($("account-msg"), UI.paid_ok, "ok");
+          clearInterval(timer);
+        }
+      }).catch(function () {});
+      if (tries >= 10) { clearInterval(timer); showMsg($("account-msg"), UI.paid_late, ""); }
+    }, 3000);
+  }
+
+  if (token()) {
+    renderSignedIn();
+    if (new URLSearchParams(location.search).get("paid")) pollAfterPayment();
+  } else {
+    renderSignedOut();
+  }
+})();
+</script>
+</body>
+</html>

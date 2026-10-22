@@ -52,6 +52,7 @@ PAGES = {
     "tools": ("tools.html", "tools", ""),
     # 工具站的独立页面（每语言一份，深度 1）：/{lang}/pricing.html
     "pricing": ("pages/pricing.html", "ui", "pricing.html"),
+    "account": ("pages/account.html", "ui", "account.html"),
 }
 
 
@@ -400,20 +401,19 @@ def main() -> int:
                         "legal_terms_href": f"{legal_base}/{lang}/protocol/term.html",
                     }
                 values_builder = marketing_values
-            elif page == "pricing":
-                # 工具站的独立页面按语言生成（深度 1：/{lang}/pricing.html）。
-                # 文案在 content/ui.json，结构是 {page: {lang: {key: value}}}。
-                def pricing_values(lang: str, base: str, source=source) -> dict[str, str]:
-                    copy = source[lang]["pricing"]
+            elif page in ("pricing", "account"):
+                def tool_page_values(lang: str, base: str, page=page, source=source) -> dict[str, str]:
+                    copy = source[lang][page]
                     out = {k: esc(v) for k, v in copy.items()}
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
                     out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
                     out["legal_terms"] = esc(marketing[lang]["legal"]["terms"])
+                    out["refund_label"] = esc(source[lang]["pricing"]["refund_link"])
                     out["lang_label"] = esc(marketing[lang]["langLabel"])
                     out["current_name"] = esc(languages[lang]["name"])
                     return out
 
-                values_builder = pricing_values
+                values_builder = tool_page_values
             elif page == "tools":
                 def tools_values(lang: str, base: str, source=source) -> dict[str, str]:
                     # 工具站：法务标签/语言名复用 marketing.json 与 languages.json 的既有译文，
