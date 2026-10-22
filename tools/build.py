@@ -56,6 +56,7 @@ PAGES = {
     # 法律页：正文整体从 ui.json 取（与 protocol 页同样的做法），页面数固定
     "refund": ("pages/legal.html", "ui", "refund.html"),
     "acceptable-use": ("pages/legal.html", "ui", "acceptable-use.html"),
+    "make": ("pages/make.html", "ui", "make.html"),
 }
 
 
@@ -407,6 +408,21 @@ def main() -> int:
                         "legal_terms_href": f"{legal_base}/{lang}/protocol/term.html",
                     }
                 values_builder = marketing_values
+            elif page == "make":
+                def make_values(lang: str, base: str, source=source) -> dict[str, str]:
+                    copy = source[lang].get("make") or source["en"]["make"]
+                    if "make" not in source[lang]:
+                        UNTRANSLATED.append(f"make · {lang}")
+                    out = {k: (v if k in ("drop", "title", "description") else esc(v)) for k, v in copy.items()}
+                    out["drop"] = copy["drop"]                      # 含 <br>，按 HTML 原样插入
+                    out["title"] = esc(copy["title"])
+                    out["description"] = esc(copy["description"])
+                    out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    out["legal_aup"] = esc(copy["legal_aup"])
+                    out["refund_label"] = esc(copy["legal_refund"])
+                    return out
+
+                values_builder = make_values
             elif page in ("refund", "acceptable-use"):
                 def legal_values(lang: str, base: str, page=page, source=source) -> dict[str, str]:
                     # 未翻译的语言回退到英文，并在构建报告里显式列出（不静默）

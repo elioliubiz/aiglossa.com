@@ -1,11 +1,38 @@
 <!doctype html>
-<html lang="en">
+<html lang="tr" dir="ltr" data-default-lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Make a track — aiglossa tools</title>
-<meta name="description" content="Turn a photo into a song — the lyrics name what's in your picture. Exact length, seamless loops." />
-<link rel="stylesheet" href="/assets/site.css" />
+<meta name="description" content="Turn a photo or a prompt into a track at exactly the length you need. Lyrics name what&#x27;s in your picture." />
+<link rel="canonical" href="https://tools.aiglossa.com/tr/make.html" />
+<link rel="alternate" hreflang="ar" href="https://tools.aiglossa.com/ar/make.html">
+<link rel="alternate" hreflang="de" href="https://tools.aiglossa.com/de/make.html">
+<link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/make.html">
+<link rel="alternate" hreflang="es" href="https://tools.aiglossa.com/es/make.html">
+<link rel="alternate" hreflang="fr" href="https://tools.aiglossa.com/fr/make.html">
+<link rel="alternate" hreflang="id" href="https://tools.aiglossa.com/id/make.html">
+<link rel="alternate" hreflang="it" href="https://tools.aiglossa.com/it/make.html">
+<link rel="alternate" hreflang="ja" href="https://tools.aiglossa.com/ja/make.html">
+<link rel="alternate" hreflang="ko" href="https://tools.aiglossa.com/ko/make.html">
+<link rel="alternate" hreflang="pt" href="https://tools.aiglossa.com/pt/make.html">
+<link rel="alternate" hreflang="ru" href="https://tools.aiglossa.com/ru/make.html">
+<link rel="alternate" hreflang="th" href="https://tools.aiglossa.com/th/make.html">
+<link rel="alternate" hreflang="tr" href="https://tools.aiglossa.com/tr/make.html">
+<link rel="alternate" hreflang="vi" href="https://tools.aiglossa.com/vi/make.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/make.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/make.html">
+<link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/make.html">
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="aiglossa" />
+<meta property="og:title" content="Make a track — aiglossa tools" />
+<meta property="og:description" content="Turn a photo or a prompt into a track at exactly the length you need. Lyrics name what&#x27;s in your picture." />
+<meta property="og:url" content="https://tools.aiglossa.com/tr/make.html" />
+<meta property="og:locale" content="tr_TR" />
+<meta name="theme-color" content="#0e0f11">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css" />
+<link rel="stylesheet" href="../assets/theme.css" />
 <style>
   :root{
     --bg:#0e0f11; --panel:#16181c; --ink:#f2f1ec; --mut:#92959c;
@@ -159,7 +186,7 @@
 <body>
 <div class="app">
   <aside class="rail">
-    <div class="brand"><i></i><a href="en/">aiglossa tools</a></div>
+    <div class="brand"><i></i><a href="./">aiglossa tools</a></div>
     <h1>Make a track</h1>
     <p class="sub">From a photo or a prompt. Exact length, seamless loops.</p>
 
@@ -197,9 +224,11 @@
   </main>
 </div>
 
+<script type="application/json" id="ui">{"h1": "Make a track", "sub": "From a photo or a prompt. Exact length, seamless loops.", "drop": "Drop or choose a photo<br>the lyrics will name what's in it", "generate": "Generate track", "how_credits": "How credits work →", "grp_photo": "Made from a photo", "grp_recipe": "From a recipe · no photo needed", "download": "Download", "save_recipe": "Save as recipe", "remove_photo": "Remove photo", "photo_here": "Your photo here", "note": "Everything on the right was made here", "legal_aup": "Acceptable Use", "legal_refund": "Refunds", "sign_in_first": "Sign in to generate", "generating": "Generating… about 20 seconds.", "just_generated": "Just generated", "your_track": "Your track", "from_recipe": "From a recipe", "from_photo": "Made from a photo", "title": "Make a track — aiglossa tools", "description": "Turn a photo or a prompt into a track at exactly the length you need. Lyrics name what's in your picture."}</script>
 <script>
 (function () {
   "use strict";
+  var UI = JSON.parse(document.getElementById("ui").textContent);
   var TOKEN_KEY = "aig_token";
   var API = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "https://dev.aiglossa.com";
   var $ = function (id) { return document.getElementById(id); };
@@ -218,13 +247,13 @@
   function msg(t, kind) { var el = $("msg"); el.textContent = t || ""; el.className = "msg" + (kind ? " " + kind : ""); }
 
   var DEMOS = [
-    { title: "Sea — gentle", meta: "English · 0:30", img: "samples/demo-sea.jpg", audio: "samples/demo-sea.mp3",
+    { title: "Sea — gentle", meta: "English · 0:30", img: "../samples/demo-sea.jpg", audio: "../samples/demo-sea.mp3",
       lyrics: "Gentle <b>sea</b> breathes on the sand. Every <b>wave</b> that meets the <b>beach</b>." },
-    { title: "Night rain — neon", meta: "English · 0:45", img: "samples/demo-city.jpg", audio: "samples/demo-city.mp3",
+    { title: "Night rain — neon", meta: "English · 0:45", img: "../samples/demo-city.jpg", audio: "../samples/demo-city.mp3",
       lyrics: "A yellow <b>taxi</b> cuts through the <b>neon</b> haze." },
-    { title: "Coffee — cálido", meta: "Español · 0:30", img: "samples/demo-coffee.jpg", audio: "samples/demo-coffee.mp3",
+    { title: "Coffee — cálido", meta: "Español · 0:30", img: "../samples/demo-coffee.jpg", audio: "../samples/demo-coffee.mp3",
       lyrics: "Huele a <b>café</b>. Mi <b>libro</b>, un amigo." },
-    { title: "Bicycle — 古い壁", meta: "日本語 · 0:30", img: "samples/demo-bike.jpg", audio: "samples/demo-bike.mp3",
+    { title: "Bicycle — 古い壁", meta: "日本語 · 0:30", img: "../samples/demo-bike.jpg", audio: "../samples/demo-bike.mp3",
       lyrics: "古い<b>壁</b>にもたれた<b>自転車</b>。" }
   ];
 
@@ -283,8 +312,8 @@
       (c.img ? '<img src="' + c.img + '" alt="">' : '') +
       '<div class="shade"></div>' +
       '<div class="body">' +
-        '<p class="k">' + (c.kind === "result" ? "Just generated" : c.kind === "recipe" ? "From a recipe" : "Made from a photo") + (c.meta ? " · " + c.meta : "") + '</p>' +
-        (c.lyrics ? '<p class="ly">' + c.lyrics + '</p>' : '<p class="noimg">' + (c.title || "Your track") + '</p>') +
+        '<p class="k">' + (c.kind === "result" ? UI.just_generated : c.kind === "recipe" ? UI.from_recipe : UI.from_photo) + (c.meta ? " · " + c.meta : "") + '</p>' +
+        (c.lyrics ? '<p class="ly">' + c.lyrics + '</p>' : '<p class="noimg">' + (c.title || UI.your_track) + '</p>') +
         '<div class="wave">' + wave() + '</div>' +
         '<div class="pbar"><span></span></div>' +
         '<div class="brow">' +
@@ -430,7 +459,7 @@
 
   function syncCost() {
     var c = $("cost"); if (c) c.textContent = cost();
-    var go = $("go"); if (go) go.textContent = token() ? "Generate · " + cost() : "Sign in to generate";
+    var go = $("go"); if (go) go.textContent = token() ? "Generate · " + cost() : UI.sign_in_first;
   }
 
   function fmtDur(sec) { var m = Math.floor(sec / 60), r = sec % 60; return m + ":" + (r < 10 ? "0" : "") + r; }
@@ -459,7 +488,7 @@
   function generate() {
     if (!token()) { location.href = "account.html"; return; }
     $("go").disabled = true;
-    msg("Generating… about 20 seconds.");
+    msg(UI.generating);
     var body = { params: values };
     if (imagePayload) body.image = imagePayload;
     var t0 = Date.now();

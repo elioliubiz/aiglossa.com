@@ -61,6 +61,30 @@
       "description": "What you may and may not do with aiglossa tools, and who owns the generated tracks.",
       "h1": "Acceptable Use Policy",
       "body": "<h1>Acceptable Use Policy</h1>\n  <p class=\"updated\">Last updated: 22 October 2026</p>\n\n  <p>This policy describes what you may and may not use <strong>aiglossa tools</strong> for.\n     It applies to every generation, upload and shared recipe.</p>\n\n  <h2>1. What you may do</h2>\n  <p>You may use tracks you generate for personal and commercial projects — videos, podcasts, games,\n     apps, presentations, background music for clients — without additional royalties, subject to this\n     policy and to the terms of the model provider.</p>\n  <div class=\"callout\">\n    <p style=\"margin:0\"><strong>You are responsible for how you use the output.</strong> We generate\n       audio with AI; we cannot guarantee it is free of similarity to existing works.</p>\n  </div>\n\n  <h2>2. What you may not do</h2>\n  <ul>\n    <li><strong>Illegal content</strong> — anything that violates applicable law, including content\n        that infringes copyright, trademark or other rights.</li>\n    <li><strong>Impersonation</strong> — generating audio that imitates a real, identifiable person's\n        voice, or presenting generated audio as a recording of a real person.</li>\n    <li><strong>Hate and harassment</strong> — content that promotes hatred, violence, or targets\n        individuals or groups.</li>\n    <li><strong>Sexual content involving minors</strong> — prohibited absolutely, and reported to the\n        relevant authorities.</li>\n    <li><strong>Deception</strong> — using generated music to mislead (for example, fake evidence,\n        disinformation, or claiming a track was performed by a named artist).</li>\n    <li><strong>Copying protected works</strong> — asking the system to reproduce a specific existing\n        song, melody or lyric that you do not have rights to.</li>\n    <li><strong>Abuse of the service</strong> — scraping, automated bulk generation outside the\n        product, attempts to bypass credit accounting or rate limits, or reselling raw access to the\n        generator.</li>\n    <li><strong>Uploading content you have no right to use</strong> — including photos of other\n        people without their consent.</li>\n  </ul>\n\n  <h2>3. Uploaded images</h2>\n  <p>When you upload a photo, it is used to derive a short description that shapes the generated\n     music. Images are stored so that you can re-use a recipe; they are not shown to other users\n     unless you choose to share a recipe that references them.</p>\n  <p>Do not upload images of other people, private documents, or content you do not have the right to\n     use.</p>\n\n  <h2>4. Ownership</h2>\n  <p>You keep the rights to the images you upload. Subject to this policy and to your compliance with\n     it, you own the tracks you generate and may use them commercially. We do not claim ownership of\n     your tracks, and we do not use them to train models.</p>\n\n  <h2>5. Enforcement</h2>\n  <p>We may suspend or terminate an account that violates this policy, remove content, and refuse\n     further service. Credits spent on violating generations are not refunded. Serious violations may\n     be reported to law enforcement.</p>\n\n  <h2>6. Reporting</h2>\n  <p>To report abuse or a rights violation, email\n     <a href=\"mailto:support@aiglossa.com\">support@aiglossa.com</a> with the details and, if\n     applicable, a link to the content.</p>\n\n  <hr />\n  <p class=\"muted\">See also: <a href=\"refund.html\">Refund Policy</a> ·\n     <a href=\"https://aiglossa.com/en/protocol/privacy.html\">Privacy Policy</a> ·\n     <a href=\"https://aiglossa.com/en/protocol/term.html\">Terms of Service</a></p>\n  <p class=\"muted\"><a href=\"en/\">← Back to aiglossa tools</a></p>"
+    },
+    "make": {
+      "h1": "Make a track",
+      "sub": "From a photo or a prompt. Exact length, seamless loops.",
+      "drop": "Drop or choose a photo<br>the lyrics will name what's in it",
+      "generate": "Generate track",
+      "how_credits": "How credits work →",
+      "grp_photo": "Made from a photo",
+      "grp_recipe": "From a recipe · no photo needed",
+      "download": "Download",
+      "save_recipe": "Save as recipe",
+      "remove_photo": "Remove photo",
+      "photo_here": "Your photo here",
+      "note": "Everything on the right was made here",
+      "legal_aup": "Acceptable Use",
+      "legal_refund": "Refunds",
+      "sign_in_first": "Sign in to generate",
+      "generating": "Generating… about 20 seconds.",
+      "just_generated": "Just generated",
+      "your_track": "Your track",
+      "from_recipe": "From a recipe",
+      "from_photo": "Made from a photo",
+      "title": "Make a track — aiglossa tools",
+      "description": "Turn a photo or a prompt into a track at exactly the length you need. Lyrics name what's in your picture."
     }
   },
   "ja": {
