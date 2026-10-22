@@ -57,12 +57,14 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 
 | 页面 | 多语言 |
 |---|---|
-| `/{lang}/index.html` 工具列表 | ✅ 16 种 |
-| `make.html` 创作页 | ❌ 仅英文（待迁移） |
-| `account.html` 登录/账户 | ❌ 仅英文（待迁移） |
-| `pricing.html` 价格 | ❌ 仅英文（待迁移） |
-| `refund.html` 退款政策 | ❌ 仅英文（待迁移） |
-| `acceptable-use.html` 可接受使用 | ❌ 仅英文（待迁移） |
+| `/{lang}/index.html` 工具列表 | ✅ 16 种翻译 |
+| `/{lang}/pricing.html` 价格 | ✅ 16 种翻译 |
+| `/{lang}/account.html` 登录/账户 | ✅ 16 种翻译 |
+| `/{lang}/refund.html` 退款政策 | ⚠️ 模板已就位，正文仅英文（其余语言回退，构建报告会列出） |
+| `/{lang}/acceptable-use.html` 可接受使用 | ⚠️ 同上 |
+| `/{lang}/make.html` 创作页 | ❌ 尚未迁移（仍是根目录静态页） |
+
+未翻译的页面**回退英文并在 `build.py` 输出里逐条列出**，不静默；补齐翻译只需往 `tools/content/ui.json` 对应语言里加 key。
 
 迁移方式与其他页面一致：模板进 `tools/templates/`，文案进 `tools/content/ui.json`，按语言生成到 `/{lang}/`。迁移时顺手把方向性 CSS 改成逻辑属性。
 

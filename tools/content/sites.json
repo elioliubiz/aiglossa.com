@@ -25,12 +25,12 @@
     "pages": [
       "tools",
       "pricing",
-      "account"
+      "account",
+      "refund",
+      "acceptable-use"
     ],
     "extra": [
-      "make.html",
-      "refund.html",
-      "acceptable-use.html"
+      "make.html"
     ]
   }
 }
