@@ -57,14 +57,15 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 
 | 页面 | 多语言 |
 |---|---|
-| `/{lang}/index.html` 工具列表 | ✅ 16 种翻译 |
-| `/{lang}/pricing.html` 价格 | ✅ 16 种翻译 |
-| `/{lang}/account.html` 登录/账户 | ✅ 16 种翻译 |
-| `/{lang}/refund.html` 退款政策 | ⚠️ 模板已就位，正文仅英文（其余语言回退，构建报告会列出） |
-| `/{lang}/acceptable-use.html` 可接受使用 | ⚠️ 同上 |
-| `/{lang}/make.html` 创作页 | ❌ 尚未迁移（仍是根目录静态页） |
+| `/{lang}/index.html` 工具列表 | ✅ 16 种 |
+| `/{lang}/make.html` 创作页 | ✅ 16 种（参数标签来自后端 `labels_i18n.py`） |
+| `/{lang}/pricing.html` 价格 | ✅ 16 种 |
+| `/{lang}/account.html` 登录/账户 | ✅ 16 种 |
+| `/{lang}/refund.html` 退款政策 | ✅ 16 种 |
+| `/{lang}/acceptable-use.html` 可接受使用 | ✅ 16 种 |
 
-未翻译的页面**回退英文并在 `build.py` 输出里逐条列出**，不静默；补齐翻译只需往 `tools/content/ui.json` 对应语言里加 key。
+**已无静态页**：工具站所有页面都由 `build.py` 按语言生成，根路径 `/make.html` 等由 `vercel.json` 301 到 `/en/`。
+构建若出现未翻译内容会打印 `⚠ 未翻译` 清单（当前为 0）。
 
 迁移方式与其他页面一致：模板进 `tools/templates/`，文案进 `tools/content/ui.json`，按语言生成到 `/{lang}/`。迁移时顺手把方向性 CSS 改成逻辑属性。
 
