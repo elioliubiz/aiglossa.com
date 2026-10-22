@@ -12,98 +12,153 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="assets/site.css">
 <link rel="stylesheet" href="assets/theme.css">
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
-  .auth-card{max-width:520px;margin:56px auto 0;padding:32px;border:1px solid var(--line);
-             border-radius:18px;background:rgba(255,255,255,.04);text-align:start}
-  .auth-card h1{font-size:24px;margin-bottom:8px}
-  .auth-card .hint{font-size:14px;color:var(--muted);line-height:1.7;margin-bottom:24px}
+  /* 登录页 = 左右分栏（左：价值展示 / 右：表单）。不要做成"浮在空白里的卡片"，
+     那是弹窗的形状，放到整页上会显得空。 */
+  body{min-height:100vh;display:flex;flex-direction:column}
+  .top{display:flex;align-items:center;justify-content:space-between;gap:16px;
+       padding:20px 32px;border-bottom:1px solid var(--line)}
+  .top .brand{font:11px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .top a{color:var(--muted);text-decoration:none;font-size:13px}
+  .top a:hover{color:var(--fg)}
+
+  .split{flex:1;display:grid;grid-template-columns:1.05fr .95fr;min-height:0}
+  /* 手机上不要"居中漂浮"，表单从上往下排（和大多数登录页一致） */
+  @media(max-width:900px){.split{grid-template-columns:1fr}}
+
+  /* 左：价值展示 */
+  .showcase{position:relative;overflow:hidden;border-right:1px solid var(--line);padding:56px 48px;
+            display:flex;flex-direction:column;justify-content:center;gap:26px}
+  @media(max-width:900px){.showcase{display:none}}
+  .showcase h2{font-size:clamp(22px,2.4vw,30px);line-height:1.2;letter-spacing:-.02em;margin:0;font-weight:600;max-width:20ch}
+  .showcase p{color:var(--muted);font-size:14.5px;line-height:1.7;margin:0;max-width:38ch}
+  .proof{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);max-width:460px}
+  .proof img{display:block;width:100%;height:240px;object-fit:cover}
+  .proof .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,10,.05),rgba(10,12,10,.9))}
+  .proof .body{position:absolute;left:16px;right:16px;bottom:14px;color:#fff}
+  .proof .k{font:9.5px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;opacity:.75;margin:0 0 8px}
+  .proof .ly{font:400 15px/1.4 "Iowan Old Style",Palatino,Georgia,serif;margin:0}
+  .proof .ly b{font-weight:400;box-shadow:inset 0 -.42em 0 rgba(255,122,26,.5)}
+
+  /* 右：表单 */
+  .pane{display:flex;align-items:center;justify-content:center;padding:48px 24px}
+  .form{width:100%;max-width:380px}
+  .form h1{font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px;font-weight:600}
+  .form .sub{color:var(--muted);font-size:13.5px;margin:0 0 26px}
+  .provider{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;
+            padding:12px;border-radius:10px;border:1px solid var(--line);background:rgba(255,255,255,.04);
+            color:var(--fg);font:500 14px/1 inherit;cursor:pointer}
+  .provider:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.22)}
+  .divider{display:flex;align-items:center;gap:12px;color:var(--dim,#76797f);font-size:12px;margin:20px 0}
+  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
   .field{margin-bottom:14px}
-  .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
-  .field input{width:100%;padding:11px 13px;border-radius:10px;border:1px solid var(--line);
-               background:#0e1118;color:var(--fg);font-size:15px;font-family:inherit}
+  .field label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+  .field input{width:100%;padding:12px 13px;border-radius:10px;border:1px solid var(--line);
+               background:#121317;color:var(--fg);font-size:15px;font-family:inherit}
   .field input:focus{outline:none;border-color:var(--accent)}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;
-       padding:12px 18px;border-radius:999px;border:0;cursor:pointer;
-       background:var(--accent);color:#0b0d12;font-size:14px;font-weight:600;font-family:inherit}
+  .btn{display:inline-flex;align-items:center;justify-content:center;width:100%;
+       padding:12px 18px;border-radius:10px;border:0;cursor:pointer;
+       background:var(--accent);color:#1a0e04;font:600 14px/1 inherit}
   .btn:hover{background:var(--accent-soft)}
   .btn[disabled]{opacity:.5;cursor:not-allowed}
-  .btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
-  .btn-ghost:hover{color:#fff;border-color:rgba(255,255,255,.24);background:transparent}
-  .divider{display:flex;align-items:center;gap:12px;margin:22px 0;color:var(--dim);font-size:12px}
-  .divider::before,.divider::after{content:"";flex:1;height:1px;background:var(--line)}
-  .msg{margin-top:16px;font-size:13.5px;line-height:1.6;min-height:20px}
-  .msg.err{color:#ff9d9d}
-  .msg.ok{color:#9dffb0}
-  .balance{font-size:40px;font-weight:600;letter-spacing:-.02em;margin:10px 0 4px}
-  .balance small{font-size:14px;font-weight:400;color:var(--muted);margin-left:6px}
-  .row-between{display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+  .btn.ghost:hover{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.04)}
+  .msg{font-size:13px;margin-top:12px;min-height:18px}
+  .msg.err{color:#ff9b9b}.msg.ok{color:#9be7b0}
+  .legal{margin-top:22px;font-size:11.5px;color:var(--dim,#76797f);line-height:1.6}
+  .legal a{color:var(--muted)}
   .hidden{display:none !important}
-  .pack{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
-        padding:14px 18px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.03);
-        color:var(--fg);font-size:14px;font-family:inherit;cursor:pointer;text-align:start}
-  .pack:hover{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.06)}
-  .pack b{font-weight:600}
-  .pack span{color:var(--muted);font-variant-numeric:tabular-nums}
+
+  /* 已登录：同一栏，只换成账户信息 */
+  .account h1{font-size:26px;margin:0 0 4px;font-weight:600;letter-spacing:-.02em}
+  .balance{font-size:44px;font-weight:600;letter-spacing:-.03em;margin:18px 0 2px}
+  .balance small{font-size:14px;font-weight:400;color:var(--muted);margin-inline-start:8px;letter-spacing:0}
+  .hint{font-size:12.5px;color:var(--muted);margin:6px 0 0}
+  .links{margin-top:26px;display:grid;gap:10px}
+
+  /* 响应式放在最后：CSS 顺序决定覆盖，放前面会被基础规则盖掉 */
+  @media(max-width:900px){
+    .pane{align-items:flex-start;justify-content:flex-start;padding:34px 20px 56px}
+    .form{max-width:420px;margin:0 auto}
+  }
 </style>
 </head>
 <body>
-<main>
-  <section class="hero" style="min-height:auto;padding:80px 0 60px">
-    <div class="wrap">
-      <p class="kicker">AIGLOSSA TOOLS</p>
+<div class="top">
+  <span class="brand">aiglossa tools</span>
+  <a href="./">Back to tools</a>
+</div>
 
-      <!-- 未登录 -->
-      <div class="auth-card" id="signin-card">
-        <h1>Sign in</h1>
-        <p class="hint">Sign in only to keep your credits. No subscription, no marketing email.</p>
-
-        <div id="g_id_onload"
-             data-client_id="801915920503-8nhv7tktogpn6nha9fkv1nctb7o2hsfc.apps.googleusercontent.com"
-             data-callback="onGoogleCredential"
-             data-auto_prompt="false"></div>
-        <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_black"
-             data-text="signin_with" data-size="large" data-logo_alignment="left"></div>
-
-        <div class="divider">or use email</div>
-
-        <form id="email-form" autocomplete="on">
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
-          </div>
-          <div class="field hidden" id="code-field">
-            <label for="code">6-digit code</label>
-            <input id="code" name="code" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="123456">
-          </div>
-          <button class="btn" type="submit" id="email-submit">Send code</button>
-        </form>
-
-        <div class="msg" id="signin-msg" role="status" aria-live="polite"></div>
+<div class="split">
+  <section class="showcase">
+    <h2>Sign in to keep your credits.</h2>
+    <p>Credits are shared across every tool and never expire. Signing in is what ties a purchase
+       to your account — nothing else is stored about you.</p>
+    <figure class="proof">
+      <img src="samples/demo-sea.jpg" alt="">
+      <div class="shade"></div>
+      <div class="body">
+        <p class="k">Made here · English · 0:30</p>
+        <p class="ly">Gentle <b>sea</b> breathes on the sand. Every <b>wave</b> that meets the <b>beach</b>.</p>
       </div>
+    </figure>
+  </section>
 
-      <!-- 已登录 -->
-      <div class="auth-card hidden" id="account-card">
-        <div class="row-between">
-          <h1>Credits</h1>
-          <button class="btn btn-ghost" id="logout" style="width:auto;padding:8px 16px">Sign out</button>
+  <section class="pane">
+    <!-- 未登录 -->
+    <div class="form" id="signin-card">
+      <h1>Sign in</h1>
+      <p class="sub">No password — use Google, or we’ll email you a 6-digit code.</p>
+
+      <div id="g_id_onload"
+           data-client_id="801915920503-8nhv7tktogpn6nha9fkv1nctb7o2hsfc.apps.googleusercontent.com"
+           data-callback="onGoogleCredential"
+           data-auto_prompt="false"></div>
+      <div class="g_id_signin" data-type="standard" data-shape="rectangular" data-theme="filled_black"
+           data-text="signin_with" data-size="large" data-logo_alignment="left"></div>
+
+      <div class="divider">or use email</div>
+
+      <form id="email-form" autocomplete="on">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
         </div>
-        <div class="balance"><span id="coins">—</span><small>credits</small></div>
-        <p class="hint" id="tracks-hint">—</p>
-        <p class="hint" id="account-email" style="margin-bottom:0"></p>
+        <div class="field hidden" id="code-field">
+          <label for="code">6-digit code</label>
+          <input id="code" name="code" type="text" inputmode="numeric" maxlength="6" autocomplete="one-time-code" placeholder="123456">
+        </div>
+        <button class="btn" type="submit" id="email-submit">Send code</button>
+      </form>
 
-        <a class="btn secondary" href="make.html"
-           style="display:block;text-align:center;text-decoration:none;margin-top:22px;padding:14px;border-radius:12px;border:1px solid var(--line);color:var(--fg)">Create music →</a>
-        <a class="btn" href="pricing.html"
-           style="display:block;text-align:center;text-decoration:none;margin-top:10px;padding:14px;border-radius:12px;background:var(--accent);color:#1a0e04;font-weight:600">Buy credits →</a>
-        <div class="msg" id="account-msg" role="status" aria-live="polite"></div>
+      <div class="msg" id="signin-msg" role="status" aria-live="polite"></div>
+
+      <p class="legal" style="margin-top:14px">First time here? An account is created automatically.</p>
+      <p class="legal" style="margin-top:8px">By continuing you agree to our
+        <a href="https://aiglossa.com/en/protocol/term.html">Terms</a> and
+        <a href="https://aiglossa.com/en/protocol/privacy.html">Privacy Policy</a></p>
+    </div>
+
+    <!-- 已登录 -->
+    <div class="form account hidden" id="account-card">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+        <h1>Your credits</h1>
+        <button class="btn ghost" id="logout" style="width:auto;padding:8px 14px">Sign out</button>
+      </div>
+      <div class="balance"><span id="coins">—</span><small>credits</small></div>
+      <p class="hint" id="tracks-hint">—</p>
+      <p class="hint" id="account-email"></p>
+
+      <div class="links">
+        <a class="btn" href="make.html" style="text-decoration:none">Create music →</a>
+        <a class="btn ghost" href="pricing.html" style="text-decoration:none">Buy credits →</a>
       </div>
 
-      <p class="hint" style="max-width:520px;margin:24px auto 0;text-align:center">
-        <a href="./" style="color:var(--accent);text-decoration:none">← Back to tools</a>
-      </p>
+      <div class="msg" id="account-msg" role="status" aria-live="polite"></div>
     </div>
   </section>
-</main>
+</div>
 
 <footer>
   <div class="wrap foot">
@@ -118,8 +173,8 @@
   </div>
 </footer>
 
-<script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
+
 (function () {
   "use strict";
 
