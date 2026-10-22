@@ -27,10 +27,9 @@
       "pricing",
       "account",
       "refund",
-      "acceptable-use"
+      "acceptable-use",
+      "make"
     ],
-    "extra": [
-      "make.html"
-    ]
+    "extra": []
   }
 }

@@ -93,6 +93,17 @@
       ],
       "destination": "/en/acceptable-use.html",
       "permanent": true
+    },
+    {
+      "source": "/make.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
+      "destination": "/en/make.html",
+      "permanent": true
     }
   ],
   "rewrites": [

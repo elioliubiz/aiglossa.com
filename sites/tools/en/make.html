@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-default-lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Make a track — aiglossa tools</title>
+<meta name="description" content="Turn a photo or a prompt into a track at exactly the length you need. Lyrics name what&#x27;s in your picture." />
+<link rel="canonical" href="https://tools.aiglossa.com/en/make.html" />
+<link rel="alternate" hreflang="ar" href="https://tools.aiglossa.com/ar/make.html">
+<link rel="alternate" hreflang="de" href="https://tools.aiglossa.com/de/make.html">
+<link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/make.html">
+<link rel="alternate" hreflang="es" href="https://tools.aiglossa.com/es/make.html">
+<link rel="alternate" hreflang="fr" href="https://tools.aiglossa.com/fr/make.html">
+<link rel="alternate" hreflang="id" href="https://tools.aiglossa.com/id/make.html">
+<link rel="alternate" hreflang="it" href="https://tools.aiglossa.com/it/make.html">
+<link rel="alternate" hreflang="ja" href="https://tools.aiglossa.com/ja/make.html">
+<link rel="alternate" hreflang="ko" href="https://tools.aiglossa.com/ko/make.html">
+<link rel="alternate" hreflang="pt" href="https://tools.aiglossa.com/pt/make.html">
+<link rel="alternate" hreflang="ru" href="https://tools.aiglossa.com/ru/make.html">
+<link rel="alternate" hreflang="th" href="https://tools.aiglossa.com/th/make.html">
+<link rel="alternate" hreflang="tr" href="https://tools.aiglossa.com/tr/make.html">
+<link rel="alternate" hreflang="vi" href="https://tools.aiglossa.com/vi/make.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/make.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/make.html">
+<link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/make.html">
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="aiglossa" />
+<meta property="og:title" content="Make a track — aiglossa tools" />
+<meta property="og:description" content="Turn a photo or a prompt into a track at exactly the length you need. Lyrics name what&#x27;s in your picture." />
+<meta property="og:url" content="https://tools.aiglossa.com/en/make.html" />
+<meta property="og:locale" content="en_US" />
+<meta name="theme-color" content="#0e0f11">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css" />
+<link rel="stylesheet" href="../assets/theme.css" />
+<style>
+  :root{
+    --bg:#0e0f11; --panel:#16181c; --ink:#f2f1ec; --mut:#92959c;
+    --line:rgba(242,241,236,.12); --acc:#ff7a1a;
+    --on-bg:#f2f1ec; --on-fg:#0e0f11;
+    --chip-on-bg:rgba(255,122,26,.18); --chip-on-fg:#ffd9bf;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink)}
+  body{font:14px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  .app{display:grid;grid-template-columns:372px 1fr;height:100vh;min-height:0}
+  .rail{background:var(--panel);border-right:1px solid var(--line);display:flex;flex-direction:column;
+        padding:22px 24px;overflow-y:auto;min-height:0}
+  /* 关键：rail 是 flex 列，子项默认 flex-shrink:1，内容一多就会被压缩
+     （上传框实测被压到 30px，内容 68px 全被裁掉）。全部禁止收缩，让 rail 自己滚动。 */
+  .rail>*{flex:0 0 auto}
+  .brand{display:flex;align-items:center;gap:8px;font:10.5px/1 -apple-system,sans-serif;letter-spacing:.2em;
+         text-transform:uppercase;color:var(--mut);margin-bottom:18px}
+  .brand i{width:7px;height:7px;border-radius:50%;background:var(--acc);display:block}
+  .brand a{color:inherit;text-decoration:none}
+  h1{font-size:21px;line-height:1.2;letter-spacing:-.02em;margin:0 0 5px;font-weight:600}
+  .sub{font-size:12px;color:var(--mut);margin:0 0 14px}
+  .drop{border:1px dashed rgba(242,241,236,.2);border-radius:11px;padding:14px;text-align:center;
+        color:var(--mut);font-size:12px;background:rgba(255,255,255,.02);margin-bottom:15px;cursor:pointer;
+        display:block;overflow:hidden}
+  .drop b{display:block;color:var(--ink);font-size:12.5px;margin-bottom:2px;font-weight:600}
+  .drop img{width:100%;max-height:120px;object-fit:cover;border-radius:8px;display:block;margin-bottom:8px}
+  .drop.has{border-style:solid;border-color:var(--line);padding:8px}
+  .drop .rm{font-size:11px;color:var(--acc);margin-top:6px}
+  .sect{margin-bottom:10px}
+  .lbl{display:flex;justify-content:space-between;align-items:baseline;font:9.5px/1 -apple-system,sans-serif;
+       letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
+  .lbl .r{letter-spacing:0;text-transform:none;font-size:10.5px}
+  .seg{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+  .seg button{flex:1;padding:8px 2px;border:0;background:transparent;font:inherit;font-size:11.5px;
+              color:var(--ink);cursor:pointer;border-right:1px solid var(--line);white-space:nowrap}
+  .seg button:last-child{border-right:0}
+  .seg button.on{background:var(--on-bg);color:var(--on-fg);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{padding:6.5px 10.5px;border-radius:7px;border:1px solid var(--line);background:transparent;
+        font:inherit;font-size:12px;color:var(--ink);cursor:pointer}
+  .chip:hover{border-color:rgba(242,241,236,.28)}
+  .chip.on{background:var(--chip-on-bg);color:var(--chip-on-fg);border-color:var(--acc)}
+  input[type=range]{width:100%;accent-color:var(--acc);margin:2px 0 0}
+  /* 底部吸附条：用渐隐代替硬边框，避免把上一节"切一半"的观感 */
+  .rail-foot{position:sticky;bottom:-22px;margin:0 -24px -22px;padding:46px 24px 22px;
+             background:linear-gradient(180deg,rgba(22,24,28,0) 0%,var(--panel) 42%);z-index:2}
+  .go{width:100%;display:block;background:var(--acc);color:#1a0e04;border:0;border-radius:11px;padding:15px;
+      font:600 13.5px/1 inherit;cursor:pointer}
+  .go[disabled]{opacity:.55;cursor:not-allowed}
+  .note{font-size:10.5px;color:var(--mut);text-align:center;margin:9px 0 0}
+  .only-mobile{display:none}
+  .policy{margin:26px 0 8px;display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px}
+  .policy a{color:var(--mut);text-decoration:none}
+  .policy a:hover{color:var(--ink)}
+  .msg{font-size:11.5px;margin-top:9px;min-height:15px;text-align:center}
+  .msg.err{color:#ff9b9b}.msg.ok{color:#9be7b0}
+  .works{padding:20px 26px 30px;overflow-y:auto;min-height:0}
+  .whead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+  .whead .t{font:10px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+  .whead .n{font-size:11.5px;color:var(--mut)}
+  .photos{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:11px}
+  .tile{position:relative;border-radius:13px;overflow:hidden;cursor:pointer;background:#1b1e23;
+        border:1px solid transparent}
+  .tile:hover{border-color:rgba(255,255,255,.16)}
+  .tile.on{border-color:var(--acc)}
+  .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .55s}
+  .tile:hover img{transform:scale(1.04)}
+  .tile .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,10,.04) 34%,rgba(10,12,10,.86))}
+  .tile .meta{position:absolute;left:12px;right:12px;bottom:9px;color:#fff}
+  .tile .meta .t{font-size:12.5px;font-weight:600;margin:0 0 1px}
+  .tile .meta .d{font:10px/1.3 -apple-system,sans-serif;opacity:.82;margin:0}
+  .tile .pl{position:absolute;top:9px;right:9px;width:27px;height:27px;border-radius:50%;
+            background:rgba(12,14,12,.55);border:1px solid rgba(255,255,255,.32);color:#fff;
+            font-size:9px;display:grid;place-items:center;backdrop-filter:blur(6px)}
+  .tile.big{grid-column:span 2;grid-row:span 2;cursor:default}
+  .tile.big:hover{border-color:transparent}
+  .tile.big .shade{background:linear-gradient(180deg,rgba(10,12,10,.1),rgba(10,12,10,.55) 52%,rgba(10,12,10,.93))}
+  .tile.big .body{position:absolute;left:16px;right:16px;bottom:14px;color:#fff}
+  .tile.big .body .k{font:9.5px/1 -apple-system,sans-serif;letter-spacing:.22em;text-transform:uppercase;
+                     opacity:.75;margin:0 0 10px}
+  .tile.big .body .ly{font:400 clamp(14px,1.25vw,17.5px)/1.4 "Iowan Old Style",Palatino,Georgia,serif;
+                      margin:0 0 12px}
+  .tile.big .body .ly b{font-weight:400;box-shadow:inset 0 -.42em 0 rgba(255,122,26,.45)}
+  .tile.big .body .noimg{font-size:13px;opacity:.9;margin:0 0 12px}
+  .wave{display:flex;align-items:center;gap:2px;height:26px;margin-bottom:9px}
+  .wave i{flex:1;background:#fff;opacity:.35;border-radius:1px}
+  .wave i.p{opacity:.95;background:var(--acc)}
+  .pbar{height:3px;background:rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin:0 0 10px}
+  .pbar span{display:block;height:100%;width:0;background:var(--acc);transition:width .25s linear}
+  .brow{display:flex;align-items:center;gap:12px}
+  .pp{width:36px;height:36px;border-radius:50%;background:#fff;color:#111;border:0;font-size:11px;cursor:pointer;
+      display:grid;place-items:center;flex:0 0 36px}
+  .tm{font:11px/1 -apple-system,sans-serif;color:rgba(255,255,255,.75);font-variant-numeric:tabular-nums}
+  .acts{margin-left:auto;display:flex;gap:8px}
+  .acts a,.acts button{font:11.5px/1 inherit;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.3);
+                       background:rgba(0,0,0,.25);border-radius:7px;padding:7px 10px;cursor:pointer}
+  .recipes{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+  .rec{border:1px solid var(--line);border-radius:12px;padding:12px 13px 11px;background:rgba(255,255,255,.02);
+       cursor:pointer;text-align:left;color:var(--ink);font-family:inherit}
+  .rec:hover{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.045)}
+  .rec.on{border-color:var(--acc)}
+  .rec .wv{display:flex;align-items:center;gap:2px;height:30px;margin-bottom:10px}
+  .rec .wv i{flex:1;background:#fff;opacity:.5;border-radius:1px}
+  .rec:hover .wv i{opacity:.85}
+  .rec .rn{font-size:12.5px;font-weight:600;margin:0 0 2px}
+  .rec .rd{font:10px/1.3 -apple-system,sans-serif;color:var(--mut);margin:0}
+  .thumbs{display:contents}
+  .tile.add{display:grid;place-items:center;background:rgba(255,255,255,.02);border:1px dashed rgba(242,241,236,.2);
+            color:var(--mut);font-size:12px;text-align:center}
+  .hidden{display:none !important}
+  .rec-wrap{position:relative}
+  .swipe{color:var(--acc)}
+
+  @media(max-width:1080px){
+    /* 移动端：例子在上、参数在下 */
+    .app{grid-template-columns:1fr;height:auto;display:flex;flex-direction:column}
+    .works{order:-1;padding:16px 0 8px;min-width:0;max-width:100vw;overflow-x:hidden}
+    .rail{border-right:0;border-top:1px solid var(--line);padding:18px 16px 26px;min-width:0;overflow:visible}
+    .rail-foot{position:static;margin:14px 0 0;padding:0;background:none;border-top:0}
+    .only-desktop{display:none}
+    .only-mobile{display:inline}
+
+    /* 照片组：一张大卡 + 一条缩略图 */
+    .photos{display:flex;flex-direction:column;gap:10px;min-width:0}
+    .tile.big{width:100%}
+    .whead{padding:0 16px}
+    .tile.big{height:250px}
+    .thumbs{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;
+            scroll-padding-left:16px;padding:0 16px 4px;scrollbar-width:none;max-width:100vw}
+    .thumbs::-webkit-scrollbar{display:none}
+    .thumbs .tile{flex:0 0 66px;height:66px;border-radius:9px;scroll-snap-align:start}
+    .thumbs .tile .meta{display:none}
+    .thumbs .tile .pl{width:20px;height:20px;top:5px;right:5px;font-size:7px}
+    .thumbs .tile.add{font-size:9px;line-height:1.15}
+
+    /* 配方组：两排横滑（R2） */
+    .rec-wrap:after{content:"";position:absolute;top:0;right:0;bottom:0;width:36px;
+                    background:linear-gradient(90deg,transparent,var(--bg));pointer-events:none}
+    .recipes{display:grid;grid-template-rows:repeat(2,86px);grid-auto-flow:column;
+             grid-auto-columns:calc(46vw - 22px);gap:9px;overflow-x:auto;scroll-snap-type:x mandatory;
+             scroll-padding-left:16px;padding:0 16px 4px;scrollbar-width:none;max-width:100vw}
+    .recipes::-webkit-scrollbar{display:none}
+    .rec{scroll-snap-align:start;padding:9px 11px;overflow:hidden}
+    .rec .wv{height:22px;margin-bottom:6px}
+    .rec .rn{font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .rec .rd{font-size:9.5px}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="rail">
+    <div class="brand"><i></i><a href="./">aiglossa tools</a></div>
+    <h1>Make a track</h1>
+    <p class="sub">From a photo or a prompt. Exact length, seamless loops.</p>
+
+    <label class="drop" id="drop">
+      <span id="dropText"><b>Drop or choose a photo</b>the lyrics will name what's in it</span>
+      <input type="file" id="file" accept="image/*" class="hidden" />
+    </label>
+
+    <div id="rail"></div>
+
+    <div class="rail-foot">
+      <button class="go" id="go" type="button">Generate track</button>
+      <div class="msg" id="msg" role="status" aria-live="polite"></div>
+      <p class="note" style="display:block"><a href="pricing.html" style="color:var(--mut);text-decoration:none">How credits work →</a></p>
+    </div>
+  </aside>
+
+  <main class="works">
+    <div class="whead"><span class="t">Made from a photo</span><span class="n">4 from a photo · 8 from a recipe</span></div>
+    <div class="photos" id="photos"></div>
+
+    <div class="whead" style="margin-top:24px">
+      <span class="t">From a recipe · no photo needed</span>
+      <span class="n only-desktop">8 presets · instrumental</span>
+      <span class="n only-mobile swipe">8 presets · swipe →</span>
+    </div>
+    <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
+
+    <p class="policy">
+      <a href="https://aiglossa.com/en/protocol/privacy.html">Privacy Policy</a>
+      <a href="https://aiglossa.com/en/protocol/term.html">Terms of Service</a>
+      <a href="acceptable-use.html">Acceptable Use</a>
+      <a href="refund.html">Refunds</a>
+    </p>
+  </main>
+</div>
+
+<script type="application/json" id="ui">{"h1": "Make a track", "sub": "From a photo or a prompt. Exact length, seamless loops.", "drop": "Drop or choose a photo<br>the lyrics will name what's in it", "generate": "Generate track", "how_credits": "How credits work →", "grp_photo": "Made from a photo", "grp_recipe": "From a recipe · no photo needed", "download": "Download", "save_recipe": "Save as recipe", "remove_photo": "Remove photo", "photo_here": "Your photo here", "note": "Everything on the right was made here", "legal_aup": "Acceptable Use", "legal_refund": "Refunds", "sign_in_first": "Sign in to generate", "generating": "Generating… about 20 seconds.", "just_generated": "Just generated", "your_track": "Your track", "from_recipe": "From a recipe", "from_photo": "Made from a photo", "title": "Make a track — aiglossa tools", "description": "Turn a photo or a prompt into a track at exactly the length you need. Lyrics name what's in your picture."}</script>
+<script>
+(function () {
+  "use strict";
+  var UI = JSON.parse(document.getElementById("ui").textContent);
+  var TOKEN_KEY = "aig_token";
+  var API = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "https://dev.aiglossa.com";
+  var $ = function (id) { return document.getElementById(id); };
+  var token = function () { return localStorage.getItem(TOKEN_KEY) || ""; };
+  function device() {
+    var v = localStorage.getItem("aig_device");
+    if (!v) { v = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())); localStorage.setItem("aig_device", v); }
+    return v;
+  }
+  function call(path, body, auth) {
+    var headers = { "Content-Type": "application/json", "X-Client": "web" };
+    if (auth) headers["Authorization"] = "Bearer " + token();
+    var payload = Object.assign({ app_key: "tools", device: device(), timestamp: Math.floor(Date.now() / 1000) }, body || {});
+    return fetch(API + path, { method: "POST", headers: headers, body: JSON.stringify(payload) }).then(function (r) { return r.json(); });
+  }
+  function msg(t, kind) { var el = $("msg"); el.textContent = t || ""; el.className = "msg" + (kind ? " " + kind : ""); }
+
+  var DEMOS = [
+    { title: "Sea — gentle", meta: "English · 0:30", img: "../samples/demo-sea.jpg", audio: "../samples/demo-sea.mp3",
+      lyrics: "Gentle <b>sea</b> breathes on the sand. Every <b>wave</b> that meets the <b>beach</b>." },
+    { title: "Night rain — neon", meta: "English · 0:45", img: "../samples/demo-city.jpg", audio: "../samples/demo-city.mp3",
+      lyrics: "A yellow <b>taxi</b> cuts through the <b>neon</b> haze." },
+    { title: "Coffee — cálido", meta: "Español · 0:30", img: "../samples/demo-coffee.jpg", audio: "../samples/demo-coffee.mp3",
+      lyrics: "Huele a <b>café</b>. Mi <b>libro</b>, un amigo." },
+    { title: "Bicycle — 古い壁", meta: "日本語 · 0:30", img: "../samples/demo-bike.jpg", audio: "../samples/demo-bike.mp3",
+      lyrics: "古い<b>壁</b>にもたれた<b>自転車</b>。" }
+  ];
+
+  var schema = null, values = {}, imagePayload = null;
+  var audio = new Audio(), current = null;
+
+  audio.addEventListener("timeupdate", function () {
+    var pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
+    var bar = document.querySelector(".pbar span");
+    if (bar) bar.style.width = pct + "%";
+    var tm = document.querySelector(".tm");
+    if (tm) tm.textContent = fmt(audio.currentTime) + " / " + fmt(audio.duration || 0);
+  });
+  audio.addEventListener("ended", function () { renderBig(); });
+
+  function fmt(s) { if (!isFinite(s)) s = 0; var m = Math.floor(s / 60), r = Math.floor(s % 60); return m + ":" + (r < 10 ? "0" : "") + r; }
+  function wave() { var o = "", h; for (var i = 0; i < 36; i++) { h = 16 + Math.abs(Math.sin(i * 0.7)) * 80; o += '<i style="height:' + h.toFixed(0) + '%"></i>'; } return o; }
+
+  function renderPhotos() {
+    var box = $("photos"); box.innerHTML = "";
+    var big = document.createElement("div"); big.className = "tile big"; big.id = "big"; box.appendChild(big);
+
+    // 小图统一包一层：桌面端用 display:contents 让它们照旧参与 4 列网格；
+    // 移动端则变成一条横滑缩略图。
+    var thumbs = document.createElement("div"); thumbs.className = "thumbs"; box.appendChild(thumbs);
+
+    var curAudio = current && current.audio;
+    var smalls = DEMOS.filter(function (d) { return d.audio !== curAudio; });
+    while (smalls.length < 4) smalls.push(null);
+
+    smalls.forEach(function (d) {
+      if (!d) {
+        var add = document.createElement("div");
+        add.className = "tile add";
+        add.innerHTML = "<div>＋<br>Your photo here</div>";
+        add.addEventListener("click", function () { $("file").click(); });
+        thumbs.appendChild(add);
+        return;
+      }
+      var el = document.createElement("div");
+      el.className = "tile";
+      el.innerHTML = '<img src="' + d.img + '" alt=""><div class="shade"></div><span class="pl">▶</span>' +
+        '<div class="meta"><p class="t">' + d.title + '</p><p class="d">' + d.meta + '</p></div>';
+      el.addEventListener("click", function () { select(Object.assign({ kind: "demo" }, d)); });
+      thumbs.appendChild(el);
+    });
+
+    renderBig();
+  }
+
+  function renderBig() {
+    var big = $("big"); if (!big || !current) return;
+    var c = current;
+    var isPlaying = c.audio && audio.src.indexOf(c.audio) >= 0 && !audio.paused;
+    big.innerHTML =
+      (c.img ? '<img src="' + c.img + '" alt="">' : '') +
+      '<div class="shade"></div>' +
+      '<div class="body">' +
+        '<p class="k">' + (c.kind === "result" ? UI.just_generated : c.kind === "recipe" ? UI.from_recipe : UI.from_photo) + (c.meta ? " · " + c.meta : "") + '</p>' +
+        (c.lyrics ? '<p class="ly">' + c.lyrics + '</p>' : '<p class="noimg">' + (c.title || UI.your_track) + '</p>') +
+        '<div class="wave">' + wave() + '</div>' +
+        '<div class="pbar"><span></span></div>' +
+        '<div class="brow">' +
+          '<button class="pp" id="pp">' + (isPlaying ? "❚❚" : "▶") + '</button>' +
+          '<span class="tm">0:00</span>' +
+          '<div class="acts">' +
+            (c.audio ? '<a href="' + c.audio + '" download>Download</a>' : '') +
+            (c.kind === "result" ? '<button id="saveR">Save as recipe</button>' : '') +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    $("pp").addEventListener("click", function () {
+      if (audio.src.indexOf(c.audio) >= 0 && !audio.paused) { audio.pause(); }
+      else { audio.src = c.audio; audio.play().catch(function () {}); }
+      setTimeout(renderBig, 30);
+    });
+    var s = $("saveR"); if (s) s.addEventListener("click", saveRecipe);
+  }
+
+  function select(c) {
+    current = c;
+    renderPhotos();
+    renderBig();
+    if (c.audio) { audio.src = c.audio; audio.play().catch(function () {}); }
+    setTimeout(renderBig, 60);
+  }
+
+  // ---- 左栏 ----
+  function label(f) { return (f.label && (f.label.en || f.label["zh-Hans"])) || f.key; }
+
+  function renderRail() {
+    var box = $("rail"); box.innerHTML = "";
+    schema.fields.forEach(function (f) { box.appendChild(groupOf(f)); });
+    applyVisibility(); syncCost();
+  }
+
+  function groupOf(f) {
+    var wrap = document.createElement("div");
+    wrap.className = "sect"; wrap.dataset.key = f.key;
+    var head = document.createElement("div"); head.className = "lbl";
+    var right = "";
+    if (f.key === "duration_seconds") right = '<span class="r" id="cost">' + cost() + '</span>';
+    if (f.type === "multi") right = '<span class="r">up to ' + f.max + '</span>';
+    if (f.key === "vocal_language") right = '<span class="r">vocal tracks</span>';
+    head.innerHTML = "<span>" + label(f) + "</span>" + right;
+    wrap.appendChild(head);
+
+    if (f.type === "int") {
+      var inp = document.createElement("input");
+      inp.type = "range"; inp.min = f.min; inp.max = f.max; inp.step = f.step || 1; inp.value = values[f.key];
+      var out = document.createElement("div");
+      out.style.cssText = "font-size:10.5px;color:var(--mut);margin-top:4px";
+      out.textContent = values[f.key] + " BPM";
+      inp.addEventListener("input", function () { values[f.key] = Number(inp.value); out.textContent = inp.value + " BPM"; });
+      wrap.appendChild(inp); wrap.appendChild(out);
+      return wrap;
+    }
+
+    var asSeg = f.type === "bool" || (f.type === "enum" && f.options.length <= 5);
+    if (asSeg) {
+      var row = document.createElement("div"); row.className = "seg";
+      var opts = f.type === "bool" ? [{ value: false, label: { en: "Off" } }, { value: true, label: { en: "Seamless loop" } }] : f.options;
+      opts.forEach(function (o) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.textContent = (o.label && (o.label.en || o.label["zh-Hans"])) || o.value;
+        if (values[f.key] === o.value) b.classList.add("on");
+        b.addEventListener("click", function () {
+          values[f.key] = o.value;
+          Array.prototype.forEach.call(row.children, function (x) { x.classList.remove("on"); });
+          b.classList.add("on"); applyVisibility(); syncCost();
+        });
+        row.appendChild(b);
+      });
+      wrap.appendChild(row);
+      return wrap;
+    }
+
+    var chips = document.createElement("div"); chips.className = "chips";
+    f.options.forEach(function (o) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "chip";
+      b.textContent = (o.label && (o.label.en || o.label["zh-Hans"])) || o.value;
+      var on = f.type === "multi" ? (values[f.key] || []).indexOf(o.value) >= 0 : values[f.key] === o.value;
+      if (on) b.classList.add("on");
+      b.addEventListener("click", function () {
+        if (f.type === "multi") {
+          var cur = values[f.key] || [], i = cur.indexOf(o.value);
+          if (i >= 0) { cur.splice(i, 1); b.classList.remove("on"); }
+          else {
+            if (cur.length >= (f.max || 99)) { msg("Up to " + f.max, "err"); return; }
+            cur.push(o.value); b.classList.add("on");
+          }
+          values[f.key] = cur;
+        } else {
+          values[f.key] = o.value;
+          Array.prototype.forEach.call(chips.children, function (x) { x.classList.remove("on"); });
+          b.classList.add("on");
+        }
+        applyVisibility(); syncCost();
+      });
+      chips.appendChild(b);
+    });
+    wrap.appendChild(chips);
+    return wrap;
+  }
+
+  function cond(cv, actual) {
+    if (cv && typeof cv === "object") {
+      if ("$ne" in cv) return actual !== cv.$ne;
+      if ("$in" in cv) return (cv.$in || []).indexOf(actual) >= 0;
+    }
+    return actual === cv;
+  }
+
+  function applyVisibility() {
+    schema.fields.forEach(function (f) {
+      if (!f.visible_when) return;
+      var el = document.querySelector('.sect[data-key="' + f.key + '"]');
+      if (!el) return;
+      var show = Object.keys(f.visible_when).every(function (k) { return cond(f.visible_when[k], values[k]); });
+      el.classList.toggle("hidden", !show);
+    });
+    if (values.loop) {
+      var bf = schema.fields.filter(function (f) { return f.key === "bpm"; })[0] || {};
+      var legal = (bf.bpm_by_duration || {})[String(values.duration_seconds)] || [];
+      if (legal.length && legal.indexOf(values.bpm) < 0) {
+        values.bpm = legal[0];
+        var inp = document.querySelector('.sect[data-key="bpm"] input');
+        if (inp) inp.value = values.bpm;
+        var out = document.querySelector('.sect[data-key="bpm"] div');
+        if (out) out.textContent = values.bpm + " BPM";
+      }
+    }
+  }
+
+  function cost() {
+    var f = schema && schema.fields.filter(function (x) { return x.key === "duration_seconds"; })[0];
+    if (!f) return "45 credits";
+    var o = (f.options || []).filter(function (x) { return x.value === values.duration_seconds; })[0];
+    return ((o && o.cost) || 45) + " credits";
+  }
+
+  function syncCost() {
+    var c = $("cost"); if (c) c.textContent = cost();
+    var go = $("go"); if (go) go.textContent = token() ? "Generate · " + cost() : UI.sign_in_first;
+  }
+
+  function fmtDur(sec) { var m = Math.floor(sec / 60), r = sec % 60; return m + ":" + (r < 10 ? "0" : "") + r; }
+
+  // ---- 配方 ----
+  function renderRecipes(items) {
+    var box = $("recipes"); box.innerHTML = "";
+    items.filter(function (r) { return r.is_system; }).forEach(function (r) {
+      var el = document.createElement("button");
+      el.type = "button"; el.className = "rec";
+      var p = r.params || {};
+      el.innerHTML = '<div class="wv">' + wave() + '</div><p class="rn">' + r.name + '</p>' +
+        '<p class="rd">' + fmtDur(p.duration_seconds || 30) + (p.loop ? " · seamless" : " · no loop") + '</p>';
+      el.addEventListener("click", function () {
+        Array.prototype.forEach.call(box.children, function (x) { x.classList.remove("on"); });
+        el.classList.add("on");
+        Object.keys(p).forEach(function (k) { if (k.indexOf("__") !== 0) values[k] = p[k]; });
+        renderRail();
+        if (r.sample_url) select({ kind: "recipe", audio: r.sample_url, title: r.name, meta: "preset" });
+      });
+      box.appendChild(el);
+    });
+  }
+
+  // ---- 生成 ----
+  function generate() {
+    if (!token()) { location.href = "account.html"; return; }
+    $("go").disabled = true;
+    msg(UI.generating);
+    var body = { params: values };
+    if (imagePayload) body.image = imagePayload;
+    var t0 = Date.now();
+    call("/ai/music/generate", body, true).then(function (d) {
+      $("go").disabled = false;
+      if (d.code === 401) { localStorage.removeItem(TOKEN_KEY); location.reload(); return; }
+      if (d.code !== 200) { msg(d.msg || "Generation failed", "err"); return; }
+      var x = d.data;
+      msg("Done in " + Math.round((Date.now() - t0) / 1000) + "s", "ok");
+      var lines = (x.lyrics || "").replace(/\[[0-9.:]+\]\s?/g, "").split("\n").filter(function (l) { return l.trim(); });
+      current = {
+        kind: "result", audio: API + x.url,
+        img: (document.getElementById("prevImg") || {}).src || "",
+        meta: (x.duration_ms / 1000).toFixed(0) + "s · " + x.credits + " credits",
+        lyrics: lines.slice(0, 2).join("<br>")
+      };
+      renderBig();
+      audio.src = current.audio; audio.play().catch(function () {});
+      setTimeout(renderBig, 60);
+      Array.prototype.forEach.call($("recipes").children, function (x) { x.classList.remove("on"); });
+    }).catch(function () { $("go").disabled = false; msg("Network error", "err"); });
+  }
+
+  function saveRecipe() {
+    if (!token()) { location.href = "account.html"; return; }
+    var name = window.prompt("Recipe name", "My track");
+    if (!name) return;
+    call("/ai/music/recipes/save", { name: name, params: values }, true).then(function (d) {
+      msg(d.code === 200 ? "Saved: " + name : (d.msg || "Save failed"), d.code === 200 ? "ok" : "err");
+    });
+  }
+
+  // ---- 图片 ----
+  $("file").addEventListener("change", function (e) {
+    var f = e.target.files && e.target.files[0];
+    if (!f) return;
+    var reader = new FileReader();
+    reader.onload = function () {
+      var url = String(reader.result || "");
+      imagePayload = { data: url.slice(url.indexOf(",") + 1), mime: f.type || "image/jpeg" };
+      $("drop").classList.add("has");
+      $("dropText").innerHTML = '<img id="prevImg" src="' + url + '" alt=""><span class="rm">Remove photo</span>';
+      $("dropText").onclick = function (ev) {
+        ev.preventDefault(); ev.stopPropagation();
+        imagePayload = null;
+        $("drop").classList.remove("has");
+        $("dropText").innerHTML = "<b>Drop or choose a photo</b>the lyrics will name what's in it";
+        $("dropText").onclick = null; $("file").value = "";
+      };
+    };
+    reader.readAsDataURL(f);
+  });
+
+  // ---- 启动 ----
+  $("go").addEventListener("click", generate);
+  call("/ai/music/schema", {}, false).then(function (d) {
+    if (d.code !== 200) { msg("Could not load options", "err"); return; }
+    schema = d.data;
+    schema.fields.forEach(function (f) { values[f.key] = f.type === "multi" ? (f.default || []).slice() : f.default; });
+    // 先定"当前这首"，再渲染照片墙——否则墙里会出现和大画幅重复的那一张
+    var d0 = DEMOS[0];
+    current = { kind: "demo", img: d0.img, audio: d0.audio, lyrics: d0.lyrics, meta: d0.meta, title: d0.title };
+    renderRail(); renderPhotos(); syncCost();
+    call("/ai/music/recipes/list", {}, false).then(function (r) {
+      if (r.code === 200) renderRecipes(r.data || []);
+    });
+  });
+})();
+</script>
+</body>
+</html>
