@@ -213,6 +213,8 @@
 (function () {
   "use strict";
   var UI = JSON.parse(document.getElementById("ui").textContent);
+  // 选项标签由后端下发多语言字典：优先当前页面语言，取不到回退英文。
+  var LANG = (document.documentElement.lang || "en").replace("_", "-");
   var TOKEN_KEY = "aig_token";
   var API = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "https://dev.aiglossa.com";
   var $ = function (id) { return document.getElementById(id); };
@@ -326,8 +328,6 @@
   }
 
   // ---- 左栏 ----
-  // 选项标签由后端下发多语言字典：优先当前页面语言，取不到回退英文。
-  var LANG = (document.documentElement.lang || "en").replace("_", "-");
   function pick(l) {
     if (!l) return "";
     return l[LANG] || l[LANG.split("-")[0]] || l.en || "";
