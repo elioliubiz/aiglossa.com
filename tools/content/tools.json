@@ -29,7 +29,230 @@
     ],
     "note": "Credits are shared across tools — one balance, never expires, no subscription.",
     "cta_label": "Open AI Music",
-    "cta_href": "/make.html",
-    "langLabel": "English"
+    "cta_href": "/make.html"
+  },
+  "ja": {
+    "title": "ツール — aiglossa",
+    "description": "小さくて精密な制作ツール。第一弾は、写真やプロンプトから正確な長さのBGMを作るツールです。",
+    "h1": "ツール",
+    "lede": "日々の制作のための小さな道具。一つずつ、きちんと作ります。",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "提供中",
+        "href": "/make.html",
+        "desc": "写真やプロンプトから、必要な長さちょうどの曲を作ります。歌詞には写真の中のものが歌われます。",
+        "meta": "30〜90秒・シームレスループ・10言語のボーカル"
+      },
+      {
+        "name": "画像ツール",
+        "status": "近日公開",
+        "href": "",
+        "desc": "商品写真の加工と簡単な編集。同じ考え方で、出力は正確に、驚きはなし。",
+        "meta": "設計中"
+      },
+      {
+        "name": "テキストツール",
+        "status": "近日公開",
+        "href": "",
+        "desc": "字幕・タイトル・翻訳チェックのための小さなテキストツール。",
+        "meta": "設計中"
+      }
+    ],
+    "note": "クレジットは全ツール共通。一つの残高で、期限なし、サブスクなし。",
+    "cta_label": "AI Music を開く",
+    "cta_href": "/make.html"
+  },
+  "ko": {
+    "title": "도구 — aiglossa",
+    "description": "작고 정밀한 제작 도구. 첫 번째는 사진이나 프롬프트로 정확한 길이의 배경 음악을 만드는 도구입니다.",
+    "h1": "도구",
+    "lede": "일상적인 창작을 위한 작은 도구들. 하나씩, 제대로 만듭니다.",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "제공 중",
+        "href": "/make.html",
+        "desc": "사진이나 프롬프트로 필요한 길이에 딱 맞는 곡을 만듭니다. 가사에는 사진 속 요소가 담깁니다.",
+        "meta": "30~90초 · 이음새 없는 루프 · 10개 언어 보컬"
+      },
+      {
+        "name": "이미지 도구",
+        "status": "출시 예정",
+        "href": "",
+        "desc": "제품 사진과 간단한 편집. 같은 원칙: 정확한 결과, 뜻밖의 일은 없음.",
+        "meta": "설계 중"
+      },
+      {
+        "name": "텍스트 도구",
+        "status": "출시 예정",
+        "href": "",
+        "desc": "자막, 제목, 번역 검수를 위한 작은 텍스트 도구.",
+        "meta": "설계 중"
+      }
+    ],
+    "note": "크레딧은 모든 도구에서 공용입니다. 하나의 잔액, 만료 없음, 구독 없음.",
+    "cta_label": "AI Music 열기",
+    "cta_href": "/make.html"
+  },
+  "zh-Hans": {
+    "title": "工具 — aiglossa",
+    "description": "小而精确的创作工具。第一个：用照片或描述，生成精确长度的背景音乐。",
+    "h1": "工具",
+    "lede": "为日常创作准备的小工具。一次做一个，认真做。",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "已上线",
+        "href": "/make.html",
+        "desc": "用照片或描述生成精确长度的曲子。歌词会唱出照片里的东西。",
+        "meta": "30–90 秒 · 无缝循环 · 10 种语言人声"
+      },
+      {
+        "name": "图片工具",
+        "status": "即将推出",
+        "href": "",
+        "desc": "产品图与简单编辑，同样的思路：输出精确，没有意外。",
+        "meta": "设计中"
+      },
+      {
+        "name": "文本工具",
+        "status": "即将推出",
+        "href": "",
+        "desc": "字幕、标题、译文检查的小工具。",
+        "meta": "设计中"
+      }
+    ],
+    "note": "额度在所有工具间通用：一份余额、永不过期、没有订阅。",
+    "cta_label": "打开 AI Music",
+    "cta_href": "/make.html"
+  },
+  "es": {
+    "title": "Herramientas — aiglossa",
+    "description": "Herramientas creativas pequeñas y precisas. La primera: música de fondo con la duración exacta, a partir de una foto o una descripción.",
+    "h1": "Herramientas",
+    "lede": "Utilidades pequeñas para el trabajo creativo diario. Una a la vez, bien hechas.",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "Disponible",
+        "href": "/make.html",
+        "desc": "Convierte una foto o una descripción en una pista de la duración exacta que necesitas. La letra nombra lo que hay en tu imagen.",
+        "meta": "30–90 s · bucles sin cortes · voces en 10 idiomas"
+      },
+      {
+        "name": "Herramienta de imagen",
+        "status": "Próximamente",
+        "href": "",
+        "desc": "Fotos de producto y ediciones sencillas, con la misma idea: resultado exacto, sin sorpresas.",
+        "meta": "En diseño"
+      },
+      {
+        "name": "Herramientas de texto",
+        "status": "Próximamente",
+        "href": "",
+        "desc": "Pequeñas utilidades de texto para subtítulos, títulos y revisión de traducciones.",
+        "meta": "En diseño"
+      }
+    ],
+    "note": "Los créditos son comunes a todas las herramientas: un saldo, sin caducidad y sin suscripción.",
+    "cta_label": "Abrir AI Music",
+    "cta_href": "/make.html"
+  },
+  "fr": {
+    "title": "Outils — aiglossa",
+    "description": "Des outils créatifs petits et précis. Le premier : de la musique de fond à la durée exacte, à partir d'une photo ou d'une description.",
+    "h1": "Outils",
+    "lede": "De petits utilitaires pour le travail créatif quotidien. Un à la fois, bien fait.",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "Disponible",
+        "href": "/make.html",
+        "desc": "Transformez une photo ou une description en morceau à la durée exacte. Les paroles nomment ce que contient votre image.",
+        "meta": "30–90 s · boucles sans coupure · voix en 10 langues"
+      },
+      {
+        "name": "Outil image",
+        "status": "Bientôt",
+        "href": "",
+        "desc": "Photos produit et retouches simples, même principe : un résultat exact, sans surprise.",
+        "meta": "En conception"
+      },
+      {
+        "name": "Outils texte",
+        "status": "Bientôt",
+        "href": "",
+        "desc": "De petits utilitaires de texte pour les sous-titres, les titres et la relecture de traductions.",
+        "meta": "En conception"
+      }
+    ],
+    "note": "Les crédits sont communs à tous les outils : un seul solde, sans expiration, sans abonnement.",
+    "cta_label": "Ouvrir AI Music",
+    "cta_href": "/make.html"
+  },
+  "de": {
+    "title": "Tools — aiglossa",
+    "description": "Kleine, präzise Kreativwerkzeuge. Zuerst: Hintergrundmusik in exakt der benötigten Länge – aus einem Foto oder einer Beschreibung.",
+    "h1": "Tools",
+    "lede": "Kleine Werkzeuge für die tägliche kreative Arbeit. Eins nach dem anderen, richtig gemacht.",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "Verfügbar",
+        "href": "/make.html",
+        "desc": "Aus einem Foto oder einer Beschreibung wird ein Track in exakt der Länge, die du brauchst. Der Gesang benennt, was auf dem Bild ist.",
+        "meta": "30–90 s · nahtlose Loops · Gesang in 10 Sprachen"
+      },
+      {
+        "name": "Bild-Tool",
+        "status": "Demnächst",
+        "href": "",
+        "desc": "Produktfotos und einfache Bearbeitungen – gleiches Prinzip: exaktes Ergebnis, keine Überraschungen.",
+        "meta": "In Planung"
+      },
+      {
+        "name": "Text-Tools",
+        "status": "Demnächst",
+        "href": "",
+        "desc": "Kleine Textwerkzeuge für Untertitel, Titel und Übersetzungsprüfung.",
+        "meta": "In Planung"
+      }
+    ],
+    "note": "Credits gelten für alle Tools: ein Guthaben, kein Ablaufdatum, kein Abo.",
+    "cta_label": "AI Music öffnen",
+    "cta_href": "/make.html"
+  },
+  "pt": {
+    "title": "Ferramentas — aiglossa",
+    "description": "Ferramentas criativas pequenas e precisas. A primeira: música de fundo com a duração exata, a partir de uma foto ou descrição.",
+    "h1": "Ferramentas",
+    "lede": "Utilitários pequenos para o trabalho criativo do dia a dia. Um de cada vez, bem feitos.",
+    "tools": [
+      {
+        "name": "AI Music",
+        "status": "Disponível",
+        "href": "/make.html",
+        "desc": "Transforme uma foto ou descrição em uma faixa com a duração exata que você precisa. A letra cita o que está na sua imagem.",
+        "meta": "30–90 s · loops sem corte · vocais em 10 idiomas"
+      },
+      {
+        "name": "Ferramenta de imagem",
+        "status": "Em breve",
+        "href": "",
+        "desc": "Fotos de produto e edições simples, com a mesma ideia: resultado exato, sem surpresas.",
+        "meta": "Em design"
+      },
+      {
+        "name": "Ferramentas de texto",
+        "status": "Em breve",
+        "href": "",
+        "desc": "Pequenos utilitários de texto para legendas, títulos e revisão de traduções.",
+        "meta": "Em design"
+      }
+    ],
+    "note": "Os créditos são compartilhados entre todas as ferramentas: um saldo, sem expiração, sem assinatura.",
+    "cta_label": "Abrir AI Music",
+    "cta_href": "/make.html"
   }
 }
