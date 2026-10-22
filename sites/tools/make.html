@@ -34,6 +34,16 @@
   .wave{flex:1;height:26px;display:flex;align-items:center;gap:2px;opacity:.45}
   .wave i{display:block;width:2px;border-radius:1px;background:currentColor}
 
+  .proof{display:grid;grid-template-columns:300px minmax(0,1fr);gap:24px;align-items:start;
+         border:1px solid var(--line);border-radius:18px;padding:20px;background:rgba(255,255,255,.02)}
+  @media(max-width:760px){.proof{grid-template-columns:1fr}}
+  .proof img{width:100%;border-radius:12px;display:block;object-fit:cover;max-height:300px}
+  .proof-body audio{width:100%;margin-bottom:14px}
+  .proof-lyrics{font-size:14px;line-height:1.75;color:var(--fg);margin:0 0 10px}
+  .proof-lyrics mark{background:rgba(255,138,76,.22);color:#ffd9c4;padding:0 3px;border-radius:3px}
+  .proof-note{font-size:12px;color:var(--muted);margin:0}
+  .proof-note a{color:var(--warm);text-decoration:none}
+
   .studio{margin-top:18px;border:1px solid var(--line);border-radius:18px;padding:26px;
           background:linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,.015))}
   .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 26px}
@@ -62,6 +72,10 @@
   .result.hidden{display:none}
   audio{width:100%;margin-bottom:10px}
   .meta{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .lyrics{margin-top:14px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:rgba(255,255,255,.02)}
+  .lyrics.hidden{display:none}
+  .lyrics summary{cursor:pointer;font-size:13px;color:var(--muted)}
+  .lyrics pre{margin:10px 0 0;white-space:pre-wrap;font-family:inherit;font-size:13px;line-height:1.6;color:var(--fg)}
   .row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
   #saveRow{display:flex;gap:10px;margin-top:10px}
   #saveRow.hidden{display:none}
@@ -84,11 +98,38 @@
       Listen to a few below — no account needed.</p>
   </header>
 
+  <h2>One photo in</h2>
+  <div class="proof">
+    <img src="samples/demo-sea.jpg" alt="A photograph of the sea" />
+    <div class="proof-body">
+      <audio controls preload="none" src="samples/demo-sea.mp3"></audio>
+      <p class="proof-lyrics">
+        Gentle <mark>sea</mark> breathes on the sand<br />
+        Your quiet touch upon my hand<br />
+        Every <mark>wave</mark> that meets the <mark>beach</mark><br />
+        Puts our worried minds at peace
+      </p>
+      <p class="proof-note">
+        Generated from the photo on the left — listen for what the lyrics name.
+        <a href="#studio">Try your own photo ↓</a>
+      </p>
+    </div>
+  </div>
+
   <h2>Hear what you get</h2>
   <div class="samples" id="samples"></div>
 
-  <h2>Make your own</h2>
+  <h2 id="studio">Make your own</h2>
   <div class="studio">
+    <div class="field" id="imageField" style="margin-bottom:22px">
+      <label>Reference image <span style="text-transform:none;letter-spacing:0">(optional — we read what's in it)</span></label>
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+        <input id="imageInput" type="file" accept="image/*" style="font-size:13px;color:var(--muted)" />
+        <button class="btn ghost" id="imageClear" type="button" style="display:none;padding:8px 14px">Remove</button>
+      </div>
+      <img id="imagePreview" alt="" style="display:none;margin-top:12px;max-height:120px;border-radius:10px;border:1px solid var(--line)" />
+      <div class="hint" id="imageHint"></div>
+    </div>
     <div class="grid" id="form"></div>
     <div class="actions">
       <button class="btn" id="go" type="button">Generate</button>
@@ -99,6 +140,10 @@
     <div class="result hidden" id="result">
       <audio id="player" controls preload="metadata"></audio>
       <div class="meta" id="meta"></div>
+      <details id="lyricsBox" class="lyrics hidden">
+        <summary>Lyrics</summary>
+        <pre id="lyrics"></pre>
+      </details>
       <div class="row">
         <a class="btn ghost" id="download" href="#" download>Download</a>
         <button class="btn ghost" id="save" type="button">Save as recipe</button>
@@ -139,6 +184,30 @@
   function msg(t, kind) { var el = $("msg"); el.textContent = t || ""; el.className = "msg" + (kind ? " " + kind : ""); }
 
   var schema = null, values = {}, currentRecipe = null, audio = null, activeCard = null;
+  var imagePayload = null; // { data, mime }
+
+  function readImage(file) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var result = String(reader.result || "");
+      var comma = result.indexOf(",");
+      imagePayload = { data: result.slice(comma + 1), mime: file.type || "image/jpeg" };
+      $("imagePreview").src = result;
+      $("imagePreview").style.display = "block";
+      $("imageClear").style.display = "inline-flex";
+      updateImageHint();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function updateImageHint() {
+    var hint = $("imageHint");
+    if (!imagePayload) { hint.textContent = ""; return; }
+    // 人声是"可验证性"：歌词里出现图里的名词，用户才确信用了他的图
+    hint.textContent = values.vocal === "instrumental"
+      ? "Tip: pick a vocal style — the lyrics will name what's in your photo, so you can hear that we used it."
+      : "The lyrics will name what's in your photo.";
+  }
 
   // ---------- 样例试听（不需要登录） ----------
   function waveBars(seed) {
@@ -258,7 +327,14 @@
       if (!f.visible_when) return;
       var el = document.querySelector('.field[data-key="' + f.key + '"]');
       if (!el) return;
-      var show = Object.keys(f.visible_when).every(function (k) { return values[k] === f.visible_when[k]; });
+      var show = Object.keys(f.visible_when).every(function (k) {
+        var cond = f.visible_when[k];
+        if (cond && typeof cond === "object") {
+          if ("$ne" in cond) return values[k] !== cond.$ne;
+          if ("$in" in cond) return (cond.$in || []).indexOf(values[k]) >= 0;
+        }
+        return values[k] === cond;
+      });
       el.style.display = show ? "" : "none";
     });
     if (values.loop) {
@@ -267,6 +343,7 @@
       if (legal.length && legal.indexOf(values.bpm) < 0) values.bpm = legal[0];
     }
     syncGoLabel();
+    if (typeof updateImageHint === "function") updateImageHint();
   }
 
   function schemaDefaults() {
@@ -303,6 +380,7 @@
     $("result").classList.add("hidden");
     msg("Generating… about 25 seconds.");
     var body = currentRecipe && currentRecipe.id ? { recipe_id: currentRecipe.id } : { params: values };
+    if (imagePayload) body.image = imagePayload;
     var t0 = Date.now();
     call("/ai/music/generate", body, true).then(function (d) {
       $("go").disabled = false;
@@ -312,6 +390,8 @@
       $("player").src = API + x.url;
       $("download").href = API + x.url;
       $("meta").textContent = (x.duration_ms / 1000).toFixed(1) + "s · " + x.credits + " credits · balance " + x.balance;
+      if (x.lyrics) { $("lyrics").textContent = x.lyrics.replace(/\[\d+(\.\d+)?:\]/g, ""); $("lyricsBox").classList.remove("hidden"); }
+      else { $("lyricsBox").classList.add("hidden"); }
       $("result").classList.remove("hidden");
       $("balance").textContent = x.balance + " credits left";
       msg("Done in " + Math.round((Date.now() - t0) / 1000) + "s", "ok");
@@ -351,6 +431,17 @@
     });
   });
 
+  $("imageInput").addEventListener("change", function (e) {
+    var file = e.target.files && e.target.files[0];
+    if (file) readImage(file);
+  });
+  $("imageClear").addEventListener("click", function () {
+    imagePayload = null;
+    $("imagePreview").style.display = "none";
+    $("imageClear").style.display = "none";
+    $("imageInput").value = "";
+    updateImageHint();
+  });
   $("go").addEventListener("click", generate);
   $("save").addEventListener("click", saveRecipe);
   $("again").addEventListener("click", function () { $("result").classList.add("hidden"); generate(); });
