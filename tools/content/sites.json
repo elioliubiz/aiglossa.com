@@ -23,7 +23,14 @@
     "host": "tools.aiglossa.com",
     "legal": false,
     "langs": [
-      "en"
+      "en",
+      "ja",
+      "ko",
+      "zh-Hans",
+      "es",
+      "fr",
+      "de",
+      "pt"
     ],
     "pages": [
       "tools"

@@ -1,0 +1,44 @@
+{
+  "pricing": {
+    "en": {
+      "title": "Credits & pricing — aiglossa tools",
+      "description": "Prepaid credits for aiglossa tools. A 30-second track costs 45 credits; longer tracks cost more.",
+      "kicker": "Aigloss tools",
+      "h1": "Credits",
+      "lede": "Prepaid credits, shared across every tool. They never expire and there is no subscription — you only pay for what you generate.",
+      "side_title": "How credits work",
+      "li1": "30s track = 45 credits, 45s = 64, 60s = 85, 75s = 103, 90s = 120.",
+      "li2": "Failed generations are refunded automatically.",
+      "li3": "Credits never expire and work across all tools.",
+      "li4": "Payments are processed by Creem, our merchant of record.",
+      "li5_unused": "Unused credits can be refunded within 14 days — see the",
+      "li5_refund": "Refund Policy",
+      "li5_end": ".",
+      "back": "← Back to tools",
+      "open": "Opening checkout…",
+      "err": "Could not start checkout",
+      "neterr": "Network error",
+      "per": "≈ {n} × 30s tracks"
+    },
+    "ja": {
+      "title": "クレジットと料金 — aiglossa tools",
+      "description": "aiglossa tools のプリペイドクレジット。30秒の曲は45クレジット、長い曲はそれ以上です。",
+      "kicker": "Aigloss tools",
+      "h1": "クレジット",
+      "lede": "プリペイドのクレジットは全ツール共通。期限なし、サブスクなし。生成した分だけ支払います。",
+      "side_title": "クレジットの仕組み",
+      "li1": "30秒の曲＝45クレジット、45秒＝64、60秒＝85、75秒＝103、90秒＝120。",
+      "li2": "生成に失敗した場合は自動で返金されます。",
+      "li3": "クレジットは期限なしで、すべてのツールで使えます。",
+      "li4": "支払いは merchant of record である Creem が処理します。",
+      "li5_unused": "未使用のクレジットは14日以内なら返金できます —",
+      "li5_refund": "返金ポリシー",
+      "li5_end": "をご覧ください。",
+      "back": "← ツール一覧へ",
+      "open": "決済ページを開いています…",
+      "err": "決済を開始できませんでした",
+      "neterr": "通信エラー",
+      "per": "30秒×約 {n} 曲"
+    }
+  }
+}
