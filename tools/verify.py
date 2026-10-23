@@ -42,7 +42,8 @@ def outputs_for(page: str) -> list[tuple[str, str]]:
         slugs = set()
         for loc in guides.values():
             slugs.update(loc.keys())
-        return [(f"guides/{slug}.html", f"guides/{slug}.html") for slug in sorted(slugs)]
+        return ([("guides/index.html", "guides/")] +
+                [(f"guides/{slug}.html", f"guides/{slug}.html") for slug in sorted(slugs)])
     if page == "music":
         return [("music/index.html", "music/")]
     if page in ("refund", "acceptable-use"):
