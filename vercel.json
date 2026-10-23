@@ -370,6 +370,46 @@
         }
       ],
       "destination": "/sites/tools/:path*"
+    },
+    {
+      "source": "/robots.txt",
+      "has": [
+        {
+          "type": "host",
+          "value": "aiglossa.com"
+        }
+      ],
+      "destination": "/sites/root/robots.txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "has": [
+        {
+          "type": "host",
+          "value": "aiglossa.com"
+        }
+      ],
+      "destination": "/sites/root/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "has": [
+        {
+          "type": "host",
+          "value": "scholan.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/scholan/robots.txt"
+    },
+    {
+      "source": "/sitemap.xml",
+      "has": [
+        {
+          "type": "host",
+          "value": "scholan.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/scholan/sitemap.xml"
     }
   ],
   "headers": [
