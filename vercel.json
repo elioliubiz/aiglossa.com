@@ -3,6 +3,17 @@
   "cleanUrls": false,
   "redirects": [
     {
+      "source": "/:lang/make.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
+      "destination": "/:lang/music/",
+      "permanent": true
+    },
+    {
       "source": "/",
       "has": [
         {
@@ -265,7 +276,7 @@
           "value": "tools.aiglossa.com"
         }
       ],
-      "destination": "/en/make.html",
+      "destination": "/en/music/",
       "permanent": true
     }
   ],

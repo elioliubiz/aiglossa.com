@@ -56,7 +56,8 @@ PAGES = {
     # 法律页：正文整体从 ui.json 取（与 protocol 页同样的做法），页面数固定
     "refund": ("pages/legal.html", "ui", "refund.html"),
     "acceptable-use": ("pages/legal.html", "ui", "acceptable-use.html"),
-    "make": ("pages/make.html", "ui", "make.html"),
+    "music": ("pages/make.html", "ui", "music/index.html"),
+    # 每个工具一个目录（/{lang}/music/、未来 /{lang}/image/），全局页仍在语言根
 }
 
 
@@ -169,7 +170,12 @@ def render(template: str, values: dict[str, str], where: str) -> str:
 
 
 def url_for(site_base: str, lang: str, page_path: str) -> str:
-    """该页面的对外 URL（index.html 用目录形式，带结尾斜杠）。"""
+    """该页面的对外 URL（index.html 用目录形式，带结尾斜杠）。
+
+    工具页现在是目录（music/index.html → /music/），所以尾部 index.html 要抹掉。
+    """
+    if page_path.endswith("index.html"):
+        page_path = page_path[: -len("index.html")]
     return f"{site_base}/{lang}/" + (page_path if page_path else "")
 
 
@@ -244,7 +250,11 @@ def _write_seo_files(site: str, spec: dict, site_langs: list[str],
     xdef = default if default in site_langs else site_langs[0]
 
     def url_for(lang: str, page: str) -> str:
-        return f"{base}/{lang}/" if page == "tools" else f"{base}/{lang}/{page}.html"
+        if page == "tools":
+            return f"{base}/{lang}/"
+        if page == "music":          # 工具页是目录形式
+            return f"{base}/{lang}/music/"
+        return f"{base}/{lang}/{page}.html"
 
     (targets / "robots.txt").write_text(
         "User-agent: *\nAllow: /\n\nSitemap: " + base + "/sitemap.xml\n",
@@ -445,11 +455,11 @@ def main() -> int:
                         "legal_terms_href": f"{legal_base}/{lang}/protocol/term.html",
                     }
                 values_builder = marketing_values
-            elif page == "make":
+            elif page == "music":
                 def make_values(lang: str, base: str, source=source) -> dict[str, str]:
                     copy = source[lang].get("make") or source["en"]["make"]
                     if "make" not in source[lang]:
-                        UNTRANSLATED.append(f"make · {lang}")
+                        UNTRANSLATED.append(f"music · {lang}")
                     out = {k: (v if k in ("drop", "title", "description") else esc(v)) for k, v in copy.items()}
                     out["drop"] = copy["drop"]                      # 含 <br>，按 HTML 原样插入
                     out["title"] = esc(copy["title"])
