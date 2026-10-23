@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" data-default-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ちょうど30秒のBGM — 「約30秒」が編集を壊す理由 | aiglossa</title>
+<meta name="description" content="30・45・60・75・90秒ちょうどのBGMを作る方法。フレーム単位でトリムとフェード、シームレスループにも対応。">
+<link rel="canonical" href="https://tools.aiglossa.com/ja/guides/exact-30-second-background-music.html">
+<link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html">
+<link rel="alternate" hreflang="ja" href="https://tools.aiglossa.com/ja/guides/exact-30-second-background-music.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/exact-30-second-background-music.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/guides/exact-30-second-background-music.html">
+<link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="aiglossa">
+<meta property="og:title" content="ちょうど30秒のBGM — 「約30秒」が編集を壊す理由 | aiglossa">
+<meta property="og:description" content="30・45・60・75・90秒ちょうどのBGMを作る方法。フレーム単位でトリムとフェード、シームレスループにも対応。">
+<meta property="og:url" content="https://tools.aiglossa.com/ja/guides/exact-30-second-background-music.html">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://tools.aiglossa.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e0f11">
+<link rel="icon" href="../../assets/favicon-tools.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-tools.svg" sizes="any">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png">
+<link rel="manifest" href="../../assets/manifest-tools.webmanifest">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/theme.css">
+<style>
+  .doc{max-width:720px;margin-inline:auto;padding-block:64px 40px;padding-inline:24px}
+  .doc h1{font-size:clamp(28px,4.4vw,42px);line-height:1.15;letter-spacing:-.03em;margin:0 0 16px;font-weight:600}
+  .doc h2{font-size:20px;margin-block:36px 10px;font-weight:600;letter-spacing:-.01em}
+  .doc h3{font-size:16px;margin-block:24px 8px;font-weight:600}
+  .doc p,.doc li{color:var(--muted);font-size:15.5px;line-height:1.75;margin-block:12px}
+  .doc ul,.doc ol{padding-inline-start:22px}
+  .doc a{color:var(--accent);text-decoration:none}
+  .doc strong{color:var(--fg)}
+  .doc .lead{font-size:17.5px;color:var(--fg)}
+  .doc .cta{display:inline-block;margin-block-start:28px;padding-block:13px;padding-inline:22px;
+            border-radius:10px;background:var(--accent);color:#1a0e04;font-weight:600;text-decoration:none}
+  .doc .meta{font-size:12px;color:var(--dim);margin-block:0 28px}
+  .doc blockquote{margin:20px 0;padding-inline-start:16px;border-inline-start:2px solid var(--accent)}
+  .doc blockquote p{color:var(--fg);font-style:italic}
+  .guide-list{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px}
+  .guide-list li a{display:block;padding-block:14px;padding-inline:18px;border:1px solid var(--line);
+                   border-radius:12px;background:rgba(255,255,255,.02);color:var(--fg);text-decoration:none;font-size:15.5px}
+  .guide-list li a:hover{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.05)}
+  footer{border-block-start:1px solid var(--line);padding-block:26px}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  footer nav a{color:var(--muted);font-size:12.5px;text-decoration:none;margin-inline-end:14px}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "ちょうど30秒のBGM — 「約30秒」が編集を壊す理由 | aiglossa", "description": "30・45・60・75・90秒ちょうどのBGMを作る方法。フレーム単位でトリムとフェード、シームレスループにも対応。", "url": "https://tools.aiglossa.com/ja/guides/exact-30-second-background-music.html", "inLanguage": "ja", "publisher": {"@type": "Organization", "name": "aiglossa", "url": "https://aiglossa.com"}}</script>
+</head>
+<body>
+<main class="doc">
+<h1>ちょうど30秒のBGM</h1>
+<p class="meta">2026年10月23日更新 · 読了4分</p>
+
+<p class="lead">多くの音楽ツールが返すのは「約30秒」。でも編集に必要なのは<strong>ちょうど</strong>30秒です。映像が30秒なら、フェードは最後のフレームで終わらなければなりません。</p>
+
+<h2>「約30秒」が編集を壊す理由</h2>
+<p>28.4秒で返ってきたら、選べるのはどれも悪手です。ループさせる（継ぎ目が聞こえる）、伸ばす（ピッチがずれる）、早めにフェードする（尻切れトンボ）。32秒なら、ending を切るか、タイムライン全体を伸ばすか。</p>
+<p>正解は編集ソフトで帳尻を合わせることではなく、<strong>最初から正確な長さで頼む</strong>ことです。</p>
+
+<h2>ここでの「正確」とは</h2>
+<p>指定した長さで生成し、後処理でミリ秒まで合わせます。</p>
+<ul>
+  <li>冒頭の無音をカットし、最初の拍を 0.000 秒から始める</li>
+  <li>末尾をフェードさせ、正確なフレームで切る</li>
+  <li>モデルが長めに返したら、余分は残さずカットする</li>
+</ul>
+<p>30秒を頼めば、ファイルは 30.000 秒。映像と同じ長さになります。</p>
+
+<h2>長さの選び方</h2>
+<p>30 / 45 / 60 / 75 / 90 秒を用意しています。ジャンルではなく<strong>編集</strong>に合わせて選んでください。</p>
+<ul>
+  <li><strong>30秒</strong> — SNS の短尺、製品ティザー、アイデント</li>
+  <li><strong>45秒</strong> — 短い解説、ポッドキャストのオープニング</li>
+  <li><strong>60秒</strong> — 標準的な広告尺</li>
+  <li><strong>75〜90秒</strong> — ナラティブ、メニューのループ、長い導入</li>
+</ul>
+
+<h2>ループさせたい場合</h2>
+<p>ループは別問題です。末尾が冒頭に繋がらないと「カチッ」と鳴ります。<strong>シームレスループ</strong>をオンにすると、曲が自分の冒頭へクロスフェードし、繰り返しても継ぎ目が分かりません。メニューや待機画面、ゲームの環境音に向いています。</p>
+<p>ループはシーンの長さを割り切れる値を選んでください。90秒のシーンに30秒のループなら3回でちょうど収まり、フレーズの切れ目で必ず繋がります。</p>
+
+<h2>写真1枚で試せます</h2>
+<p>音楽の説明はいりません。写真を入れると、曲の雰囲気は写っているものから決まります。歌詞はその物体を名指しします。30秒を選べば、ダウンロードしたファイルはちょうど30秒です。</p>
+
+<a class="cta" href="../music/">30秒の曲を作る →</a>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">aiglossa tools</span>
+    <nav>
+      <a href="../music/">AI Music Generator</a>
+      <a href="../pricing.html">利用規約</a>
+      <a href="https://aiglossa.com/ja/protocol/privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
