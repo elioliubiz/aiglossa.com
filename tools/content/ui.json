@@ -96,7 +96,10 @@
       "saved": "Saved: {name}",
       "up_to": "Up to {n}",
       "credits": "credits",
-      "guides_link": "Guides →"
+      "guides_link": "Guides →",
+      "guides_title": "Guides",
+      "close": "Close",
+      "loading": "Loading…"
     }
   },
   "ja": {
@@ -184,7 +187,10 @@
       "saved": "保存しました: {name}",
       "up_to": "最大 {n}",
       "credits": "クレジット",
-      "guides_link": "ガイド →"
+      "guides_link": "ガイド →",
+      "guides_title": "ガイド",
+      "close": "閉じる",
+      "loading": "読み込み中…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -284,7 +290,10 @@
       "saved": "저장됨: {name}",
       "up_to": "최대 {n}",
       "credits": "크레딧",
-      "guides_link": "가이드 →"
+      "guides_link": "가이드 →",
+      "guides_title": "가이드",
+      "close": "닫기",
+      "loading": "불러오는 중…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -384,7 +393,10 @@
       "saved": "已保存：{name}",
       "up_to": "最多 {n}",
       "credits": "额度",
-      "guides_link": "指南 →"
+      "guides_link": "指南 →",
+      "guides_title": "指南",
+      "close": "关闭",
+      "loading": "加载中…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -484,7 +496,10 @@
       "saved": "已儲存：{name}",
       "up_to": "最多 {n}",
       "credits": "額度",
-      "guides_link": "指南 →"
+      "guides_link": "指南 →",
+      "guides_title": "指南",
+      "close": "關閉",
+      "loading": "載入中…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -584,7 +599,10 @@
       "saved": "Guardado: {name}",
       "up_to": "Hasta {n}",
       "credits": "créditos",
-      "guides_link": "Guías →"
+      "guides_link": "Guías →",
+      "guides_title": "Guías",
+      "close": "Cerrar",
+      "loading": "Cargando…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -684,7 +702,10 @@
       "saved": "Enregistré : {name}",
       "up_to": "Jusqu'à {n}",
       "credits": "crédits",
-      "guides_link": "Guides →"
+      "guides_link": "Guides →",
+      "guides_title": "Guides",
+      "close": "Fermer",
+      "loading": "Chargement…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -784,7 +805,10 @@
       "saved": "Gespeichert: {name}",
       "up_to": "Bis zu {n}",
       "credits": "Credits",
-      "guides_link": "Anleitungen →"
+      "guides_link": "Anleitungen →",
+      "guides_title": "Anleitungen",
+      "close": "Schließen",
+      "loading": "Lädt…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -884,7 +908,10 @@
       "saved": "Salvo: {name}",
       "up_to": "Até {n}",
       "credits": "créditos",
-      "guides_link": "Guias →"
+      "guides_link": "Guias →",
+      "guides_title": "Guias",
+      "close": "Fechar",
+      "loading": "Carregando…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -984,7 +1011,10 @@
       "saved": "Salvato: {name}",
       "up_to": "Fino a {n}",
       "credits": "crediti",
-      "guides_link": "Guide →"
+      "guides_link": "Guide →",
+      "guides_title": "Guide",
+      "close": "Chiudi",
+      "loading": "Caricamento…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1084,7 +1114,10 @@
       "saved": "Сохранено: {name}",
       "up_to": "До {n}",
       "credits": "кредитов",
-      "guides_link": "Руководства →"
+      "guides_link": "Руководства →",
+      "guides_title": "Руководства",
+      "close": "Закрыть",
+      "loading": "Загрузка…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1184,7 +1217,10 @@
       "saved": "تم الحفظ: {name}",
       "up_to": "حتى {n}",
       "credits": "رصيدًا",
-      "guides_link": "أدلة ←"
+      "guides_link": "أدلة ←",
+      "guides_title": "أدلة",
+      "close": "إغلاق",
+      "loading": "جارٍ التحميل…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1284,7 +1320,10 @@
       "saved": "บันทึกแล้ว: {name}",
       "up_to": "สูงสุด {n}",
       "credits": "เครดิต",
-      "guides_link": "คู่มือ →"
+      "guides_link": "คู่มือ →",
+      "guides_title": "คู่มือ",
+      "close": "ปิด",
+      "loading": "กำลังโหลด…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1384,7 +1423,10 @@
       "saved": "Đã lưu: {name}",
       "up_to": "Tối đa {n}",
       "credits": "tín dụng",
-      "guides_link": "Hướng dẫn →"
+      "guides_link": "Hướng dẫn →",
+      "guides_title": "Hướng dẫn",
+      "close": "Đóng",
+      "loading": "Đang tải…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1484,7 +1526,10 @@
       "saved": "Tersimpan: {name}",
       "up_to": "Maksimal {n}",
       "credits": "kredit",
-      "guides_link": "Panduan →"
+      "guides_link": "Panduan →",
+      "guides_title": "Panduan",
+      "close": "Tutup",
+      "loading": "Memuat…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1584,7 +1629,10 @@
       "saved": "Kaydedildi: {name}",
       "up_to": "En fazla {n}",
       "credits": "kredi",
-      "guides_link": "Rehberler →"
+      "guides_link": "Rehberler →",
+      "guides_title": "Rehberler",
+      "close": "Kapat",
+      "loading": "Yükleniyor…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",

@@ -94,6 +94,40 @@
   .go[disabled]{opacity:.55;cursor:not-allowed}
   .note{font-size:10.5px;color:var(--mut);text-align:center;margin:9px 0 0}
   .only-mobile{display:none}
+
+  /* 指南弹窗：左标题列表 + 右文章，不跳页 */
+  .gm{position:fixed;inset:0;z-index:50;display:none}
+  .gm.open{display:block}
+  .gm .bd{position:absolute;inset:0;background:rgba(6,7,9,.72);backdrop-filter:blur(3px)}
+  .gm .panel{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;
+             width:min(1080px,92vw);height:min(760px,86vh);margin:7vh auto 0;
+             background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+             box-shadow:0 24px 80px rgba(0,0,0,.6)}
+  .gm .side{border-inline-end:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+  .gm .side h2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+               margin:0;padding:18px 18px 10px}
+  .gm .list{list-style:none;margin:0;padding:0 10px 14px;overflow:auto;flex:1}
+  .gm .list a{display:block;padding:10px 12px;border-radius:9px;color:var(--mut);
+              text-decoration:none;font-size:13px;line-height:1.45}
+  .gm .list a:hover{background:rgba(255,255,255,.05);color:var(--ink)}
+  .gm .list a[aria-current="true"]{background:rgba(255,122,26,.14);color:var(--ink)}
+  .gm .body{overflow:auto;padding:34px 40px;min-height:0}
+  .gm .body h1{font-size:26px;line-height:1.2;margin:0 0 18px;font-weight:600;letter-spacing:-.02em}
+  .gm .body h2{font-size:16px;margin:26px 0 8px;font-weight:600}
+  .gm .body p,.gm .body li{color:var(--mut);font-size:14px;line-height:1.7;margin:8px 0}
+  .gm .body ul{padding-inline-start:20px}
+  .gm .body strong{color:var(--ink)}
+  .gm .body .cta{display:none}
+  .gm .body blockquote{margin:14px 0;padding-inline-start:14px;border-inline-start:2px solid var(--acc)}
+  .gm .body .meta{display:none}
+  .gm .x{position:absolute;top:14px;inset-inline-end:14px;z-index:2;width:32px;height:32px;
+         border-radius:8px;border:1px solid var(--line);background:rgba(0,0,0,.35);color:var(--ink);
+         cursor:pointer;font-size:15px;line-height:1}
+  @media(max-width:820px){
+    .gm .panel{grid-template-columns:1fr;height:88vh;margin-block-start:6vh}
+    .gm .side{display:none}
+    .gm .body{padding:28px 22px}
+  }
   .policy{margin:26px 0 8px;display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px}
   .policy a{color:var(--mut);text-decoration:none}
   .policy a:hover{color:var(--ink)}
@@ -216,6 +250,18 @@
     </div>
   </aside>
 
+<div class="gm" id="gm" aria-hidden="true">
+  <div class="bd" data-close></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-label="ガイド">
+    <button class="x" id="gmClose" data-close aria-label="閉じる">✕</button>
+    <div class="side">
+      <h2>ガイド</h2>
+      <ul class="list" id="gmList"></ul>
+    </div>
+    <div class="body" id="gmBody"></div>
+  </div>
+</div>
+
   <main class="works">
     <div class="whead"><span class="t">写真から制作</span><span class="n">4 from a photo · 8 from a recipe</span></div>
     <div class="photos" id="photos"></div>
@@ -236,7 +282,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "AI音楽生成 — 写真から曲へ、長さはぴったり", "description": "写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。", "h1": "曲を作る", "sub": "写真またはプロンプトから。長さは正確に、ループはシームレスに。", "drop": "写真をドロップまたは選択<br>歌詞が写真の中身を歌います", "generate": "曲を生成", "how_credits": "クレジットの仕組み →", "grp_photo": "写真から制作", "grp_recipe": "レシピから · 写真不要", "download": "ダウンロード", "save_recipe": "レシピとして保存", "remove_photo": "写真を削除", "photo_here": "ここにあなたの写真", "note": "右側はすべてここで作られています", "legal_aup": "利用規約", "legal_refund": "返金ポリシー", "sign_in_first": "生成するにはサインイン", "generating": "生成中… 約20秒。", "just_generated": "たった今生成", "your_track": "あなたの曲", "from_recipe": "レシピから", "from_photo": "写真から制作", "err_load": "オプションを読み込めませんでした", "done_in": "{n}秒で完成", "gen_cost": "生成 · {n}", "err_gen": "生成に失敗しました", "my_track": "マイトラック", "err_net": "通信エラー", "recipe_name": "レシピ名", "err_save": "保存に失敗しました", "saved": "保存しました: {name}", "up_to": "最大 {n}", "credits": "クレジット", "guides_link": "ガイド →"}</script>
+<script type="application/json" id="ui">{"title": "AI音楽生成 — 写真から曲へ、長さはぴったり", "description": "写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。", "h1": "曲を作る", "sub": "写真またはプロンプトから。長さは正確に、ループはシームレスに。", "drop": "写真をドロップまたは選択<br>歌詞が写真の中身を歌います", "generate": "曲を生成", "how_credits": "クレジットの仕組み →", "grp_photo": "写真から制作", "grp_recipe": "レシピから · 写真不要", "download": "ダウンロード", "save_recipe": "レシピとして保存", "remove_photo": "写真を削除", "photo_here": "ここにあなたの写真", "note": "右側はすべてここで作られています", "legal_aup": "利用規約", "legal_refund": "返金ポリシー", "sign_in_first": "生成するにはサインイン", "generating": "生成中… 約20秒。", "just_generated": "たった今生成", "your_track": "あなたの曲", "from_recipe": "レシピから", "from_photo": "写真から制作", "err_load": "オプションを読み込めませんでした", "done_in": "{n}秒で完成", "gen_cost": "生成 · {n}", "err_gen": "生成に失敗しました", "my_track": "マイトラック", "err_net": "通信エラー", "recipe_name": "レシピ名", "err_save": "保存に失敗しました", "saved": "保存しました: {name}", "up_to": "最大 {n}", "credits": "クレジット", "guides_link": "ガイド →", "guides_title": "ガイド", "close": "閉じる", "loading": "読み込み中…"}</script>
 <script>
 (function () {
   "use strict";
