@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr" dir="ltr" data-default-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kesintisiz döngüler: asıl mesele ek yeri | aiglossa</title>
+<meta name="description" content="Üretilen döngüler tıklar çünkü iki uç buluşmak üzere tasarlanmamıştır. Örnek düzeyinde crossfade ve baştaki sessizliğin kesilmesi bunu çözer.">
+<link rel="canonical" href="https://tools.aiglossa.com/tr/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="ar" href="https://tools.aiglossa.com/ar/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="de" href="https://tools.aiglossa.com/de/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="es" href="https://tools.aiglossa.com/es/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="fr" href="https://tools.aiglossa.com/fr/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="id" href="https://tools.aiglossa.com/id/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="it" href="https://tools.aiglossa.com/it/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="ja" href="https://tools.aiglossa.com/ja/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="ko" href="https://tools.aiglossa.com/ko/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="pt" href="https://tools.aiglossa.com/pt/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="ru" href="https://tools.aiglossa.com/ru/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="th" href="https://tools.aiglossa.com/th/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="tr" href="https://tools.aiglossa.com/tr/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="vi" href="https://tools.aiglossa.com/vi/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/guides/seamless-loop-seam.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="aiglossa">
+<meta property="og:title" content="Kesintisiz döngüler: asıl mesele ek yeri | aiglossa">
+<meta property="og:description" content="Üretilen döngüler tıklar çünkü iki uç buluşmak üzere tasarlanmamıştır. Örnek düzeyinde crossfade ve baştaki sessizliğin kesilmesi bunu çözer.">
+<meta property="og:url" content="https://tools.aiglossa.com/tr/guides/seamless-loop-seam.html">
+<meta property="og:locale" content="tr_TR">
+<meta property="og:image" content="https://tools.aiglossa.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e0f11">
+<link rel="icon" href="../../assets/favicon-tools.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-tools.svg" sizes="any">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png">
+<link rel="manifest" href="../../assets/manifest-tools.webmanifest">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/theme.css">
+<style>
+  .doc{max-width:720px;margin-inline:auto;padding-block:64px 40px;padding-inline:24px}
+  .doc h1{font-size:clamp(28px,4.4vw,42px);line-height:1.15;letter-spacing:-.03em;margin:0 0 16px;font-weight:600}
+  .doc h2{font-size:20px;margin-block:36px 10px;font-weight:600;letter-spacing:-.01em}
+  .doc h3{font-size:16px;margin-block:24px 8px;font-weight:600}
+  .doc p,.doc li{color:var(--muted);font-size:15.5px;line-height:1.75;margin-block:12px}
+  .doc ul,.doc ol{padding-inline-start:22px}
+  .doc a{color:var(--accent);text-decoration:none}
+  .doc strong{color:var(--fg)}
+  .doc .lead{font-size:17.5px;color:var(--fg)}
+  .doc .cta{display:inline-block;margin-block-start:28px;padding-block:13px;padding-inline:22px;
+            border-radius:10px;background:var(--accent);color:#1a0e04;font-weight:600;text-decoration:none}
+  .doc .meta{font-size:12px;color:var(--dim);margin-block:0 28px}
+  .doc blockquote{margin:20px 0;padding-inline-start:16px;border-inline-start:2px solid var(--accent)}
+  .doc blockquote p{color:var(--fg);font-style:italic}
+  .guide-list{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px}
+  .guide-list li a{display:block;padding-block:14px;padding-inline:18px;border:1px solid var(--line);
+                   border-radius:12px;background:rgba(255,255,255,.02);color:var(--fg);text-decoration:none;font-size:15.5px}
+  .guide-list li a:hover{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.05)}
+  footer{border-block-start:1px solid var(--line);padding-block:26px}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  footer nav a{color:var(--muted);font-size:12.5px;text-decoration:none;margin-inline-end:14px}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Kesintisiz döngüler: asıl mesele ek yeri | aiglossa", "description": "Üretilen döngüler tıklar çünkü iki uç buluşmak üzere tasarlanmamıştır. Örnek düzeyinde crossfade ve baştaki sessizliğin kesilmesi bunu çözer.", "url": "https://tools.aiglossa.com/tr/guides/seamless-loop-seam.html", "inLanguage": "tr", "publisher": {"@type": "Organization", "name": "aiglossa", "url": "https://aiglossa.com"}}</script>
+</head>
+<body>
+<main class="doc">
+<h1>Kesintisiz döngüler: asıl mesele ek yeri</h1>
+<p class="meta">23 Ekim 2026'da güncellendi · 4 dk</p>
+
+<p class="lead">Tıklayan bir döngü, müziksizlikten kötüdür. Tık birkaç saniyede bir dikkat çeker ve bir kez duyuldu mu görmezden gelinemez. Ek yerini görünmez yapmak üretim değil, sonradan işleme işidir.</p>
+
+<h2>Üretilen döngüler neden tıklar</h2>
+<p>Model, başı ve sonu olan bir parça yazar: intro ve outro. Döngüye alınca outro intro'ya çarpar: boşluk, zil, ton değişimi. Ek yeri duyulur çünkü iki uç hiçbir zaman buluşmak üzere tasarlanmamıştır.</p>
+<p>Son saniyeyi ilk saniyeye karıştırmak yardımcı olur ama saf bir crossfade, örtüşmede seviyeyi ikiye katlar ve ritmi kaydırır. Sonuç, her turda “gümlayan” bir döngüdür.</p>
+
+<h2>Ne yapıyoruz</h2>
+<p>Kuyruğu başa örnek düzeyinde karıştırıyoruz: örtüşme sabit seviyede kalır, vuruş ızgaradan çıkmaz. Parça, bittiği vuruşta başlar.</p>
+<p>Öncesinde baştaki sessizliği kesiyoruz: başında 0,4 saniye boşluk olan bir döngü her turda yarım vuruş kayar.</p>
+
+<h2>Döngü süresi seçimi</h2>
+<p>Sahneni bölen bir süre seç. 60 saniyelik menüde 30 saniyelik döngü iki kez tekrarlanır ve her zaman cümle sınırına denk gelir. 45 saniyelik döngü cümlenin ortasında döner ve keyfî durur.</p>
+<p>Oyun ve uygulama atmosferinde 30 veya 60 saniye genelde doğrudur. Uzun döngüleri ilgi çekici tutmak zordur ve daha çok bellek yer.</p>
+
+<h2>Döngü mü, değil mi?</h2>
+<p>Her şey döngü olmamalı. 30 saniyelik kurgunun altında parça yalnızca 30 saniye olmalı — ek yeri hiç çalmaz. Döngüyü ses gerçekten tekrarlanacaksa kullan: menüler, bekleme ekranları, atmosfer katmanları, etkileşimli sahneler.</p>
+<p>Emin değilsen ikisini de üret. Doğrusal video için döngüsüz sürüm daha güvenli.</p>
+
+<a class="cta" href="../music/">Kesintisiz döngü oluştur →</a>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">aiglossa tools</span>
+    <nav>
+      <a href="../music/">AI Music Generator</a>
+      <a href="../pricing.html">Hizmet Koşulları</a>
+      <a href="https://aiglossa.com/tr/protocol/privacy.html">Gizlilik Politikası</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
