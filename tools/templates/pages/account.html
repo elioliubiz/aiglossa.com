@@ -228,7 +228,7 @@
   }
 
   window.onGoogleCredential = function (res) {
-    call("/auth/google", { credential: res.credential }).then(acceptToken)
+    call("/auth/social/login", { provider: "google", id_token: res.credential }).then(acceptToken)
       .catch(function () { showMsg($("signin-msg"), UI.err_net, "err"); });
   };
 
@@ -238,7 +238,7 @@
     var email = $("email").value.trim();
     if (!codeSent) {
       $("email-submit").disabled = true;
-      call("/auth/email/start", { email: email }).then(function (data) {
+      call("/auth/code/send", { account: email, purpose: "login" }).then(function (data) {
         $("email-submit").disabled = false;
         if (data.code !== 200) { showMsg($("signin-msg"), data.msg || UI.err_signin, "err"); return; }
         codeSent = true;
@@ -248,7 +248,7 @@
       }).catch(function () { $("email-submit").disabled = false; showMsg($("signin-msg"), UI.err_net, "err"); });
       return;
     }
-    call("/auth/email/verify", { email: email, code: $("code").value.trim() }).then(acceptToken)
+    call("/auth/login", { provider: "code", account: email, code: $("code").value.trim() }).then(acceptToken)
       .catch(function () { showMsg($("signin-msg"), UI.err_net, "err"); });
   });
 
