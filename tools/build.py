@@ -231,6 +231,43 @@ def switcher_select(depth: int, current: str, page_path: str, languages: dict, o
     )
 
 
+def _write_seo_files(site: str, spec: dict, site_langs: list[str],
+                     languages: dict, default: str) -> None:
+    """生成 robots.txt 与 sitemap.xml（仅工具站）。
+
+    sitemap 每页带 hreflang 互链，和页面头部的 {{alternates}} 一致，
+    Google 从任意一处就能发现全部 16 个语言版本。
+    account.html 是 noindex 的应用页，不进 sitemap。
+    """
+    base = f'https://{spec["host"]}'.rstrip("/")
+    targets = SITES_DIR / site
+    xdef = default if default in site_langs else site_langs[0]
+
+    def url_for(lang: str, page: str) -> str:
+        return f"{base}/{lang}/" if page == "tools" else f"{base}/{lang}/{page}.html"
+
+    (targets / "robots.txt").write_text(
+        "User-agent: *\nAllow: /\n\nSitemap: " + base + "/sitemap.xml\n",
+        encoding="utf-8",
+    )
+
+    out = ['<?xml version="1.0" encoding="UTF-8"?>',
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
+           '        xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+    for page in spec["pages"]:
+        if page == "account":       # noindex 页不进 sitemap
+            continue
+        for lang in site_langs:
+            out.append("  <url>")
+            out.append(f"    <loc>{url_for(lang, page)}</loc>")
+            for alt in site_langs:
+                out.append(f'    <xhtml:link rel="alternate" hreflang="{languages[alt]["hreflang"]}" href="{url_for(alt, page)}"/>')
+            out.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{url_for(xdef, page)}"/>')
+            out.append("  </url>")
+    out.append("</urlset>")
+    (targets / "sitemap.xml").write_text("\n".join(out) + "\n", encoding="utf-8")
+
+
 UNTRANSLATED: list[str] = []
 
 
@@ -502,6 +539,8 @@ def main() -> int:
             for lang in site_langs:
                 emit(site, lang, depth, page_path, template_name, values_builder, site_langs)
 
+        if site == "tools" and not args.check:
+            _write_seo_files(site, spec, site_langs, languages, default)
         if not args.check and ASSETS.is_dir():
             target_assets = SITES_DIR / site / "assets"
             if target_assets.exists():
