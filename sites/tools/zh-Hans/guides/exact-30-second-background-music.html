@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" dir="ltr" data-default-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>正好 30 秒的背景音乐 — 为什么&quot;大约 30 秒&quot;会毁掉你的剪辑 | aiglossa</title>
+<meta name="description" content="如何得到正好 30、45、60、75 或 90 秒的背景音乐——按帧裁剪与淡出，可选无缝循环。">
+<link rel="canonical" href="https://tools.aiglossa.com/zh-Hans/guides/exact-30-second-background-music.html">
+<link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/exact-30-second-background-music.html">
+<link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="aiglossa">
+<meta property="og:title" content="正好 30 秒的背景音乐 — 为什么&quot;大约 30 秒&quot;会毁掉你的剪辑 | aiglossa">
+<meta property="og:description" content="如何得到正好 30、45、60、75 或 90 秒的背景音乐——按帧裁剪与淡出，可选无缝循环。">
+<meta property="og:url" content="https://tools.aiglossa.com/zh-Hans/guides/exact-30-second-background-music.html">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tools.aiglossa.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e0f11">
+<link rel="icon" href="../../assets/favicon-tools.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-tools.svg" sizes="any">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png">
+<link rel="manifest" href="../../assets/manifest-tools.webmanifest">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/theme.css">
+<style>
+  .doc{max-width:720px;margin-inline:auto;padding-block:64px 40px;padding-inline:24px}
+  .doc h1{font-size:clamp(28px,4.4vw,42px);line-height:1.15;letter-spacing:-.03em;margin:0 0 16px;font-weight:600}
+  .doc h2{font-size:20px;margin-block:36px 10px;font-weight:600;letter-spacing:-.01em}
+  .doc h3{font-size:16px;margin-block:24px 8px;font-weight:600}
+  .doc p,.doc li{color:var(--muted);font-size:15.5px;line-height:1.75;margin-block:12px}
+  .doc ul,.doc ol{padding-inline-start:22px}
+  .doc a{color:var(--accent);text-decoration:none}
+  .doc strong{color:var(--fg)}
+  .doc .lead{font-size:17.5px;color:var(--fg)}
+  .doc .cta{display:inline-block;margin-block-start:28px;padding-block:13px;padding-inline:22px;
+            border-radius:10px;background:var(--accent);color:#1a0e04;font-weight:600;text-decoration:none}
+  .doc .meta{font-size:12px;color:var(--dim);margin-block:0 28px}
+  .doc blockquote{margin:20px 0;padding-inline-start:16px;border-inline-start:2px solid var(--accent)}
+  .doc blockquote p{color:var(--fg);font-style:italic}
+  footer{border-block-start:1px solid var(--line);padding-block:26px}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  footer nav a{color:var(--muted);font-size:12.5px;text-decoration:none;margin-inline-end:14px}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "正好 30 秒的背景音乐 — 为什么\"大约 30 秒\"会毁掉你的剪辑 | aiglossa", "description": "如何得到正好 30、45、60、75 或 90 秒的背景音乐——按帧裁剪与淡出，可选无缝循环。", "url": "https://tools.aiglossa.com/zh-Hans/guides/exact-30-second-background-music.html", "inLanguage": "zh-Hans", "publisher": {"@type": "Organization", "name": "aiglossa", "url": "https://aiglossa.com"}}</script>
+</head>
+<body>
+<main class="doc">
+<h1>正好 30 秒的背景音乐</h1>
+<p class="meta">更新于 2026 年 10 月 23 日 · 4 分钟读完</p>
+
+<p class="lead">多数音乐工具给你的是"大约 30 秒"。但剪辑需要的是正好 30 秒——因为片子就是 30 秒，淡出必须落在最后一帧。</p>
+
+<h2>为什么"大约 30 秒"会毁掉你的剪辑</h2>
+<p>如果曲子回来是 28.4 秒，你只有三个糟糕的选择：循环它（接缝听得出来）、拉伸它（音高跑掉）、或者提前淡出（剪辑显得仓促）。如果是 32 秒，你要么砍掉结尾，要么被迫拉长时间线。</p>
+<p>正确的做法不是在剪辑软件里补救，而是**一开始就要到精确长度**。</p>
+
+<h2>"精确"在这里是什么意思</h2>
+<p>我们按你要求的时长生成，再做后处理，让音频精确落到毫秒：</p>
+<ul>
+  <li>裁掉开头的静音，第一拍从 0.000 秒开始；</li>
+  <li>结尾做淡出，并在精确帧处切断；</li>
+  <li>如果模型给多了，多余部分会被裁掉，而不是留着。</li>
+</ul>
+<p>要 30 秒，得到的文件就是 30.000 秒——和你的片子等长。</p>
+
+<h2>怎么选时长</h2>
+<p>我们提供 30、45、60、75、90 秒。按**剪辑**选，而不是按风格选：</p>
+<ul>
+  <li><strong>30 秒</strong> —— 社交短片、产品预告、片头标识。</li>
+  <li><strong>45 秒</strong> —— 短讲解、播客开场。</li>
+  <li><strong>60 秒</strong> —— 标准广告片长度。</li>
+  <li><strong>75–90 秒</strong> —— 叙事段落、菜单循环、长开场。</li>
+</ul>
+
+<h2>如果需要循环播放</h2>
+<p>循环是另一个问题：结尾必须接得上开头，不能"咔"一下。打开<strong>无缝循环</strong>后，音乐会交叉淡入到自己的开头，反复播放听不出接缝——适合菜单、等待界面、游戏氛围。</p>
+<p>做循环时，选一个能整除场景的长度。30 秒的循环放在 90 秒的场景里，正好重复三次，永远落在乐句边界上。</p>
+
+<h2>用一张照片就能试</h2>
+<p>你不需要描述音乐风格。放一张照片进去，曲子的情绪来自画面里的东西——歌词甚至会唱出那些物件。选 30 秒，下载到的文件就是整整 30 秒。</p>
+
+<a class="cta" href="../music/">做一首 30 秒的曲子 →</a>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">aiglossa tools</span>
+    <nav>
+      <a href="../music/">AI Music Generator</a>
+      <a href="../pricing.html">用户协议</a>
+      <a href="https://aiglossa.com/zh-Hans/protocol/privacy.html">隐私协议</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

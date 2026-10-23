@@ -502,8 +502,10 @@ def main() -> int:
                 # 译文按语言逐步补齐：guides.json 有的语言就生成，没有的跳过（不会生成假翻译）
                 for lang in [c for c in site_langs if c in source]:
                     for slug in source[lang]:
+                        # 这一篇有哪些语言的版本，就声明哪些 hreflang（x-default 指英文）
+                        have = [c for c in site_langs if slug in source.get(c, {})]
                         emit(site, lang, 2, f"guides/{slug}.html", "pages/guide.html",
-                             lambda lang, base, slug=slug: guide_values(lang, base, slug), [lang])
+                             lambda lang, base, slug=slug: guide_values(lang, base, slug), have)
                 continue
             elif page == "music":
                 def make_values(lang: str, base: str, source=source) -> dict[str, str]:
