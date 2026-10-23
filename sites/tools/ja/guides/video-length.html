@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" data-default-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>編集に音楽を合わせる：長さの決め方 | aiglossa</title>
+<meta name="description" content="ジャンルではなく編集から長さを決める。5秒のアイデントから90秒のナラティブまでの対応表、フェードの余白、ループを使うべき場面。">
+<link rel="canonical" href="https://tools.aiglossa.com/ja/guides/video-length.html">
+<link rel="alternate" hreflang="ar" href="https://tools.aiglossa.com/ar/guides/video-length.html">
+<link rel="alternate" hreflang="de" href="https://tools.aiglossa.com/de/guides/video-length.html">
+<link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/video-length.html">
+<link rel="alternate" hreflang="es" href="https://tools.aiglossa.com/es/guides/video-length.html">
+<link rel="alternate" hreflang="fr" href="https://tools.aiglossa.com/fr/guides/video-length.html">
+<link rel="alternate" hreflang="id" href="https://tools.aiglossa.com/id/guides/video-length.html">
+<link rel="alternate" hreflang="it" href="https://tools.aiglossa.com/it/guides/video-length.html">
+<link rel="alternate" hreflang="ja" href="https://tools.aiglossa.com/ja/guides/video-length.html">
+<link rel="alternate" hreflang="ko" href="https://tools.aiglossa.com/ko/guides/video-length.html">
+<link rel="alternate" hreflang="pt" href="https://tools.aiglossa.com/pt/guides/video-length.html">
+<link rel="alternate" hreflang="ru" href="https://tools.aiglossa.com/ru/guides/video-length.html">
+<link rel="alternate" hreflang="th" href="https://tools.aiglossa.com/th/guides/video-length.html">
+<link rel="alternate" hreflang="tr" href="https://tools.aiglossa.com/tr/guides/video-length.html">
+<link rel="alternate" hreflang="vi" href="https://tools.aiglossa.com/vi/guides/video-length.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/video-length.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/guides/video-length.html">
+<link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/guides/video-length.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="aiglossa">
+<meta property="og:title" content="編集に音楽を合わせる：長さの決め方 | aiglossa">
+<meta property="og:description" content="ジャンルではなく編集から長さを決める。5秒のアイデントから90秒のナラティブまでの対応表、フェードの余白、ループを使うべき場面。">
+<meta property="og:url" content="https://tools.aiglossa.com/ja/guides/video-length.html">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://tools.aiglossa.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e0f11">
+<link rel="icon" href="../../assets/favicon-tools.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-tools.svg" sizes="any">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png">
+<link rel="manifest" href="../../assets/manifest-tools.webmanifest">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/theme.css">
+<style>
+  .doc{max-width:720px;margin-inline:auto;padding-block:64px 40px;padding-inline:24px}
+  .doc h1{font-size:clamp(28px,4.4vw,42px);line-height:1.15;letter-spacing:-.03em;margin:0 0 16px;font-weight:600}
+  .doc h2{font-size:20px;margin-block:36px 10px;font-weight:600;letter-spacing:-.01em}
+  .doc h3{font-size:16px;margin-block:24px 8px;font-weight:600}
+  .doc p,.doc li{color:var(--muted);font-size:15.5px;line-height:1.75;margin-block:12px}
+  .doc ul,.doc ol{padding-inline-start:22px}
+  .doc a{color:var(--accent);text-decoration:none}
+  .doc strong{color:var(--fg)}
+  .doc .lead{font-size:17.5px;color:var(--fg)}
+  .doc .cta{display:inline-block;margin-block-start:28px;padding-block:13px;padding-inline:22px;
+            border-radius:10px;background:var(--accent);color:#1a0e04;font-weight:600;text-decoration:none}
+  .doc .meta{font-size:12px;color:var(--dim);margin-block:0 28px}
+  .doc table{width:100%;border-collapse:collapse;margin-block:18px;font-size:14px}
+  .doc td{padding-block:9px;padding-inline:10px 12px;border-block-end:1px solid var(--line);
+          color:var(--muted);vertical-align:top;line-height:1.6}
+  .doc td:first-child{white-space:nowrap;padding-inline-start:0;width:5.5em}
+  .doc blockquote{margin:20px 0;padding-inline-start:16px;border-inline-start:2px solid var(--accent)}
+  .doc blockquote p{color:var(--fg);font-style:italic}
+  .guide-list{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px}
+  .guide-list li a{display:block;padding-block:14px;padding-inline:18px;border:1px solid var(--line);
+                   border-radius:12px;background:rgba(255,255,255,.02);color:var(--fg);text-decoration:none;font-size:15.5px}
+  .guide-list li a:hover{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.05)}
+  footer{border-block-start:1px solid var(--line);padding-block:26px}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  footer nav a{color:var(--muted);font-size:12.5px;text-decoration:none;margin-inline-end:14px}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "編集に音楽を合わせる：長さの決め方 | aiglossa", "description": "ジャンルではなく編集から長さを決める。5秒のアイデントから90秒のナラティブまでの対応表、フェードの余白、ループを使うべき場面。", "url": "https://tools.aiglossa.com/ja/guides/video-length.html", "inLanguage": "ja", "publisher": {"@type": "Organization", "name": "aiglossa", "url": "https://aiglossa.com"}}</script>
+</head>
+<body>
+<main class="doc">
+<h1>編集に音楽を合わせる：長さの決め方</h1>
+<p class="meta">2026年10月23日更新 · 読了4分</p>
+
+<p class="lead">曲の長さは**制作上の判断**で、音楽的な判断ではありません。ジャンルではなく編集から決めれば、多くのトラブルは始まる前に消えます。</p>
+
+<h2>曲ではなくカットから考える</h2>
+<p>テンポやムードを選ぶ前に、まず一つ答えてください。この音楽は何秒の映像の下に流れますか。</p>
+<ul>
+  <li>動画全体か、それとも一部か</li>
+  <li>終わりはハードカットか、暗転か</li>
+  <li>冒頭にナレーションの間が必要か</li>
+</ul>
+<p>その答えが長さです。他は二の次です。</p>
+
+<h2>ざっくりした対応表</h2>
+<table>
+  <tr><td><strong>5〜15秒</strong></td><td>アイデント、ステイング、ロゴ出し。前奏は不要なことが多い。</td></tr>
+  <tr><td><strong>30秒</strong></td><td>SNSの短尺、製品ティザー。最も多い長さです。</td></tr>
+  <tr><td><strong>45〜60秒</strong></td><td>解説、広告、ポッドキャストのオープニング。フレーズが収まる長さ。</td></tr>
+  <tr><td><strong>75〜90秒</strong></td><td>ナラティブ、メニューのループ、長めの導入。</td></tr>
+</table>
+
+<h2>フェードの余白を残す</h2>
+<p>30秒の曲を30秒の映像に敷くと、フェードする場所がありません。音楽がぶつ切りになるか、映像とぶつかります。</p>
+<ul>
+  <li>正確な長さを指定し、最後の1秒で尻尾をフェードさせる</li>
+  <li>または映像より1〜2秒早く音楽を終わらせる</li>
+</ul>
+<p>やってはいけないのは、28秒の素材を30秒に引き伸ばすこと。ピッチがずれ、リズムが重くなります。</p>
+
+<h2>90秒を超える編集なら</h2>
+<p>長い曲ではなく、ループを使ってください。シームレスループは継ぎ目なく繰り返すので、30秒のループで3分のシーンも持ちます。メニューや環境音、インタラクティブな場面の定石で、数分の曲を作るよりずっと安く済みます。</p>
+<p>条件は、シーンの長さがループ長で割り切れること。90秒に30秒は合いますが、100秒に30秒は合いません。継ぎ目がフレーズの途中に落ちて聞こえます。</p>
+
+<h2>尺が変わる場合</h2>
+<p>編集者なら誰でも知っています。一度決まった尺が、翌日には変わる。備えは二つ。</p>
+<ul>
+  <li>必要より長めに生成して、自分で尻尾を切る</li>
+  <li>先にループ版を作り、尺が固まってから正確な長さを指定する</li>
+</ul>
+
+<h2>無音も一つの長さ</h2>
+<p>すべての秒に音楽が必要なわけではありません。セリフの後、2秒あけて入る曲は0.000秒開始より効くことが多く、しかも作りやすい。頭を拍に合わせなくて済むからです。</p>
+
+<a class="cta" href="../music/">長さを選んで生成 →</a>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">aiglossa tools</span>
+    <nav>
+      <a href="../music/">AI Music Generator</a>
+      <a href="../pricing.html">利用規約</a>
+      <a href="https://aiglossa.com/ja/protocol/privacy.html">プライバシーポリシー</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
