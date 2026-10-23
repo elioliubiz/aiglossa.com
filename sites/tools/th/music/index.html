@@ -94,6 +94,40 @@
   .go[disabled]{opacity:.55;cursor:not-allowed}
   .note{font-size:10.5px;color:var(--mut);text-align:center;margin:9px 0 0}
   .only-mobile{display:none}
+
+  /* 指南弹窗：左标题列表 + 右文章，不跳页 */
+  .gm{position:fixed;inset:0;z-index:50;display:none}
+  .gm.open{display:block}
+  .gm .bd{position:absolute;inset:0;background:rgba(6,7,9,.72);backdrop-filter:blur(3px)}
+  .gm .panel{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;
+             width:min(1080px,92vw);height:min(760px,86vh);margin:7vh auto 0;
+             background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+             box-shadow:0 24px 80px rgba(0,0,0,.6)}
+  .gm .side{border-inline-end:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+  .gm .side h2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+               margin:0;padding:18px 18px 10px}
+  .gm .list{list-style:none;margin:0;padding:0 10px 14px;overflow:auto;flex:1}
+  .gm .list a{display:block;padding:10px 12px;border-radius:9px;color:var(--mut);
+              text-decoration:none;font-size:13px;line-height:1.45}
+  .gm .list a:hover{background:rgba(255,255,255,.05);color:var(--ink)}
+  .gm .list a[aria-current="true"]{background:rgba(255,122,26,.14);color:var(--ink)}
+  .gm .body{overflow:auto;padding:34px 40px;min-height:0}
+  .gm .body h1{font-size:26px;line-height:1.2;margin:0 0 18px;font-weight:600;letter-spacing:-.02em}
+  .gm .body h2{font-size:16px;margin:26px 0 8px;font-weight:600}
+  .gm .body p,.gm .body li{color:var(--mut);font-size:14px;line-height:1.7;margin:8px 0}
+  .gm .body ul{padding-inline-start:20px}
+  .gm .body strong{color:var(--ink)}
+  .gm .body .cta{display:none}
+  .gm .body blockquote{margin:14px 0;padding-inline-start:14px;border-inline-start:2px solid var(--acc)}
+  .gm .body .meta{display:none}
+  .gm .x{position:absolute;top:14px;inset-inline-end:14px;z-index:2;width:32px;height:32px;
+         border-radius:8px;border:1px solid var(--line);background:rgba(0,0,0,.35);color:var(--ink);
+         cursor:pointer;font-size:15px;line-height:1}
+  @media(max-width:820px){
+    .gm .panel{grid-template-columns:1fr;height:88vh;margin-block-start:6vh}
+    .gm .side{display:none}
+    .gm .body{padding:28px 22px}
+  }
   .policy{margin:26px 0 8px;display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px}
   .policy a{color:var(--mut);text-decoration:none}
   .policy a:hover{color:var(--ink)}
@@ -216,6 +250,18 @@
     </div>
   </aside>
 
+<div class="gm" id="gm" aria-hidden="true">
+  <div class="bd" data-close></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-label="คู่มือ">
+    <button class="x" id="gmClose" data-close aria-label="ปิด">✕</button>
+    <div class="side">
+      <h2>คู่มือ</h2>
+      <ul class="list" id="gmList"></ul>
+    </div>
+    <div class="body" id="gmBody"></div>
+  </div>
+</div>
+
   <main class="works">
     <div class="whead"><span class="t">สร้างจากรูป</span><span class="n">4 from a photo · 8 from a recipe</span></div>
     <div class="photos" id="photos"></div>
@@ -236,7 +282,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ", "description": "เปลี่ยนรูปหรือคำอธิบายเป็นเพลงประกอบความยาว 30–90 วินาทีพอดี เนื้อเพลงเอ่ยถึงสิ่งที่อยู่ในภาพ พร้อมเสียงร้อง 10 ภาษาและลูปไร้รอยต่อ", "h1": "สร้างเพลง", "sub": "จากรูปหรือคำอธิบาย ความยาวแม่นยำ ลูปไร้รอยต่อ", "drop": "ลากรูปมาวางหรือเลือกไฟล์<br>เนื้อเพลงจะเอ่ยถึงสิ่งที่อยู่ในภาพ", "generate": "สร้างเพลง", "how_credits": "เครดิตคิดอย่างไร →", "grp_photo": "สร้างจากรูป", "grp_recipe": "จากสูตรสำเร็จ · ไม่ต้องใช้รูป", "download": "ดาวน์โหลด", "save_recipe": "บันทึกเป็นสูตร", "remove_photo": "ลบรูป", "photo_here": "รูปของคุณที่นี่", "note": "ทุกอย่างทางขวาสร้างที่นี่", "legal_aup": "การใช้งานที่ยอมรับได้", "legal_refund": "การคืนเงิน", "sign_in_first": "เข้าสู่ระบบเพื่อสร้าง", "generating": "กำลังสร้าง… ประมาณ 20 วินาที", "just_generated": "สร้างเสร็จเมื่อครู่", "your_track": "เพลงของคุณ", "from_recipe": "จากสูตรสำเร็จ", "from_photo": "สร้างจากรูป", "err_load": "โหลดตัวเลือกไม่สำเร็จ", "done_in": "เสร็จใน {n} วินาที", "gen_cost": "สร้าง · {n}", "err_gen": "สร้างไม่สำเร็จ", "my_track": "เพลงของฉัน", "err_net": "เครือข่ายขัดข้อง", "recipe_name": "ชื่อสูตร", "err_save": "บันทึกไม่สำเร็จ", "saved": "บันทึกแล้ว: {name}", "up_to": "สูงสุด {n}", "credits": "เครดิต", "guides_link": "คู่มือ →"}</script>
+<script type="application/json" id="ui">{"title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ", "description": "เปลี่ยนรูปหรือคำอธิบายเป็นเพลงประกอบความยาว 30–90 วินาทีพอดี เนื้อเพลงเอ่ยถึงสิ่งที่อยู่ในภาพ พร้อมเสียงร้อง 10 ภาษาและลูปไร้รอยต่อ", "h1": "สร้างเพลง", "sub": "จากรูปหรือคำอธิบาย ความยาวแม่นยำ ลูปไร้รอยต่อ", "drop": "ลากรูปมาวางหรือเลือกไฟล์<br>เนื้อเพลงจะเอ่ยถึงสิ่งที่อยู่ในภาพ", "generate": "สร้างเพลง", "how_credits": "เครดิตคิดอย่างไร →", "grp_photo": "สร้างจากรูป", "grp_recipe": "จากสูตรสำเร็จ · ไม่ต้องใช้รูป", "download": "ดาวน์โหลด", "save_recipe": "บันทึกเป็นสูตร", "remove_photo": "ลบรูป", "photo_here": "รูปของคุณที่นี่", "note": "ทุกอย่างทางขวาสร้างที่นี่", "legal_aup": "การใช้งานที่ยอมรับได้", "legal_refund": "การคืนเงิน", "sign_in_first": "เข้าสู่ระบบเพื่อสร้าง", "generating": "กำลังสร้าง… ประมาณ 20 วินาที", "just_generated": "สร้างเสร็จเมื่อครู่", "your_track": "เพลงของคุณ", "from_recipe": "จากสูตรสำเร็จ", "from_photo": "สร้างจากรูป", "err_load": "โหลดตัวเลือกไม่สำเร็จ", "done_in": "เสร็จใน {n} วินาที", "gen_cost": "สร้าง · {n}", "err_gen": "สร้างไม่สำเร็จ", "my_track": "เพลงของฉัน", "err_net": "เครือข่ายขัดข้อง", "recipe_name": "ชื่อสูตร", "err_save": "บันทึกไม่สำเร็จ", "saved": "บันทึกแล้ว: {name}", "up_to": "สูงสุด {n}", "credits": "เครดิต", "guides_link": "คู่มือ →", "guides_title": "คู่มือ", "close": "ปิด", "loading": "กำลังโหลด…"}</script>
 <script>
 (function () {
   "use strict";
