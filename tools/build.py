@@ -124,7 +124,7 @@ def render_tools(items: list[dict], site_base: str) -> str:
         if href:
             # 用 {{prefix}} 而不是生产的绝对地址：本地预览时绝对地址会指到线上（点开 404）
             out.append(
-                f'    <a class="tool" href="{{{{prefix}}}}{href.lstrip("/")}">\n{body}'
+                f'    <a class="tool" href="{href.lstrip("/")}">\n{body}'
                 f'      <span class="tool-go">Open →</span>\n    </a>'
             )
         else:
@@ -467,7 +467,7 @@ def main() -> int:
                         "tools": render_tools(locale["tools"], base),
                         "note": esc(locale["note"]),
                         "cta_label": esc(locale["cta_label"]),
-                        "cta_href": "{{prefix}}" + locale["cta_href"].lstrip("/"),
+                        "cta_href": locale["cta_href"].lstrip("/"),   # 同目录：/{lang}/make.html
                         "lang_label": esc(marketing[lang]["langLabel"]),
                         "current_name": esc(languages[lang]["name"]),
                         "brand": esc("aiglossa · " + sites[site]["host"]),
