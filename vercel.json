@@ -19,7 +19,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^zh-(TW|HK|MO|Hant|tw|hk|mo)"
+          "value": "^zh-(TW|HK|MO|Hant|tw|hk|mo).*"
         }
       ],
       "destination": "/zh-Hant/",
@@ -31,7 +31,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^zh"
+          "value": "^zh.*"
         }
       ],
       "destination": "/zh-Hans/",
@@ -43,7 +43,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^ja"
+          "value": "^ja.*"
         }
       ],
       "destination": "/ja/",
@@ -55,7 +55,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^ko"
+          "value": "^ko.*"
         }
       ],
       "destination": "/ko/",
@@ -67,7 +67,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^es"
+          "value": "^es.*"
         }
       ],
       "destination": "/es/",
@@ -79,7 +79,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^pt"
+          "value": "^pt.*"
         }
       ],
       "destination": "/pt/",
@@ -91,7 +91,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^fr"
+          "value": "^fr.*"
         }
       ],
       "destination": "/fr/",
@@ -103,7 +103,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^de"
+          "value": "^de.*"
         }
       ],
       "destination": "/de/",
@@ -115,7 +115,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^it"
+          "value": "^it.*"
         }
       ],
       "destination": "/it/",
@@ -127,7 +127,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^ru"
+          "value": "^ru.*"
         }
       ],
       "destination": "/ru/",
@@ -139,7 +139,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^ar"
+          "value": "^ar.*"
         }
       ],
       "destination": "/ar/",
@@ -151,7 +151,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^th"
+          "value": "^th.*"
         }
       ],
       "destination": "/th/",
@@ -163,7 +163,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^vi"
+          "value": "^vi.*"
         }
       ],
       "destination": "/vi/",
@@ -175,7 +175,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^id"
+          "value": "^id.*"
         }
       ],
       "destination": "/id/",
@@ -187,7 +187,7 @@
         {
           "type": "header",
           "key": "accept-language",
-          "value": "^tr"
+          "value": "^tr.*"
         }
       ],
       "destination": "/tr/",
