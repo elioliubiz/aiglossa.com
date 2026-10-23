@@ -1608,16 +1608,19 @@
     <loc>https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/exact-30-second-background-music.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/guides/exact-30-second-background-music.html"/>
   </url>
   <url>
     <loc>https://tools.aiglossa.com/en/guides/photo-to-song-lyrics.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/photo-to-song-lyrics.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/photo-to-song-lyrics.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/guides/photo-to-song-lyrics.html"/>
   </url>
   <url>
     <loc>https://tools.aiglossa.com/en/guides/seamless-loop-seam.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/seamless-loop-seam.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/seamless-loop-seam.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/guides/seamless-loop-seam.html"/>
   </url>
   <url>
     <loc>https://tools.aiglossa.com/zh-Hans/guides/</loc>
@@ -1626,15 +1629,39 @@
     <loc>https://tools.aiglossa.com/zh-Hans/guides/exact-30-second-background-music.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/exact-30-second-background-music.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/guides/exact-30-second-background-music.html"/>
   </url>
   <url>
     <loc>https://tools.aiglossa.com/zh-Hans/guides/photo-to-song-lyrics.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/photo-to-song-lyrics.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/photo-to-song-lyrics.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/guides/photo-to-song-lyrics.html"/>
   </url>
   <url>
     <loc>https://tools.aiglossa.com/zh-Hans/guides/seamless-loop-seam.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/seamless-loop-seam.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/seamless-loop-seam.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/guides/seamless-loop-seam.html"/>
+  </url>
+  <url>
+    <loc>https://tools.aiglossa.com/zh-Hant/guides/</loc>
+  </url>
+  <url>
+    <loc>https://tools.aiglossa.com/zh-Hant/guides/exact-30-second-background-music.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/exact-30-second-background-music.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/guides/exact-30-second-background-music.html"/>
+  </url>
+  <url>
+    <loc>https://tools.aiglossa.com/zh-Hant/guides/photo-to-song-lyrics.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/photo-to-song-lyrics.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/photo-to-song-lyrics.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/guides/photo-to-song-lyrics.html"/>
+  </url>
+  <url>
+    <loc>https://tools.aiglossa.com/zh-Hant/guides/seamless-loop-seam.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/seamless-loop-seam.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/seamless-loop-seam.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/guides/seamless-loop-seam.html"/>
   </url>
 </urlset>
