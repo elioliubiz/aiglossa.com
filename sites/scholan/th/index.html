@@ -40,62 +40,55 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/site.css">
 <style>
-  :root{--bg:#07070a;--ink:#f4f2ee;--mut:#8b8b96;--line:rgba(255,255,255,.10);--acc:#b98cff}
+  :root{--bg:#07070a;--ink:#f4f2ee;--mut:#8b8b96;--line:rgba(255,255,255,.10)}
   body{background:var(--bg);color:var(--ink);overflow-x:hidden}
   .aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
   .aurora i{position:absolute;border-radius:50%;filter:blur(110px);opacity:.5}
-  .aurora i.a{width:70vmax;height:70vmax;inset-inline-start:-10vmax;top:-30vmax;
-              background:radial-gradient(circle,rgba(150,110,255,.38),transparent 65%)}
-  .aurora i.b{width:60vmax;height:60vmax;inset-inline-end:-20vmax;top:10vmax;
-              background:radial-gradient(circle,rgba(255,130,90,.22),transparent 66%)}
+  .aurora i.a{width:70vmax;height:70vmax;inset-inline-start:-12vmax;top:-32vmax;
+              background:radial-gradient(circle,rgba(150,110,255,.36),transparent 65%)}
+  .aurora i.b{width:56vmax;height:56vmax;inset-inline-end:-18vmax;top:6vmax;
+              background:radial-gradient(circle,rgba(255,130,90,.18),transparent 66%)}
   main,footer{position:relative;z-index:1}
 
-  .hero{min-height:auto;display:block;background:none;text-align:center;
-        padding-block:clamp(64px,10vh,120px) 0}
+  .hero{min-height:auto;display:block;background:none;text-align:center;padding-block:clamp(60px,10vh,110px) 0}
   .hero .kicker{color:var(--mut);letter-spacing:.3em;font-size:11px}
-  .hero h1{font-size:clamp(34px,5.6vw,68px);line-height:1.02;letter-spacing:-.04em;
-           margin:20px auto 0;max-width:16ch;font-weight:600;background:none;
-           -webkit-text-fill-color:currentColor;color:var(--ink)}
-  .hero .lede{margin:24px auto 0;max-width:52ch;color:var(--mut);font-size:16px;line-height:1.65}
-  .store{display:inline-flex;align-items:center;gap:11px;margin-block-start:32px;padding:13px 22px;
-         border-radius:15px;background:#f5f5f7;color:#111;text-decoration:none;font-weight:600;font-size:15px;
+  .hero h1{font-size:clamp(34px,5.4vw,64px);line-height:1.03;letter-spacing:-.04em;margin:18px auto 0;
+           max-width:16ch;font-weight:600;background:none;-webkit-text-fill-color:currentColor;color:var(--ink)}
+  .hero .lede{margin:22px auto 0;max-width:50ch;color:var(--mut);font-size:16px;line-height:1.65}
+  .store{display:inline-flex;align-items:center;gap:11px;margin-block-start:30px;padding:12px 20px;
+         border-radius:14px;background:#f5f5f7;color:#111;text-decoration:none;font-weight:600;font-size:14.5px;
          transition:transform .2s}
   .store:hover{transform:translateY(-2px)}
-  .store svg{width:22px;height:22px}
-  .store small{display:block;font-size:10px;font-weight:400;opacity:.6;letter-spacing:.06em;margin-bottom:1px}
+  .store svg{width:21px;height:21px}
+  .store small{display:block;font-size:9.5px;font-weight:400;opacity:.6;letter-spacing:.06em}
 
-  /* ---- 设备边框 ---- */
-  .frame{position:relative;border-radius:26px;padding:10px;background:linear-gradient(155deg,#57575f,#1e1e24 45%,#34343c 72%,#17171c);
-         box-shadow:0 60px 120px -50px rgba(0,0,0,.95), inset 0 1px 0 rgba(255,255,255,.22)}
-  .frame img{display:block;width:100%;height:auto;border-radius:18px}
-  .frame.land{border-radius:22px}
-  .frame.land img{border-radius:14px}
-  .hero-shot{max-width:1060px;margin:clamp(44px,7vh,76px) auto 0;padding-inline:24px}
-  .hero-shot .glowpad{position:relative}
-  .hero-shot .glowpad::before{content:"";position:absolute;inset:-8% -6%;z-index:-1;border-radius:40px;
-        background:radial-gradient(ellipse at 50% 40%,rgba(150,110,255,.28),transparent 68%);filter:blur(40px)}
+  /* 两台设备：平板 + 手机，手机压在平板右下角 */
+  .devices{position:relative;max-width:1000px;margin:clamp(42px,7vh,78px) auto 0;padding-inline:24px;
+           display:flex;align-items:flex-end;justify-content:center}
+  .frame{padding:9px;background:linear-gradient(155deg,#57575f,#1e1e24 45%,#34343c 72%,#17171c);
+         box-shadow:0 60px 110px -50px rgba(0,0,0,.95), inset 0 1px 0 rgba(255,255,255,.2)}
+  .frame img{display:block;width:100%;height:auto}
+  .frame.tab{width:min(760px,78%);border-radius:22px;transform:rotate(-1.2deg)}
+  .frame.tab img{border-radius:15px}
+  .frame.ph{width:min(210px,26%);border-radius:26px;margin-inline-start:-58px;z-index:2;
+            transform:rotate(1.5deg) translateY(6px)}
+  .frame.ph img{border-radius:19px}
+  @media(max-width:640px){.devices{flex-direction:column;align-items:center;gap:22px}
+    .frame.tab{width:100%} .frame.ph{width:46%;margin-inline-start:0}}
 
-  .sec{padding-block:clamp(72px,11vh,130px)}
-  .sec .wrap{max-width:1060px;margin-inline:auto;padding-inline:24px}
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center}
-  @media(max-width:860px){.split{grid-template-columns:1fr}}
-  .split h2{font-size:clamp(24px,3vw,36px);letter-spacing:-.03em;line-height:1.12;margin:0 0 14px}
-  .split p{color:var(--mut);font-size:15.5px;line-height:1.7;margin:0}
-  .phone-wrap{max-width:300px;margin-inline:auto}
-  .eyebrow{color:var(--acc);font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+  /* 下面三行介绍 */
+  .features{max-width:920px;margin:clamp(56px,9vh,96px) auto 0;padding-inline:24px;
+            display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(18px,3vw,42px)}
+  @media(max-width:760px){.features{grid-template-columns:1fr;gap:28px}}
+  .feature h3{margin:0 0 8px;font-size:16.5px;letter-spacing:-.01em}
+  .feature p{margin:0;color:var(--mut);font-size:14px;line-height:1.7}
+  .feature b{display:block;color:rgba(185,140,255,.9);font-size:11px;letter-spacing:.2em;margin-bottom:10px}
 
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;max-width:1060px;margin-inline:auto;padding-inline:24px}
-  @media(max-width:820px){.steps{grid-template-columns:1fr}}
-  .step{padding:26px;border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.025)}
-  .step b{display:block;color:var(--acc);font-size:11px;letter-spacing:.2em;margin-bottom:12px}
-  .step h3{margin:0 0 8px;font-size:17px}
-  .step p{margin:0;color:var(--mut);font-size:14px;line-height:1.65}
-  .closing{max-width:640px;margin:clamp(56px,8vh,90px) auto 0;text-align:center;color:var(--mut);
-           font-size:14px;line-height:1.8;padding-inline:24px}
-
-  footer{margin-block-start:70px;padding-block:26px;border-block-start:1px solid var(--line)}
+  .closing{max-width:620px;margin:clamp(52px,8vh,84px) auto 0;text-align:center;color:var(--mut);
+           font-size:13.5px;line-height:1.8;padding-inline:24px}
+  footer{margin-block-start:64px;padding-block:26px;border-block-start:1px solid var(--line)}
   footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
-               max-width:1060px;margin-inline:auto;padding-inline:24px}
+               max-width:1000px;margin-inline:auto;padding-inline:24px}
   footer .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
   footer nav a{color:var(--mut);font-size:12.5px;text-decoration:none;margin-inline-end:14px}
 </style>
@@ -114,32 +107,14 @@
         <span><small>Download on the</small>App Store</span>
       </a>
     </div>
-    <div class="hero-shot">
-      <div class="glowpad">
-        <div class="frame land"><img src="/assets/scholan/real/ipad-spread.jpg" alt="Scholan reading view on iPad" width="2266" height="1488"></div>
-      </div>
-    </div>
   </section>
 
-  <section class="sec">
-    <div class="wrap split">
-      <div class="phone-wrap"><div class="frame"><img src="/assets/scholan/real/phone-reading.jpg" alt="Glosses inline in the text" width="1320" height="2868" loading="lazy"></div></div>
-      <div>
-        <p class="eyebrow">01</p>
-        <h2>นำเข้าหนังสือ</h2>
-        <p>ไฟล์ EPUB หรือ PDF ของคุณเอง ภาษาใดก็ได้ บน iPad ลากหนังสือจากแอปไฟล์เข้าชั้นหนังสือได้เลย</p>
-      </div>
-    </div>
-  </section>
+  <div class="devices">
+    <div class="frame tab"><img src="/assets/scholan/real/ipad-spread.jpg" alt="Scholan on iPad" width="2266" height="1488"></div>
+    <div class="frame ph"><img src="/assets/scholan/real/phone-reading.jpg" alt="Scholan on iPhone" width="1320" height="2868" loading="lazy"></div>
+  </div>
 
-  <section class="sec">
-    <div class="wrap">
-      <div class="frame land"><img src="/assets/scholan/real/ipad-library.jpg" alt="Library on iPad" width="2266" height="1488" loading="lazy"></div>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="steps">
+  <div class="features">
         <div>
           <span class="n">01</span>
           <h3>นำเข้าหนังสือ</h3>
@@ -155,9 +130,9 @@
           <h3>แตะคำขณะอ่าน</h3>
           <p>แตะคำใดก็ได้เพื่อดูความหมายพร้อมการออกเสียง คำที่เคยเห็นจะจำได้ง่ายขึ้นมาก</p>
         </div>
-    </div>
-    <p class="closing">จุดสำคัญไม่ใช่การท่องจำ การดูตัวอย่างซ้ำ ๆ แล้วอ่านจริงจะทำให้คุ้นเคยกับคำเองตามธรรมชาติ</p>
-  </section>
+  </div>
+
+  <p class="closing">จุดสำคัญไม่ใช่การท่องจำ การดูตัวอย่างซ้ำ ๆ แล้วอ่านจริงจะทำให้คุ้นเคยกับคำเองตามธรรมชาติ</p>
 </main>
 
 <footer>
