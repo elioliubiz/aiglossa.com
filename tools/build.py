@@ -459,6 +459,11 @@ def main() -> int:
                         "lede": esc(locale["lede"]),
                         "apps_title": esc(locale["apps_title"]),
                         "open_label": esc(locale.get("open_label", "Open")),
+                        "scholan_subtitle": esc(locale.get("scholan_subtitle", "")),
+                        # App Store 各语言的 6.7" 市场截图，整张使用（不裁切）
+                        "scholan_shot1": f"/assets/scholan/{lang}-1.jpg",
+                        "scholan_shot2": f"/assets/scholan/{lang}-2.jpg",
+                        "scholan_shot3": f"/assets/scholan/{lang}-3.jpg",
                         "tool_name": esc(tools_copy["name"]),
                         "tool_desc": esc(tools_copy["desc"]),
                         "tool_meta": esc(tools_copy["meta"]),

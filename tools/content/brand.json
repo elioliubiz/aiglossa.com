@@ -8,7 +8,8 @@
     "learn_more": "了解 Scholan",
     "support_label": "支持",
     "about_text": "我是独立开发者，做的应用通常只解决一件具体的事：不追求功能齐全，先把它该做的那件事做得足够顺手。有想法，或者用着哪里不对劲，都欢迎写信给我。",
-    "open_label": "打开"
+    "open_label": "打开",
+    "scholan_subtitle": "读原版书，别被查词打断"
   },
   "zh-Hant": {
     "title": "aiglossa — 獨立開發的應用",
@@ -19,7 +20,8 @@
     "learn_more": "了解 Scholan",
     "support_label": "支援",
     "about_text": "我是獨立開發者，做的應用通常只解決一件具體的事：不追求功能齊全，先把它該做的那件事做得足夠順手。有想法，或用著哪裡不對勁，都歡迎寫信給我。",
-    "open_label": "開啟"
+    "open_label": "開啟",
+    "scholan_subtitle": "讀原文書，別被查詞打斷"
   },
   "en": {
     "title": "aiglossa — apps, built independently",
@@ -30,7 +32,8 @@
     "learn_more": "About Scholan",
     "support_label": "Support",
     "about_text": "I am an independent developer. Each app usually solves one specific thing — I care less about feature checklists than about making that one thing genuinely comfortable to use. Ideas, or anything that feels off, are welcome by email.",
-    "open_label": "Open"
+    "open_label": "Open",
+    "scholan_subtitle": "Read without interruptions"
   },
   "ja": {
     "title": "aiglossa — 個人開発のアプリ",
@@ -41,7 +44,8 @@
     "learn_more": "Scholan について",
     "support_label": "サポート",
     "about_text": "個人開発者です。アプリはたいてい一つのことを解決するために作ります。機能の多さより、その一つのことを気持ちよく使えるかどうかを大事にしています。感想でも、使いにくいところでも、メールをいただけたら嬉しいです。",
-    "open_label": "開く"
+    "open_label": "開く",
+    "scholan_subtitle": "査詞で止まらない原書読書"
   },
   "ko": {
     "title": "aiglossa — 1인 개발 앱",
@@ -52,7 +56,8 @@
     "learn_more": "Scholan 알아보기",
     "support_label": "지원",
     "about_text": "1인 개발자입니다. 앱은 보통 한 가지 일을 해결합니다. 기능이 많은 것보다, 그 한 가지를 얼마나 편하게 쓸 수 있는지를 더 중요하게 봅니다. 아이디어도, 불편한 점도 메일로 보내주시면 반갑습니다.",
-    "open_label": "열기"
+    "open_label": "열기",
+    "scholan_subtitle": "끊기지 않는 원서 읽기"
   },
   "de": {
     "title": "aiglossa — Apps, unabhängig entwickelt",
@@ -63,7 +68,8 @@
     "learn_more": "Mehr über Scholan",
     "support_label": "Support",
     "about_text": "Ich bin unabhängiger Entwickler. Jede App löst meist eine konkrete Sache – mir ist weniger an Funktionslisten gelegen als daran, dass genau diese Sache angenehm funktioniert. Ideen oder Stellen, die sich falsch anfühlen, sind per E-Mail willkommen.",
-    "open_label": "Öffnen"
+    "open_label": "Öffnen",
+    "scholan_subtitle": "Lesen ohne Unterbrechung"
   },
   "fr": {
     "title": "aiglossa — des applis développées en solo",
@@ -74,7 +80,8 @@
     "learn_more": "En savoir plus sur Scholan",
     "support_label": "Assistance",
     "about_text": "Je suis développeur indépendant. Chaque appli résout en général une chose précise — je me soucie moins des listes de fonctionnalités que du fait que cette chose soit vraiment agréable à utiliser. Idées et points gênants sont bienvenus par e-mail.",
-    "open_label": "Ouvrir"
+    "open_label": "Ouvrir",
+    "scholan_subtitle": "Lire sans être interrompu"
   },
   "es": {
     "title": "aiglossa — apps desarrolladas en solitario",
@@ -85,7 +92,8 @@
     "learn_more": "Conocer Scholan",
     "support_label": "Soporte",
     "about_text": "Soy desarrollador independiente. Cada app suele resolver una cosa concreta: me importa menos la lista de funciones que lograr que esa cosa se sienta realmente cómoda. Las ideas y lo que no funcione bien son bienvenidos por correo.",
-    "open_label": "Abrir"
+    "open_label": "Abrir",
+    "scholan_subtitle": "Lee sin interrupciones"
   },
   "pt": {
     "title": "aiglossa — apps desenvolvidas de forma independente",
@@ -96,7 +104,8 @@
     "learn_more": "Conhecer o Scholan",
     "support_label": "Suporte",
     "about_text": "Sou programador independente. Cada app costuma resolver uma coisa concreta — importo-me menos com listas de funcionalidades do que com essa coisa funcionar de forma realmente confortável. Ideias e pontos incómodos são bem-vindos por e-mail.",
-    "open_label": "Abrir"
+    "open_label": "Abrir",
+    "scholan_subtitle": "Leia sem interrupções"
   },
   "it": {
     "title": "aiglossa — app sviluppate da soli",
@@ -107,7 +116,8 @@
     "learn_more": "Scopri Scholan",
     "support_label": "Supporto",
     "about_text": "Sono uno sviluppatore indipendente. Ogni app di solito risolve una cosa precisa — mi interessa meno l'elenco delle funzioni e più che quella cosa sia davvero comoda da usare. Idee e punti scomodi sono benvenuti via email.",
-    "open_label": "Apri"
+    "open_label": "Apri",
+    "scholan_subtitle": "Leggere senza interruzioni"
   },
   "ru": {
     "title": "aiglossa — приложения, сделанные в одиночку",
@@ -118,7 +128,8 @@
     "learn_more": "О Scholan",
     "support_label": "Поддержка",
     "about_text": "Я независимый разработчик. Обычно приложение решает одну конкретную задачу — мне важнее не список функций, а чтобы именно эта задача решалась удобно. Идеи и неудобные места — пишите на почту.",
-    "open_label": "Открыть"
+    "open_label": "Открыть",
+    "scholan_subtitle": "Чтение без остановок"
   },
   "ar": {
     "title": "aiglossa — تطبيقات بتطوير فردي",
@@ -129,7 +140,8 @@
     "learn_more": "تعرّف على Scholan",
     "support_label": "الدعم",
     "about_text": "أنا مطوّر مستقل. عادةً يحلّ كل تطبيق أمرًا واحدًا محدّدًا؛ لا يهمّني تعداد الميزات بقدر ما يهمّني أن يكون ذلك الأمر مريحًا فعلًا في الاستخدام. الأفكار أو أي إزعاج في الاستخدام مرحّب بها عبر البريد.",
-    "open_label": "افتح"
+    "open_label": "افتح",
+    "scholan_subtitle": "اقرأ دون انقطاع"
   },
   "th": {
     "title": "aiglossa — แอปที่พัฒนาโดยคนเดียว",
@@ -140,7 +152,8 @@
     "learn_more": "รู้จัก Scholan",
     "support_label": "ช่วยเหลือ",
     "about_text": "ฉันเป็นนักพัฒนาอิสระ แอปแต่ละตัวมักแก้เรื่องใดเรื่องหนึ่งโดยเฉพาะ ฉันให้ความสำคัญกับการที่เรื่องนั้นใช้งานได้ลื่นจริง มากกว่าจำนวนฟีเจอร์ มีไอเดียหรือเจอจุดที่ใช้ไม่ถนัด ส่งอีเมลมาได้เลย",
-    "open_label": "เปิด"
+    "open_label": "เปิด",
+    "scholan_subtitle": "อ่านได้ไม่สะดุด"
   },
   "vi": {
     "title": "aiglossa — ứng dụng phát triển độc lập",
@@ -151,7 +164,8 @@
     "learn_more": "Tìm hiểu Scholan",
     "support_label": "Hỗ trợ",
     "about_text": "Tôi là nhà phát triển độc lập. Mỗi ứng dụng thường giải quyết một việc cụ thể — tôi quan tâm việc đó dùng có thật thoải mái hơn là danh sách tính năng. Có ý tưởng hay chỗ dùng chưa thuận, cứ gửi email cho tôi.",
-    "open_label": "Mở"
+    "open_label": "Mở",
+    "scholan_subtitle": "Đọc không bị ngắt"
   },
   "id": {
     "title": "aiglossa — aplikasi yang dikembangkan sendiri",
@@ -162,7 +176,8 @@
     "learn_more": "Kenali Scholan",
     "support_label": "Dukungan",
     "about_text": "Saya pengembang independen. Tiap aplikasi biasanya menyelesaikan satu hal tertentu — saya lebih mementingkan hal itu terasa nyaman dipakai daripada panjangnya daftar fitur. Ide atau bagian yang terasa mengganggu, silakan kirim lewat email.",
-    "open_label": "Buka"
+    "open_label": "Buka",
+    "scholan_subtitle": "Membaca tanpa terputus"
   },
   "tr": {
     "title": "aiglossa — tek başına geliştirilen uygulamalar",
@@ -173,6 +188,7 @@
     "learn_more": "Scholan'ı keşfet",
     "support_label": "Destek",
     "about_text": "Bağımsız bir geliştiriciyim. Her uygulama genelde tek bir işi çözer — özellik listesinin uzunluğundan çok, o işin gerçekten rahat kullanılmasını önemsiyorum. Fikirler ve aksayan yerler için e-posta beklerim.",
-    "open_label": "Aç"
+    "open_label": "Aç",
+    "scholan_subtitle": "Kesintisiz okuma"
   }
 }
