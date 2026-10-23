@@ -8,7 +8,7 @@
       {
         "name": "AI Music",
         "status": "متاح",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "حوّل صورة أو وصفًا إلى مقطع بالمدة التي تحتاجها بالضبط. الكلمات تذكر ما في صورتك.",
         "meta": "30–90 ثانية · حلقات بلا فواصل · غناء بعشر لغات"
       },
@@ -29,7 +29,7 @@
     ],
     "note": "الأرصدة مشتركة بين كل الأدوات: رصيد واحد، بلا انتهاء وبلا اشتراك.",
     "cta_label": "افتح AI Music",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "de": {
     "title": "Tools — aiglossa",
@@ -40,7 +40,7 @@
       {
         "name": "AI Music",
         "status": "Verfügbar",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "Aus einem Foto oder einer Beschreibung wird ein Track in exakt der Länge, die du brauchst. Der Gesang benennt, was auf dem Bild ist.",
         "meta": "30–90 s · nahtlose Loops · Gesang in 10 Sprachen"
       },
@@ -61,7 +61,7 @@
     ],
     "note": "Credits gelten für alle Tools: ein Guthaben, kein Ablaufdatum, kein Abo.",
     "cta_label": "AI Music öffnen",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "en": {
     "title": "Tools — aiglossa",
@@ -72,7 +72,7 @@
       {
         "name": "AI Music",
         "status": "Live",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "Turn a photo or a prompt into a track at the exact length you need. The lyrics name what's in your picture.",
         "meta": "30–90s · seamless loops · vocals in 10 languages"
       },
@@ -93,7 +93,7 @@
     ],
     "note": "Credits are shared across tools — one balance, never expires, no subscription.",
     "cta_label": "Open AI Music",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "es": {
     "title": "Herramientas — aiglossa",
@@ -104,7 +104,7 @@
       {
         "name": "AI Music",
         "status": "Disponible",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "Convierte una foto o una descripción en una pista de la duración exacta que necesitas. La letra nombra lo que hay en tu imagen.",
         "meta": "30–90 s · bucles sin cortes · voces en 10 idiomas"
       },
@@ -125,7 +125,7 @@
     ],
     "note": "Los créditos son comunes a todas las herramientas: un saldo, sin caducidad y sin suscripción.",
     "cta_label": "Abrir AI Music",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "fr": {
     "title": "Outils — aiglossa",
@@ -136,7 +136,7 @@
       {
         "name": "AI Music",
         "status": "Disponible",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "Transformez une photo ou une description en morceau à la durée exacte. Les paroles nomment ce que contient votre image.",
         "meta": "30–90 s · boucles sans coupure · voix en 10 langues"
       },
@@ -157,7 +157,7 @@
     ],
     "note": "Les crédits sont communs à tous les outils : un seul solde, sans expiration, sans abonnement.",
     "cta_label": "Ouvrir AI Music",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "id": {
     "title": "Alat — aiglossa",
@@ -168,7 +168,7 @@
       {
         "name": "AI Music",
         "status": "Tersedia",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "Ubah foto atau deskripsi menjadi lagu dengan durasi tepat yang kamu butuhkan. Liriknya menyebut apa yang ada di fotomu.",
         "meta": "30–90 dtk · loop mulus · vokal dalam 10 bahasa"
       },
@@ -189,7 +189,7 @@
     ],
     "note": "Kredit dipakai bersama di semua alat: satu saldo, tanpa kedaluwarsa, tanpa langganan.",
     "cta_label": "Buka AI Music",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "it": {
     "title": "Strumenti — aiglossa",
@@ -200,7 +200,7 @@
       {
         "name": "AI Music",
         "status": "Disponibile",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "Trasforma una foto o una descrizione in un brano della durata esatta che ti serve. Il testo nomina ciò che c'è nella tua immagine.",
         "meta": "30–90 s · loop senza stacchi · voci in 10 lingue"
       },
@@ -221,7 +221,7 @@
     ],
     "note": "I crediti sono condivisi tra tutti gli strumenti: un saldo, senza scadenza e senza abbonamento.",
     "cta_label": "Apri AI Music",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "ja": {
     "title": "ツール — aiglossa",
@@ -232,7 +232,7 @@
       {
         "name": "AI Music",
         "status": "提供中",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "写真やプロンプトから、必要な長さちょうどの曲を作ります。歌詞には写真の中のものが歌われます。",
         "meta": "30〜90秒・シームレスループ・10言語のボーカル"
       },
@@ -253,7 +253,7 @@
     ],
     "note": "クレジットは全ツール共通。一つの残高で、期限なし、サブスクなし。",
     "cta_label": "AI Music を開く",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "ko": {
     "title": "도구 — aiglossa",
@@ -264,7 +264,7 @@
       {
         "name": "AI Music",
         "status": "제공 중",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "사진이나 프롬프트로 필요한 길이에 딱 맞는 곡을 만듭니다. 가사에는 사진 속 요소가 담깁니다.",
         "meta": "30~90초 · 이음새 없는 루프 · 10개 언어 보컬"
       },
@@ -285,7 +285,7 @@
     ],
     "note": "크레딧은 모든 도구에서 공용입니다. 하나의 잔액, 만료 없음, 구독 없음.",
     "cta_label": "AI Music 열기",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "pt": {
     "title": "Ferramentas — aiglossa",
@@ -296,7 +296,7 @@
       {
         "name": "AI Music",
         "status": "Disponível",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "Transforme uma foto ou descrição em uma faixa com a duração exata que você precisa. A letra cita o que está na sua imagem.",
         "meta": "30–90 s · loops sem corte · vocais em 10 idiomas"
       },
@@ -317,7 +317,7 @@
     ],
     "note": "Os créditos são compartilhados entre todas as ferramentas: um saldo, sem expiração, sem assinatura.",
     "cta_label": "Abrir AI Music",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "ru": {
     "title": "Инструменты — aiglossa",
@@ -328,7 +328,7 @@
       {
         "name": "AI Music",
         "status": "Доступно",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "Превратите фото или описание в трек точно нужной длины. В тексте песни называются предметы с вашего изображения.",
         "meta": "30–90 с · бесшовные лупы · вокал на 10 языках"
       },
@@ -349,7 +349,7 @@
     ],
     "note": "Кредиты общие для всех инструментов: один баланс, без срока действия и без подписки.",
     "cta_label": "Открыть AI Music",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "th": {
     "title": "เครื่องมือ — aiglossa",
@@ -360,7 +360,7 @@
       {
         "name": "AI Music",
         "status": "เปิดใช้แล้ว",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "เปลี่ยนรูปหรือคำอธิบายเป็นเพลงที่มีความยาวตรงตามที่ต้องการ เนื้อเพลงจะเอ่ยถึงสิ่งที่อยู่ในภาพของคุณ",
         "meta": "30–90 วินาที · ลูปไร้รอยต่อ · เสียงร้อง 10 ภาษา"
       },
@@ -381,7 +381,7 @@
     ],
     "note": "เครดิตใช้ร่วมกันทุกเครื่องมือ: ยอดเดียว ไม่หมดอายุ ไม่มีสมาชิกรายเดือน",
     "cta_label": "เปิด AI Music",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "tr": {
     "title": "Araçlar — aiglossa",
@@ -392,7 +392,7 @@
       {
         "name": "AI Music",
         "status": "Kullanımda",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "Bir fotoğrafı veya açıklamayı tam ihtiyacınız olan uzunlukta bir parçaya dönüştürün. Şarkı sözleri fotoğrafınızdakileri adlandırır.",
         "meta": "30–90 sn · kesintisiz döngüler · 10 dilde vokal"
       },
@@ -413,7 +413,7 @@
     ],
     "note": "Krediler tüm araçlarda ortaktır: tek bakiye, süresiz, abonelik yok.",
     "cta_label": "AI Music'i aç",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "vi": {
     "title": "Công cụ — aiglossa",
@@ -424,7 +424,7 @@
       {
         "name": "AI Music",
         "status": "Đang hoạt động",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "Biến ảnh hoặc mô tả thành bản nhạc đúng độ dài bạn cần. Lời bài hát gọi tên những gì có trong ảnh.",
         "meta": "30–90 giây · vòng lặp liền mạch · giọng hát 10 ngôn ngữ"
       },
@@ -445,7 +445,7 @@
     ],
     "note": "Tín dụng dùng chung cho mọi công cụ: một số dư, không hết hạn, không đăng ký định kỳ.",
     "cta_label": "Mở AI Music",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "zh-Hans": {
     "title": "工具 — aiglossa",
@@ -456,7 +456,7 @@
       {
         "name": "AI Music",
         "status": "已上线",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "用照片或描述生成精确长度的曲子。歌词会唱出照片里的东西。",
         "meta": "30–90 秒 · 无缝循环 · 10 种语言人声"
       },
@@ -477,7 +477,7 @@
     ],
     "note": "额度在所有工具间通用：一份余额、永不过期、没有订阅。",
     "cta_label": "打开 AI Music",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   },
   "zh-Hant": {
     "title": "工具 — aiglossa",
@@ -488,7 +488,7 @@
       {
         "name": "AI Music",
         "status": "已上線",
-        "href": "/make.html",
+        "href": "/music/",
         "desc": "用照片或描述生成精確長度的曲子。歌詞會唱出照片裡的東西。",
         "meta": "30–90 秒 · 無縫循環 · 10 種語言人聲"
       },
@@ -509,6 +509,6 @@
     ],
     "note": "額度在所有工具間通用：一份餘額、永不過期、沒有訂閱。",
     "cta_label": "開啟 AI Music",
-    "cta_href": "/make.html"
+    "cta_href": "/music/"
   }
 }

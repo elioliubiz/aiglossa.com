@@ -37,8 +37,8 @@ PAGES: dict[str, list[tuple[str, str]]] = {
 
 
 def outputs_for(page: str) -> list[tuple[str, str]]:
-    if page == "make":
-        return [("make.html", "make.html")]
+    if page == "music":
+        return [("music/index.html", "music/")]
     if page in ("refund", "acceptable-use"):
         return [(f"{page}.html", f"{page}.html")]
     if page in ("pricing", "account"):
