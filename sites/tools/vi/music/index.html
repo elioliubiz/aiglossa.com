@@ -250,6 +250,19 @@
     </div>
   </aside>
 
+<div class="gm" id="cm" aria-hidden="true">
+  <div class="bd" data-cclose></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-label="Tín dụng hoạt động thế nào →" style="max-width:640px;grid-template-columns:1fr">
+    <button class="x" data-cclose aria-label="Đóng">✕</button>
+    <div class="body" style="padding:34px 36px">
+      <h1 id="cmTitle" style="font-size:20px;margin-bottom:16px"></h1>
+      <ul id="cmList" style="margin:0 0 18px"></ul>
+      <div id="cmPacks" style="display:grid;gap:8px;margin-bottom:20px"></div>
+      <a id="cmBuy" href="../pricing.html" class="cta" style="display:inline-block;margin:0;padding:11px 18px;border-radius:9px;background:var(--acc);color:#1a0e04;font-weight:600;text-decoration:none"></a>
+    </div>
+  </div>
+</div>
+
 <div class="gm" id="gm" aria-hidden="true">
   <div class="bd" data-close></div>
   <div class="panel" role="dialog" aria-modal="true" aria-label="Hướng dẫn">
@@ -282,7 +295,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác", "description": "Biến ảnh hoặc mô tả thành nhạc nền dài đúng 30–90 giây. Lời bài hát gọi tên những gì trong ảnh, với giọng hát 10 ngôn ngữ và vòng lặp liền mạch.", "h1": "Tạo một bản nhạc", "sub": "Từ ảnh hoặc mô tả. Độ dài chính xác, vòng lặp liền mạch.", "drop": "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh", "generate": "Tạo bản nhạc", "how_credits": "Tín dụng hoạt động thế nào →", "grp_photo": "Tạo từ ảnh", "grp_recipe": "Từ công thức · không cần ảnh", "download": "Tải xuống", "save_recipe": "Lưu thành công thức", "remove_photo": "Xóa ảnh", "photo_here": "Ảnh của bạn ở đây", "note": "Mọi thứ bên phải đều được tạo ở đây", "legal_aup": "Sử dụng được chấp nhận", "legal_refund": "Hoàn tiền", "sign_in_first": "Đăng nhập để tạo", "generating": "Đang tạo… khoảng 20 giây.", "just_generated": "Vừa tạo xong", "your_track": "Bản nhạc của bạn", "from_recipe": "Từ công thức", "from_photo": "Tạo từ ảnh", "err_load": "Không tải được tuỳ chọn", "done_in": "Xong sau {n} giây", "gen_cost": "Tạo · {n}", "err_gen": "Tạo thất bại", "my_track": "Bản nhạc của tôi", "err_net": "Lỗi mạng", "recipe_name": "Tên công thức", "err_save": "Lưu thất bại", "saved": "Đã lưu: {name}", "up_to": "Tối đa {n}", "credits": "tín dụng", "guides_link": "Hướng dẫn →", "guides_title": "Hướng dẫn", "close": "Đóng", "loading": "Đang tải…", "off": "Tắt", "loop_on": "Vòng lặp liền mạch"}</script>
+<script type="application/json" id="ui">{"title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác", "description": "Biến ảnh hoặc mô tả thành nhạc nền dài đúng 30–90 giây. Lời bài hát gọi tên những gì trong ảnh, với giọng hát 10 ngôn ngữ và vòng lặp liền mạch.", "h1": "Tạo một bản nhạc", "sub": "Từ ảnh hoặc mô tả. Độ dài chính xác, vòng lặp liền mạch.", "drop": "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh", "generate": "Tạo bản nhạc", "how_credits": "Tín dụng hoạt động thế nào →", "grp_photo": "Tạo từ ảnh", "grp_recipe": "Từ công thức · không cần ảnh", "download": "Tải xuống", "save_recipe": "Lưu thành công thức", "remove_photo": "Xóa ảnh", "photo_here": "Ảnh của bạn ở đây", "note": "Mọi thứ bên phải đều được tạo ở đây", "legal_aup": "Sử dụng được chấp nhận", "legal_refund": "Hoàn tiền", "sign_in_first": "Đăng nhập để tạo", "generating": "Đang tạo… khoảng 20 giây.", "just_generated": "Vừa tạo xong", "your_track": "Bản nhạc của bạn", "from_recipe": "Từ công thức", "from_photo": "Tạo từ ảnh", "err_load": "Không tải được tuỳ chọn", "done_in": "Xong sau {n} giây", "gen_cost": "Tạo · {n}", "err_gen": "Tạo thất bại", "my_track": "Bản nhạc của tôi", "err_net": "Lỗi mạng", "recipe_name": "Tên công thức", "err_save": "Lưu thất bại", "saved": "Đã lưu: {name}", "up_to": "Tối đa {n}", "credits": "tín dụng", "guides_link": "Hướng dẫn →", "guides_title": "Hướng dẫn", "close": "Đóng", "loading": "Đang tải…", "off": "Tắt", "loop_on": "Vòng lặp liền mạch", "buy_credits": "Mua tín dụng →", "li1": "Bản 30 giây = 45 tín dụng, 45 giây = 64, 60 giây = 85, 75 giây = 103, 90 giây = 120.", "li2": "Các lần tạo thất bại được hoàn tín dụng tự động.", "li3": "Tín dụng không hết hạn và dùng được cho mọi công cụ.", "li4": "Thanh toán do Creem, đơn vị ghi nhận thương vụ của chúng tôi, xử lý.", "li5": "Tín dụng chưa dùng có thể được hoàn trong 14 ngày.", "refund_link": "Chính sách hoàn tiền"}</script>
 <script>
 (function () {
   "use strict";
@@ -620,6 +633,30 @@
       if (r.code === 200) renderRecipes(r.data || []);
     });
   });
+  // 额度说明：弹窗展示，购买仍走 /pricing.html
+  (function () {
+    var cm = document.getElementById("cm");
+    if (!cm) return;
+    var packs = [[180, "$2.39"], [360, "$3.99"], [750, "$7.99"], [1500, "$15.99"], [4000, "$39.99"]];
+    function fill() {
+      document.getElementById("cmTitle").textContent = UI.how_credits.replace(" →", "");
+      document.getElementById("cmList").innerHTML = [UI.li1, UI.li2, UI.li3, UI.li4, UI.li5]
+        .map(function (t) { return "<li>" + t + "</li>"; }).join("");
+      document.getElementById("cmPacks").innerHTML = packs.map(function (p) {
+        return '<div style="display:flex;justify-content:space-between;padding:10px 14px;border:1px solid var(--line);border-radius:9px">' +
+               "<span>" + p[0] + " " + UI.credits + "</span><span style=\"color:var(--mut)\">" + p[1] + "</span></div>";
+      }).join("");
+      document.getElementById("cmBuy").textContent = UI.buy_credits;
+    }
+    function open() { fill(); cm.classList.add("open"); cm.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden"; }
+    function close() { cm.classList.remove("open"); cm.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; }
+    document.querySelectorAll('a[href="../pricing.html"]').forEach(function (a) {
+      a.addEventListener("click", function (e) { e.preventDefault(); open(); });
+    });
+    document.querySelectorAll("[data-cclose]").forEach(function (el) { el.addEventListener("click", close); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  })();
+
   // 指南：弹窗内切换，不跳页；文章页本身仍可直接访问（SEO）
   (function () {
     var gm = document.getElementById("gm");

@@ -250,6 +250,19 @@
     </div>
   </aside>
 
+<div class="gm" id="cm" aria-hidden="true">
+  <div class="bd" data-cclose></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-label="Comment marchent les crédits →" style="max-width:640px;grid-template-columns:1fr">
+    <button class="x" data-cclose aria-label="Fermer">✕</button>
+    <div class="body" style="padding:34px 36px">
+      <h1 id="cmTitle" style="font-size:20px;margin-bottom:16px"></h1>
+      <ul id="cmList" style="margin:0 0 18px"></ul>
+      <div id="cmPacks" style="display:grid;gap:8px;margin-bottom:20px"></div>
+      <a id="cmBuy" href="../pricing.html" class="cta" style="display:inline-block;margin:0;padding:11px 18px;border-radius:9px;background:var(--acc);color:#1a0e04;font-weight:600;text-decoration:none"></a>
+    </div>
+  </div>
+</div>
+
 <div class="gm" id="gm" aria-hidden="true">
   <div class="bd" data-close></div>
   <div class="panel" role="dialog" aria-modal="true" aria-label="Guides">
@@ -282,7 +295,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "Générateur de musique IA — de la photo au morceau, durée exacte", "description": "Transformez une photo ou une description en musique de fond de 30 à 90 secondes exactes. Les paroles nomment ce que contient votre image, avec voix en 10 langues et boucles sans coupure.", "h1": "Créer un morceau", "sub": "À partir d'une photo ou d'une description. Durée exacte, boucles sans coupure.", "drop": "Déposez ou choisissez une photo<br>les paroles nommeront ce qu'elle contient", "generate": "Générer un morceau", "how_credits": "Comment marchent les crédits →", "grp_photo": "Créé depuis une photo", "grp_recipe": "Depuis une recette · sans photo", "download": "Télécharger", "save_recipe": "Enregistrer comme recette", "remove_photo": "Retirer la photo", "photo_here": "Votre photo ici", "note": "Tout ce qui est à droite a été créé ici", "legal_aup": "Usage acceptable", "legal_refund": "Remboursements", "sign_in_first": "Connectez-vous pour générer", "generating": "Génération… environ 20 secondes.", "just_generated": "Vient d'être créé", "your_track": "Votre morceau", "from_recipe": "Depuis une recette", "from_photo": "Depuis une photo", "err_load": "Impossible de charger les options", "done_in": "Prêt en {n} s", "gen_cost": "Générer · {n}", "err_gen": "La génération a échoué", "my_track": "Mon morceau", "err_net": "Erreur réseau", "recipe_name": "Nom de la recette", "err_save": "Échec de l'enregistrement", "saved": "Enregistré : {name}", "up_to": "Jusqu'à {n}", "credits": "crédits", "guides_link": "Guides →", "guides_title": "Guides", "close": "Fermer", "loading": "Chargement…", "off": "Non", "loop_on": "Boucle sans coupure"}</script>
+<script type="application/json" id="ui">{"title": "Générateur de musique IA — de la photo au morceau, durée exacte", "description": "Transformez une photo ou une description en musique de fond de 30 à 90 secondes exactes. Les paroles nomment ce que contient votre image, avec voix en 10 langues et boucles sans coupure.", "h1": "Créer un morceau", "sub": "À partir d'une photo ou d'une description. Durée exacte, boucles sans coupure.", "drop": "Déposez ou choisissez une photo<br>les paroles nommeront ce qu'elle contient", "generate": "Générer un morceau", "how_credits": "Comment marchent les crédits →", "grp_photo": "Créé depuis une photo", "grp_recipe": "Depuis une recette · sans photo", "download": "Télécharger", "save_recipe": "Enregistrer comme recette", "remove_photo": "Retirer la photo", "photo_here": "Votre photo ici", "note": "Tout ce qui est à droite a été créé ici", "legal_aup": "Usage acceptable", "legal_refund": "Remboursements", "sign_in_first": "Connectez-vous pour générer", "generating": "Génération… environ 20 secondes.", "just_generated": "Vient d'être créé", "your_track": "Votre morceau", "from_recipe": "Depuis une recette", "from_photo": "Depuis une photo", "err_load": "Impossible de charger les options", "done_in": "Prêt en {n} s", "gen_cost": "Générer · {n}", "err_gen": "La génération a échoué", "my_track": "Mon morceau", "err_net": "Erreur réseau", "recipe_name": "Nom de la recette", "err_save": "Échec de l'enregistrement", "saved": "Enregistré : {name}", "up_to": "Jusqu'à {n}", "credits": "crédits", "guides_link": "Guides →", "guides_title": "Guides", "close": "Fermer", "loading": "Chargement…", "off": "Non", "loop_on": "Boucle sans coupure", "buy_credits": "Acheter des crédits →", "li1": "Morceau de 30 s = 45 crédits, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Les générations échouées sont remboursées automatiquement.", "li3": "Les crédits n'expirent pas et servent pour tous les outils.", "li4": "Les paiements sont traités par Creem, notre merchant of record.", "li5": "Les crédits non utilisés peuvent être remboursés sous 14 jours.", "refund_link": "Politique de remboursement"}</script>
 <script>
 (function () {
   "use strict";
@@ -620,6 +633,30 @@
       if (r.code === 200) renderRecipes(r.data || []);
     });
   });
+  // 额度说明：弹窗展示，购买仍走 /pricing.html
+  (function () {
+    var cm = document.getElementById("cm");
+    if (!cm) return;
+    var packs = [[180, "$2.39"], [360, "$3.99"], [750, "$7.99"], [1500, "$15.99"], [4000, "$39.99"]];
+    function fill() {
+      document.getElementById("cmTitle").textContent = UI.how_credits.replace(" →", "");
+      document.getElementById("cmList").innerHTML = [UI.li1, UI.li2, UI.li3, UI.li4, UI.li5]
+        .map(function (t) { return "<li>" + t + "</li>"; }).join("");
+      document.getElementById("cmPacks").innerHTML = packs.map(function (p) {
+        return '<div style="display:flex;justify-content:space-between;padding:10px 14px;border:1px solid var(--line);border-radius:9px">' +
+               "<span>" + p[0] + " " + UI.credits + "</span><span style=\"color:var(--mut)\">" + p[1] + "</span></div>";
+      }).join("");
+      document.getElementById("cmBuy").textContent = UI.buy_credits;
+    }
+    function open() { fill(); cm.classList.add("open"); cm.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden"; }
+    function close() { cm.classList.remove("open"); cm.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; }
+    document.querySelectorAll('a[href="../pricing.html"]').forEach(function (a) {
+      a.addEventListener("click", function (e) { e.preventDefault(); open(); });
+    });
+    document.querySelectorAll("[data-cclose]").forEach(function (el) { el.addEventListener("click", close); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  })();
+
   // 指南：弹窗内切换，不跳页；文章页本身仍可直接访问（SEO）
   (function () {
     var gm = document.getElementById("gm");

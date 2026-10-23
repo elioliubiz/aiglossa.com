@@ -250,6 +250,19 @@
     </div>
   </aside>
 
+<div class="gm" id="cm" aria-hidden="true">
+  <div class="bd" data-cclose></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-label="Как работают кредиты →" style="max-width:640px;grid-template-columns:1fr">
+    <button class="x" data-cclose aria-label="Закрыть">✕</button>
+    <div class="body" style="padding:34px 36px">
+      <h1 id="cmTitle" style="font-size:20px;margin-bottom:16px"></h1>
+      <ul id="cmList" style="margin:0 0 18px"></ul>
+      <div id="cmPacks" style="display:grid;gap:8px;margin-bottom:20px"></div>
+      <a id="cmBuy" href="../pricing.html" class="cta" style="display:inline-block;margin:0;padding:11px 18px;border-radius:9px;background:var(--acc);color:#1a0e04;font-weight:600;text-decoration:none"></a>
+    </div>
+  </div>
+</div>
+
 <div class="gm" id="gm" aria-hidden="true">
   <div class="bd" data-close></div>
   <div class="panel" role="dialog" aria-modal="true" aria-label="Руководства">
@@ -282,7 +295,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "Генератор музыки на ИИ — из фото в трек, точная длина", "description": "Из фото или описания — фоновая музыка ровно на 30–90 секунд. В тексте называются предметы с изображения; вокал на 10 языках и бесшовные лупы.", "h1": "Создать трек", "sub": "Из фото или описания. Точная длина, бесшовные лупы.", "drop": "Перетащите или выберите фото<br>в тексте песни будут названы предметы с него", "generate": "Создать трек", "how_credits": "Как работают кредиты →", "grp_photo": "Из фотографии", "grp_recipe": "Из рецепта · фото не нужно", "download": "Скачать", "save_recipe": "Сохранить как рецепт", "remove_photo": "Убрать фото", "photo_here": "Ваше фото здесь", "note": "Всё справа создано здесь", "legal_aup": "Допустимое использование", "legal_refund": "Возвраты", "sign_in_first": "Войдите, чтобы создать", "generating": "Создаём… около 20 секунд.", "just_generated": "Только что создано", "your_track": "Ваш трек", "from_recipe": "Из рецепта", "from_photo": "Из фотографии", "err_load": "Не удалось загрузить параметры", "done_in": "Готово за {n} с", "gen_cost": "Создать · {n}", "err_gen": "Не удалось создать", "my_track": "Мой трек", "err_net": "Ошибка сети", "recipe_name": "Название рецепта", "err_save": "Не удалось сохранить", "saved": "Сохранено: {name}", "up_to": "До {n}", "credits": "кредитов", "guides_link": "Руководства →", "guides_title": "Руководства", "close": "Закрыть", "loading": "Загрузка…", "off": "Выкл", "loop_on": "Бесшовный луп"}</script>
+<script type="application/json" id="ui">{"title": "Генератор музыки на ИИ — из фото в трек, точная длина", "description": "Из фото или описания — фоновая музыка ровно на 30–90 секунд. В тексте называются предметы с изображения; вокал на 10 языках и бесшовные лупы.", "h1": "Создать трек", "sub": "Из фото или описания. Точная длина, бесшовные лупы.", "drop": "Перетащите или выберите фото<br>в тексте песни будут названы предметы с него", "generate": "Создать трек", "how_credits": "Как работают кредиты →", "grp_photo": "Из фотографии", "grp_recipe": "Из рецепта · фото не нужно", "download": "Скачать", "save_recipe": "Сохранить как рецепт", "remove_photo": "Убрать фото", "photo_here": "Ваше фото здесь", "note": "Всё справа создано здесь", "legal_aup": "Допустимое использование", "legal_refund": "Возвраты", "sign_in_first": "Войдите, чтобы создать", "generating": "Создаём… около 20 секунд.", "just_generated": "Только что создано", "your_track": "Ваш трек", "from_recipe": "Из рецепта", "from_photo": "Из фотографии", "err_load": "Не удалось загрузить параметры", "done_in": "Готово за {n} с", "gen_cost": "Создать · {n}", "err_gen": "Не удалось создать", "my_track": "Мой трек", "err_net": "Ошибка сети", "recipe_name": "Название рецепта", "err_save": "Не удалось сохранить", "saved": "Сохранено: {name}", "up_to": "До {n}", "credits": "кредитов", "guides_link": "Руководства →", "guides_title": "Руководства", "close": "Закрыть", "loading": "Загрузка…", "off": "Выкл", "loop_on": "Бесшовный луп", "buy_credits": "Купить кредиты →", "li1": "Трек 30 с = 45 кредитов, 45 с = 64, 60 с = 85, 75 с = 103, 90 с = 120.", "li2": "Неудачные генерации возвращаются автоматически.", "li3": "Кредиты не сгорают и действуют во всех инструментах.", "li4": "Платежи обрабатывает Creem — наш merchant of record.", "li5": "Неиспользованные кредиты можно вернуть в течение 14 дней.", "refund_link": "Политика возврата"}</script>
 <script>
 (function () {
   "use strict";
@@ -620,6 +633,30 @@
       if (r.code === 200) renderRecipes(r.data || []);
     });
   });
+  // 额度说明：弹窗展示，购买仍走 /pricing.html
+  (function () {
+    var cm = document.getElementById("cm");
+    if (!cm) return;
+    var packs = [[180, "$2.39"], [360, "$3.99"], [750, "$7.99"], [1500, "$15.99"], [4000, "$39.99"]];
+    function fill() {
+      document.getElementById("cmTitle").textContent = UI.how_credits.replace(" →", "");
+      document.getElementById("cmList").innerHTML = [UI.li1, UI.li2, UI.li3, UI.li4, UI.li5]
+        .map(function (t) { return "<li>" + t + "</li>"; }).join("");
+      document.getElementById("cmPacks").innerHTML = packs.map(function (p) {
+        return '<div style="display:flex;justify-content:space-between;padding:10px 14px;border:1px solid var(--line);border-radius:9px">' +
+               "<span>" + p[0] + " " + UI.credits + "</span><span style=\"color:var(--mut)\">" + p[1] + "</span></div>";
+      }).join("");
+      document.getElementById("cmBuy").textContent = UI.buy_credits;
+    }
+    function open() { fill(); cm.classList.add("open"); cm.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden"; }
+    function close() { cm.classList.remove("open"); cm.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; }
+    document.querySelectorAll('a[href="../pricing.html"]').forEach(function (a) {
+      a.addEventListener("click", function (e) { e.preventDefault(); open(); });
+    });
+    document.querySelectorAll("[data-cclose]").forEach(function (el) { el.addEventListener("click", close); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  })();
+
   // 指南：弹窗内切换，不跳页；文章页本身仍可直接访问（SEO）
   (function () {
     var gm = document.getElementById("gm");
