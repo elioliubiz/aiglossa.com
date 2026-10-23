@@ -3,10 +3,10 @@
     "title": "Scholan — read foreign books with a head start",
     "description": "Add an EPUB or PDF in any language and Scholan first generates a preparatory analysis: the words worth noticing, with their meanings. Skim it once, then read without constant interruptions.",
     "h1": [
-      "Read foreign books",
-      "with a head start"
+      "A reading companion",
+      "you can trust"
     ],
-    "lede": "Scholan is not just a reader. It first generates a preparatory analysis — the words worth noticing plus their meanings. Skim it once, then read without constant interruptions.",
+    "lede": "Reading in another language shouldn't feel like work. Scholan marks the words worth noticing and puts the meaning right after each one — read once with them, switch them off, read again.",
     "cardA": {
       "label": "Français · page 12",
       "pages": "324 pages",
@@ -78,10 +78,10 @@
     "title": "Scholan — 读外文书，先看预备分析",
     "description": "导入一本 EPUB 或 PDF，Scholan 会先生成一份「预备分析」——这本书里值得留意的词与释义。先略看一遍，读的时候就不必频繁停下来查。原文不限语种。",
     "h1": [
-      "读外文书",
-      "先看预备分析"
+      "你值得信赖的",
+      "外文阅读伙伴"
     ],
-    "lede": "Scholan 不是普通阅读器。它会先为这本书生成一份「预备分析」——值得留意的词与释义；先略看一遍，读的时候就不必频繁停下来查。",
+    "lede": "读外文书，本可以更从容。Scholan 先把值得留意的词标出来，释义就放在词的后面——带着读一遍，关掉，再读一遍。",
     "cardA": {
       "label": "Français · 第 12 页",
       "pages": "324 页",
@@ -153,10 +153,10 @@
     "title": "Scholan — 讀外文書，先看預備分析",
     "description": "匯入一本 EPUB 或 PDF，Scholan 會先產生一份「預備分析」——這本書裡值得留意的詞與釋義。先略看一遍，讀的時候就不必頻繁停下來查。原文不限語種。",
     "h1": [
-      "讀外文書",
-      "先看預備分析"
+      "你值得信賴的",
+      "外文閱讀夥伴"
     ],
-    "lede": "Scholan 不是普通閱讀器。它會先為這本書生成一份「預備分析」——值得留意的詞與釋義；先略看一遍，讀的時候就不必頻繁停下來查。",
+    "lede": "讀外文書，本可以更從容。Scholan 先把值得留意的詞標出來，釋義就放在詞的後面——帶著讀一遍，關掉，再讀一遍。",
     "cardA": {
       "label": "Français · 第 12 頁",
       "pages": "324 頁",

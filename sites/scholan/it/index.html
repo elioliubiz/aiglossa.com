@@ -40,21 +40,32 @@
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/site.css">
 <style>
-  :root{--bg:#07070a;--ink:#f4f2ee;--mut:#8b8b96;--line:rgba(255,255,255,.10)}
+  :root{--bg:#07070a;--ink:#f4f2ee;--mut:#8b8b96;--line:rgba(255,255,255,.10);--acc:#ff7a1a}
   body{background:var(--bg);color:var(--ink);overflow-x:hidden}
   .aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
   .aurora i{position:absolute;border-radius:50%;filter:blur(110px);opacity:.5}
   .aurora i.a{width:70vmax;height:70vmax;inset-inline-start:-12vmax;top:-32vmax;
-              background:radial-gradient(circle,rgba(150,110,255,.36),transparent 65%)}
+              background:radial-gradient(circle,rgba(255,122,26,.20),transparent 65%)}
   .aurora i.b{width:56vmax;height:56vmax;inset-inline-end:-18vmax;top:6vmax;
-              background:radial-gradient(circle,rgba(255,130,90,.18),transparent 66%)}
+              background:radial-gradient(circle,rgba(255,122,26,.14),transparent 66%)}
   main,footer{position:relative;z-index:1}
 
-  .hero{min-height:auto;display:block;background:none;text-align:center;padding-block:clamp(60px,10vh,110px) 0}
-  .hero .kicker{color:var(--mut);letter-spacing:.3em;font-size:11px}
-  .hero h1{font-size:clamp(34px,5.4vw,64px);line-height:1.03;letter-spacing:-.04em;margin:18px auto 0;
-           max-width:16ch;font-weight:600;background:none;-webkit-text-fill-color:currentColor;color:var(--ink)}
-  .hero .lede{margin:22px auto 0;max-width:50ch;color:var(--mut);font-size:16px;line-height:1.65}
+  .hero{min-height:auto;display:block;background:none;text-align:start;
+        padding-block:clamp(56px,9vh,104px) 0}
+  .hero .wrap{max-width:1180px;margin-inline:auto;padding-inline:24px;
+              display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.92fr);gap:clamp(28px,4vw,64px);
+              align-items:center}
+  @media(max-width:900px){.hero .wrap{grid-template-columns:1fr}}
+  .hero-copy{max-width:540px}
+  .shot{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:11/10;
+        background:linear-gradient(150deg,#1a1a20,#0d0d10 55%,#151519)}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(1) contrast(1.05)}
+  .shot::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,8,10,.9),transparent 42%)}
+  @media(max-width:900px){.shot{aspect-ratio:16/9}}
+  .hero .kicker{color:var(--acc);letter-spacing:.3em;font-size:11px}
+  .hero h1{font-size:clamp(32px,4.6vw,56px);line-height:1.03;letter-spacing:-.04em;margin:18px auto 0;
+           max-width:14ch;font-weight:600;background:none;-webkit-text-fill-color:currentColor;color:var(--ink)}
+  .hero .lede{margin:20px 0 0;max-width:46ch;color:var(--mut);font-size:16px;line-height:1.65}
   .store{display:inline-flex;align-items:center;gap:11px;margin-block-start:30px;padding:12px 20px;
          border-radius:14px;background:#f5f5f7;color:#111;text-decoration:none;font-weight:600;font-size:14.5px;
          transition:transform .2s}
@@ -63,12 +74,12 @@
   .store small{display:block;font-size:9.5px;font-weight:400;opacity:.6;letter-spacing:.06em}
 
   /* 两台设备：平板 + 手机，手机压在平板右下角 */
-  .devices{position:relative;max-width:1000px;margin:clamp(42px,7vh,78px) auto 0;padding-inline:24px;
+  .devices{position:relative;max-width:960px;margin:clamp(40px,6vh,68px) auto 0;padding-inline:24px;
            display:flex;align-items:flex-end;justify-content:center}
   .frame{padding:9px;background:linear-gradient(155deg,#57575f,#1e1e24 45%,#34343c 72%,#17171c);
          box-shadow:0 60px 110px -50px rgba(0,0,0,.95), inset 0 1px 0 rgba(255,255,255,.2)}
   .frame img{display:block;width:100%;height:auto}
-  .frame.tab{width:min(760px,78%);border-radius:22px;transform:rotate(-1.2deg)}
+  .frame.tab{width:min(720px,78%);border-radius:22px;transform:rotate(-1.2deg)}
   .frame.tab img{border-radius:15px}
   .frame.ph{width:min(210px,26%);border-radius:26px;margin-inline-start:-58px;z-index:2;
             transform:rotate(1.5deg) translateY(6px)}
@@ -82,7 +93,7 @@
   @media(max-width:760px){.features{grid-template-columns:1fr;gap:28px}}
   .feature h3{margin:0 0 8px;font-size:16.5px;letter-spacing:-.01em}
   .feature p{margin:0;color:var(--mut);font-size:14px;line-height:1.7}
-  .feature b{display:block;color:rgba(185,140,255,.9);font-size:11px;letter-spacing:.2em;margin-bottom:10px}
+  .feature b{display:block;color:rgba(255,122,26,.95);font-size:11px;letter-spacing:.2em;margin-bottom:10px}
 
   .closing{max-width:620px;margin:clamp(52px,8vh,84px) auto 0;text-align:center;color:var(--mut);
            font-size:13.5px;line-height:1.8;padding-inline:24px}
@@ -99,6 +110,7 @@
 <main>
   <section class="hero">
     <div class="wrap">
+      <div class="hero-copy">
       <p class="kicker">SCHOLAN</p>
       <h1>Leggi libri in lingua<br>con un vantaggio</h1>
       <p class="lede">Scholan non è solo un lettore. Genera prima un&#x27;analisi preparatoria: le parole che vale la pena notare con i loro significati. Dagli una scorsa, poi leggi senza continue interruzioni.</p>
@@ -106,6 +118,8 @@
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.7c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.7.8-3.4.8-.7 0-1.8-.8-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 6.9 1.2 9.2.8 1.1 1.7 2.3 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.2.9-1.3 1.3-2.5 1.3-2.6-.1 0-2.6-1-2.6-3.7zM14.2 5.9c.6-.7 1-1.7.9-2.7-.9.04-1.9.6-2.5 1.3-.6.6-1 1.6-.9 2.6 1 .1 1.9-.5 2.5-1.2z"/></svg>
         <span><small>Download on the</small>App Store</span>
       </a>
+      </div>
+      <div class="shot"><img src="/assets/scholan/real/welcome.jpg" alt="" width="1600" height="1450"></div>
     </div>
   </section>
 

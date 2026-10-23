@@ -495,6 +495,7 @@ def main() -> int:
                         "steps_1_h": esc(locale["steps"][0]["h"]),
                         "steps_1_p": esc(locale["steps"][0]["p"]),
                         "app_href": "https://apps.apple.com/app/id6811801616",
+                        "shot_welcome": "/assets/scholan/real/welcome.jpg",
                         "shot_spread": "/assets/scholan/real/ipad-spread.jpg",
                         "shot_ipad_lib": "/assets/scholan/real/ipad-library.jpg",
                         "shot_phone": "/assets/scholan/real/phone-reading.jpg",
