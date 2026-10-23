@@ -604,6 +604,56 @@
       if (r.code === 200) renderRecipes(r.data || []);
     });
   });
+  // 指南：弹窗内切换，不跳页；文章页本身仍可直接访问（SEO）
+  (function () {
+    var gm = document.getElementById("gm");
+    if (!gm) return;
+    var list = document.getElementById("gmList"), body = document.getElementById("gmBody");
+    var base = "../guides/", cache = {};
+
+    function open() { gm.classList.add("open"); gm.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden"; }
+    function close() { gm.classList.remove("open"); gm.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; }
+    function load(url) {
+      if (cache[url]) return Promise.resolve(cache[url]);
+      return fetch(url).then(function (r) { return r.text(); }).then(function (html) {
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        var main = doc.querySelector("main");
+        cache[url] = main ? main.innerHTML : "";
+        return cache[url];
+      });
+    }
+    function show(url) {
+      body.innerHTML = '<p class="meta">' + UI.loading + "</p>";
+      load(url).then(function (html) {
+        body.innerHTML = html;
+        body.scrollTop = 0;
+        Array.prototype.forEach.call(list.querySelectorAll("a"), function (a) {
+          a.setAttribute("aria-current", a.getAttribute("href") === url ? "true" : "false");
+        });
+      }).catch(function () { location.href = url; });
+    }
+
+    document.querySelectorAll('a[href="../guides/"]').forEach(function (a) {
+      a.addEventListener("click", function (e) { e.preventDefault(); open(); });
+    });
+    document.querySelectorAll("[data-close]").forEach(function (el) { el.addEventListener("click", close); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+
+    load(base).then(function (html) {
+      var doc = new DOMParser().parseFromString(html, "text/html");
+      var links = Array.prototype.slice.call(doc.querySelectorAll(".guide-list a"));
+      if (!links.length) return;
+      links.forEach(function (a) {
+        var li = document.createElement("li"), link = document.createElement("a");
+        link.href = base + a.getAttribute("href");
+        link.textContent = a.textContent;
+        link.addEventListener("click", function (e) { e.preventDefault(); show(link.getAttribute("href")); });
+        li.appendChild(link); list.appendChild(li);
+      });
+      show(base + links[0].getAttribute("href"));
+    }).catch(function () {});
+  })();
+
 })();
 </script>
 </body>
