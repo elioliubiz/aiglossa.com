@@ -239,24 +239,46 @@ def switcher_select(depth: int, current: str, page_path: str, languages: dict, o
     )
 
 
+def _site_urls(site: str, spec: dict) -> list[str]:
+    """该站点所有可索引页面的路径（不含语言前缀），用于生成 sitemap。"""
+    guides = {}
+    gpath = CONTENT / "guides.json"
+    if gpath.exists():
+        guides = json.loads(gpath.read_text(encoding="utf-8"))
+
+    urls: list[str] = []
+    for page in spec["pages"]:
+        if page in ("brand", "marketing", "tools"):
+            urls.append(("", None))
+        elif page == "protocol":
+            for name in PROTOCOL_PAGES:
+                urls.append((f"protocol/{name}.html", None))
+        elif page == "guides":
+            langs_with_guides = [c for c in guides]
+            urls.append(("guides/", langs_with_guides))
+            slugs = sorted({slug for loc in guides.values() for slug in loc})
+            for slug in slugs:
+                urls.append((f"guides/{slug}.html", [c for c in langs_with_guides if slug in guides[c]]))
+        elif page == "music":
+            urls.append(("music/", None))
+        elif page == "account":
+            continue          # noindex，不进 sitemap
+        else:
+            urls.append((f"{page}.html", None))
+    return urls
+
+
 def _write_seo_files(site: str, spec: dict, site_langs: list[str],
                      languages: dict, default: str) -> None:
-    """生成 robots.txt 与 sitemap.xml（仅工具站）。
+    """为站点生成 robots.txt 与 sitemap.xml。
 
-    sitemap 每页带 hreflang 互链，和页面头部的 {{alternates}} 一致，
-    Google 从任意一处就能发现全部 16 个语言版本。
-    account.html 是 noindex 的应用页，不进 sitemap。
+    每条 URL 带 hreflang 互链（xhtml:link），与页面头部的 {{alternates}} 保持一致，
+    Google 从任意一处即可发现全部语言版本。
     """
     base = f'https://{spec["host"]}'.rstrip("/")
     targets = SITES_DIR / site
     xdef = default if default in site_langs else site_langs[0]
-
-    def url_for(lang: str, page: str) -> str:
-        if page == "tools":
-            return f"{base}/{lang}/"
-        if page == "music":          # 工具页是目录形式
-            return f"{base}/{lang}/music/"
-        return f"{base}/{lang}/{page}.html"
+    paths = _site_urls(site, spec)
 
     (targets / "robots.txt").write_text(
         "User-agent: *\nAllow: /\n\nSitemap: " + base + "/sitemap.xml\n",
@@ -266,35 +288,15 @@ def _write_seo_files(site: str, spec: dict, site_langs: list[str],
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
            '        xmlns:xhtml="http://www.w3.org/1999/xhtml">']
-    guides = {}
-    gpath = CONTENT / "guides.json"
-    if gpath.exists():
-        guides = json.loads(gpath.read_text(encoding="utf-8"))
-
-    for page in spec["pages"]:
-        if page == "account":       # noindex 页不进 sitemap
-            continue
-        if page == "guides":        # 指南：逐篇、逐语言
-            for code, loc_guides in guides.items():
-                if code not in site_langs:
-                    continue
-                out.append("  <url>")
-                out.append(f"    <loc>{base}/{code}/guides/</loc>")
-                out.append("  </url>")
-                for slug in loc_guides:
-                    out.append("  <url>")
-                    out.append(f"    <loc>{base}/{code}/guides/{slug}.html</loc>")
-                    for alt, alt_guides in guides.items():
-                        if alt in site_langs and slug in alt_guides:
-                            out.append(f'    <xhtml:link rel="alternate" hreflang="{languages[alt]["hreflang"]}" href="{base}/{alt}/guides/{slug}.html"/>')
-                    out.append("  </url>")
-            continue
-        for lang in site_langs:
+    for path, own_langs in paths:
+        langs = [c for c in (own_langs or site_langs) if c in site_langs]
+        for lang in langs:
+            loc = f"{base}/{lang}/{path}"
             out.append("  <url>")
-            out.append(f"    <loc>{url_for(lang, page)}</loc>")
-            for alt in site_langs:
-                out.append(f'    <xhtml:link rel="alternate" hreflang="{languages[alt]["hreflang"]}" href="{url_for(alt, page)}"/>')
-            out.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{url_for(xdef, page)}"/>')
+            out.append(f"    <loc>{loc}</loc>")
+            for alt in langs:
+                out.append(f'    <xhtml:link rel="alternate" hreflang="{languages[alt]["hreflang"]}" href="{base}/{alt}/{path}"/>')
+            out.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{base}/{xdef}/{path}"/>')
             out.append("  </url>")
     out.append("</urlset>")
     (targets / "sitemap.xml").write_text("\n".join(out) + "\n", encoding="utf-8")
@@ -671,7 +673,7 @@ def main() -> int:
             for lang in site_langs:
                 emit(site, lang, depth, page_path, template_name, values_builder, site_langs)
 
-        if site == "tools" and not args.check:
+        if not args.check:
             _write_seo_files(site, spec, site_langs, languages, default)
         if not args.check and ASSETS.is_dir():
             target_assets = SITES_DIR / site / "assets"
