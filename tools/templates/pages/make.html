@@ -316,6 +316,7 @@
 
   var schema = null, values = {}, imagePayload = null;
   var audio = new Audio(), current = null;
+  audio.preload = "none";   // 预览音频只在点击时下载，首屏不拉 13MB
 
   audio.addEventListener("timeupdate", function () {
     var pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
