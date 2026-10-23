@@ -64,6 +64,29 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 
 测试前端就走本地 `http://localhost:8000` 或 Vercel 的 preview 地址。
 
+## 新增一个工具（扩展点）
+
+工具页是**目录**，不是 `make.html` 这种名字：
+
+```
+/{lang}/music/      音乐（现有）
+/{lang}/image/      图片（未来）
+/{lang}/text/       文本（未来）
+/{lang}/pricing.html   全局页仍在语言根
+```
+
+新增工具要同时改五处（缺一处就 404 或构建失败）：
+
+| 位置 | 改动 |
+|---|---|
+| `tools/templates/pages/<tool>.html` | 新模板 |
+| `tools/content/ui.json` | 每个语言加 `<tool>` 键 |
+| `tools/build.py` 的 `PAGES` | `"<tool>": ("pages/<tool>.html", "ui", "<tool>/index.html")` |
+| `tools/verify.py` 的 `PAGES` | `return [("<tool>/index.html", "<tool>/")]` |
+| `vercel.json` | rewrite `/:lang/<tool>/` → `/sites/tools/:lang/<tool>/index.html`；sitemap 的 `url_for` 加分支 |
+
+模板在深度 2，资源按 `{{prefix}}` 自动变成 `../../`；站内跳转回语言根用 `../pricing.html`。
+
 ## 工具站（tools.aiglossa.com）现状
 
 | 页面 | 多语言 |
