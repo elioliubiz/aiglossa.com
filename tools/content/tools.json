@@ -29,7 +29,8 @@
     ],
     "note": "الأرصدة مشتركة بين كل الأدوات: رصيد واحد، بلا انتهاء وبلا اشتراك.",
     "cta_label": "افتح AI Music",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "أدلة"
   },
   "de": {
     "title": "Tools — aiglossa",
@@ -61,7 +62,8 @@
     ],
     "note": "Credits gelten für alle Tools: ein Guthaben, kein Ablaufdatum, kein Abo.",
     "cta_label": "AI Music öffnen",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "Anleitungen"
   },
   "en": {
     "title": "Tools — aiglossa",
@@ -93,7 +95,8 @@
     ],
     "note": "Credits are shared across tools — one balance, never expires, no subscription.",
     "cta_label": "Open AI Music",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "Guides"
   },
   "es": {
     "title": "Herramientas — aiglossa",
@@ -125,7 +128,8 @@
     ],
     "note": "Los créditos son comunes a todas las herramientas: un saldo, sin caducidad y sin suscripción.",
     "cta_label": "Abrir AI Music",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "Guías"
   },
   "fr": {
     "title": "Outils — aiglossa",
@@ -157,7 +161,8 @@
     ],
     "note": "Les crédits sont communs à tous les outils : un seul solde, sans expiration, sans abonnement.",
     "cta_label": "Ouvrir AI Music",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "Guides"
   },
   "id": {
     "title": "Alat — aiglossa",
@@ -189,7 +194,8 @@
     ],
     "note": "Kredit dipakai bersama di semua alat: satu saldo, tanpa kedaluwarsa, tanpa langganan.",
     "cta_label": "Buka AI Music",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "Panduan"
   },
   "it": {
     "title": "Strumenti — aiglossa",
@@ -221,7 +227,8 @@
     ],
     "note": "I crediti sono condivisi tra tutti gli strumenti: un saldo, senza scadenza e senza abbonamento.",
     "cta_label": "Apri AI Music",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "Guide"
   },
   "ja": {
     "title": "ツール — aiglossa",
@@ -253,7 +260,8 @@
     ],
     "note": "クレジットは全ツール共通。一つの残高で、期限なし、サブスクなし。",
     "cta_label": "AI Music を開く",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "ガイド"
   },
   "ko": {
     "title": "도구 — aiglossa",
@@ -285,7 +293,8 @@
     ],
     "note": "크레딧은 모든 도구에서 공용입니다. 하나의 잔액, 만료 없음, 구독 없음.",
     "cta_label": "AI Music 열기",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "가이드"
   },
   "pt": {
     "title": "Ferramentas — aiglossa",
@@ -317,7 +326,8 @@
     ],
     "note": "Os créditos são compartilhados entre todas as ferramentas: um saldo, sem expiração, sem assinatura.",
     "cta_label": "Abrir AI Music",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "Guias"
   },
   "ru": {
     "title": "Инструменты — aiglossa",
@@ -349,7 +359,8 @@
     ],
     "note": "Кредиты общие для всех инструментов: один баланс, без срока действия и без подписки.",
     "cta_label": "Открыть AI Music",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "Руководства"
   },
   "th": {
     "title": "เครื่องมือ — aiglossa",
@@ -381,7 +392,8 @@
     ],
     "note": "เครดิตใช้ร่วมกันทุกเครื่องมือ: ยอดเดียว ไม่หมดอายุ ไม่มีสมาชิกรายเดือน",
     "cta_label": "เปิด AI Music",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "คู่มือ"
   },
   "tr": {
     "title": "Araçlar — aiglossa",
@@ -413,7 +425,8 @@
     ],
     "note": "Krediler tüm araçlarda ortaktır: tek bakiye, süresiz, abonelik yok.",
     "cta_label": "AI Music'i aç",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "Rehberler"
   },
   "vi": {
     "title": "Công cụ — aiglossa",
@@ -445,7 +458,8 @@
     ],
     "note": "Tín dụng dùng chung cho mọi công cụ: một số dư, không hết hạn, không đăng ký định kỳ.",
     "cta_label": "Mở AI Music",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "Hướng dẫn"
   },
   "zh-Hans": {
     "title": "工具 — aiglossa",
@@ -477,7 +491,8 @@
     ],
     "note": "额度在所有工具间通用：一份余额、永不过期、没有订阅。",
     "cta_label": "打开 AI Music",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "指南"
   },
   "zh-Hant": {
     "title": "工具 — aiglossa",
@@ -509,6 +524,7 @@
     ],
     "note": "額度在所有工具間通用：一份餘額、永不過期、沒有訂閱。",
     "cta_label": "開啟 AI Music",
-    "cta_href": "/music/"
+    "cta_href": "/music/",
+    "guides_title": "指南"
   }
 }

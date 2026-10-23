@@ -589,12 +589,13 @@ def main() -> int:
                         "note": esc(locale["note"]),
                         "cta_label": esc(locale["cta_label"]),
                         "cta_href": locale["cta_href"].lstrip("/"),   # 同目录：/{lang}/music/
+                        # 首页列出当前语言已有的指南（没有译文的语言这一块为空）
+                        "guides_title": esc(locale.get("guides_title", "Guides")),
                         "guides_list": "".join(
-                            f'      <li><a href="guides/{slug}.html">{esc(g["h1"] if "h1" in g else g["title"])}</a></li>\n'
-                            for slug, g in (
-                                json.loads((CONTENT / "guides.json").read_text(encoding="utf-8")).get("en", {}).items()
-                                if lang == "en" else []
-                            )
+                            f'      <li><a href="guides/{slug}.html">{esc(g.get("h1") or g["title"])}</a></li>\n'
+                            for slug, g in json.loads(
+                                (CONTENT / "guides.json").read_text(encoding="utf-8")
+                            ).get(lang, {}).items()
                         ),
                         "jsonld": json.dumps({
                             "@context": "https://schema.org",
