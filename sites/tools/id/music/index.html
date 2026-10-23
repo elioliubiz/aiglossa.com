@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Buat lagu — aiglossa tools</title>
-<meta name="description" content="Ubah foto atau deskripsi menjadi lagu dengan durasi tepat. Liriknya menyebut apa yang ada di fotomu." />
+<title>Pembuat musik AI — dari foto jadi lagu, durasi presisi</title>
+<meta name="description" content="Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus." />
 <link rel="canonical" href="https://tools.aiglossa.com/id/music/" />
 <link rel="alternate" hreflang="ar" href="https://tools.aiglossa.com/ar/music/">
 <link rel="alternate" hreflang="de" href="https://tools.aiglossa.com/de/music/">
@@ -25,11 +25,17 @@
 <link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/music/">
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="aiglossa" />
-<meta property="og:title" content="Buat lagu — aiglossa tools" />
-<meta property="og:description" content="Ubah foto atau deskripsi menjadi lagu dengan durasi tepat. Liriknya menyebut apa yang ada di fotomu." />
+<meta property="og:title" content="Pembuat musik AI — dari foto jadi lagu, durasi presisi" />
+<meta property="og:description" content="Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus." />
 <meta property="og:url" content="https://tools.aiglossa.com/id/music/" />
 <meta property="og:locale" content="id_ID" />
+<meta property="og:image" content="https://tools.aiglossa.com/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="#0e0f11">
+<!-- 结构化数据：告诉 Google 这是一个网页应用，而不是普通文章 -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Pembuat musik AI — dari foto jadi lagu, durasi presisi", "description": "Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Web", "url": "https://tools.aiglossa.com/id/music/", "inLanguage": "id"}</script>
 <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/site.css" />
 <link rel="stylesheet" href="../../assets/theme.css" />
@@ -224,7 +230,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "Buat lagu — aiglossa tools", "description": "Ubah foto atau deskripsi menjadi lagu dengan durasi tepat. Liriknya menyebut apa yang ada di fotomu.", "h1": "Buat lagu", "sub": "Dari foto atau deskripsi. Durasi presisi, loop mulus.", "drop": "Seret atau pilih foto<br>lirik akan menyebut isinya", "generate": "Buat lagu", "how_credits": "Cara kerja kredit →", "grp_photo": "Dibuat dari foto", "grp_recipe": "Dari resep · tanpa foto", "download": "Unduh", "save_recipe": "Simpan sebagai resep", "remove_photo": "Hapus foto", "photo_here": "Fotomu di sini", "note": "Semua di sebelah kanan dibuat di sini", "legal_aup": "Penggunaan yang wajar", "legal_refund": "Pengembalian dana", "sign_in_first": "Masuk untuk membuat", "generating": "Membuat… sekitar 20 detik.", "just_generated": "Baru dibuat", "your_track": "Lagu kamu", "from_recipe": "Dari resep", "from_photo": "Dibuat dari foto", "err_load": "Gagal memuat opsi", "done_in": "Selesai dalam {n} dtk", "gen_cost": "Buat · {n}", "err_gen": "Pembuatan gagal", "my_track": "Trek saya", "err_net": "Kesalahan jaringan", "recipe_name": "Nama resep", "err_save": "Gagal menyimpan", "saved": "Tersimpan: {name}", "up_to": "Maksimal {n}", "credits": "kredit"}</script>
+<script type="application/json" id="ui">{"title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi", "description": "Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus.", "h1": "Buat lagu", "sub": "Dari foto atau deskripsi. Durasi presisi, loop mulus.", "drop": "Seret atau pilih foto<br>lirik akan menyebut isinya", "generate": "Buat lagu", "how_credits": "Cara kerja kredit →", "grp_photo": "Dibuat dari foto", "grp_recipe": "Dari resep · tanpa foto", "download": "Unduh", "save_recipe": "Simpan sebagai resep", "remove_photo": "Hapus foto", "photo_here": "Fotomu di sini", "note": "Semua di sebelah kanan dibuat di sini", "legal_aup": "Penggunaan yang wajar", "legal_refund": "Pengembalian dana", "sign_in_first": "Masuk untuk membuat", "generating": "Membuat… sekitar 20 detik.", "just_generated": "Baru dibuat", "your_track": "Lagu kamu", "from_recipe": "Dari resep", "from_photo": "Dibuat dari foto", "err_load": "Gagal memuat opsi", "done_in": "Selesai dalam {n} dtk", "gen_cost": "Buat · {n}", "err_gen": "Pembuatan gagal", "my_track": "Trek saya", "err_net": "Kesalahan jaringan", "recipe_name": "Nama resep", "err_save": "Gagal menyimpan", "saved": "Tersimpan: {name}", "up_to": "Maksimal {n}", "credits": "kredit"}</script>
 <script>
 (function () {
   "use strict";
@@ -311,7 +317,7 @@
     var c = current;
     var isPlaying = c.audio && audio.src.indexOf(c.audio) >= 0 && !audio.paused;
     big.innerHTML =
-      (c.img ? '<img src="' + c.img + '" alt="">' : '') +
+      (c.img ? '<img src="' + (c.img || "") + '" alt="' + (c.title || UI.your_track) + '">' : '') +
       '<div class="shade"></div>' +
       '<div class="body">' +
         '<p class="k">' + (c.kind === "result" ? UI.just_generated : c.kind === "recipe" ? UI.from_recipe : UI.from_photo) + (c.meta ? " · " + c.meta : "") + '</p>' +

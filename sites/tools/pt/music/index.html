@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Criar uma faixa — aiglossa tools</title>
-<meta name="description" content="Transforme uma foto ou descrição em uma faixa com a duração exata. A letra cita o que está na imagem." />
+<title>Gerador de música com IA — de foto a música, duração exata</title>
+<meta name="description" content="Transforme uma foto ou descrição em música de fundo com 30 a 90 segundos exatos. A letra cita o que está na imagem, com vocais em 10 idiomas e loops sem corte." />
 <link rel="canonical" href="https://tools.aiglossa.com/pt/music/" />
 <link rel="alternate" hreflang="ar" href="https://tools.aiglossa.com/ar/music/">
 <link rel="alternate" hreflang="de" href="https://tools.aiglossa.com/de/music/">
@@ -25,11 +25,17 @@
 <link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/music/">
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="aiglossa" />
-<meta property="og:title" content="Criar uma faixa — aiglossa tools" />
-<meta property="og:description" content="Transforme uma foto ou descrição em uma faixa com a duração exata. A letra cita o que está na imagem." />
+<meta property="og:title" content="Gerador de música com IA — de foto a música, duração exata" />
+<meta property="og:description" content="Transforme uma foto ou descrição em música de fundo com 30 a 90 segundos exatos. A letra cita o que está na imagem, com vocais em 10 idiomas e loops sem corte." />
 <meta property="og:url" content="https://tools.aiglossa.com/pt/music/" />
 <meta property="og:locale" content="pt_PT" />
+<meta property="og:image" content="https://tools.aiglossa.com/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="#0e0f11">
+<!-- 结构化数据：告诉 Google 这是一个网页应用，而不是普通文章 -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Gerador de música com IA — de foto a música, duração exata", "description": "Transforme uma foto ou descrição em música de fundo com 30 a 90 segundos exatos. A letra cita o que está na imagem, com vocais em 10 idiomas e loops sem corte.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Web", "url": "https://tools.aiglossa.com/pt/music/", "inLanguage": "pt"}</script>
 <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/site.css" />
 <link rel="stylesheet" href="../../assets/theme.css" />
@@ -224,7 +230,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "Criar uma faixa — aiglossa tools", "description": "Transforme uma foto ou descrição em uma faixa com a duração exata. A letra cita o que está na imagem.", "h1": "Criar uma faixa", "sub": "A partir de uma foto ou descrição. Duração exata, loops sem corte.", "drop": "Arraste ou escolha uma foto<br>a letra vai citar o que há nela", "generate": "Gerar faixa", "how_credits": "Como funcionam os créditos →", "grp_photo": "Feito a partir de uma foto", "grp_recipe": "De uma receita · sem foto", "download": "Baixar", "save_recipe": "Salvar como receita", "remove_photo": "Remover foto", "photo_here": "Sua foto aqui", "note": "Tudo à direita foi feito aqui", "legal_aup": "Uso aceitável", "legal_refund": "Reembolsos", "sign_in_first": "Entre para gerar", "generating": "Gerando… cerca de 20 segundos.", "just_generated": "Gerado agora", "your_track": "Sua faixa", "from_recipe": "De uma receita", "from_photo": "A partir de uma foto", "err_load": "Não foi possível carregar as opções", "done_in": "Pronto em {n} s", "gen_cost": "Gerar · {n}", "err_gen": "A geração falhou", "my_track": "Minha faixa", "err_net": "Erro de rede", "recipe_name": "Nome da receita", "err_save": "Falha ao salvar", "saved": "Salvo: {name}", "up_to": "Até {n}", "credits": "créditos"}</script>
+<script type="application/json" id="ui">{"title": "Gerador de música com IA — de foto a música, duração exata", "description": "Transforme uma foto ou descrição em música de fundo com 30 a 90 segundos exatos. A letra cita o que está na imagem, com vocais em 10 idiomas e loops sem corte.", "h1": "Criar uma faixa", "sub": "A partir de uma foto ou descrição. Duração exata, loops sem corte.", "drop": "Arraste ou escolha uma foto<br>a letra vai citar o que há nela", "generate": "Gerar faixa", "how_credits": "Como funcionam os créditos →", "grp_photo": "Feito a partir de uma foto", "grp_recipe": "De uma receita · sem foto", "download": "Baixar", "save_recipe": "Salvar como receita", "remove_photo": "Remover foto", "photo_here": "Sua foto aqui", "note": "Tudo à direita foi feito aqui", "legal_aup": "Uso aceitável", "legal_refund": "Reembolsos", "sign_in_first": "Entre para gerar", "generating": "Gerando… cerca de 20 segundos.", "just_generated": "Gerado agora", "your_track": "Sua faixa", "from_recipe": "De uma receita", "from_photo": "A partir de uma foto", "err_load": "Não foi possível carregar as opções", "done_in": "Pronto em {n} s", "gen_cost": "Gerar · {n}", "err_gen": "A geração falhou", "my_track": "Minha faixa", "err_net": "Erro de rede", "recipe_name": "Nome da receita", "err_save": "Falha ao salvar", "saved": "Salvo: {name}", "up_to": "Até {n}", "credits": "créditos"}</script>
 <script>
 (function () {
   "use strict";
@@ -311,7 +317,7 @@
     var c = current;
     var isPlaying = c.audio && audio.src.indexOf(c.audio) >= 0 && !audio.paused;
     big.innerHTML =
-      (c.img ? '<img src="' + c.img + '" alt="">' : '') +
+      (c.img ? '<img src="' + (c.img || "") + '" alt="' + (c.title || UI.your_track) + '">' : '') +
       '<div class="shade"></div>' +
       '<div class="body">' +
         '<p class="k">' + (c.kind === "result" ? UI.just_generated : c.kind === "recipe" ? UI.from_recipe : UI.from_photo) + (c.meta ? " · " + c.meta : "") + '</p>' +

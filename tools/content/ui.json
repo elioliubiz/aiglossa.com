@@ -83,8 +83,8 @@
       "your_track": "Your track",
       "from_recipe": "From a recipe",
       "from_photo": "Made from a photo",
-      "title": "Make a track — aiglossa tools",
-      "description": "Turn a photo or a prompt into a track at exactly the length you need. Lyrics name what's in your picture.",
+      "title": "AI Music Generator — Photo to Song, Exact Length",
+      "description": "Turn a photo or a prompt into background music at exactly 30–90 seconds. Lyrics name what's in your picture, with vocals in 10 languages and seamless loops.",
       "err_load": "Could not load options",
       "done_in": "Done in {n}s",
       "gen_cost": "Generate · {n}",
@@ -150,8 +150,8 @@
       "proof_k": "ここで制作 · 英語 · 0:30"
     },
     "make": {
-      "title": "曲を作る — aiglossa tools",
-      "description": "写真やプロンプトから、必要な長さちょうどの曲を作ります。歌詞には写真の中のものが歌われます。",
+      "title": "AI音楽生成 — 写真から曲へ、長さはぴったり",
+      "description": "写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。",
       "h1": "曲を作る",
       "sub": "写真またはプロンプトから。長さは正確に、ループはシームレスに。",
       "drop": "写真をドロップまたは選択<br>歌詞が写真の中身を歌います",
@@ -249,8 +249,8 @@
       "proof_k": "여기서 제작 · 영어 · 0:30"
     },
     "make": {
-      "title": "곡 만들기 — aiglossa tools",
-      "description": "사진이나 프롬프트로 필요한 길이에 딱 맞는 곡을 만듭니다. 가사에는 사진 속 요소가 담깁니다.",
+      "title": "AI 음악 생성 — 사진에서 곡으로, 정확한 길이",
+      "description": "사진이나 프롬프트로 30~90초에 딱 맞는 배경 음악을 만듭니다. 가사는 사진 속 내용을 노래하고, 10개 언어 보컬과 이음새 없는 루프를 지원합니다.",
       "h1": "곡 만들기",
       "sub": "사진 또는 프롬프트에서. 길이는 정확하게, 루프는 매끄럽게.",
       "drop": "사진을 놓거나 선택하세요<br>가사가 사진 속 내용을 노래합니다",
@@ -348,8 +348,8 @@
       "proof_k": "此处生成 · 英文 · 0:30"
     },
     "make": {
-      "title": "做一首曲子 — aiglossa tools",
-      "description": "用照片或描述生成精确长度的曲子，歌词会唱出照片里的东西。",
+      "title": "AI 音乐生成 — 照片变歌曲，长度精确",
+      "description": "用照片或描述生成 30–90 秒精确长度的背景音乐。歌词唱出照片里的内容，支持 10 种语言人声与无缝循环。",
       "h1": "做一首曲子",
       "sub": "从照片或描述开始。长度精确、循环无缝。",
       "drop": "拖入或选择照片<br>歌词会唱出照片里的内容",
@@ -447,8 +447,8 @@
       "proof_k": "此處生成 · 英文 · 0:30"
     },
     "make": {
-      "title": "做一首曲子 — aiglossa tools",
-      "description": "用照片或描述生成精確長度的曲子，歌詞會唱出照片裡的東西。",
+      "title": "AI 音樂生成 — 照片變歌曲，長度精確",
+      "description": "用照片或描述生成 30–90 秒精確長度的背景音樂。歌詞唱出照片裡的內容，支援 10 種語言人聲與無縫循環。",
       "h1": "做一首曲子",
       "sub": "從照片或描述開始。長度精確、循環無縫。",
       "drop": "拖入或選擇照片<br>歌詞會唱出照片裡的內容",
@@ -546,8 +546,8 @@
       "proof_k": "Hecho aquí · inglés · 0:30"
     },
     "make": {
-      "title": "Crear una pista — aiglossa tools",
-      "description": "Convierte una foto o una descripción en una pista de la duración exacta. La letra nombra lo que hay en tu imagen.",
+      "title": "Generador de música con IA — de foto a canción, duración exacta",
+      "description": "Convierte una foto o una descripción en música de fondo de 30 a 90 segundos exactos. La letra nombra lo que hay en tu imagen, con voces en 10 idiomas y bucles sin cortes.",
       "h1": "Crear una pista",
       "sub": "Desde una foto o una descripción. Duración exacta, bucles sin cortes.",
       "drop": "Arrastra o elige una foto<br>la letra nombrará lo que hay en ella",
@@ -645,8 +645,8 @@
       "proof_k": "Créé ici · anglais · 0:30"
     },
     "make": {
-      "title": "Créer un morceau — aiglossa tools",
-      "description": "Transformez une photo ou une description en morceau à la durée exacte. Les paroles nomment ce que contient votre image.",
+      "title": "Générateur de musique IA — de la photo au morceau, durée exacte",
+      "description": "Transformez une photo ou une description en musique de fond de 30 à 90 secondes exactes. Les paroles nomment ce que contient votre image, avec voix en 10 langues et boucles sans coupure.",
       "h1": "Créer un morceau",
       "sub": "À partir d'une photo ou d'une description. Durée exacte, boucles sans coupure.",
       "drop": "Déposez ou choisissez une photo<br>les paroles nommeront ce qu'elle contient",
@@ -744,8 +744,8 @@
       "proof_k": "Hier erzeugt · Englisch · 0:30"
     },
     "make": {
-      "title": "Track erstellen — aiglossa tools",
-      "description": "Aus einem Foto oder einer Beschreibung wird ein Track in exakt der Länge, die du brauchst. Der Gesang benennt, was auf dem Bild ist.",
+      "title": "KI-Musikgenerator — vom Foto zum Song, exakte Länge",
+      "description": "Aus einem Foto oder einer Beschreibung wird Hintergrundmusik mit exakt 30–90 Sekunden. Der Gesang benennt, was auf dem Bild ist – mit Vocals in 10 Sprachen und nahtlosen Loops.",
       "h1": "Track erstellen",
       "sub": "Aus einem Foto oder einer Beschreibung. Exakte Länge, nahtlose Loops.",
       "drop": "Foto ablegen oder auswählen<br>der Gesang benennt, was darauf ist",
@@ -843,8 +843,8 @@
       "proof_k": "Feito aqui · inglês · 0:30"
     },
     "make": {
-      "title": "Criar uma faixa — aiglossa tools",
-      "description": "Transforme uma foto ou descrição em uma faixa com a duração exata. A letra cita o que está na imagem.",
+      "title": "Gerador de música com IA — de foto a música, duração exata",
+      "description": "Transforme uma foto ou descrição em música de fundo com 30 a 90 segundos exatos. A letra cita o que está na imagem, com vocais em 10 idiomas e loops sem corte.",
       "h1": "Criar uma faixa",
       "sub": "A partir de uma foto ou descrição. Duração exata, loops sem corte.",
       "drop": "Arraste ou escolha uma foto<br>a letra vai citar o que há nela",
@@ -942,8 +942,8 @@
       "proof_k": "Creato qui · inglese · 0:30"
     },
     "make": {
-      "title": "Crea un brano — aiglossa tools",
-      "description": "Trasforma una foto o una descrizione in un brano della durata esatta. Il testo nomina ciò che c'è nell'immagine.",
+      "title": "Generatore di musica IA — da foto a brano, durata esatta",
+      "description": "Trasforma una foto o una descrizione in musica di sottofondo da 30 a 90 secondi esatti. Il testo nomina ciò che c'è nell'immagine, con voci in 10 lingue e loop senza stacchi.",
       "h1": "Crea un brano",
       "sub": "Da una foto o una descrizione. Durata esatta, loop senza stacchi.",
       "drop": "Trascina o scegli una foto<br>il testo nominerà ciò che contiene",
@@ -1041,8 +1041,8 @@
       "proof_k": "Создано здесь · английский · 0:30"
     },
     "make": {
-      "title": "Создать трек — aiglossa tools",
-      "description": "Из фото или описания получится трек точно нужной длины. В тексте песни называются предметы с изображения.",
+      "title": "Генератор музыки на ИИ — из фото в трек, точная длина",
+      "description": "Из фото или описания — фоновая музыка ровно на 30–90 секунд. В тексте называются предметы с изображения; вокал на 10 языках и бесшовные лупы.",
       "h1": "Создать трек",
       "sub": "Из фото или описания. Точная длина, бесшовные лупы.",
       "drop": "Перетащите или выберите фото<br>в тексте песни будут названы предметы с него",
@@ -1140,8 +1140,8 @@
       "proof_k": "أُنشئ هنا · الإنجليزية · 0:30"
     },
     "make": {
-      "title": "أنشئ مقطعًا — aiglossa tools",
-      "description": "حوّل صورة أو وصفًا إلى مقطع بالمدة الدقيقة. الكلمات تذكر ما في صورتك.",
+      "title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق",
+      "description": "حوّل صورة أو وصفًا إلى موسيقى خلفية بطول 30–90 ثانية بالضبط. الكلمات تذكر ما في صورتك، مع غناء بعشر لغات وحلقات بلا فواصل.",
       "h1": "أنشئ مقطعًا",
       "sub": "من صورة أو وصف. مدة دقيقة وحلقات بلا فواصل.",
       "drop": "أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها",
@@ -1239,8 +1239,8 @@
       "proof_k": "สร้างที่นี่ · อังกฤษ · 0:30"
     },
     "make": {
-      "title": "สร้างเพลง — aiglossa tools",
-      "description": "เปลี่ยนรูปหรือคำอธิบายเป็นเพลงที่มีความยาวตรงตามที่ต้องการ เนื้อเพลงจะเอ่ยถึงสิ่งที่อยู่ในภาพ",
+      "title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ",
+      "description": "เปลี่ยนรูปหรือคำอธิบายเป็นเพลงประกอบความยาว 30–90 วินาทีพอดี เนื้อเพลงเอ่ยถึงสิ่งที่อยู่ในภาพ พร้อมเสียงร้อง 10 ภาษาและลูปไร้รอยต่อ",
       "h1": "สร้างเพลง",
       "sub": "จากรูปหรือคำอธิบาย ความยาวแม่นยำ ลูปไร้รอยต่อ",
       "drop": "ลากรูปมาวางหรือเลือกไฟล์<br>เนื้อเพลงจะเอ่ยถึงสิ่งที่อยู่ในภาพ",
@@ -1338,8 +1338,8 @@
       "proof_k": "Tạo tại đây · tiếng Anh · 0:30"
     },
     "make": {
-      "title": "Tạo một bản nhạc — aiglossa tools",
-      "description": "Biến ảnh hoặc mô tả thành bản nhạc đúng độ dài. Lời bài hát gọi tên những gì có trong ảnh.",
+      "title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác",
+      "description": "Biến ảnh hoặc mô tả thành nhạc nền dài đúng 30–90 giây. Lời bài hát gọi tên những gì trong ảnh, với giọng hát 10 ngôn ngữ và vòng lặp liền mạch.",
       "h1": "Tạo một bản nhạc",
       "sub": "Từ ảnh hoặc mô tả. Độ dài chính xác, vòng lặp liền mạch.",
       "drop": "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh",
@@ -1437,8 +1437,8 @@
       "proof_k": "Dibuat di sini · Inggris · 0:30"
     },
     "make": {
-      "title": "Buat lagu — aiglossa tools",
-      "description": "Ubah foto atau deskripsi menjadi lagu dengan durasi tepat. Liriknya menyebut apa yang ada di fotomu.",
+      "title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi",
+      "description": "Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus.",
       "h1": "Buat lagu",
       "sub": "Dari foto atau deskripsi. Durasi presisi, loop mulus.",
       "drop": "Seret atau pilih foto<br>lirik akan menyebut isinya",
@@ -1536,8 +1536,8 @@
       "proof_k": "Burada üretildi · İngilizce · 0:30"
     },
     "make": {
-      "title": "Parça oluştur — aiglossa tools",
-      "description": "Bir fotoğrafı veya açıklamayı tam istediğiniz uzunlukta parçaya dönüştürün. Şarkı sözleri fotoğrafınızdakileri adlandırır.",
+      "title": "AI Müzik Üretici — fotoğraftan şarkıya, tam uzunluk",
+      "description": "Bir fotoğrafı veya açıklamayı tam 30–90 saniyelik fon müziğine dönüştürün. Şarkı sözleri fotoğrafınızdakileri adlandırır; 10 dilde vokal ve kesintisiz döngüler.",
       "h1": "Parça oluştur",
       "sub": "Fotoğraftan veya açıklamadan. Kesin uzunluk, kesintisiz döngüler.",
       "drop": "Fotoğrafı sürükleyin veya seçin<br>şarkı sözleri içindekileri adlandıracak",
