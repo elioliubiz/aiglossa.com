@@ -1664,6 +1664,8 @@
   <url>
     <loc>https://tools.aiglossa.com/en/guides/commercial-use.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/commercial-use.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/commercial-use.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tools.aiglossa.com/ja/guides/commercial-use.html"/>
   </url>
   <url>
     <loc>https://tools.aiglossa.com/zh-Hans/guides/</loc>
@@ -1724,6 +1726,12 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://tools.aiglossa.com/vi/guides/seamless-loop-seam.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://tools.aiglossa.com/id/guides/seamless-loop-seam.html"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://tools.aiglossa.com/tr/guides/seamless-loop-seam.html"/>
+  </url>
+  <url>
+    <loc>https://tools.aiglossa.com/zh-Hans/guides/commercial-use.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/commercial-use.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/commercial-use.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tools.aiglossa.com/ja/guides/commercial-use.html"/>
   </url>
   <url>
     <loc>https://tools.aiglossa.com/zh-Hant/guides/</loc>
@@ -1844,6 +1852,12 @@
     <xhtml:link rel="alternate" hreflang="vi" href="https://tools.aiglossa.com/vi/guides/seamless-loop-seam.html"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://tools.aiglossa.com/id/guides/seamless-loop-seam.html"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://tools.aiglossa.com/tr/guides/seamless-loop-seam.html"/>
+  </url>
+  <url>
+    <loc>https://tools.aiglossa.com/ja/guides/commercial-use.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/commercial-use.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/commercial-use.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://tools.aiglossa.com/ja/guides/commercial-use.html"/>
   </url>
   <url>
     <loc>https://tools.aiglossa.com/ko/guides/</loc>
