@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>做一首曲子 — aiglossa tools</title>
-<meta name="description" content="用照片或描述生成精确长度的曲子，歌词会唱出照片里的东西。" />
+<title>AI 音乐生成 — 照片变歌曲，长度精确</title>
+<meta name="description" content="用照片或描述生成 30–90 秒精确长度的背景音乐。歌词唱出照片里的内容，支持 10 种语言人声与无缝循环。" />
 <link rel="canonical" href="https://tools.aiglossa.com/zh-Hans/music/" />
 <link rel="alternate" hreflang="ar" href="https://tools.aiglossa.com/ar/music/">
 <link rel="alternate" hreflang="de" href="https://tools.aiglossa.com/de/music/">
@@ -25,11 +25,17 @@
 <link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/music/">
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="aiglossa" />
-<meta property="og:title" content="做一首曲子 — aiglossa tools" />
-<meta property="og:description" content="用照片或描述生成精确长度的曲子，歌词会唱出照片里的东西。" />
+<meta property="og:title" content="AI 音乐生成 — 照片变歌曲，长度精确" />
+<meta property="og:description" content="用照片或描述生成 30–90 秒精确长度的背景音乐。歌词唱出照片里的内容，支持 10 种语言人声与无缝循环。" />
 <meta property="og:url" content="https://tools.aiglossa.com/zh-Hans/music/" />
 <meta property="og:locale" content="zh_CN" />
+<meta property="og:image" content="https://tools.aiglossa.com/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="#0e0f11">
+<!-- 结构化数据：告诉 Google 这是一个网页应用，而不是普通文章 -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "AI 音乐生成 — 照片变歌曲，长度精确", "description": "用照片或描述生成 30–90 秒精确长度的背景音乐。歌词唱出照片里的内容，支持 10 种语言人声与无缝循环。", "applicationCategory": "MultimediaApplication", "operatingSystem": "Web", "url": "https://tools.aiglossa.com/zh-Hans/music/", "inLanguage": "zh-Hans"}</script>
 <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/site.css" />
 <link rel="stylesheet" href="../../assets/theme.css" />
@@ -224,7 +230,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "做一首曲子 — aiglossa tools", "description": "用照片或描述生成精确长度的曲子，歌词会唱出照片里的东西。", "h1": "做一首曲子", "sub": "从照片或描述开始。长度精确、循环无缝。", "drop": "拖入或选择照片<br>歌词会唱出照片里的内容", "generate": "生成曲子", "how_credits": "额度怎么算 →", "grp_photo": "由照片生成", "grp_recipe": "来自配方 · 不需要照片", "download": "下载", "save_recipe": "存为配方", "remove_photo": "移除照片", "photo_here": "你的照片放这里", "note": "右边的东西都是在这里做的", "legal_aup": "可接受使用", "legal_refund": "退款政策", "sign_in_first": "登录后即可生成", "generating": "生成中……约 20 秒。", "just_generated": "刚生成", "your_track": "你的曲子", "from_recipe": "来自配方", "from_photo": "由照片生成", "err_load": "无法加载选项", "done_in": "{n} 秒完成", "gen_cost": "生成 · {n}", "err_gen": "生成失败", "my_track": "我的曲子", "err_net": "网络错误", "recipe_name": "配方名称", "err_save": "保存失败", "saved": "已保存：{name}", "up_to": "最多 {n}", "credits": "额度"}</script>
+<script type="application/json" id="ui">{"title": "AI 音乐生成 — 照片变歌曲，长度精确", "description": "用照片或描述生成 30–90 秒精确长度的背景音乐。歌词唱出照片里的内容，支持 10 种语言人声与无缝循环。", "h1": "做一首曲子", "sub": "从照片或描述开始。长度精确、循环无缝。", "drop": "拖入或选择照片<br>歌词会唱出照片里的内容", "generate": "生成曲子", "how_credits": "额度怎么算 →", "grp_photo": "由照片生成", "grp_recipe": "来自配方 · 不需要照片", "download": "下载", "save_recipe": "存为配方", "remove_photo": "移除照片", "photo_here": "你的照片放这里", "note": "右边的东西都是在这里做的", "legal_aup": "可接受使用", "legal_refund": "退款政策", "sign_in_first": "登录后即可生成", "generating": "生成中……约 20 秒。", "just_generated": "刚生成", "your_track": "你的曲子", "from_recipe": "来自配方", "from_photo": "由照片生成", "err_load": "无法加载选项", "done_in": "{n} 秒完成", "gen_cost": "生成 · {n}", "err_gen": "生成失败", "my_track": "我的曲子", "err_net": "网络错误", "recipe_name": "配方名称", "err_save": "保存失败", "saved": "已保存：{name}", "up_to": "最多 {n}", "credits": "额度"}</script>
 <script>
 (function () {
   "use strict";
@@ -311,7 +317,7 @@
     var c = current;
     var isPlaying = c.audio && audio.src.indexOf(c.audio) >= 0 && !audio.paused;
     big.innerHTML =
-      (c.img ? '<img src="' + c.img + '" alt="">' : '') +
+      (c.img ? '<img src="' + (c.img || "") + '" alt="' + (c.title || UI.your_track) + '">' : '') +
       '<div class="shade"></div>' +
       '<div class="body">' +
         '<p class="k">' + (c.kind === "result" ? UI.just_generated : c.kind === "recipe" ? UI.from_recipe : UI.from_photo) + (c.meta ? " · " + c.meta : "") + '</p>' +

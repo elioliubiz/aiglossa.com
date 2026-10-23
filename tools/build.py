@@ -465,6 +465,17 @@ def main() -> int:
                     out["title"] = esc(copy["title"])
                     out["description"] = esc(copy["description"])
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    out["alt_sea"] = esc(copy["title"])
+                    out["jsonld"] = json.dumps({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": copy["title"],
+                        "description": copy["description"],
+                        "applicationCategory": "MultimediaApplication",
+                        "operatingSystem": "Web",
+                        "url": f"{base}/{lang}/music/",
+                        "inLanguage": languages[lang]["hreflang"],
+                    }, ensure_ascii=False).replace("</", "<\\/")
                     out["legal_aup"] = esc(copy["legal_aup"])
                     out["refund_label"] = esc(copy["legal_refund"])
                     return out
@@ -493,6 +504,17 @@ def main() -> int:
                     copy = source[lang][page]
                     out = {k: esc(v) for k, v in copy.items()}
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    out["alt_sea"] = esc(copy["title"])
+                    out["jsonld"] = json.dumps({
+                        "@context": "https://schema.org",
+                        "@type": "SoftwareApplication",
+                        "name": copy["title"],
+                        "description": copy["description"],
+                        "applicationCategory": "MultimediaApplication",
+                        "operatingSystem": "Web",
+                        "url": f"{base}/{lang}/music/",
+                        "inLanguage": languages[lang]["hreflang"],
+                    }, ensure_ascii=False).replace("</", "<\\/")
                     out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
                     out["legal_terms"] = esc(marketing[lang]["legal"]["terms"])
                     out["refund_label"] = esc(source[lang]["pricing"]["refund_link"])
@@ -514,7 +536,16 @@ def main() -> int:
                         "tools": render_tools(locale["tools"], base),
                         "note": esc(locale["note"]),
                         "cta_label": esc(locale["cta_label"]),
-                        "cta_href": locale["cta_href"].lstrip("/"),   # 同目录：/{lang}/make.html
+                        "cta_href": locale["cta_href"].lstrip("/"),   # 同目录：/{lang}/music/
+                        "jsonld": json.dumps({
+                            "@context": "https://schema.org",
+                            "@type": "WebSite",
+                            "name": "aiglossa tools",
+                            "url": f"{base}/{lang}/",
+                            "inLanguage": languages[lang]["hreflang"],
+                            "publisher": {"@type": "Organization", "name": "aiglossa",
+                                          "url": legal_base},
+                        }, ensure_ascii=False).replace("</", "<\\/"),
                         "lang_label": esc(marketing[lang]["langLabel"]),
                         "current_name": esc(languages[lang]["name"]),
                         "brand": esc("aiglossa · " + sites[site]["host"]),

@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Make a track — aiglossa tools</title>
-<meta name="description" content="Turn a photo or a prompt into a track at exactly the length you need. Lyrics name what&#x27;s in your picture." />
+<title>AI Music Generator — Photo to Song, Exact Length</title>
+<meta name="description" content="Turn a photo or a prompt into background music at exactly 30–90 seconds. Lyrics name what&#x27;s in your picture, with vocals in 10 languages and seamless loops." />
 <link rel="canonical" href="https://tools.aiglossa.com/en/music/" />
 <link rel="alternate" hreflang="ar" href="https://tools.aiglossa.com/ar/music/">
 <link rel="alternate" hreflang="de" href="https://tools.aiglossa.com/de/music/">
@@ -25,11 +25,17 @@
 <link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/music/">
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="aiglossa" />
-<meta property="og:title" content="Make a track — aiglossa tools" />
-<meta property="og:description" content="Turn a photo or a prompt into a track at exactly the length you need. Lyrics name what&#x27;s in your picture." />
+<meta property="og:title" content="AI Music Generator — Photo to Song, Exact Length" />
+<meta property="og:description" content="Turn a photo or a prompt into background music at exactly 30–90 seconds. Lyrics name what&#x27;s in your picture, with vocals in 10 languages and seamless loops." />
 <meta property="og:url" content="https://tools.aiglossa.com/en/music/" />
 <meta property="og:locale" content="en_US" />
+<meta property="og:image" content="https://tools.aiglossa.com/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="#0e0f11">
+<!-- 结构化数据：告诉 Google 这是一个网页应用，而不是普通文章 -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "AI Music Generator — Photo to Song, Exact Length", "description": "Turn a photo or a prompt into background music at exactly 30–90 seconds. Lyrics name what's in your picture, with vocals in 10 languages and seamless loops.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Web", "url": "https://tools.aiglossa.com/en/music/", "inLanguage": "en"}</script>
 <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/site.css" />
 <link rel="stylesheet" href="../../assets/theme.css" />
@@ -224,7 +230,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"h1": "Make a track", "sub": "From a photo or a prompt. Exact length, seamless loops.", "drop": "Drop or choose a photo<br>the lyrics will name what's in it", "generate": "Generate track", "how_credits": "How credits work →", "grp_photo": "Made from a photo", "grp_recipe": "From a recipe · no photo needed", "download": "Download", "save_recipe": "Save as recipe", "remove_photo": "Remove photo", "photo_here": "Your photo here", "note": "Everything on the right was made here", "legal_aup": "Acceptable Use", "legal_refund": "Refunds", "sign_in_first": "Sign in to generate", "generating": "Generating… about 20 seconds.", "just_generated": "Just generated", "your_track": "Your track", "from_recipe": "From a recipe", "from_photo": "Made from a photo", "title": "Make a track — aiglossa tools", "description": "Turn a photo or a prompt into a track at exactly the length you need. Lyrics name what's in your picture.", "err_load": "Could not load options", "done_in": "Done in {n}s", "gen_cost": "Generate · {n}", "err_gen": "Generation failed", "my_track": "My track", "err_net": "Network error", "recipe_name": "Recipe name", "err_save": "Save failed", "saved": "Saved: {name}", "up_to": "Up to {n}", "credits": "credits"}</script>
+<script type="application/json" id="ui">{"h1": "Make a track", "sub": "From a photo or a prompt. Exact length, seamless loops.", "drop": "Drop or choose a photo<br>the lyrics will name what's in it", "generate": "Generate track", "how_credits": "How credits work →", "grp_photo": "Made from a photo", "grp_recipe": "From a recipe · no photo needed", "download": "Download", "save_recipe": "Save as recipe", "remove_photo": "Remove photo", "photo_here": "Your photo here", "note": "Everything on the right was made here", "legal_aup": "Acceptable Use", "legal_refund": "Refunds", "sign_in_first": "Sign in to generate", "generating": "Generating… about 20 seconds.", "just_generated": "Just generated", "your_track": "Your track", "from_recipe": "From a recipe", "from_photo": "Made from a photo", "title": "AI Music Generator — Photo to Song, Exact Length", "description": "Turn a photo or a prompt into background music at exactly 30–90 seconds. Lyrics name what's in your picture, with vocals in 10 languages and seamless loops.", "err_load": "Could not load options", "done_in": "Done in {n}s", "gen_cost": "Generate · {n}", "err_gen": "Generation failed", "my_track": "My track", "err_net": "Network error", "recipe_name": "Recipe name", "err_save": "Save failed", "saved": "Saved: {name}", "up_to": "Up to {n}", "credits": "credits"}</script>
 <script>
 (function () {
   "use strict";
@@ -311,7 +317,7 @@
     var c = current;
     var isPlaying = c.audio && audio.src.indexOf(c.audio) >= 0 && !audio.paused;
     big.innerHTML =
-      (c.img ? '<img src="' + c.img + '" alt="">' : '') +
+      (c.img ? '<img src="' + (c.img || "") + '" alt="' + (c.title || UI.your_track) + '">' : '') +
       '<div class="shade"></div>' +
       '<div class="body">' +
         '<p class="k">' + (c.kind === "result" ? UI.just_generated : c.kind === "recipe" ? UI.from_recipe : UI.from_photo) + (c.meta ? " · " + c.meta : "") + '</p>' +

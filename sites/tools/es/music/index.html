@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Crear una pista — aiglossa tools</title>
-<meta name="description" content="Convierte una foto o una descripción en una pista de la duración exacta. La letra nombra lo que hay en tu imagen." />
+<title>Generador de música con IA — de foto a canción, duración exacta</title>
+<meta name="description" content="Convierte una foto o una descripción en música de fondo de 30 a 90 segundos exactos. La letra nombra lo que hay en tu imagen, con voces en 10 idiomas y bucles sin cortes." />
 <link rel="canonical" href="https://tools.aiglossa.com/es/music/" />
 <link rel="alternate" hreflang="ar" href="https://tools.aiglossa.com/ar/music/">
 <link rel="alternate" hreflang="de" href="https://tools.aiglossa.com/de/music/">
@@ -25,11 +25,17 @@
 <link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/music/">
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="aiglossa" />
-<meta property="og:title" content="Crear una pista — aiglossa tools" />
-<meta property="og:description" content="Convierte una foto o una descripción en una pista de la duración exacta. La letra nombra lo que hay en tu imagen." />
+<meta property="og:title" content="Generador de música con IA — de foto a canción, duración exacta" />
+<meta property="og:description" content="Convierte una foto o una descripción en música de fondo de 30 a 90 segundos exactos. La letra nombra lo que hay en tu imagen, con voces en 10 idiomas y bucles sin cortes." />
 <meta property="og:url" content="https://tools.aiglossa.com/es/music/" />
 <meta property="og:locale" content="es_ES" />
+<meta property="og:image" content="https://tools.aiglossa.com/assets/og.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
 <meta name="theme-color" content="#0e0f11">
+<!-- 结构化数据：告诉 Google 这是一个网页应用，而不是普通文章 -->
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Generador de música con IA — de foto a canción, duración exacta", "description": "Convierte una foto o una descripción en música de fondo de 30 a 90 segundos exactos. La letra nombra lo que hay en tu imagen, con voces en 10 idiomas y bucles sin cortes.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Web", "url": "https://tools.aiglossa.com/es/music/", "inLanguage": "es"}</script>
 <link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../../assets/site.css" />
 <link rel="stylesheet" href="../../assets/theme.css" />
@@ -224,7 +230,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "Crear una pista — aiglossa tools", "description": "Convierte una foto o una descripción en una pista de la duración exacta. La letra nombra lo que hay en tu imagen.", "h1": "Crear una pista", "sub": "Desde una foto o una descripción. Duración exacta, bucles sin cortes.", "drop": "Arrastra o elige una foto<br>la letra nombrará lo que hay en ella", "generate": "Generar pista", "how_credits": "Cómo funcionan los créditos →", "grp_photo": "Hecho desde una foto", "grp_recipe": "Desde una receta · sin foto", "download": "Descargar", "save_recipe": "Guardar como receta", "remove_photo": "Quitar foto", "photo_here": "Tu foto aquí", "note": "Todo lo de la derecha se hizo aquí", "legal_aup": "Uso aceptable", "legal_refund": "Reembolsos", "sign_in_first": "Inicia sesión para generar", "generating": "Generando… unos 20 segundos.", "just_generated": "Recién generado", "your_track": "Tu pista", "from_recipe": "Desde una receta", "from_photo": "Desde una foto", "err_load": "No se pudieron cargar las opciones", "done_in": "Listo en {n} s", "gen_cost": "Generar · {n}", "err_gen": "La generación falló", "my_track": "Mi pista", "err_net": "Error de red", "recipe_name": "Nombre de la receta", "err_save": "No se pudo guardar", "saved": "Guardado: {name}", "up_to": "Hasta {n}", "credits": "créditos"}</script>
+<script type="application/json" id="ui">{"title": "Generador de música con IA — de foto a canción, duración exacta", "description": "Convierte una foto o una descripción en música de fondo de 30 a 90 segundos exactos. La letra nombra lo que hay en tu imagen, con voces en 10 idiomas y bucles sin cortes.", "h1": "Crear una pista", "sub": "Desde una foto o una descripción. Duración exacta, bucles sin cortes.", "drop": "Arrastra o elige una foto<br>la letra nombrará lo que hay en ella", "generate": "Generar pista", "how_credits": "Cómo funcionan los créditos →", "grp_photo": "Hecho desde una foto", "grp_recipe": "Desde una receta · sin foto", "download": "Descargar", "save_recipe": "Guardar como receta", "remove_photo": "Quitar foto", "photo_here": "Tu foto aquí", "note": "Todo lo de la derecha se hizo aquí", "legal_aup": "Uso aceptable", "legal_refund": "Reembolsos", "sign_in_first": "Inicia sesión para generar", "generating": "Generando… unos 20 segundos.", "just_generated": "Recién generado", "your_track": "Tu pista", "from_recipe": "Desde una receta", "from_photo": "Desde una foto", "err_load": "No se pudieron cargar las opciones", "done_in": "Listo en {n} s", "gen_cost": "Generar · {n}", "err_gen": "La generación falló", "my_track": "Mi pista", "err_net": "Error de red", "recipe_name": "Nombre de la receta", "err_save": "No se pudo guardar", "saved": "Guardado: {name}", "up_to": "Hasta {n}", "credits": "créditos"}</script>
 <script>
 (function () {
   "use strict";
@@ -311,7 +317,7 @@
     var c = current;
     var isPlaying = c.audio && audio.src.indexOf(c.audio) >= 0 && !audio.paused;
     big.innerHTML =
-      (c.img ? '<img src="' + c.img + '" alt="">' : '') +
+      (c.img ? '<img src="' + (c.img || "") + '" alt="' + (c.title || UI.your_track) + '">' : '') +
       '<div class="shade"></div>' +
       '<div class="body">' +
         '<p class="k">' + (c.kind === "result" ? UI.just_generated : c.kind === "recipe" ? UI.from_recipe : UI.from_photo) + (c.meta ? " · " + c.meta : "") + '</p>' +
