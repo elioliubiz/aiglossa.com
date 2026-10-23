@@ -278,6 +278,9 @@ def _write_seo_files(site: str, spec: dict, site_langs: list[str],
             for code, loc_guides in guides.items():
                 if code not in site_langs:
                     continue
+                out.append("  <url>")
+                out.append(f"    <loc>{base}/{code}/guides/</loc>")
+                out.append("  </url>")
                 for slug in loc_guides:
                     out.append("  <url>")
                     out.append(f"    <loc>{base}/{code}/guides/{slug}.html</loc>")
@@ -500,7 +503,27 @@ def main() -> int:
                     }
 
                 # 译文按语言逐步补齐：guides.json 有的语言就生成，没有的跳过（不会生成假翻译）
+                tools_copy = json.loads((CONTENT / "tools.json").read_text(encoding="utf-8"))
                 for lang in [c for c in site_langs if c in source]:
+                    # 列表页：该语言已有文章的汇总（rail 里那一行链接的落地页）
+                    items = source[lang]
+                    list_html = "".join(
+                        f'<li><a href="{slug}.html">{esc(g.get("h1") or g["title"])}</a></li>'
+                        for slug, g in items.items()
+                    )
+                    emit(site, lang, 2, "guides/index.html", "pages/guide.html",
+                         lambda lang, base, lh=list_html, tc=tools_copy: {
+                             "title": esc(tc[lang]["guides_title"]) + " — aiglossa tools",
+                             "description": esc(tc[lang]["description"]),
+                             "body": f'<h1>{esc(tc[lang]["guides_title"])}</h1><ul class="guide-list">{lh}</ul>',
+                             "legal_privacy": esc(marketing[lang]["legal"]["privacy"]),
+                             "legal_terms": esc(marketing[lang]["legal"]["terms"]),
+                             "lang_label": esc(marketing[lang]["langLabel"]),
+                             "current_name": esc(languages[lang]["name"]),
+                             "jsonld": json.dumps({"@context": "https://schema.org", "@type": "CollectionPage",
+                                                   "name": tc[lang]["guides_title"],
+                                                   "url": f"{base}/{lang}/guides/"}, ensure_ascii=False),
+                         }, [c for c in site_langs if c in source])
                     for slug in source[lang]:
                         # 这一篇有哪些语言的版本，就声明哪些 hreflang（x-default 指英文）
                         have = [c for c in site_langs if slug in source.get(c, {})]

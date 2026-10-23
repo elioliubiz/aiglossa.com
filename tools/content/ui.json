@@ -95,7 +95,8 @@
       "err_save": "Save failed",
       "saved": "Saved: {name}",
       "up_to": "Up to {n}",
-      "credits": "credits"
+      "credits": "credits",
+      "guides_link": "Guides →"
     }
   },
   "ja": {
@@ -182,7 +183,8 @@
       "err_save": "保存に失敗しました",
       "saved": "保存しました: {name}",
       "up_to": "最大 {n}",
-      "credits": "クレジット"
+      "credits": "クレジット",
+      "guides_link": "ガイド →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -281,7 +283,8 @@
       "err_save": "저장하지 못했습니다",
       "saved": "저장됨: {name}",
       "up_to": "최대 {n}",
-      "credits": "크레딧"
+      "credits": "크레딧",
+      "guides_link": "가이드 →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -380,7 +383,8 @@
       "err_save": "保存失败",
       "saved": "已保存：{name}",
       "up_to": "最多 {n}",
-      "credits": "额度"
+      "credits": "额度",
+      "guides_link": "指南 →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -479,7 +483,8 @@
       "err_save": "儲存失敗",
       "saved": "已儲存：{name}",
       "up_to": "最多 {n}",
-      "credits": "額度"
+      "credits": "額度",
+      "guides_link": "指南 →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -578,7 +583,8 @@
       "err_save": "No se pudo guardar",
       "saved": "Guardado: {name}",
       "up_to": "Hasta {n}",
-      "credits": "créditos"
+      "credits": "créditos",
+      "guides_link": "Guías →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -677,7 +683,8 @@
       "err_save": "Échec de l'enregistrement",
       "saved": "Enregistré : {name}",
       "up_to": "Jusqu'à {n}",
-      "credits": "crédits"
+      "credits": "crédits",
+      "guides_link": "Guides →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -776,7 +783,8 @@
       "err_save": "Speichern fehlgeschlagen",
       "saved": "Gespeichert: {name}",
       "up_to": "Bis zu {n}",
-      "credits": "Credits"
+      "credits": "Credits",
+      "guides_link": "Anleitungen →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -875,7 +883,8 @@
       "err_save": "Falha ao salvar",
       "saved": "Salvo: {name}",
       "up_to": "Até {n}",
-      "credits": "créditos"
+      "credits": "créditos",
+      "guides_link": "Guias →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -974,7 +983,8 @@
       "err_save": "Salvataggio non riuscito",
       "saved": "Salvato: {name}",
       "up_to": "Fino a {n}",
-      "credits": "crediti"
+      "credits": "crediti",
+      "guides_link": "Guide →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1073,7 +1083,8 @@
       "err_save": "Не удалось сохранить",
       "saved": "Сохранено: {name}",
       "up_to": "До {n}",
-      "credits": "кредитов"
+      "credits": "кредитов",
+      "guides_link": "Руководства →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1172,7 +1183,8 @@
       "err_save": "تعذّر الحفظ",
       "saved": "تم الحفظ: {name}",
       "up_to": "حتى {n}",
-      "credits": "رصيدًا"
+      "credits": "رصيدًا",
+      "guides_link": "أدلة ←"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1271,7 +1283,8 @@
       "err_save": "บันทึกไม่สำเร็จ",
       "saved": "บันทึกแล้ว: {name}",
       "up_to": "สูงสุด {n}",
-      "credits": "เครดิต"
+      "credits": "เครดิต",
+      "guides_link": "คู่มือ →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1370,7 +1383,8 @@
       "err_save": "Lưu thất bại",
       "saved": "Đã lưu: {name}",
       "up_to": "Tối đa {n}",
-      "credits": "tín dụng"
+      "credits": "tín dụng",
+      "guides_link": "Hướng dẫn →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1469,7 +1483,8 @@
       "err_save": "Gagal menyimpan",
       "saved": "Tersimpan: {name}",
       "up_to": "Maksimal {n}",
-      "credits": "kredit"
+      "credits": "kredit",
+      "guides_link": "Panduan →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1568,7 +1583,8 @@
       "err_save": "Kaydedilemedi",
       "saved": "Kaydedildi: {name}",
       "up_to": "En fazla {n}",
-      "credits": "kredi"
+      "credits": "kredi",
+      "guides_link": "Rehberler →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
