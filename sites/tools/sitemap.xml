@@ -3201,4 +3201,9 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://tools.aiglossa.com/tr/guides/seamless-loop-seam.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/guides/seamless-loop-seam.html"/>
   </url>
+  <url>
+    <loc>https://tools.aiglossa.com/en/guides/video-length.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/video-length.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/guides/video-length.html"/>
+  </url>
 </urlset>
