@@ -37,6 +37,9 @@ PAGES: dict[str, list[tuple[str, str]]] = {
 
 
 def outputs_for(page: str) -> list[tuple[str, str]]:
+    if page == "guides":
+        guides = json.loads((CONTENT / "guides.json").read_text(encoding="utf-8"))
+        return [(f"guides/{slug}.html", f"guides/{slug}.html") for slug in guides["en"]]
     if page == "music":
         return [("music/index.html", "music/")]
     if page in ("refund", "acceptable-use"):
@@ -63,7 +66,9 @@ def main() -> int:
     for site, spec in sites.items():
         site_codes = spec.get("langs", codes)
         for page in spec["pages"]:
-            for lang in site_codes:
+            # guides 目前只有英文，其他语言不应期待产物
+            page_langs = ["en"] if page == "guides" else site_codes
+            for lang in page_langs:
                 for file_rel, _ in outputs_for(page):
                     expected.add(SITES_DIR / site / lang / file_rel)
         # 手写产物（不按语言分目录、不来自模板）：例如通用链接的回落页，以及
@@ -88,10 +93,12 @@ def main() -> int:
         base = f'https://{spec["host"]}'
         site_codes = spec.get("langs", codes)
         site_default = default if default in site_codes else site_codes[0]
-        want_hreflang = sorted([languages["languages"][c]["hreflang"] for c in site_codes] + ["x-default"])
         for page in spec["pages"]:
+            # guides 目前只有英文：期待集合与产物范围都收窄到 en
+            page_codes = ["en"] if page == "guides" else site_codes
+            want_hreflang = sorted([languages["languages"][c]["hreflang"] for c in page_codes] + ["x-default"])
             for file_rel, url_rel in outputs_for(page):
-                for lang in site_codes:
+                for lang in page_codes:
                     f = SITES_DIR / site / lang / file_rel
                     if not f.exists():
                         continue
