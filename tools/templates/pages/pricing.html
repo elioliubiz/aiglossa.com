@@ -152,7 +152,8 @@
     if (!token()) { location.href = "account.html?next=pricing.html"; return; }
     btn.disabled = true;
     msg(UI.opening);
-    call("/ai/music/checkout", { credits: credits }, true).then(function (data) {
+    var back = location.origin + location.pathname.replace(/pricing\.html$/, "account.html") + "?paid=1";
+    call("/ai/music/checkout", { credits: credits, success_url: back }, true).then(function (data) {
       if (data.code === 401) { localStorage.removeItem(TOKEN_KEY); location.href = "account.html?next=pricing.html"; return; }
       if (data.code !== 200) { msg(data.msg || UI.err, "err"); btn.disabled = false; return; }
       location.href = data.data.checkout_url;
