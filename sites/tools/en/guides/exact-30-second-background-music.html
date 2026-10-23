@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-default-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Background Music Exactly 30 Seconds — Why &quot;About 30s&quot; Breaks Your Edit | aiglossa</title>
+<meta name="description" content="How to get background music that is exactly 30, 45, 60, 75 or 90 seconds — trimmed and faded to the frame, with optional seamless loops.">
+<link rel="canonical" href="https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html">
+<link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html">
+<link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="aiglossa">
+<meta property="og:title" content="Background Music Exactly 30 Seconds — Why &quot;About 30s&quot; Breaks Your Edit | aiglossa">
+<meta property="og:description" content="How to get background music that is exactly 30, 45, 60, 75 or 90 seconds — trimmed and faded to the frame, with optional seamless loops.">
+<meta property="og:url" content="https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://tools.aiglossa.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e0f11">
+<link rel="icon" href="../../assets/favicon-tools.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-tools.svg" sizes="any">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/theme.css">
+<style>
+  .doc{max-width:720px;margin-inline:auto;padding-block:64px 40px;padding-inline:24px}
+  .doc h1{font-size:clamp(28px,4.4vw,42px);line-height:1.15;letter-spacing:-.03em;margin:0 0 16px;font-weight:600}
+  .doc h2{font-size:20px;margin-block:36px 10px;font-weight:600;letter-spacing:-.01em}
+  .doc h3{font-size:16px;margin-block:24px 8px;font-weight:600}
+  .doc p,.doc li{color:var(--muted);font-size:15.5px;line-height:1.75;margin-block:12px}
+  .doc ul,.doc ol{padding-inline-start:22px}
+  .doc a{color:var(--accent);text-decoration:none}
+  .doc strong{color:var(--fg)}
+  .doc .lead{font-size:17.5px;color:var(--fg)}
+  .doc .cta{display:inline-block;margin-block-start:28px;padding-block:13px;padding-inline:22px;
+            border-radius:10px;background:var(--accent);color:#1a0e04;font-weight:600;text-decoration:none}
+  .doc .meta{font-size:12px;color:var(--dim);margin-block:0 28px}
+  .doc blockquote{margin:20px 0;padding-inline-start:16px;border-inline-start:2px solid var(--accent)}
+  .doc blockquote p{color:var(--fg);font-style:italic}
+  footer{border-block-start:1px solid var(--line);padding-block:26px}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  footer nav a{color:var(--muted);font-size:12.5px;text-decoration:none;margin-inline-end:14px}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Background Music Exactly 30 Seconds — Why \"About 30s\" Breaks Your Edit | aiglossa", "description": "How to get background music that is exactly 30, 45, 60, 75 or 90 seconds — trimmed and faded to the frame, with optional seamless loops.", "url": "https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html", "inLanguage": "en", "publisher": {"@type": "Organization", "name": "aiglossa", "url": "https://aiglossa.com"}}</script>
+</head>
+<body>
+<main class="doc">
+<h1>Background music that is exactly 30 seconds</h1>
+<p class="meta">Updated 23 October 2026 · 4 min read</p>
+
+<p class="lead">Most music tools give you “about 30 seconds”. Video editors need exactly 30 seconds — because the cut is 30 seconds, and the fade has to land on the last frame.</p>
+
+<h2>Why “about 30 seconds” breaks your edit</h2>
+<p>If a track comes back at 28.4 seconds, you have three bad options: loop it (the seam is audible), stretch it (the pitch drifts), or fade it early (the edit feels rushed). If it comes back at 32 seconds, you either cut the ending or trim the whole timeline.</p>
+<p>The fix is not to trim in your editor. It is to ask for the exact length in the first place.</p>
+
+<h2>What “exactly” means here</h2>
+<p>We generate at the requested duration and then post-process the audio so it lands on the target to the millisecond:</p>
+<ul>
+  <li>leading silence is trimmed, so the first beat starts at 0.000s;</li>
+  <li>the tail is faded and cut at the exact frame;</li>
+  <li>if the model overshoots, the extra is trimmed rather than left in.</li>
+</ul>
+<p>The result for a 30-second request is a file that is 30.000 seconds long — the same length as your cut.</p>
+
+<h2>Choosing a length</h2>
+<p>We offer 30, 45, 60, 75 and 90 seconds. Match the length to the edit rather than to the genre:</p>
+<ul>
+  <li><strong>30s</strong> — social clips, product teasers, idents.</li>
+  <li><strong>45s</strong> — short explainers, podcast intros.</li>
+  <li><strong>60s</strong> — the standard TV/online spot.</li>
+  <li><strong>75–90s</strong> — narrative beats, menu loops, long-form intros.</li>
+</ul>
+
+<h2>If you need it to loop</h2>
+<p>A loop is a different problem: the end has to meet the beginning without a click. Turning on <em>Seamless loop</em> makes the track crossfade into its own start, so it repeats without a seam — useful for menus, waiting screens and game ambience.</p>
+<p>For a loop, choose a length that divides your scene evenly. A 30-second loop over a 90-second scene repeats three times and never lands mid-phrase.</p>
+
+<h2>Try it with one photo</h2>
+<p>You do not need to describe the music. Drop a photo in, and the track takes its mood from what is in the picture — the lyrics even name the objects. Pick 30s, and the file you download is exactly 30 seconds.</p>
+
+<a class="cta" href="../music/">Make a 30-second track →</a>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">aiglossa tools</span>
+    <nav>
+      <a href="../music/">AI Music Generator</a>
+      <a href="../pricing.html">Terms of Service</a>
+      <a href="https://aiglossa.com/en/protocol/privacy.html">Privacy Policy</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

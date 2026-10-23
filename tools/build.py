@@ -57,6 +57,8 @@ PAGES = {
     "refund": ("pages/legal.html", "ui", "refund.html"),
     "acceptable-use": ("pages/legal.html", "ui", "acceptable-use.html"),
     "music": ("pages/make.html", "ui", "music/index.html"),
+    # 指南（内容页）：英文优先，生成到 /en/guides/<slug>.html
+    "guides": ("pages/guide.html", "guides", "guides/{slug}.html"),
     # 每个工具一个目录（/{lang}/music/、未来 /{lang}/image/），全局页仍在语言根
 }
 
@@ -264,8 +266,20 @@ def _write_seo_files(site: str, spec: dict, site_langs: list[str],
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
            '        xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+    guides = {}
+    gpath = CONTENT / "guides.json"
+    if gpath.exists():
+        guides = json.loads(gpath.read_text(encoding="utf-8")).get("en", {})
+
     for page in spec["pages"]:
         if page == "account":       # noindex 页不进 sitemap
+            continue
+        if page == "guides":        # 指南：逐篇、目前仅英文
+            for slug in guides:
+                loc = f"{base}/en/guides/{slug}.html"
+                out.append("  <url>")
+                out.append(f"    <loc>{loc}</loc>")
+                out.append("  </url>")
             continue
         for lang in site_langs:
             out.append("  <url>")
@@ -396,7 +410,9 @@ def main() -> int:
                 print(f"✗ 缺文案源：tools/content/{source_key}.json", file=sys.stderr)
                 return 1
             source = json.loads(source_path.read_text(encoding="utf-8"))
-            missing = [c for c in site_langs if c not in source]
+            # 指南目前只有英文：不走"缺语言即报错"的检查，按 guides.json 里的语言生成
+            langs_to_check = ["en"] if page == "guides" else site_langs
+            missing = [c for c in langs_to_check if c not in source]
             if missing:
                 print(f"✗ {source_key} 缺语言：{missing}", file=sys.stderr)
                 return 1
@@ -455,6 +471,33 @@ def main() -> int:
                         "legal_terms_href": f"{legal_base}/{lang}/protocol/term.html",
                     }
                 values_builder = marketing_values
+            elif page == "guides":
+                def guide_values(lang: str, base: str, slug: str, source=source) -> dict[str, str]:
+                    copy = source["en"][slug]          # 目前只有英文
+                    return {
+                        "title": esc(copy["title"]),
+                        "description": esc(copy["description"]),
+                        "body": copy["body"],
+                        "legal_privacy": esc(marketing[lang]["legal"]["privacy"]),
+                        "legal_terms": esc(marketing[lang]["legal"]["terms"]),
+                        "lang_label": esc(marketing[lang]["langLabel"]),
+                        "current_name": esc(languages[lang]["name"]),
+                        "jsonld": json.dumps({
+                            "@context": "https://schema.org",
+                            "@type": "Article",
+                            "headline": copy["title"],
+                            "description": copy["description"],
+                            "url": f"{base}/en/guides/{slug}.html",
+                            "inLanguage": "en",
+                            "publisher": {"@type": "Organization", "name": "aiglossa",
+                                          "url": "https://aiglossa.com"},
+                        }, ensure_ascii=False).replace("</", "<\\/"),
+                    }
+
+                for slug in source["en"]:
+                    emit(site, "en", 2, f"guides/{slug}.html", "pages/guide.html",
+                         lambda lang, base, slug=slug: guide_values(lang, base, slug), ["en"])
+                continue
             elif page == "music":
                 def make_values(lang: str, base: str, source=source) -> dict[str, str]:
                     copy = source[lang].get("make") or source["en"]["make"]
@@ -537,6 +580,13 @@ def main() -> int:
                         "note": esc(locale["note"]),
                         "cta_label": esc(locale["cta_label"]),
                         "cta_href": locale["cta_href"].lstrip("/"),   # 同目录：/{lang}/music/
+                        "guides_list": "".join(
+                            f'      <li><a href="guides/{slug}.html">{esc(g["h1"] if "h1" in g else g["title"])}</a></li>\n'
+                            for slug, g in (
+                                json.loads((CONTENT / "guides.json").read_text(encoding="utf-8")).get("en", {}).items()
+                                if lang == "en" else []
+                            )
+                        ),
                         "jsonld": json.dumps({
                             "@context": "https://schema.org",
                             "@type": "WebSite",
