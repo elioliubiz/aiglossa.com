@@ -55,6 +55,11 @@ def outputs_for(page: str) -> list[tuple[str, str]]:
     return PAGES[page]
 
 
+def site_codes_for_tools(sites: dict) -> list[str]:
+    spec = sites.get("tools", {})
+    return spec.get("langs", list(json.loads((CONTENT / "languages.json").read_text(encoding="utf-8"))["languages"]))
+
+
 def main() -> int:
     languages = json.loads((CONTENT / "languages.json").read_text(encoding="utf-8"))
     codes = list(languages["languages"])
@@ -73,9 +78,14 @@ def main() -> int:
             # guides 只对 guides.json 里实际有译文的语言期待产物
             if page == "guides":
                 gj = json.loads((CONTENT / "guides.json").read_text(encoding="utf-8"))
-                page_langs = [c for c in site_codes if c in gj]
-            else:
-                page_langs = site_codes
+                for code, articles in gj.items():
+                    if code not in site_codes:
+                        continue
+                    expected.add(SITES_DIR / site / code / "guides" / "index.html")
+                    for slug in articles:
+                        expected.add(SITES_DIR / site / code / "guides" / f"{slug}.html")
+                continue
+            page_langs = site_codes
             for lang in page_langs:
                 for file_rel, _ in outputs_for(page):
                     expected.add(SITES_DIR / site / lang / file_rel)
@@ -96,6 +106,23 @@ def main() -> int:
         if not path.exists():
             problems.append(f"声明的手写产物缺失：{path.relative_to(ROOT)}")
 
+    # 指南：每篇的语言集合不同，单独校验（存在性 + hreflang 覆盖）
+    gj = json.loads((CONTENT / "guides.json").read_text(encoding="utf-8"))
+    for code, articles in gj.items():
+        if code not in site_codes_for_tools(sites):
+            continue
+        for slug in articles:
+            have = [c for c in gj if slug in gj[c]]
+            f = SITES_DIR / "tools" / code / "guides" / f"{slug}.html"
+            if not f.exists():
+                problems.append(f"指南缺少产物：{f.relative_to(ROOT)}")
+                continue
+            text = f.read_text(encoding="utf-8")
+            got = sorted(re.findall(r'<link rel="alternate" hreflang="([^"]+)"', text))
+            want = sorted([languages["languages"][c]["hreflang"] for c in have] + ["x-default"])
+            if got != want:
+                problems.append(f"{code}/guides/{slug}.html: hreflang 不符（应为 {want}）")
+
     # 2/3) 逐页检查 hreflang / canonical / 占位符 / 旧链接
     for site, spec in sites.items():
         base = f'https://{spec["host"]}'
@@ -104,10 +131,8 @@ def main() -> int:
         for page in spec["pages"]:
             # guides 目前只有英文：期待集合与产物范围都收窄到 en
             if page == "guides":
-                gj = json.loads((CONTENT / "guides.json").read_text(encoding="utf-8"))
-                page_codes = [c for c in site_codes if c in gj]
-            else:
-                page_codes = site_codes
+                continue      # 指南逐篇语言集合不同，用下面的专用校验
+            page_codes = site_codes
             want_hreflang = sorted([languages["languages"][c]["hreflang"] for c in page_codes] + ["x-default"])
             for file_rel, url_rel in outputs_for(page):
                 for lang in page_codes:
