@@ -7,17 +7,6 @@
       "has": [
         {
           "type": "host",
-          "value": "aiglossa.com"
-        }
-      ],
-      "destination": "/en/",
-      "permanent": true
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
           "value": "scholan.aiglossa.com"
         }
       ],
@@ -28,12 +17,186 @@
       "source": "/",
       "has": [
         {
-          "type": "host",
-          "value": "tools.aiglossa.com"
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh-(TW|HK|MO|Hant|tw|hk|mo)"
         }
       ],
+      "destination": "/zh-Hant/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh"
+        }
+      ],
+      "destination": "/zh-Hans/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ja"
+        }
+      ],
+      "destination": "/ja/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ko"
+        }
+      ],
+      "destination": "/ko/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^es"
+        }
+      ],
+      "destination": "/es/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^pt"
+        }
+      ],
+      "destination": "/pt/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^fr"
+        }
+      ],
+      "destination": "/fr/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^de"
+        }
+      ],
+      "destination": "/de/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^it"
+        }
+      ],
+      "destination": "/it/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ru"
+        }
+      ],
+      "destination": "/ru/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ar"
+        }
+      ],
+      "destination": "/ar/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^th"
+        }
+      ],
+      "destination": "/th/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^vi"
+        }
+      ],
+      "destination": "/vi/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^id"
+        }
+      ],
+      "destination": "/id/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^tr"
+        }
+      ],
+      "destination": "/tr/",
+      "permanent": false
+    },
+    {
+      "source": "/",
       "destination": "/en/",
-      "permanent": true
+      "permanent": false
     },
     {
       "source": "/protocol/privacy.html",
