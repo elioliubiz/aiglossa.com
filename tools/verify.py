@@ -69,8 +69,12 @@ def main() -> int:
     for site, spec in sites.items():
         site_codes = spec.get("langs", codes)
         for page in spec["pages"]:
-            # guides 目前只有英文，其他语言不应期待产物
-            page_langs = ["en"] if page == "guides" else site_codes
+            # guides 只对 guides.json 里实际有译文的语言期待产物
+            if page == "guides":
+                gj = json.loads((CONTENT / "guides.json").read_text(encoding="utf-8"))
+                page_langs = [c for c in site_codes if c in gj]
+            else:
+                page_langs = site_codes
             for lang in page_langs:
                 for file_rel, _ in outputs_for(page):
                     expected.add(SITES_DIR / site / lang / file_rel)
