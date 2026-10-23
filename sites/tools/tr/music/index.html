@@ -303,7 +303,7 @@
       }
       var el = document.createElement("div");
       el.className = "tile";
-      el.innerHTML = '<img src="' + d.img + '" alt=""><div class="shade"></div><span class="pl">▶</span>' +
+      el.innerHTML = '<img src="' + d.img + '" alt="' + d.title + '"><div class="shade"></div><span class="pl">▶</span>' +
         '<div class="meta"><p class="t">' + d.title + '</p><p class="d">' + d.meta + '</p></div>';
       el.addEventListener("click", function () { select(Object.assign({ kind: "demo" }, d)); });
       thumbs.appendChild(el);
