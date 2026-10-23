@@ -269,17 +269,22 @@ def _write_seo_files(site: str, spec: dict, site_langs: list[str],
     guides = {}
     gpath = CONTENT / "guides.json"
     if gpath.exists():
-        guides = json.loads(gpath.read_text(encoding="utf-8")).get("en", {})
+        guides = json.loads(gpath.read_text(encoding="utf-8"))
 
     for page in spec["pages"]:
         if page == "account":       # noindex 页不进 sitemap
             continue
-        if page == "guides":        # 指南：逐篇、目前仅英文
-            for slug in guides:
-                loc = f"{base}/en/guides/{slug}.html"
-                out.append("  <url>")
-                out.append(f"    <loc>{loc}</loc>")
-                out.append("  </url>")
+        if page == "guides":        # 指南：逐篇、逐语言
+            for code, loc_guides in guides.items():
+                if code not in site_langs:
+                    continue
+                for slug in loc_guides:
+                    out.append("  <url>")
+                    out.append(f"    <loc>{base}/{code}/guides/{slug}.html</loc>")
+                    for alt, alt_guides in guides.items():
+                        if alt in site_langs and slug in alt_guides:
+                            out.append(f'    <xhtml:link rel="alternate" hreflang="{languages[alt]["hreflang"]}" href="{base}/{alt}/guides/{slug}.html"/>')
+                    out.append("  </url>")
             continue
         for lang in site_langs:
             out.append("  <url>")
@@ -473,7 +478,7 @@ def main() -> int:
                 values_builder = marketing_values
             elif page == "guides":
                 def guide_values(lang: str, base: str, slug: str, source=source) -> dict[str, str]:
-                    copy = source["en"][slug]          # 目前只有英文
+                    copy = source[lang][slug]
                     return {
                         "title": esc(copy["title"]),
                         "description": esc(copy["description"]),
@@ -487,16 +492,18 @@ def main() -> int:
                             "@type": "Article",
                             "headline": copy["title"],
                             "description": copy["description"],
-                            "url": f"{base}/en/guides/{slug}.html",
-                            "inLanguage": "en",
+                            "url": f"{base}/{lang}/guides/{slug}.html",
+                            "inLanguage": languages[lang]["hreflang"],
                             "publisher": {"@type": "Organization", "name": "aiglossa",
                                           "url": "https://aiglossa.com"},
                         }, ensure_ascii=False).replace("</", "<\\/"),
                     }
 
-                for slug in source["en"]:
-                    emit(site, "en", 2, f"guides/{slug}.html", "pages/guide.html",
-                         lambda lang, base, slug=slug: guide_values(lang, base, slug), ["en"])
+                # 译文按语言逐步补齐：guides.json 有的语言就生成，没有的跳过（不会生成假翻译）
+                for lang in [c for c in site_langs if c in source]:
+                    for slug in source[lang]:
+                        emit(site, lang, 2, f"guides/{slug}.html", "pages/guide.html",
+                             lambda lang, base, slug=slug: guide_values(lang, base, slug), [lang])
                 continue
             elif page == "music":
                 def make_values(lang: str, base: str, source=source) -> dict[str, str]:
