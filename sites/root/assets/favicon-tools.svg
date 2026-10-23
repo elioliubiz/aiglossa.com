@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="aiglossa tools">
+  <rect width="64" height="64" rx="14" fill="#16181c"/>
+  <g fill="#ff7a1a">
+    <rect x="13" y="26" width="7" height="12" rx="3.5"/>
+    <rect x="24" y="17" width="7" height="30" rx="3.5"/>
+    <rect x="35" y="22" width="7" height="20" rx="3.5"/>
+    <rect x="46" y="29" width="7" height="6"  rx="3"/>
+  </g>
+</svg>
