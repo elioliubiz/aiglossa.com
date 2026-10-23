@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko" dir="ltr" data-default-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>이음새 없는 루프: 이음새가 핵심이다 | aiglossa</title>
+<meta name="description" content="생성된 루프가 틱 소리를 내는 건 양 끝이 이어질 전제로 만들어지지 않았기 때문입니다. 샘플 단위 크로스페이드와 앞 무음 제거로 해결합니다.">
+<link rel="canonical" href="https://tools.aiglossa.com/ko/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="ja" href="https://tools.aiglossa.com/ja/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="ko" href="https://tools.aiglossa.com/ko/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/guides/seamless-loop-seam.html">
+<link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/guides/seamless-loop-seam.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="aiglossa">
+<meta property="og:title" content="이음새 없는 루프: 이음새가 핵심이다 | aiglossa">
+<meta property="og:description" content="생성된 루프가 틱 소리를 내는 건 양 끝이 이어질 전제로 만들어지지 않았기 때문입니다. 샘플 단위 크로스페이드와 앞 무음 제거로 해결합니다.">
+<meta property="og:url" content="https://tools.aiglossa.com/ko/guides/seamless-loop-seam.html">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:image" content="https://tools.aiglossa.com/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0e0f11">
+<link rel="icon" href="../../assets/favicon-tools.svg" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-tools.svg" sizes="any">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png">
+<link rel="manifest" href="../../assets/manifest-tools.webmanifest">
+<link rel="stylesheet" href="../../assets/site.css">
+<link rel="stylesheet" href="../../assets/theme.css">
+<style>
+  .doc{max-width:720px;margin-inline:auto;padding-block:64px 40px;padding-inline:24px}
+  .doc h1{font-size:clamp(28px,4.4vw,42px);line-height:1.15;letter-spacing:-.03em;margin:0 0 16px;font-weight:600}
+  .doc h2{font-size:20px;margin-block:36px 10px;font-weight:600;letter-spacing:-.01em}
+  .doc h3{font-size:16px;margin-block:24px 8px;font-weight:600}
+  .doc p,.doc li{color:var(--muted);font-size:15.5px;line-height:1.75;margin-block:12px}
+  .doc ul,.doc ol{padding-inline-start:22px}
+  .doc a{color:var(--accent);text-decoration:none}
+  .doc strong{color:var(--fg)}
+  .doc .lead{font-size:17.5px;color:var(--fg)}
+  .doc .cta{display:inline-block;margin-block-start:28px;padding-block:13px;padding-inline:22px;
+            border-radius:10px;background:var(--accent);color:#1a0e04;font-weight:600;text-decoration:none}
+  .doc .meta{font-size:12px;color:var(--dim);margin-block:0 28px}
+  .doc blockquote{margin:20px 0;padding-inline-start:16px;border-inline-start:2px solid var(--accent)}
+  .doc blockquote p{color:var(--fg);font-style:italic}
+  .guide-list{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:10px}
+  .guide-list li a{display:block;padding-block:14px;padding-inline:18px;border:1px solid var(--line);
+                   border-radius:12px;background:rgba(255,255,255,.02);color:var(--fg);text-decoration:none;font-size:15.5px}
+  .guide-list li a:hover{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.05)}
+  footer{border-block-start:1px solid var(--line);padding-block:26px}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  footer nav a{color:var(--muted);font-size:12.5px;text-decoration:none;margin-inline-end:14px}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "이음새 없는 루프: 이음새가 핵심이다 | aiglossa", "description": "생성된 루프가 틱 소리를 내는 건 양 끝이 이어질 전제로 만들어지지 않았기 때문입니다. 샘플 단위 크로스페이드와 앞 무음 제거로 해결합니다.", "url": "https://tools.aiglossa.com/ko/guides/seamless-loop-seam.html", "inLanguage": "ko", "publisher": {"@type": "Organization", "name": "aiglossa", "url": "https://aiglossa.com"}}</script>
+</head>
+<body>
+<main class="doc">
+<h1>이음새 없는 루프: 이음새가 핵심이다</h1>
+<p class="meta">2026년 10월 23일 업데이트 · 4분</p>
+
+<p class="lead">틱 소리가 나는 루프는 음악이 없는 것보다 나쁩니다. 몇 초마다 주의를 끌고, 한 번 들리면 무시할 수 없습니다. 이음새를 없애는 건 생성이 아니라 후처리 문제입니다.</p>
+
+<h2>생성된 루프가 틱 소리가 나는 이유</h2>
+<p>음악 모델은 인트로와 아웃트로가 있는 "한 곡"을 씁니다. 그대로 반복하면 아웃트로가 인트로와 부딪힙니다. 빈틈, 심벌, 조바꿈. 양 끝은 애초에 이어질 것을 전제로 만들어지지 않았습니다.</p>
+<p>마지막 1초를 처음으로 크로스페이드하면 완화되지만, 단순한 크로스페이드는 겹치는 구간의 음량을 두 배로 만들고 리듬을 어긋나게 합니다. 그래서 한 바퀴마다 "쿵" 소리가 납니다.</p>
+
+<h2>우리가 하는 일</h2>
+<p>샘플 단위로 꼬리를 머리에 섞어 겹치는 구간의 음량을 일정하게 유지하고 박자가 그리드를 벗어나지 않게 합니다. 끝난 박에서 그대로 시작합니다.</p>
+<p>그 전에 앞부분 무음도 잘라냅니다. 앞에 0.4초 공백이 있는 루프는 한 바퀴마다 반 박씩 밀립니다.</p>
+
+<h2>루프 길이 고르기</h2>
+<p>장면을 나누어떨어지는 길이를 고르세요. 60초 메뉴 화면이라면 30초 루프로 두 번, 항상 프레이즈 경계에서 이어집니다. 45초는 문장 중간에서 끊겨 임의적으로 들립니다.</p>
+<p>게임과 앱 앰비언스에는 30초나 60초가 다루기 쉽습니다. 긴 루프는 지루하지 않게 유지하기 어렵고 메모리도 더 씁니다.</p>
+
+<h2>루프가 필요 없는 경우</h2>
+<p>모든 것에 루프가 필요한 건 아닙니다. 30초 영상 아래라면 곡은 30초면 충분하고 이음새는 재생되지 않습니다. 루프는 실제로 반복되는 곳에만: 메뉴, 대기 화면, 앰비언스, 인터랙티브 장면.</p>
+<p>확신이 없으면 둘 다 생성하고, 선형 영상에는 비루프 버전을 쓰는 게 안전합니다.</p>
+
+<a class="cta" href="../music/">이음새 없는 루프 만들기 →</a>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="brand">aiglossa tools</span>
+    <nav>
+      <a href="../music/">AI Music Generator</a>
+      <a href="../pricing.html">이용약관</a>
+      <a href="https://aiglossa.com/ko/protocol/privacy.html">개인정보처리방침</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
