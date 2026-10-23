@@ -234,7 +234,7 @@
     <p class="sub">Fotoğraftan veya açıklamadan. Kesin uzunluk, kesintisiz döngüler.</p>
 
     <label class="drop" id="drop">
-      <span id="dropText"><b>Drop or choose a photo</b>the lyrics will name what's in it</span>
+      <span id="dropText">Fotoğrafı sürükleyin veya seçin<br>şarkı sözleri içindekileri adlandıracak</span>
       <input type="file" id="file" accept="image/*" class="hidden" />
     </label>
 
@@ -282,7 +282,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "AI Müzik Üretici — fotoğraftan şarkıya, tam uzunluk", "description": "Bir fotoğrafı veya açıklamayı tam 30–90 saniyelik fon müziğine dönüştürün. Şarkı sözleri fotoğrafınızdakileri adlandırır; 10 dilde vokal ve kesintisiz döngüler.", "h1": "Parça oluştur", "sub": "Fotoğraftan veya açıklamadan. Kesin uzunluk, kesintisiz döngüler.", "drop": "Fotoğrafı sürükleyin veya seçin<br>şarkı sözleri içindekileri adlandıracak", "generate": "Parça oluştur", "how_credits": "Krediler nasıl işler →", "grp_photo": "Fotoğraftan", "grp_recipe": "Tariften · fotoğraf gerekmez", "download": "İndir", "save_recipe": "Tarif olarak kaydet", "remove_photo": "Fotoğrafı kaldır", "photo_here": "Fotoğrafınız buraya", "note": "Sağdaki her şey burada üretildi", "legal_aup": "Kabul edilebilir kullanım", "legal_refund": "İadeler", "sign_in_first": "Oluşturmak için giriş yapın", "generating": "Oluşturuluyor… yaklaşık 20 saniye.", "just_generated": "Az önce oluşturuldu", "your_track": "Parçanız", "from_recipe": "Tariften", "from_photo": "Fotoğraftan", "err_load": "Seçenekler yüklenemedi", "done_in": "{n} sn'de hazır", "gen_cost": "Oluştur · {n}", "err_gen": "Oluşturma başarısız", "my_track": "Parçam", "err_net": "Ağ hatası", "recipe_name": "Tarif adı", "err_save": "Kaydedilemedi", "saved": "Kaydedildi: {name}", "up_to": "En fazla {n}", "credits": "kredi", "guides_link": "Rehberler →", "guides_title": "Rehberler", "close": "Kapat", "loading": "Yükleniyor…"}</script>
+<script type="application/json" id="ui">{"title": "AI Müzik Üretici — fotoğraftan şarkıya, tam uzunluk", "description": "Bir fotoğrafı veya açıklamayı tam 30–90 saniyelik fon müziğine dönüştürün. Şarkı sözleri fotoğrafınızdakileri adlandırır; 10 dilde vokal ve kesintisiz döngüler.", "h1": "Parça oluştur", "sub": "Fotoğraftan veya açıklamadan. Kesin uzunluk, kesintisiz döngüler.", "drop": "Fotoğrafı sürükleyin veya seçin<br>şarkı sözleri içindekileri adlandıracak", "generate": "Parça oluştur", "how_credits": "Krediler nasıl işler →", "grp_photo": "Fotoğraftan", "grp_recipe": "Tariften · fotoğraf gerekmez", "download": "İndir", "save_recipe": "Tarif olarak kaydet", "remove_photo": "Fotoğrafı kaldır", "photo_here": "Fotoğrafınız buraya", "note": "Sağdaki her şey burada üretildi", "legal_aup": "Kabul edilebilir kullanım", "legal_refund": "İadeler", "sign_in_first": "Oluşturmak için giriş yapın", "generating": "Oluşturuluyor… yaklaşık 20 saniye.", "just_generated": "Az önce oluşturuldu", "your_track": "Parçanız", "from_recipe": "Tariften", "from_photo": "Fotoğraftan", "err_load": "Seçenekler yüklenemedi", "done_in": "{n} sn'de hazır", "gen_cost": "Oluştur · {n}", "err_gen": "Oluşturma başarısız", "my_track": "Parçam", "err_net": "Ağ hatası", "recipe_name": "Tarif adı", "err_save": "Kaydedilemedi", "saved": "Kaydedildi: {name}", "up_to": "En fazla {n}", "credits": "kredi", "guides_link": "Rehberler →", "guides_title": "Rehberler", "close": "Kapat", "loading": "Yükleniyor…", "off": "Kapalı", "loop_on": "Kesintisiz döngü"}</script>
 <script>
 (function () {
   "use strict";
@@ -420,7 +420,7 @@
     var head = document.createElement("div"); head.className = "lbl";
     var right = "";
     if (f.key === "duration_seconds") right = '<span class="r" id="cost">' + cost() + " " + UI.credits + '</span>';
-    if (f.type === "multi") right = '<span class="r">up to ' + f.max + '</span>';
+    if (f.type === "multi") right = '<span class="r">' + UI.up_to.replace("{n}", f.max) + '</span>';
     if (f.key === "vocal_language") right = '<span class="r">vocal tracks</span>';
     head.innerHTML = "<span>" + label(f) + "</span>" + right;
     wrap.appendChild(head);
@@ -439,7 +439,7 @@
     var asSeg = f.type === "bool" || (f.type === "enum" && f.options.length <= 5);
     if (asSeg) {
       var row = document.createElement("div"); row.className = "seg";
-      var opts = f.type === "bool" ? [{ value: false, label: { en: "Off" } }, { value: true, label: { en: "Seamless loop" } }] : f.options;
+      var opts = f.type === "bool" ? [{ value: false, label: { en: UI.off } }, { value: true, label: { en: UI.loop_on } }] : f.options;
       opts.forEach(function (o) {
         var b = document.createElement("button");
         b.type = "button";
@@ -599,7 +599,7 @@
         ev.preventDefault(); ev.stopPropagation();
         imagePayload = null;
         $("drop").classList.remove("has");
-        $("dropText").innerHTML = "<b>Drop or choose a photo</b>the lyrics will name what's in it";
+        $("dropText").innerHTML = UI.drop;
         $("dropText").onclick = null; $("file").value = "";
       };
     };

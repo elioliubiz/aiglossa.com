@@ -234,7 +234,7 @@
     <p class="sub">写真またはプロンプトから。長さは正確に、ループはシームレスに。</p>
 
     <label class="drop" id="drop">
-      <span id="dropText"><b>Drop or choose a photo</b>the lyrics will name what's in it</span>
+      <span id="dropText">写真をドロップまたは選択<br>歌詞が写真の中身を歌います</span>
       <input type="file" id="file" accept="image/*" class="hidden" />
     </label>
 
@@ -282,7 +282,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "AI音楽生成 — 写真から曲へ、長さはぴったり", "description": "写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。", "h1": "曲を作る", "sub": "写真またはプロンプトから。長さは正確に、ループはシームレスに。", "drop": "写真をドロップまたは選択<br>歌詞が写真の中身を歌います", "generate": "曲を生成", "how_credits": "クレジットの仕組み →", "grp_photo": "写真から制作", "grp_recipe": "レシピから · 写真不要", "download": "ダウンロード", "save_recipe": "レシピとして保存", "remove_photo": "写真を削除", "photo_here": "ここにあなたの写真", "note": "右側はすべてここで作られています", "legal_aup": "利用規約", "legal_refund": "返金ポリシー", "sign_in_first": "生成するにはサインイン", "generating": "生成中… 約20秒。", "just_generated": "たった今生成", "your_track": "あなたの曲", "from_recipe": "レシピから", "from_photo": "写真から制作", "err_load": "オプションを読み込めませんでした", "done_in": "{n}秒で完成", "gen_cost": "生成 · {n}", "err_gen": "生成に失敗しました", "my_track": "マイトラック", "err_net": "通信エラー", "recipe_name": "レシピ名", "err_save": "保存に失敗しました", "saved": "保存しました: {name}", "up_to": "最大 {n}", "credits": "クレジット", "guides_link": "ガイド →", "guides_title": "ガイド", "close": "閉じる", "loading": "読み込み中…"}</script>
+<script type="application/json" id="ui">{"title": "AI音楽生成 — 写真から曲へ、長さはぴったり", "description": "写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。", "h1": "曲を作る", "sub": "写真またはプロンプトから。長さは正確に、ループはシームレスに。", "drop": "写真をドロップまたは選択<br>歌詞が写真の中身を歌います", "generate": "曲を生成", "how_credits": "クレジットの仕組み →", "grp_photo": "写真から制作", "grp_recipe": "レシピから · 写真不要", "download": "ダウンロード", "save_recipe": "レシピとして保存", "remove_photo": "写真を削除", "photo_here": "ここにあなたの写真", "note": "右側はすべてここで作られています", "legal_aup": "利用規約", "legal_refund": "返金ポリシー", "sign_in_first": "生成するにはサインイン", "generating": "生成中… 約20秒。", "just_generated": "たった今生成", "your_track": "あなたの曲", "from_recipe": "レシピから", "from_photo": "写真から制作", "err_load": "オプションを読み込めませんでした", "done_in": "{n}秒で完成", "gen_cost": "生成 · {n}", "err_gen": "生成に失敗しました", "my_track": "マイトラック", "err_net": "通信エラー", "recipe_name": "レシピ名", "err_save": "保存に失敗しました", "saved": "保存しました: {name}", "up_to": "最大 {n}", "credits": "クレジット", "guides_link": "ガイド →", "guides_title": "ガイド", "close": "閉じる", "loading": "読み込み中…", "off": "オフ", "loop_on": "シームレスループ"}</script>
 <script>
 (function () {
   "use strict";
@@ -420,7 +420,7 @@
     var head = document.createElement("div"); head.className = "lbl";
     var right = "";
     if (f.key === "duration_seconds") right = '<span class="r" id="cost">' + cost() + " " + UI.credits + '</span>';
-    if (f.type === "multi") right = '<span class="r">up to ' + f.max + '</span>';
+    if (f.type === "multi") right = '<span class="r">' + UI.up_to.replace("{n}", f.max) + '</span>';
     if (f.key === "vocal_language") right = '<span class="r">vocal tracks</span>';
     head.innerHTML = "<span>" + label(f) + "</span>" + right;
     wrap.appendChild(head);
@@ -439,7 +439,7 @@
     var asSeg = f.type === "bool" || (f.type === "enum" && f.options.length <= 5);
     if (asSeg) {
       var row = document.createElement("div"); row.className = "seg";
-      var opts = f.type === "bool" ? [{ value: false, label: { en: "Off" } }, { value: true, label: { en: "Seamless loop" } }] : f.options;
+      var opts = f.type === "bool" ? [{ value: false, label: { en: UI.off } }, { value: true, label: { en: UI.loop_on } }] : f.options;
       opts.forEach(function (o) {
         var b = document.createElement("button");
         b.type = "button";
@@ -599,7 +599,7 @@
         ev.preventDefault(); ev.stopPropagation();
         imagePayload = null;
         $("drop").classList.remove("has");
-        $("dropText").innerHTML = "<b>Drop or choose a photo</b>the lyrics will name what's in it";
+        $("dropText").innerHTML = UI.drop;
         $("dropText").onclick = null; $("file").value = "";
       };
     };

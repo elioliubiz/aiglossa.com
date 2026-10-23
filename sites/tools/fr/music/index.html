@@ -234,7 +234,7 @@
     <p class="sub">À partir d&#x27;une photo ou d&#x27;une description. Durée exacte, boucles sans coupure.</p>
 
     <label class="drop" id="drop">
-      <span id="dropText"><b>Drop or choose a photo</b>the lyrics will name what's in it</span>
+      <span id="dropText">Déposez ou choisissez une photo<br>les paroles nommeront ce qu'elle contient</span>
       <input type="file" id="file" accept="image/*" class="hidden" />
     </label>
 
@@ -282,7 +282,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "Générateur de musique IA — de la photo au morceau, durée exacte", "description": "Transformez une photo ou une description en musique de fond de 30 à 90 secondes exactes. Les paroles nomment ce que contient votre image, avec voix en 10 langues et boucles sans coupure.", "h1": "Créer un morceau", "sub": "À partir d'une photo ou d'une description. Durée exacte, boucles sans coupure.", "drop": "Déposez ou choisissez une photo<br>les paroles nommeront ce qu'elle contient", "generate": "Générer un morceau", "how_credits": "Comment marchent les crédits →", "grp_photo": "Créé depuis une photo", "grp_recipe": "Depuis une recette · sans photo", "download": "Télécharger", "save_recipe": "Enregistrer comme recette", "remove_photo": "Retirer la photo", "photo_here": "Votre photo ici", "note": "Tout ce qui est à droite a été créé ici", "legal_aup": "Usage acceptable", "legal_refund": "Remboursements", "sign_in_first": "Connectez-vous pour générer", "generating": "Génération… environ 20 secondes.", "just_generated": "Vient d'être créé", "your_track": "Votre morceau", "from_recipe": "Depuis une recette", "from_photo": "Depuis une photo", "err_load": "Impossible de charger les options", "done_in": "Prêt en {n} s", "gen_cost": "Générer · {n}", "err_gen": "La génération a échoué", "my_track": "Mon morceau", "err_net": "Erreur réseau", "recipe_name": "Nom de la recette", "err_save": "Échec de l'enregistrement", "saved": "Enregistré : {name}", "up_to": "Jusqu'à {n}", "credits": "crédits", "guides_link": "Guides →", "guides_title": "Guides", "close": "Fermer", "loading": "Chargement…"}</script>
+<script type="application/json" id="ui">{"title": "Générateur de musique IA — de la photo au morceau, durée exacte", "description": "Transformez une photo ou une description en musique de fond de 30 à 90 secondes exactes. Les paroles nomment ce que contient votre image, avec voix en 10 langues et boucles sans coupure.", "h1": "Créer un morceau", "sub": "À partir d'une photo ou d'une description. Durée exacte, boucles sans coupure.", "drop": "Déposez ou choisissez une photo<br>les paroles nommeront ce qu'elle contient", "generate": "Générer un morceau", "how_credits": "Comment marchent les crédits →", "grp_photo": "Créé depuis une photo", "grp_recipe": "Depuis une recette · sans photo", "download": "Télécharger", "save_recipe": "Enregistrer comme recette", "remove_photo": "Retirer la photo", "photo_here": "Votre photo ici", "note": "Tout ce qui est à droite a été créé ici", "legal_aup": "Usage acceptable", "legal_refund": "Remboursements", "sign_in_first": "Connectez-vous pour générer", "generating": "Génération… environ 20 secondes.", "just_generated": "Vient d'être créé", "your_track": "Votre morceau", "from_recipe": "Depuis une recette", "from_photo": "Depuis une photo", "err_load": "Impossible de charger les options", "done_in": "Prêt en {n} s", "gen_cost": "Générer · {n}", "err_gen": "La génération a échoué", "my_track": "Mon morceau", "err_net": "Erreur réseau", "recipe_name": "Nom de la recette", "err_save": "Échec de l'enregistrement", "saved": "Enregistré : {name}", "up_to": "Jusqu'à {n}", "credits": "crédits", "guides_link": "Guides →", "guides_title": "Guides", "close": "Fermer", "loading": "Chargement…", "off": "Non", "loop_on": "Boucle sans coupure"}</script>
 <script>
 (function () {
   "use strict";
@@ -420,7 +420,7 @@
     var head = document.createElement("div"); head.className = "lbl";
     var right = "";
     if (f.key === "duration_seconds") right = '<span class="r" id="cost">' + cost() + " " + UI.credits + '</span>';
-    if (f.type === "multi") right = '<span class="r">up to ' + f.max + '</span>';
+    if (f.type === "multi") right = '<span class="r">' + UI.up_to.replace("{n}", f.max) + '</span>';
     if (f.key === "vocal_language") right = '<span class="r">vocal tracks</span>';
     head.innerHTML = "<span>" + label(f) + "</span>" + right;
     wrap.appendChild(head);
@@ -439,7 +439,7 @@
     var asSeg = f.type === "bool" || (f.type === "enum" && f.options.length <= 5);
     if (asSeg) {
       var row = document.createElement("div"); row.className = "seg";
-      var opts = f.type === "bool" ? [{ value: false, label: { en: "Off" } }, { value: true, label: { en: "Seamless loop" } }] : f.options;
+      var opts = f.type === "bool" ? [{ value: false, label: { en: UI.off } }, { value: true, label: { en: UI.loop_on } }] : f.options;
       opts.forEach(function (o) {
         var b = document.createElement("button");
         b.type = "button";
@@ -599,7 +599,7 @@
         ev.preventDefault(); ev.stopPropagation();
         imagePayload = null;
         $("drop").classList.remove("has");
-        $("dropText").innerHTML = "<b>Drop or choose a photo</b>the lyrics will name what's in it";
+        $("dropText").innerHTML = UI.drop;
         $("dropText").onclick = null; $("file").value = "";
       };
     };

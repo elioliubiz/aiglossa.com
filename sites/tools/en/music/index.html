@@ -234,7 +234,7 @@
     <p class="sub">From a photo or a prompt. Exact length, seamless loops.</p>
 
     <label class="drop" id="drop">
-      <span id="dropText"><b>Drop or choose a photo</b>the lyrics will name what's in it</span>
+      <span id="dropText">Drop or choose a photo<br>the lyrics will name what's in it</span>
       <input type="file" id="file" accept="image/*" class="hidden" />
     </label>
 
@@ -282,7 +282,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"h1": "Make a track", "sub": "From a photo or a prompt. Exact length, seamless loops.", "drop": "Drop or choose a photo<br>the lyrics will name what's in it", "generate": "Generate track", "how_credits": "How credits work →", "grp_photo": "Made from a photo", "grp_recipe": "From a recipe · no photo needed", "download": "Download", "save_recipe": "Save as recipe", "remove_photo": "Remove photo", "photo_here": "Your photo here", "note": "Everything on the right was made here", "legal_aup": "Acceptable Use", "legal_refund": "Refunds", "sign_in_first": "Sign in to generate", "generating": "Generating… about 20 seconds.", "just_generated": "Just generated", "your_track": "Your track", "from_recipe": "From a recipe", "from_photo": "Made from a photo", "title": "AI Music Generator — Photo to Song, Exact Length", "description": "Turn a photo or a prompt into background music at exactly 30–90 seconds. Lyrics name what's in your picture, with vocals in 10 languages and seamless loops.", "err_load": "Could not load options", "done_in": "Done in {n}s", "gen_cost": "Generate · {n}", "err_gen": "Generation failed", "my_track": "My track", "err_net": "Network error", "recipe_name": "Recipe name", "err_save": "Save failed", "saved": "Saved: {name}", "up_to": "Up to {n}", "credits": "credits", "guides_link": "Guides →", "guides_title": "Guides", "close": "Close", "loading": "Loading…"}</script>
+<script type="application/json" id="ui">{"h1": "Make a track", "sub": "From a photo or a prompt. Exact length, seamless loops.", "drop": "Drop or choose a photo<br>the lyrics will name what's in it", "generate": "Generate track", "how_credits": "How credits work →", "grp_photo": "Made from a photo", "grp_recipe": "From a recipe · no photo needed", "download": "Download", "save_recipe": "Save as recipe", "remove_photo": "Remove photo", "photo_here": "Your photo here", "note": "Everything on the right was made here", "legal_aup": "Acceptable Use", "legal_refund": "Refunds", "sign_in_first": "Sign in to generate", "generating": "Generating… about 20 seconds.", "just_generated": "Just generated", "your_track": "Your track", "from_recipe": "From a recipe", "from_photo": "Made from a photo", "title": "AI Music Generator — Photo to Song, Exact Length", "description": "Turn a photo or a prompt into background music at exactly 30–90 seconds. Lyrics name what's in your picture, with vocals in 10 languages and seamless loops.", "err_load": "Could not load options", "done_in": "Done in {n}s", "gen_cost": "Generate · {n}", "err_gen": "Generation failed", "my_track": "My track", "err_net": "Network error", "recipe_name": "Recipe name", "err_save": "Save failed", "saved": "Saved: {name}", "up_to": "Up to {n}", "credits": "credits", "guides_link": "Guides →", "guides_title": "Guides", "close": "Close", "loading": "Loading…", "off": "Off", "loop_on": "Seamless loop"}</script>
 <script>
 (function () {
   "use strict";
@@ -420,7 +420,7 @@
     var head = document.createElement("div"); head.className = "lbl";
     var right = "";
     if (f.key === "duration_seconds") right = '<span class="r" id="cost">' + cost() + " " + UI.credits + '</span>';
-    if (f.type === "multi") right = '<span class="r">up to ' + f.max + '</span>';
+    if (f.type === "multi") right = '<span class="r">' + UI.up_to.replace("{n}", f.max) + '</span>';
     if (f.key === "vocal_language") right = '<span class="r">vocal tracks</span>';
     head.innerHTML = "<span>" + label(f) + "</span>" + right;
     wrap.appendChild(head);
@@ -439,7 +439,7 @@
     var asSeg = f.type === "bool" || (f.type === "enum" && f.options.length <= 5);
     if (asSeg) {
       var row = document.createElement("div"); row.className = "seg";
-      var opts = f.type === "bool" ? [{ value: false, label: { en: "Off" } }, { value: true, label: { en: "Seamless loop" } }] : f.options;
+      var opts = f.type === "bool" ? [{ value: false, label: { en: UI.off } }, { value: true, label: { en: UI.loop_on } }] : f.options;
       opts.forEach(function (o) {
         var b = document.createElement("button");
         b.type = "button";
@@ -599,7 +599,7 @@
         ev.preventDefault(); ev.stopPropagation();
         imagePayload = null;
         $("drop").classList.remove("has");
-        $("dropText").innerHTML = "<b>Drop or choose a photo</b>the lyrics will name what's in it";
+        $("dropText").innerHTML = UI.drop;
         $("dropText").onclick = null; $("file").value = "";
       };
     };

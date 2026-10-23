@@ -234,7 +234,7 @@
     <p class="sub">사진 또는 프롬프트에서. 길이는 정확하게, 루프는 매끄럽게.</p>
 
     <label class="drop" id="drop">
-      <span id="dropText"><b>Drop or choose a photo</b>the lyrics will name what's in it</span>
+      <span id="dropText">사진을 놓거나 선택하세요<br>가사가 사진 속 내용을 노래합니다</span>
       <input type="file" id="file" accept="image/*" class="hidden" />
     </label>
 
@@ -282,7 +282,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "AI 음악 생성 — 사진에서 곡으로, 정확한 길이", "description": "사진이나 프롬프트로 30~90초에 딱 맞는 배경 음악을 만듭니다. 가사는 사진 속 내용을 노래하고, 10개 언어 보컬과 이음새 없는 루프를 지원합니다.", "h1": "곡 만들기", "sub": "사진 또는 프롬프트에서. 길이는 정확하게, 루프는 매끄럽게.", "drop": "사진을 놓거나 선택하세요<br>가사가 사진 속 내용을 노래합니다", "generate": "곡 생성", "how_credits": "크레딧 계산 방식 →", "grp_photo": "사진에서 제작", "grp_recipe": "레시피에서 · 사진 불필요", "download": "다운로드", "save_recipe": "레시피로 저장", "remove_photo": "사진 제거", "photo_here": "여기에 사진", "note": "오른쪽은 모두 여기서 만들어졌습니다", "legal_aup": "이용약관", "legal_refund": "환불 정책", "sign_in_first": "생성하려면 로그인", "generating": "생성 중… 약 20초.", "just_generated": "방금 생성됨", "your_track": "내 곡", "from_recipe": "레시피에서", "from_photo": "사진에서 제작", "err_load": "옵션을 불러오지 못했습니다", "done_in": "{n}초 만에 완료", "gen_cost": "생성 · {n}", "err_gen": "생성에 실패했습니다", "my_track": "내 트랙", "err_net": "네트워크 오류", "recipe_name": "레시피 이름", "err_save": "저장하지 못했습니다", "saved": "저장됨: {name}", "up_to": "최대 {n}", "credits": "크레딧", "guides_link": "가이드 →", "guides_title": "가이드", "close": "닫기", "loading": "불러오는 중…"}</script>
+<script type="application/json" id="ui">{"title": "AI 음악 생성 — 사진에서 곡으로, 정확한 길이", "description": "사진이나 프롬프트로 30~90초에 딱 맞는 배경 음악을 만듭니다. 가사는 사진 속 내용을 노래하고, 10개 언어 보컬과 이음새 없는 루프를 지원합니다.", "h1": "곡 만들기", "sub": "사진 또는 프롬프트에서. 길이는 정확하게, 루프는 매끄럽게.", "drop": "사진을 놓거나 선택하세요<br>가사가 사진 속 내용을 노래합니다", "generate": "곡 생성", "how_credits": "크레딧 계산 방식 →", "grp_photo": "사진에서 제작", "grp_recipe": "레시피에서 · 사진 불필요", "download": "다운로드", "save_recipe": "레시피로 저장", "remove_photo": "사진 제거", "photo_here": "여기에 사진", "note": "오른쪽은 모두 여기서 만들어졌습니다", "legal_aup": "이용약관", "legal_refund": "환불 정책", "sign_in_first": "생성하려면 로그인", "generating": "생성 중… 약 20초.", "just_generated": "방금 생성됨", "your_track": "내 곡", "from_recipe": "레시피에서", "from_photo": "사진에서 제작", "err_load": "옵션을 불러오지 못했습니다", "done_in": "{n}초 만에 완료", "gen_cost": "생성 · {n}", "err_gen": "생성에 실패했습니다", "my_track": "내 트랙", "err_net": "네트워크 오류", "recipe_name": "레시피 이름", "err_save": "저장하지 못했습니다", "saved": "저장됨: {name}", "up_to": "최대 {n}", "credits": "크레딧", "guides_link": "가이드 →", "guides_title": "가이드", "close": "닫기", "loading": "불러오는 중…", "off": "끔", "loop_on": "이음새 없는 루프"}</script>
 <script>
 (function () {
   "use strict";
@@ -420,7 +420,7 @@
     var head = document.createElement("div"); head.className = "lbl";
     var right = "";
     if (f.key === "duration_seconds") right = '<span class="r" id="cost">' + cost() + " " + UI.credits + '</span>';
-    if (f.type === "multi") right = '<span class="r">up to ' + f.max + '</span>';
+    if (f.type === "multi") right = '<span class="r">' + UI.up_to.replace("{n}", f.max) + '</span>';
     if (f.key === "vocal_language") right = '<span class="r">vocal tracks</span>';
     head.innerHTML = "<span>" + label(f) + "</span>" + right;
     wrap.appendChild(head);
@@ -439,7 +439,7 @@
     var asSeg = f.type === "bool" || (f.type === "enum" && f.options.length <= 5);
     if (asSeg) {
       var row = document.createElement("div"); row.className = "seg";
-      var opts = f.type === "bool" ? [{ value: false, label: { en: "Off" } }, { value: true, label: { en: "Seamless loop" } }] : f.options;
+      var opts = f.type === "bool" ? [{ value: false, label: { en: UI.off } }, { value: true, label: { en: UI.loop_on } }] : f.options;
       opts.forEach(function (o) {
         var b = document.createElement("button");
         b.type = "button";
@@ -599,7 +599,7 @@
         ev.preventDefault(); ev.stopPropagation();
         imagePayload = null;
         $("drop").classList.remove("has");
-        $("dropText").innerHTML = "<b>Drop or choose a photo</b>the lyrics will name what's in it";
+        $("dropText").innerHTML = UI.drop;
         $("dropText").onclick = null; $("file").value = "";
       };
     };
