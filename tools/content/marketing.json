@@ -54,17 +54,17 @@
       {
         "n": "01",
         "h": "Import your book",
-        "p": "Your own EPUB or PDF, in any language. On iPad you can also drag a book from Files straight onto your shelf."
+        "p": "EPUB, MOBI, AZW3 or FB2 — in any language."
       },
       {
         "n": "02",
-        "h": "Generate the preparatory analysis",
-        "p": "Priced by text length, kept for good; try Preview first if unsure. Every page comes with its own preview word list — just scan it for an impression."
+        "h": "The meaning sits after the word",
+        "p": "Read straight through; no switching apps."
       },
       {
         "n": "03",
-        "h": "Tap words as you read",
-        "p": "Tap any word for its meaning, with pronunciation; words you have seen are much easier to recognise."
+        "h": "Switch it off and read again",
+        "p": "The words stay highlighted. Recall does the rest."
       }
     ],
     "closing": "The point is not memorising: repeated preview plus reading makes words familiar naturally.",
@@ -129,17 +129,17 @@
       {
         "n": "01",
         "h": "导入你的书",
-        "p": "你自己的 EPUB 或 PDF，原文是什么语言都可以。iPad 分屏时还能直接从「文件」把书拖进书架。"
+        "p": "EPUB、MOBI、AZW3、FB2，什么语言都行。"
       },
       {
         "n": "02",
-        "h": "生成预备分析",
-        "p": "按正文字数计费，结果长期可用；不确定就先做「预览分析」试水。每一页都有预览生词表，扫视一遍有印象即可。"
+        "h": "释义就在词后面",
+        "p": "读到哪儿懂到哪儿，不用切出去查。"
       },
       {
         "n": "03",
-        "h": "边读边点词",
-        "p": "阅读时点词看释义、可以发音；再遇到见过的词会明显更容易认出来。"
+        "h": "关掉释义再读一遍",
+        "p": "词还在高亮，逼你自己回想。"
       }
     ],
     "closing": "本意不是让你背单词，而是靠「预览 + 阅读」的反复接触自然熟悉。",
@@ -204,17 +204,17 @@
       {
         "n": "01",
         "h": "匯入你的書",
-        "p": "你自己的 EPUB 或 PDF，原文是什麼語言都可以。iPad 分割顯示時還能直接從「檔案」把書拖進書架。"
+        "p": "EPUB、MOBI、AZW3、FB2，什麼語言都行。"
       },
       {
         "n": "02",
-        "h": "生成預備分析",
-        "p": "按正文字數計費，結果長期可用；不確定就先做「預覽分析」試水。每一頁都有預覽生詞表，掃視一遍有印象即可。"
+        "h": "釋義就在詞後面",
+        "p": "讀到哪兒懂到哪兒，不用切出去查。"
       },
       {
         "n": "03",
-        "h": "邊讀邊點詞",
-        "p": "閱讀時點詞看釋義、可以發音；再遇到見過的詞會明顯更容易認出來。"
+        "h": "關掉釋義再讀一遍",
+        "p": "詞還在標記，逼你自己回想。"
       }
     ],
     "closing": "本意不是讓你背單詞，而是靠「預覽 + 閱讀」的反覆接觸自然熟悉。",
