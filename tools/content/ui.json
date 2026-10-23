@@ -99,7 +99,9 @@
       "guides_link": "Guides →",
       "guides_title": "Guides",
       "close": "Close",
-      "loading": "Loading…"
+      "loading": "Loading…",
+      "off": "Off",
+      "loop_on": "Seamless loop"
     }
   },
   "ja": {
@@ -190,7 +192,9 @@
       "guides_link": "ガイド →",
       "guides_title": "ガイド",
       "close": "閉じる",
-      "loading": "読み込み中…"
+      "loading": "読み込み中…",
+      "off": "オフ",
+      "loop_on": "シームレスループ"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -293,7 +297,9 @@
       "guides_link": "가이드 →",
       "guides_title": "가이드",
       "close": "닫기",
-      "loading": "불러오는 중…"
+      "loading": "불러오는 중…",
+      "off": "끔",
+      "loop_on": "이음새 없는 루프"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -396,7 +402,9 @@
       "guides_link": "指南 →",
       "guides_title": "指南",
       "close": "关闭",
-      "loading": "加载中…"
+      "loading": "加载中…",
+      "off": "关闭",
+      "loop_on": "无缝循环"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -499,7 +507,9 @@
       "guides_link": "指南 →",
       "guides_title": "指南",
       "close": "關閉",
-      "loading": "載入中…"
+      "loading": "載入中…",
+      "off": "關閉",
+      "loop_on": "無縫循環"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -602,7 +612,9 @@
       "guides_link": "Guías →",
       "guides_title": "Guías",
       "close": "Cerrar",
-      "loading": "Cargando…"
+      "loading": "Cargando…",
+      "off": "No",
+      "loop_on": "Bucle sin cortes"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -705,7 +717,9 @@
       "guides_link": "Guides →",
       "guides_title": "Guides",
       "close": "Fermer",
-      "loading": "Chargement…"
+      "loading": "Chargement…",
+      "off": "Non",
+      "loop_on": "Boucle sans coupure"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -808,7 +822,9 @@
       "guides_link": "Anleitungen →",
       "guides_title": "Anleitungen",
       "close": "Schließen",
-      "loading": "Lädt…"
+      "loading": "Lädt…",
+      "off": "Aus",
+      "loop_on": "Nahtloser Loop"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -911,7 +927,9 @@
       "guides_link": "Guias →",
       "guides_title": "Guias",
       "close": "Fechar",
-      "loading": "Carregando…"
+      "loading": "Carregando…",
+      "off": "Desligado",
+      "loop_on": "Loop sem corte"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1014,7 +1032,9 @@
       "guides_link": "Guide →",
       "guides_title": "Guide",
       "close": "Chiudi",
-      "loading": "Caricamento…"
+      "loading": "Caricamento…",
+      "off": "No",
+      "loop_on": "Loop senza stacchi"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1117,7 +1137,9 @@
       "guides_link": "Руководства →",
       "guides_title": "Руководства",
       "close": "Закрыть",
-      "loading": "Загрузка…"
+      "loading": "Загрузка…",
+      "off": "Выкл",
+      "loop_on": "Бесшовный луп"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1220,7 +1242,9 @@
       "guides_link": "أدلة ←",
       "guides_title": "أدلة",
       "close": "إغلاق",
-      "loading": "جارٍ التحميل…"
+      "loading": "جارٍ التحميل…",
+      "off": "إيقاف",
+      "loop_on": "حلقة بلا فواصل"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1323,7 +1347,9 @@
       "guides_link": "คู่มือ →",
       "guides_title": "คู่มือ",
       "close": "ปิด",
-      "loading": "กำลังโหลด…"
+      "loading": "กำลังโหลด…",
+      "off": "ปิด",
+      "loop_on": "ลูปไร้รอยต่อ"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1426,7 +1452,9 @@
       "guides_link": "Hướng dẫn →",
       "guides_title": "Hướng dẫn",
       "close": "Đóng",
-      "loading": "Đang tải…"
+      "loading": "Đang tải…",
+      "off": "Tắt",
+      "loop_on": "Vòng lặp liền mạch"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1529,7 +1557,9 @@
       "guides_link": "Panduan →",
       "guides_title": "Panduan",
       "close": "Tutup",
-      "loading": "Memuat…"
+      "loading": "Memuat…",
+      "off": "Mati",
+      "loop_on": "Loop mulus"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1632,7 +1662,9 @@
       "guides_link": "Rehberler →",
       "guides_title": "Rehberler",
       "close": "Kapat",
-      "loading": "Yükleniyor…"
+      "loading": "Yükleniyor…",
+      "off": "Kapalı",
+      "loop_on": "Kesintisiz döngü"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
