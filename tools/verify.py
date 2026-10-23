@@ -39,7 +39,10 @@ PAGES: dict[str, list[tuple[str, str]]] = {
 def outputs_for(page: str) -> list[tuple[str, str]]:
     if page == "guides":
         guides = json.loads((CONTENT / "guides.json").read_text(encoding="utf-8"))
-        return [(f"guides/{slug}.html", f"guides/{slug}.html") for slug in guides["en"]]
+        slugs = set()
+        for loc in guides.values():
+            slugs.update(loc.keys())
+        return [(f"guides/{slug}.html", f"guides/{slug}.html") for slug in sorted(slugs)]
     if page == "music":
         return [("music/index.html", "music/")]
     if page in ("refund", "acceptable-use"):
@@ -95,7 +98,11 @@ def main() -> int:
         site_default = default if default in site_codes else site_codes[0]
         for page in spec["pages"]:
             # guides 目前只有英文：期待集合与产物范围都收窄到 en
-            page_codes = ["en"] if page == "guides" else site_codes
+            if page == "guides":
+                gj = json.loads((CONTENT / "guides.json").read_text(encoding="utf-8"))
+                page_codes = [c for c in site_codes if c in gj]
+            else:
+                page_codes = site_codes
             want_hreflang = sorted([languages["languages"][c]["hreflang"] for c in page_codes] + ["x-default"])
             for file_rel, url_rel in outputs_for(page):
                 for lang in page_codes:

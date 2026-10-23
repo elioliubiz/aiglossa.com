@@ -1603,11 +1603,14 @@
   </url>
   <url>
     <loc>https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/exact-30-second-background-music.html"/>
   </url>
   <url>
     <loc>https://tools.aiglossa.com/en/guides/photo-to-song-lyrics.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/photo-to-song-lyrics.html"/>
   </url>
   <url>
     <loc>https://tools.aiglossa.com/en/guides/seamless-loop-seam.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/guides/seamless-loop-seam.html"/>
   </url>
 </urlset>
