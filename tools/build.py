@@ -302,6 +302,17 @@ def _write_seo_files(site: str, spec: dict, site_langs: list[str],
     (targets / "sitemap.xml").write_text("\n".join(out) + "\n", encoding="utf-8")
 
 
+# 指南在列表页的呈现顺序：从"多长"到"怎么循环"到"图像"到"授权"，
+# 按读者会问的顺序排，而不是按 slug 字母序。
+GUIDE_ORDER = [
+    "exact-30-second-background-music",
+    "video-length",
+    "seamless-loop-seam",
+    "photo-to-song-lyrics",
+    "commercial-use",
+]
+
+
 UNTRANSLATED: list[str] = []
 
 
@@ -509,9 +520,13 @@ def main() -> int:
                 for lang in [c for c in site_langs if c in source]:
                     # 列表页：该语言已有文章的汇总（rail 里那一行链接的落地页）
                     items = source[lang]
+                    ordered = sorted(
+                        items.items(),
+                        key=lambda kv: GUIDE_ORDER.index(kv[0]) if kv[0] in GUIDE_ORDER else 99,
+                    )
                     list_html = "".join(
                         f'<li><a href="{slug}.html">{esc(g.get("h1") or g["title"])}</a></li>'
-                        for slug, g in items.items()
+                        for slug, g in ordered
                     )
                     emit(site, lang, 2, "guides/index.html", "pages/guide.html",
                          lambda lang, base, lh=list_html, tc=tools_copy: {
