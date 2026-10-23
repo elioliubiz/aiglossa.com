@@ -35,45 +35,106 @@
 <meta property="og:image:alt" content="aiglossa">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://aiglossa.com/assets/og.png">
-<meta name="theme-color" content="#0b0d12">
+<meta name="theme-color" content="#0b0c0e">
 <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="stylesheet" href="../assets/site.css">
+<style>
+  /* 首页：深色底 + 两个产品光晕，产品卡立即可见 */
+  :root{--bg:#0b0c0e;--ink:#f4f3ef;--mut:#9497a0;--acc:#ff7a1a}
+  body{background:var(--bg);color:var(--ink);overflow-x:hidden}
+  .glow{position:fixed;inset:0;pointer-events:none;z-index:0;
+        background:
+          radial-gradient(52rem 40rem at 82% -8%, rgba(255,122,26,.16), transparent 62%),
+          radial-gradient(46rem 36rem at 8% 8%, rgba(96,132,255,.14), transparent 60%);}
+  main{position:relative;z-index:1}
+  /* site.css 的 .hero 是 min-height:100vh 的满屏蓝紫渐变，首页要紧凑 + 自定义光晕 */
+  .hero{min-height:auto;display:block;background:none;
+        padding-block:clamp(84px,12vh,150px) 44px;text-align:center}
+  .hero .kicker{color:var(--mut);letter-spacing:.24em;font-size:11px}
+  .hero h1{font-size:clamp(30px,4.6vw,54px);line-height:1.08;letter-spacing:-.03em;margin:18px auto 0;
+           max-width:15ch;background:none;-webkit-text-fill-color:currentColor;color:var(--ink)}
+  .hero .lede{margin-inline:auto;max-width:52ch;color:var(--mut);font-size:16px;line-height:1.68}
+
+  .products{padding-block:8px 90px}
+  .products h2{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);
+               text-align:center;margin-block:0 26px;font-weight:500}
+  .pgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;max-width:960px;margin-inline:auto}
+  @media(max-width:760px){.pgrid{grid-template-columns:1fr}}
+  .pcard{position:relative;display:flex;flex-direction:column;gap:14px;padding:28px;
+         border:1px solid rgba(255,255,255,.09);border-radius:20px;text-decoration:none;color:inherit;
+         background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+         transition:transform .18s ease,border-color .18s ease,background .18s ease}
+  .pcard:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.06)}
+  .pcard::after{content:"";position:absolute;inset-inline:28px;top:0;height:1px;border-radius:2px;
+                background:linear-gradient(90deg,transparent,var(--tint),transparent);opacity:.7}
+  .pcard.tools{--tint:#ff7a1a}
+  .pcard.app{--tint:#6f8dff}
+  .phead{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .pname{font-size:21px;font-weight:600;letter-spacing:-.01em}
+  .pbadge{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:5px 9px;border-radius:999px;
+          border:1px solid color-mix(in srgb,var(--tint) 55%,transparent);
+          color:var(--tint);background:color-mix(in srgb,var(--tint) 14%,transparent)}
+  .pdesc{color:var(--mut);font-size:14.5px;line-height:1.65;margin:0}
+  .pmeta{color:rgba(255,255,255,.45);font-size:11.5px;margin:0}
+  .pgo{margin-top:auto;padding-top:10px;color:var(--tint);font-size:13.5px;font-weight:500}
+  .about{max-width:720px;margin:0 auto;padding-block:0 96px;text-align:center;
+         color:var(--mut);font-size:14px;line-height:1.75}
+  .about a{color:var(--ink)}
+  footer{padding-block:26px;border-block-start:1px solid rgba(255,255,255,.08)}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+  footer nav a{color:var(--mut);font-size:12.5px;text-decoration:none;margin-inline-end:14px}
+</style>
 </head>
 <body>
+<div class="glow" aria-hidden="true"></div>
 <main>
   <section class="hero">
-    <div class="wrap center">
+    <div class="wrap">
       <p class="kicker">AIGLOSSA</p>
       <h1>欲しい道具は、自分で作る</h1>
       <p class="lede">ここは aiglossa、自分で作ったアプリを公開している場所です。多くは小さな困りごとから始まります——既存の道具があと少し足りない、ならば自分で書いてしまおう、という具合に。</p>
     </div>
   </section>
 
-  <div class="band">
+  <section class="products">
     <div class="wrap">
-      <p class="apps-title">アプリ</p>
-      <div class="apps">
-        <div class="app">
-          <div class="app-head">
-            <b>Scholan</b>
-            <span>iOS · 16 言語</span>
+      <h2>プロダクト</h2>
+      <div class="pgrid">
+        <a class="pcard tools" href="https://tools.aiglossa.com/ja/">
+          <div class="phead">
+            <span class="pname">AI Music</span>
+            <span class="pbadge">提供中</span>
           </div>
-          <p>予習してから外国語の本を読む</p>
-          <div class="app-links">
-            <a href="https://scholan.aiglossa.com/ja/">Scholan について</a>
-            <a href="https://scholan.aiglossa.com/ja/support.html">サポート</a>
+          <p class="pdesc">写真やプロンプトから、必要な長さちょうどの曲を作ります。歌詞には写真の中のものが歌われます。</p>
+          <p class="pmeta">30〜90秒・シームレスループ・10言語のボーカル</p>
+          <span class="pgo">開く →</span>
+        </a>
+
+        <a class="pcard app" href="https://scholan.aiglossa.com/ja/">
+          <div class="phead">
+            <span class="pname">Scholan</span>
+            <span class="pbadge">iOS</span>
           </div>
-        </div>
+          <p class="pdesc">予習してから外国語の本を読む</p>
+          <p class="pmeta">iOS · 16 言語</p>
+          <span class="pgo">開く →</span>
+        </a>
       </div>
-      <p class="closing">個人開発者です。アプリはたいてい一つのことを解決するために作ります。機能の多さより、その一つのことを気持ちよく使えるかどうかを大事にしています。感想でも、使いにくいところでも、メールをいただけたら嬉しいです。</p>
-      <p class="closing"><a href="mailto:support@aiglossa.com">support@aiglossa.com</a></p>
     </div>
-  </div>
+  </section>
+
+  <section class="about">
+    <div class="wrap">
+      <p>個人開発者です。アプリはたいてい一つのことを解決するために作ります。機能の多さより、その一つのことを気持ちよく使えるかどうかを大事にしています。感想でも、使いにくいところでも、メールをいただけたら嬉しいです。</p>
+      <p><a href="mailto:support@aiglossa.com">support@aiglossa.com</a></p>
+    </div>
+  </section>
 </main>
 
 <footer>
-  <div class="wrap foot">
+  <div class="wrap">
     <span class="brand">aiglossa.com</span>
     <nav class="legal">
       <a href="https://aiglossa.com/ja/protocol/privacy.html">プライバシーポリシー</a>

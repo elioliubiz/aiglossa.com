@@ -450,11 +450,20 @@ def main() -> int:
                     marketing_title = marketing[lang]["title"]
                     assert "—" in marketing_title, f"marketing.{lang}.title 缺少分隔符：{marketing_title!r}"
                     scholan_base = f'https://{sites["scholan"]["host"]}'.rstrip("/")
+                    tools_base = f'https://{sites["tools"]["host"]}'.rstrip("/")
+                    # 工具卡文案直接取工具站首页的第一张卡，不重复翻译
+                    tools_copy = json.loads((CONTENT / "tools.json").read_text(encoding="utf-8"))[lang]["tools"][0]
                     return {
                         "title": esc(locale["title"]),
                         "h1": esc(locale["h1"]),
                         "lede": esc(locale["lede"]),
                         "apps_title": esc(locale["apps_title"]),
+                        "open_label": esc(locale.get("open_label", "Open")),
+                        "tool_name": esc(tools_copy["name"]),
+                        "tool_desc": esc(tools_copy["desc"]),
+                        "tool_meta": esc(tools_copy["meta"]),
+                        "tool_status": esc(tools_copy["status"]),
+                        "tools_href": f"{tools_base}/{lang}/",
                         "about_text": esc(locale["about_text"]),
                         "scholan_meta": esc(locale["scholan_meta"]),
                         "learn_more": esc(locale["learn_more"]),
