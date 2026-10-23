@@ -250,6 +250,19 @@
     </div>
   </aside>
 
+<div class="gm" id="cm" aria-hidden="true">
+  <div class="bd" data-cclose></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-label="Cara kerja kredit →" style="max-width:640px;grid-template-columns:1fr">
+    <button class="x" data-cclose aria-label="Tutup">✕</button>
+    <div class="body" style="padding:34px 36px">
+      <h1 id="cmTitle" style="font-size:20px;margin-bottom:16px"></h1>
+      <ul id="cmList" style="margin:0 0 18px"></ul>
+      <div id="cmPacks" style="display:grid;gap:8px;margin-bottom:20px"></div>
+      <a id="cmBuy" href="../pricing.html" class="cta" style="display:inline-block;margin:0;padding:11px 18px;border-radius:9px;background:var(--acc);color:#1a0e04;font-weight:600;text-decoration:none"></a>
+    </div>
+  </div>
+</div>
+
 <div class="gm" id="gm" aria-hidden="true">
   <div class="bd" data-close></div>
   <div class="panel" role="dialog" aria-modal="true" aria-label="Panduan">
@@ -282,7 +295,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi", "description": "Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus.", "h1": "Buat lagu", "sub": "Dari foto atau deskripsi. Durasi presisi, loop mulus.", "drop": "Seret atau pilih foto<br>lirik akan menyebut isinya", "generate": "Buat lagu", "how_credits": "Cara kerja kredit →", "grp_photo": "Dibuat dari foto", "grp_recipe": "Dari resep · tanpa foto", "download": "Unduh", "save_recipe": "Simpan sebagai resep", "remove_photo": "Hapus foto", "photo_here": "Fotomu di sini", "note": "Semua di sebelah kanan dibuat di sini", "legal_aup": "Penggunaan yang wajar", "legal_refund": "Pengembalian dana", "sign_in_first": "Masuk untuk membuat", "generating": "Membuat… sekitar 20 detik.", "just_generated": "Baru dibuat", "your_track": "Lagu kamu", "from_recipe": "Dari resep", "from_photo": "Dibuat dari foto", "err_load": "Gagal memuat opsi", "done_in": "Selesai dalam {n} dtk", "gen_cost": "Buat · {n}", "err_gen": "Pembuatan gagal", "my_track": "Trek saya", "err_net": "Kesalahan jaringan", "recipe_name": "Nama resep", "err_save": "Gagal menyimpan", "saved": "Tersimpan: {name}", "up_to": "Maksimal {n}", "credits": "kredit", "guides_link": "Panduan →", "guides_title": "Panduan", "close": "Tutup", "loading": "Memuat…", "off": "Mati", "loop_on": "Loop mulus"}</script>
+<script type="application/json" id="ui">{"title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi", "description": "Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus.", "h1": "Buat lagu", "sub": "Dari foto atau deskripsi. Durasi presisi, loop mulus.", "drop": "Seret atau pilih foto<br>lirik akan menyebut isinya", "generate": "Buat lagu", "how_credits": "Cara kerja kredit →", "grp_photo": "Dibuat dari foto", "grp_recipe": "Dari resep · tanpa foto", "download": "Unduh", "save_recipe": "Simpan sebagai resep", "remove_photo": "Hapus foto", "photo_here": "Fotomu di sini", "note": "Semua di sebelah kanan dibuat di sini", "legal_aup": "Penggunaan yang wajar", "legal_refund": "Pengembalian dana", "sign_in_first": "Masuk untuk membuat", "generating": "Membuat… sekitar 20 detik.", "just_generated": "Baru dibuat", "your_track": "Lagu kamu", "from_recipe": "Dari resep", "from_photo": "Dibuat dari foto", "err_load": "Gagal memuat opsi", "done_in": "Selesai dalam {n} dtk", "gen_cost": "Buat · {n}", "err_gen": "Pembuatan gagal", "my_track": "Trek saya", "err_net": "Kesalahan jaringan", "recipe_name": "Nama resep", "err_save": "Gagal menyimpan", "saved": "Tersimpan: {name}", "up_to": "Maksimal {n}", "credits": "kredit", "guides_link": "Panduan →", "guides_title": "Panduan", "close": "Tutup", "loading": "Memuat…", "off": "Mati", "loop_on": "Loop mulus", "buy_credits": "Beli kredit →", "li1": "Trek 30 dtk = 45 kredit, 45 dtk = 64, 60 dtk = 85, 75 dtk = 103, 90 dtk = 120.", "li2": "Pembuatan yang gagal dikembalikan otomatis.", "li3": "Kredit tidak kedaluwarsa dan berlaku di semua alat.", "li4": "Pembayaran diproses oleh Creem, merchant of record kami.", "li5": "Kredit yang belum terpakai bisa dikembalikan dalam 14 hari.", "refund_link": "Kebijakan pengembalian"}</script>
 <script>
 (function () {
   "use strict";
@@ -620,6 +633,30 @@
       if (r.code === 200) renderRecipes(r.data || []);
     });
   });
+  // 额度说明：弹窗展示，购买仍走 /pricing.html
+  (function () {
+    var cm = document.getElementById("cm");
+    if (!cm) return;
+    var packs = [[180, "$2.39"], [360, "$3.99"], [750, "$7.99"], [1500, "$15.99"], [4000, "$39.99"]];
+    function fill() {
+      document.getElementById("cmTitle").textContent = UI.how_credits.replace(" →", "");
+      document.getElementById("cmList").innerHTML = [UI.li1, UI.li2, UI.li3, UI.li4, UI.li5]
+        .map(function (t) { return "<li>" + t + "</li>"; }).join("");
+      document.getElementById("cmPacks").innerHTML = packs.map(function (p) {
+        return '<div style="display:flex;justify-content:space-between;padding:10px 14px;border:1px solid var(--line);border-radius:9px">' +
+               "<span>" + p[0] + " " + UI.credits + "</span><span style=\"color:var(--mut)\">" + p[1] + "</span></div>";
+      }).join("");
+      document.getElementById("cmBuy").textContent = UI.buy_credits;
+    }
+    function open() { fill(); cm.classList.add("open"); cm.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden"; }
+    function close() { cm.classList.remove("open"); cm.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; }
+    document.querySelectorAll('a[href="../pricing.html"]').forEach(function (a) {
+      a.addEventListener("click", function (e) { e.preventDefault(); open(); });
+    });
+    document.querySelectorAll("[data-cclose]").forEach(function (el) { el.addEventListener("click", close); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  })();
+
   // 指南：弹窗内切换，不跳页；文章页本身仍可直接访问（SEO）
   (function () {
     var gm = document.getElementById("gm");

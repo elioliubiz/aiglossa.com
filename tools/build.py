@@ -539,7 +539,11 @@ def main() -> int:
                     out["drop"] = copy["drop"]                      # 含 <br>，按 HTML 原样插入
                     out["title"] = esc(copy["title"])
                     out["description"] = esc(copy["description"])
-                    out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    merged = dict(copy)
+                    pricing_copy = source[lang]["pricing"]
+                    for k in ("li1", "li2", "li3", "li4", "li5", "refund_link"):
+                        merged[k] = pricing_copy[k]
+                    out["ui_json"] = json.dumps(merged, ensure_ascii=False).replace("</", "<\\/")
                     out["alt_sea"] = esc(copy["title"])
                     out["jsonld"] = json.dumps({
                         "@context": "https://schema.org",
@@ -578,7 +582,11 @@ def main() -> int:
                 def tool_page_values(lang: str, base: str, page=page, source=source) -> dict[str, str]:
                     copy = source[lang][page]
                     out = {k: esc(v) for k, v in copy.items()}
-                    out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    merged = dict(copy)
+                    pricing_copy = source[lang]["pricing"]
+                    for k in ("li1", "li2", "li3", "li4", "li5", "refund_link"):
+                        merged[k] = pricing_copy[k]
+                    out["ui_json"] = json.dumps(merged, ensure_ascii=False).replace("</", "<\\/")
                     out["alt_sea"] = esc(copy["title"])
                     out["jsonld"] = json.dumps({
                         "@context": "https://schema.org",

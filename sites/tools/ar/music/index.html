@@ -250,6 +250,19 @@
     </div>
   </aside>
 
+<div class="gm" id="cm" aria-hidden="true">
+  <div class="bd" data-cclose></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-label="كيف تعمل الأرصدة →" style="max-width:640px;grid-template-columns:1fr">
+    <button class="x" data-cclose aria-label="إغلاق">✕</button>
+    <div class="body" style="padding:34px 36px">
+      <h1 id="cmTitle" style="font-size:20px;margin-bottom:16px"></h1>
+      <ul id="cmList" style="margin:0 0 18px"></ul>
+      <div id="cmPacks" style="display:grid;gap:8px;margin-bottom:20px"></div>
+      <a id="cmBuy" href="../pricing.html" class="cta" style="display:inline-block;margin:0;padding:11px 18px;border-radius:9px;background:var(--acc);color:#1a0e04;font-weight:600;text-decoration:none"></a>
+    </div>
+  </div>
+</div>
+
 <div class="gm" id="gm" aria-hidden="true">
   <div class="bd" data-close></div>
   <div class="panel" role="dialog" aria-modal="true" aria-label="أدلة">
@@ -282,7 +295,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق", "description": "حوّل صورة أو وصفًا إلى موسيقى خلفية بطول 30–90 ثانية بالضبط. الكلمات تذكر ما في صورتك، مع غناء بعشر لغات وحلقات بلا فواصل.", "h1": "أنشئ مقطعًا", "sub": "من صورة أو وصف. مدة دقيقة وحلقات بلا فواصل.", "drop": "أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها", "generate": "أنشئ المقطع", "how_credits": "كيف تعمل الأرصدة →", "grp_photo": "من صورة", "grp_recipe": "من وصفة · بلا صورة", "download": "تنزيل", "save_recipe": "احفظ كوصفة", "remove_photo": "إزالة الصورة", "photo_here": "صورتك هنا", "note": "كل ما على اليمين أُنشئ هنا", "legal_aup": "الاستخدام المقبول", "legal_refund": "المبالغ المستردة", "sign_in_first": "سجّل الدخول للإنشاء", "generating": "جارٍ الإنشاء… نحو 20 ثانية.", "just_generated": "أُنشئ للتو", "your_track": "مقطعك", "from_recipe": "من وصفة", "from_photo": "من صورة", "err_load": "تعذّر تحميل الخيارات", "done_in": "اكتمل في {n} ثانية", "gen_cost": "إنشاء · {n}", "err_gen": "فشل الإنشاء", "my_track": "مقطعي", "err_net": "خطأ في الشبكة", "recipe_name": "اسم الوصفة", "err_save": "تعذّر الحفظ", "saved": "تم الحفظ: {name}", "up_to": "حتى {n}", "credits": "رصيدًا", "guides_link": "أدلة ←", "guides_title": "أدلة", "close": "إغلاق", "loading": "جارٍ التحميل…", "off": "إيقاف", "loop_on": "حلقة بلا فواصل"}</script>
+<script type="application/json" id="ui">{"title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق", "description": "حوّل صورة أو وصفًا إلى موسيقى خلفية بطول 30–90 ثانية بالضبط. الكلمات تذكر ما في صورتك، مع غناء بعشر لغات وحلقات بلا فواصل.", "h1": "أنشئ مقطعًا", "sub": "من صورة أو وصف. مدة دقيقة وحلقات بلا فواصل.", "drop": "أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها", "generate": "أنشئ المقطع", "how_credits": "كيف تعمل الأرصدة →", "grp_photo": "من صورة", "grp_recipe": "من وصفة · بلا صورة", "download": "تنزيل", "save_recipe": "احفظ كوصفة", "remove_photo": "إزالة الصورة", "photo_here": "صورتك هنا", "note": "كل ما على اليمين أُنشئ هنا", "legal_aup": "الاستخدام المقبول", "legal_refund": "المبالغ المستردة", "sign_in_first": "سجّل الدخول للإنشاء", "generating": "جارٍ الإنشاء… نحو 20 ثانية.", "just_generated": "أُنشئ للتو", "your_track": "مقطعك", "from_recipe": "من وصفة", "from_photo": "من صورة", "err_load": "تعذّر تحميل الخيارات", "done_in": "اكتمل في {n} ثانية", "gen_cost": "إنشاء · {n}", "err_gen": "فشل الإنشاء", "my_track": "مقطعي", "err_net": "خطأ في الشبكة", "recipe_name": "اسم الوصفة", "err_save": "تعذّر الحفظ", "saved": "تم الحفظ: {name}", "up_to": "حتى {n}", "credits": "رصيدًا", "guides_link": "أدلة ←", "guides_title": "أدلة", "close": "إغلاق", "loading": "جارٍ التحميل…", "off": "إيقاف", "loop_on": "حلقة بلا فواصل", "buy_credits": "شراء أرصدة ←", "li1": "مقطع 30 ثانية = 45 رصيدًا، 45 ثانية = 64، 60 ثانية = 85، 75 ثانية = 103، 90 ثانية = 120.", "li2": "الأجيال الفاشلة تُرد تلقائيًا.", "li3": "الأرصدة لا تنتهي وتعمل في كل الأدوات.", "li4": "المدفوعات تعالجها Creem، وهي تاجر السجل لدينا.", "li5": "يمكن استرداد الأرصدة غير المستخدمة خلال 14 يومًا.", "refund_link": "سياسة الاسترداد"}</script>
 <script>
 (function () {
   "use strict";
@@ -620,6 +633,30 @@
       if (r.code === 200) renderRecipes(r.data || []);
     });
   });
+  // 额度说明：弹窗展示，购买仍走 /pricing.html
+  (function () {
+    var cm = document.getElementById("cm");
+    if (!cm) return;
+    var packs = [[180, "$2.39"], [360, "$3.99"], [750, "$7.99"], [1500, "$15.99"], [4000, "$39.99"]];
+    function fill() {
+      document.getElementById("cmTitle").textContent = UI.how_credits.replace(" →", "");
+      document.getElementById("cmList").innerHTML = [UI.li1, UI.li2, UI.li3, UI.li4, UI.li5]
+        .map(function (t) { return "<li>" + t + "</li>"; }).join("");
+      document.getElementById("cmPacks").innerHTML = packs.map(function (p) {
+        return '<div style="display:flex;justify-content:space-between;padding:10px 14px;border:1px solid var(--line);border-radius:9px">' +
+               "<span>" + p[0] + " " + UI.credits + "</span><span style=\"color:var(--mut)\">" + p[1] + "</span></div>";
+      }).join("");
+      document.getElementById("cmBuy").textContent = UI.buy_credits;
+    }
+    function open() { fill(); cm.classList.add("open"); cm.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden"; }
+    function close() { cm.classList.remove("open"); cm.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; }
+    document.querySelectorAll('a[href="../pricing.html"]').forEach(function (a) {
+      a.addEventListener("click", function (e) { e.preventDefault(); open(); });
+    });
+    document.querySelectorAll("[data-cclose]").forEach(function (el) { el.addEventListener("click", close); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  })();
+
   // 指南：弹窗内切换，不跳页；文章页本身仍可直接访问（SEO）
   (function () {
     var gm = document.getElementById("gm");

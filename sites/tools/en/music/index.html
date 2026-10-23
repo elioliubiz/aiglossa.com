@@ -250,6 +250,19 @@
     </div>
   </aside>
 
+<div class="gm" id="cm" aria-hidden="true">
+  <div class="bd" data-cclose></div>
+  <div class="panel" role="dialog" aria-modal="true" aria-label="How credits work →" style="max-width:640px;grid-template-columns:1fr">
+    <button class="x" data-cclose aria-label="Close">✕</button>
+    <div class="body" style="padding:34px 36px">
+      <h1 id="cmTitle" style="font-size:20px;margin-bottom:16px"></h1>
+      <ul id="cmList" style="margin:0 0 18px"></ul>
+      <div id="cmPacks" style="display:grid;gap:8px;margin-bottom:20px"></div>
+      <a id="cmBuy" href="../pricing.html" class="cta" style="display:inline-block;margin:0;padding:11px 18px;border-radius:9px;background:var(--acc);color:#1a0e04;font-weight:600;text-decoration:none"></a>
+    </div>
+  </div>
+</div>
+
 <div class="gm" id="gm" aria-hidden="true">
   <div class="bd" data-close></div>
   <div class="panel" role="dialog" aria-modal="true" aria-label="Guides">
@@ -282,7 +295,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"h1": "Make a track", "sub": "From a photo or a prompt. Exact length, seamless loops.", "drop": "Drop or choose a photo<br>the lyrics will name what's in it", "generate": "Generate track", "how_credits": "How credits work →", "grp_photo": "Made from a photo", "grp_recipe": "From a recipe · no photo needed", "download": "Download", "save_recipe": "Save as recipe", "remove_photo": "Remove photo", "photo_here": "Your photo here", "note": "Everything on the right was made here", "legal_aup": "Acceptable Use", "legal_refund": "Refunds", "sign_in_first": "Sign in to generate", "generating": "Generating… about 20 seconds.", "just_generated": "Just generated", "your_track": "Your track", "from_recipe": "From a recipe", "from_photo": "Made from a photo", "title": "AI Music Generator — Photo to Song, Exact Length", "description": "Turn a photo or a prompt into background music at exactly 30–90 seconds. Lyrics name what's in your picture, with vocals in 10 languages and seamless loops.", "err_load": "Could not load options", "done_in": "Done in {n}s", "gen_cost": "Generate · {n}", "err_gen": "Generation failed", "my_track": "My track", "err_net": "Network error", "recipe_name": "Recipe name", "err_save": "Save failed", "saved": "Saved: {name}", "up_to": "Up to {n}", "credits": "credits", "guides_link": "Guides →", "guides_title": "Guides", "close": "Close", "loading": "Loading…", "off": "Off", "loop_on": "Seamless loop"}</script>
+<script type="application/json" id="ui">{"h1": "Make a track", "sub": "From a photo or a prompt. Exact length, seamless loops.", "drop": "Drop or choose a photo<br>the lyrics will name what's in it", "generate": "Generate track", "how_credits": "How credits work →", "grp_photo": "Made from a photo", "grp_recipe": "From a recipe · no photo needed", "download": "Download", "save_recipe": "Save as recipe", "remove_photo": "Remove photo", "photo_here": "Your photo here", "note": "Everything on the right was made here", "legal_aup": "Acceptable Use", "legal_refund": "Refunds", "sign_in_first": "Sign in to generate", "generating": "Generating… about 20 seconds.", "just_generated": "Just generated", "your_track": "Your track", "from_recipe": "From a recipe", "from_photo": "Made from a photo", "title": "AI Music Generator — Photo to Song, Exact Length", "description": "Turn a photo or a prompt into background music at exactly 30–90 seconds. Lyrics name what's in your picture, with vocals in 10 languages and seamless loops.", "err_load": "Could not load options", "done_in": "Done in {n}s", "gen_cost": "Generate · {n}", "err_gen": "Generation failed", "my_track": "My track", "err_net": "Network error", "recipe_name": "Recipe name", "err_save": "Save failed", "saved": "Saved: {name}", "up_to": "Up to {n}", "credits": "credits", "guides_link": "Guides →", "guides_title": "Guides", "close": "Close", "loading": "Loading…", "off": "Off", "loop_on": "Seamless loop", "buy_credits": "Buy credits →", "li1": "30s track = 45 credits, 45s = 64, 60s = 85, 75s = 103, 90s = 120.", "li2": "Failed generations are refunded automatically.", "li3": "Credits never expire and work across all tools.", "li4": "Payments are processed by Creem, our merchant of record.", "li5": "Unused credits can be refunded within 14 days.", "refund_link": "Refund Policy"}</script>
 <script>
 (function () {
   "use strict";
@@ -620,6 +633,30 @@
       if (r.code === 200) renderRecipes(r.data || []);
     });
   });
+  // 额度说明：弹窗展示，购买仍走 /pricing.html
+  (function () {
+    var cm = document.getElementById("cm");
+    if (!cm) return;
+    var packs = [[180, "$2.39"], [360, "$3.99"], [750, "$7.99"], [1500, "$15.99"], [4000, "$39.99"]];
+    function fill() {
+      document.getElementById("cmTitle").textContent = UI.how_credits.replace(" →", "");
+      document.getElementById("cmList").innerHTML = [UI.li1, UI.li2, UI.li3, UI.li4, UI.li5]
+        .map(function (t) { return "<li>" + t + "</li>"; }).join("");
+      document.getElementById("cmPacks").innerHTML = packs.map(function (p) {
+        return '<div style="display:flex;justify-content:space-between;padding:10px 14px;border:1px solid var(--line);border-radius:9px">' +
+               "<span>" + p[0] + " " + UI.credits + "</span><span style=\"color:var(--mut)\">" + p[1] + "</span></div>";
+      }).join("");
+      document.getElementById("cmBuy").textContent = UI.buy_credits;
+    }
+    function open() { fill(); cm.classList.add("open"); cm.setAttribute("aria-hidden", "false"); document.body.style.overflow = "hidden"; }
+    function close() { cm.classList.remove("open"); cm.setAttribute("aria-hidden", "true"); document.body.style.overflow = ""; }
+    document.querySelectorAll('a[href="../pricing.html"]').forEach(function (a) {
+      a.addEventListener("click", function (e) { e.preventDefault(); open(); });
+    });
+    document.querySelectorAll("[data-cclose]").forEach(function (el) { el.addEventListener("click", close); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  })();
+
   // 指南：弹窗内切换，不跳页；文章页本身仍可直接访问（SEO）
   (function () {
     var gm = document.getElementById("gm");

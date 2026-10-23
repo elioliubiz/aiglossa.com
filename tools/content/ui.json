@@ -101,7 +101,8 @@
       "close": "Close",
       "loading": "Loading…",
       "off": "Off",
-      "loop_on": "Seamless loop"
+      "loop_on": "Seamless loop",
+      "buy_credits": "Buy credits →"
     }
   },
   "ja": {
@@ -194,7 +195,8 @@
       "close": "閉じる",
       "loading": "読み込み中…",
       "off": "オフ",
-      "loop_on": "シームレスループ"
+      "loop_on": "シームレスループ",
+      "buy_credits": "クレジットを購入 →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -299,7 +301,8 @@
       "close": "닫기",
       "loading": "불러오는 중…",
       "off": "끔",
-      "loop_on": "이음새 없는 루프"
+      "loop_on": "이음새 없는 루프",
+      "buy_credits": "크레딧 구매 →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -404,7 +407,8 @@
       "close": "关闭",
       "loading": "加载中…",
       "off": "关闭",
-      "loop_on": "无缝循环"
+      "loop_on": "无缝循环",
+      "buy_credits": "购买额度 →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -509,7 +513,8 @@
       "close": "關閉",
       "loading": "載入中…",
       "off": "關閉",
-      "loop_on": "無縫循環"
+      "loop_on": "無縫循環",
+      "buy_credits": "購買額度 →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -614,7 +619,8 @@
       "close": "Cerrar",
       "loading": "Cargando…",
       "off": "No",
-      "loop_on": "Bucle sin cortes"
+      "loop_on": "Bucle sin cortes",
+      "buy_credits": "Comprar créditos →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -719,7 +725,8 @@
       "close": "Fermer",
       "loading": "Chargement…",
       "off": "Non",
-      "loop_on": "Boucle sans coupure"
+      "loop_on": "Boucle sans coupure",
+      "buy_credits": "Acheter des crédits →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -824,7 +831,8 @@
       "close": "Schließen",
       "loading": "Lädt…",
       "off": "Aus",
-      "loop_on": "Nahtloser Loop"
+      "loop_on": "Nahtloser Loop",
+      "buy_credits": "Credits kaufen →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -929,7 +937,8 @@
       "close": "Fechar",
       "loading": "Carregando…",
       "off": "Desligado",
-      "loop_on": "Loop sem corte"
+      "loop_on": "Loop sem corte",
+      "buy_credits": "Comprar créditos →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1034,7 +1043,8 @@
       "close": "Chiudi",
       "loading": "Caricamento…",
       "off": "No",
-      "loop_on": "Loop senza stacchi"
+      "loop_on": "Loop senza stacchi",
+      "buy_credits": "Acquista crediti →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1139,7 +1149,8 @@
       "close": "Закрыть",
       "loading": "Загрузка…",
       "off": "Выкл",
-      "loop_on": "Бесшовный луп"
+      "loop_on": "Бесшовный луп",
+      "buy_credits": "Купить кредиты →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1244,7 +1255,8 @@
       "close": "إغلاق",
       "loading": "جارٍ التحميل…",
       "off": "إيقاف",
-      "loop_on": "حلقة بلا فواصل"
+      "loop_on": "حلقة بلا فواصل",
+      "buy_credits": "شراء أرصدة ←"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1349,7 +1361,8 @@
       "close": "ปิด",
       "loading": "กำลังโหลด…",
       "off": "ปิด",
-      "loop_on": "ลูปไร้รอยต่อ"
+      "loop_on": "ลูปไร้รอยต่อ",
+      "buy_credits": "ซื้อเครดิต →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1454,7 +1467,8 @@
       "close": "Đóng",
       "loading": "Đang tải…",
       "off": "Tắt",
-      "loop_on": "Vòng lặp liền mạch"
+      "loop_on": "Vòng lặp liền mạch",
+      "buy_credits": "Mua tín dụng →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1559,7 +1573,8 @@
       "close": "Tutup",
       "loading": "Memuat…",
       "off": "Mati",
-      "loop_on": "Loop mulus"
+      "loop_on": "Loop mulus",
+      "buy_credits": "Beli kredit →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1664,7 +1679,8 @@
       "close": "Kapat",
       "loading": "Yükleniyor…",
       "off": "Kapalı",
-      "loop_on": "Kesintisiz döngü"
+      "loop_on": "Kesintisiz döngü",
+      "buy_credits": "Kredi satın al →"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
