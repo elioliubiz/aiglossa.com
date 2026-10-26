@@ -18,7 +18,8 @@
       "neterr": "Network error",
       "per": "≈ {n} × 30s tracks",
       "kicker": "aiglossa tools",
-      "refund_note": "Credits are non-refundable once used. Please buy only what you need."
+      "refund_note": "Credits are non-refundable once used. Please buy only what you need.",
+      "back_account": "Back to account"
     },
     "account": {
       "title": "Sign in — aiglossa tools",
@@ -185,7 +186,8 @@
       "neterr": "通信エラー",
       "per": "30秒×約 {n} 曲",
       "kicker": "aiglossa tools",
-      "refund_note": "使用済みのクレジットは返金できません。必要な分だけご購入ください。"
+      "refund_note": "使用済みのクレジットは返金できません。必要な分だけご購入ください。",
+      "back_account": "アカウントに戻る"
     },
     "account": {
       "title": "サインイン — aiglossa tools",
@@ -352,7 +354,8 @@
       "neterr": "네트워크 오류",
       "per": "30초 × 약 {n}곡",
       "kicker": "aiglossa tools",
-      "refund_note": "사용한 크레딧은 환불되지 않습니다. 필요한 만큼만 구매하세요."
+      "refund_note": "사용한 크레딧은 환불되지 않습니다. 필요한 만큼만 구매하세요.",
+      "back_account": "계정으로 돌아가기"
     },
     "account": {
       "title": "로그인 — aiglossa tools",
@@ -519,7 +522,8 @@
       "neterr": "网络错误",
       "per": "约 {n} 首 30 秒",
       "kicker": "aiglossa tools",
-      "refund_note": "额度一经使用不可退款，请按需购买。"
+      "refund_note": "额度一经使用不可退款，请按需购买。",
+      "back_account": "返回账户"
     },
     "account": {
       "title": "登录 — aiglossa tools",
@@ -686,7 +690,8 @@
       "neterr": "網路錯誤",
       "per": "約 {n} 首 30 秒",
       "kicker": "aiglossa tools",
-      "refund_note": "額度一經使用不可退款，請按需購買。"
+      "refund_note": "額度一經使用不可退款，請按需購買。",
+      "back_account": "返回帳戶"
     },
     "account": {
       "title": "登入 — aiglossa tools",
@@ -853,7 +858,8 @@
       "neterr": "Error de red",
       "per": "≈ {n} pistas de 30 s",
       "kicker": "aiglossa tools",
-      "refund_note": "Los créditos usados no son reembolsables. Compra solo lo que necesites."
+      "refund_note": "Los créditos usados no son reembolsables. Compra solo lo que necesites.",
+      "back_account": "Volver a la cuenta"
     },
     "account": {
       "title": "Iniciar sesión — aiglossa tools",
@@ -1020,7 +1026,8 @@
       "neterr": "Erreur réseau",
       "per": "≈ {n} morceaux de 30 s",
       "kicker": "aiglossa tools",
-      "refund_note": "Les crédits utilisés ne sont pas remboursables. Achetez seulement le nécessaire."
+      "refund_note": "Les crédits utilisés ne sont pas remboursables. Achetez seulement le nécessaire.",
+      "back_account": "Retour au compte"
     },
     "account": {
       "title": "Connexion — aiglossa tools",
@@ -1187,7 +1194,8 @@
       "neterr": "Netzwerkfehler",
       "per": "≈ {n} × 30-s-Tracks",
       "kicker": "aiglossa tools",
-      "refund_note": "Bereits genutzte Credits werden nicht erstattet. Kaufe nur, was du brauchst."
+      "refund_note": "Bereits genutzte Credits werden nicht erstattet. Kaufe nur, was du brauchst.",
+      "back_account": "Zurück zum Konto"
     },
     "account": {
       "title": "Anmelden — aiglossa tools",
@@ -1354,7 +1362,8 @@
       "neterr": "Erro de rede",
       "per": "≈ {n} faixas de 30 s",
       "kicker": "aiglossa tools",
-      "refund_note": "Créditos usados não são reembolsáveis. Compre apenas o necessário."
+      "refund_note": "Créditos usados não são reembolsáveis. Compre apenas o necessário.",
+      "back_account": "Voltar à conta"
     },
     "account": {
       "title": "Entrar — aiglossa tools",
@@ -1521,7 +1530,8 @@
       "neterr": "Errore di rete",
       "per": "≈ {n} brani da 30 s",
       "kicker": "aiglossa tools",
-      "refund_note": "I crediti utilizzati non sono rimborsabili. Acquista solo il necessario."
+      "refund_note": "I crediti utilizzati non sono rimborsabili. Acquista solo il necessario.",
+      "back_account": "Torna all'account"
     },
     "account": {
       "title": "Accedi — aiglossa tools",
@@ -1688,7 +1698,8 @@
       "neterr": "Ошибка сети",
       "per": "≈ {n} треков по 30 с",
       "kicker": "aiglossa tools",
-      "refund_note": "Использованные кредиты не возвращаются. Покупайте столько, сколько нужно."
+      "refund_note": "Использованные кредиты не возвращаются. Покупайте столько, сколько нужно.",
+      "back_account": "Назад в аккаунт"
     },
     "account": {
       "title": "Вход — aiglossa tools",
@@ -1855,7 +1866,8 @@
       "neterr": "خطأ في الشبكة",
       "per": "≈ {n} مقطعًا بمدة 30 ثانية",
       "kicker": "aiglossa tools",
-      "refund_note": "الرصيد المستخدم غير قابل للاسترداد. اشترِ ما تحتاجه فقط."
+      "refund_note": "الرصيد المستخدم غير قابل للاسترداد. اشترِ ما تحتاجه فقط.",
+      "back_account": "العودة إلى الحساب"
     },
     "account": {
       "title": "تسجيل الدخول — aiglossa tools",
@@ -2022,7 +2034,8 @@
       "neterr": "เครือข่ายขัดข้อง",
       "per": "≈ {n} เพลง 30 วินาที",
       "kicker": "aiglossa tools",
-      "refund_note": "เครดิตที่ใช้แล้วไม่สามารถขอคืนได้ โปรดซื้อเท่าที่จำเป็น"
+      "refund_note": "เครดิตที่ใช้แล้วไม่สามารถขอคืนได้ โปรดซื้อเท่าที่จำเป็น",
+      "back_account": "กลับไปที่บัญชี"
     },
     "account": {
       "title": "เข้าสู่ระบบ — aiglossa tools",
@@ -2189,7 +2202,8 @@
       "neterr": "Lỗi mạng",
       "per": "≈ {n} bản 30 giây",
       "kicker": "aiglossa tools",
-      "refund_note": "Tín dụng đã dùng không được hoàn lại. Chỉ mua những gì bạn cần."
+      "refund_note": "Tín dụng đã dùng không được hoàn lại. Chỉ mua những gì bạn cần.",
+      "back_account": "Quay lại tài khoản"
     },
     "account": {
       "title": "Đăng nhập — aiglossa tools",
@@ -2356,7 +2370,8 @@
       "neterr": "Kesalahan jaringan",
       "per": "≈ {n} trek 30 dtk",
       "kicker": "aiglossa tools",
-      "refund_note": "Kredit yang sudah dipakai tidak dapat dikembalikan. Beli sesuai kebutuhan."
+      "refund_note": "Kredit yang sudah dipakai tidak dapat dikembalikan. Beli sesuai kebutuhan.",
+      "back_account": "Kembali ke akun"
     },
     "account": {
       "title": "Masuk — aiglossa tools",
@@ -2523,7 +2538,8 @@
       "neterr": "Ağ hatası",
       "per": "≈ {n} × 30 sn parça",
       "kicker": "aiglossa tools",
-      "refund_note": "Kullanılan krediler iade edilmez. Yalnızca ihtiyacınız kadar satın alın."
+      "refund_note": "Kullanılan krediler iade edilmez. Yalnızca ihtiyacınız kadar satın alın.",
+      "back_account": "Hesaba dön"
     },
     "account": {
       "title": "Giriş — aiglossa tools",

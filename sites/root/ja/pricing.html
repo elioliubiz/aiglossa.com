@@ -82,21 +82,21 @@
                  color:var(--muted);text-decoration:none;font-size:13px}
   .switcher li a:hover,.switcher li a[aria-current]{color:var(--fg);background:rgba(255,255,255,.06)}
 </style>
-<script type="application/json" id="ui">{"title": "クレジットと料金 — aiglossa tools", "description": "aiglossa tools のプリペイドクレジット。30秒の曲は45クレジット、長い曲はそれ以上です。", "h1": "クレジット", "lede": "プリペイドのクレジットは全ツール共通。期限なし、サブスクなし。生成した分だけ支払います。", "side_title": "クレジットの仕組み", "li1": "30秒＝45クレジット、45秒＝64、60秒＝85、75秒＝103、90秒＝120。", "li2": "生成に失敗した場合は自動で返金されます。", "li3": "クレジットは期限なしで、すべてのツールで使えます。", "li4": "支払いは merchant of record である Creem が処理します。", "li5": "未使用のクレジットは14日以内なら返金できます。", "refund_link": "返金ポリシー", "back": "← ツール一覧へ", "opening": "決済ページを開いています…", "err": "決済を開始できませんでした", "neterr": "通信エラー", "per": "30秒×約 {n} 曲", "kicker": "aiglossa tools", "refund_note": "使用済みのクレジットは返金できません。必要な分だけご購入ください。", "platform_note": "クレジットは aiglossa のすべての製品で使えます。"}</script>
+<script type="application/json" id="ui">{"title": "クレジットと料金 — aiglossa tools", "description": "aiglossa tools のプリペイドクレジット。30秒の曲は45クレジット、長い曲はそれ以上です。", "h1": "クレジット", "lede": "プリペイドのクレジットは全ツール共通。期限なし、サブスクなし。生成した分だけ支払います。", "side_title": "クレジットの仕組み", "li1": "30秒＝45クレジット、45秒＝64、60秒＝85、75秒＝103、90秒＝120。", "li2": "生成に失敗した場合は自動で返金されます。", "li3": "クレジットは期限なしで、すべてのツールで使えます。", "li4": "支払いは merchant of record である Creem が処理します。", "li5": "未使用のクレジットは14日以内なら返金できます。", "refund_link": "返金ポリシー", "back": "← ツール一覧へ", "opening": "決済ページを開いています…", "err": "決済を開始できませんでした", "neterr": "通信エラー", "per": "30秒×約 {n} 曲", "kicker": "aiglossa tools", "refund_note": "使用済みのクレジットは返金できません。必要な分だけご購入ください。", "back_account": "アカウントに戻る", "platform_note": "クレジットは aiglossa のすべての製品で使えます。"}</script>
 </head>
 <body>
 <main class="page">
-  <p class="kicker">aiglossa tools</p>
+  <p class="kicker">aiglossa</p>
   <h1>クレジット</h1>
   <p class="lede">プリペイドのクレジットは全ツール共通。期限なし、サブスクなし。生成した分だけ支払います。</p>
-  <p class="plateline">クレジットは aiglossa のすべての製品で使えます。 · 使用済みのクレジットは返金できません。必要な分だけご購入ください。</p>
+  <p class="plateline">クレジットは aiglossa のすべての製品で使えます。<br>使用済みのクレジットは返金できません。必要な分だけご購入ください。</p>
 
   <div class="grid">
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">使用済みのクレジットは返金できません。必要な分だけご購入ください。</p>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <div class="back"><a href="./account.html">← ツール一覧へ</a></div>
+      <div class="back"><a href="./account.html">アカウントに戻る</a></div>
     </div>
 
     <aside class="side">
@@ -106,7 +106,6 @@
         <li>生成に失敗した場合は自動で返金されます。</li>
         <li>クレジットは期限なしで、すべてのツールで使えます。</li>
         <li>支払いは merchant of record である Creem が処理します。</li>
-        <li>未使用のクレジットは14日以内なら返金できます。 <a href="refund.html">返金ポリシー</a></li>
       </ul>
     </aside>
   </div>
@@ -114,11 +113,10 @@
 
 <footer>
   <div class="wrap">
-    <span class="brand">aiglossa tools</span>
+    <span class="brand">aiglossa</span>
     <nav>
       <a href="https://aiglossa.com/ja/protocol/privacy.html">プライバシーポリシー</a>
       <a href="https://aiglossa.com/ja/protocol/term.html">利用規約</a>
-      <a href="refund.html">返金ポリシー</a>
     </nav>
     <details class="switcher">
       <summary>言語 · 日本語</summary>

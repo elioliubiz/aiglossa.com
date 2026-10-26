@@ -653,6 +653,7 @@ def main() -> int:
                     out["refund_note"] = esc(copy["refund_note"])
                     out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
                     out["legal_terms"] = esc(marketing[lang]["legal"]["terms"])
+                    out["kicker"] = "aiglossa"
                     out["lang_label"] = esc(marketing[lang]["langLabel"])
                     out["current_name"] = esc(languages[lang]["name"])
                     return out
@@ -701,6 +702,7 @@ def main() -> int:
                     }, ensure_ascii=False).replace("</", "<\\/")
                     out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
                     out["legal_terms"] = esc(marketing[lang]["legal"]["terms"])
+                    out["kicker"] = "aiglossa"
                     out["refund_label"] = esc(source[lang]["pricing"]["refund_link"])
                     out["lang_label"] = esc(marketing[lang]["langLabel"])
                     out["current_name"] = esc(languages[lang]["name"])

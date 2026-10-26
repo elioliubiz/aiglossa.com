@@ -82,21 +82,21 @@
                  color:var(--muted);text-decoration:none;font-size:13px}
   .switcher li a:hover,.switcher li a[aria-current]{color:var(--fg);background:rgba(255,255,255,.06)}
 </style>
-<script type="application/json" id="ui">{"title": "Tín dụng và giá — aiglossa tools", "description": "Tín dụng trả trước cho aiglossa tools. Một bản 30 giây tốn 45 tín dụng; bản dài hơn tốn nhiều hơn.", "h1": "Tín dụng", "lede": "Tín dụng trả trước, dùng chung cho mọi công cụ. Không hết hạn và không có đăng ký định kỳ — chỉ trả cho những gì bạn tạo.", "side_title": "Tín dụng hoạt động thế nào", "li1": "Bản 30 giây = 45 tín dụng, 45 giây = 64, 60 giây = 85, 75 giây = 103, 90 giây = 120.", "li2": "Các lần tạo thất bại được hoàn tín dụng tự động.", "li3": "Tín dụng không hết hạn và dùng được cho mọi công cụ.", "li4": "Thanh toán do Creem, đơn vị ghi nhận thương vụ của chúng tôi, xử lý.", "li5": "Tín dụng chưa dùng có thể được hoàn trong 14 ngày.", "refund_link": "Chính sách hoàn tiền", "back": "← Quay lại công cụ", "opening": "Đang mở trang thanh toán…", "err": "Không thể bắt đầu thanh toán", "neterr": "Lỗi mạng", "per": "≈ {n} bản 30 giây", "kicker": "aiglossa tools", "refund_note": "Tín dụng đã dùng không được hoàn lại. Chỉ mua những gì bạn cần.", "platform_note": "Tín dụng dùng được cho mọi sản phẩm aiglossa."}</script>
+<script type="application/json" id="ui">{"title": "Tín dụng và giá — aiglossa tools", "description": "Tín dụng trả trước cho aiglossa tools. Một bản 30 giây tốn 45 tín dụng; bản dài hơn tốn nhiều hơn.", "h1": "Tín dụng", "lede": "Tín dụng trả trước, dùng chung cho mọi công cụ. Không hết hạn và không có đăng ký định kỳ — chỉ trả cho những gì bạn tạo.", "side_title": "Tín dụng hoạt động thế nào", "li1": "Bản 30 giây = 45 tín dụng, 45 giây = 64, 60 giây = 85, 75 giây = 103, 90 giây = 120.", "li2": "Các lần tạo thất bại được hoàn tín dụng tự động.", "li3": "Tín dụng không hết hạn và dùng được cho mọi công cụ.", "li4": "Thanh toán do Creem, đơn vị ghi nhận thương vụ của chúng tôi, xử lý.", "li5": "Tín dụng chưa dùng có thể được hoàn trong 14 ngày.", "refund_link": "Chính sách hoàn tiền", "back": "← Quay lại công cụ", "opening": "Đang mở trang thanh toán…", "err": "Không thể bắt đầu thanh toán", "neterr": "Lỗi mạng", "per": "≈ {n} bản 30 giây", "kicker": "aiglossa tools", "refund_note": "Tín dụng đã dùng không được hoàn lại. Chỉ mua những gì bạn cần.", "back_account": "Quay lại tài khoản", "platform_note": "Tín dụng dùng được cho mọi sản phẩm aiglossa."}</script>
 </head>
 <body>
 <main class="page">
-  <p class="kicker">aiglossa tools</p>
+  <p class="kicker">aiglossa</p>
   <h1>Tín dụng</h1>
   <p class="lede">Tín dụng trả trước, dùng chung cho mọi công cụ. Không hết hạn và không có đăng ký định kỳ — chỉ trả cho những gì bạn tạo.</p>
-  <p class="plateline">Tín dụng dùng được cho mọi sản phẩm aiglossa. · Tín dụng đã dùng không được hoàn lại. Chỉ mua những gì bạn cần.</p>
+  <p class="plateline">Tín dụng dùng được cho mọi sản phẩm aiglossa.<br>Tín dụng đã dùng không được hoàn lại. Chỉ mua những gì bạn cần.</p>
 
   <div class="grid">
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">Tín dụng đã dùng không được hoàn lại. Chỉ mua những gì bạn cần.</p>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <div class="back"><a href="./account.html">← Quay lại công cụ</a></div>
+      <div class="back"><a href="./account.html">Quay lại tài khoản</a></div>
     </div>
 
     <aside class="side">
@@ -106,7 +106,6 @@
         <li>Các lần tạo thất bại được hoàn tín dụng tự động.</li>
         <li>Tín dụng không hết hạn và dùng được cho mọi công cụ.</li>
         <li>Thanh toán do Creem, đơn vị ghi nhận thương vụ của chúng tôi, xử lý.</li>
-        <li>Tín dụng chưa dùng có thể được hoàn trong 14 ngày. <a href="refund.html">Chính sách hoàn tiền</a></li>
       </ul>
     </aside>
   </div>
@@ -114,11 +113,10 @@
 
 <footer>
   <div class="wrap">
-    <span class="brand">aiglossa tools</span>
+    <span class="brand">aiglossa</span>
     <nav>
       <a href="https://aiglossa.com/vi/protocol/privacy.html">Chính sách Quyền riêng tư</a>
       <a href="https://aiglossa.com/vi/protocol/term.html">Điều khoản Dịch vụ</a>
-      <a href="refund.html">Chính sách hoàn tiền</a>
     </nav>
     <details class="switcher">
       <summary>Ngôn ngữ · Tiếng Việt</summary>
