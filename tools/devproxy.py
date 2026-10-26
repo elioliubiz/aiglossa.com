@@ -35,11 +35,11 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         body = self.rfile.read(length) if length else None
 
         conn = http.client.HTTPSConnection(UPSTREAM, timeout=120, context=ssl.create_default_context())
+        # Origin 必须保留浏览器原值：后端用它做白名单校验，
+        # 改写成 dev 域会被当成未授权来源（400）。
         headers = {k: v for k, v in self.headers.items()
-                   if k.lower() not in ("host", "origin", "referer", "content-length", "accept-encoding")}
+                   if k.lower() not in ("host", "content-length", "accept-encoding")}
         headers["Host"] = UPSTREAM
-        headers["Origin"] = f"https://{UPSTREAM}"
-        headers["Referer"] = f"https://{UPSTREAM}/"
         conn.request(self.command, target, body=body, headers=headers)
         resp = conn.getresponse()
         data = resp.read()
