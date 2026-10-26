@@ -138,8 +138,11 @@
   .rail-foot{flex:0 0 auto;margin:0;padding:14px 24px 16px;background:var(--panel);
              border-top:1px solid var(--line)}
   .acctbar{display:flex;align-items:center;gap:9px;margin-top:11px}
-  .av{width:22px;height:22px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
-      background:rgba(255,122,26,.14);color:var(--acc);font-size:10.5px;font-weight:700}
+  .av{width:24px;height:24px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;padding:0;
+      border:1px solid rgba(255,255,255,.14);background:rgba(255,122,26,.14);color:var(--acc);
+      font-size:10.5px;font-weight:700;cursor:pointer;overflow:hidden}
+  .av img{width:100%;height:100%;object-fit:cover;display:block}
+  .av svg{width:13px;height:13px;opacity:.8}
   .bal{flex:1 1 auto;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .alink{font-size:11.5px;color:var(--muted);text-decoration:none;flex:0 0 auto}
   .alink:hover{color:var(--ink)}
@@ -356,8 +359,11 @@
   .rail-foot{flex:0 0 auto;margin:0;padding:14px 24px 16px;background:var(--panel);
              border-top:1px solid var(--line)}
   .acctbar{display:flex;align-items:center;gap:9px;margin-top:11px}
-  .av{width:22px;height:22px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
-      background:rgba(255,122,26,.14);color:var(--acc);font-size:10.5px;font-weight:700}
+  .av{width:24px;height:24px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;padding:0;
+      border:1px solid rgba(255,255,255,.14);background:rgba(255,122,26,.14);color:var(--acc);
+      font-size:10.5px;font-weight:700;cursor:pointer;overflow:hidden}
+  .av img{width:100%;height:100%;object-fit:cover;display:block}
+  .av svg{width:13px;height:13px;opacity:.8}
   .bal{flex:1 1 auto;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .alink{font-size:11.5px;color:var(--muted);text-decoration:none;flex:0 0 auto}
   .alink:hover{color:var(--ink)}
@@ -657,10 +663,10 @@
       <button class="go" id="go" type="button">أنشئ المقطع</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
       <div class="acctbar">
-        <span class="av" id="av">A</span>
+        <button class="av" id="avBtn" type="button" aria-label="account"></button>
         <span class="bal" id="bal"></span>
-        <a class="alink" href="#" id="acctLink">الحساب</a>
         <a class="alink" href="#" id="priceLink">شراء أرصدة ←</a>
+        <a class="alink" href="#" id="guideLink">أدلة ←</a>
       </div>
     </div>
   </aside>
@@ -721,7 +727,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق", "description": "حوّل صورة أو وصفًا إلى موسيقى خلفية بطول 30–90 ثانية بالضبط. الكلمات تذكر ما في صورتك، مع غناء بعشر لغات وحلقات بلا فواصل.", "h1": "أنشئ مقطعًا", "sub": "من صورة أو وصف. مدة دقيقة وحلقات بلا فواصل.", "drop": "أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها", "generate": "أنشئ المقطع", "how_credits": "كيف تعمل الأرصدة →", "grp_photo": "اسمعها", "grp_recipe": "من الاستخدام", "download": "تنزيل", "save_recipe": "احفظ كوصفة", "remove_photo": "إزالة الصورة", "photo_here": "صورتك هنا", "note": "كل ما على اليمين أُنشئ هنا", "legal_aup": "الاستخدام المقبول", "legal_refund": "المبالغ المستردة", "sign_in_first": "سجّل الدخول للإنشاء", "generating": "جارٍ الإنشاء… نحو 20 ثانية.", "just_generated": "أُنشئ للتو", "your_track": "مقطعك", "from_recipe": "من وصفة", "from_photo": "من صورة", "err_load": "تعذّر تحميل الخيارات", "done_in": "اكتمل في {n} ثانية", "gen_cost": "إنشاء · {n}", "err_gen": "فشل الإنشاء", "my_track": "مقطعي", "err_net": "خطأ في الشبكة", "recipe_name": "اسم الوصفة", "err_save": "تعذّر الحفظ", "saved": "تم الحفظ: {name}", "up_to": "حتى {n}", "credits": "رصيدًا", "guides_link": "أدلة ←", "guides_title": "أدلة", "close": "إغلاق", "loading": "جارٍ التحميل…", "off": "إيقاف", "loop_on": "حلقة بلا فواصل", "buy_credits": "شراء أرصدة ←", "desc_label": "وصف (اختياري)", "desc_ph": "صِف المقطع: مقهى ممطر، بيانو هادئ", "mode_photo": "صورة", "mode_text": "نص", "field_density": "كثافة التوزيع", "opt_sparse": "متباعد", "opt_medium": "متوسط", "opt_full": "كثيف", "pro_title": "خيارات متقدمة", "grp_photo_sub": "صورة → كلمات → مقطع", "grp_recipe_sub": "اختر الاستخدام والإعدادات جاهزة", "recipe_names": {"short-form-cut": "Короткий клип", "hook-sting": "Хук для заставки", "product-loop": "Луп для продукта", "podcast-bed": "Подложка для подкаста", "documentary-underscore": "Фон для документалки", "game-menu-loop": "Луп для меню", "calm-focus": "Концентрация", "kids-learning": "Для детей"}, "applied": "يُستخدم", "current_recipe": "الإعداد الحالي", "mine_title": "مقاطعي", "share_link": "مشاركة الرابط", "dl_audio": "تنزيل الصوت", "copied": "تم النسخ", "shared_note": "تستمع إلى مقطع تمت مشاركته — أنشئ مقطعك أدناه", "my_account": "الحساب", "balance": "الرصيد", "pricing_label": "الأسعار", "confirm_gen": "هل تريد إنشاء مقطع بمدة {sec} ثانية؟ سيُخصم {n}.", "err_insufficient": "الرصيد غير كافٍ", "topup_hint": "اشحن الرصيد لمتابعة التوليد.", "topup_cta": "شراء رصيد", "cancel": "إلغاء", "confirm": "تأكيد", "li1": "مقطع 30 ثانية = 45 رصيدًا، 45 ثانية = 64، 60 ثانية = 85، 75 ثانية = 103، 90 ثانية = 120.", "li2": "الأجيال الفاشلة تُرد تلقائيًا.", "li3": "الأرصدة لا تنتهي وتعمل في كل الأدوات.", "li4": "المدفوعات تعالجها Creem، وهي تاجر السجل لدينا.", "li5": "يمكن استرداد الأرصدة غير المستخدمة خلال 14 يومًا.", "refund_link": "سياسة الاسترداد"}</script>
+<script type="application/json" id="ui">{"title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق", "description": "حوّل صورة أو وصفًا إلى موسيقى خلفية بطول 30–90 ثانية بالضبط. الكلمات تذكر ما في صورتك، مع غناء بعشر لغات وحلقات بلا فواصل.", "h1": "أنشئ مقطعًا", "sub": "من صورة أو وصف. مدة دقيقة وحلقات بلا فواصل.", "drop": "أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها", "generate": "أنشئ المقطع", "how_credits": "كيف تعمل الأرصدة →", "grp_photo": "اسمعها", "grp_recipe": "من الاستخدام", "download": "تنزيل", "save_recipe": "احفظ كوصفة", "remove_photo": "إزالة الصورة", "photo_here": "صورتك هنا", "note": "كل ما على اليمين أُنشئ هنا", "legal_aup": "الاستخدام المقبول", "legal_refund": "المبالغ المستردة", "sign_in_first": "سجّل الدخول للإنشاء", "generating": "جارٍ الإنشاء… نحو 20 ثانية.", "just_generated": "أُنشئ للتو", "your_track": "مقطعك", "from_recipe": "من وصفة", "from_photo": "من صورة", "err_load": "تعذّر تحميل الخيارات", "done_in": "اكتمل في {n} ثانية", "gen_cost": "إنشاء · {n}", "err_gen": "فشل الإنشاء", "my_track": "مقطعي", "err_net": "خطأ في الشبكة", "recipe_name": "اسم الوصفة", "err_save": "تعذّر الحفظ", "saved": "تم الحفظ: {name}", "up_to": "حتى {n}", "credits": "رصيدًا", "guides_link": "أدلة ←", "guides_title": "أدلة", "close": "إغلاق", "loading": "جارٍ التحميل…", "off": "إيقاف", "loop_on": "حلقة بلا فواصل", "buy_credits": "شراء أرصدة ←", "desc_label": "وصف (اختياري)", "desc_ph": "صِف المقطع: مقهى ممطر، بيانو هادئ", "mode_photo": "صورة", "mode_text": "نص", "field_density": "كثافة التوزيع", "opt_sparse": "متباعد", "opt_medium": "متوسط", "opt_full": "كثيف", "pro_title": "خيارات متقدمة", "grp_photo_sub": "صورة → كلمات → مقطع", "grp_recipe_sub": "اختر الاستخدام والإعدادات جاهزة", "recipe_names": {"short-form-cut": "Короткий клип", "hook-sting": "Хук для заставки", "product-loop": "Луп для продукта", "podcast-bed": "Подложка для подкаста", "documentary-underscore": "Фон для документалки", "game-menu-loop": "Луп для меню", "calm-focus": "Концентрация", "kids-learning": "Для детей"}, "applied": "يُستخدم", "current_recipe": "الإعداد الحالي", "mine_title": "مقاطعي", "share_link": "مشاركة الرابط", "dl_audio": "تنزيل الصوت", "copied": "تم النسخ", "shared_note": "تستمع إلى مقطع تمت مشاركته — أنشئ مقطعك أدناه", "my_account": "الحساب", "balance": "الرصيد", "pricing_label": "الأسعار", "confirm_gen": "هل تريد إنشاء مقطع بمدة {sec} ثانية؟ سيُخصم {n}.", "err_insufficient": "الرصيد غير كافٍ", "topup_hint": "اشحن الرصيد لمتابعة التوليد.", "topup_cta": "شراء رصيد", "cancel": "إلغاء", "confirm": "تأكيد", "not_signed_in": "لم تسجّل الدخول", "li1": "مقطع 30 ثانية = 45 رصيدًا، 45 ثانية = 64، 60 ثانية = 85، 75 ثانية = 103، 90 ثانية = 120.", "li2": "الأجيال الفاشلة تُرد تلقائيًا.", "li3": "الأرصدة لا تنتهي وتعمل في كل الأدوات.", "li4": "المدفوعات تعالجها Creem، وهي تاجر السجل لدينا.", "li5": "يمكن استرداد الأرصدة غير المستخدمة خلال 14 يومًا.", "refund_link": "سياسة الاسترداد"}</script>
 <script>
 (function () {
   "use strict";
@@ -922,7 +928,7 @@
       if (sessionOk && d.data) {
         balanceUnits = d.data.balance || 0;
         $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
-        if (d.data.user && d.data.user.nickname) $("av").textContent = d.data.user.nickname.trim().charAt(0).toUpperCase();
+        renderAvatar(d.data.user || {});
         syncCost();
       }
       return sessionOk;
@@ -954,6 +960,19 @@
         $("dropText").innerHTML = '<img id="prevImg" src="' + d.img + '" alt=""><span class="rm">إزالة الصورة</span>';
       }
     } catch (e) {}
+  }
+
+  // 头像：有图用图，无图用首字母，未登录用通用人形图标
+  function renderAvatar(user) {
+    var el = $("avBtn"); if (!el) return;
+    if (!sessionOk) {
+      el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
+        '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>';
+      return;
+    }
+    var name = (user.nickname || user.email || "A").trim();
+    if (user.avatar) el.innerHTML = '<img src="' + user.avatar + '" alt="">';
+    else el.textContent = name.charAt(0).toUpperCase();
   }
 
   function needLogin() {
@@ -1229,7 +1248,7 @@
       if (balanceUnits >= 0 && typeof x.credits === "number") {
         balanceUnits = Math.max(0, balanceUnits - x.credits * 100);
         $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
-        if (d.data.user && d.data.user.nickname) $("av").textContent = d.data.user.nickname.trim().charAt(0).toUpperCase();
+        renderAvatar(d.data.user || {});
       }
       hideTopup();
       msg(UI.done_in.replace("{n}", Math.round((Date.now() - t0) / 1000)), "ok");
@@ -1443,9 +1462,26 @@
   }
 
   $("go").addEventListener("click", generateConfirmed);
-  if ($("acctLink")) $("acctLink").href = ROOT + "/" + LANG + "/account.html";
-  if ($("priceLink")) $("priceLink").href = ROOT + "/" + LANG + "/pricing.html";
-  checkSession().then(function (ok) { syncCost(); if (ok) { loadMine(); restoreDraft(); } });
+  // 底部账号栏：未登录一律先去登录（提前拦截），已登录才进入对应页面
+  var ACCOUNT_URL = ROOT + "/" + LANG + "/account.html";
+  var PRICING_URL = ROOT + "/" + LANG + "/pricing.html";
+  var GUIDE_URL = "guides/";
+  if ($("priceLink")) {
+    $("priceLink").href = PRICING_URL;
+    $("priceLink").addEventListener("click", function (e) { if (!sessionOk) { e.preventDefault(); needLogin(); } });
+  }
+  if ($("guideLink")) $("guideLink").href = GUIDE_URL;
+  if ($("avBtn")) $("avBtn").addEventListener("click", function () {
+    if (!sessionOk) { needLogin(); return; }
+    location.href = ACCOUNT_URL;
+  });
+  $("bal").textContent = UI.not_signed_in;
+  renderAvatar({});
+  checkSession().then(function (ok) {
+    syncCost();
+    if (ok) { loadMine(); restoreDraft(); }
+    else { $("bal").textContent = UI.not_signed_in; renderAvatar({}); }
+  });
   loadShared();
   call("/ai/music/schema", {}, false).then(function (d) {
     if (d.code !== 200) { msg(UI.err_load, "err"); return; }

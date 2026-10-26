@@ -159,7 +159,8 @@
       "topup_hint": "Top up to keep generating.",
       "topup_cta": "Buy credits",
       "cancel": "Cancel",
-      "confirm": "Confirm"
+      "confirm": "Confirm",
+      "not_signed_in": "Not signed in"
     }
   },
   "ja": {
@@ -310,7 +311,8 @@
       "topup_hint": "チャージすると生成を続けられます。",
       "topup_cta": "チャージする",
       "cancel": "キャンセル",
-      "confirm": "確定"
+      "confirm": "確定",
+      "not_signed_in": "未ログイン"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -473,7 +475,8 @@
       "topup_hint": "충전하면 계속 생성할 수 있습니다.",
       "topup_cta": "충전하기",
       "cancel": "취소",
-      "confirm": "확인"
+      "confirm": "확인",
+      "not_signed_in": "로그인 안 됨"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -636,7 +639,8 @@
       "topup_hint": "充值后即可继续生成。",
       "topup_cta": "去充值",
       "cancel": "取消",
-      "confirm": "确定"
+      "confirm": "确定",
+      "not_signed_in": "未登录"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -799,7 +803,8 @@
       "topup_hint": "儲值後即可繼續生成。",
       "topup_cta": "去儲值",
       "cancel": "取消",
-      "confirm": "確定"
+      "confirm": "確定",
+      "not_signed_in": "未登入"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -962,7 +967,8 @@
       "topup_hint": "Recarga para seguir generando.",
       "topup_cta": "Comprar créditos",
       "cancel": "Cancelar",
-      "confirm": "Confirmar"
+      "confirm": "Confirmar",
+      "not_signed_in": "Sin sesión"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1125,7 +1131,8 @@
       "topup_hint": "Rechargez pour continuer à générer.",
       "topup_cta": "Acheter des crédits",
       "cancel": "Annuler",
-      "confirm": "Confirmer"
+      "confirm": "Confirmer",
+      "not_signed_in": "Non connecté"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1288,7 +1295,8 @@
       "topup_hint": "Lade auf, um weiter zu generieren.",
       "topup_cta": "Credits kaufen",
       "cancel": "Abbrechen",
-      "confirm": "Bestätigen"
+      "confirm": "Bestätigen",
+      "not_signed_in": "Nicht angemeldet"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1451,7 +1459,8 @@
       "topup_hint": "Recarregue para continuar gerando.",
       "topup_cta": "Comprar créditos",
       "cancel": "Cancelar",
-      "confirm": "Confirmar"
+      "confirm": "Confirmar",
+      "not_signed_in": "Não conectado"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1614,7 +1623,8 @@
       "topup_hint": "Ricarica per continuare a generare.",
       "topup_cta": "Acquista crediti",
       "cancel": "Annulla",
-      "confirm": "Conferma"
+      "confirm": "Conferma",
+      "not_signed_in": "Non connesso"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1777,7 +1787,8 @@
       "topup_hint": "Пополните баланс, чтобы продолжить.",
       "topup_cta": "Купить кредиты",
       "cancel": "Отмена",
-      "confirm": "Подтвердить"
+      "confirm": "Подтвердить",
+      "not_signed_in": "Не выполнен вход"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1940,7 +1951,8 @@
       "topup_hint": "اشحن الرصيد لمتابعة التوليد.",
       "topup_cta": "شراء رصيد",
       "cancel": "إلغاء",
-      "confirm": "تأكيد"
+      "confirm": "تأكيد",
+      "not_signed_in": "لم تسجّل الدخول"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2103,7 +2115,8 @@
       "topup_hint": "เติมเครดิตเพื่อสร้างต่อ",
       "topup_cta": "ซื้อเครดิต",
       "cancel": "ยกเลิก",
-      "confirm": "ยืนยัน"
+      "confirm": "ยืนยัน",
+      "not_signed_in": "ยังไม่เข้าสู่ระบบ"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2266,7 +2279,8 @@
       "topup_hint": "Nạp thêm để tiếp tục tạo.",
       "topup_cta": "Mua tín dụng",
       "cancel": "Hủy",
-      "confirm": "Xác nhận"
+      "confirm": "Xác nhận",
+      "not_signed_in": "Chưa đăng nhập"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2429,7 +2443,8 @@
       "topup_hint": "Isi ulang untuk terus membuat.",
       "topup_cta": "Beli kredit",
       "cancel": "Batal",
-      "confirm": "Konfirmasi"
+      "confirm": "Konfirmasi",
+      "not_signed_in": "Belum masuk"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2592,7 +2607,8 @@
       "topup_hint": "Üretime devam etmek için yükleme yapın.",
       "topup_cta": "Kredi satın al",
       "cancel": "Vazgeç",
-      "confirm": "Onayla"
+      "confirm": "Onayla",
+      "not_signed_in": "Giriş yapılmadı"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",

@@ -138,8 +138,11 @@
   .rail-foot{flex:0 0 auto;margin:0;padding:14px 24px 16px;background:var(--panel);
              border-top:1px solid var(--line)}
   .acctbar{display:flex;align-items:center;gap:9px;margin-top:11px}
-  .av{width:22px;height:22px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
-      background:rgba(255,122,26,.14);color:var(--acc);font-size:10.5px;font-weight:700}
+  .av{width:24px;height:24px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;padding:0;
+      border:1px solid rgba(255,255,255,.14);background:rgba(255,122,26,.14);color:var(--acc);
+      font-size:10.5px;font-weight:700;cursor:pointer;overflow:hidden}
+  .av img{width:100%;height:100%;object-fit:cover;display:block}
+  .av svg{width:13px;height:13px;opacity:.8}
   .bal{flex:1 1 auto;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .alink{font-size:11.5px;color:var(--muted);text-decoration:none;flex:0 0 auto}
   .alink:hover{color:var(--ink)}
@@ -356,8 +359,11 @@
   .rail-foot{flex:0 0 auto;margin:0;padding:14px 24px 16px;background:var(--panel);
              border-top:1px solid var(--line)}
   .acctbar{display:flex;align-items:center;gap:9px;margin-top:11px}
-  .av{width:22px;height:22px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
-      background:rgba(255,122,26,.14);color:var(--acc);font-size:10.5px;font-weight:700}
+  .av{width:24px;height:24px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;padding:0;
+      border:1px solid rgba(255,255,255,.14);background:rgba(255,122,26,.14);color:var(--acc);
+      font-size:10.5px;font-weight:700;cursor:pointer;overflow:hidden}
+  .av img{width:100%;height:100%;object-fit:cover;display:block}
+  .av svg{width:13px;height:13px;opacity:.8}
   .bal{flex:1 1 auto;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .alink{font-size:11.5px;color:var(--muted);text-decoration:none;flex:0 0 auto}
   .alink:hover{color:var(--ink)}
@@ -657,10 +663,10 @@
       <button class="go" id="go" type="button">สร้างเพลง</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
       <div class="acctbar">
-        <span class="av" id="av">A</span>
+        <button class="av" id="avBtn" type="button" aria-label="account"></button>
         <span class="bal" id="bal"></span>
-        <a class="alink" href="#" id="acctLink">บัญชี</a>
         <a class="alink" href="#" id="priceLink">ซื้อเครดิต →</a>
+        <a class="alink" href="#" id="guideLink">คู่มือ →</a>
       </div>
     </div>
   </aside>
@@ -721,7 +727,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ", "description": "เปลี่ยนรูปหรือคำอธิบายเป็นเพลงประกอบความยาว 30–90 วินาทีพอดี เนื้อเพลงเอ่ยถึงสิ่งที่อยู่ในภาพ พร้อมเสียงร้อง 10 ภาษาและลูปไร้รอยต่อ", "h1": "สร้างเพลง", "sub": "จากรูปหรือคำอธิบาย ความยาวแม่นยำ ลูปไร้รอยต่อ", "drop": "ลากรูปมาวางหรือเลือกไฟล์<br>เนื้อเพลงจะเอ่ยถึงสิ่งที่อยู่ในภาพ", "generate": "สร้างเพลง", "how_credits": "เครดิตคิดอย่างไร →", "grp_photo": "ฟังตัวอย่าง", "grp_recipe": "เริ่มจากงานที่ใช้", "download": "ดาวน์โหลด", "save_recipe": "บันทึกเป็นสูตร", "remove_photo": "ลบรูป", "photo_here": "รูปของคุณที่นี่", "note": "ทุกอย่างทางขวาสร้างที่นี่", "legal_aup": "การใช้งานที่ยอมรับได้", "legal_refund": "การคืนเงิน", "sign_in_first": "เข้าสู่ระบบเพื่อสร้าง", "generating": "กำลังสร้าง… ประมาณ 20 วินาที", "just_generated": "สร้างเสร็จเมื่อครู่", "your_track": "เพลงของคุณ", "from_recipe": "จากสูตรสำเร็จ", "from_photo": "สร้างจากรูป", "err_load": "โหลดตัวเลือกไม่สำเร็จ", "done_in": "เสร็จใน {n} วินาที", "gen_cost": "สร้าง · {n}", "err_gen": "สร้างไม่สำเร็จ", "my_track": "เพลงของฉัน", "err_net": "เครือข่ายขัดข้อง", "recipe_name": "ชื่อสูตร", "err_save": "บันทึกไม่สำเร็จ", "saved": "บันทึกแล้ว: {name}", "up_to": "สูงสุด {n}", "credits": "เครดิต", "guides_link": "คู่มือ →", "guides_title": "คู่มือ", "close": "ปิด", "loading": "กำลังโหลด…", "off": "ปิด", "loop_on": "ลูปไร้รอยต่อ", "buy_credits": "ซื้อเครดิต →", "desc_label": "คำอธิบาย (ไม่บังคับ)", "desc_ph": "บรรยายเพลงที่ต้องการ เช่น คาเฟ่วันฝนตก เปียโนเบา", "mode_photo": "รูปภาพ", "mode_text": "ข้อความ", "field_density": "ความแน่นของเรียบเรียง", "opt_sparse": "โปร่ง", "opt_medium": "ปานกลาง", "opt_full": "แน่น", "pro_title": "ตัวเลือกขั้นสูง", "grp_photo_sub": "รูป → เนื้อร้อง → เพลง", "grp_recipe_sub": "เลือกงานที่ใช้ แล้วค่าตั้งจะพร้อม", "recipe_names": {"short-form-cut": "مقطع قصير", "hook-sting": "جذب الافتتاح", "product-loop": "حلقة منتج", "podcast-bed": "خلفية بودكاست", "documentary-underscore": "خلفية وثائقية", "game-menu-loop": "حلقة قائمة", "calm-focus": "تركيز هادئ", "kids-learning": "تعليم الأطفال"}, "applied": "ใช้", "current_recipe": "พรีเซ็ตที่ใช้", "mine_title": "ผลงานของฉัน", "share_link": "แชร์ลิงก์", "dl_audio": "ดาวน์โหลดเสียง", "copied": "คัดลอกแล้ว", "shared_note": "คุณกำลังฟังเพลงที่แชร์มา สร้างของคุณเองด้านล่าง", "my_account": "บัญชี", "balance": "คงเหลือ", "pricing_label": "ราคา", "confirm_gen": "สร้างเพลง {sec} วินาทีหรือไม่? จะใช้ {n}", "err_insufficient": "เครดิตไม่เพียงพอ", "topup_hint": "เติมเครดิตเพื่อสร้างต่อ", "topup_cta": "ซื้อเครดิต", "cancel": "ยกเลิก", "confirm": "ยืนยัน", "li1": "เพลง 30 วินาที = 45 เครดิต, 45 วินาที = 64, 60 วินาที = 85, 75 วินาที = 103, 90 วินาที = 120", "li2": "การสร้างที่ล้มเหลวจะคืนเครดิตอัตโนมัติ", "li3": "เครดิตไม่หมดอายุและใช้ได้กับทุกเครื่องมือ", "li4": "การชำระเงินดำเนินการโดย Creem ซึ่งเป็นผู้ค้าบนบันทึกของเรา", "li5": "เครดิตที่ยังไม่ใช้สามารถขอคืนได้ภายใน 14 วัน", "refund_link": "นโยบายการคืนเงิน"}</script>
+<script type="application/json" id="ui">{"title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ", "description": "เปลี่ยนรูปหรือคำอธิบายเป็นเพลงประกอบความยาว 30–90 วินาทีพอดี เนื้อเพลงเอ่ยถึงสิ่งที่อยู่ในภาพ พร้อมเสียงร้อง 10 ภาษาและลูปไร้รอยต่อ", "h1": "สร้างเพลง", "sub": "จากรูปหรือคำอธิบาย ความยาวแม่นยำ ลูปไร้รอยต่อ", "drop": "ลากรูปมาวางหรือเลือกไฟล์<br>เนื้อเพลงจะเอ่ยถึงสิ่งที่อยู่ในภาพ", "generate": "สร้างเพลง", "how_credits": "เครดิตคิดอย่างไร →", "grp_photo": "ฟังตัวอย่าง", "grp_recipe": "เริ่มจากงานที่ใช้", "download": "ดาวน์โหลด", "save_recipe": "บันทึกเป็นสูตร", "remove_photo": "ลบรูป", "photo_here": "รูปของคุณที่นี่", "note": "ทุกอย่างทางขวาสร้างที่นี่", "legal_aup": "การใช้งานที่ยอมรับได้", "legal_refund": "การคืนเงิน", "sign_in_first": "เข้าสู่ระบบเพื่อสร้าง", "generating": "กำลังสร้าง… ประมาณ 20 วินาที", "just_generated": "สร้างเสร็จเมื่อครู่", "your_track": "เพลงของคุณ", "from_recipe": "จากสูตรสำเร็จ", "from_photo": "สร้างจากรูป", "err_load": "โหลดตัวเลือกไม่สำเร็จ", "done_in": "เสร็จใน {n} วินาที", "gen_cost": "สร้าง · {n}", "err_gen": "สร้างไม่สำเร็จ", "my_track": "เพลงของฉัน", "err_net": "เครือข่ายขัดข้อง", "recipe_name": "ชื่อสูตร", "err_save": "บันทึกไม่สำเร็จ", "saved": "บันทึกแล้ว: {name}", "up_to": "สูงสุด {n}", "credits": "เครดิต", "guides_link": "คู่มือ →", "guides_title": "คู่มือ", "close": "ปิด", "loading": "กำลังโหลด…", "off": "ปิด", "loop_on": "ลูปไร้รอยต่อ", "buy_credits": "ซื้อเครดิต →", "desc_label": "คำอธิบาย (ไม่บังคับ)", "desc_ph": "บรรยายเพลงที่ต้องการ เช่น คาเฟ่วันฝนตก เปียโนเบา", "mode_photo": "รูปภาพ", "mode_text": "ข้อความ", "field_density": "ความแน่นของเรียบเรียง", "opt_sparse": "โปร่ง", "opt_medium": "ปานกลาง", "opt_full": "แน่น", "pro_title": "ตัวเลือกขั้นสูง", "grp_photo_sub": "รูป → เนื้อร้อง → เพลง", "grp_recipe_sub": "เลือกงานที่ใช้ แล้วค่าตั้งจะพร้อม", "recipe_names": {"short-form-cut": "مقطع قصير", "hook-sting": "جذب الافتتاح", "product-loop": "حلقة منتج", "podcast-bed": "خلفية بودكاست", "documentary-underscore": "خلفية وثائقية", "game-menu-loop": "حلقة قائمة", "calm-focus": "تركيز هادئ", "kids-learning": "تعليم الأطفال"}, "applied": "ใช้", "current_recipe": "พรีเซ็ตที่ใช้", "mine_title": "ผลงานของฉัน", "share_link": "แชร์ลิงก์", "dl_audio": "ดาวน์โหลดเสียง", "copied": "คัดลอกแล้ว", "shared_note": "คุณกำลังฟังเพลงที่แชร์มา สร้างของคุณเองด้านล่าง", "my_account": "บัญชี", "balance": "คงเหลือ", "pricing_label": "ราคา", "confirm_gen": "สร้างเพลง {sec} วินาทีหรือไม่? จะใช้ {n}", "err_insufficient": "เครดิตไม่เพียงพอ", "topup_hint": "เติมเครดิตเพื่อสร้างต่อ", "topup_cta": "ซื้อเครดิต", "cancel": "ยกเลิก", "confirm": "ยืนยัน", "not_signed_in": "ยังไม่เข้าสู่ระบบ", "li1": "เพลง 30 วินาที = 45 เครดิต, 45 วินาที = 64, 60 วินาที = 85, 75 วินาที = 103, 90 วินาที = 120", "li2": "การสร้างที่ล้มเหลวจะคืนเครดิตอัตโนมัติ", "li3": "เครดิตไม่หมดอายุและใช้ได้กับทุกเครื่องมือ", "li4": "การชำระเงินดำเนินการโดย Creem ซึ่งเป็นผู้ค้าบนบันทึกของเรา", "li5": "เครดิตที่ยังไม่ใช้สามารถขอคืนได้ภายใน 14 วัน", "refund_link": "นโยบายการคืนเงิน"}</script>
 <script>
 (function () {
   "use strict";
@@ -922,7 +928,7 @@
       if (sessionOk && d.data) {
         balanceUnits = d.data.balance || 0;
         $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
-        if (d.data.user && d.data.user.nickname) $("av").textContent = d.data.user.nickname.trim().charAt(0).toUpperCase();
+        renderAvatar(d.data.user || {});
         syncCost();
       }
       return sessionOk;
@@ -954,6 +960,19 @@
         $("dropText").innerHTML = '<img id="prevImg" src="' + d.img + '" alt=""><span class="rm">ลบรูป</span>';
       }
     } catch (e) {}
+  }
+
+  // 头像：有图用图，无图用首字母，未登录用通用人形图标
+  function renderAvatar(user) {
+    var el = $("avBtn"); if (!el) return;
+    if (!sessionOk) {
+      el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
+        '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>';
+      return;
+    }
+    var name = (user.nickname || user.email || "A").trim();
+    if (user.avatar) el.innerHTML = '<img src="' + user.avatar + '" alt="">';
+    else el.textContent = name.charAt(0).toUpperCase();
   }
 
   function needLogin() {
@@ -1229,7 +1248,7 @@
       if (balanceUnits >= 0 && typeof x.credits === "number") {
         balanceUnits = Math.max(0, balanceUnits - x.credits * 100);
         $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
-        if (d.data.user && d.data.user.nickname) $("av").textContent = d.data.user.nickname.trim().charAt(0).toUpperCase();
+        renderAvatar(d.data.user || {});
       }
       hideTopup();
       msg(UI.done_in.replace("{n}", Math.round((Date.now() - t0) / 1000)), "ok");
@@ -1443,9 +1462,26 @@
   }
 
   $("go").addEventListener("click", generateConfirmed);
-  if ($("acctLink")) $("acctLink").href = ROOT + "/" + LANG + "/account.html";
-  if ($("priceLink")) $("priceLink").href = ROOT + "/" + LANG + "/pricing.html";
-  checkSession().then(function (ok) { syncCost(); if (ok) { loadMine(); restoreDraft(); } });
+  // 底部账号栏：未登录一律先去登录（提前拦截），已登录才进入对应页面
+  var ACCOUNT_URL = ROOT + "/" + LANG + "/account.html";
+  var PRICING_URL = ROOT + "/" + LANG + "/pricing.html";
+  var GUIDE_URL = "guides/";
+  if ($("priceLink")) {
+    $("priceLink").href = PRICING_URL;
+    $("priceLink").addEventListener("click", function (e) { if (!sessionOk) { e.preventDefault(); needLogin(); } });
+  }
+  if ($("guideLink")) $("guideLink").href = GUIDE_URL;
+  if ($("avBtn")) $("avBtn").addEventListener("click", function () {
+    if (!sessionOk) { needLogin(); return; }
+    location.href = ACCOUNT_URL;
+  });
+  $("bal").textContent = UI.not_signed_in;
+  renderAvatar({});
+  checkSession().then(function (ok) {
+    syncCost();
+    if (ok) { loadMine(); restoreDraft(); }
+    else { $("bal").textContent = UI.not_signed_in; renderAvatar({}); }
+  });
   loadShared();
   call("/ai/music/schema", {}, false).then(function (d) {
     if (d.code !== 200) { msg(UI.err_load, "err"); return; }
