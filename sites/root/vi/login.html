@@ -55,6 +55,8 @@
         color:var(--mut);line-height:1.8;text-align:start}
   .foot a{color:var(--ink)}
   .hidden{display:none}
+  .legalrow{margin:6px 0 0;padding:0;border:0;display:flex;gap:10px;
+        justify-content:flex-start;align-items:center}
   .forgot{margin:10px 0 0;font-size:12px;text-align:center}
   .forgot a{color:var(--mut)}
   .tabs{display:flex;gap:6px;background:rgba(255,255,255,.05);padding:4px;border-radius:10px;margin-bottom:16px}
@@ -101,8 +103,11 @@
     <p class="msg" id="rmsg"></p>
   </div>
   <p class="msg" id="msg"></p>
-  <p class="foot">Lần đầu? Tài khoản được tạo tự động.<br>Khi tiếp tục, bạn đồng ý với
-    <a href="/vi/protocol/term.html">Điều khoản</a> · <a href="/vi/protocol/privacy.html">Chính sách bảo mật</a></p>
+  <p class="foot">Lần đầu? Tài khoản được tạo tự động.<br>Khi tiếp tục, bạn đồng ý với</p>
+  <p class="foot legalrow">
+    <a href="/vi/protocol/term.html">Điều khoản</a> ·
+    <a href="/vi/protocol/privacy.html">Chính sách bảo mật</a>
+  </p>
 </form>
 <script>
 (function () {

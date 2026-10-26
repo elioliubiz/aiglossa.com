@@ -55,6 +55,8 @@
         color:var(--mut);line-height:1.8;text-align:start}
   .foot a{color:var(--ink)}
   .hidden{display:none}
+  .legalrow{margin:6px 0 0;padding:0;border:0;display:flex;gap:10px;
+        justify-content:flex-start;align-items:center}
   .forgot{margin:10px 0 0;font-size:12px;text-align:center}
   .forgot a{color:var(--mut)}
   .tabs{display:flex;gap:6px;background:rgba(255,255,255,.05);padding:4px;border-radius:10px;margin-bottom:16px}
@@ -101,8 +103,11 @@
     <p class="msg" id="rmsg"></p>
   </div>
   <p class="msg" id="msg"></p>
-  <p class="foot">第一次来？账号会自动创建。<br>继续即表示你同意我们的
-    <a href="/zh-Hans/protocol/term.html">服务条款</a> · <a href="/zh-Hans/protocol/privacy.html">隐私政策</a></p>
+  <p class="foot">第一次来？账号会自动创建。<br>继续即表示你同意我们的</p>
+  <p class="foot legalrow">
+    <a href="/zh-Hans/protocol/term.html">服务条款</a> ·
+    <a href="/zh-Hans/protocol/privacy.html">隐私政策</a>
+  </p>
 </form>
 <script>
 (function () {
