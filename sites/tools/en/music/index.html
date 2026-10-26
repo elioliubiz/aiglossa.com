@@ -1450,7 +1450,11 @@
   function mineSummary(p) {
     var bits = [optLabel("mood", p.mood), optLabel("genre", p.genre)];
     var ins = p.instrumentation || p.instruments || [];
-    if (ins.length) bits.push(optLabel("instrumentation", ins[0]) || optLabel("instruments", ins[0]));
+    // 有乐器就显示乐器，否则退到鼓组/能量，保证每格都"看得出配方"
+    if (ins.length) bits.push(optLabel("instrumentation", ins[0]));
+    else if (p.drums) bits.push(optLabel("drums", p.drums));
+    else if (p.energy) bits.push(optLabel("energy", p.energy));
+    if (p.vocal && p.vocal !== "instrumental") bits.push(optLabel("vocal", p.vocal));
     return bits.filter(Boolean).join(" · ");
   }
 
