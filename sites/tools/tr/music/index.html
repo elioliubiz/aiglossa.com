@@ -250,10 +250,16 @@
   .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
   .mhead b{font-size:14px}
   .mhint{font-size:11.5px;color:var(--muted)}
-  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));
+    grid-template-rows:none;grid-auto-rows:122px;gap:10px;
     flex:1 1 auto;min-height:0;overflow-y:auto;padding-right:6px;align-content:start}
   .mhead,.macts{flex:0 0 auto}
-  .mgrid .mtile{width:100%;min-height:104px;align-self:start}
+  /* 弹窗内的格子：显式纵向布局，避免继承 flex 行布局导致文字溢出压到下一格 */
+  .mgrid .mtile{width:100%;height:122px;min-height:0;display:flex;flex-direction:column;
+    align-self:start;overflow:hidden}
+  .mgrid .mtile img,.mgrid .mtile .ph2{height:78px;flex:0 0 auto}
+  .mgrid .mtile p{margin:0;padding:6px 9px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mgrid .mtile .sum{padding:2px 9px 9px}
   .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
     background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
   .topup a{color:var(--acc);font-weight:600;text-decoration:none}
@@ -491,10 +497,16 @@
   .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
   .mhead b{font-size:14px}
   .mhint{font-size:11.5px;color:var(--muted)}
-  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));
+    grid-template-rows:none;grid-auto-rows:122px;gap:10px;
     flex:1 1 auto;min-height:0;overflow-y:auto;padding-right:6px;align-content:start}
   .mhead,.macts{flex:0 0 auto}
-  .mgrid .mtile{width:100%;min-height:104px;align-self:start}
+  /* 弹窗内的格子：显式纵向布局，避免继承 flex 行布局导致文字溢出压到下一格 */
+  .mgrid .mtile{width:100%;height:122px;min-height:0;display:flex;flex-direction:column;
+    align-self:start;overflow:hidden}
+  .mgrid .mtile img,.mgrid .mtile .ph2{height:78px;flex:0 0 auto}
+  .mgrid .mtile p{margin:0;padding:6px 9px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .mgrid .mtile .sum{padding:2px 9px 9px}
   .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
     background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
   .topup a{color:var(--acc);font-weight:600;text-decoration:none}
