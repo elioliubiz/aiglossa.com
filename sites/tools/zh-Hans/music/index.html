@@ -661,7 +661,7 @@
   var ROOT = (location.hostname === "tools.aiglossa.com" || location.hostname === "aiglossa.com")
     ? "https://aiglossa.com" : "http://localhost:8301";
   var TOKEN_KEY = "aig_token";
-  var API = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "https://dev.aiglossa.com";
+  var API = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "/api";
   var $ = function (id) { return document.getElementById(id); };
   var token = function () { return localStorage.getItem(TOKEN_KEY) || ""; };
   function device() {
