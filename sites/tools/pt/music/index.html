@@ -257,6 +257,9 @@
   .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .ph2 .wv{display:flex;align-items:flex-end;gap:2px;height:36px;width:72%;opacity:.6}
   .ph2 .wv i{flex:1;background:rgba(255,255,255,.5);border-radius:1px}
+  .mtile .dur{padding:7px 9px 0;margin:0;font-size:11px;color:var(--ink)}
+  .mtile .sum{padding:2px 9px 8px;margin:0;font-size:10.5px;color:var(--muted);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .ph2.more{display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--acc);
     background:rgba(255,122,26,.10)}
   .mine{margin-bottom:18px}
@@ -1196,7 +1199,8 @@
 
   // 参数摘要：让"配方 = 一组调好的参数"这件事可见
   function optLabel(key, value) {
-    var f = (schema.fields || []).filter(function (x) { return x.key === key; })[0];
+    var fields = (schema && schema.fields) || [];
+    var f = fields.filter(function (x) { return x.key === key; })[0];
     if (!f || !f.options) return value;
     var o = f.options.filter(function (x) { return x.value === value; })[0];
     return o ? (override(f, value) || pick(o.label) || value) : value;
@@ -1442,15 +1446,41 @@
     toggleAudio(it.url);
   }
 
+  // 作品摘要：让用户看得出"用了什么配方"（没有封面时尤其重要）
+  function mineSummary(p) {
+    var bits = [optLabel("mood", p.mood), optLabel("genre", p.genre)];
+    var ins = p.instrumentation || p.instruments || [];
+    if (ins.length) bits.push(optLabel("instrumentation", ins[0]) || optLabel("instruments", ins[0]));
+    return bits.filter(Boolean).join(" · ");
+  }
+
   function mineTile(it, onPick) {
     var b = document.createElement("button");
     b.type = "button"; b.className = "mtile";
+    var d = fmtDur(Math.round((it.duration_ms || 0) / 1000));
     b.innerHTML = (it.cover
       ? '<img src="' + it.cover + '" alt="" loading="lazy">'
       : '<div class="ph2"><div class="wv">' + wave() + '</div></div>') +
-      '<p>' + fmtDur(Math.round((it.duration_ms || 0) / 1000)) + '</p>';
+      '<p class="dur">' + d + '</p>' +
+      '<p class="sum">' + (mineSummary(it.params || {}) || "") + '</p>';
+    b.title = mineSummary(it.params || {});
     b.addEventListener("click", function () { onPick(it); });
     return b;
+  }
+
+  function renderMineRow() {
+    if (!mineItems.length) return;
+    var row = $("mineRow"); row.innerHTML = "";
+    $("mine").classList.remove("hidden");
+    mineItems.slice(0, 6).forEach(function (it) { row.appendChild(mineTile(it, applyMine)); });
+    if (mineItems.length > 6) {
+      var more = document.createElement("button");
+      more.type = "button"; more.className = "mtile more";
+      more.innerHTML = '<div class="ph2 more"><span>+' + (mineItems.length - 6) + '</span></div>' +
+        '<p class="dur">' + UI.view_all + '</p>';
+      more.addEventListener("click", openMineModal);
+      row.appendChild(more);
+    }
   }
 
   function openMineModal() {
@@ -1469,17 +1499,7 @@
     call("/ai/music/tracks?limit=30", {}, true).then(function (d) {
       if (d.code !== 200) return;
       mineItems = (d.data && d.data.items) || [];
-      if (!mineItems.length) return;
-      var row = $("mineRow"); row.innerHTML = "";
-      $("mine").classList.remove("hidden");
-      mineItems.slice(0, 6).forEach(function (it) { row.appendChild(mineTile(it, applyMine)); });
-      if (mineItems.length > 6) {
-        var more = document.createElement("button");
-        more.type = "button"; more.className = "mtile more";
-        more.innerHTML = '<div class="ph2 more"><span>+' + (mineItems.length - 6) + '</span></div><p>' + UI.view_all + '</p>';
-        more.addEventListener("click", openMineModal);
-        row.appendChild(more);
-      }
+      renderMineRow();
       $("mine").classList.remove("hidden");
     }).catch(function () {});
   }
@@ -1550,6 +1570,7 @@
     if (d.code !== 200) { msg(UI.err_load, "err"); return; }
     schema = d.data;
     schema.fields.forEach(function (f) { values[f.key] = f.type === "multi" ? (f.default || []).slice() : f.default; });
+    if (mineItems.length) renderMineRow();
     // 先定"当前这首"，再渲染照片墙——否则墙里会出现和大画幅重复的那一张
     var d0 = DEMOS[0];
     current = { kind: "demo", img: d0.img, audio: d0.audio, lyrics: d0.lyrics, meta: d0.meta, title: d0.title };
