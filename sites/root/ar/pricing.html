@@ -82,21 +82,20 @@
                  color:var(--muted);text-decoration:none;font-size:13px}
   .switcher li a:hover,.switcher li a[aria-current]{color:var(--fg);background:rgba(255,255,255,.06)}
 </style>
-<script type="application/json" id="ui">{"title": "الأرصدة والأسعار — aiglossa tools", "description": "أرصدة مدفوعة مسبقًا لأدوات aiglossa. المقطع 30 ثانية يكلف 45 رصيدًا، والأطول أكثر.", "h1": "الأرصدة", "lede": "أرصدة مدفوعة مسبقًا، مشتركة بين كل الأدوات. لا تنتهي ولا يوجد اشتراك — تدفع فقط مقابل ما تنشئه.", "side_title": "كيف تعمل الأرصدة", "li1": "مقطع 30 ثانية = 45 رصيدًا، 45 ثانية = 64، 60 ثانية = 85، 75 ثانية = 103، 90 ثانية = 120.", "li2": "الأجيال الفاشلة تُرد تلقائيًا.", "li3": "الأرصدة لا تنتهي وتعمل في كل الأدوات.", "li4": "المدفوعات تعالجها Creem، وهي تاجر السجل لدينا.", "li5": "يمكن استرداد الأرصدة غير المستخدمة خلال 14 يومًا.", "refund_link": "سياسة الاسترداد", "back": "← العودة إلى الأدوات", "opening": "جارٍ فتح الدفع…", "err": "تعذّر بدء الدفع", "neterr": "خطأ في الشبكة", "per": "≈ {n} مقطعًا بمدة 30 ثانية", "kicker": "aiglossa tools", "refund_note": "الرصيد المستخدم غير قابل للاسترداد. اشترِ ما تحتاجه فقط.", "back_account": "العودة إلى الحساب", "platform_note": "الرصيد صالح في جميع منتجات aiglossa."}</script>
+<script type="application/json" id="ui">{"title": "الأرصدة والأسعار — aiglossa tools", "description": "أرصدة مدفوعة مسبقًا لأدوات aiglossa. المقطع 30 ثانية يكلف 45 رصيدًا، والأطول أكثر.", "h1": "الأرصدة", "lede": "أرصدة مدفوعة مسبقًا، مشتركة بين كل الأدوات. لا تنتهي ولا يوجد اشتراك — تدفع فقط مقابل ما تنشئه.", "side_title": "كيف تعمل الأرصدة", "li1": "مقطع 30 ثانية = 45 رصيدًا، 45 ثانية = 64، 60 ثانية = 85، 75 ثانية = 103، 90 ثانية = 120.", "li2": "الأجيال الفاشلة تُرد تلقائيًا.", "li3": "الأرصدة لا تنتهي وتعمل في كل الأدوات.", "li4": "المدفوعات تعالجها Creem، وهي تاجر السجل لدينا.", "li5": "يمكن استرداد الأرصدة غير المستخدمة خلال 14 يومًا.", "refund_link": "سياسة الاسترداد", "back": "← العودة إلى الأدوات", "opening": "جارٍ فتح الدفع…", "err": "تعذّر بدء الدفع", "neterr": "خطأ في الشبكة", "per": "≈ {n} مقطعًا بمدة 30 ثانية", "kicker": "aiglossa tools", "refund_note": "الرصيد المستخدم غير قابل للاسترداد. اشترِ ما تحتاجه فقط.", "back_account": "العودة إلى الحساب", "lede_buy": "رصيد مدفوع مسبقًا بدون اشتراك. اختر الحزمة المناسبة.", "li3_generic": "الرصيد لا ينتهي.", "balance": "الرصيد", "credits": "رصيدًا", "not_signed_in": "لم تسجّل الدخول"}</script>
 </head>
 <body>
 <main class="page">
   <p class="kicker">aiglossa</p>
   <h1>الأرصدة</h1>
-  <p class="lede">أرصدة مدفوعة مسبقًا، مشتركة بين كل الأدوات. لا تنتهي ولا يوجد اشتراك — تدفع فقط مقابل ما تنشئه.</p>
-  <p class="plateline">الرصيد صالح في جميع منتجات aiglossa.<br>الرصيد المستخدم غير قابل للاسترداد. اشترِ ما تحتاجه فقط.</p>
+  <p class="lede">رصيد مدفوع مسبقًا بدون اشتراك. اختر الحزمة المناسبة.</p>
+  <p class="balrow" id="balrow"></p>
 
   <div class="grid">
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">الرصيد المستخدم غير قابل للاسترداد. اشترِ ما تحتاجه فقط.</p>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <div class="back"><a href="./account.html">العودة إلى الحساب</a></div>
     </div>
 
     <aside class="side">
@@ -104,7 +103,7 @@
       <ul>
         <li>مقطع 30 ثانية = 45 رصيدًا، 45 ثانية = 64، 60 ثانية = 85، 75 ثانية = 103، 90 ثانية = 120.</li>
         <li>الأجيال الفاشلة تُرد تلقائيًا.</li>
-        <li>الأرصدة لا تنتهي وتعمل في كل الأدوات.</li>
+        <li>الرصيد لا ينتهي.</li>
         <li>المدفوعات تعالجها Creem، وهي تاجر السجل لدينا.</li>
       </ul>
     </aside>
@@ -187,7 +186,15 @@
   });
 
   var sessionOk = false;
-  call("/ai/music/credits", {}, true).then(function (d) { sessionOk = d.code === 200; }).catch(function () {});
+  call("/ai/music/credits", {}, true).then(function (d) {
+    sessionOk = d.code === 200;
+    var row = document.getElementById("balrow");
+    if (!row) return;
+    row.classList.add("on");
+    row.innerHTML = sessionOk
+      ? UI.balance + " <b>" + Math.round((d.data.balance || 0) / 100) + "</b> " + UI.credits
+      : UI.not_signed_in;
+  }).catch(function () {});
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

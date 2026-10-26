@@ -82,21 +82,20 @@
                  color:var(--muted);text-decoration:none;font-size:13px}
   .switcher li a:hover,.switcher li a[aria-current]{color:var(--fg);background:rgba(255,255,255,.06)}
 </style>
-<script type="application/json" id="ui">{"title": "Créditos e preços — aiglossa tools", "description": "Créditos pré-pagos para aiglossa tools. Uma faixa de 30 s custa 45 créditos; as mais longas custam mais.", "h1": "Créditos", "lede": "Créditos pré-pagos, compartilhados entre todas as ferramentas. Não expiram e não há assinatura: você paga só o que gerar.", "side_title": "Como funcionam os créditos", "li1": "Faixa de 30 s = 45 créditos, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Gerações que falham são reembolsadas automaticamente.", "li3": "Os créditos não expiram e valem para todas as ferramentas.", "li4": "Os pagamentos são processados pela Creem, nosso merchant of record.", "li5": "Créditos não usados podem ser reembolsados em até 14 dias.", "refund_link": "Política de reembolso", "back": "← Voltar às ferramentas", "opening": "Abrindo o pagamento…", "err": "Não foi possível iniciar o pagamento", "neterr": "Erro de rede", "per": "≈ {n} faixas de 30 s", "kicker": "aiglossa tools", "refund_note": "Créditos usados não são reembolsáveis. Compre apenas o necessário.", "back_account": "Voltar à conta", "platform_note": "Os créditos valem em todos os produtos aiglossa."}</script>
+<script type="application/json" id="ui">{"title": "Créditos e preços — aiglossa tools", "description": "Créditos pré-pagos para aiglossa tools. Uma faixa de 30 s custa 45 créditos; as mais longas custam mais.", "h1": "Créditos", "lede": "Créditos pré-pagos, compartilhados entre todas as ferramentas. Não expiram e não há assinatura: você paga só o que gerar.", "side_title": "Como funcionam os créditos", "li1": "Faixa de 30 s = 45 créditos, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Gerações que falham são reembolsadas automaticamente.", "li3": "Os créditos não expiram e valem para todas as ferramentas.", "li4": "Os pagamentos são processados pela Creem, nosso merchant of record.", "li5": "Créditos não usados podem ser reembolsados em até 14 dias.", "refund_link": "Política de reembolso", "back": "← Voltar às ferramentas", "opening": "Abrindo o pagamento…", "err": "Não foi possível iniciar o pagamento", "neterr": "Erro de rede", "per": "≈ {n} faixas de 30 s", "kicker": "aiglossa tools", "refund_note": "Créditos usados não são reembolsáveis. Compre apenas o necessário.", "back_account": "Voltar à conta", "lede_buy": "Créditos pré-pagos, sem assinatura. Escolha o pacote ideal.", "li3_generic": "Os créditos não expiram.", "balance": "Saldo", "credits": "créditos", "not_signed_in": "Não conectado"}</script>
 </head>
 <body>
 <main class="page">
   <p class="kicker">aiglossa</p>
   <h1>Créditos</h1>
-  <p class="lede">Créditos pré-pagos, compartilhados entre todas as ferramentas. Não expiram e não há assinatura: você paga só o que gerar.</p>
-  <p class="plateline">Os créditos valem em todos os produtos aiglossa.<br>Créditos usados não são reembolsáveis. Compre apenas o necessário.</p>
+  <p class="lede">Créditos pré-pagos, sem assinatura. Escolha o pacote ideal.</p>
+  <p class="balrow" id="balrow"></p>
 
   <div class="grid">
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">Créditos usados não são reembolsáveis. Compre apenas o necessário.</p>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <div class="back"><a href="./account.html">Voltar à conta</a></div>
     </div>
 
     <aside class="side">
@@ -104,7 +103,7 @@
       <ul>
         <li>Faixa de 30 s = 45 créditos, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.</li>
         <li>Gerações que falham são reembolsadas automaticamente.</li>
-        <li>Os créditos não expiram e valem para todas as ferramentas.</li>
+        <li>Os créditos não expiram.</li>
         <li>Os pagamentos são processados pela Creem, nosso merchant of record.</li>
       </ul>
     </aside>
@@ -187,7 +186,15 @@
   });
 
   var sessionOk = false;
-  call("/ai/music/credits", {}, true).then(function (d) { sessionOk = d.code === 200; }).catch(function () {});
+  call("/ai/music/credits", {}, true).then(function (d) {
+    sessionOk = d.code === 200;
+    var row = document.getElementById("balrow");
+    if (!row) return;
+    row.classList.add("on");
+    row.innerHTML = sessionOk
+      ? UI.balance + " <b>" + Math.round((d.data.balance || 0) / 100) + "</b> " + UI.credits
+      : UI.not_signed_in;
+  }).catch(function () {});
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

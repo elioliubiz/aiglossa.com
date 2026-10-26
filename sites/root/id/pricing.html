@@ -82,21 +82,20 @@
                  color:var(--muted);text-decoration:none;font-size:13px}
   .switcher li a:hover,.switcher li a[aria-current]{color:var(--fg);background:rgba(255,255,255,.06)}
 </style>
-<script type="application/json" id="ui">{"title": "Kredit & harga — aiglossa tools", "description": "Kredit prabayar untuk aiglossa tools. Trek 30 detik berharga 45 kredit; yang lebih panjang lebih mahal.", "h1": "Kredit", "lede": "Kredit prabayar, dipakai bersama semua alat. Tidak kedaluwarsa dan tanpa langganan — kamu hanya membayar yang kamu buat.", "side_title": "Cara kerja kredit", "li1": "Trek 30 dtk = 45 kredit, 45 dtk = 64, 60 dtk = 85, 75 dtk = 103, 90 dtk = 120.", "li2": "Pembuatan yang gagal dikembalikan otomatis.", "li3": "Kredit tidak kedaluwarsa dan berlaku di semua alat.", "li4": "Pembayaran diproses oleh Creem, merchant of record kami.", "li5": "Kredit yang belum terpakai bisa dikembalikan dalam 14 hari.", "refund_link": "Kebijakan pengembalian", "back": "← Kembali ke alat", "opening": "Membuka pembayaran…", "err": "Tidak bisa memulai pembayaran", "neterr": "Kesalahan jaringan", "per": "≈ {n} trek 30 dtk", "kicker": "aiglossa tools", "refund_note": "Kredit yang sudah dipakai tidak dapat dikembalikan. Beli sesuai kebutuhan.", "back_account": "Kembali ke akun", "platform_note": "Kredit berlaku di semua produk aiglossa."}</script>
+<script type="application/json" id="ui">{"title": "Kredit & harga — aiglossa tools", "description": "Kredit prabayar untuk aiglossa tools. Trek 30 detik berharga 45 kredit; yang lebih panjang lebih mahal.", "h1": "Kredit", "lede": "Kredit prabayar, dipakai bersama semua alat. Tidak kedaluwarsa dan tanpa langganan — kamu hanya membayar yang kamu buat.", "side_title": "Cara kerja kredit", "li1": "Trek 30 dtk = 45 kredit, 45 dtk = 64, 60 dtk = 85, 75 dtk = 103, 90 dtk = 120.", "li2": "Pembuatan yang gagal dikembalikan otomatis.", "li3": "Kredit tidak kedaluwarsa dan berlaku di semua alat.", "li4": "Pembayaran diproses oleh Creem, merchant of record kami.", "li5": "Kredit yang belum terpakai bisa dikembalikan dalam 14 hari.", "refund_link": "Kebijakan pengembalian", "back": "← Kembali ke alat", "opening": "Membuka pembayaran…", "err": "Tidak bisa memulai pembayaran", "neterr": "Kesalahan jaringan", "per": "≈ {n} trek 30 dtk", "kicker": "aiglossa tools", "refund_note": "Kredit yang sudah dipakai tidak dapat dikembalikan. Beli sesuai kebutuhan.", "back_account": "Kembali ke akun", "lede_buy": "Kredit prabayar, tanpa langganan. Pilih paket yang sesuai.", "li3_generic": "Kredit tidak kedaluwarsa.", "balance": "Saldo", "credits": "kredit", "not_signed_in": "Belum masuk"}</script>
 </head>
 <body>
 <main class="page">
   <p class="kicker">aiglossa</p>
   <h1>Kredit</h1>
-  <p class="lede">Kredit prabayar, dipakai bersama semua alat. Tidak kedaluwarsa dan tanpa langganan — kamu hanya membayar yang kamu buat.</p>
-  <p class="plateline">Kredit berlaku di semua produk aiglossa.<br>Kredit yang sudah dipakai tidak dapat dikembalikan. Beli sesuai kebutuhan.</p>
+  <p class="lede">Kredit prabayar, tanpa langganan. Pilih paket yang sesuai.</p>
+  <p class="balrow" id="balrow"></p>
 
   <div class="grid">
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">Kredit yang sudah dipakai tidak dapat dikembalikan. Beli sesuai kebutuhan.</p>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <div class="back"><a href="./account.html">Kembali ke akun</a></div>
     </div>
 
     <aside class="side">
@@ -104,7 +103,7 @@
       <ul>
         <li>Trek 30 dtk = 45 kredit, 45 dtk = 64, 60 dtk = 85, 75 dtk = 103, 90 dtk = 120.</li>
         <li>Pembuatan yang gagal dikembalikan otomatis.</li>
-        <li>Kredit tidak kedaluwarsa dan berlaku di semua alat.</li>
+        <li>Kredit tidak kedaluwarsa.</li>
         <li>Pembayaran diproses oleh Creem, merchant of record kami.</li>
       </ul>
     </aside>
@@ -187,7 +186,15 @@
   });
 
   var sessionOk = false;
-  call("/ai/music/credits", {}, true).then(function (d) { sessionOk = d.code === 200; }).catch(function () {});
+  call("/ai/music/credits", {}, true).then(function (d) {
+    sessionOk = d.code === 200;
+    var row = document.getElementById("balrow");
+    if (!row) return;
+    row.classList.add("on");
+    row.innerHTML = sessionOk
+      ? UI.balance + " <b>" + Math.round((d.data.balance || 0) / 100) + "</b> " + UI.credits
+      : UI.not_signed_in;
+  }).catch(function () {});
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

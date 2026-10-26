@@ -82,21 +82,20 @@
                  color:var(--muted);text-decoration:none;font-size:13px}
   .switcher li a:hover,.switcher li a[aria-current]{color:var(--fg);background:rgba(255,255,255,.06)}
 </style>
-<script type="application/json" id="ui">{"title": "Credits & pricing — aiglossa tools", "description": "Prepaid credits for aiglossa tools. A 30-second track costs 45 credits; longer tracks cost more.", "h1": "Credits", "lede": "Prepaid credits, shared across every tool. They never expire and there is no subscription — you only pay for what you generate.", "side_title": "How credits work", "li1": "30s track = 45 credits, 45s = 64, 60s = 85, 75s = 103, 90s = 120.", "li2": "Failed generations are refunded automatically.", "li3": "Credits never expire and work across all tools.", "li4": "Payments are processed by Creem, our merchant of record.", "li5": "Unused credits can be refunded within 14 days.", "refund_link": "Refund Policy", "back": "← Back to tools", "opening": "Opening checkout…", "err": "Could not start checkout", "neterr": "Network error", "per": "≈ {n} × 30s tracks", "kicker": "aiglossa tools", "refund_note": "Credits are non-refundable once used. Please buy only what you need.", "back_account": "Back to account", "platform_note": "Credits work across every aiglossa product."}</script>
+<script type="application/json" id="ui">{"title": "Credits & pricing — aiglossa tools", "description": "Prepaid credits for aiglossa tools. A 30-second track costs 45 credits; longer tracks cost more.", "h1": "Credits", "lede": "Prepaid credits, shared across every tool. They never expire and there is no subscription — you only pay for what you generate.", "side_title": "How credits work", "li1": "30s track = 45 credits, 45s = 64, 60s = 85, 75s = 103, 90s = 120.", "li2": "Failed generations are refunded automatically.", "li3": "Credits never expire and work across all tools.", "li4": "Payments are processed by Creem, our merchant of record.", "li5": "Unused credits can be refunded within 14 days.", "refund_link": "Refund Policy", "back": "← Back to tools", "opening": "Opening checkout…", "err": "Could not start checkout", "neterr": "Network error", "per": "≈ {n} × 30s tracks", "kicker": "aiglossa tools", "refund_note": "Credits are non-refundable once used. Please buy only what you need.", "back_account": "Back to account", "lede_buy": "Prepaid credits, no subscription. Choose the pack that fits you.", "li3_generic": "Credits never expire.", "balance": "Balance", "credits": "credits", "not_signed_in": "Not signed in"}</script>
 </head>
 <body>
 <main class="page">
   <p class="kicker">aiglossa</p>
   <h1>Credits</h1>
-  <p class="lede">Prepaid credits, shared across every tool. They never expire and there is no subscription — you only pay for what you generate.</p>
-  <p class="plateline">Credits work across every aiglossa product.<br>Credits are non-refundable once used. Please buy only what you need.</p>
+  <p class="lede">Prepaid credits, no subscription. Choose the pack that fits you.</p>
+  <p class="balrow" id="balrow"></p>
 
   <div class="grid">
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">Credits are non-refundable once used. Please buy only what you need.</p>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <div class="back"><a href="./account.html">Back to account</a></div>
     </div>
 
     <aside class="side">
@@ -104,7 +103,7 @@
       <ul>
         <li>30s track = 45 credits, 45s = 64, 60s = 85, 75s = 103, 90s = 120.</li>
         <li>Failed generations are refunded automatically.</li>
-        <li>Credits never expire and work across all tools.</li>
+        <li>Credits never expire.</li>
         <li>Payments are processed by Creem, our merchant of record.</li>
       </ul>
     </aside>
@@ -187,7 +186,15 @@
   });
 
   var sessionOk = false;
-  call("/ai/music/credits", {}, true).then(function (d) { sessionOk = d.code === 200; }).catch(function () {});
+  call("/ai/music/credits", {}, true).then(function (d) {
+    sessionOk = d.code === 200;
+    var row = document.getElementById("balrow");
+    if (!row) return;
+    row.classList.add("on");
+    row.innerHTML = sessionOk
+      ? UI.balance + " <b>" + Math.round((d.data.balance || 0) / 100) + "</b> " + UI.credits
+      : UI.not_signed_in;
+  }).catch(function () {});
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

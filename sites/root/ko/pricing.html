@@ -82,21 +82,20 @@
                  color:var(--muted);text-decoration:none;font-size:13px}
   .switcher li a:hover,.switcher li a[aria-current]{color:var(--fg);background:rgba(255,255,255,.06)}
 </style>
-<script type="application/json" id="ui">{"title": "크레딧 및 가격 — aiglossa tools", "description": "aiglossa tools의 선불 크레딧. 30초 곡은 45크레딧, 더 긴 곡은 더 듭니다.", "h1": "크레딧", "lede": "선불 크레딧은 모든 도구에서 공용입니다. 만료 없음, 구독 없음. 생성한 만큼만 지불합니다.", "side_title": "크레딧 계산 방식", "li1": "30초 = 45크레딧, 45초 = 64, 60초 = 85, 75초 = 103, 90초 = 120.", "li2": "생성에 실패하면 자동으로 환불됩니다.", "li3": "크레딧은 만료되지 않으며 모든 도구에서 쓸 수 있습니다.", "li4": "결제는 merchant of record인 Creem이 처리합니다.", "li5": "사용하지 않은 크레딧은 14일 이내에 환불받을 수 있습니다.", "refund_link": "환불 정책", "back": "← 도구 목록으로", "opening": "결제 페이지를 여는 중…", "err": "결제를 시작할 수 없습니다", "neterr": "네트워크 오류", "per": "30초 × 약 {n}곡", "kicker": "aiglossa tools", "refund_note": "사용한 크레딧은 환불되지 않습니다. 필요한 만큼만 구매하세요.", "back_account": "계정으로 돌아가기", "platform_note": "크레딧은 aiglossa의 모든 제품에서 사용할 수 있습니다."}</script>
+<script type="application/json" id="ui">{"title": "크레딧 및 가격 — aiglossa tools", "description": "aiglossa tools의 선불 크레딧. 30초 곡은 45크레딧, 더 긴 곡은 더 듭니다.", "h1": "크레딧", "lede": "선불 크레딧은 모든 도구에서 공용입니다. 만료 없음, 구독 없음. 생성한 만큼만 지불합니다.", "side_title": "크레딧 계산 방식", "li1": "30초 = 45크레딧, 45초 = 64, 60초 = 85, 75초 = 103, 90초 = 120.", "li2": "생성에 실패하면 자동으로 환불됩니다.", "li3": "크레딧은 만료되지 않으며 모든 도구에서 쓸 수 있습니다.", "li4": "결제는 merchant of record인 Creem이 처리합니다.", "li5": "사용하지 않은 크레딧은 14일 이내에 환불받을 수 있습니다.", "refund_link": "환불 정책", "back": "← 도구 목록으로", "opening": "결제 페이지를 여는 중…", "err": "결제를 시작할 수 없습니다", "neterr": "네트워크 오류", "per": "30초 × 약 {n}곡", "kicker": "aiglossa tools", "refund_note": "사용한 크레딧은 환불되지 않습니다. 필요한 만큼만 구매하세요.", "back_account": "계정으로 돌아가기", "lede_buy": "선불 크레딧, 구독 없음. 필요한 패키지를 선택하세요.", "li3_generic": "크레딧은 만료되지 않습니다.", "balance": "잔액", "credits": "크레딧", "not_signed_in": "로그인 안 됨"}</script>
 </head>
 <body>
 <main class="page">
   <p class="kicker">aiglossa</p>
   <h1>크레딧</h1>
-  <p class="lede">선불 크레딧은 모든 도구에서 공용입니다. 만료 없음, 구독 없음. 생성한 만큼만 지불합니다.</p>
-  <p class="plateline">크레딧은 aiglossa의 모든 제품에서 사용할 수 있습니다.<br>사용한 크레딧은 환불되지 않습니다. 필요한 만큼만 구매하세요.</p>
+  <p class="lede">선불 크레딧, 구독 없음. 필요한 패키지를 선택하세요.</p>
+  <p class="balrow" id="balrow"></p>
 
   <div class="grid">
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">사용한 크레딧은 환불되지 않습니다. 필요한 만큼만 구매하세요.</p>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <div class="back"><a href="./account.html">계정으로 돌아가기</a></div>
     </div>
 
     <aside class="side">
@@ -104,7 +103,7 @@
       <ul>
         <li>30초 = 45크레딧, 45초 = 64, 60초 = 85, 75초 = 103, 90초 = 120.</li>
         <li>생성에 실패하면 자동으로 환불됩니다.</li>
-        <li>크레딧은 만료되지 않으며 모든 도구에서 쓸 수 있습니다.</li>
+        <li>크레딧은 만료되지 않습니다.</li>
         <li>결제는 merchant of record인 Creem이 처리합니다.</li>
       </ul>
     </aside>
@@ -187,7 +186,15 @@
   });
 
   var sessionOk = false;
-  call("/ai/music/credits", {}, true).then(function (d) { sessionOk = d.code === 200; }).catch(function () {});
+  call("/ai/music/credits", {}, true).then(function (d) {
+    sessionOk = d.code === 200;
+    var row = document.getElementById("balrow");
+    if (!row) return;
+    row.classList.add("on");
+    row.innerHTML = sessionOk
+      ? UI.balance + " <b>" + Math.round((d.data.balance || 0) / 100) + "</b> " + UI.credits
+      : UI.not_signed_in;
+  }).catch(function () {});
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

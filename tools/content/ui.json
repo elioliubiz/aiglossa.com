@@ -19,7 +19,9 @@
       "per": "≈ {n} × 30s tracks",
       "kicker": "aiglossa tools",
       "refund_note": "Credits are non-refundable once used. Please buy only what you need.",
-      "back_account": "Back to account"
+      "back_account": "Back to account",
+      "lede_buy": "Prepaid credits, no subscription. Choose the pack that fits you.",
+      "li3_generic": "Credits never expire."
     },
     "account": {
       "title": "Sign in — aiglossa tools",
@@ -187,7 +189,9 @@
       "per": "30秒×約 {n} 曲",
       "kicker": "aiglossa tools",
       "refund_note": "使用済みのクレジットは返金できません。必要な分だけご購入ください。",
-      "back_account": "アカウントに戻る"
+      "back_account": "アカウントに戻る",
+      "lede_buy": "プリペイド式でサブスクなし。必要なパックをお選びください。",
+      "li3_generic": "クレジットは無期限です。"
     },
     "account": {
       "title": "サインイン — aiglossa tools",
@@ -355,7 +359,9 @@
       "per": "30초 × 약 {n}곡",
       "kicker": "aiglossa tools",
       "refund_note": "사용한 크레딧은 환불되지 않습니다. 필요한 만큼만 구매하세요.",
-      "back_account": "계정으로 돌아가기"
+      "back_account": "계정으로 돌아가기",
+      "lede_buy": "선불 크레딧, 구독 없음. 필요한 패키지를 선택하세요.",
+      "li3_generic": "크레딧은 만료되지 않습니다."
     },
     "account": {
       "title": "로그인 — aiglossa tools",
@@ -523,7 +529,9 @@
       "per": "约 {n} 首 30 秒",
       "kicker": "aiglossa tools",
       "refund_note": "额度一经使用不可退款，请按需购买。",
-      "back_account": "返回账户"
+      "back_account": "返回账户",
+      "lede_buy": "预付额度，没有订阅。按需选择适合你的额度包。",
+      "li3_generic": "额度永不过期。"
     },
     "account": {
       "title": "登录 — aiglossa tools",
@@ -691,7 +699,9 @@
       "per": "約 {n} 首 30 秒",
       "kicker": "aiglossa tools",
       "refund_note": "額度一經使用不可退款，請按需購買。",
-      "back_account": "返回帳戶"
+      "back_account": "返回帳戶",
+      "lede_buy": "預付額度，沒有訂閱。按需選擇適合你的額度包。",
+      "li3_generic": "額度永不過期。"
     },
     "account": {
       "title": "登入 — aiglossa tools",
@@ -859,7 +869,9 @@
       "per": "≈ {n} pistas de 30 s",
       "kicker": "aiglossa tools",
       "refund_note": "Los créditos usados no son reembolsables. Compra solo lo que necesites.",
-      "back_account": "Volver a la cuenta"
+      "back_account": "Volver a la cuenta",
+      "lede_buy": "Créditos prepago, sin suscripción. Elige el paquete que necesites.",
+      "li3_generic": "Los créditos no caducan."
     },
     "account": {
       "title": "Iniciar sesión — aiglossa tools",
@@ -1027,7 +1039,9 @@
       "per": "≈ {n} morceaux de 30 s",
       "kicker": "aiglossa tools",
       "refund_note": "Les crédits utilisés ne sont pas remboursables. Achetez seulement le nécessaire.",
-      "back_account": "Retour au compte"
+      "back_account": "Retour au compte",
+      "lede_buy": "Crédits prépayés, sans abonnement. Choisissez le pack adapté.",
+      "li3_generic": "Les crédits n'expirent jamais."
     },
     "account": {
       "title": "Connexion — aiglossa tools",
@@ -1195,7 +1209,9 @@
       "per": "≈ {n} × 30-s-Tracks",
       "kicker": "aiglossa tools",
       "refund_note": "Bereits genutzte Credits werden nicht erstattet. Kaufe nur, was du brauchst.",
-      "back_account": "Zurück zum Konto"
+      "back_account": "Zurück zum Konto",
+      "lede_buy": "Guthaben statt Abo. Wähle das passende Paket.",
+      "li3_generic": "Guthaben verfällt nicht."
     },
     "account": {
       "title": "Anmelden — aiglossa tools",
@@ -1363,7 +1379,9 @@
       "per": "≈ {n} faixas de 30 s",
       "kicker": "aiglossa tools",
       "refund_note": "Créditos usados não são reembolsáveis. Compre apenas o necessário.",
-      "back_account": "Voltar à conta"
+      "back_account": "Voltar à conta",
+      "lede_buy": "Créditos pré-pagos, sem assinatura. Escolha o pacote ideal.",
+      "li3_generic": "Os créditos não expiram."
     },
     "account": {
       "title": "Entrar — aiglossa tools",
@@ -1531,7 +1549,9 @@
       "per": "≈ {n} brani da 30 s",
       "kicker": "aiglossa tools",
       "refund_note": "I crediti utilizzati non sono rimborsabili. Acquista solo il necessario.",
-      "back_account": "Torna all'account"
+      "back_account": "Torna all'account",
+      "lede_buy": "Crediti prepagati, senza abbonamento. Scegli il pacchetto giusto.",
+      "li3_generic": "I crediti non scadono."
     },
     "account": {
       "title": "Accedi — aiglossa tools",
@@ -1699,7 +1719,9 @@
       "per": "≈ {n} треков по 30 с",
       "kicker": "aiglossa tools",
       "refund_note": "Использованные кредиты не возвращаются. Покупайте столько, сколько нужно.",
-      "back_account": "Назад в аккаунт"
+      "back_account": "Назад в аккаунт",
+      "lede_buy": "Предоплаченные кредиты без подписки. Выберите подходящий пакет.",
+      "li3_generic": "Кредиты не сгорают."
     },
     "account": {
       "title": "Вход — aiglossa tools",
@@ -1867,7 +1889,9 @@
       "per": "≈ {n} مقطعًا بمدة 30 ثانية",
       "kicker": "aiglossa tools",
       "refund_note": "الرصيد المستخدم غير قابل للاسترداد. اشترِ ما تحتاجه فقط.",
-      "back_account": "العودة إلى الحساب"
+      "back_account": "العودة إلى الحساب",
+      "lede_buy": "رصيد مدفوع مسبقًا بدون اشتراك. اختر الحزمة المناسبة.",
+      "li3_generic": "الرصيد لا ينتهي."
     },
     "account": {
       "title": "تسجيل الدخول — aiglossa tools",
@@ -2035,7 +2059,9 @@
       "per": "≈ {n} เพลง 30 วินาที",
       "kicker": "aiglossa tools",
       "refund_note": "เครดิตที่ใช้แล้วไม่สามารถขอคืนได้ โปรดซื้อเท่าที่จำเป็น",
-      "back_account": "กลับไปที่บัญชี"
+      "back_account": "กลับไปที่บัญชี",
+      "lede_buy": "เครดิตแบบจ่ายล่วงหน้า ไม่มีสมาชิกรายเดือน เลือกแพ็กที่เหมาะกับคุณ",
+      "li3_generic": "เครดิตไม่มีวันหมดอายุ"
     },
     "account": {
       "title": "เข้าสู่ระบบ — aiglossa tools",
@@ -2203,7 +2229,9 @@
       "per": "≈ {n} bản 30 giây",
       "kicker": "aiglossa tools",
       "refund_note": "Tín dụng đã dùng không được hoàn lại. Chỉ mua những gì bạn cần.",
-      "back_account": "Quay lại tài khoản"
+      "back_account": "Quay lại tài khoản",
+      "lede_buy": "Tín dụng trả trước, không đăng ký. Chọn gói phù hợp với bạn.",
+      "li3_generic": "Tín dụng không hết hạn."
     },
     "account": {
       "title": "Đăng nhập — aiglossa tools",
@@ -2371,7 +2399,9 @@
       "per": "≈ {n} trek 30 dtk",
       "kicker": "aiglossa tools",
       "refund_note": "Kredit yang sudah dipakai tidak dapat dikembalikan. Beli sesuai kebutuhan.",
-      "back_account": "Kembali ke akun"
+      "back_account": "Kembali ke akun",
+      "lede_buy": "Kredit prabayar, tanpa langganan. Pilih paket yang sesuai.",
+      "li3_generic": "Kredit tidak kedaluwarsa."
     },
     "account": {
       "title": "Masuk — aiglossa tools",
@@ -2539,7 +2569,9 @@
       "per": "≈ {n} × 30 sn parça",
       "kicker": "aiglossa tools",
       "refund_note": "Kullanılan krediler iade edilmez. Yalnızca ihtiyacınız kadar satın alın.",
-      "back_account": "Hesaba dön"
+      "back_account": "Hesaba dön",
+      "lede_buy": "Ön ödemeli kredi, abonelik yok. Size uygun paketi seçin.",
+      "li3_generic": "Krediler süresi dolmaz."
     },
     "account": {
       "title": "Giriş — aiglossa tools",

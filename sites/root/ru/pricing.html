@@ -82,21 +82,20 @@
                  color:var(--muted);text-decoration:none;font-size:13px}
   .switcher li a:hover,.switcher li a[aria-current]{color:var(--fg);background:rgba(255,255,255,.06)}
 </style>
-<script type="application/json" id="ui">{"title": "Кредиты и цены — aiglossa tools", "description": "Предоплатные кредиты для aiglossa tools. Трек на 30 секунд стоит 45 кредитов; длинные — дороже.", "h1": "Кредиты", "lede": "Предоплатные кредиты, общие для всех инструментов. Без срока действия и без подписки — платите только за то, что создаёте.", "side_title": "Как работают кредиты", "li1": "Трек 30 с = 45 кредитов, 45 с = 64, 60 с = 85, 75 с = 103, 90 с = 120.", "li2": "Неудачные генерации возвращаются автоматически.", "li3": "Кредиты не сгорают и действуют во всех инструментах.", "li4": "Платежи обрабатывает Creem — наш merchant of record.", "li5": "Неиспользованные кредиты можно вернуть в течение 14 дней.", "refund_link": "Политика возврата", "back": "← Назад к инструментам", "opening": "Открываем оплату…", "err": "Не удалось начать оплату", "neterr": "Ошибка сети", "per": "≈ {n} треков по 30 с", "kicker": "aiglossa tools", "refund_note": "Использованные кредиты не возвращаются. Покупайте столько, сколько нужно.", "back_account": "Назад в аккаунт", "platform_note": "Кредиты действуют во всех продуктах aiglossa."}</script>
+<script type="application/json" id="ui">{"title": "Кредиты и цены — aiglossa tools", "description": "Предоплатные кредиты для aiglossa tools. Трек на 30 секунд стоит 45 кредитов; длинные — дороже.", "h1": "Кредиты", "lede": "Предоплатные кредиты, общие для всех инструментов. Без срока действия и без подписки — платите только за то, что создаёте.", "side_title": "Как работают кредиты", "li1": "Трек 30 с = 45 кредитов, 45 с = 64, 60 с = 85, 75 с = 103, 90 с = 120.", "li2": "Неудачные генерации возвращаются автоматически.", "li3": "Кредиты не сгорают и действуют во всех инструментах.", "li4": "Платежи обрабатывает Creem — наш merchant of record.", "li5": "Неиспользованные кредиты можно вернуть в течение 14 дней.", "refund_link": "Политика возврата", "back": "← Назад к инструментам", "opening": "Открываем оплату…", "err": "Не удалось начать оплату", "neterr": "Ошибка сети", "per": "≈ {n} треков по 30 с", "kicker": "aiglossa tools", "refund_note": "Использованные кредиты не возвращаются. Покупайте столько, сколько нужно.", "back_account": "Назад в аккаунт", "lede_buy": "Предоплаченные кредиты без подписки. Выберите подходящий пакет.", "li3_generic": "Кредиты не сгорают.", "balance": "Баланс", "credits": "кредитов", "not_signed_in": "Не выполнен вход"}</script>
 </head>
 <body>
 <main class="page">
   <p class="kicker">aiglossa</p>
   <h1>Кредиты</h1>
-  <p class="lede">Предоплатные кредиты, общие для всех инструментов. Без срока действия и без подписки — платите только за то, что создаёте.</p>
-  <p class="plateline">Кредиты действуют во всех продуктах aiglossa.<br>Использованные кредиты не возвращаются. Покупайте столько, сколько нужно.</p>
+  <p class="lede">Предоплаченные кредиты без подписки. Выберите подходящий пакет.</p>
+  <p class="balrow" id="balrow"></p>
 
   <div class="grid">
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">Использованные кредиты не возвращаются. Покупайте столько, сколько нужно.</p>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <div class="back"><a href="./account.html">Назад в аккаунт</a></div>
     </div>
 
     <aside class="side">
@@ -104,7 +103,7 @@
       <ul>
         <li>Трек 30 с = 45 кредитов, 45 с = 64, 60 с = 85, 75 с = 103, 90 с = 120.</li>
         <li>Неудачные генерации возвращаются автоматически.</li>
-        <li>Кредиты не сгорают и действуют во всех инструментах.</li>
+        <li>Кредиты не сгорают.</li>
         <li>Платежи обрабатывает Creem — наш merchant of record.</li>
       </ul>
     </aside>
@@ -187,7 +186,15 @@
   });
 
   var sessionOk = false;
-  call("/ai/music/credits", {}, true).then(function (d) { sessionOk = d.code === 200; }).catch(function () {});
+  call("/ai/music/credits", {}, true).then(function (d) {
+    sessionOk = d.code === 200;
+    var row = document.getElementById("balrow");
+    if (!row) return;
+    row.classList.add("on");
+    row.innerHTML = sessionOk
+      ? UI.balance + " <b>" + Math.round((d.data.balance || 0) / 100) + "</b> " + UI.credits
+      : UI.not_signed_in;
+  }).catch(function () {});
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

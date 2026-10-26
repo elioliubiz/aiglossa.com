@@ -72,15 +72,14 @@
 <main class="page">
   <p class="kicker">{{kicker}}</p>
   <h1>{{h1}}</h1>
-  <p class="lede">{{lede}}</p>
-  <p class="plateline">{{platform_note}}<br>{{refund_note}}</p>
+  <p class="lede">{{lede_buy}}</p>
+  <p class="balrow" id="balrow"></p>
 
   <div class="grid">
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">{{refund_note}}</p>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <div class="back"><a href="./account.html">{{back_account}}</a></div>
     </div>
 
     <aside class="side">
@@ -88,7 +87,7 @@
       <ul>
         <li>{{li1}}</li>
         <li>{{li2}}</li>
-        <li>{{li3}}</li>
+        <li>{{li3_generic}}</li>
         <li>{{li4}}</li>
       </ul>
     </aside>
@@ -156,7 +155,15 @@
   });
 
   var sessionOk = false;
-  call("/ai/music/credits", {}, true).then(function (d) { sessionOk = d.code === 200; }).catch(function () {});
+  call("/ai/music/credits", {}, true).then(function (d) {
+    sessionOk = d.code === 200;
+    var row = document.getElementById("balrow");
+    if (!row) return;
+    row.classList.add("on");
+    row.innerHTML = sessionOk
+      ? UI.balance + " <b>" + Math.round((d.data.balance || 0) / 100) + "</b> " + UI.credits
+      : UI.not_signed_in;
+  }).catch(function () {});
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

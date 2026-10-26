@@ -82,21 +82,20 @@
                  color:var(--muted);text-decoration:none;font-size:13px}
   .switcher li a:hover,.switcher li a[aria-current]{color:var(--fg);background:rgba(255,255,255,.06)}
 </style>
-<script type="application/json" id="ui">{"title": "額度與價格 — aiglossa tools", "description": "aiglossa tools 的預付額度。30 秒的曲子 45 額度，更長的曲子更貴。", "h1": "額度", "lede": "預付額度，所有工具通用。永不過期、沒有訂閱——只為實際生成付費。", "side_title": "額度怎麼算", "li1": "30 秒 = 45 額度，45 秒 = 64，60 秒 = 85，75 秒 = 103，90 秒 = 120。", "li2": "生成失敗會自動退回額度。", "li3": "額度永不過期，所有工具通用。", "li4": "付款由 merchant of record（記錄商戶）Creem 處理。", "li5": "未使用的額度可在 14 天內申請退款。", "refund_link": "退款政策", "back": "← 返回工具列表", "opening": "正在開啟結帳頁…", "err": "無法開始結帳", "neterr": "網路錯誤", "per": "約 {n} 首 30 秒", "kicker": "aiglossa tools", "refund_note": "額度一經使用不可退款，請按需購買。", "back_account": "返回帳戶", "platform_note": "額度可用於 aiglossa 平台下的所有產品。"}</script>
+<script type="application/json" id="ui">{"title": "額度與價格 — aiglossa tools", "description": "aiglossa tools 的預付額度。30 秒的曲子 45 額度，更長的曲子更貴。", "h1": "額度", "lede": "預付額度，所有工具通用。永不過期、沒有訂閱——只為實際生成付費。", "side_title": "額度怎麼算", "li1": "30 秒 = 45 額度，45 秒 = 64，60 秒 = 85，75 秒 = 103，90 秒 = 120。", "li2": "生成失敗會自動退回額度。", "li3": "額度永不過期，所有工具通用。", "li4": "付款由 merchant of record（記錄商戶）Creem 處理。", "li5": "未使用的額度可在 14 天內申請退款。", "refund_link": "退款政策", "back": "← 返回工具列表", "opening": "正在開啟結帳頁…", "err": "無法開始結帳", "neterr": "網路錯誤", "per": "約 {n} 首 30 秒", "kicker": "aiglossa tools", "refund_note": "額度一經使用不可退款，請按需購買。", "back_account": "返回帳戶", "lede_buy": "預付額度，沒有訂閱。按需選擇適合你的額度包。", "li3_generic": "額度永不過期。", "balance": "餘額", "credits": "額度", "not_signed_in": "未登入"}</script>
 </head>
 <body>
 <main class="page">
   <p class="kicker">aiglossa</p>
   <h1>額度</h1>
-  <p class="lede">預付額度，所有工具通用。永不過期、沒有訂閱——只為實際生成付費。</p>
-  <p class="plateline">額度可用於 aiglossa 平台下的所有產品。<br>額度一經使用不可退款，請按需購買。</p>
+  <p class="lede">預付額度，沒有訂閱。按需選擇適合你的額度包。</p>
+  <p class="balrow" id="balrow"></p>
 
   <div class="grid">
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">額度一經使用不可退款，請按需購買。</p>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <div class="back"><a href="./account.html">返回帳戶</a></div>
     </div>
 
     <aside class="side">
@@ -104,7 +103,7 @@
       <ul>
         <li>30 秒 = 45 額度，45 秒 = 64，60 秒 = 85，75 秒 = 103，90 秒 = 120。</li>
         <li>生成失敗會自動退回額度。</li>
-        <li>額度永不過期，所有工具通用。</li>
+        <li>額度永不過期。</li>
         <li>付款由 merchant of record（記錄商戶）Creem 處理。</li>
       </ul>
     </aside>
@@ -187,7 +186,15 @@
   });
 
   var sessionOk = false;
-  call("/ai/music/credits", {}, true).then(function (d) { sessionOk = d.code === 200; }).catch(function () {});
+  call("/ai/music/credits", {}, true).then(function (d) {
+    sessionOk = d.code === 200;
+    var row = document.getElementById("balrow");
+    if (!row) return;
+    row.classList.add("on");
+    row.innerHTML = sessionOk
+      ? UI.balance + " <b>" + Math.round((d.data.balance || 0) / 100) + "</b> " + UI.credits
+      : UI.not_signed_in;
+  }).catch(function () {});
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

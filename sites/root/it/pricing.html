@@ -82,21 +82,20 @@
                  color:var(--muted);text-decoration:none;font-size:13px}
   .switcher li a:hover,.switcher li a[aria-current]{color:var(--fg);background:rgba(255,255,255,.06)}
 </style>
-<script type="application/json" id="ui">{"title": "Crediti e prezzi — aiglossa tools", "description": "Crediti prepagati per aiglossa tools. Un brano da 30 s costa 45 crediti; quelli più lunghi costano di più.", "h1": "Crediti", "lede": "Crediti prepagati, condivisi tra tutti gli strumenti. Non scadono e non c'è abbonamento: paghi solo ciò che generi.", "side_title": "Come funzionano i crediti", "li1": "Brano da 30 s = 45 crediti, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Le generazioni fallite vengono rimborsate automaticamente.", "li3": "I crediti non scadono e valgono per tutti gli strumenti.", "li4": "I pagamenti sono gestiti da Creem, il nostro merchant of record.", "li5": "I crediti non utilizzati possono essere rimborsati entro 14 giorni.", "refund_link": "Politica di rimborso", "back": "← Torna agli strumenti", "opening": "Apertura del pagamento…", "err": "Impossibile avviare il pagamento", "neterr": "Errore di rete", "per": "≈ {n} brani da 30 s", "kicker": "aiglossa tools", "refund_note": "I crediti utilizzati non sono rimborsabili. Acquista solo il necessario.", "back_account": "Torna all'account", "platform_note": "I crediti valgono su tutti i prodotti aiglossa."}</script>
+<script type="application/json" id="ui">{"title": "Crediti e prezzi — aiglossa tools", "description": "Crediti prepagati per aiglossa tools. Un brano da 30 s costa 45 crediti; quelli più lunghi costano di più.", "h1": "Crediti", "lede": "Crediti prepagati, condivisi tra tutti gli strumenti. Non scadono e non c'è abbonamento: paghi solo ciò che generi.", "side_title": "Come funzionano i crediti", "li1": "Brano da 30 s = 45 crediti, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Le generazioni fallite vengono rimborsate automaticamente.", "li3": "I crediti non scadono e valgono per tutti gli strumenti.", "li4": "I pagamenti sono gestiti da Creem, il nostro merchant of record.", "li5": "I crediti non utilizzati possono essere rimborsati entro 14 giorni.", "refund_link": "Politica di rimborso", "back": "← Torna agli strumenti", "opening": "Apertura del pagamento…", "err": "Impossibile avviare il pagamento", "neterr": "Errore di rete", "per": "≈ {n} brani da 30 s", "kicker": "aiglossa tools", "refund_note": "I crediti utilizzati non sono rimborsabili. Acquista solo il necessario.", "back_account": "Torna all'account", "lede_buy": "Crediti prepagati, senza abbonamento. Scegli il pacchetto giusto.", "li3_generic": "I crediti non scadono.", "balance": "Saldo", "credits": "crediti", "not_signed_in": "Non connesso"}</script>
 </head>
 <body>
 <main class="page">
   <p class="kicker">aiglossa</p>
   <h1>Crediti</h1>
-  <p class="lede">Crediti prepagati, condivisi tra tutti gli strumenti. Non scadono e non c&#x27;è abbonamento: paghi solo ciò che generi.</p>
-  <p class="plateline">I crediti valgono su tutti i prodotti aiglossa.<br>I crediti utilizzati non sono rimborsabili. Acquista solo il necessario.</p>
+  <p class="lede">Crediti prepagati, senza abbonamento. Scegli il pacchetto giusto.</p>
+  <p class="balrow" id="balrow"></p>
 
   <div class="grid">
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">I crediti utilizzati non sono rimborsabili. Acquista solo il necessario.</p>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <div class="back"><a href="./account.html">Torna all&#x27;account</a></div>
     </div>
 
     <aside class="side">
@@ -104,7 +103,7 @@
       <ul>
         <li>Brano da 30 s = 45 crediti, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.</li>
         <li>Le generazioni fallite vengono rimborsate automaticamente.</li>
-        <li>I crediti non scadono e valgono per tutti gli strumenti.</li>
+        <li>I crediti non scadono.</li>
         <li>I pagamenti sono gestiti da Creem, il nostro merchant of record.</li>
       </ul>
     </aside>
@@ -187,7 +186,15 @@
   });
 
   var sessionOk = false;
-  call("/ai/music/credits", {}, true).then(function (d) { sessionOk = d.code === 200; }).catch(function () {});
+  call("/ai/music/credits", {}, true).then(function (d) {
+    sessionOk = d.code === 200;
+    var row = document.getElementById("balrow");
+    if (!row) return;
+    row.classList.add("on");
+    row.innerHTML = sessionOk
+      ? UI.balance + " <b>" + Math.round((d.data.balance || 0) / 100) + "</b> " + UI.credits
+      : UI.not_signed_in;
+  }).catch(function () {});
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

@@ -647,13 +647,17 @@ def main() -> int:
             elif page == "webpricing":
                 def webpricing_values(lang: str, base: str, source=source) -> dict[str, str]:
                     copy = dict(source[lang]["pricing"])
-                    copy["platform_note"] = source[lang]["account"]["platform_note"]
+                    # 页面要用到的少量通用文案来自 make（余额/额度/未登录）
+                    for k in ("balance", "credits", "not_signed_in"):
+                        copy[k] = source[lang]["make"][k]
                     out = {k: esc(v) for k, v in copy.items() if isinstance(v, str)}
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
                     out["refund_note"] = esc(copy["refund_note"])
                     out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
                     out["legal_terms"] = esc(marketing[lang]["legal"]["terms"])
                     out["kicker"] = "aiglossa"
+                    out["lede_buy"] = esc(source[lang]["pricing"]["lede_buy"])
+                    out["li3_generic"] = esc(source[lang]["pricing"]["li3_generic"])
                     out["lang_label"] = esc(marketing[lang]["langLabel"])
                     out["current_name"] = esc(languages[lang]["name"])
                     return out
@@ -703,6 +707,8 @@ def main() -> int:
                     out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
                     out["legal_terms"] = esc(marketing[lang]["legal"]["terms"])
                     out["kicker"] = "aiglossa"
+                    out["lede_buy"] = esc(source[lang]["pricing"]["lede_buy"])
+                    out["li3_generic"] = esc(source[lang]["pricing"]["li3_generic"])
                     out["refund_label"] = esc(source[lang]["pricing"]["refund_link"])
                     out["lang_label"] = esc(marketing[lang]["langLabel"])
                     out["current_name"] = esc(languages[lang]["name"])
