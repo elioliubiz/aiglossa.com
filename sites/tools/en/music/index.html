@@ -217,6 +217,19 @@
   .spin{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.18);
     border-top-color:var(--acc);animation:sp .8s linear infinite;display:block}
   @keyframes sp{to{transform:rotate(360deg)}}
+  .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;
+    background:rgba(8,9,11,.66);backdrop-filter:blur(6px)}
+  .modal.hidden{display:none}
+  .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
+    padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
+  .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink)}
+  .macts{display:flex;gap:10px;justify-content:flex-end}
+  .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
+    background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
+  .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .mine{margin-bottom:18px}
   .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
@@ -407,6 +420,19 @@
   .spin{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.18);
     border-top-color:var(--acc);animation:sp .8s linear infinite;display:block}
   @keyframes sp{to{transform:rotate(360deg)}}
+  .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;
+    background:rgba(8,9,11,.66);backdrop-filter:blur(6px)}
+  .modal.hidden{display:none}
+  .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
+    padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
+  .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink)}
+  .macts{display:flex;gap:10px;justify-content:flex-end}
+  .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
+    background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
+  .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .mine{margin-bottom:18px}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
   .minerow::-webkit-scrollbar{height:0}
@@ -646,12 +672,22 @@
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
   </main>
+  <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
+    <div class="mbox">
+      <p class="mtext" id="mtext"></p>
+      <div class="macts">
+        <button type="button" class="mbtn" id="mcancel">Cancel</button>
+        <button type="button" class="mbtn primary" id="mok">Confirm</button>
+      </div>
+    </div>
+  </div>
+
   <div class="playerwrap hidden" id="playerwrap">
     <section class="player" id="player"></section>
   </div>
 </div>
 
-<script type="application/json" id="ui">{"h1": "Make a track", "sub": "From a photo or a prompt. Exact length, seamless loops.", "drop": "Drop or choose a photo<br>the lyrics will name what's in it", "generate": "Generate track", "how_credits": "How credits work →", "grp_photo": "Hear it work", "grp_recipe": "Start from a scene", "download": "Download", "save_recipe": "Save as recipe", "remove_photo": "Remove photo", "photo_here": "Your photo here", "note": "Everything on the right was made here", "legal_aup": "Acceptable Use", "legal_refund": "Refunds", "sign_in_first": "Sign in to generate", "generating": "Generating… about 20 seconds.", "just_generated": "Just generated", "your_track": "Your track", "from_recipe": "From a recipe", "from_photo": "Made from a photo", "title": "AI Music Generator — Photo to Song, Exact Length", "description": "Turn a photo or a prompt into background music at exactly 30–90 seconds. Lyrics name what's in your picture, with vocals in 10 languages and seamless loops.", "err_load": "Could not load options", "done_in": "Done in {n}s", "gen_cost": "Generate · {n}", "err_gen": "Generation failed", "my_track": "My track", "err_net": "Network error", "recipe_name": "Recipe name", "err_save": "Save failed", "saved": "Saved: {name}", "up_to": "Up to {n}", "credits": "credits", "guides_link": "Guides →", "guides_title": "Guides", "close": "Close", "loading": "Loading…", "off": "Off", "loop_on": "Seamless loop", "buy_credits": "Buy credits →", "desc_label": "Description (optional)", "desc_ph": "Describe the track — rainy café, soft piano", "mode_photo": "Photo", "mode_text": "Text", "field_density": "Arrangement density", "opt_sparse": "Sparse", "opt_medium": "Medium", "opt_full": "Full", "pro_title": "Advanced", "grp_photo_sub": "Photo → lyrics → track", "grp_recipe_sub": "Pick a use case; the settings come preset", "recipe_names": {"short-form-cut": "Short-form cut", "hook-sting": "Hook sting", "product-loop": "Product loop", "podcast-bed": "Podcast bed", "documentary-underscore": "Documentary underscore", "game-menu-loop": "Game menu loop", "calm-focus": "Calm focus", "kids-learning": "Kids & learning"}, "applied": "Using", "current_recipe": "Preset", "mine_title": "My tracks", "share_link": "Share link", "dl_audio": "Audio file", "copied": "Copied", "shared_note": "You are listening to a shared track — make your own below", "my_account": "Account", "balance": "Balance", "pricing_label": "Pricing", "confirm_gen": "Generate a {sec}s track? This spends {n}.", "li1": "30s track = 45 credits, 45s = 64, 60s = 85, 75s = 103, 90s = 120.", "li2": "Failed generations are refunded automatically.", "li3": "Credits never expire and work across all tools.", "li4": "Payments are processed by Creem, our merchant of record.", "li5": "Unused credits can be refunded within 14 days.", "refund_link": "Refund Policy"}</script>
+<script type="application/json" id="ui">{"h1": "Make a track", "sub": "From a photo or a prompt. Exact length, seamless loops.", "drop": "Drop or choose a photo<br>the lyrics will name what's in it", "generate": "Generate track", "how_credits": "How credits work →", "grp_photo": "Hear it work", "grp_recipe": "Start from a scene", "download": "Download", "save_recipe": "Save as recipe", "remove_photo": "Remove photo", "photo_here": "Your photo here", "note": "Everything on the right was made here", "legal_aup": "Acceptable Use", "legal_refund": "Refunds", "sign_in_first": "Sign in to generate", "generating": "Generating… about 20 seconds.", "just_generated": "Just generated", "your_track": "Your track", "from_recipe": "From a recipe", "from_photo": "Made from a photo", "title": "AI Music Generator — Photo to Song, Exact Length", "description": "Turn a photo or a prompt into background music at exactly 30–90 seconds. Lyrics name what's in your picture, with vocals in 10 languages and seamless loops.", "err_load": "Could not load options", "done_in": "Done in {n}s", "gen_cost": "Generate · {n}", "err_gen": "Generation failed", "my_track": "My track", "err_net": "Network error", "recipe_name": "Recipe name", "err_save": "Save failed", "saved": "Saved: {name}", "up_to": "Up to {n}", "credits": "credits", "guides_link": "Guides →", "guides_title": "Guides", "close": "Close", "loading": "Loading…", "off": "Off", "loop_on": "Seamless loop", "buy_credits": "Buy credits →", "desc_label": "Description (optional)", "desc_ph": "Describe the track — rainy café, soft piano", "mode_photo": "Photo", "mode_text": "Text", "field_density": "Arrangement density", "opt_sparse": "Sparse", "opt_medium": "Medium", "opt_full": "Full", "pro_title": "Advanced", "grp_photo_sub": "Photo → lyrics → track", "grp_recipe_sub": "Pick a use case; the settings come preset", "recipe_names": {"short-form-cut": "Short-form cut", "hook-sting": "Hook sting", "product-loop": "Product loop", "podcast-bed": "Podcast bed", "documentary-underscore": "Documentary underscore", "game-menu-loop": "Game menu loop", "calm-focus": "Calm focus", "kids-learning": "Kids & learning"}, "applied": "Using", "current_recipe": "Preset", "mine_title": "My tracks", "share_link": "Share link", "dl_audio": "Audio file", "copied": "Copied", "shared_note": "You are listening to a shared track — make your own below", "my_account": "Account", "balance": "Balance", "pricing_label": "Pricing", "confirm_gen": "Generate a {sec}s track? This spends {n}.", "err_insufficient": "Not enough credits", "topup_hint": "Top up to keep generating.", "topup_cta": "Buy credits", "cancel": "Cancel", "confirm": "Confirm", "li1": "30s track = 45 credits, 45s = 64, 60s = 85, 75s = 103, 90s = 120.", "li2": "Failed generations are refunded automatically.", "li3": "Credits never expire and work across all tools.", "li4": "Payments are processed by Creem, our merchant of record.", "li5": "Unused credits can be refunded within 14 days.", "refund_link": "Refund Policy"}</script>
 <script>
 (function () {
   "use strict";
@@ -844,12 +880,14 @@
   }
 
   // 会话是否存在（cookie 方案下无法本地判断，用一次轻量请求确认）
-  var sessionOk = false;
+  var sessionOk = false, balanceUnits = -1;
   function checkSession() {
     return call("/ai/music/credits", {}, true).then(function (d) {
       sessionOk = d.code === 200;
       if (sessionOk && d.data) {
-        $("bal").textContent = UI.balance + " " + Math.round(d.data.balance / 100) + " " + UI.credits;
+        balanceUnits = d.data.balance || 0;
+        $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+        syncCost();
       }
       return sessionOk;
     }).catch(function () { sessionOk = false; return false; });
@@ -1139,15 +1177,30 @@
     $("player").innerHTML = '<span class="spin"></span><span class="ttl">' + UI.generating + '</span>';
     call("/ai/music/generate", body, true).then(function (d) {
       $("go").disabled = false;
-      if (d.code === 401) { localStorage.removeItem(TOKEN_KEY); location.reload(); return; }
-      if (d.code !== 200) { msg(d.msg || UI.err_gen, "err"); return; }
+      if (d.code === 401) { sessionOk = false; needLogin(); return; }
+      if (d.code !== 200) {
+        if ((d.msg || "").toLowerCase().indexOf("insufficient") >= 0) {
+          showTopup();
+          $("playerwrap").classList.add("hidden");
+        } else {
+          msg(d.msg || UI.err_gen, "err");
+        }
+        return;
+      }
       var x = d.data;
+      // 余额扣减在本地同步，避免刷新才更新
+      if (balanceUnits >= 0 && typeof x.credits === "number") {
+        balanceUnits = Math.max(0, balanceUnits - x.credits * 100);
+        $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+      }
+      hideTopup();
       msg(UI.done_in.replace("{n}", Math.round((Date.now() - t0) / 1000)), "ok");
       var lines = (x.lyrics || "").replace(/\[[0-9.:]+\]\s?/g, "").split("\n").filter(function (l) { return l.trim(); });
       current = {
         kind: "result", id: x.id, audio: API + x.url, cover: x.cover ? API + x.cover : "",
         img: (document.getElementById("prevImg") || {}).src || "",
-        meta: (x.duration_ms / 1000).toFixed(0) + "s · " + x.credits + " credits",
+        title: UI.just_generated + " · " + (x.duration_ms / 1000).toFixed(0) + "s",
+        meta: (x.duration_ms / 1000).toFixed(0) + "s · " + x.credits + " " + UI.credits,
         lyrics: lines.slice(0, 2).join("<br>")
       };
       renderBig();
@@ -1315,14 +1368,45 @@
   }
 
   // ---- 启动 ----
-  // 生成会扣额度，先确认一次；未登录先走登录
+  // 轻量确认弹窗（替代系统 alert/confirm）
+  function ask(text, onOk) {
+    $("mtext").textContent = text;
+    $("modal").classList.remove("hidden");
+    function close() {
+      $("modal").classList.add("hidden");
+      $("mok").removeEventListener("click", ok);
+      $("mcancel").removeEventListener("click", close);
+    }
+    function ok() { close(); onOk(); }
+    $("mok").addEventListener("click", ok);
+    $("mcancel").addEventListener("click", close);
+  }
+
+  function goTopup() { location.href = ROOT + "/" + LANG + "/pricing.html"; }
+
+  // 余额不足：不弹系统提示，直接在按钮下方给充值入口
+  function showTopup() {
+    var box = $("topupBox");
+    if (!box) {
+      box = document.createElement("div");
+      box.id = "topupBox"; box.className = "topup";
+      $("go").parentNode.insertBefore(box, $("go").nextSibling);
+    }
+    box.innerHTML = '<b>' + UI.err_insufficient + '</b> · ' + UI.topup_hint +
+      ' <a href="' + ROOT + "/" + LANG + '/pricing.html">' + UI.topup_cta + ' →</a>';
+    box.classList.remove("hidden");
+  }
+  function hideTopup() { var b = $("topupBox"); if (b) b.classList.add("hidden"); }
+
+  // 生成会扣额度，先确认一次；未登录先走登录，余额不足直接引导充值
   function generateConfirmed() {
     if (!sessionOk) { needLogin(); return; }
+    if (balanceUnits >= 0 && cost() * 100 > balanceUnits) { showTopup(); return; }
+    hideTopup();
     var txt = (UI.confirm_gen || "Generate this track?")
       .replace("{sec}", String(values.duration_seconds || 30))
       .replace("{n}", cost() + " " + UI.credits);
-    if (!window.confirm(txt)) return;
-    generate();
+    ask(txt, generate);
   }
 
   $("go").addEventListener("click", generateConfirmed);

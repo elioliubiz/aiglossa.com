@@ -217,6 +217,19 @@
   .spin{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.18);
     border-top-color:var(--acc);animation:sp .8s linear infinite;display:block}
   @keyframes sp{to{transform:rotate(360deg)}}
+  .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;
+    background:rgba(8,9,11,.66);backdrop-filter:blur(6px)}
+  .modal.hidden{display:none}
+  .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
+    padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
+  .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink)}
+  .macts{display:flex;gap:10px;justify-content:flex-end}
+  .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
+    background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
+  .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .mine{margin-bottom:18px}
   .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
@@ -407,6 +420,19 @@
   .spin{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.18);
     border-top-color:var(--acc);animation:sp .8s linear infinite;display:block}
   @keyframes sp{to{transform:rotate(360deg)}}
+  .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;
+    background:rgba(8,9,11,.66);backdrop-filter:blur(6px)}
+  .modal.hidden{display:none}
+  .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
+    padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
+  .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink)}
+  .macts{display:flex;gap:10px;justify-content:flex-end}
+  .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
+    background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
+  .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .mine{margin-bottom:18px}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
   .minerow::-webkit-scrollbar{height:0}
@@ -646,12 +672,22 @@
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
   </main>
+  <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
+    <div class="mbox">
+      <p class="mtext" id="mtext"></p>
+      <div class="macts">
+        <button type="button" class="mbtn" id="mcancel">ยกเลิก</button>
+        <button type="button" class="mbtn primary" id="mok">ยืนยัน</button>
+      </div>
+    </div>
+  </div>
+
   <div class="playerwrap hidden" id="playerwrap">
     <section class="player" id="player"></section>
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ", "description": "เปลี่ยนรูปหรือคำอธิบายเป็นเพลงประกอบความยาว 30–90 วินาทีพอดี เนื้อเพลงเอ่ยถึงสิ่งที่อยู่ในภาพ พร้อมเสียงร้อง 10 ภาษาและลูปไร้รอยต่อ", "h1": "สร้างเพลง", "sub": "จากรูปหรือคำอธิบาย ความยาวแม่นยำ ลูปไร้รอยต่อ", "drop": "ลากรูปมาวางหรือเลือกไฟล์<br>เนื้อเพลงจะเอ่ยถึงสิ่งที่อยู่ในภาพ", "generate": "สร้างเพลง", "how_credits": "เครดิตคิดอย่างไร →", "grp_photo": "ฟังตัวอย่าง", "grp_recipe": "เริ่มจากงานที่ใช้", "download": "ดาวน์โหลด", "save_recipe": "บันทึกเป็นสูตร", "remove_photo": "ลบรูป", "photo_here": "รูปของคุณที่นี่", "note": "ทุกอย่างทางขวาสร้างที่นี่", "legal_aup": "การใช้งานที่ยอมรับได้", "legal_refund": "การคืนเงิน", "sign_in_first": "เข้าสู่ระบบเพื่อสร้าง", "generating": "กำลังสร้าง… ประมาณ 20 วินาที", "just_generated": "สร้างเสร็จเมื่อครู่", "your_track": "เพลงของคุณ", "from_recipe": "จากสูตรสำเร็จ", "from_photo": "สร้างจากรูป", "err_load": "โหลดตัวเลือกไม่สำเร็จ", "done_in": "เสร็จใน {n} วินาที", "gen_cost": "สร้าง · {n}", "err_gen": "สร้างไม่สำเร็จ", "my_track": "เพลงของฉัน", "err_net": "เครือข่ายขัดข้อง", "recipe_name": "ชื่อสูตร", "err_save": "บันทึกไม่สำเร็จ", "saved": "บันทึกแล้ว: {name}", "up_to": "สูงสุด {n}", "credits": "เครดิต", "guides_link": "คู่มือ →", "guides_title": "คู่มือ", "close": "ปิด", "loading": "กำลังโหลด…", "off": "ปิด", "loop_on": "ลูปไร้รอยต่อ", "buy_credits": "ซื้อเครดิต →", "desc_label": "คำอธิบาย (ไม่บังคับ)", "desc_ph": "บรรยายเพลงที่ต้องการ เช่น คาเฟ่วันฝนตก เปียโนเบา", "mode_photo": "รูปภาพ", "mode_text": "ข้อความ", "field_density": "ความแน่นของเรียบเรียง", "opt_sparse": "โปร่ง", "opt_medium": "ปานกลาง", "opt_full": "แน่น", "pro_title": "ตัวเลือกขั้นสูง", "grp_photo_sub": "รูป → เนื้อร้อง → เพลง", "grp_recipe_sub": "เลือกงานที่ใช้ แล้วค่าตั้งจะพร้อม", "recipe_names": {"short-form-cut": "مقطع قصير", "hook-sting": "جذب الافتتاح", "product-loop": "حلقة منتج", "podcast-bed": "خلفية بودكاست", "documentary-underscore": "خلفية وثائقية", "game-menu-loop": "حلقة قائمة", "calm-focus": "تركيز هادئ", "kids-learning": "تعليم الأطفال"}, "applied": "ใช้", "current_recipe": "พรีเซ็ตที่ใช้", "mine_title": "ผลงานของฉัน", "share_link": "แชร์ลิงก์", "dl_audio": "ดาวน์โหลดเสียง", "copied": "คัดลอกแล้ว", "shared_note": "คุณกำลังฟังเพลงที่แชร์มา สร้างของคุณเองด้านล่าง", "my_account": "บัญชี", "balance": "คงเหลือ", "pricing_label": "ราคา", "confirm_gen": "สร้างเพลง {sec} วินาทีหรือไม่? จะใช้ {n}", "li1": "เพลง 30 วินาที = 45 เครดิต, 45 วินาที = 64, 60 วินาที = 85, 75 วินาที = 103, 90 วินาที = 120", "li2": "การสร้างที่ล้มเหลวจะคืนเครดิตอัตโนมัติ", "li3": "เครดิตไม่หมดอายุและใช้ได้กับทุกเครื่องมือ", "li4": "การชำระเงินดำเนินการโดย Creem ซึ่งเป็นผู้ค้าบนบันทึกของเรา", "li5": "เครดิตที่ยังไม่ใช้สามารถขอคืนได้ภายใน 14 วัน", "refund_link": "นโยบายการคืนเงิน"}</script>
+<script type="application/json" id="ui">{"title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ", "description": "เปลี่ยนรูปหรือคำอธิบายเป็นเพลงประกอบความยาว 30–90 วินาทีพอดี เนื้อเพลงเอ่ยถึงสิ่งที่อยู่ในภาพ พร้อมเสียงร้อง 10 ภาษาและลูปไร้รอยต่อ", "h1": "สร้างเพลง", "sub": "จากรูปหรือคำอธิบาย ความยาวแม่นยำ ลูปไร้รอยต่อ", "drop": "ลากรูปมาวางหรือเลือกไฟล์<br>เนื้อเพลงจะเอ่ยถึงสิ่งที่อยู่ในภาพ", "generate": "สร้างเพลง", "how_credits": "เครดิตคิดอย่างไร →", "grp_photo": "ฟังตัวอย่าง", "grp_recipe": "เริ่มจากงานที่ใช้", "download": "ดาวน์โหลด", "save_recipe": "บันทึกเป็นสูตร", "remove_photo": "ลบรูป", "photo_here": "รูปของคุณที่นี่", "note": "ทุกอย่างทางขวาสร้างที่นี่", "legal_aup": "การใช้งานที่ยอมรับได้", "legal_refund": "การคืนเงิน", "sign_in_first": "เข้าสู่ระบบเพื่อสร้าง", "generating": "กำลังสร้าง… ประมาณ 20 วินาที", "just_generated": "สร้างเสร็จเมื่อครู่", "your_track": "เพลงของคุณ", "from_recipe": "จากสูตรสำเร็จ", "from_photo": "สร้างจากรูป", "err_load": "โหลดตัวเลือกไม่สำเร็จ", "done_in": "เสร็จใน {n} วินาที", "gen_cost": "สร้าง · {n}", "err_gen": "สร้างไม่สำเร็จ", "my_track": "เพลงของฉัน", "err_net": "เครือข่ายขัดข้อง", "recipe_name": "ชื่อสูตร", "err_save": "บันทึกไม่สำเร็จ", "saved": "บันทึกแล้ว: {name}", "up_to": "สูงสุด {n}", "credits": "เครดิต", "guides_link": "คู่มือ →", "guides_title": "คู่มือ", "close": "ปิด", "loading": "กำลังโหลด…", "off": "ปิด", "loop_on": "ลูปไร้รอยต่อ", "buy_credits": "ซื้อเครดิต →", "desc_label": "คำอธิบาย (ไม่บังคับ)", "desc_ph": "บรรยายเพลงที่ต้องการ เช่น คาเฟ่วันฝนตก เปียโนเบา", "mode_photo": "รูปภาพ", "mode_text": "ข้อความ", "field_density": "ความแน่นของเรียบเรียง", "opt_sparse": "โปร่ง", "opt_medium": "ปานกลาง", "opt_full": "แน่น", "pro_title": "ตัวเลือกขั้นสูง", "grp_photo_sub": "รูป → เนื้อร้อง → เพลง", "grp_recipe_sub": "เลือกงานที่ใช้ แล้วค่าตั้งจะพร้อม", "recipe_names": {"short-form-cut": "مقطع قصير", "hook-sting": "جذب الافتتاح", "product-loop": "حلقة منتج", "podcast-bed": "خلفية بودكاست", "documentary-underscore": "خلفية وثائقية", "game-menu-loop": "حلقة قائمة", "calm-focus": "تركيز هادئ", "kids-learning": "تعليم الأطفال"}, "applied": "ใช้", "current_recipe": "พรีเซ็ตที่ใช้", "mine_title": "ผลงานของฉัน", "share_link": "แชร์ลิงก์", "dl_audio": "ดาวน์โหลดเสียง", "copied": "คัดลอกแล้ว", "shared_note": "คุณกำลังฟังเพลงที่แชร์มา สร้างของคุณเองด้านล่าง", "my_account": "บัญชี", "balance": "คงเหลือ", "pricing_label": "ราคา", "confirm_gen": "สร้างเพลง {sec} วินาทีหรือไม่? จะใช้ {n}", "err_insufficient": "เครดิตไม่เพียงพอ", "topup_hint": "เติมเครดิตเพื่อสร้างต่อ", "topup_cta": "ซื้อเครดิต", "cancel": "ยกเลิก", "confirm": "ยืนยัน", "li1": "เพลง 30 วินาที = 45 เครดิต, 45 วินาที = 64, 60 วินาที = 85, 75 วินาที = 103, 90 วินาที = 120", "li2": "การสร้างที่ล้มเหลวจะคืนเครดิตอัตโนมัติ", "li3": "เครดิตไม่หมดอายุและใช้ได้กับทุกเครื่องมือ", "li4": "การชำระเงินดำเนินการโดย Creem ซึ่งเป็นผู้ค้าบนบันทึกของเรา", "li5": "เครดิตที่ยังไม่ใช้สามารถขอคืนได้ภายใน 14 วัน", "refund_link": "นโยบายการคืนเงิน"}</script>
 <script>
 (function () {
   "use strict";
@@ -844,12 +880,14 @@
   }
 
   // 会话是否存在（cookie 方案下无法本地判断，用一次轻量请求确认）
-  var sessionOk = false;
+  var sessionOk = false, balanceUnits = -1;
   function checkSession() {
     return call("/ai/music/credits", {}, true).then(function (d) {
       sessionOk = d.code === 200;
       if (sessionOk && d.data) {
-        $("bal").textContent = UI.balance + " " + Math.round(d.data.balance / 100) + " " + UI.credits;
+        balanceUnits = d.data.balance || 0;
+        $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+        syncCost();
       }
       return sessionOk;
     }).catch(function () { sessionOk = false; return false; });
@@ -1139,15 +1177,30 @@
     $("player").innerHTML = '<span class="spin"></span><span class="ttl">' + UI.generating + '</span>';
     call("/ai/music/generate", body, true).then(function (d) {
       $("go").disabled = false;
-      if (d.code === 401) { localStorage.removeItem(TOKEN_KEY); location.reload(); return; }
-      if (d.code !== 200) { msg(d.msg || UI.err_gen, "err"); return; }
+      if (d.code === 401) { sessionOk = false; needLogin(); return; }
+      if (d.code !== 200) {
+        if ((d.msg || "").toLowerCase().indexOf("insufficient") >= 0) {
+          showTopup();
+          $("playerwrap").classList.add("hidden");
+        } else {
+          msg(d.msg || UI.err_gen, "err");
+        }
+        return;
+      }
       var x = d.data;
+      // 余额扣减在本地同步，避免刷新才更新
+      if (balanceUnits >= 0 && typeof x.credits === "number") {
+        balanceUnits = Math.max(0, balanceUnits - x.credits * 100);
+        $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+      }
+      hideTopup();
       msg(UI.done_in.replace("{n}", Math.round((Date.now() - t0) / 1000)), "ok");
       var lines = (x.lyrics || "").replace(/\[[0-9.:]+\]\s?/g, "").split("\n").filter(function (l) { return l.trim(); });
       current = {
         kind: "result", id: x.id, audio: API + x.url, cover: x.cover ? API + x.cover : "",
         img: (document.getElementById("prevImg") || {}).src || "",
-        meta: (x.duration_ms / 1000).toFixed(0) + "s · " + x.credits + " credits",
+        title: UI.just_generated + " · " + (x.duration_ms / 1000).toFixed(0) + "s",
+        meta: (x.duration_ms / 1000).toFixed(0) + "s · " + x.credits + " " + UI.credits,
         lyrics: lines.slice(0, 2).join("<br>")
       };
       renderBig();
@@ -1315,14 +1368,45 @@
   }
 
   // ---- 启动 ----
-  // 生成会扣额度，先确认一次；未登录先走登录
+  // 轻量确认弹窗（替代系统 alert/confirm）
+  function ask(text, onOk) {
+    $("mtext").textContent = text;
+    $("modal").classList.remove("hidden");
+    function close() {
+      $("modal").classList.add("hidden");
+      $("mok").removeEventListener("click", ok);
+      $("mcancel").removeEventListener("click", close);
+    }
+    function ok() { close(); onOk(); }
+    $("mok").addEventListener("click", ok);
+    $("mcancel").addEventListener("click", close);
+  }
+
+  function goTopup() { location.href = ROOT + "/" + LANG + "/pricing.html"; }
+
+  // 余额不足：不弹系统提示，直接在按钮下方给充值入口
+  function showTopup() {
+    var box = $("topupBox");
+    if (!box) {
+      box = document.createElement("div");
+      box.id = "topupBox"; box.className = "topup";
+      $("go").parentNode.insertBefore(box, $("go").nextSibling);
+    }
+    box.innerHTML = '<b>' + UI.err_insufficient + '</b> · ' + UI.topup_hint +
+      ' <a href="' + ROOT + "/" + LANG + '/pricing.html">' + UI.topup_cta + ' →</a>';
+    box.classList.remove("hidden");
+  }
+  function hideTopup() { var b = $("topupBox"); if (b) b.classList.add("hidden"); }
+
+  // 生成会扣额度，先确认一次；未登录先走登录，余额不足直接引导充值
   function generateConfirmed() {
     if (!sessionOk) { needLogin(); return; }
+    if (balanceUnits >= 0 && cost() * 100 > balanceUnits) { showTopup(); return; }
+    hideTopup();
     var txt = (UI.confirm_gen || "Generate this track?")
       .replace("{sec}", String(values.duration_seconds || 30))
       .replace("{n}", cost() + " " + UI.credits);
-    if (!window.confirm(txt)) return;
-    generate();
+    ask(txt, generate);
   }
 
   $("go").addEventListener("click", generateConfirmed);

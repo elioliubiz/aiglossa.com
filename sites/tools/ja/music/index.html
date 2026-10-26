@@ -217,6 +217,19 @@
   .spin{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.18);
     border-top-color:var(--acc);animation:sp .8s linear infinite;display:block}
   @keyframes sp{to{transform:rotate(360deg)}}
+  .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;
+    background:rgba(8,9,11,.66);backdrop-filter:blur(6px)}
+  .modal.hidden{display:none}
+  .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
+    padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
+  .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink)}
+  .macts{display:flex;gap:10px;justify-content:flex-end}
+  .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
+    background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
+  .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .mine{margin-bottom:18px}
   .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
@@ -407,6 +420,19 @@
   .spin{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.18);
     border-top-color:var(--acc);animation:sp .8s linear infinite;display:block}
   @keyframes sp{to{transform:rotate(360deg)}}
+  .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;
+    background:rgba(8,9,11,.66);backdrop-filter:blur(6px)}
+  .modal.hidden{display:none}
+  .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
+    padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
+  .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink)}
+  .macts{display:flex;gap:10px;justify-content:flex-end}
+  .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
+    background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
+  .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .mine{margin-bottom:18px}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
   .minerow::-webkit-scrollbar{height:0}
@@ -646,12 +672,22 @@
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
   </main>
+  <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
+    <div class="mbox">
+      <p class="mtext" id="mtext"></p>
+      <div class="macts">
+        <button type="button" class="mbtn" id="mcancel">キャンセル</button>
+        <button type="button" class="mbtn primary" id="mok">確定</button>
+      </div>
+    </div>
+  </div>
+
   <div class="playerwrap hidden" id="playerwrap">
     <section class="player" id="player"></section>
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "AI音楽生成 — 写真から曲へ、長さはぴったり", "description": "写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。", "h1": "曲を作る", "sub": "写真またはプロンプトから。長さは正確に、ループはシームレスに。", "drop": "写真をドロップまたは選択<br>歌詞が写真の中身を歌います", "generate": "曲を生成", "how_credits": "クレジットの仕組み →", "grp_photo": "聴いてみる", "grp_recipe": "用途から選ぶ", "download": "ダウンロード", "save_recipe": "レシピとして保存", "remove_photo": "写真を削除", "photo_here": "ここにあなたの写真", "note": "右側はすべてここで作られています", "legal_aup": "利用規約（AUP）", "legal_refund": "返金ポリシー", "sign_in_first": "生成するにはサインイン", "generating": "生成中… 約20秒。", "just_generated": "たった今生成", "your_track": "あなたの曲", "from_recipe": "レシピから", "from_photo": "写真から制作", "err_load": "オプションを読み込めませんでした", "done_in": "{n}秒で完成", "gen_cost": "生成 · {n}", "err_gen": "生成に失敗しました", "my_track": "マイトラック", "err_net": "通信エラー", "recipe_name": "レシピ名", "err_save": "保存に失敗しました", "saved": "保存しました: {name}", "up_to": "最大 {n}", "credits": "クレジット", "guides_link": "ガイド →", "guides_title": "ガイド", "close": "閉じる", "loading": "読み込み中…", "off": "オフ", "loop_on": "シームレスループ", "buy_credits": "クレジットを購入 →", "desc_label": "補足の説明（任意）", "desc_ph": "欲しい曲を説明：雨のカフェ、ピアノ中心", "mode_photo": "写真", "mode_text": "文章", "field_density": "編曲の密度", "opt_sparse": "疎ら", "opt_medium": "標準", "opt_full": "密", "pro_title": "詳細設定", "grp_photo_sub": "写真 → 歌詞 → 曲", "grp_recipe_sub": "用途を選ぶと設定が入ります", "recipe_names": {"short-form-cut": "快剪短片", "hook-sting": "Accroche d'ouverture", "product-loop": "Boucle produit", "podcast-bed": "Fond de podcast", "documentary-underscore": "Fond documentaire", "game-menu-loop": "Boucle de menu", "calm-focus": "Concentration", "kids-learning": "Enfants et apprentissage"}, "applied": "使用中", "current_recipe": "使用中のプリセット", "mine_title": "マイ作品", "share_link": "リンクを共有", "dl_audio": "音声を保存", "copied": "コピーしました", "shared_note": "共有された曲を再生中。下から自分用に作れます", "my_account": "アカウント", "balance": "残高", "pricing_label": "料金", "confirm_gen": "{sec} 秒の曲を生成しますか？{n} を消費します。", "li1": "30秒＝45クレジット、45秒＝64、60秒＝85、75秒＝103、90秒＝120。", "li2": "生成に失敗した場合は自動で返金されます。", "li3": "クレジットは期限なしで、すべてのツールで使えます。", "li4": "支払いは merchant of record である Creem が処理します。", "li5": "未使用のクレジットは14日以内なら返金できます。", "refund_link": "返金ポリシー"}</script>
+<script type="application/json" id="ui">{"title": "AI音楽生成 — 写真から曲へ、長さはぴったり", "description": "写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。", "h1": "曲を作る", "sub": "写真またはプロンプトから。長さは正確に、ループはシームレスに。", "drop": "写真をドロップまたは選択<br>歌詞が写真の中身を歌います", "generate": "曲を生成", "how_credits": "クレジットの仕組み →", "grp_photo": "聴いてみる", "grp_recipe": "用途から選ぶ", "download": "ダウンロード", "save_recipe": "レシピとして保存", "remove_photo": "写真を削除", "photo_here": "ここにあなたの写真", "note": "右側はすべてここで作られています", "legal_aup": "利用規約（AUP）", "legal_refund": "返金ポリシー", "sign_in_first": "生成するにはサインイン", "generating": "生成中… 約20秒。", "just_generated": "たった今生成", "your_track": "あなたの曲", "from_recipe": "レシピから", "from_photo": "写真から制作", "err_load": "オプションを読み込めませんでした", "done_in": "{n}秒で完成", "gen_cost": "生成 · {n}", "err_gen": "生成に失敗しました", "my_track": "マイトラック", "err_net": "通信エラー", "recipe_name": "レシピ名", "err_save": "保存に失敗しました", "saved": "保存しました: {name}", "up_to": "最大 {n}", "credits": "クレジット", "guides_link": "ガイド →", "guides_title": "ガイド", "close": "閉じる", "loading": "読み込み中…", "off": "オフ", "loop_on": "シームレスループ", "buy_credits": "クレジットを購入 →", "desc_label": "補足の説明（任意）", "desc_ph": "欲しい曲を説明：雨のカフェ、ピアノ中心", "mode_photo": "写真", "mode_text": "文章", "field_density": "編曲の密度", "opt_sparse": "疎ら", "opt_medium": "標準", "opt_full": "密", "pro_title": "詳細設定", "grp_photo_sub": "写真 → 歌詞 → 曲", "grp_recipe_sub": "用途を選ぶと設定が入ります", "recipe_names": {"short-form-cut": "快剪短片", "hook-sting": "Accroche d'ouverture", "product-loop": "Boucle produit", "podcast-bed": "Fond de podcast", "documentary-underscore": "Fond documentaire", "game-menu-loop": "Boucle de menu", "calm-focus": "Concentration", "kids-learning": "Enfants et apprentissage"}, "applied": "使用中", "current_recipe": "使用中のプリセット", "mine_title": "マイ作品", "share_link": "リンクを共有", "dl_audio": "音声を保存", "copied": "コピーしました", "shared_note": "共有された曲を再生中。下から自分用に作れます", "my_account": "アカウント", "balance": "残高", "pricing_label": "料金", "confirm_gen": "{sec} 秒の曲を生成しますか？{n} を消費します。", "err_insufficient": "クレジットが足りません", "topup_hint": "チャージすると生成を続けられます。", "topup_cta": "チャージする", "cancel": "キャンセル", "confirm": "確定", "li1": "30秒＝45クレジット、45秒＝64、60秒＝85、75秒＝103、90秒＝120。", "li2": "生成に失敗した場合は自動で返金されます。", "li3": "クレジットは期限なしで、すべてのツールで使えます。", "li4": "支払いは merchant of record である Creem が処理します。", "li5": "未使用のクレジットは14日以内なら返金できます。", "refund_link": "返金ポリシー"}</script>
 <script>
 (function () {
   "use strict";
@@ -844,12 +880,14 @@
   }
 
   // 会话是否存在（cookie 方案下无法本地判断，用一次轻量请求确认）
-  var sessionOk = false;
+  var sessionOk = false, balanceUnits = -1;
   function checkSession() {
     return call("/ai/music/credits", {}, true).then(function (d) {
       sessionOk = d.code === 200;
       if (sessionOk && d.data) {
-        $("bal").textContent = UI.balance + " " + Math.round(d.data.balance / 100) + " " + UI.credits;
+        balanceUnits = d.data.balance || 0;
+        $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+        syncCost();
       }
       return sessionOk;
     }).catch(function () { sessionOk = false; return false; });
@@ -1139,15 +1177,30 @@
     $("player").innerHTML = '<span class="spin"></span><span class="ttl">' + UI.generating + '</span>';
     call("/ai/music/generate", body, true).then(function (d) {
       $("go").disabled = false;
-      if (d.code === 401) { localStorage.removeItem(TOKEN_KEY); location.reload(); return; }
-      if (d.code !== 200) { msg(d.msg || UI.err_gen, "err"); return; }
+      if (d.code === 401) { sessionOk = false; needLogin(); return; }
+      if (d.code !== 200) {
+        if ((d.msg || "").toLowerCase().indexOf("insufficient") >= 0) {
+          showTopup();
+          $("playerwrap").classList.add("hidden");
+        } else {
+          msg(d.msg || UI.err_gen, "err");
+        }
+        return;
+      }
       var x = d.data;
+      // 余额扣减在本地同步，避免刷新才更新
+      if (balanceUnits >= 0 && typeof x.credits === "number") {
+        balanceUnits = Math.max(0, balanceUnits - x.credits * 100);
+        $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+      }
+      hideTopup();
       msg(UI.done_in.replace("{n}", Math.round((Date.now() - t0) / 1000)), "ok");
       var lines = (x.lyrics || "").replace(/\[[0-9.:]+\]\s?/g, "").split("\n").filter(function (l) { return l.trim(); });
       current = {
         kind: "result", id: x.id, audio: API + x.url, cover: x.cover ? API + x.cover : "",
         img: (document.getElementById("prevImg") || {}).src || "",
-        meta: (x.duration_ms / 1000).toFixed(0) + "s · " + x.credits + " credits",
+        title: UI.just_generated + " · " + (x.duration_ms / 1000).toFixed(0) + "s",
+        meta: (x.duration_ms / 1000).toFixed(0) + "s · " + x.credits + " " + UI.credits,
         lyrics: lines.slice(0, 2).join("<br>")
       };
       renderBig();
@@ -1315,14 +1368,45 @@
   }
 
   // ---- 启动 ----
-  // 生成会扣额度，先确认一次；未登录先走登录
+  // 轻量确认弹窗（替代系统 alert/confirm）
+  function ask(text, onOk) {
+    $("mtext").textContent = text;
+    $("modal").classList.remove("hidden");
+    function close() {
+      $("modal").classList.add("hidden");
+      $("mok").removeEventListener("click", ok);
+      $("mcancel").removeEventListener("click", close);
+    }
+    function ok() { close(); onOk(); }
+    $("mok").addEventListener("click", ok);
+    $("mcancel").addEventListener("click", close);
+  }
+
+  function goTopup() { location.href = ROOT + "/" + LANG + "/pricing.html"; }
+
+  // 余额不足：不弹系统提示，直接在按钮下方给充值入口
+  function showTopup() {
+    var box = $("topupBox");
+    if (!box) {
+      box = document.createElement("div");
+      box.id = "topupBox"; box.className = "topup";
+      $("go").parentNode.insertBefore(box, $("go").nextSibling);
+    }
+    box.innerHTML = '<b>' + UI.err_insufficient + '</b> · ' + UI.topup_hint +
+      ' <a href="' + ROOT + "/" + LANG + '/pricing.html">' + UI.topup_cta + ' →</a>';
+    box.classList.remove("hidden");
+  }
+  function hideTopup() { var b = $("topupBox"); if (b) b.classList.add("hidden"); }
+
+  // 生成会扣额度，先确认一次；未登录先走登录，余额不足直接引导充值
   function generateConfirmed() {
     if (!sessionOk) { needLogin(); return; }
+    if (balanceUnits >= 0 && cost() * 100 > balanceUnits) { showTopup(); return; }
+    hideTopup();
     var txt = (UI.confirm_gen || "Generate this track?")
       .replace("{sec}", String(values.duration_seconds || 30))
       .replace("{n}", cost() + " " + UI.credits);
-    if (!window.confirm(txt)) return;
-    generate();
+    ask(txt, generate);
   }
 
   $("go").addEventListener("click", generateConfirmed);

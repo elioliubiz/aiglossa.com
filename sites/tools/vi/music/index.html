@@ -217,6 +217,19 @@
   .spin{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.18);
     border-top-color:var(--acc);animation:sp .8s linear infinite;display:block}
   @keyframes sp{to{transform:rotate(360deg)}}
+  .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;
+    background:rgba(8,9,11,.66);backdrop-filter:blur(6px)}
+  .modal.hidden{display:none}
+  .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
+    padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
+  .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink)}
+  .macts{display:flex;gap:10px;justify-content:flex-end}
+  .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
+    background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
+  .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .mine{margin-bottom:18px}
   .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
@@ -407,6 +420,19 @@
   .spin{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.18);
     border-top-color:var(--acc);animation:sp .8s linear infinite;display:block}
   @keyframes sp{to{transform:rotate(360deg)}}
+  .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;
+    background:rgba(8,9,11,.66);backdrop-filter:blur(6px)}
+  .modal.hidden{display:none}
+  .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
+    padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
+  .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink)}
+  .macts{display:flex;gap:10px;justify-content:flex-end}
+  .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
+    background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
+  .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .mine{margin-bottom:18px}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
   .minerow::-webkit-scrollbar{height:0}
@@ -646,12 +672,22 @@
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
   </main>
+  <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
+    <div class="mbox">
+      <p class="mtext" id="mtext"></p>
+      <div class="macts">
+        <button type="button" class="mbtn" id="mcancel">Hủy</button>
+        <button type="button" class="mbtn primary" id="mok">Xác nhận</button>
+      </div>
+    </div>
+  </div>
+
   <div class="playerwrap hidden" id="playerwrap">
     <section class="player" id="player"></section>
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác", "description": "Biến ảnh hoặc mô tả thành nhạc nền dài đúng 30–90 giây. Lời bài hát gọi tên những gì trong ảnh, với giọng hát 10 ngôn ngữ và vòng lặp liền mạch.", "h1": "Tạo một bản nhạc", "sub": "Từ ảnh hoặc mô tả. Độ dài chính xác, vòng lặp liền mạch.", "drop": "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh", "generate": "Tạo bản nhạc", "how_credits": "Tín dụng hoạt động thế nào →", "grp_photo": "Nghe thử", "grp_recipe": "Từ mục đích dùng", "download": "Tải xuống", "save_recipe": "Lưu thành công thức", "remove_photo": "Xóa ảnh", "photo_here": "Ảnh của bạn ở đây", "note": "Mọi thứ bên phải đều được tạo ở đây", "legal_aup": "Sử dụng được chấp nhận", "legal_refund": "Hoàn tiền", "sign_in_first": "Đăng nhập để tạo", "generating": "Đang tạo… khoảng 20 giây.", "just_generated": "Vừa tạo xong", "your_track": "Bản nhạc của bạn", "from_recipe": "Từ công thức", "from_photo": "Tạo từ ảnh", "err_load": "Không tải được tuỳ chọn", "done_in": "Xong sau {n} giây", "gen_cost": "Tạo · {n}", "err_gen": "Tạo thất bại", "my_track": "Bản nhạc của tôi", "err_net": "Lỗi mạng", "recipe_name": "Tên công thức", "err_save": "Lưu thất bại", "saved": "Đã lưu: {name}", "up_to": "Tối đa {n}", "credits": "tín dụng", "guides_link": "Hướng dẫn →", "guides_title": "Hướng dẫn", "close": "Đóng", "loading": "Đang tải…", "off": "Tắt", "loop_on": "Vòng lặp liền mạch", "buy_credits": "Mua tín dụng →", "desc_label": "Mô tả (không bắt buộc)", "desc_ph": "Mô tả bản nhạc: quán cà phê mưa, piano nhẹ", "mode_photo": "Ảnh", "mode_text": "Chữ", "field_density": "Độ dày của hòa âm", "opt_sparse": "Thưa", "opt_medium": "Vừa", "opt_full": "Dày", "pro_title": "Tùy chọn nâng cao", "grp_photo_sub": "Ảnh → lời → bản nhạc", "grp_recipe_sub": "Chọn mục đích, thông số đã đặt sẵn", "recipe_names": {"short-form-cut": "คลิปสั้น", "hook-sting": "ฮุกเปิดคลิป", "product-loop": "ลูปสินค้า", "podcast-bed": "เพลงประกอบพอดแคสต์", "documentary-underscore": "เพลงประกอบสารคดี", "game-menu-loop": "ลูปเมนูเกม", "calm-focus": "สมาธิ", "kids-learning": "เด็กและการเรียนรู้"}, "applied": "Dùng", "current_recipe": "Bộ cài đang dùng", "mine_title": "Bản nhạc của tôi", "share_link": "Chia sẻ liên kết", "dl_audio": "Tải âm thanh", "copied": "Đã sao chép", "shared_note": "Bạn đang nghe bản nhạc được chia sẻ — tạo bản của bạn bên dưới", "my_account": "Tài khoản", "balance": "Số dư", "pricing_label": "Giá", "confirm_gen": "Tạo bản nhạc {sec} giây? Sẽ tiêu {n}.", "li1": "Bản 30 giây = 45 tín dụng, 45 giây = 64, 60 giây = 85, 75 giây = 103, 90 giây = 120.", "li2": "Các lần tạo thất bại được hoàn tín dụng tự động.", "li3": "Tín dụng không hết hạn và dùng được cho mọi công cụ.", "li4": "Thanh toán do Creem, đơn vị ghi nhận thương vụ của chúng tôi, xử lý.", "li5": "Tín dụng chưa dùng có thể được hoàn trong 14 ngày.", "refund_link": "Chính sách hoàn tiền"}</script>
+<script type="application/json" id="ui">{"title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác", "description": "Biến ảnh hoặc mô tả thành nhạc nền dài đúng 30–90 giây. Lời bài hát gọi tên những gì trong ảnh, với giọng hát 10 ngôn ngữ và vòng lặp liền mạch.", "h1": "Tạo một bản nhạc", "sub": "Từ ảnh hoặc mô tả. Độ dài chính xác, vòng lặp liền mạch.", "drop": "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh", "generate": "Tạo bản nhạc", "how_credits": "Tín dụng hoạt động thế nào →", "grp_photo": "Nghe thử", "grp_recipe": "Từ mục đích dùng", "download": "Tải xuống", "save_recipe": "Lưu thành công thức", "remove_photo": "Xóa ảnh", "photo_here": "Ảnh của bạn ở đây", "note": "Mọi thứ bên phải đều được tạo ở đây", "legal_aup": "Sử dụng được chấp nhận", "legal_refund": "Hoàn tiền", "sign_in_first": "Đăng nhập để tạo", "generating": "Đang tạo… khoảng 20 giây.", "just_generated": "Vừa tạo xong", "your_track": "Bản nhạc của bạn", "from_recipe": "Từ công thức", "from_photo": "Tạo từ ảnh", "err_load": "Không tải được tuỳ chọn", "done_in": "Xong sau {n} giây", "gen_cost": "Tạo · {n}", "err_gen": "Tạo thất bại", "my_track": "Bản nhạc của tôi", "err_net": "Lỗi mạng", "recipe_name": "Tên công thức", "err_save": "Lưu thất bại", "saved": "Đã lưu: {name}", "up_to": "Tối đa {n}", "credits": "tín dụng", "guides_link": "Hướng dẫn →", "guides_title": "Hướng dẫn", "close": "Đóng", "loading": "Đang tải…", "off": "Tắt", "loop_on": "Vòng lặp liền mạch", "buy_credits": "Mua tín dụng →", "desc_label": "Mô tả (không bắt buộc)", "desc_ph": "Mô tả bản nhạc: quán cà phê mưa, piano nhẹ", "mode_photo": "Ảnh", "mode_text": "Chữ", "field_density": "Độ dày của hòa âm", "opt_sparse": "Thưa", "opt_medium": "Vừa", "opt_full": "Dày", "pro_title": "Tùy chọn nâng cao", "grp_photo_sub": "Ảnh → lời → bản nhạc", "grp_recipe_sub": "Chọn mục đích, thông số đã đặt sẵn", "recipe_names": {"short-form-cut": "คลิปสั้น", "hook-sting": "ฮุกเปิดคลิป", "product-loop": "ลูปสินค้า", "podcast-bed": "เพลงประกอบพอดแคสต์", "documentary-underscore": "เพลงประกอบสารคดี", "game-menu-loop": "ลูปเมนูเกม", "calm-focus": "สมาธิ", "kids-learning": "เด็กและการเรียนรู้"}, "applied": "Dùng", "current_recipe": "Bộ cài đang dùng", "mine_title": "Bản nhạc của tôi", "share_link": "Chia sẻ liên kết", "dl_audio": "Tải âm thanh", "copied": "Đã sao chép", "shared_note": "Bạn đang nghe bản nhạc được chia sẻ — tạo bản của bạn bên dưới", "my_account": "Tài khoản", "balance": "Số dư", "pricing_label": "Giá", "confirm_gen": "Tạo bản nhạc {sec} giây? Sẽ tiêu {n}.", "err_insufficient": "Không đủ tín dụng", "topup_hint": "Nạp thêm để tiếp tục tạo.", "topup_cta": "Mua tín dụng", "cancel": "Hủy", "confirm": "Xác nhận", "li1": "Bản 30 giây = 45 tín dụng, 45 giây = 64, 60 giây = 85, 75 giây = 103, 90 giây = 120.", "li2": "Các lần tạo thất bại được hoàn tín dụng tự động.", "li3": "Tín dụng không hết hạn và dùng được cho mọi công cụ.", "li4": "Thanh toán do Creem, đơn vị ghi nhận thương vụ của chúng tôi, xử lý.", "li5": "Tín dụng chưa dùng có thể được hoàn trong 14 ngày.", "refund_link": "Chính sách hoàn tiền"}</script>
 <script>
 (function () {
   "use strict";
@@ -844,12 +880,14 @@
   }
 
   // 会话是否存在（cookie 方案下无法本地判断，用一次轻量请求确认）
-  var sessionOk = false;
+  var sessionOk = false, balanceUnits = -1;
   function checkSession() {
     return call("/ai/music/credits", {}, true).then(function (d) {
       sessionOk = d.code === 200;
       if (sessionOk && d.data) {
-        $("bal").textContent = UI.balance + " " + Math.round(d.data.balance / 100) + " " + UI.credits;
+        balanceUnits = d.data.balance || 0;
+        $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+        syncCost();
       }
       return sessionOk;
     }).catch(function () { sessionOk = false; return false; });
@@ -1139,15 +1177,30 @@
     $("player").innerHTML = '<span class="spin"></span><span class="ttl">' + UI.generating + '</span>';
     call("/ai/music/generate", body, true).then(function (d) {
       $("go").disabled = false;
-      if (d.code === 401) { localStorage.removeItem(TOKEN_KEY); location.reload(); return; }
-      if (d.code !== 200) { msg(d.msg || UI.err_gen, "err"); return; }
+      if (d.code === 401) { sessionOk = false; needLogin(); return; }
+      if (d.code !== 200) {
+        if ((d.msg || "").toLowerCase().indexOf("insufficient") >= 0) {
+          showTopup();
+          $("playerwrap").classList.add("hidden");
+        } else {
+          msg(d.msg || UI.err_gen, "err");
+        }
+        return;
+      }
       var x = d.data;
+      // 余额扣减在本地同步，避免刷新才更新
+      if (balanceUnits >= 0 && typeof x.credits === "number") {
+        balanceUnits = Math.max(0, balanceUnits - x.credits * 100);
+        $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+      }
+      hideTopup();
       msg(UI.done_in.replace("{n}", Math.round((Date.now() - t0) / 1000)), "ok");
       var lines = (x.lyrics || "").replace(/\[[0-9.:]+\]\s?/g, "").split("\n").filter(function (l) { return l.trim(); });
       current = {
         kind: "result", id: x.id, audio: API + x.url, cover: x.cover ? API + x.cover : "",
         img: (document.getElementById("prevImg") || {}).src || "",
-        meta: (x.duration_ms / 1000).toFixed(0) + "s · " + x.credits + " credits",
+        title: UI.just_generated + " · " + (x.duration_ms / 1000).toFixed(0) + "s",
+        meta: (x.duration_ms / 1000).toFixed(0) + "s · " + x.credits + " " + UI.credits,
         lyrics: lines.slice(0, 2).join("<br>")
       };
       renderBig();
@@ -1315,14 +1368,45 @@
   }
 
   // ---- 启动 ----
-  // 生成会扣额度，先确认一次；未登录先走登录
+  // 轻量确认弹窗（替代系统 alert/confirm）
+  function ask(text, onOk) {
+    $("mtext").textContent = text;
+    $("modal").classList.remove("hidden");
+    function close() {
+      $("modal").classList.add("hidden");
+      $("mok").removeEventListener("click", ok);
+      $("mcancel").removeEventListener("click", close);
+    }
+    function ok() { close(); onOk(); }
+    $("mok").addEventListener("click", ok);
+    $("mcancel").addEventListener("click", close);
+  }
+
+  function goTopup() { location.href = ROOT + "/" + LANG + "/pricing.html"; }
+
+  // 余额不足：不弹系统提示，直接在按钮下方给充值入口
+  function showTopup() {
+    var box = $("topupBox");
+    if (!box) {
+      box = document.createElement("div");
+      box.id = "topupBox"; box.className = "topup";
+      $("go").parentNode.insertBefore(box, $("go").nextSibling);
+    }
+    box.innerHTML = '<b>' + UI.err_insufficient + '</b> · ' + UI.topup_hint +
+      ' <a href="' + ROOT + "/" + LANG + '/pricing.html">' + UI.topup_cta + ' →</a>';
+    box.classList.remove("hidden");
+  }
+  function hideTopup() { var b = $("topupBox"); if (b) b.classList.add("hidden"); }
+
+  // 生成会扣额度，先确认一次；未登录先走登录，余额不足直接引导充值
   function generateConfirmed() {
     if (!sessionOk) { needLogin(); return; }
+    if (balanceUnits >= 0 && cost() * 100 > balanceUnits) { showTopup(); return; }
+    hideTopup();
     var txt = (UI.confirm_gen || "Generate this track?")
       .replace("{sec}", String(values.duration_seconds || 30))
       .replace("{n}", cost() + " " + UI.credits);
-    if (!window.confirm(txt)) return;
-    generate();
+    ask(txt, generate);
   }
 
   $("go").addEventListener("click", generateConfirmed);

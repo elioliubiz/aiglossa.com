@@ -65,7 +65,10 @@
       "reset_title": "Reset password",
       "new_password": "New password",
       "reset_done": "Password updated — sign in with it.",
-      "account_label": "Account"
+      "account_label": "Account",
+      "pw_short": "Use at least 8 characters",
+      "pw_mismatch": "Passwords do not match",
+      "pw_failed": "Could not update password"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -151,7 +154,12 @@
       "my_account": "Account",
       "balance": "Balance",
       "pricing_label": "Pricing",
-      "confirm_gen": "Generate a {sec}s track? This spends {n}."
+      "confirm_gen": "Generate a {sec}s track? This spends {n}.",
+      "err_insufficient": "Not enough credits",
+      "topup_hint": "Top up to keep generating.",
+      "topup_cta": "Buy credits",
+      "cancel": "Cancel",
+      "confirm": "Confirm"
     }
   },
   "ja": {
@@ -220,7 +228,10 @@
       "reset_title": "パスワード再設定",
       "new_password": "新しいパスワード",
       "reset_done": "更新しました。新しいパスワードでログインしてください。",
-      "account_label": "アカウント"
+      "account_label": "アカウント",
+      "pw_short": "8文字以上にしてください",
+      "pw_mismatch": "パスワードが一致しません",
+      "pw_failed": "更新に失敗しました"
     },
     "make": {
       "title": "AI音楽生成 — 写真から曲へ、長さはぴったり",
@@ -294,7 +305,12 @@
       "my_account": "アカウント",
       "balance": "残高",
       "pricing_label": "料金",
-      "confirm_gen": "{sec} 秒の曲を生成しますか？{n} を消費します。"
+      "confirm_gen": "{sec} 秒の曲を生成しますか？{n} を消費します。",
+      "err_insufficient": "クレジットが足りません",
+      "topup_hint": "チャージすると生成を続けられます。",
+      "topup_cta": "チャージする",
+      "cancel": "キャンセル",
+      "confirm": "確定"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -375,7 +391,10 @@
       "reset_title": "비밀번호 재설정",
       "new_password": "새 비밀번호",
       "reset_done": "변경되었습니다. 새 비밀번호로 로그인하세요.",
-      "account_label": "계정"
+      "account_label": "계정",
+      "pw_short": "8자 이상 입력하세요",
+      "pw_mismatch": "비밀번호가 일치하지 않습니다",
+      "pw_failed": "변경하지 못했습니다"
     },
     "make": {
       "title": "AI 음악 생성 — 사진에서 곡으로, 정확한 길이",
@@ -449,7 +468,12 @@
       "my_account": "계정",
       "balance": "잔액",
       "pricing_label": "가격",
-      "confirm_gen": "{sec}초 곡을 생성할까요? {n}이 차감됩니다."
+      "confirm_gen": "{sec}초 곡을 생성할까요? {n}이 차감됩니다.",
+      "err_insufficient": "크레딧이 부족합니다",
+      "topup_hint": "충전하면 계속 생성할 수 있습니다.",
+      "topup_cta": "충전하기",
+      "cancel": "취소",
+      "confirm": "확인"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -530,7 +554,10 @@
       "reset_title": "重置密码",
       "new_password": "新密码",
       "reset_done": "密码已更新，请用新密码登录。",
-      "account_label": "账户"
+      "account_label": "账户",
+      "pw_short": "至少 8 位字符",
+      "pw_mismatch": "两次输入不一致",
+      "pw_failed": "密码更新失败"
     },
     "make": {
       "title": "AI 音乐生成 — 照片变歌曲，长度精确",
@@ -604,7 +631,12 @@
       "my_account": "账户",
       "balance": "余额",
       "pricing_label": "价格",
-      "confirm_gen": "生成一首 {sec} 秒的曲子？将消耗 {n}。"
+      "confirm_gen": "生成一首 {sec} 秒的曲子？将消耗 {n}。",
+      "err_insufficient": "额度不足",
+      "topup_hint": "充值后即可继续生成。",
+      "topup_cta": "去充值",
+      "cancel": "取消",
+      "confirm": "确定"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -685,7 +717,10 @@
       "reset_title": "重設密碼",
       "new_password": "新密碼",
       "reset_done": "密碼已更新，請用新密碼登入。",
-      "account_label": "帳戶"
+      "account_label": "帳戶",
+      "pw_short": "至少 8 位字元",
+      "pw_mismatch": "兩次輸入不一致",
+      "pw_failed": "密碼更新失敗"
     },
     "make": {
       "title": "AI 音樂生成 — 照片變歌曲，長度精確",
@@ -759,7 +794,12 @@
       "my_account": "帳戶",
       "balance": "餘額",
       "pricing_label": "價格",
-      "confirm_gen": "生成一首 {sec} 秒的曲子？將消耗 {n}。"
+      "confirm_gen": "生成一首 {sec} 秒的曲子？將消耗 {n}。",
+      "err_insufficient": "額度不足",
+      "topup_hint": "儲值後即可繼續生成。",
+      "topup_cta": "去儲值",
+      "cancel": "取消",
+      "confirm": "確定"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -840,7 +880,10 @@
       "reset_title": "Restablecer contraseña",
       "new_password": "Nueva contraseña",
       "reset_done": "Contraseña actualizada: inicia sesión con ella.",
-      "account_label": "Cuenta"
+      "account_label": "Cuenta",
+      "pw_short": "Usa al menos 8 caracteres",
+      "pw_mismatch": "Las contraseñas no coinciden",
+      "pw_failed": "No se pudo actualizar"
     },
     "make": {
       "title": "Generador de música con IA — de foto a canción, duración exacta",
@@ -914,7 +957,12 @@
       "my_account": "Cuenta",
       "balance": "Saldo",
       "pricing_label": "Precios",
-      "confirm_gen": "¿Generar una pista de {sec}s? Se gastarán {n}."
+      "confirm_gen": "¿Generar una pista de {sec}s? Se gastarán {n}.",
+      "err_insufficient": "Créditos insuficientes",
+      "topup_hint": "Recarga para seguir generando.",
+      "topup_cta": "Comprar créditos",
+      "cancel": "Cancelar",
+      "confirm": "Confirmar"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -995,7 +1043,10 @@
       "reset_title": "Réinitialiser le mot de passe",
       "new_password": "Nouveau mot de passe",
       "reset_done": "Mot de passe mis à jour : connectez-vous avec.",
-      "account_label": "Compte"
+      "account_label": "Compte",
+      "pw_short": "Au moins 8 caractères",
+      "pw_mismatch": "Les mots de passe ne correspondent pas",
+      "pw_failed": "Échec de la mise à jour"
     },
     "make": {
       "title": "Générateur de musique IA — de la photo au morceau, durée exacte",
@@ -1069,7 +1120,12 @@
       "my_account": "Compte",
       "balance": "Solde",
       "pricing_label": "Tarifs",
-      "confirm_gen": "Générer un morceau de {sec} s ? Cela coûte {n}."
+      "confirm_gen": "Générer un morceau de {sec} s ? Cela coûte {n}.",
+      "err_insufficient": "Crédits insuffisants",
+      "topup_hint": "Rechargez pour continuer à générer.",
+      "topup_cta": "Acheter des crédits",
+      "cancel": "Annuler",
+      "confirm": "Confirmer"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1150,7 +1206,10 @@
       "reset_title": "Passwort zurücksetzen",
       "new_password": "Neues Passwort",
       "reset_done": "Passwort aktualisiert – jetzt damit anmelden.",
-      "account_label": "Konto"
+      "account_label": "Konto",
+      "pw_short": "Mindestens 8 Zeichen",
+      "pw_mismatch": "Passwörter stimmen nicht überein",
+      "pw_failed": "Aktualisierung fehlgeschlagen"
     },
     "make": {
       "title": "KI-Musikgenerator — vom Foto zum Song, exakte Länge",
@@ -1224,7 +1283,12 @@
       "my_account": "Konto",
       "balance": "Guthaben",
       "pricing_label": "Preise",
-      "confirm_gen": "Track mit {sec} s erzeugen? Das kostet {n}."
+      "confirm_gen": "Track mit {sec} s erzeugen? Das kostet {n}.",
+      "err_insufficient": "Nicht genug Credits",
+      "topup_hint": "Lade auf, um weiter zu generieren.",
+      "topup_cta": "Credits kaufen",
+      "cancel": "Abbrechen",
+      "confirm": "Bestätigen"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1305,7 +1369,10 @@
       "reset_title": "Redefinir senha",
       "new_password": "Nova senha",
       "reset_done": "Senha atualizada: entre com ela.",
-      "account_label": "Conta"
+      "account_label": "Conta",
+      "pw_short": "Use pelo menos 8 caracteres",
+      "pw_mismatch": "As senhas não coincidem",
+      "pw_failed": "Não foi possível atualizar"
     },
     "make": {
       "title": "Gerador de música com IA — de foto a música, duração exata",
@@ -1379,7 +1446,12 @@
       "my_account": "Conta",
       "balance": "Saldo",
       "pricing_label": "Preços",
-      "confirm_gen": "Gerar uma faixa de {sec}s? Isso gasta {n}."
+      "confirm_gen": "Gerar uma faixa de {sec}s? Isso gasta {n}.",
+      "err_insufficient": "Créditos insuficientes",
+      "topup_hint": "Recarregue para continuar gerando.",
+      "topup_cta": "Comprar créditos",
+      "cancel": "Cancelar",
+      "confirm": "Confirmar"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1460,7 +1532,10 @@
       "reset_title": "Reimposta password",
       "new_password": "Nuova password",
       "reset_done": "Password aggiornata: accedi con quella.",
-      "account_label": "Account"
+      "account_label": "Account",
+      "pw_short": "Almeno 8 caratteri",
+      "pw_mismatch": "Le password non coincidono",
+      "pw_failed": "Aggiornamento non riuscito"
     },
     "make": {
       "title": "Generatore di musica IA — da foto a brano, durata esatta",
@@ -1534,7 +1609,12 @@
       "my_account": "Account",
       "balance": "Saldo",
       "pricing_label": "Prezzi",
-      "confirm_gen": "Generare un brano da {sec}s? Costa {n}."
+      "confirm_gen": "Generare un brano da {sec}s? Costa {n}.",
+      "err_insufficient": "Crediti insufficienti",
+      "topup_hint": "Ricarica per continuare a generare.",
+      "topup_cta": "Acquista crediti",
+      "cancel": "Annulla",
+      "confirm": "Conferma"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1615,7 +1695,10 @@
       "reset_title": "Сброс пароля",
       "new_password": "Новый пароль",
       "reset_done": "Пароль обновлён — войдите с ним.",
-      "account_label": "Аккаунт"
+      "account_label": "Аккаунт",
+      "pw_short": "Не менее 8 символов",
+      "pw_mismatch": "Пароли не совпадают",
+      "pw_failed": "Не удалось обновить"
     },
     "make": {
       "title": "Генератор музыки на ИИ — из фото в трек, точная длина",
@@ -1689,7 +1772,12 @@
       "my_account": "Аккаунт",
       "balance": "Баланс",
       "pricing_label": "Цены",
-      "confirm_gen": "Создать трек на {sec} с? Это спишет {n}."
+      "confirm_gen": "Создать трек на {sec} с? Это спишет {n}.",
+      "err_insufficient": "Недостаточно кредитов",
+      "topup_hint": "Пополните баланс, чтобы продолжить.",
+      "topup_cta": "Купить кредиты",
+      "cancel": "Отмена",
+      "confirm": "Подтвердить"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1770,7 +1858,10 @@
       "reset_title": "إعادة تعيين كلمة المرور",
       "new_password": "كلمة مرور جديدة",
       "reset_done": "تم تحديث كلمة المرور — سجّل الدخول بها.",
-      "account_label": "الحساب"
+      "account_label": "الحساب",
+      "pw_short": "استخدم 8 أحرف على الأقل",
+      "pw_mismatch": "كلمتا المرور غير متطابقتين",
+      "pw_failed": "تعذّر التحديث"
     },
     "make": {
       "title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق",
@@ -1844,7 +1935,12 @@
       "my_account": "الحساب",
       "balance": "الرصيد",
       "pricing_label": "الأسعار",
-      "confirm_gen": "هل تريد إنشاء مقطع بمدة {sec} ثانية؟ سيُخصم {n}."
+      "confirm_gen": "هل تريد إنشاء مقطع بمدة {sec} ثانية؟ سيُخصم {n}.",
+      "err_insufficient": "الرصيد غير كافٍ",
+      "topup_hint": "اشحن الرصيد لمتابعة التوليد.",
+      "topup_cta": "شراء رصيد",
+      "cancel": "إلغاء",
+      "confirm": "تأكيد"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1925,7 +2021,10 @@
       "reset_title": "รีเซ็ตรหัสผ่าน",
       "new_password": "รหัสผ่านใหม่",
       "reset_done": "อัปเดตรหัสผ่านแล้ว เข้าสู่ระบบด้วยรหัสใหม่",
-      "account_label": "บัญชี"
+      "account_label": "บัญชี",
+      "pw_short": "อย่างน้อย 8 ตัวอักษร",
+      "pw_mismatch": "รหัสผ่านไม่ตรงกัน",
+      "pw_failed": "อัปเดตไม่สำเร็จ"
     },
     "make": {
       "title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ",
@@ -1999,7 +2098,12 @@
       "my_account": "บัญชี",
       "balance": "คงเหลือ",
       "pricing_label": "ราคา",
-      "confirm_gen": "สร้างเพลง {sec} วินาทีหรือไม่? จะใช้ {n}"
+      "confirm_gen": "สร้างเพลง {sec} วินาทีหรือไม่? จะใช้ {n}",
+      "err_insufficient": "เครดิตไม่เพียงพอ",
+      "topup_hint": "เติมเครดิตเพื่อสร้างต่อ",
+      "topup_cta": "ซื้อเครดิต",
+      "cancel": "ยกเลิก",
+      "confirm": "ยืนยัน"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2080,7 +2184,10 @@
       "reset_title": "Đặt lại mật khẩu",
       "new_password": "Mật khẩu mới",
       "reset_done": "Đã cập nhật mật khẩu — hãy đăng nhập bằng mật khẩu mới.",
-      "account_label": "Tài khoản"
+      "account_label": "Tài khoản",
+      "pw_short": "Ít nhất 8 ký tự",
+      "pw_mismatch": "Mật khẩu không khớp",
+      "pw_failed": "Không cập nhật được"
     },
     "make": {
       "title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác",
@@ -2154,7 +2261,12 @@
       "my_account": "Tài khoản",
       "balance": "Số dư",
       "pricing_label": "Giá",
-      "confirm_gen": "Tạo bản nhạc {sec} giây? Sẽ tiêu {n}."
+      "confirm_gen": "Tạo bản nhạc {sec} giây? Sẽ tiêu {n}.",
+      "err_insufficient": "Không đủ tín dụng",
+      "topup_hint": "Nạp thêm để tiếp tục tạo.",
+      "topup_cta": "Mua tín dụng",
+      "cancel": "Hủy",
+      "confirm": "Xác nhận"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2235,7 +2347,10 @@
       "reset_title": "Atur ulang kata sandi",
       "new_password": "Kata sandi baru",
       "reset_done": "Kata sandi diperbarui — masuk dengan kata sandi itu.",
-      "account_label": "Akun"
+      "account_label": "Akun",
+      "pw_short": "Minimal 8 karakter",
+      "pw_mismatch": "Kata sandi tidak cocok",
+      "pw_failed": "Gagal memperbarui"
     },
     "make": {
       "title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi",
@@ -2309,7 +2424,12 @@
       "my_account": "Akun",
       "balance": "Saldo",
       "pricing_label": "Harga",
-      "confirm_gen": "Buat trek {sec} detik? Ini memakai {n}."
+      "confirm_gen": "Buat trek {sec} detik? Ini memakai {n}.",
+      "err_insufficient": "Kredit tidak cukup",
+      "topup_hint": "Isi ulang untuk terus membuat.",
+      "topup_cta": "Beli kredit",
+      "cancel": "Batal",
+      "confirm": "Konfirmasi"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2390,7 +2510,10 @@
       "reset_title": "Şifreyi sıfırla",
       "new_password": "Yeni şifre",
       "reset_done": "Şifre güncellendi — onunla giriş yapın.",
-      "account_label": "Hesap"
+      "account_label": "Hesap",
+      "pw_short": "En az 8 karakter",
+      "pw_mismatch": "Şifreler eşleşmiyor",
+      "pw_failed": "Güncellenemedi"
     },
     "make": {
       "title": "AI Müzik Üretici — fotoğraftan şarkıya, tam uzunluk",
@@ -2464,7 +2587,12 @@
       "my_account": "Hesap",
       "balance": "Bakiye",
       "pricing_label": "Fiyatlar",
-      "confirm_gen": "{sec} saniyelik parça oluşturulsun mu? {n} harcanır."
+      "confirm_gen": "{sec} saniyelik parça oluşturulsun mu? {n} harcanır.",
+      "err_insufficient": "Yeterli kredi yok",
+      "topup_hint": "Üretime devam etmek için yükleme yapın.",
+      "topup_cta": "Kredi satın al",
+      "cancel": "Vazgeç",
+      "confirm": "Onayla"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",

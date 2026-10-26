@@ -217,6 +217,19 @@
   .spin{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.18);
     border-top-color:var(--acc);animation:sp .8s linear infinite;display:block}
   @keyframes sp{to{transform:rotate(360deg)}}
+  .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;
+    background:rgba(8,9,11,.66);backdrop-filter:blur(6px)}
+  .modal.hidden{display:none}
+  .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
+    padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
+  .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink)}
+  .macts{display:flex;gap:10px;justify-content:flex-end}
+  .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
+    background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
+  .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .mine{margin-bottom:18px}
   .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
@@ -407,6 +420,19 @@
   .spin{width:18px;height:18px;border-radius:50%;border:2px solid rgba(255,255,255,.18);
     border-top-color:var(--acc);animation:sp .8s linear infinite;display:block}
   @keyframes sp{to{transform:rotate(360deg)}}
+  .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;
+    background:rgba(8,9,11,.66);backdrop-filter:blur(6px)}
+  .modal.hidden{display:none}
+  .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
+    padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
+  .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink)}
+  .macts{display:flex;gap:10px;justify-content:flex-end}
+  .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
+    background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
+  .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .mine{margin-bottom:18px}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
   .minerow::-webkit-scrollbar{height:0}
@@ -646,12 +672,22 @@
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
   </main>
+  <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
+    <div class="mbox">
+      <p class="mtext" id="mtext"></p>
+      <div class="macts">
+        <button type="button" class="mbtn" id="mcancel">Cancelar</button>
+        <button type="button" class="mbtn primary" id="mok">Confirmar</button>
+      </div>
+    </div>
+  </div>
+
   <div class="playerwrap hidden" id="playerwrap">
     <section class="player" id="player"></section>
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Generador de música con IA — de foto a canción, duración exacta", "description": "Convierte una foto o una descripción en música de fondo de 30 a 90 segundos exactos. La letra nombra lo que hay en tu imagen, con voces en 10 idiomas y bucles sin cortes.", "h1": "Crear una pista", "sub": "Desde una foto o una descripción. Duración exacta, bucles sin cortes.", "drop": "Arrastra o elige una foto<br>la letra nombrará lo que hay en ella", "generate": "Generar pista", "how_credits": "Cómo funcionan los créditos →", "grp_photo": "Escúchalo", "grp_recipe": "Desde un caso de uso", "download": "Descargar", "save_recipe": "Guardar como receta", "remove_photo": "Quitar foto", "photo_here": "Tu foto aquí", "note": "Todo lo de la derecha se hizo aquí", "legal_aup": "Uso aceptable", "legal_refund": "Reembolsos", "sign_in_first": "Inicia sesión para generar", "generating": "Generando… unos 20 segundos.", "just_generated": "Recién generado", "your_track": "Tu pista", "from_recipe": "Desde una receta", "from_photo": "Desde una foto", "err_load": "No se pudieron cargar las opciones", "done_in": "Listo en {n} s", "gen_cost": "Generar · {n}", "err_gen": "La generación falló", "my_track": "Mi pista", "err_net": "Error de red", "recipe_name": "Nombre de la receta", "err_save": "No se pudo guardar", "saved": "Guardado: {name}", "up_to": "Hasta {n}", "credits": "créditos", "guides_link": "Guías →", "guides_title": "Guías", "close": "Cerrar", "loading": "Cargando…", "off": "No", "loop_on": "Bucle sin cortes", "buy_credits": "Comprar créditos →", "desc_label": "Descripción (opcional)", "desc_ph": "Describe la pieza: café lluvioso, piano suave", "mode_photo": "Foto", "mode_text": "Texto", "field_density": "Densidad del arreglo", "opt_sparse": "Escaso", "opt_medium": "Medio", "opt_full": "Denso", "pro_title": "Opciones avanzadas", "grp_photo_sub": "Foto → letra → pista", "grp_recipe_sub": "Elige el uso y los ajustes ya vienen puestos", "recipe_names": {"short-form-cut": "숏폼 컷", "hook-sting": "오프닝 훅", "product-loop": "제품 루프", "podcast-bed": "팟캐스트 배경", "documentary-underscore": "다큐 배경", "game-menu-loop": "게임 메뉴 루프", "calm-focus": "집중 학습", "kids-learning": "어린이 학습"}, "applied": "Usando", "current_recipe": "Preajuste actual", "mine_title": "Mis pistas", "share_link": "Compartir enlace", "dl_audio": "Descargar audio", "copied": "Copiado", "shared_note": "Escuchas una pista compartida: crea la tuya abajo", "my_account": "Cuenta", "balance": "Saldo", "pricing_label": "Precios", "confirm_gen": "¿Generar una pista de {sec}s? Se gastarán {n}.", "li1": "Pista de 30 s = 45 créditos, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Las generaciones fallidas se reembolsan automáticamente.", "li3": "Los créditos no caducan y sirven para todas las herramientas.", "li4": "Los pagos los procesa Creem, nuestro merchant of record.", "li5": "Los créditos sin usar se pueden reembolsar en un plazo de 14 días.", "refund_link": "Política de reembolsos"}</script>
+<script type="application/json" id="ui">{"title": "Generador de música con IA — de foto a canción, duración exacta", "description": "Convierte una foto o una descripción en música de fondo de 30 a 90 segundos exactos. La letra nombra lo que hay en tu imagen, con voces en 10 idiomas y bucles sin cortes.", "h1": "Crear una pista", "sub": "Desde una foto o una descripción. Duración exacta, bucles sin cortes.", "drop": "Arrastra o elige una foto<br>la letra nombrará lo que hay en ella", "generate": "Generar pista", "how_credits": "Cómo funcionan los créditos →", "grp_photo": "Escúchalo", "grp_recipe": "Desde un caso de uso", "download": "Descargar", "save_recipe": "Guardar como receta", "remove_photo": "Quitar foto", "photo_here": "Tu foto aquí", "note": "Todo lo de la derecha se hizo aquí", "legal_aup": "Uso aceptable", "legal_refund": "Reembolsos", "sign_in_first": "Inicia sesión para generar", "generating": "Generando… unos 20 segundos.", "just_generated": "Recién generado", "your_track": "Tu pista", "from_recipe": "Desde una receta", "from_photo": "Desde una foto", "err_load": "No se pudieron cargar las opciones", "done_in": "Listo en {n} s", "gen_cost": "Generar · {n}", "err_gen": "La generación falló", "my_track": "Mi pista", "err_net": "Error de red", "recipe_name": "Nombre de la receta", "err_save": "No se pudo guardar", "saved": "Guardado: {name}", "up_to": "Hasta {n}", "credits": "créditos", "guides_link": "Guías →", "guides_title": "Guías", "close": "Cerrar", "loading": "Cargando…", "off": "No", "loop_on": "Bucle sin cortes", "buy_credits": "Comprar créditos →", "desc_label": "Descripción (opcional)", "desc_ph": "Describe la pieza: café lluvioso, piano suave", "mode_photo": "Foto", "mode_text": "Texto", "field_density": "Densidad del arreglo", "opt_sparse": "Escaso", "opt_medium": "Medio", "opt_full": "Denso", "pro_title": "Opciones avanzadas", "grp_photo_sub": "Foto → letra → pista", "grp_recipe_sub": "Elige el uso y los ajustes ya vienen puestos", "recipe_names": {"short-form-cut": "숏폼 컷", "hook-sting": "오프닝 훅", "product-loop": "제품 루프", "podcast-bed": "팟캐스트 배경", "documentary-underscore": "다큐 배경", "game-menu-loop": "게임 메뉴 루프", "calm-focus": "집중 학습", "kids-learning": "어린이 학습"}, "applied": "Usando", "current_recipe": "Preajuste actual", "mine_title": "Mis pistas", "share_link": "Compartir enlace", "dl_audio": "Descargar audio", "copied": "Copiado", "shared_note": "Escuchas una pista compartida: crea la tuya abajo", "my_account": "Cuenta", "balance": "Saldo", "pricing_label": "Precios", "confirm_gen": "¿Generar una pista de {sec}s? Se gastarán {n}.", "err_insufficient": "Créditos insuficientes", "topup_hint": "Recarga para seguir generando.", "topup_cta": "Comprar créditos", "cancel": "Cancelar", "confirm": "Confirmar", "li1": "Pista de 30 s = 45 créditos, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Las generaciones fallidas se reembolsan automáticamente.", "li3": "Los créditos no caducan y sirven para todas las herramientas.", "li4": "Los pagos los procesa Creem, nuestro merchant of record.", "li5": "Los créditos sin usar se pueden reembolsar en un plazo de 14 días.", "refund_link": "Política de reembolsos"}</script>
 <script>
 (function () {
   "use strict";
@@ -844,12 +880,14 @@
   }
 
   // 会话是否存在（cookie 方案下无法本地判断，用一次轻量请求确认）
-  var sessionOk = false;
+  var sessionOk = false, balanceUnits = -1;
   function checkSession() {
     return call("/ai/music/credits", {}, true).then(function (d) {
       sessionOk = d.code === 200;
       if (sessionOk && d.data) {
-        $("bal").textContent = UI.balance + " " + Math.round(d.data.balance / 100) + " " + UI.credits;
+        balanceUnits = d.data.balance || 0;
+        $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+        syncCost();
       }
       return sessionOk;
     }).catch(function () { sessionOk = false; return false; });
@@ -1139,15 +1177,30 @@
     $("player").innerHTML = '<span class="spin"></span><span class="ttl">' + UI.generating + '</span>';
     call("/ai/music/generate", body, true).then(function (d) {
       $("go").disabled = false;
-      if (d.code === 401) { localStorage.removeItem(TOKEN_KEY); location.reload(); return; }
-      if (d.code !== 200) { msg(d.msg || UI.err_gen, "err"); return; }
+      if (d.code === 401) { sessionOk = false; needLogin(); return; }
+      if (d.code !== 200) {
+        if ((d.msg || "").toLowerCase().indexOf("insufficient") >= 0) {
+          showTopup();
+          $("playerwrap").classList.add("hidden");
+        } else {
+          msg(d.msg || UI.err_gen, "err");
+        }
+        return;
+      }
       var x = d.data;
+      // 余额扣减在本地同步，避免刷新才更新
+      if (balanceUnits >= 0 && typeof x.credits === "number") {
+        balanceUnits = Math.max(0, balanceUnits - x.credits * 100);
+        $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+      }
+      hideTopup();
       msg(UI.done_in.replace("{n}", Math.round((Date.now() - t0) / 1000)), "ok");
       var lines = (x.lyrics || "").replace(/\[[0-9.:]+\]\s?/g, "").split("\n").filter(function (l) { return l.trim(); });
       current = {
         kind: "result", id: x.id, audio: API + x.url, cover: x.cover ? API + x.cover : "",
         img: (document.getElementById("prevImg") || {}).src || "",
-        meta: (x.duration_ms / 1000).toFixed(0) + "s · " + x.credits + " credits",
+        title: UI.just_generated + " · " + (x.duration_ms / 1000).toFixed(0) + "s",
+        meta: (x.duration_ms / 1000).toFixed(0) + "s · " + x.credits + " " + UI.credits,
         lyrics: lines.slice(0, 2).join("<br>")
       };
       renderBig();
@@ -1315,14 +1368,45 @@
   }
 
   // ---- 启动 ----
-  // 生成会扣额度，先确认一次；未登录先走登录
+  // 轻量确认弹窗（替代系统 alert/confirm）
+  function ask(text, onOk) {
+    $("mtext").textContent = text;
+    $("modal").classList.remove("hidden");
+    function close() {
+      $("modal").classList.add("hidden");
+      $("mok").removeEventListener("click", ok);
+      $("mcancel").removeEventListener("click", close);
+    }
+    function ok() { close(); onOk(); }
+    $("mok").addEventListener("click", ok);
+    $("mcancel").addEventListener("click", close);
+  }
+
+  function goTopup() { location.href = ROOT + "/" + LANG + "/pricing.html"; }
+
+  // 余额不足：不弹系统提示，直接在按钮下方给充值入口
+  function showTopup() {
+    var box = $("topupBox");
+    if (!box) {
+      box = document.createElement("div");
+      box.id = "topupBox"; box.className = "topup";
+      $("go").parentNode.insertBefore(box, $("go").nextSibling);
+    }
+    box.innerHTML = '<b>' + UI.err_insufficient + '</b> · ' + UI.topup_hint +
+      ' <a href="' + ROOT + "/" + LANG + '/pricing.html">' + UI.topup_cta + ' →</a>';
+    box.classList.remove("hidden");
+  }
+  function hideTopup() { var b = $("topupBox"); if (b) b.classList.add("hidden"); }
+
+  // 生成会扣额度，先确认一次；未登录先走登录，余额不足直接引导充值
   function generateConfirmed() {
     if (!sessionOk) { needLogin(); return; }
+    if (balanceUnits >= 0 && cost() * 100 > balanceUnits) { showTopup(); return; }
+    hideTopup();
     var txt = (UI.confirm_gen || "Generate this track?")
       .replace("{sec}", String(values.duration_seconds || 30))
       .replace("{n}", cost() + " " + UI.credits);
-    if (!window.confirm(txt)) return;
-    generate();
+    ask(txt, generate);
   }
 
   $("go").addEventListener("click", generateConfirmed);

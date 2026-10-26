@@ -153,10 +153,10 @@
   $("pwOpen") && $("pwOpen").addEventListener("click", function () { $("pwForm").classList.remove("hidden"); });
   $("pwSave") && $("pwSave").addEventListener("click", function () {
     var a = $("pw1").value, b = $("pw2").value;
-    if (a.length < 8) { $("pwMsg").textContent = "min 8"; $("pwMsg").className = "msg err"; return; }
-    if (a !== b) { $("pwMsg").textContent = "mismatch"; $("pwMsg").className = "msg err"; return; }
+    if (a.length < 8) { $("pwMsg").textContent = "Не менее 8 символов"; $("pwMsg").className = "msg err"; return; }
+    if (a !== b) { $("pwMsg").textContent = "Пароли не совпадают"; $("pwMsg").className = "msg err"; return; }
     call("/auth/password/set", { password: a }, true).then(function (r) {
-      if (r.code !== 200) { $("pwMsg").textContent = r.msg || "error"; $("pwMsg").className = "msg err"; return; }
+      if (r.code !== 200) { $("pwMsg").textContent = "Не удалось обновить"; $("pwMsg").className = "msg err"; return; }
       $("pwForm").classList.add("hidden"); $("pwState").textContent = "Пароль задан"; $("pwOpen").classList.add("hidden");
     });
   });
