@@ -263,7 +263,7 @@ def _site_urls(site: str, spec: dict) -> list[str]:
                 urls.append((f"guides/{slug}.html", [c for c in langs_with_guides if slug in guides[c]]))
         elif page == "music":
             urls.append(("music/", None))
-        elif page == "account":
+        elif page in ("account", "refund"):
             continue          # noindex，不进 sitemap
         else:
             urls.append((f"{page}.html", None))
@@ -522,6 +522,7 @@ def main() -> int:
                         "title": esc(copy["title"]),
                         "description": esc(copy["description"]),
                         "body": copy["body"],
+                        "robots": '<meta name="robots" content="noindex">' if page == "refund" else "",
                         "legal_privacy": esc(marketing[lang]["legal"]["privacy"]),
                         "legal_terms": esc(marketing[lang]["legal"]["terms"]),
                         "lang_label": esc(marketing[lang]["langLabel"]),
@@ -612,6 +613,7 @@ def main() -> int:
                         "title": esc(copy["title"]),
                         "description": esc(copy["description"]),
                         "body": copy["body"],
+                        "robots": '<meta name="robots" content="noindex">' if page == "refund" else "",
                         "legal_privacy": esc(marketing[lang]["legal"]["privacy"]),
                         "legal_terms": esc(marketing[lang]["legal"]["terms"]),
                         "refund_label": esc(source[lang]["pricing"]["refund_link"]),
@@ -673,6 +675,9 @@ def main() -> int:
                         "cta_label": esc(locale["cta_label"]),
                         "cta_href": locale["cta_href"].lstrip("/"),   # 同目录：/{lang}/music/
                         # 首页列出当前语言已有的指南（没有译文的语言这一块为空）
+                        # 法务/价格标签取自 ui.json（工具页与工具站共用同一套译文）
+                        "legal_aup": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["make"]["legal_aup"]),
+                        "pricing_label": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["make"]["pricing_label"]),
                         "guides_title": esc(locale.get("guides_title", "Guides")),
                         "guides_list": "".join(
                             f'      <li><a href="guides/{slug}.html">{esc(g.get("h1") or g["title"])}</a></li>\n'
