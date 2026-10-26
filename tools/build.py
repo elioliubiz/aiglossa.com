@@ -573,7 +573,9 @@ def main() -> int:
                     copy = source[lang].get("make") or source["en"]["make"]
                     if "make" not in source[lang]:
                         UNTRANSLATED.append(f"music · {lang}")
-                    out = {k: (v if k in ("drop", "title", "description") else esc(v)) for k, v in copy.items()}
+                    # 嵌套结构（如 recipe_names）原样透传，只对字符串转义
+                    out = {k: (v if k in ("drop", "title", "description") or isinstance(v, dict) else esc(v))
+                           for k, v in copy.items()}
                     out["drop"] = copy["drop"]                      # 含 <br>，按 HTML 原样插入
                     out["title"] = esc(copy["title"])
                     out["description"] = esc(copy["description"])
