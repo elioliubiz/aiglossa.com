@@ -203,6 +203,7 @@
   <div class="wrap">
     <span class="brand">aiglossa.com</span>
     <nav class="legal">
+      <a href="/vi/account.html" id="acctLink">Đăng nhập</a>
       <a href="https://aiglossa.com/vi/protocol/privacy.html">Chính sách Quyền riêng tư</a>
       <a href="https://aiglossa.com/vi/protocol/term.html">Điều khoản Dịch vụ</a>
     </nav>
@@ -229,6 +230,24 @@
     </details>
   </div>
 </footer>
+<script>
+(function () {
+  // 已登录则页脚显示「账户」，否则「登录」——靠一次轻量请求判断 cookie 会话
+  var a = document.getElementById("acctLink"); if (!a) return;
+  fetch("https://api.aiglossa.com/ai/music/credits", {
+    method: "POST", credentials: "include",
+    headers: { "Content-Type": "application/json", "X-Client": "web" },
+    body: JSON.stringify({ app_key: "tools", device: "web", timestamp: Math.floor(Date.now() / 1000) })
+  }).then(function (r) { return r.json(); }).then(function (d) {
+    if (d.code === 200) {
+      a.href = "/vi/account.html";
+      a.textContent = "Tài khoản";
+    } else {
+      a.href = "/vi/login.html";
+    }
+  }).catch(function () { a.href = "/vi/login.html"; });
+})();
+</script>
 
 <script src="../assets/site.js" defer></script>
 <script>

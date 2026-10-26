@@ -187,6 +187,7 @@
   <div class="wrap">
     <span class="brand">aiglossa.com</span>
     <nav class="legal">
+      <a href="/{{lang}}/account.html" id="acctLink">{{signin}}</a>
       <a href="{{legal_privacy_href}}">{{legal_privacy}}</a>
       <a href="{{legal_terms_href}}">{{legal_terms}}</a>
     </nav>
@@ -198,6 +199,24 @@
     </details>
   </div>
 </footer>
+<script>
+(function () {
+  // 已登录则页脚显示「账户」，否则「登录」——靠一次轻量请求判断 cookie 会话
+  var a = document.getElementById("acctLink"); if (!a) return;
+  fetch("https://api.aiglossa.com/ai/music/credits", {
+    method: "POST", credentials: "include",
+    headers: { "Content-Type": "application/json", "X-Client": "web" },
+    body: JSON.stringify({ app_key: "tools", device: "web", timestamp: Math.floor(Date.now() / 1000) })
+  }).then(function (r) { return r.json(); }).then(function (d) {
+    if (d.code === 200) {
+      a.href = "/{{lang}}/account.html";
+      a.textContent = "{{account_label}}";
+    } else {
+      a.href = "/{{lang}}/login.html";
+    }
+  }).catch(function () { a.href = "/{{lang}}/login.html"; });
+})();
+</script>
 
 <script src="{{prefix}}assets/site.js" defer></script>
 <script>

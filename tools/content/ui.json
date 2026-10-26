@@ -60,7 +60,12 @@
       "no_pw_yet": "No password yet — you sign in with a code or Google.",
       "tab_code": "Email code",
       "tab_password": "Password",
-      "pwd_ph": "Your password"
+      "pwd_ph": "Your password",
+      "forgot": "Forgot password?",
+      "reset_title": "Reset password",
+      "new_password": "New password",
+      "reset_done": "Password updated — sign in with it.",
+      "account_label": "Account"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -209,7 +214,12 @@
       "no_pw_yet": "パスワード未設定。現在はコードか Google でログインします。",
       "tab_code": "コード",
       "tab_password": "パスワード",
-      "pwd_ph": "パスワードを入力"
+      "pwd_ph": "パスワードを入力",
+      "forgot": "パスワードをお忘れですか？",
+      "reset_title": "パスワード再設定",
+      "new_password": "新しいパスワード",
+      "reset_done": "更新しました。新しいパスワードでログインしてください。",
+      "account_label": "アカウント"
     },
     "make": {
       "title": "AI音楽生成 — 写真から曲へ、長さはぴったり",
@@ -358,7 +368,12 @@
       "no_pw_yet": "비밀번호가 없습니다. 지금은 코드나 Google로 로그인합니다.",
       "tab_code": "인증코드",
       "tab_password": "비밀번호",
-      "pwd_ph": "비밀번호 입력"
+      "pwd_ph": "비밀번호 입력",
+      "forgot": "비밀번호를 잊으셨나요?",
+      "reset_title": "비밀번호 재설정",
+      "new_password": "새 비밀번호",
+      "reset_done": "변경되었습니다. 새 비밀번호로 로그인하세요.",
+      "account_label": "계정"
     },
     "make": {
       "title": "AI 음악 생성 — 사진에서 곡으로, 정확한 길이",
@@ -507,7 +522,12 @@
       "no_pw_yet": "还没有密码，目前用验证码或 Google 登录。",
       "tab_code": "验证码",
       "tab_password": "密码",
-      "pwd_ph": "输入密码"
+      "pwd_ph": "输入密码",
+      "forgot": "忘记密码？",
+      "reset_title": "重置密码",
+      "new_password": "新密码",
+      "reset_done": "密码已更新，请用新密码登录。",
+      "account_label": "账户"
     },
     "make": {
       "title": "AI 音乐生成 — 照片变歌曲，长度精确",
@@ -656,7 +676,12 @@
       "no_pw_yet": "還沒有密碼，目前用驗證碼或 Google 登入。",
       "tab_code": "驗證碼",
       "tab_password": "密碼",
-      "pwd_ph": "輸入密碼"
+      "pwd_ph": "輸入密碼",
+      "forgot": "忘記密碼？",
+      "reset_title": "重設密碼",
+      "new_password": "新密碼",
+      "reset_done": "密碼已更新，請用新密碼登入。",
+      "account_label": "帳戶"
     },
     "make": {
       "title": "AI 音樂生成 — 照片變歌曲，長度精確",
@@ -805,7 +830,12 @@
       "no_pw_yet": "Aún sin contraseña: entras con código o Google.",
       "tab_code": "Código",
       "tab_password": "Contraseña",
-      "pwd_ph": "Tu contraseña"
+      "pwd_ph": "Tu contraseña",
+      "forgot": "¿Olvidaste tu contraseña?",
+      "reset_title": "Restablecer contraseña",
+      "new_password": "Nueva contraseña",
+      "reset_done": "Contraseña actualizada: inicia sesión con ella.",
+      "account_label": "Cuenta"
     },
     "make": {
       "title": "Generador de música con IA — de foto a canción, duración exacta",
@@ -954,7 +984,12 @@
       "no_pw_yet": "Pas encore de mot de passe : vous entrez par code ou Google.",
       "tab_code": "Code par e-mail",
       "tab_password": "Mot de passe",
-      "pwd_ph": "Votre mot de passe"
+      "pwd_ph": "Votre mot de passe",
+      "forgot": "Mot de passe oublié ?",
+      "reset_title": "Réinitialiser le mot de passe",
+      "new_password": "Nouveau mot de passe",
+      "reset_done": "Mot de passe mis à jour : connectez-vous avec.",
+      "account_label": "Compte"
     },
     "make": {
       "title": "Générateur de musique IA — de la photo au morceau, durée exacte",
@@ -1103,7 +1138,12 @@
       "no_pw_yet": "Noch kein Passwort – du meldest dich per Code oder Google an.",
       "tab_code": "Code",
       "tab_password": "Passwort",
-      "pwd_ph": "Dein Passwort"
+      "pwd_ph": "Dein Passwort",
+      "forgot": "Passwort vergessen?",
+      "reset_title": "Passwort zurücksetzen",
+      "new_password": "Neues Passwort",
+      "reset_done": "Passwort aktualisiert – jetzt damit anmelden.",
+      "account_label": "Konto"
     },
     "make": {
       "title": "KI-Musikgenerator — vom Foto zum Song, exakte Länge",
@@ -1252,7 +1292,12 @@
       "no_pw_yet": "Ainda sem senha: você entra com código ou Google.",
       "tab_code": "Código",
       "tab_password": "Senha",
-      "pwd_ph": "Sua senha"
+      "pwd_ph": "Sua senha",
+      "forgot": "Esqueceu a senha?",
+      "reset_title": "Redefinir senha",
+      "new_password": "Nova senha",
+      "reset_done": "Senha atualizada: entre com ela.",
+      "account_label": "Conta"
     },
     "make": {
       "title": "Gerador de música com IA — de foto a música, duração exata",
@@ -1401,7 +1446,12 @@
       "no_pw_yet": "Ancora nessuna password: accedi con codice o Google.",
       "tab_code": "Codice",
       "tab_password": "Password",
-      "pwd_ph": "La tua password"
+      "pwd_ph": "La tua password",
+      "forgot": "Password dimenticata?",
+      "reset_title": "Reimposta password",
+      "new_password": "Nuova password",
+      "reset_done": "Password aggiornata: accedi con quella.",
+      "account_label": "Account"
     },
     "make": {
       "title": "Generatore di musica IA — da foto a brano, durata esatta",
@@ -1550,7 +1600,12 @@
       "no_pw_yet": "Пароля пока нет — вход по коду или через Google.",
       "tab_code": "Код",
       "tab_password": "Пароль",
-      "pwd_ph": "Ваш пароль"
+      "pwd_ph": "Ваш пароль",
+      "forgot": "Забыли пароль?",
+      "reset_title": "Сброс пароля",
+      "new_password": "Новый пароль",
+      "reset_done": "Пароль обновлён — войдите с ним.",
+      "account_label": "Аккаунт"
     },
     "make": {
       "title": "Генератор музыки на ИИ — из фото в трек, точная длина",
@@ -1699,7 +1754,12 @@
       "no_pw_yet": "لا توجد كلمة مرور بعد — تسجيل الدخول بالرمز أو Google.",
       "tab_code": "رمز",
       "tab_password": "كلمة المرور",
-      "pwd_ph": "كلمة المرور"
+      "pwd_ph": "كلمة المرور",
+      "forgot": "هل نسيت كلمة المرور؟",
+      "reset_title": "إعادة تعيين كلمة المرور",
+      "new_password": "كلمة مرور جديدة",
+      "reset_done": "تم تحديث كلمة المرور — سجّل الدخول بها.",
+      "account_label": "الحساب"
     },
     "make": {
       "title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق",
@@ -1848,7 +1908,12 @@
       "no_pw_yet": "ยังไม่มีรหัสผ่าน เข้าสู่ระบบด้วยรหัสหรือ Google",
       "tab_code": "รหัส",
       "tab_password": "รหัสผ่าน",
-      "pwd_ph": "รหัสผ่านของคุณ"
+      "pwd_ph": "รหัสผ่านของคุณ",
+      "forgot": "ลืมรหัสผ่าน?",
+      "reset_title": "รีเซ็ตรหัสผ่าน",
+      "new_password": "รหัสผ่านใหม่",
+      "reset_done": "อัปเดตรหัสผ่านแล้ว เข้าสู่ระบบด้วยรหัสใหม่",
+      "account_label": "บัญชี"
     },
     "make": {
       "title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ",
@@ -1997,7 +2062,12 @@
       "no_pw_yet": "Chưa có mật khẩu — bạn đăng nhập bằng mã hoặc Google.",
       "tab_code": "Mã",
       "tab_password": "Mật khẩu",
-      "pwd_ph": "Mật khẩu của bạn"
+      "pwd_ph": "Mật khẩu của bạn",
+      "forgot": "Quên mật khẩu?",
+      "reset_title": "Đặt lại mật khẩu",
+      "new_password": "Mật khẩu mới",
+      "reset_done": "Đã cập nhật mật khẩu — hãy đăng nhập bằng mật khẩu mới.",
+      "account_label": "Tài khoản"
     },
     "make": {
       "title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác",
@@ -2146,7 +2216,12 @@
       "no_pw_yet": "Belum ada kata sandi — masuk dengan kode atau Google.",
       "tab_code": "Kode",
       "tab_password": "Kata sandi",
-      "pwd_ph": "Kata sandi Anda"
+      "pwd_ph": "Kata sandi Anda",
+      "forgot": "Lupa kata sandi?",
+      "reset_title": "Atur ulang kata sandi",
+      "new_password": "Kata sandi baru",
+      "reset_done": "Kata sandi diperbarui — masuk dengan kata sandi itu.",
+      "account_label": "Akun"
     },
     "make": {
       "title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi",
@@ -2295,7 +2370,12 @@
       "no_pw_yet": "Henüz şifre yok — kod veya Google ile giriş yapıyorsunuz.",
       "tab_code": "Kod",
       "tab_password": "Şifre",
-      "pwd_ph": "Şifreniz"
+      "pwd_ph": "Şifreniz",
+      "forgot": "Şifrenizi mi unuttunuz?",
+      "reset_title": "Şifreyi sıfırla",
+      "new_password": "Yeni şifre",
+      "reset_done": "Şifre güncellendi — onunla giriş yapın.",
+      "account_label": "Hesap"
     },
     "make": {
       "title": "AI Müzik Üretici — fotoğraftan şarkıya, tam uzunluk",

@@ -480,6 +480,8 @@ def main() -> int:
                         "scholan_desc": esc(_capitalize(marketing_title.split("—", 1)[1].strip())),
                         "scholan_href": f"{scholan_base}/{lang}/",
                         "scholan_support_href": f"{scholan_base}/{lang}/support.html",
+                        "signin": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["signin"]),
+                        "account_label": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["account_label"]),
                         "legal_privacy": esc(marketing[lang]["legal"]["privacy"]),
                         "legal_terms": esc(marketing[lang]["legal"]["terms"]),
                         "legal_privacy_href": f"{legal_base}/{lang}/protocol/privacy.html",

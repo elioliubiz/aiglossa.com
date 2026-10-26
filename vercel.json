@@ -3,6 +3,366 @@
   "cleanUrls": false,
   "redirects": [
     {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh-(TW|HK|MO|Hant|tw|hk|mo).*"
+        }
+      ],
+      "destination": "/zh-Hant/music/",
+      "permanent": false
+    },
+    {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh.*"
+        }
+      ],
+      "destination": "/zh-Hans/music/",
+      "permanent": false
+    },
+    {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ja.*"
+        }
+      ],
+      "destination": "/ja/music/",
+      "permanent": false
+    },
+    {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ko.*"
+        }
+      ],
+      "destination": "/ko/music/",
+      "permanent": false
+    },
+    {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^es.*"
+        }
+      ],
+      "destination": "/es/music/",
+      "permanent": false
+    },
+    {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^pt.*"
+        }
+      ],
+      "destination": "/pt/music/",
+      "permanent": false
+    },
+    {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^fr.*"
+        }
+      ],
+      "destination": "/fr/music/",
+      "permanent": false
+    },
+    {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^de.*"
+        }
+      ],
+      "destination": "/de/music/",
+      "permanent": false
+    },
+    {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^it.*"
+        }
+      ],
+      "destination": "/it/music/",
+      "permanent": false
+    },
+    {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ru.*"
+        }
+      ],
+      "destination": "/ru/music/",
+      "permanent": false
+    },
+    {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ar.*"
+        }
+      ],
+      "destination": "/ar/music/",
+      "permanent": false
+    },
+    {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^th.*"
+        }
+      ],
+      "destination": "/th/music/",
+      "permanent": false
+    },
+    {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^vi.*"
+        }
+      ],
+      "destination": "/vi/music/",
+      "permanent": false
+    },
+    {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^id.*"
+        }
+      ],
+      "destination": "/id/music/",
+      "permanent": false
+    },
+    {
+      "source": "/music/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^tr.*"
+        }
+      ],
+      "destination": "/tr/music/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh-(TW|HK|MO|Hant|tw|hk|mo).*"
+        }
+      ],
+      "destination": "/zh-Hant/guides/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh.*"
+        }
+      ],
+      "destination": "/zh-Hans/guides/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ja.*"
+        }
+      ],
+      "destination": "/ja/guides/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ko.*"
+        }
+      ],
+      "destination": "/ko/guides/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^es.*"
+        }
+      ],
+      "destination": "/es/guides/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^pt.*"
+        }
+      ],
+      "destination": "/pt/guides/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^fr.*"
+        }
+      ],
+      "destination": "/fr/guides/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^de.*"
+        }
+      ],
+      "destination": "/de/guides/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^it.*"
+        }
+      ],
+      "destination": "/it/guides/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ru.*"
+        }
+      ],
+      "destination": "/ru/guides/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ar.*"
+        }
+      ],
+      "destination": "/ar/guides/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^th.*"
+        }
+      ],
+      "destination": "/th/guides/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^vi.*"
+        }
+      ],
+      "destination": "/vi/guides/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^id.*"
+        }
+      ],
+      "destination": "/id/guides/",
+      "permanent": false
+    },
+    {
+      "source": "/guides/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^tr.*"
+        }
+      ],
+      "destination": "/tr/guides/",
+      "permanent": false
+    },
+    {
       "source": "/:lang/pricing.html",
       "has": [
         {
@@ -304,21 +664,6 @@
         }
       ],
       "destination": "/en/music/",
-      "permanent": true
-    },
-    {
-      "source": "/music/",
-      "destination": "/en/music/",
-      "permanent": true
-    },
-    {
-      "source": "/music",
-      "destination": "/en/music/",
-      "permanent": true
-    },
-    {
-      "source": "/guides/",
-      "destination": "/en/guides/",
       "permanent": true
     }
   ],

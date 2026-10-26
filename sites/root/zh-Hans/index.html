@@ -203,6 +203,7 @@
   <div class="wrap">
     <span class="brand">aiglossa.com</span>
     <nav class="legal">
+      <a href="/zh-Hans/account.html" id="acctLink">登录</a>
       <a href="https://aiglossa.com/zh-Hans/protocol/privacy.html">隐私协议</a>
       <a href="https://aiglossa.com/zh-Hans/protocol/term.html">用户协议</a>
     </nav>
@@ -229,6 +230,24 @@
     </details>
   </div>
 </footer>
+<script>
+(function () {
+  // 已登录则页脚显示「账户」，否则「登录」——靠一次轻量请求判断 cookie 会话
+  var a = document.getElementById("acctLink"); if (!a) return;
+  fetch("https://api.aiglossa.com/ai/music/credits", {
+    method: "POST", credentials: "include",
+    headers: { "Content-Type": "application/json", "X-Client": "web" },
+    body: JSON.stringify({ app_key: "tools", device: "web", timestamp: Math.floor(Date.now() / 1000) })
+  }).then(function (r) { return r.json(); }).then(function (d) {
+    if (d.code === 200) {
+      a.href = "/zh-Hans/account.html";
+      a.textContent = "账户";
+    } else {
+      a.href = "/zh-Hans/login.html";
+    }
+  }).catch(function () { a.href = "/zh-Hans/login.html"; });
+})();
+</script>
 
 <script src="../assets/site.js" defer></script>
 <script>
