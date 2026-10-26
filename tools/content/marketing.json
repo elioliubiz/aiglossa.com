@@ -228,10 +228,10 @@
     "title": "Scholan — 予習してから外国語の本を読む",
     "description": "EPUBまたはPDFを読み込むと、Scholanがまず「準備分析」——この本で注目すべき単語とその意味——を生成します。一度ざっと目を通せば、後は途中で何度も止まらずに読み進められます。原文の言語は問いません。",
     "h1": [
-      "予習してから",
-      "外国語の本を読む"
+      "信頼できる",
+      "外国語読書の相棒"
     ],
-    "lede": "Scholanは単なるリーダーではありません。まず準備分析として「注目すべき単語」とその意味を生成します。一度ざっと目を通せば、後は途中で何度も止まらずに読み進められます。",
+    "lede": "外国語の読書は、もっと気楽でいい。Scholan は気にかける価値のある単語を拾い、そのすぐ後ろに意味を添えます。意味つきで一度読み、消してもう一度。",
     "cardA": {
       "label": "Français · 12 ページ",
       "pages": "324 ページ",
@@ -279,17 +279,17 @@
       {
         "n": "01",
         "h": "本を読み込む",
-        "p": "お手持ちのEPUBまたはPDF。原文の言語は問いません。iPadでは「ファイル」から本を書棚へ直接ドラッグできます。"
+        "p": "EPUB、MOBI、AZW3、FB2。どの言語でも。"
       },
       {
         "n": "02",
-        "h": "準備分析を生成",
-        "p": "本文の長さに応じた価格で、ずっと残ります。迷ったらまずプレビューを。各ページにプレビュー用の単語リストが付きます。ざっと眺めるだけで全体像がつかめます。"
+        "h": "意味は単語のすぐ後ろ",
+        "p": "途中で切り替えずに読み進められます。"
       },
       {
         "n": "03",
-        "h": "読みながら単語をタップ",
-        "p": "単語をタップすると意味と発音を確認できます。一度見た単語は格段に認識しやすくなります。"
+        "h": "消してもう一度読む",
+        "p": "単語はハイライトされたまま。思い出すのが仕上げです。"
       }
     ],
     "closing": "大切なのは暗記ではありません。プレビューと読書を繰り返すうちに、単語は自然に身についていきます。",
@@ -303,10 +303,10 @@
     "title": "Scholan — 미리 준비하고 외국어 원서 읽기",
     "description": "EPUB 또는 PDF를 가져오면 Scholan이 먼저 「준비 분석」—이 책에서 주목할 만한 단어와 그 뜻—을 만들어 줍니다. 한 번 훑어보고 나면 중간에 자주 멈추지 않고 읽을 수 있습니다. 원문 언어는 가리지 않습니다.",
     "h1": [
-      "미리 준비하고",
-      "외국어 원서 읽기"
+      "믿을 수 있는",
+      "외국어 독서 파트너"
     ],
-    "lede": "Scholan는 단순한 리더가 아닙니다. 먼저 준비 분석으로 주목할 만한 단어와 그 뜻을 만들어 줍니다. 한 번 훑어보고 나면 중간에 자주 멈추지 않고 읽을 수 있습니다.",
+    "lede": "외국어 독서는 더 편안해도 됩니다. Scholan은 눈여겨볼 단어를 골라 그 뒤에 뜻을 붙입니다. 뜻과 함께 한 번 읽고, 끄고, 다시 읽으세요.",
     "cardA": {
       "label": "Français · 12쪽",
       "pages": "324쪽",
@@ -354,17 +354,17 @@
       {
         "n": "01",
         "h": "책 가져오기",
-        "p": "직접 가진 EPUB 또는 PDF, 원문 언어는 가리지 않습니다. iPad에서는 「파일」에서 책을 서재로 바로 끌어다 놓을 수 있습니다."
+        "p": "EPUB, MOBI, AZW3, FB2 — 어떤 언어든."
       },
       {
         "n": "02",
-        "h": "준비 분석 생성",
-        "p": "본문 길이에 따라 가격이 정해지고 계속 남아 있습니다. 고민된다면 먼저 미리보기를. 페이지마다 미리보기 단어 목록이 함께 제공됩니다. 한 번 훑어보면 감이 잡힙니다."
+        "h": "뜻은 단어 바로 뒤에",
+        "p": "앱을 오가지 않고 그대로 읽습니다."
       },
       {
         "n": "03",
-        "h": "읽으며 단어 누르기",
-        "p": "단어를 누르면 뜻과 발음을 볼 수 있습니다. 한 번 본 단어는 훨씬 쉽게 알아봅니다."
+        "h": "끄고 다시 읽기",
+        "p": "단어는 계속 강조됩니다. 떠올리는 건 당신 몫."
       }
     ],
     "closing": "중요한 것은 암기가 아닙니다. 미리보기와 읽기를 반복하다 보면 단어는 자연스럽게 익숙해집니다.",
@@ -378,10 +378,10 @@
     "title": "Scholan — lee libros en otros idiomas con ventaja",
     "description": "Añade un EPUB o un PDF en cualquier idioma y Scholan genera primero un análisis preparatorio: las palabras que merece la pena conocer y sus significados. Hojéalo una vez y luego lee sin interrupciones constantes.",
     "h1": [
-      "Lee libros en otros idiomas",
-      "con ventaja"
+      "Un compañero de lectura",
+      "en el que confiar"
     ],
-    "lede": "Scholan no es solo un lector. Primero genera un análisis preparatorio: las palabras que merece la pena conocer y sus significados. Hojéalo una vez y luego lee sin interrupciones constantes.",
+    "lede": "Leer en otro idioma no debería costar tanto. Scholan marca las palabras que merecen atención y pone el significado justo detrás. Lee una vez con él, apágalo y vuelve a leer.",
     "cardA": {
       "label": "Français · página 12",
       "pages": "324 páginas",
@@ -428,18 +428,18 @@
     "steps": [
       {
         "n": "01",
-        "h": "Importa tu libro",
-        "p": "Tu propio archivo EPUB o PDF, en cualquier idioma. En iPad también puedes arrastrar un libro desde Archivos a tu biblioteca."
+        "h": "Añade tu libro",
+        "p": "EPUB, MOBI, AZW3 o FB2, en cualquier idioma."
       },
       {
         "n": "02",
-        "h": "Genera el análisis preparatorio",
-        "p": "El precio depende de la longitud del texto y el análisis es para siempre; si dudas, prueba primero la vista previa. Cada página incluye su lista de vocabulario de vista previa; échale un vistazo para hacerte una idea."
+        "h": "El significado va tras la palabra",
+        "p": "Sigue leyendo sin cambiar de app."
       },
       {
         "n": "03",
-        "h": "Toca las palabras mientras lees",
-        "p": "Toca cualquier palabra para ver su significado y su pronunciación; las palabras que ya has visto se reconocen mucho más fácilmente."
+        "h": "Apágalo y lee otra vez",
+        "p": "Las palabras siguen marcadas. Recordar hace el resto."
       }
     ],
     "closing": "No se trata de memorizar: ver la vista previa una y otra vez y leer hace que las palabras te resulten familiares de forma natural.",
@@ -453,10 +453,10 @@
     "title": "Scholan — lisez des livres en langue étrangère avec de l'avance",
     "description": "Importez un EPUB ou un PDF, dans n'importe quelle langue : Scholan génère d'abord une analyse préparatoire — les mots qui méritent votre attention, avec leur signification.",
     "h1": [
-      "Lisez en langue étrangère",
-      "avec de l'avance"
+      "Un compagnon de lecture",
+      "de confiance"
     ],
-    "lede": "Scholan n'est pas qu'un lecteur. Il génère d'abord une analyse préparatoire : les mots qui méritent votre attention, avec leur signification. Parcourez-la une fois, puis lisez sans interruptions constantes.",
+    "lede": "Lire dans une autre langue ne devrait pas être un effort. Scholan repère les mots qui comptent et place le sens juste après. Lisez une fois avec, désactivez, relisez.",
     "cardA": {
       "label": "English · page 12",
       "pages": "324 pages",
@@ -503,18 +503,18 @@
     "steps": [
       {
         "n": "01",
-        "h": "Importez votre livre",
-        "p": "Votre propre fichier EPUB ou PDF, dans n'importe quelle langue. Sur iPad, vous pouvez aussi glisser un livre depuis Fichiers vers votre bibliothèque."
+        "h": "Ajoutez votre livre",
+        "p": "EPUB, MOBI, AZW3 ou FB2, dans n'importe quelle langue."
       },
       {
         "n": "02",
-        "h": "Générez l'analyse préparatoire",
-        "p": "Facturée selon la longueur du texte, conservée à vie ; en cas de doute, essayez d'abord l'aperçu. Chaque page est accompagnée de sa liste de vocabulaire d'aperçu — parcourez-la pour vous faire une idée."
+        "h": "Le sens vient après le mot",
+        "p": "Continuez votre lecture sans changer d'app."
       },
       {
         "n": "03",
-        "h": "Touchez les mots pendant la lecture",
-        "p": "Touchez un mot pour voir sa signification, avec la prononciation ; les mots déjà vus se reconnaissent bien plus facilement."
+        "h": "Désactivez et relisez",
+        "p": "Les mots restent surlignés. Se souvenir fait le reste."
       }
     ],
     "closing": "L'objectif n'est pas de mémoriser : la répétition des aperçus et la lecture rendent les mots familiers naturellement.",
@@ -528,10 +528,10 @@
     "title": "Scholan — fremdsprachige Bücher mit Vorsprung lesen",
     "description": "Füge ein EPUB oder PDF in beliebiger Sprache hinzu: Scholan erstellt zuerst eine vorbereitende Analyse – die Wörter, die sich lohnen, samt ihrer Bedeutungen.",
     "h1": [
-      "Fremdsprachige Bücher",
-      "mit Vorsprung lesen"
+      "Ein Lesegefährte,",
+      "dem du vertrauen kannst"
     ],
-    "lede": "Scholan ist nicht nur ein Reader. Die App erzeugt zuerst eine vorbereitende Analyse – die Wörter, die sich lohnen, samt ihrer Bedeutungen. Sieh sie einmal durch und lies dann ohne ständige Unterbrechungen.",
+    "lede": "Lesen in einer anderen Sprache sollte keine Arbeit sein. Scholan markiert die Wörter, auf die es ankommt, und stellt die Bedeutung direkt dahinter. Einmal damit lesen, ausschalten, noch einmal lesen.",
     "cardA": {
       "label": "Français · Seite 12",
       "pages": "324 Seiten",
@@ -578,18 +578,18 @@
     "steps": [
       {
         "n": "01",
-        "h": "Buch importieren",
-        "p": "Deine eigene EPUB- oder PDF-Datei, in beliebiger Sprache. Auf dem iPad kannst du ein Buch auch direkt aus „Dateien“ in dein Regal ziehen."
+        "h": "Buch hinzufügen",
+        "p": "EPUB, MOBI, AZW3 oder FB2 – in jeder Sprache."
       },
       {
         "n": "02",
-        "h": "Vorbereitende Analyse erstellen",
-        "p": "Preis richtet sich nach der Textlänge, dauerhaft verfügbar; probiere bei Unsicherheit zuerst die Vorschau. Jede Seite kommt mit ihrer Vorschau-Vokabelliste – einfach überfliegen für einen Eindruck."
+        "h": "Die Bedeutung steht hinter dem Wort",
+        "p": "Weiterlesen, ohne die App zu wechseln."
       },
       {
         "n": "03",
-        "h": "Wörter beim Lesen antippen",
-        "p": "Tippe ein beliebiges Wort an, um Bedeutung und Aussprache zu sehen; Wörter, die du schon gesehen hast, erkennst du viel leichter."
+        "h": "Ausschalten und erneut lesen",
+        "p": "Die Wörter bleiben markiert. Erinnern erledigt den Rest."
       }
     ],
     "closing": "Es geht nicht ums Auswendiglernen: wiederholte Vorschau plus Lesen machen die Wörter ganz von selbst vertraut.",
@@ -603,10 +603,10 @@
     "title": "Scholan — leggi libri in lingua con un vantaggio",
     "description": "Aggiungi un EPUB o un PDF in qualsiasi lingua: Scholan genera prima un'analisi preparatoria, le parole che vale la pena notare con i loro significati.",
     "h1": [
-      "Leggi libri in lingua",
-      "con un vantaggio"
+      "Un compagno di lettura",
+      "di cui fidarsi"
     ],
-    "lede": "Scholan non è solo un lettore. Genera prima un'analisi preparatoria: le parole che vale la pena notare con i loro significati. Dagli una scorsa, poi leggi senza continue interruzioni.",
+    "lede": "Leggere in un'altra lingua non deve pesare. Scholan segnala le parole che contano e mette il significato subito dopo. Leggi una volta con lui, disattivalo, rileggi.",
     "cardA": {
       "label": "Français · pagina 12",
       "pages": "324 pagine",
@@ -653,18 +653,18 @@
     "steps": [
       {
         "n": "01",
-        "h": "Importa il tuo libro",
-        "p": "Il tuo file EPUB o PDF, in qualsiasi lingua. Su iPad puoi anche trascinare un libro da File nella tua libreria."
+        "h": "Aggiungi il tuo libro",
+        "p": "EPUB, MOBI, AZW3 o FB2, in qualsiasi lingua."
       },
       {
         "n": "02",
-        "h": "Genera l'analisi preparatoria",
-        "p": "Il prezzo dipende dalla lunghezza del testo ed è definitivo; se hai dubbi, prova prima l'anteprima. Ogni pagina ha il suo elenco di vocaboli in anteprima: dagli una scorsa per farti un'idea."
+        "h": "Il significato sta dopo la parola",
+        "p": "Continui a leggere senza cambiare app."
       },
       {
         "n": "03",
-        "h": "Tocca le parole mentre leggi",
-        "p": "Tocca una parola per il significato, con la pronuncia; le parole già viste si riconoscono molto più facilmente."
+        "h": "Disattiva e rileggi",
+        "p": "Le parole restano evidenziate. Ricordare fa il resto."
       }
     ],
     "closing": "Il punto non è memorizzare: anteprima ripetuta e lettura rendono le parole familiari in modo naturale.",
@@ -678,10 +678,10 @@
     "title": "Scholan — leia livros em outros idiomas com vantagem",
     "description": "Adicione um EPUB ou PDF em qualquer idioma e o Scholan gera primeiro uma análise preparatória: as palavras que vale a pena notar e seus significados.",
     "h1": [
-      "Leia livros em outros idiomas",
-      "com vantagem"
+      "Um companheiro de leitura",
+      "em que você confia"
     ],
-    "lede": "O Scholan não é apenas um leitor. Ele primeiro gera uma análise preparatória — as palavras que vale a pena notar e seus significados. Dê uma olhada uma vez e depois leia sem interrupções constantes.",
+    "lede": "Ler em outro idioma não precisa ser difícil. O Scholan marca as palavras que importam e coloca o significado logo depois. Leia uma vez com ele, desligue e leia de novo.",
     "cardA": {
       "label": "Français · página 12",
       "pages": "324 páginas",
@@ -728,18 +728,18 @@
     "steps": [
       {
         "n": "01",
-        "h": "Importe seu livro",
-        "p": "Seu próprio arquivo EPUB ou PDF, em qualquer idioma. No iPad você também pode arrastar um livro do app Arquivos para a sua estante."
+        "h": "Adicione seu livro",
+        "p": "EPUB, MOBI, AZW3 ou FB2, em qualquer idioma."
       },
       {
         "n": "02",
-        "h": "Gere a análise preparatória",
-        "p": "O preço depende do tamanho do texto e a análise é sua para sempre; na dúvida, experimente primeiro a prévia. Cada página vem com sua lista de vocabulário de prévia — basta dar uma olhada para ter uma ideia."
+        "h": "O significado vem depois da palavra",
+        "p": "Continue lendo sem trocar de app."
       },
       {
         "n": "03",
-        "h": "Toque nas palavras enquanto lê",
-        "p": "Toque em qualquer palavra para ver o significado e a pronúncia; palavras que você já viu são muito mais fáceis de reconhecer."
+        "h": "Desligue e leia outra vez",
+        "p": "As palavras seguem destacadas. Lembrar faz o resto."
       }
     ],
     "closing": "A ideia não é memorizar: ver a prévia repetidamente e ler torna as palavras familiares naturalmente.",
@@ -753,10 +753,10 @@
     "title": "Scholan — читайте иностранные книги с преимуществом",
     "description": "Добавьте EPUB или PDF на любом языке — Scholan сначала создаст подготовительный анализ: слова, на которые стоит обратить внимание, и их значения.",
     "h1": [
-      "Читайте иностранные книги",
-      "с преимуществом"
+      "Надёжный спутник",
+      "для чтения на языке оригинала"
     ],
-    "lede": "Scholan — не просто читалка. Сначала она создаёт подготовительный анализ: слова, на которые стоит обратить внимание, и их значения. Просмотрите его один раз, а затем читайте без постоянных отвлечений.",
+    "lede": "Читать на другом языке не должно быть тяжело. Scholan отмечает слова, на которые стоит обратить внимание, и ставит значение сразу после них. Прочитайте раз с подсказками, выключите их, прочитайте снова.",
     "cardA": {
       "label": "Français · стр. 12",
       "pages": "324 стр.",
@@ -803,18 +803,18 @@
     "steps": [
       {
         "n": "01",
-        "h": "Импортируйте книгу",
-        "p": "Ваш собственный файл EPUB или PDF, на любом языке. На iPad книгу можно перетащить в библиотеку прямо из «Файлов»."
+        "h": "Добавьте книгу",
+        "p": "EPUB, MOBI, AZW3 или FB2 — на любом языке."
       },
       {
         "n": "02",
-        "h": "Создайте подготовительный анализ",
-        "p": "Цена зависит от длины текста, результат остаётся навсегда; если сомневаетесь, сначала попробуйте предварительный анализ. К каждой странице прилагается свой список слов — просто просмотрите его для общего впечатления."
+        "h": "Значение сразу после слова",
+        "p": "Читайте дальше, не переключая приложения."
       },
       {
         "n": "03",
-        "h": "Нажимайте на слова во время чтения",
-        "p": "Нажмите на любое слово, чтобы увидеть значение и произношение; слова, которые вы уже видели, узнаются намного легче."
+        "h": "Выключите и перечитайте",
+        "p": "Слова остаются подсвеченными. Дальше работает память."
       }
     ],
     "closing": "Цель не в заучивании: повторный просмотр вместе с чтением делает слова знакомыми естественным образом.",
@@ -828,10 +828,10 @@
     "title": "Scholan — اقرأ الكتب الأجنبية بأفضلية مسبقة",
     "description": "استورد ملف EPUB أو PDF بأي لغة، وسينشئ Scholan أولًا تحليلًا تحضيريًا: الكلمات الجديرة بالانتباه مع معانيها. تصفّحه مرة واحدة، ثم اقرأ دون انقطاعات متكررة.",
     "h1": [
-      "اقرأ الكتب الأجنبية",
-      "بأفضلية مسبقة"
+      "رفيق قراءة",
+      "يمكنك الوثوق به"
     ],
-    "lede": "Scholan ليس مجرد قارئ. إنه ينشئ أولًا تحليلًا تحضيريًا — الكلمات الجديرة بالانتباه مع معانيها. تصفّحه مرة واحدة، ثم اقرأ دون انقطاعات متكررة.",
+    "lede": "القراءة بلغة أخرى لا يجب أن تكون شاقة. يحدّد Scholan الكلمات التي تستحق الانتباه ويضع المعنى بعدها مباشرة. اقرأ مرة معها، ثم أوقفها واقرأ مرة أخرى.",
     "cardA": {
       "label": "Français · الصفحة 12",
       "pages": "324 صفحة",
@@ -878,18 +878,18 @@
     "steps": [
       {
         "n": "01",
-        "h": "استورد كتابك",
-        "p": "ملف EPUB أو PDF الخاص بك، بأي لغة. على iPad يمكنك أيضًا سحب الكتاب من تطبيق «الملفات» إلى رفّك."
+        "h": "أضف كتابك",
+        "p": "EPUB أو MOBI أو AZW3 أو FB2، بأي لغة."
       },
       {
         "n": "02",
-        "h": "أنشئ التحليل التحضيري",
-        "p": "يُسعّر حسب طول النص ويبقى دائمًا؛ جرّب المعاينة أولًا إن لم تكن متأكدًا. كل صفحة تأتي مع قائمة مفرداتها للمعاينة — تصفّحها لتكوين انطباع."
+        "h": "المعنى بعد الكلمة مباشرة",
+        "p": "تابع القراءة دون مغادرة التطبيق."
       },
       {
         "n": "03",
-        "h": "اضغط الكلمات أثناء القراءة",
-        "p": "اضغط أي كلمة لترى معناها مع النطق؛ والكلمات التي رأيتها سابقًا يصبح التعرّف عليها أسهل بكثير."
+        "h": "أوقفها وأعد القراءة",
+        "p": "تبقى الكلمات مظللة. والتذكّر يكمل الباقي."
       }
     ],
     "closing": "الهدف ليس الحفظ: تكرار المعاينة مع القراءة يجعل الكلمات مألوفة بشكل طبيعي.",
@@ -903,10 +903,10 @@
     "title": "Scholan — อ่านหนังสือต่างภาษาได้เปรียบตั้งแต่เริ่ม",
     "description": "นำเข้าไฟล์ EPUB หรือ PDF ได้ทุกภาษา Scholan จะสร้างการวิเคราะห์เตรียมความพร้อมก่อน นั่นคือคำที่ควรรู้พร้อมความหมาย อ่านผ่านตาสักครั้ง แล้วอ่านต่อเนื่องได้โดยไม่สะดุด",
     "h1": [
-      "อ่านหนังสือต่างภาษา",
-      "ได้เปรียบตั้งแต่เริ่ม"
+      "เพื่อนอ่านหนังสือต่างภาษา",
+      "ที่คุณไว้วางใจได้"
     ],
-    "lede": "Scholan ไม่ใช่แค่อ่านหนังสือ แต่จะสร้างการวิเคราะห์เตรียมความพร้อมก่อน นั่นคือคำที่ควรรู้พร้อมความหมาย อ่านผ่านตาสักครั้ง จากนั้นอ่านได้ต่อเนื่องโดยไม่สะดุด",
+    "lede": "อ่านหนังสือต่างภาษาไม่จำเป็นต้องฝืนScholan จะไฮไลต์คำที่น่าสนใจและวางความหมายไว้หลังคำนั้นทันที อ่านรอบหนึ่งพร้อมความหมาย ปิด แล้วอ่านอีกรอบ",
     "cardA": {
       "label": "Français · หน้า 12",
       "pages": "324 หน้า",
@@ -953,18 +953,18 @@
     "steps": [
       {
         "n": "01",
-        "h": "นำเข้าหนังสือ",
-        "p": "ไฟล์ EPUB หรือ PDF ของคุณเอง ภาษาใดก็ได้ บน iPad ลากหนังสือจากแอปไฟล์เข้าชั้นหนังสือได้เลย"
+        "h": "นำเข้าหนังสือของคุณ",
+        "p": "EPUB, MOBI, AZW3 หรือ FB2 ภาษาไหนก็ได้"
       },
       {
         "n": "02",
-        "h": "สร้างการวิเคราะห์เตรียมความพร้อม",
-        "p": "คิดราคาตามความยาวข้อความ ใช้ได้ตลอดไป หากไม่แน่ใจลองวิเคราะห์ตัวอย่างก่อน ทุกหน้าจะมีรายการคำศัพท์ตัวอย่างของหน้านั้น เพียงกวาดตาดูก็พอเห็นภาพ"
+        "h": "ความหมายอยู่หลังคำ",
+        "p": "อ่านต่อได้เลย ไม่ต้องสลับแอป"
       },
       {
         "n": "03",
-        "h": "แตะคำขณะอ่าน",
-        "p": "แตะคำใดก็ได้เพื่อดูความหมายพร้อมการออกเสียง คำที่เคยเห็นจะจำได้ง่ายขึ้นมาก"
+        "h": "ปิดแล้วอ่านใหม่",
+        "p": "คำยังถูกไฮไลต์อยู่ ที่เหลือคือการนึกออกเอง"
       }
     ],
     "closing": "จุดสำคัญไม่ใช่การท่องจำ การดูตัวอย่างซ้ำ ๆ แล้วอ่านจริงจะทำให้คุ้นเคยกับคำเองตามธรรมชาติ",
@@ -978,10 +978,10 @@
     "title": "Scholan — đọc sách ngoại văn với lợi thế từ đầu",
     "description": "Thêm tệp EPUB hoặc PDF bằng bất kỳ ngôn ngữ nào, Scholan sẽ tạo trước bản phân tích chuẩn bị: những từ đáng chú ý cùng nghĩa của chúng.",
     "h1": [
-      "Đọc sách ngoại văn",
-      "với lợi thế từ đầu"
+      "Người bạn đọc",
+      "đáng tin cậy"
     ],
-    "lede": "Scholan không chỉ là trình đọc. Ứng dụng tạo trước một bản phân tích chuẩn bị — những từ đáng chú ý cùng nghĩa của chúng. Đọc lướt một lần, rồi đọc liền mạch không bị ngắt quãng.",
+    "lede": "Đọc sách ngoại ngữ không nhất thiết phải vất vả. Scholan đánh dấu những từ đáng chú ý và đặt nghĩa ngay sau từ đó. Đọc một lượt cùng nghĩa, tắt đi, rồi đọc lại.",
     "cardA": {
       "label": "Français · trang 12",
       "pages": "324 trang",
@@ -1028,18 +1028,18 @@
     "steps": [
       {
         "n": "01",
-        "h": "Nhập sách của bạn",
-        "p": "Tệp EPUB hoặc PDF của riêng bạn, bất kể ngôn ngữ nào. Trên iPad, bạn cũng có thể kéo sách từ Tệp vào giá sách."
+        "h": "Thêm sách của bạn",
+        "p": "EPUB, MOBI, AZW3 hoặc FB2, ngôn ngữ nào cũng được."
       },
       {
         "n": "02",
-        "h": "Tạo bản phân tích chuẩn bị",
-        "p": "Tính giá theo độ dài văn bản, dùng vĩnh viễn; nếu chưa chắc hãy thử Phân tích xem trước. Mỗi trang đều kèm danh sách từ vựng xem trước — chỉ cần đọc lướt là đã có ấn tượng."
+        "h": "Nghĩa nằm ngay sau từ",
+        "p": "Đọc liền mạch, không phải chuyển ứng dụng."
       },
       {
         "n": "03",
-        "h": "Chạm vào từ khi đọc",
-        "p": "Chạm vào bất kỳ từ nào để xem nghĩa kèm cách phát âm; những từ đã gặp sẽ dễ nhận ra hơn nhiều."
+        "h": "Tắt đi và đọc lại",
+        "p": "Từ vẫn được đánh dấu. Phần còn lại là tự nhớ."
       }
     ],
     "closing": "Mấu chốt không phải ghi nhớ: xem trước lặp lại kết hợp với đọc sẽ giúp bạn quen từ một cách tự nhiên.",
@@ -1053,10 +1053,10 @@
     "title": "Scholan — baca buku asing dengan bekal awal",
     "description": "Tambahkan EPUB atau PDF dalam bahasa apa pun, dan Scholan lebih dulu membuat analisis persiapan: kata-kata yang perlu diperhatikan beserta artinya.",
     "h1": [
-      "Baca buku asing",
-      "dengan bekal awal"
+      "Teman membaca",
+      "yang bisa Anda percaya"
     ],
-    "lede": "Scholan bukan sekadar pembaca. Scholan lebih dulu membuat analisis pratinjau — kata-kata yang perlu diperhatikan beserta artinya. Baca sekilas sekali, lalu membaca tanpa sering terhenti.",
+    "lede": "Membaca dalam bahasa asing tidak harus berat. Scholan menandai kata yang layak diperhatikan dan menaruh artinya tepat setelah kata itu. Baca sekali bersama artinya, matikan, lalu baca lagi.",
     "cardA": {
       "label": "Français · halaman 12",
       "pages": "324 halaman",
@@ -1103,18 +1103,18 @@
     "steps": [
       {
         "n": "01",
-        "h": "Impor buku Anda",
-        "p": "File EPUB atau PDF milik Anda, dalam bahasa apa pun. Di iPad, Anda juga bisa menyeret buku dari File ke rak."
+        "h": "Tambahkan buku Anda",
+        "p": "EPUB, MOBI, AZW3, atau FB2 — bahasa apa pun."
       },
       {
         "n": "02",
-        "h": "Buat analisis persiapan",
-        "p": "Harga sesuai panjang teks, tersimpan selamanya; coba Pratinjau dulu jika ragu. Setiap halaman disertai daftar kosakata pratinjau — cukup pindai untuk mendapat gambaran."
+        "h": "Arti tepat setelah kata",
+        "p": "Lanjut membaca tanpa berpindah aplikasi."
       },
       {
         "n": "03",
-        "h": "Ketuk kata saat membaca",
-        "p": "Ketuk kata mana pun untuk melihat artinya, lengkap dengan pelafalan; kata yang pernah Anda lihat jauh lebih mudah dikenali."
+        "h": "Matikan dan baca lagi",
+        "p": "Kata tetap disorot. Sisanya soal mengingat."
       }
     ],
     "closing": "Intinya bukan menghafal: pratinjau berulang plus membaca membuat kata-kata familiar secara alami.",
@@ -1128,10 +1128,10 @@
     "title": "Scholan — yabancı kitapları avantajlı başlayarak oku",
     "description": "Herhangi bir dilde EPUB veya PDF ekle; Scholan önce bir hazırlık analizi oluşturur: dikkate değer kelimeler ve anlamları.",
     "h1": [
-      "Yabancı kitapları",
-      "avantajlı başlayarak oku"
+      "Güvenebileceğiniz",
+      "bir okuma arkadaşı"
     ],
-    "lede": "Scholan yalnızca bir okuyucu değil. Önce bir hazırlık analizi oluşturur — dikkate değer kelimeler ve anlamları. Bir kez göz at, sonra sürekli kesintiye uğramadan oku.",
+    "lede": "Başka bir dilde okumak zor olmak zorunda değil. Scholan dikkat etmeye değer kelimeleri işaretler ve anlamını hemen o kelimenin arkasına koyar. Bir kez anlamlarla okuyun, kapatın, yeniden okuyun.",
     "cardA": {
       "label": "Français · sayfa 12",
       "pages": "324 sayfa",
@@ -1178,18 +1178,18 @@
     "steps": [
       {
         "n": "01",
-        "h": "Kitabını içe aktar",
-        "p": "Kendi EPUB veya PDF dosyan, her dilde. iPad'de kitabı Dosyalar'dan rafına sürükleyebilirsin."
+        "h": "Kitabınızı ekleyin",
+        "p": "EPUB, MOBI, AZW3 veya FB2 — her dilde."
       },
       {
         "n": "02",
-        "h": "Hazırlık analizini oluştur",
-        "p": "Fiyat metin uzunluğuna göre belirlenir, kalıcı olarak senin olur; emin değilsen önce önizlemeyi dene. Her sayfa kendi önizleme kelime listesiyle gelir — bir izlenim edinmek için göz gezdirmen yeterli."
+        "h": "Anlam kelimenin hemen ardında",
+        "p": "Uygulama değiştirmeden okumaya devam edin."
       },
       {
         "n": "03",
-        "h": "Okurken kelimelere dokun",
-        "p": "Anlamı ve telaffuzu için herhangi bir kelimeye dokun; daha önce gördüğün kelimeleri tanımak çok daha kolaydır."
+        "h": "Kapatın ve yeniden okuyun",
+        "p": "Kelimeler vurgulu kalır. Gerisi hatırlamakta."
       }
     ],
     "closing": "Amaç ezberlemek değil: tekrarlanan önizleme ve okuma, kelimeleri kendiliğinden tanıdık hâle getirir.",
