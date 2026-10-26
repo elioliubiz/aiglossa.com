@@ -69,6 +69,7 @@
         display:block;overflow:hidden}
   .drop b{display:block;color:var(--ink);font-size:12.5px;margin-bottom:2px;font-weight:600}
   .drop img{width:100%;max-height:120px;object-fit:cover;border-radius:8px;display:block;margin-bottom:8px}
+  .drop.over{border-color:var(--acc);background:rgba(255,122,26,.08)}
   .drop.has{border-style:solid;border-color:var(--line);padding:8px}
   .drop .rm{font-size:11px;color:var(--acc);margin-top:6px}
   .sect{margin-bottom:10px}
@@ -600,9 +601,7 @@
   }
 
   // ---- 图片 ----
-  $("file").addEventListener("change", function (e) {
-    var f = e.target.files && e.target.files[0];
-    if (!f) return;
+  function loadPhoto(f) {
     var reader = new FileReader();
     reader.onload = function () {
       var url = String(reader.result || "");
@@ -618,7 +617,51 @@
       };
     };
     reader.readAsDataURL(f);
+  }
+  function loadPhotoFromUrl(url) {
+    var img = new Image();
+    img.onload = function () { imagePayload = { data: url, mime: "image/url" }; };
+    img.onerror = function () {};
+    img.src = url;
+    $("drop").classList.add("has");
+    $("dropText").innerHTML = '<img id="prevImg" src="' + url + '" alt=""><span class="rm">Remover foto</span>';
+    $("dropText").onclick = function (ev) {
+      ev.preventDefault(); ev.stopPropagation();
+      imagePayload = null; $("drop").classList.remove("has"); $("dropText").textContent = "Arraste ou escolha uma foto<br>a letra vai citar o que há nela";
+      $("dropText").onclick = null; $("file").value = "";
+    };
+  }
+  $("file").addEventListener("change", function (e) {
+    var f = e.target.files && e.target.files[0];
+    if (f) loadPhoto(f);
   });
+
+  // ---- 拖放：必须在 drop 区域上 preventDefault，否则浏览器会直接打开图片 ----
+  ["dragenter", "dragover"].forEach(function (ev) {
+    $("drop").addEventListener(ev, function (e) {
+      e.preventDefault(); e.stopPropagation();
+      $("drop").classList.add("over");
+    });
+  });
+  ["dragleave", "dragend"].forEach(function (ev) {
+    $("drop").addEventListener(ev, function (e) {
+      e.preventDefault(); e.stopPropagation();
+      $("drop").classList.remove("over");
+    });
+  });
+  $("drop").addEventListener("drop", function (e) {
+    e.preventDefault(); e.stopPropagation();
+    $("drop").classList.remove("over");
+    var dt = e.dataTransfer;
+    var f = dt && dt.files && dt.files[0];
+    if (f) { loadPhoto(f); return; }
+    var url = dt && dt.getData && dt.getData("text/uri-list");
+    if (url) { loadPhotoFromUrl(url); }
+  });
+  // 落在页面其它地方时也不要让浏览器接管
+  window.addEventListener("dragover", function (e) { e.preventDefault(); });
+  window.addEventListener("drop", function (e) { e.preventDefault(); });
+
 
   // ---- 启动 ----
   $("go").addEventListener("click", generate);
