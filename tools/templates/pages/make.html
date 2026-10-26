@@ -917,7 +917,7 @@
 
   // ---- 生成 ----
   function generate() {
-    if (!token()) { location.href = "account.html"; return; }
+    if (!token()) { location.href = "../account.html"; return; }
     $("go").disabled = true;
     msg(UI.generating);
     var body = { params: values };
@@ -949,7 +949,7 @@
   }
 
   function saveRecipe() {
-    if (!token()) { location.href = "account.html"; return; }
+    if (!token()) { location.href = "../account.html"; return; }
     var name = window.prompt(UI.recipe_name, UI.my_track);
     if (!name) return;
     call("/ai/music/recipes/save", { name: name, params: values }, true).then(function (d) {
