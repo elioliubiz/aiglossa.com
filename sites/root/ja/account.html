@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr" data-default-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>サインイン — aiglossa tools</title>
+<meta name="description" content="aiglossa tools にサインインすると、クレジットの確認と生成した曲のダウンロードができます。">
+<link rel="canonical" href="https://aiglossa.com/ja/account.html">
+<link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/account.html">
+<link rel="alternate" hreflang="de" href="https://aiglossa.com/de/account.html">
+<link rel="alternate" hreflang="en" href="https://aiglossa.com/en/account.html">
+<link rel="alternate" hreflang="es" href="https://aiglossa.com/es/account.html">
+<link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/account.html">
+<link rel="alternate" hreflang="id" href="https://aiglossa.com/id/account.html">
+<link rel="alternate" hreflang="it" href="https://aiglossa.com/it/account.html">
+<link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/account.html">
+<link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/account.html">
+<link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/account.html">
+<link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/account.html">
+<link rel="alternate" hreflang="th" href="https://aiglossa.com/th/account.html">
+<link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/account.html">
+<link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/account.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/account.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/account.html">
+<link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/account.html">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#08080a">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  :root{--bg:#08080a;--ink:#f4f2ee;--mut:#8b8b96;--line:rgba(255,255,255,.12);--acc:#ff7a1a}
+  body{background:var(--bg);color:var(--ink);margin:0;min-height:100vh;
+       font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif}
+  .glow{position:fixed;inset:0;pointer-events:none;
+        background:radial-gradient(60rem 40rem at 50% -12%,rgba(255,122,26,.16),transparent 65%)}
+  .wrap{position:relative;width:min(560px,92vw);margin:0 auto;padding:56px 0 80px}
+  .brand{display:flex;align-items:center;gap:9px;color:var(--mut);font-size:11px;
+         letter-spacing:.22em;text-transform:uppercase;margin-bottom:26px}
+  .brand i{width:8px;height:8px;border-radius:50%;background:var(--acc)}
+  h1{margin:0 0 4px;font-size:24px;letter-spacing:-.02em}
+  .email{color:var(--mut);font-size:13px;margin:0 0 26px}
+  .card{border:1px solid var(--line);border-radius:16px;padding:22px;background:rgba(255,255,255,.03);
+        margin-bottom:16px}
+  .balance{display:flex;align-items:baseline;gap:10px}
+  .balance b{font-size:40px;letter-spacing:-.02em}
+  .balance span{color:var(--mut);font-size:13px}
+  .note{color:var(--mut);font-size:12px;margin:8px 0 0}
+  .row{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+  .btn{flex:1;min-width:140px;padding:12px 16px;border-radius:10px;border:1px solid var(--line);
+       background:rgba(255,255,255,.04);color:var(--ink);font:inherit;font-size:13.5px;
+       text-decoration:none;text-align:center;cursor:pointer}
+  .btn.primary{background:var(--acc);color:#101114;border-color:transparent;font-weight:600}
+  h2{margin:0 0 12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut)}
+  .kv{display:flex;justify-content:space-between;gap:12px;font-size:13.5px;padding:7px 0}
+  .kv span:last-child{color:var(--mut)}
+  .danger{margin-top:22px;font-size:12px}
+  .danger a{color:#ff9b9b;text-decoration:none}
+  .hidden{display:none}
+  input{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);
+        background:rgba(255,255,255,.04);color:var(--ink);font:inherit;font-size:14px;margin-bottom:10px}
+  input:focus{outline:none;border-color:var(--acc)}
+  .msg{min-height:16px;font-size:12px;color:var(--mut);margin-top:8px}
+  .msg.err{color:#ff9b9b}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<div class="wrap">
+  <div class="brand"><i></i>aiglossa</div>
+
+  <div id="signedOut" class="hidden">
+    <h1>サインイン</h1>
+    <p class="email">パスワードは不要です。Google か、メールで届く6桁コードを使います。</p>
+    <a class="btn primary" href="/ja/login.html">ログイン</a>
+  </div>
+
+  <div id="signedIn" class="hidden">
+    <h1>クレジット</h1>
+    <p class="email" id="who"></p>
+
+    <div class="card">
+      <div class="balance"><b id="bal">–</b><span>クレジット</span></div>
+      <p class="note">クレジットは aiglossa のすべての製品で使えます。</p>
+      <div class="row">
+        <a class="btn primary" href="https://tools.aiglossa.com/ja/music/">曲を作る →</a>
+        <a class="btn" href="/ja/pricing.html">クレジットを購入 →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>ログイン方法</h2>
+      <div class="kv"><span>メールアドレス</span><span id="methodEmail"></span></div>
+      <div class="kv"><span>パスワードを設定</span><span id="pwState">パスワード未設定。現在はコードか Google でログインします。</span></div>
+      <div id="pwForm" class="hidden">
+        <input id="pw1" type="password" placeholder="パスワードを設定" autocomplete="new-password">
+        <input id="pw2" type="password" placeholder="パスワードを設定" autocomplete="new-password">
+        <button class="btn primary" id="pwSave" type="button">パスワードを設定</button>
+        <p class="msg" id="pwMsg"></p>
+      </div>
+      <div class="row">
+        <button class="btn" id="pwOpen" type="button">パスワードを設定</button>
+        <button class="btn" id="out" type="button">サインアウト</button>
+      </div>
+    </div>
+
+    <p class="danger"><a href="https://aiglossa.com/ja/protocol/delete-account.html">アカウント削除</a></p>
+  </div>
+</div>
+
+<script>
+(function () {
+  var API = "https://api.aiglossa.com";
+  var LANG = document.documentElement.lang || "en";
+  var $ = function (id) { return document.getElementById(id); };
+  function call(path, body, auth) {
+    var headers = { "Content-Type": "application/json", "X-Client": "web" };
+    var payload = Object.assign({ app_key: "tools", device: device(), timestamp: Math.floor(Date.now() / 1000) }, body || {});
+    return fetch(API + path, {
+      method: "POST", credentials: "include", headers: headers, body: JSON.stringify(payload)
+    }).then(function (r) { return r.json(); });
+  }
+  function device() {
+    var v = localStorage.getItem("aig_device");
+    if (!v) { v = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())); localStorage.setItem("aig_device", v); }
+    return v;
+  }
+  function show(inIn) {
+    $("signedIn").classList.toggle("hidden", !inIn);
+    $("signedOut").classList.toggle("hidden", inIn);
+  }
+  call("/ai/music/credits", {}, true).then(function (d) {
+    if (d.code !== 200) { show(false); return; }
+    show(true);
+    var u = (d.data && d.data.user) || {};
+    $("who").textContent = u.email || u.nickname || "";
+    $("methodEmail").textContent = u.email || "—";
+    $("bal").textContent = Math.round((d.data.balance || 0) / 100);
+    if (d.data.has_password) {
+      $("pwState").textContent = "パスワード設定済み";
+      $("pwOpen").classList.add("hidden");
+    }
+  }).catch(function () { show(false); });
+
+  $("pwOpen") && $("pwOpen").addEventListener("click", function () { $("pwForm").classList.remove("hidden"); });
+  $("pwSave") && $("pwSave").addEventListener("click", function () {
+    var a = $("pw1").value, b = $("pw2").value;
+    if (a.length < 8) { $("pwMsg").textContent = "min 8"; $("pwMsg").className = "msg err"; return; }
+    if (a !== b) { $("pwMsg").textContent = "mismatch"; $("pwMsg").className = "msg err"; return; }
+    call("/auth/password/set", { password: a }, true).then(function (r) {
+      if (r.code !== 200) { $("pwMsg").textContent = r.msg || "error"; $("pwMsg").className = "msg err"; return; }
+      $("pwForm").classList.add("hidden"); $("pwState").textContent = "パスワード設定済み"; $("pwOpen").classList.add("hidden");
+    });
+  });
+  $("out") && $("out").addEventListener("click", function () {
+    call("/auth/logout", {}, true).then(function () { location.reload(); });
+  });
+})();
+</script>
+</body>
+</html>

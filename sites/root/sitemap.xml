@@ -1601,4 +1601,644 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/protocol/delete-account.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/protocol/delete-account.html"/>
   </url>
+  <url>
+    <loc>https://aiglossa.com/ar/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/de/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/en/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/es/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/fr/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/id/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/it/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/ja/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/ko/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/pt/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/ru/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/th/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/tr/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/vi/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/zh-Hans/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/zh-Hant/webaccount.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webaccount.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webaccount.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/ar/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/de/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/en/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/es/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/fr/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/id/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/it/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/ja/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/ko/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/pt/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/ru/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/th/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/tr/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/vi/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/zh-Hans/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/zh-Hant/webpricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/webpricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/webpricing.html"/>
+  </url>
 </urlset>

@@ -3,6 +3,33 @@
   "cleanUrls": false,
   "redirects": [
     {
+      "source": "/:lang/pricing.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
+      "destination": "https://aiglossa.com/:lang/pricing.html",
+      "permanent": true
+    },
+    {
+      "source": "/:lang/account.html",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
+      "destination": "https://aiglossa.com/:lang/account.html",
+      "permanent": true
+    },
+    {
+      "source": "/login.html",
+      "destination": "/en/login.html",
+      "permanent": true
+    },
+    {
       "source": "/:lang/make.html",
       "has": [
         {

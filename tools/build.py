@@ -49,6 +49,8 @@ PAGES = {
     "brand": ("brand.html", "brand", ""),
     # 平台登录页（主站）：/ {lang}/login.html
     "login": ("pages/login.html", "ui", "login.html"),
+    "webaccount": ("pages/account-root.html", "ui", "account.html"),
+    "webpricing": ("pages/pricing-root.html", "ui", "pricing.html"),
     "marketing": ("marketing.html", "marketing", ""),
     "support": ("support.html", "support", "support.html"),
     "tools": ("tools.html", "tools", ""),
@@ -622,6 +624,31 @@ def main() -> int:
                     }
 
                 values_builder = legal_values
+            elif page == "webpricing":
+                def webpricing_values(lang: str, base: str, source=source) -> dict[str, str]:
+                    copy = dict(source[lang]["pricing"])
+                    copy["platform_note"] = source[lang]["account"]["platform_note"]
+                    out = {k: esc(v) for k, v in copy.items() if isinstance(v, str)}
+                    out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    out["refund_note"] = esc(copy["refund_note"])
+                    out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
+                    out["legal_terms"] = esc(marketing[lang]["legal"]["terms"])
+                    out["lang_label"] = esc(marketing[lang]["langLabel"])
+                    out["current_name"] = esc(languages[lang]["name"])
+                    return out
+
+                values_builder = webpricing_values
+            elif page == "webaccount":
+                def webaccount_values(lang: str, base: str, source=source) -> dict[str, str]:
+                    copy = source[lang]["account"]
+                    out = {k: esc(v) for k, v in copy.items() if isinstance(v, str)}
+                    out["api_base"] = "https://api.aiglossa.com"
+                    out["login_href"] = f"/{lang}/login.html"
+                    out["music_href"] = f"https://tools.aiglossa.com/{lang}/music/"
+                    out["pricing_href"] = f"/{lang}/pricing.html"
+                    return out
+
+                values_builder = webaccount_values
             elif page == "login":
                 def login_values(lang: str, base: str, source=source) -> dict[str, str]:
                     copy = source[lang]["account"]

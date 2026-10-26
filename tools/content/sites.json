@@ -5,7 +5,9 @@
     "pages": [
       "brand",
       "login",
-      "protocol"
+      "protocol",
+      "webaccount",
+      "webpricing"
     ],
     "extra": [
       "inapp.html",
@@ -25,8 +27,6 @@
     "legal": false,
     "pages": [
       "tools",
-      "pricing",
-      "account",
       "refund",
       "acceptable-use",
       "music",

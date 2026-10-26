@@ -597,8 +597,8 @@
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
       <p class="note" style="display:block" id="acctLine">
         <span id="bal" style="color:var(--muted)"></span>
-        <a href="../account.html" id="acctLink" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">계정</a>
-        <a href="../pricing.html" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">크레딧 계산 방식 →</a>
+        <a href="https://aiglossa.com/ko/account.html" id="acctLink" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">계정</a>
+        <a href="https://aiglossa.com/ko/pricing.html" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">크레딧 계산 방식 →</a>
         <a href="../guides/" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">가이드 →</a>
       </p>
     </div>
@@ -670,7 +670,7 @@
     var headers = { "Content-Type": "application/json", "X-Client": "web" };
     if (auth) headers["Authorization"] = "Bearer " + token();
     var payload = Object.assign({ app_key: "tools", device: device(), timestamp: Math.floor(Date.now() / 1000) }, body || {});
-    return fetch(API + path, { method: "POST", headers: headers, body: JSON.stringify(payload) }).then(function (r) { return r.json(); });
+    return fetch(API + path, { method: "POST", credentials: "include", headers: headers, body: JSON.stringify(payload) }).then(function (r) { return r.json(); });
   }
   function msg(t, kind) { var el = $("msg"); el.textContent = t || ""; el.className = "msg" + (kind ? " " + kind : ""); }
 
@@ -833,6 +833,51 @@
     else if (same && audio.paused) { audio.play().catch(function () {}); }
     else { audio.dataset.src = src; audio.src = src; audio.play().catch(function () {}); }
     syncPlayer();
+  }
+
+  // 会话是否存在（cookie 方案下无法本地判断，用一次轻量请求确认）
+  var sessionOk = false;
+  function checkSession() {
+    return call("/ai/music/credits", {}, true).then(function (d) {
+      sessionOk = d.code === 200;
+      if (sessionOk && d.data) {
+        $("bal").textContent = UI.balance + " " + Math.round(d.data.balance / 100) + " " + UI.credits;
+      }
+      return sessionOk;
+    }).catch(function () { sessionOk = false; return false; });
+  }
+
+  // 登录前保存草稿（参数 + 压缩照片），回来恢复；不自动生成
+  function saveDraft() {
+    try {
+      var d = { params: values, mode: (typeof mode === "string" ? mode : "photo"), ts: Date.now() };
+      if (imagePayload && imagePayload.data) {
+        var img = (document.getElementById("prevImg") || {}).src || "";
+        if (img.length < 900000) d.img = img;
+      }
+      sessionStorage.setItem("aig_draft", JSON.stringify(d));
+    } catch (e) {}
+  }
+  function restoreDraft() {
+    var raw = sessionStorage.getItem("aig_draft");
+    if (!raw) return;
+    sessionStorage.removeItem("aig_draft");
+    try {
+      var d = JSON.parse(raw);
+      if (d.params) Object.keys(d.params).forEach(function (k) { if (values[k] !== undefined) values[k] = d.params[k]; });
+      if (d.mode) setMode(d.mode);
+      if (d.img) {
+        imagePayload = { data: d.img.slice(d.img.indexOf(",") + 1), mime: "image/jpeg" };
+        $("drop").classList.add("has");
+        $("dropText").innerHTML = '<img id="prevImg" src="' + d.img + '" alt=""><span class="rm">사진 제거</span>';
+      }
+    } catch (e) {}
+  }
+
+  function needLogin() {
+    saveDraft();
+    var back = location.origin + location.pathname + location.search;
+    location.href = "https://aiglossa.com/" + LANG + "/login.html?next=" + encodeURIComponent(back);
   }
 
   function select(c) {
@@ -1071,7 +1116,7 @@
 
   // ---- 生成 ----
   function generate() {
-    if (!token()) { location.href = "../account.html"; return; }
+    if (!sessionOk) { needLogin(); return; }
     $("go").disabled = true;
     msg(UI.generating);
     var body = { params: values };
@@ -1105,7 +1150,7 @@
   }
 
   function saveRecipe() {
-    if (!token()) { location.href = "../account.html"; return; }
+    if (!sessionOk) { needLogin(); return; }
     var name = window.prompt(UI.recipe_name, UI.my_track);
     if (!name) return;
     call("/ai/music/recipes/save", { name: name, params: values }, true).then(function (d) {
@@ -1262,14 +1307,7 @@
 
   // ---- 启动 ----
   $("go").addEventListener("click", generate);
-  if (token()) {
-    call("/ai/music/credits", {}, true).then(function (d) {
-      if (d.code === 200 && d.data) {
-        $("bal").textContent = UI.balance + " " + Math.round(d.data.balance / 100) + " " + UI.credits;
-      }
-    }).catch(function () {});
-  }
-  loadMine();
+  checkSession().then(function (ok) { if (ok) { loadMine(); restoreDraft(); } });
   loadShared();
   call("/ai/music/schema", {}, false).then(function (d) {
     if (d.code !== 200) { msg(UI.err_load, "err"); return; }
