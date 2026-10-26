@@ -14,6 +14,7 @@ import argparse
 import http.client
 import http.server
 import pathlib
+import socket
 import socketserver
 import ssl
 import urllib.parse
@@ -88,8 +89,17 @@ def main() -> None:
     def factory(*a, **kw):
         return Handler(*a, directory=site_dir, **kw)
 
-    socketserver.TCPServer.allow_reuse_address = True
-    with socketserver.TCPServer(("127.0.0.1", args.port), factory) as httpd:
+    # 同时监听 IPv6 与 IPv4：macOS 上 localhost 常解析到 ::1，
+    # 只绑 127.0.0.1 会导致 http://localhost:PORT 打不开。
+    class DualStack(socketserver.TCPServer):
+        address_family = socket.AF_INET6
+        allow_reuse_address = True
+
+        def server_bind(self):
+            self.socket.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_V6ONLY, 0)
+            super().server_bind()
+
+    with DualStack(("::", args.port), factory) as httpd:
         print(f"serving sites/{args.site} on http://localhost:{args.port}  (api → {UPSTREAM})")
         httpd.serve_forever()
 
