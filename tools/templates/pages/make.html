@@ -24,11 +24,10 @@
 <link rel="icon" href="{{prefix}}assets/favicon-tools.svg" sizes="any">
 <link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-tools.png">
 <link rel="manifest" href="{{prefix}}assets/manifest-tools.webmanifest">
-<link rel="stylesheet" href="{{prefix}}assets/site.css" />
 <link rel="stylesheet" href="{{prefix}}assets/theme.css" />
 <style>
   :root{
-    --bg:#0e0f11; --panel:#16181c; --ink:#f2f1ec; --mut:#92959c;
+    --bg:#0e0f11; --panel:#16181c; --ink:#f2f1ec; --mut:#92959c; --muted:#92959c;
     --line:rgba(242,241,236,.12); --acc:#ff7a1a;
     --on-bg:rgba(255,255,255,.22); --on-fg:#ffffff;
     --chip-on-bg:rgba(255,122,26,.18); --chip-on-fg:#ffd9bf;
@@ -576,7 +575,8 @@
     cursor:pointer;padding:0 2px}
   .prechip .x:hover{color:#fff}
   .go.flash{box-shadow:0 0 0 3px rgba(255,122,26,.35)}
-  .rail-foot{position:static;margin:14px 0 0;padding:0;background:none;border-top:0}
+  .rail-foot{position:static;margin:14px 0 0;padding:14px 16px 16px;background:var(--panel);
+             border-top:1px solid var(--line)}
     .only-desktop{display:none}
     .only-mobile{display:inline}
 
