@@ -322,6 +322,326 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/"/>
   </url>
   <url>
+    <loc>https://aiglossa.com/ar/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/de/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/en/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/es/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/fr/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/id/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/it/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/ja/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/ko/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/pt/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/ru/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/th/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/tr/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/vi/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/zh-Hans/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
+    <loc>https://aiglossa.com/zh-Hant/login.html</loc>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html"/>
+    <xhtml:link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html"/>
+    <xhtml:link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html"/>
+  </url>
+  <url>
     <loc>https://aiglossa.com/ar/protocol/privacy.html</loc>
     <xhtml:link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/protocol/privacy.html"/>
     <xhtml:link rel="alternate" hreflang="de" href="https://aiglossa.com/de/protocol/privacy.html"/>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt" dir="ltr" data-default-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entrar — aiglossa tools</title>
+<meta name="description" content="Entre na aiglossa tools para ver seus créditos e baixar a música gerada.">
+<link rel="canonical" href="https://aiglossa.com/pt/login.html">
+<link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/login.html">
+<link rel="alternate" hreflang="de" href="https://aiglossa.com/de/login.html">
+<link rel="alternate" hreflang="en" href="https://aiglossa.com/en/login.html">
+<link rel="alternate" hreflang="es" href="https://aiglossa.com/es/login.html">
+<link rel="alternate" hreflang="fr" href="https://aiglossa.com/fr/login.html">
+<link rel="alternate" hreflang="id" href="https://aiglossa.com/id/login.html">
+<link rel="alternate" hreflang="it" href="https://aiglossa.com/it/login.html">
+<link rel="alternate" hreflang="ja" href="https://aiglossa.com/ja/login.html">
+<link rel="alternate" hreflang="ko" href="https://aiglossa.com/ko/login.html">
+<link rel="alternate" hreflang="pt" href="https://aiglossa.com/pt/login.html">
+<link rel="alternate" hreflang="ru" href="https://aiglossa.com/ru/login.html">
+<link rel="alternate" hreflang="th" href="https://aiglossa.com/th/login.html">
+<link rel="alternate" hreflang="tr" href="https://aiglossa.com/tr/login.html">
+<link rel="alternate" hreflang="vi" href="https://aiglossa.com/vi/login.html">
+<link rel="alternate" hreflang="zh-Hans" href="https://aiglossa.com/zh-Hans/login.html">
+<link rel="alternate" hreflang="zh-Hant" href="https://aiglossa.com/zh-Hant/login.html">
+<link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/login.html">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#08080a">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+  :root{--bg:#08080a;--ink:#f4f2ee;--mut:#8b8b96;--line:rgba(255,255,255,.12);--acc:#ff7a1a}
+  body{background:var(--bg);color:var(--ink);min-height:100vh;display:grid;place-items:center;
+       font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;margin:0;overflow-x:hidden}
+  .glow{position:fixed;inset:0;pointer-events:none;
+        background:radial-gradient(60rem 40rem at 50% -10%,rgba(255,122,26,.18),transparent 65%)}
+  .card{position:relative;width:min(420px,92vw);padding:34px 30px 26px;border-radius:20px;
+        border:1px solid var(--line);background:rgba(255,255,255,.035)}
+  .brand{display:flex;align-items:center;gap:9px;color:var(--mut);font-size:11px;letter-spacing:.22em;
+         text-transform:uppercase;margin-bottom:22px}
+  .brand i{width:8px;height:8px;border-radius:50%;background:var(--acc);display:block}
+  h1{margin:0 0 8px;font-size:24px;letter-spacing:-.02em}
+  .sub{margin:0 0 22px;color:var(--mut);font-size:13.5px;line-height:1.6}
+  label{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
+  input{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);
+        background:rgba(255,255,255,.04);color:var(--ink);font:inherit;font-size:14px}
+  input:focus{outline:none;border-color:var(--acc)}
+  .btn{width:100%;margin-top:12px;padding:12px;border:0;border-radius:10px;background:var(--acc);
+       color:#101114;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+  .btn.ghost{background:rgba(255,255,255,.06);color:var(--ink);border:1px solid var(--line)}
+  .div{display:flex;align-items:center;gap:10px;margin:18px 0;color:var(--mut);font-size:11px}
+  .div::before,.div::after{content:"";flex:1;height:1px;background:var(--line)}
+  .msg{min-height:16px;font-size:12px;margin-top:10px;color:var(--mut)}
+  .msg.err{color:#ff9b9b}
+  .foot{margin-top:16px;font-size:11.5px;color:var(--mut);line-height:1.7}
+  .foot a{color:var(--ink)}
+  .hidden{display:none}
+</style>
+</head>
+<body>
+<div class="glow"></div>
+<form class="card" id="f">
+  <div class="brand"><i></i>aiglossa</div>
+  <h1>Entrar</h1>
+  <p class="sub">Sem senha: use o Google ou enviamos um código de 6 dígitos por e-mail.</p>
+
+  <button type="button" class="btn ghost" id="google">Continuar com Google</button>
+  <div class="div">ou use e-mail</div>
+
+  <label for="email">E-mail</label>
+  <input id="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+
+  <div id="codeWrap" class="hidden">
+    <label for="code" style="margin-top:12px">Código de 6 dígitos</label>
+    <input id="code" inputmode="numeric" maxlength="6" placeholder="123456" autocomplete="one-time-code">
+  </div>
+
+  <button class="btn" id="go" type="submit">Enviar código</button>
+  <p class="msg" id="msg"></p>
+  <p class="foot">Primeira vez? A conta é criada automaticamente.<br>Ao continuar você aceita nossos <a href="https://aiglossa.com/pt/protocol/term.html">Termos</a> · <a href="https://aiglossa.com/pt/protocol/privacy.html">Política de privacidade</a></p>
+</form>
+<script>
+(function () {
+  var API = "https://api.aiglossa.com";
+  var LANG = document.documentElement.lang || "en";
+  var $ = function (id) { return document.getElementById(id); };
+  var sent = false, email = "";
+  function msg(t, bad) { var m = $("msg"); m.textContent = t || ""; m.className = "msg" + (bad ? " err" : ""); }
+  function next() {
+    var q = new URLSearchParams(location.search).get("next");
+    if (q) return q;
+    return "https://tools.aiglossa.com/" + LANG + "/music/";
+  }
+  function call(path, body) {
+    var payload = Object.assign({ app_key: "tools", device: device(), timestamp: Math.floor(Date.now() / 1000) }, body || {});
+    return fetch(API + path, {
+      method: "POST", credentials: "include",
+      headers: { "Content-Type": "application/json", "X-Client": "web" },
+      body: JSON.stringify(payload)
+    }).then(function (r) { return r.json(); });
+  }
+  function device() {
+    var v = localStorage.getItem("aig_device");
+    if (!v) { v = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())); localStorage.setItem("aig_device", v); }
+    return v;
+  }
+  $("f").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!sent) {
+      email = $("email").value.trim();
+      if (!email) return;
+      msg("");
+      call("/auth/code/send", { account: email, purpose: "login" }).then(function (d) {
+        if (d.code !== 200) { msg(d.msg || "Failed", true); return; }
+        sent = true; $("codeWrap").classList.remove("hidden"); $("go").textContent = "Entrar"; $("code").focus();
+      }).catch(function () { msg("Network error", true); });
+      return;
+    }
+    call("/auth/login", { provider: "code", account: email, code: $("code").value.trim() }).then(function (d) {
+      if (d.code !== 200) { msg(d.msg || "Failed", true); return; }
+      location.href = next();
+    }).catch(function () { msg("Network error", true); });
+  });
+  $("google").addEventListener("click", function () {
+    location.href = API + "/auth/google/start?app_key=tools&next=" + encodeURIComponent(next());
+  });
+})();
+</script>
+</body>
+</html>

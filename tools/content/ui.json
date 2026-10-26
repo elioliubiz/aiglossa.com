@@ -48,7 +48,9 @@
       "paid_late": "Still processing — refresh this page in a minute.",
       "show_h2": "Sign in to keep your credits.",
       "show_p": "Credits are shared across every tool and never expire. Signing in is what ties a purchase to your account — nothing else is stored about you.",
-      "proof_k": "Made here · English · 0:30"
+      "proof_k": "Made here · English · 0:30",
+      "google": "Continue with Google",
+      "signin": "Sign in"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -130,7 +132,9 @@
       "share_link": "Share link",
       "dl_audio": "Audio file",
       "copied": "Copied",
-      "shared_note": "You are listening to a shared track — make your own below"
+      "shared_note": "You are listening to a shared track — make your own below",
+      "my_account": "Account",
+      "balance": "Balance"
     }
   },
   "ja": {
@@ -182,7 +186,9 @@
       "paid_late": "処理中です — 1分後に再読み込みしてください。",
       "show_h2": "クレジットを残すためにサインイン。",
       "show_p": "クレジットは全ツール共通で期限なし。サインインは購入をアカウントに結びつけるためだけのものです。それ以外は保存しません。",
-      "proof_k": "ここで制作 · 英語 · 0:30"
+      "proof_k": "ここで制作 · 英語 · 0:30",
+      "google": "Google で続行",
+      "signin": "ログイン"
     },
     "make": {
       "title": "AI音楽生成 — 写真から曲へ、長さはぴったり",
@@ -252,7 +258,9 @@
       "share_link": "リンクを共有",
       "dl_audio": "音声を保存",
       "copied": "コピーしました",
-      "shared_note": "共有された曲を再生中。下から自分用に作れます"
+      "shared_note": "共有された曲を再生中。下から自分用に作れます",
+      "my_account": "アカウント",
+      "balance": "残高"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -316,7 +324,9 @@
       "paid_late": "처리 중입니다 — 1분 후 새로고침하세요.",
       "show_h2": "크레딧을 유지하려면 로그인하세요.",
       "show_p": "크레딧은 모든 도구에서 공용이며 만료되지 않습니다. 로그인은 구매를 계정에 연결하기 위한 것일 뿐, 다른 정보는 저장하지 않습니다.",
-      "proof_k": "여기서 제작 · 영어 · 0:30"
+      "proof_k": "여기서 제작 · 영어 · 0:30",
+      "google": "Google로 계속",
+      "signin": "로그인"
     },
     "make": {
       "title": "AI 음악 생성 — 사진에서 곡으로, 정확한 길이",
@@ -386,7 +396,9 @@
       "share_link": "링크 공유",
       "dl_audio": "오디오 저장",
       "copied": "복사됨",
-      "shared_note": "공유된 곡을 듣는 중입니다. 아래에서 직접 만들 수 있어요"
+      "shared_note": "공유된 곡을 듣는 중입니다. 아래에서 직접 만들 수 있어요",
+      "my_account": "계정",
+      "balance": "잔액"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -450,7 +462,9 @@
       "paid_late": "仍在处理中——请一分钟后再刷新。",
       "show_h2": "登录以保留你的额度。",
       "show_p": "额度在所有工具间通用且永不过期。登录只是把购买绑定到你的账号，除此之外不保存任何信息。",
-      "proof_k": "此处生成 · 英文 · 0:30"
+      "proof_k": "此处生成 · 英文 · 0:30",
+      "google": "使用 Google 继续",
+      "signin": "登录"
     },
     "make": {
       "title": "AI 音乐生成 — 照片变歌曲，长度精确",
@@ -520,7 +534,9 @@
       "share_link": "分享链接",
       "dl_audio": "下载音频",
       "copied": "已复制",
-      "shared_note": "你正在听一首分享的曲子，下面可以做你自己的"
+      "shared_note": "你正在听一首分享的曲子，下面可以做你自己的",
+      "my_account": "账户",
+      "balance": "余额"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -584,7 +600,9 @@
       "paid_late": "仍在處理中——請一分鐘後再重新整理。",
       "show_h2": "登入以保留你的額度。",
       "show_p": "額度在所有工具間通用且永不過期。登入只是把購買綁定到你的帳號，除此之外不保存任何資訊。",
-      "proof_k": "此處生成 · 英文 · 0:30"
+      "proof_k": "此處生成 · 英文 · 0:30",
+      "google": "使用 Google 繼續",
+      "signin": "登入"
     },
     "make": {
       "title": "AI 音樂生成 — 照片變歌曲，長度精確",
@@ -654,7 +672,9 @@
       "share_link": "分享連結",
       "dl_audio": "下載音訊",
       "copied": "已複製",
-      "shared_note": "你正在聽一首分享的曲子，下面可以做你自己的"
+      "shared_note": "你正在聽一首分享的曲子，下面可以做你自己的",
+      "my_account": "帳戶",
+      "balance": "餘額"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -718,7 +738,9 @@
       "paid_late": "Aún procesando: recarga esta página en un minuto.",
       "show_h2": "Inicia sesión para conservar tus créditos.",
       "show_p": "Los créditos son comunes a todas las herramientas y no caducan. Iniciar sesión solo vincula tu compra a tu cuenta; no guardamos nada más sobre ti.",
-      "proof_k": "Hecho aquí · inglés · 0:30"
+      "proof_k": "Hecho aquí · inglés · 0:30",
+      "google": "Continuar con Google",
+      "signin": "Entrar"
     },
     "make": {
       "title": "Generador de música con IA — de foto a canción, duración exacta",
@@ -788,7 +810,9 @@
       "share_link": "Compartir enlace",
       "dl_audio": "Descargar audio",
       "copied": "Copiado",
-      "shared_note": "Escuchas una pista compartida: crea la tuya abajo"
+      "shared_note": "Escuchas una pista compartida: crea la tuya abajo",
+      "my_account": "Cuenta",
+      "balance": "Saldo"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -852,7 +876,9 @@
       "paid_late": "Traitement en cours : rechargez cette page dans une minute.",
       "show_h2": "Connectez-vous pour conserver vos crédits.",
       "show_p": "Les crédits sont communs à tous les outils et n'expirent pas. La connexion sert uniquement à rattacher votre achat à votre compte ; rien d'autre n'est conservé.",
-      "proof_k": "Créé ici · anglais · 0:30"
+      "proof_k": "Créé ici · anglais · 0:30",
+      "google": "Continuer avec Google",
+      "signin": "Se connecter"
     },
     "make": {
       "title": "Générateur de musique IA — de la photo au morceau, durée exacte",
@@ -922,7 +948,9 @@
       "share_link": "Partager le lien",
       "dl_audio": "Télécharger l'audio",
       "copied": "Copié",
-      "shared_note": "Vous écoutez un morceau partagé — créez le vôtre ci-dessous"
+      "shared_note": "Vous écoutez un morceau partagé — créez le vôtre ci-dessous",
+      "my_account": "Compte",
+      "balance": "Solde"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -986,7 +1014,9 @@
       "paid_late": "Wird noch verarbeitet – lade die Seite in einer Minute neu.",
       "show_h2": "Melde dich an, um dein Guthaben zu behalten.",
       "show_p": "Credits gelten für alle Tools und verfallen nicht. Die Anmeldung verknüpft nur deinen Kauf mit deinem Konto – mehr wird nicht gespeichert.",
-      "proof_k": "Hier erzeugt · Englisch · 0:30"
+      "proof_k": "Hier erzeugt · Englisch · 0:30",
+      "google": "Weiter mit Google",
+      "signin": "Anmelden"
     },
     "make": {
       "title": "KI-Musikgenerator — vom Foto zum Song, exakte Länge",
@@ -1056,7 +1086,9 @@
       "share_link": "Link teilen",
       "dl_audio": "Audio laden",
       "copied": "Kopiert",
-      "shared_note": "Du hörst einen geteilten Track — erstelle unten deinen eigenen"
+      "shared_note": "Du hörst einen geteilten Track — erstelle unten deinen eigenen",
+      "my_account": "Konto",
+      "balance": "Guthaben"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1120,7 +1152,9 @@
       "paid_late": "Ainda processando — recarregue a página em um minuto.",
       "show_h2": "Entre para manter seus créditos.",
       "show_p": "Os créditos são compartilhados entre todas as ferramentas e não expiram. Entrar serve apenas para vincular a compra à sua conta; nada mais é armazenado.",
-      "proof_k": "Feito aqui · inglês · 0:30"
+      "proof_k": "Feito aqui · inglês · 0:30",
+      "google": "Continuar com Google",
+      "signin": "Entrar"
     },
     "make": {
       "title": "Gerador de música com IA — de foto a música, duração exata",
@@ -1190,7 +1224,9 @@
       "share_link": "Compartilhar link",
       "dl_audio": "Baixar áudio",
       "copied": "Copiado",
-      "shared_note": "Você está ouvindo uma faixa compartilhada — crie a sua abaixo"
+      "shared_note": "Você está ouvindo uma faixa compartilhada — crie a sua abaixo",
+      "my_account": "Conta",
+      "balance": "Saldo"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1254,7 +1290,9 @@
       "paid_late": "Ancora in elaborazione: ricarica la pagina tra un minuto.",
       "show_h2": "Accedi per conservare i tuoi crediti.",
       "show_p": "I crediti sono condivisi tra tutti gli strumenti e non scadono. L'accesso serve solo a collegare l'acquisto al tuo account; nulla d'altro viene memorizzato.",
-      "proof_k": "Creato qui · inglese · 0:30"
+      "proof_k": "Creato qui · inglese · 0:30",
+      "google": "Continua con Google",
+      "signin": "Accedi"
     },
     "make": {
       "title": "Generatore di musica IA — da foto a brano, durata esatta",
@@ -1324,7 +1362,9 @@
       "share_link": "Condividi link",
       "dl_audio": "Scarica audio",
       "copied": "Copiato",
-      "shared_note": "Stai ascoltando un brano condiviso: crea il tuo qui sotto"
+      "shared_note": "Stai ascoltando un brano condiviso: crea il tuo qui sotto",
+      "my_account": "Account",
+      "balance": "Saldo"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1388,7 +1428,9 @@
       "paid_late": "Ещё обрабатывается — обновите страницу через минуту.",
       "show_h2": "Войдите, чтобы сохранить кредиты.",
       "show_p": "Кредиты общие для всех инструментов и не сгорают. Вход нужен только чтобы привязать покупку к аккаунту — больше мы ничего не храним.",
-      "proof_k": "Создано здесь · английский · 0:30"
+      "proof_k": "Создано здесь · английский · 0:30",
+      "google": "Продолжить с Google",
+      "signin": "Войти"
     },
     "make": {
       "title": "Генератор музыки на ИИ — из фото в трек, точная длина",
@@ -1458,7 +1500,9 @@
       "share_link": "Поделиться ссылкой",
       "dl_audio": "Скачать аудио",
       "copied": "Скопировано",
-      "shared_note": "Вы слушаете трек, которым поделились — создайте свой ниже"
+      "shared_note": "Вы слушаете трек, которым поделились — создайте свой ниже",
+      "my_account": "Аккаунт",
+      "balance": "Баланс"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1522,7 +1566,9 @@
       "paid_late": "لا يزال قيد المعالجة — أعد تحميل الصفحة بعد دقيقة.",
       "show_h2": "سجّل الدخول للاحتفاظ بأرصدتك.",
       "show_p": "الأرصدة مشتركة بين كل الأدوات ولا تنتهي. تسجيل الدخول يربط عملية الشراء بحسابك فقط، ولا نخزّن شيئًا آخر عنك.",
-      "proof_k": "أُنشئ هنا · الإنجليزية · 0:30"
+      "proof_k": "أُنشئ هنا · الإنجليزية · 0:30",
+      "google": "المتابعة عبر Google",
+      "signin": "تسجيل الدخول"
     },
     "make": {
       "title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق",
@@ -1592,7 +1638,9 @@
       "share_link": "مشاركة الرابط",
       "dl_audio": "تنزيل الصوت",
       "copied": "تم النسخ",
-      "shared_note": "تستمع إلى مقطع تمت مشاركته — أنشئ مقطعك أدناه"
+      "shared_note": "تستمع إلى مقطع تمت مشاركته — أنشئ مقطعك أدناه",
+      "my_account": "الحساب",
+      "balance": "الرصيد"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1656,7 +1704,9 @@
       "paid_late": "ยังดำเนินการอยู่ — รีเฟรชหน้านี้ในอีกหนึ่งนาที",
       "show_h2": "เข้าสู่ระบบเพื่อเก็บเครดิตของคุณ",
       "show_p": "เครดิตใช้ร่วมกันทุกเครื่องมือและไม่หมดอายุ การเข้าสู่ระบบมีไว้ผูกการซื้อกับบัญชีของคุณเท่านั้น ไม่ได้เก็บข้อมูลอื่น",
-      "proof_k": "สร้างที่นี่ · อังกฤษ · 0:30"
+      "proof_k": "สร้างที่นี่ · อังกฤษ · 0:30",
+      "google": "ดำเนินการต่อด้วย Google",
+      "signin": "เข้าสู่ระบบ"
     },
     "make": {
       "title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ",
@@ -1726,7 +1776,9 @@
       "share_link": "แชร์ลิงก์",
       "dl_audio": "ดาวน์โหลดเสียง",
       "copied": "คัดลอกแล้ว",
-      "shared_note": "คุณกำลังฟังเพลงที่แชร์มา สร้างของคุณเองด้านล่าง"
+      "shared_note": "คุณกำลังฟังเพลงที่แชร์มา สร้างของคุณเองด้านล่าง",
+      "my_account": "บัญชี",
+      "balance": "คงเหลือ"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1790,7 +1842,9 @@
       "paid_late": "Vẫn đang xử lý — tải lại trang sau một phút.",
       "show_h2": "Đăng nhập để giữ tín dụng.",
       "show_p": "Tín dụng dùng chung cho mọi công cụ và không hết hạn. Đăng nhập chỉ để gắn giao dịch với tài khoản của bạn — không lưu gì khác.",
-      "proof_k": "Tạo tại đây · tiếng Anh · 0:30"
+      "proof_k": "Tạo tại đây · tiếng Anh · 0:30",
+      "google": "Tiếp tục với Google",
+      "signin": "Đăng nhập"
     },
     "make": {
       "title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác",
@@ -1860,7 +1914,9 @@
       "share_link": "Chia sẻ liên kết",
       "dl_audio": "Tải âm thanh",
       "copied": "Đã sao chép",
-      "shared_note": "Bạn đang nghe bản nhạc được chia sẻ — tạo bản của bạn bên dưới"
+      "shared_note": "Bạn đang nghe bản nhạc được chia sẻ — tạo bản của bạn bên dưới",
+      "my_account": "Tài khoản",
+      "balance": "Số dư"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1924,7 +1980,9 @@
       "paid_late": "Masih diproses — muat ulang halaman ini dalam satu menit.",
       "show_h2": "Masuk untuk menyimpan kreditmu.",
       "show_p": "Kredit dipakai bersama di semua alat dan tidak kedaluwarsa. Masuk hanya untuk menautkan pembelian ke akunmu; tidak ada data lain yang disimpan.",
-      "proof_k": "Dibuat di sini · Inggris · 0:30"
+      "proof_k": "Dibuat di sini · Inggris · 0:30",
+      "google": "Lanjutkan dengan Google",
+      "signin": "Masuk"
     },
     "make": {
       "title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi",
@@ -1994,7 +2052,9 @@
       "share_link": "Bagikan tautan",
       "dl_audio": "Unduh audio",
       "copied": "Disalin",
-      "shared_note": "Anda mendengar trek yang dibagikan — buat milik Anda di bawah"
+      "shared_note": "Anda mendengar trek yang dibagikan — buat milik Anda di bawah",
+      "my_account": "Akun",
+      "balance": "Saldo"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2058,7 +2118,9 @@
       "paid_late": "Hâlâ işleniyor — bir dakika sonra sayfayı yenileyin.",
       "show_h2": "Kredilerinizi korumak için giriş yapın.",
       "show_p": "Krediler tüm araçlarda ortaktır ve süresi dolmaz. Giriş yalnızca satın alımı hesabınıza bağlar; başka hiçbir şey saklanmaz.",
-      "proof_k": "Burada üretildi · İngilizce · 0:30"
+      "proof_k": "Burada üretildi · İngilizce · 0:30",
+      "google": "Google ile devam et",
+      "signin": "Giriş yap"
     },
     "make": {
       "title": "AI Müzik Üretici — fotoğraftan şarkıya, tam uzunluk",
@@ -2128,7 +2190,9 @@
       "share_link": "Bağlantıyı paylaş",
       "dl_audio": "Sesi indir",
       "copied": "Kopyalandı",
-      "shared_note": "Paylaşılan bir parça dinliyorsunuz — aşağıda kendinizinkini yapın"
+      "shared_note": "Paylaşılan bir parça dinliyorsunuz — aşağıda kendinizinkini yapın",
+      "my_account": "Hesap",
+      "balance": "Bakiye"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
