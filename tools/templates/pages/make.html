@@ -505,9 +505,11 @@
     <div class="rail-foot">
       <button class="go" id="go" type="button">{{generate}}</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <p class="note" style="display:block">
-        <a href="../pricing.html" style="color:var(--mut);text-decoration:none">{{how_credits}}</a>
-        <a href="../guides/" style="color:var(--mut);text-decoration:none;margin-inline-start:14px">{{guides_link}}</a>
+      <p class="note" style="display:block" id="acctLine">
+        <span id="bal" style="color:var(--muted)"></span>
+        <a href="../account.html" id="acctLink" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">{{my_account}}</a>
+        <a href="../pricing.html" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">{{how_credits}}</a>
+        <a href="../guides/" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">{{guides_link}}</a>
       </p>
     </div>
   </aside>
@@ -1106,6 +1108,13 @@
 
   // ---- 启动 ----
   $("go").addEventListener("click", generate);
+  if (token()) {
+    call("/ai/music/credits", {}, true).then(function (d) {
+      if (d.code === 200 && d.data) {
+        $("bal").textContent = UI.balance + " " + d.data.balance + " " + UI.credits;
+      }
+    }).catch(function () {});
+  }
   loadMine();
   loadShared();
   call("/ai/music/schema", {}, false).then(function (d) {

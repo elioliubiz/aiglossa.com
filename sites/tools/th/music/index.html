@@ -521,9 +521,11 @@
     <div class="rail-foot">
       <button class="go" id="go" type="button">สร้างเพลง</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <p class="note" style="display:block">
-        <a href="../pricing.html" style="color:var(--mut);text-decoration:none">เครดิตคิดอย่างไร →</a>
-        <a href="../guides/" style="color:var(--mut);text-decoration:none;margin-inline-start:14px">คู่มือ →</a>
+      <p class="note" style="display:block" id="acctLine">
+        <span id="bal" style="color:var(--muted)"></span>
+        <a href="../account.html" id="acctLink" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">บัญชี</a>
+        <a href="../pricing.html" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">เครดิตคิดอย่างไร →</a>
+        <a href="../guides/" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">คู่มือ →</a>
       </p>
     </div>
   </aside>
@@ -577,7 +579,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ", "description": "เปลี่ยนรูปหรือคำอธิบายเป็นเพลงประกอบความยาว 30–90 วินาทีพอดี เนื้อเพลงเอ่ยถึงสิ่งที่อยู่ในภาพ พร้อมเสียงร้อง 10 ภาษาและลูปไร้รอยต่อ", "h1": "สร้างเพลง", "sub": "จากรูปหรือคำอธิบาย ความยาวแม่นยำ ลูปไร้รอยต่อ", "drop": "ลากรูปมาวางหรือเลือกไฟล์<br>เนื้อเพลงจะเอ่ยถึงสิ่งที่อยู่ในภาพ", "generate": "สร้างเพลง", "how_credits": "เครดิตคิดอย่างไร →", "grp_photo": "ฟังตัวอย่าง", "grp_recipe": "เริ่มจากงานที่ใช้", "download": "ดาวน์โหลด", "save_recipe": "บันทึกเป็นสูตร", "remove_photo": "ลบรูป", "photo_here": "รูปของคุณที่นี่", "note": "ทุกอย่างทางขวาสร้างที่นี่", "legal_aup": "การใช้งานที่ยอมรับได้", "legal_refund": "การคืนเงิน", "sign_in_first": "เข้าสู่ระบบเพื่อสร้าง", "generating": "กำลังสร้าง… ประมาณ 20 วินาที", "just_generated": "สร้างเสร็จเมื่อครู่", "your_track": "เพลงของคุณ", "from_recipe": "จากสูตรสำเร็จ", "from_photo": "สร้างจากรูป", "err_load": "โหลดตัวเลือกไม่สำเร็จ", "done_in": "เสร็จใน {n} วินาที", "gen_cost": "สร้าง · {n}", "err_gen": "สร้างไม่สำเร็จ", "my_track": "เพลงของฉัน", "err_net": "เครือข่ายขัดข้อง", "recipe_name": "ชื่อสูตร", "err_save": "บันทึกไม่สำเร็จ", "saved": "บันทึกแล้ว: {name}", "up_to": "สูงสุด {n}", "credits": "เครดิต", "guides_link": "คู่มือ →", "guides_title": "คู่มือ", "close": "ปิด", "loading": "กำลังโหลด…", "off": "ปิด", "loop_on": "ลูปไร้รอยต่อ", "buy_credits": "ซื้อเครดิต →", "desc_label": "คำอธิบาย (ไม่บังคับ)", "desc_ph": "บรรยายเพลงที่ต้องการ เช่น คาเฟ่วันฝนตก เปียโนเบา", "mode_photo": "รูปภาพ", "mode_text": "ข้อความ", "field_density": "ความแน่นของเรียบเรียง", "opt_sparse": "โปร่ง", "opt_medium": "ปานกลาง", "opt_full": "แน่น", "pro_title": "ตัวเลือกขั้นสูง", "grp_photo_sub": "รูป → เนื้อร้อง → เพลง", "grp_recipe_sub": "เลือกงานที่ใช้ แล้วค่าตั้งจะพร้อม", "recipe_names": {"short-form-cut": "مقطع قصير", "hook-sting": "جذب الافتتاح", "product-loop": "حلقة منتج", "podcast-bed": "خلفية بودكاست", "documentary-underscore": "خلفية وثائقية", "game-menu-loop": "حلقة قائمة", "calm-focus": "تركيز هادئ", "kids-learning": "تعليم الأطفال"}, "applied": "ใช้", "current_recipe": "พรีเซ็ตที่ใช้", "mine_title": "ผลงานของฉัน", "share_link": "แชร์ลิงก์", "dl_audio": "ดาวน์โหลดเสียง", "copied": "คัดลอกแล้ว", "shared_note": "คุณกำลังฟังเพลงที่แชร์มา สร้างของคุณเองด้านล่าง", "li1": "เพลง 30 วินาที = 45 เครดิต, 45 วินาที = 64, 60 วินาที = 85, 75 วินาที = 103, 90 วินาที = 120", "li2": "การสร้างที่ล้มเหลวจะคืนเครดิตอัตโนมัติ", "li3": "เครดิตไม่หมดอายุและใช้ได้กับทุกเครื่องมือ", "li4": "การชำระเงินดำเนินการโดย Creem ซึ่งเป็นผู้ค้าบนบันทึกของเรา", "li5": "เครดิตที่ยังไม่ใช้สามารถขอคืนได้ภายใน 14 วัน", "refund_link": "นโยบายการคืนเงิน"}</script>
+<script type="application/json" id="ui">{"title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ", "description": "เปลี่ยนรูปหรือคำอธิบายเป็นเพลงประกอบความยาว 30–90 วินาทีพอดี เนื้อเพลงเอ่ยถึงสิ่งที่อยู่ในภาพ พร้อมเสียงร้อง 10 ภาษาและลูปไร้รอยต่อ", "h1": "สร้างเพลง", "sub": "จากรูปหรือคำอธิบาย ความยาวแม่นยำ ลูปไร้รอยต่อ", "drop": "ลากรูปมาวางหรือเลือกไฟล์<br>เนื้อเพลงจะเอ่ยถึงสิ่งที่อยู่ในภาพ", "generate": "สร้างเพลง", "how_credits": "เครดิตคิดอย่างไร →", "grp_photo": "ฟังตัวอย่าง", "grp_recipe": "เริ่มจากงานที่ใช้", "download": "ดาวน์โหลด", "save_recipe": "บันทึกเป็นสูตร", "remove_photo": "ลบรูป", "photo_here": "รูปของคุณที่นี่", "note": "ทุกอย่างทางขวาสร้างที่นี่", "legal_aup": "การใช้งานที่ยอมรับได้", "legal_refund": "การคืนเงิน", "sign_in_first": "เข้าสู่ระบบเพื่อสร้าง", "generating": "กำลังสร้าง… ประมาณ 20 วินาที", "just_generated": "สร้างเสร็จเมื่อครู่", "your_track": "เพลงของคุณ", "from_recipe": "จากสูตรสำเร็จ", "from_photo": "สร้างจากรูป", "err_load": "โหลดตัวเลือกไม่สำเร็จ", "done_in": "เสร็จใน {n} วินาที", "gen_cost": "สร้าง · {n}", "err_gen": "สร้างไม่สำเร็จ", "my_track": "เพลงของฉัน", "err_net": "เครือข่ายขัดข้อง", "recipe_name": "ชื่อสูตร", "err_save": "บันทึกไม่สำเร็จ", "saved": "บันทึกแล้ว: {name}", "up_to": "สูงสุด {n}", "credits": "เครดิต", "guides_link": "คู่มือ →", "guides_title": "คู่มือ", "close": "ปิด", "loading": "กำลังโหลด…", "off": "ปิด", "loop_on": "ลูปไร้รอยต่อ", "buy_credits": "ซื้อเครดิต →", "desc_label": "คำอธิบาย (ไม่บังคับ)", "desc_ph": "บรรยายเพลงที่ต้องการ เช่น คาเฟ่วันฝนตก เปียโนเบา", "mode_photo": "รูปภาพ", "mode_text": "ข้อความ", "field_density": "ความแน่นของเรียบเรียง", "opt_sparse": "โปร่ง", "opt_medium": "ปานกลาง", "opt_full": "แน่น", "pro_title": "ตัวเลือกขั้นสูง", "grp_photo_sub": "รูป → เนื้อร้อง → เพลง", "grp_recipe_sub": "เลือกงานที่ใช้ แล้วค่าตั้งจะพร้อม", "recipe_names": {"short-form-cut": "مقطع قصير", "hook-sting": "جذب الافتتاح", "product-loop": "حلقة منتج", "podcast-bed": "خلفية بودكاست", "documentary-underscore": "خلفية وثائقية", "game-menu-loop": "حلقة قائمة", "calm-focus": "تركيز هادئ", "kids-learning": "تعليم الأطفال"}, "applied": "ใช้", "current_recipe": "พรีเซ็ตที่ใช้", "mine_title": "ผลงานของฉัน", "share_link": "แชร์ลิงก์", "dl_audio": "ดาวน์โหลดเสียง", "copied": "คัดลอกแล้ว", "shared_note": "คุณกำลังฟังเพลงที่แชร์มา สร้างของคุณเองด้านล่าง", "my_account": "บัญชี", "balance": "คงเหลือ", "li1": "เพลง 30 วินาที = 45 เครดิต, 45 วินาที = 64, 60 วินาที = 85, 75 วินาที = 103, 90 วินาที = 120", "li2": "การสร้างที่ล้มเหลวจะคืนเครดิตอัตโนมัติ", "li3": "เครดิตไม่หมดอายุและใช้ได้กับทุกเครื่องมือ", "li4": "การชำระเงินดำเนินการโดย Creem ซึ่งเป็นผู้ค้าบนบันทึกของเรา", "li5": "เครดิตที่ยังไม่ใช้สามารถขอคืนได้ภายใน 14 วัน", "refund_link": "นโยบายการคืนเงิน"}</script>
 <script>
 (function () {
   "use strict";
@@ -1122,6 +1124,13 @@
 
   // ---- 启动 ----
   $("go").addEventListener("click", generate);
+  if (token()) {
+    call("/ai/music/credits", {}, true).then(function (d) {
+      if (d.code === 200 && d.data) {
+        $("bal").textContent = UI.balance + " " + d.data.balance + " " + UI.credits;
+      }
+    }).catch(function () {});
+  }
   loadMine();
   loadShared();
   call("/ai/music/schema", {}, false).then(function (d) {

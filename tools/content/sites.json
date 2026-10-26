@@ -4,6 +4,7 @@
     "legal": true,
     "pages": [
       "brand",
+      "login",
       "protocol"
     ],
     "extra": [

@@ -521,9 +521,11 @@
     <div class="rail-foot">
       <button class="go" id="go" type="button">Buat lagu</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <p class="note" style="display:block">
-        <a href="../pricing.html" style="color:var(--mut);text-decoration:none">Cara kerja kredit →</a>
-        <a href="../guides/" style="color:var(--mut);text-decoration:none;margin-inline-start:14px">Panduan →</a>
+      <p class="note" style="display:block" id="acctLine">
+        <span id="bal" style="color:var(--muted)"></span>
+        <a href="../account.html" id="acctLink" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">Akun</a>
+        <a href="../pricing.html" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">Cara kerja kredit →</a>
+        <a href="../guides/" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">Panduan →</a>
       </p>
     </div>
   </aside>
@@ -577,7 +579,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi", "description": "Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus.", "h1": "Buat lagu", "sub": "Dari foto atau deskripsi. Durasi presisi, loop mulus.", "drop": "Seret atau pilih foto<br>lirik akan menyebut isinya", "generate": "Buat lagu", "how_credits": "Cara kerja kredit →", "grp_photo": "Dengarkan", "grp_recipe": "Mulai dari kebutuhan", "download": "Unduh", "save_recipe": "Simpan sebagai resep", "remove_photo": "Hapus foto", "photo_here": "Fotomu di sini", "note": "Semua di sebelah kanan dibuat di sini", "legal_aup": "Penggunaan yang wajar", "legal_refund": "Pengembalian dana", "sign_in_first": "Masuk untuk membuat", "generating": "Membuat… sekitar 20 detik.", "just_generated": "Baru dibuat", "your_track": "Lagu kamu", "from_recipe": "Dari resep", "from_photo": "Dibuat dari foto", "err_load": "Gagal memuat opsi", "done_in": "Selesai dalam {n} dtk", "gen_cost": "Buat · {n}", "err_gen": "Pembuatan gagal", "my_track": "Trek saya", "err_net": "Kesalahan jaringan", "recipe_name": "Nama resep", "err_save": "Gagal menyimpan", "saved": "Tersimpan: {name}", "up_to": "Maksimal {n}", "credits": "kredit", "guides_link": "Panduan →", "guides_title": "Panduan", "close": "Tutup", "loading": "Memuat…", "off": "Mati", "loop_on": "Loop mulus", "buy_credits": "Beli kredit →", "desc_label": "Deskripsi (opsional)", "desc_ph": "Deskripsikan trek: kafe saat hujan, piano lembut", "mode_photo": "Foto", "mode_text": "Teks", "field_density": "Kepadatan aransemen", "opt_sparse": "Renggang", "opt_medium": "Sedang", "opt_full": "Padat", "pro_title": "Opsi lanjutan", "grp_photo_sub": "Foto → lirik → trek", "grp_recipe_sub": "Pilih kebutuhan, pengaturannya sudah siap", "recipe_names": {"short-form-cut": "Cắt ngắn", "hook-sting": "Mở đầu gây chú ý", "product-loop": "Vòng lặp sản phẩm", "podcast-bed": "Nền podcast", "documentary-underscore": "Nền phim tài liệu", "game-menu-loop": "Vòng lặp menu", "calm-focus": "Tập trung", "kids-learning": "Thiếu nhi"}, "applied": "Memakai", "current_recipe": "Preset aktif", "mine_title": "Trek saya", "share_link": "Bagikan tautan", "dl_audio": "Unduh audio", "copied": "Disalin", "shared_note": "Anda mendengar trek yang dibagikan — buat milik Anda di bawah", "li1": "Trek 30 dtk = 45 kredit, 45 dtk = 64, 60 dtk = 85, 75 dtk = 103, 90 dtk = 120.", "li2": "Pembuatan yang gagal dikembalikan otomatis.", "li3": "Kredit tidak kedaluwarsa dan berlaku di semua alat.", "li4": "Pembayaran diproses oleh Creem, merchant of record kami.", "li5": "Kredit yang belum terpakai bisa dikembalikan dalam 14 hari.", "refund_link": "Kebijakan pengembalian"}</script>
+<script type="application/json" id="ui">{"title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi", "description": "Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus.", "h1": "Buat lagu", "sub": "Dari foto atau deskripsi. Durasi presisi, loop mulus.", "drop": "Seret atau pilih foto<br>lirik akan menyebut isinya", "generate": "Buat lagu", "how_credits": "Cara kerja kredit →", "grp_photo": "Dengarkan", "grp_recipe": "Mulai dari kebutuhan", "download": "Unduh", "save_recipe": "Simpan sebagai resep", "remove_photo": "Hapus foto", "photo_here": "Fotomu di sini", "note": "Semua di sebelah kanan dibuat di sini", "legal_aup": "Penggunaan yang wajar", "legal_refund": "Pengembalian dana", "sign_in_first": "Masuk untuk membuat", "generating": "Membuat… sekitar 20 detik.", "just_generated": "Baru dibuat", "your_track": "Lagu kamu", "from_recipe": "Dari resep", "from_photo": "Dibuat dari foto", "err_load": "Gagal memuat opsi", "done_in": "Selesai dalam {n} dtk", "gen_cost": "Buat · {n}", "err_gen": "Pembuatan gagal", "my_track": "Trek saya", "err_net": "Kesalahan jaringan", "recipe_name": "Nama resep", "err_save": "Gagal menyimpan", "saved": "Tersimpan: {name}", "up_to": "Maksimal {n}", "credits": "kredit", "guides_link": "Panduan →", "guides_title": "Panduan", "close": "Tutup", "loading": "Memuat…", "off": "Mati", "loop_on": "Loop mulus", "buy_credits": "Beli kredit →", "desc_label": "Deskripsi (opsional)", "desc_ph": "Deskripsikan trek: kafe saat hujan, piano lembut", "mode_photo": "Foto", "mode_text": "Teks", "field_density": "Kepadatan aransemen", "opt_sparse": "Renggang", "opt_medium": "Sedang", "opt_full": "Padat", "pro_title": "Opsi lanjutan", "grp_photo_sub": "Foto → lirik → trek", "grp_recipe_sub": "Pilih kebutuhan, pengaturannya sudah siap", "recipe_names": {"short-form-cut": "Cắt ngắn", "hook-sting": "Mở đầu gây chú ý", "product-loop": "Vòng lặp sản phẩm", "podcast-bed": "Nền podcast", "documentary-underscore": "Nền phim tài liệu", "game-menu-loop": "Vòng lặp menu", "calm-focus": "Tập trung", "kids-learning": "Thiếu nhi"}, "applied": "Memakai", "current_recipe": "Preset aktif", "mine_title": "Trek saya", "share_link": "Bagikan tautan", "dl_audio": "Unduh audio", "copied": "Disalin", "shared_note": "Anda mendengar trek yang dibagikan — buat milik Anda di bawah", "my_account": "Akun", "balance": "Saldo", "li1": "Trek 30 dtk = 45 kredit, 45 dtk = 64, 60 dtk = 85, 75 dtk = 103, 90 dtk = 120.", "li2": "Pembuatan yang gagal dikembalikan otomatis.", "li3": "Kredit tidak kedaluwarsa dan berlaku di semua alat.", "li4": "Pembayaran diproses oleh Creem, merchant of record kami.", "li5": "Kredit yang belum terpakai bisa dikembalikan dalam 14 hari.", "refund_link": "Kebijakan pengembalian"}</script>
 <script>
 (function () {
   "use strict";
@@ -1122,6 +1124,13 @@
 
   // ---- 启动 ----
   $("go").addEventListener("click", generate);
+  if (token()) {
+    call("/ai/music/credits", {}, true).then(function (d) {
+      if (d.code === 200 && d.data) {
+        $("bal").textContent = UI.balance + " " + d.data.balance + " " + UI.credits;
+      }
+    }).catch(function () {});
+  }
   loadMine();
   loadShared();
   call("/ai/music/schema", {}, false).then(function (d) {

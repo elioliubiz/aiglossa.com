@@ -521,9 +521,11 @@
     <div class="rail-foot">
       <button class="go" id="go" type="button">曲を生成</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
-      <p class="note" style="display:block">
-        <a href="../pricing.html" style="color:var(--mut);text-decoration:none">クレジットの仕組み →</a>
-        <a href="../guides/" style="color:var(--mut);text-decoration:none;margin-inline-start:14px">ガイド →</a>
+      <p class="note" style="display:block" id="acctLine">
+        <span id="bal" style="color:var(--muted)"></span>
+        <a href="../account.html" id="acctLink" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">アカウント</a>
+        <a href="../pricing.html" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">クレジットの仕組み →</a>
+        <a href="../guides/" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">ガイド →</a>
       </p>
     </div>
   </aside>
@@ -577,7 +579,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "AI音楽生成 — 写真から曲へ、長さはぴったり", "description": "写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。", "h1": "曲を作る", "sub": "写真またはプロンプトから。長さは正確に、ループはシームレスに。", "drop": "写真をドロップまたは選択<br>歌詞が写真の中身を歌います", "generate": "曲を生成", "how_credits": "クレジットの仕組み →", "grp_photo": "聴いてみる", "grp_recipe": "用途から選ぶ", "download": "ダウンロード", "save_recipe": "レシピとして保存", "remove_photo": "写真を削除", "photo_here": "ここにあなたの写真", "note": "右側はすべてここで作られています", "legal_aup": "利用規約", "legal_refund": "返金ポリシー", "sign_in_first": "生成するにはサインイン", "generating": "生成中… 約20秒。", "just_generated": "たった今生成", "your_track": "あなたの曲", "from_recipe": "レシピから", "from_photo": "写真から制作", "err_load": "オプションを読み込めませんでした", "done_in": "{n}秒で完成", "gen_cost": "生成 · {n}", "err_gen": "生成に失敗しました", "my_track": "マイトラック", "err_net": "通信エラー", "recipe_name": "レシピ名", "err_save": "保存に失敗しました", "saved": "保存しました: {name}", "up_to": "最大 {n}", "credits": "クレジット", "guides_link": "ガイド →", "guides_title": "ガイド", "close": "閉じる", "loading": "読み込み中…", "off": "オフ", "loop_on": "シームレスループ", "buy_credits": "クレジットを購入 →", "desc_label": "補足の説明（任意）", "desc_ph": "欲しい曲を説明：雨のカフェ、ピアノ中心", "mode_photo": "写真", "mode_text": "文章", "field_density": "編曲の密度", "opt_sparse": "疎ら", "opt_medium": "標準", "opt_full": "密", "pro_title": "詳細設定", "grp_photo_sub": "写真 → 歌詞 → 曲", "grp_recipe_sub": "用途を選ぶと設定が入ります", "recipe_names": {"short-form-cut": "快剪短片", "hook-sting": "Accroche d'ouverture", "product-loop": "Boucle produit", "podcast-bed": "Fond de podcast", "documentary-underscore": "Fond documentaire", "game-menu-loop": "Boucle de menu", "calm-focus": "Concentration", "kids-learning": "Enfants et apprentissage"}, "applied": "使用中", "current_recipe": "使用中のプリセット", "mine_title": "マイ作品", "share_link": "リンクを共有", "dl_audio": "音声を保存", "copied": "コピーしました", "shared_note": "共有された曲を再生中。下から自分用に作れます", "li1": "30秒＝45クレジット、45秒＝64、60秒＝85、75秒＝103、90秒＝120。", "li2": "生成に失敗した場合は自動で返金されます。", "li3": "クレジットは期限なしで、すべてのツールで使えます。", "li4": "支払いは merchant of record である Creem が処理します。", "li5": "未使用のクレジットは14日以内なら返金できます。", "refund_link": "返金ポリシー"}</script>
+<script type="application/json" id="ui">{"title": "AI音楽生成 — 写真から曲へ、長さはぴったり", "description": "写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。", "h1": "曲を作る", "sub": "写真またはプロンプトから。長さは正確に、ループはシームレスに。", "drop": "写真をドロップまたは選択<br>歌詞が写真の中身を歌います", "generate": "曲を生成", "how_credits": "クレジットの仕組み →", "grp_photo": "聴いてみる", "grp_recipe": "用途から選ぶ", "download": "ダウンロード", "save_recipe": "レシピとして保存", "remove_photo": "写真を削除", "photo_here": "ここにあなたの写真", "note": "右側はすべてここで作られています", "legal_aup": "利用規約", "legal_refund": "返金ポリシー", "sign_in_first": "生成するにはサインイン", "generating": "生成中… 約20秒。", "just_generated": "たった今生成", "your_track": "あなたの曲", "from_recipe": "レシピから", "from_photo": "写真から制作", "err_load": "オプションを読み込めませんでした", "done_in": "{n}秒で完成", "gen_cost": "生成 · {n}", "err_gen": "生成に失敗しました", "my_track": "マイトラック", "err_net": "通信エラー", "recipe_name": "レシピ名", "err_save": "保存に失敗しました", "saved": "保存しました: {name}", "up_to": "最大 {n}", "credits": "クレジット", "guides_link": "ガイド →", "guides_title": "ガイド", "close": "閉じる", "loading": "読み込み中…", "off": "オフ", "loop_on": "シームレスループ", "buy_credits": "クレジットを購入 →", "desc_label": "補足の説明（任意）", "desc_ph": "欲しい曲を説明：雨のカフェ、ピアノ中心", "mode_photo": "写真", "mode_text": "文章", "field_density": "編曲の密度", "opt_sparse": "疎ら", "opt_medium": "標準", "opt_full": "密", "pro_title": "詳細設定", "grp_photo_sub": "写真 → 歌詞 → 曲", "grp_recipe_sub": "用途を選ぶと設定が入ります", "recipe_names": {"short-form-cut": "快剪短片", "hook-sting": "Accroche d'ouverture", "product-loop": "Boucle produit", "podcast-bed": "Fond de podcast", "documentary-underscore": "Fond documentaire", "game-menu-loop": "Boucle de menu", "calm-focus": "Concentration", "kids-learning": "Enfants et apprentissage"}, "applied": "使用中", "current_recipe": "使用中のプリセット", "mine_title": "マイ作品", "share_link": "リンクを共有", "dl_audio": "音声を保存", "copied": "コピーしました", "shared_note": "共有された曲を再生中。下から自分用に作れます", "my_account": "アカウント", "balance": "残高", "li1": "30秒＝45クレジット、45秒＝64、60秒＝85、75秒＝103、90秒＝120。", "li2": "生成に失敗した場合は自動で返金されます。", "li3": "クレジットは期限なしで、すべてのツールで使えます。", "li4": "支払いは merchant of record である Creem が処理します。", "li5": "未使用のクレジットは14日以内なら返金できます。", "refund_link": "返金ポリシー"}</script>
 <script>
 (function () {
   "use strict";
@@ -1122,6 +1124,13 @@
 
   // ---- 启动 ----
   $("go").addEventListener("click", generate);
+  if (token()) {
+    call("/ai/music/credits", {}, true).then(function (d) {
+      if (d.code === 200 && d.data) {
+        $("bal").textContent = UI.balance + " " + d.data.balance + " " + UI.credits;
+      }
+    }).catch(function () {});
+  }
   loadMine();
   loadShared();
   call("/ai/music/schema", {}, false).then(function (d) {

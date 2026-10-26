@@ -48,6 +48,8 @@ def outputs_for(page: str) -> list[tuple[str, str]]:
         return [("music/index.html", "music/")]
     if page in ("refund", "acceptable-use"):
         return [(f"{page}.html", f"{page}.html")]
+    if page == "login":
+        return [("login.html", "login.html")]
     if page in ("pricing", "account"):
         return [(f"{page}.html", f"{page}.html")]
     if page == "protocol":

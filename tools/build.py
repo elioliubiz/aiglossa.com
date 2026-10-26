@@ -47,6 +47,8 @@ PROTOCOL_PAGES = ("privacy", "term", "delete-account")
 # 输出路径为 "" 表示 <lang>/index.html（即该语言的站点首页）。
 PAGES = {
     "brand": ("brand.html", "brand", ""),
+    # 平台登录页（主站）：/ {lang}/login.html
+    "login": ("pages/login.html", "ui", "login.html"),
     "marketing": ("marketing.html", "marketing", ""),
     "support": ("support.html", "support", "support.html"),
     "tools": ("tools.html", "tools", ""),
@@ -618,6 +620,16 @@ def main() -> int:
                     }
 
                 values_builder = legal_values
+            elif page == "login":
+                def login_values(lang: str, base: str, source=source) -> dict[str, str]:
+                    copy = source[lang]["account"]
+                    out = {k: esc(v) for k, v in copy.items() if isinstance(v, str)}
+                    out["api_base"] = "https://api.aiglossa.com"
+                    out["lang_label"] = esc(marketing[lang]["langLabel"])
+                    out["current_name"] = esc(languages[lang]["name"])
+                    return out
+
+                values_builder = login_values
             elif page in ("pricing", "account"):
                 def tool_page_values(lang: str, base: str, page=page, source=source) -> dict[str, str]:
                     copy = source[lang][page]
