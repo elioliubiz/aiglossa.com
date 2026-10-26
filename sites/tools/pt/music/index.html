@@ -657,6 +657,9 @@
   var UI = JSON.parse(document.getElementById("ui").textContent);
   // 选项标签由后端下发多语言字典：优先当前页面语言，取不到回退英文。
   var LANG = (document.documentElement.lang || "en").replace("_", "-");
+  // 账号/充值页面在平台主站；本地调试时主站跑在 8301
+  var ROOT = (location.hostname === "tools.aiglossa.com" || location.hostname === "aiglossa.com")
+    ? "https://aiglossa.com" : "http://localhost:8301";
   var TOKEN_KEY = "aig_token";
   var API = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "https://dev.aiglossa.com";
   var $ = function (id) { return document.getElementById(id); };
