@@ -161,7 +161,9 @@
       "cancel": "Cancel",
       "confirm": "Confirm",
       "not_signed_in": "Not signed in",
-      "traveler": "Traveler"
+      "traveler": "Traveler",
+      "view_all": "View all",
+      "my_works_pick": "Pick one to reuse its settings"
     }
   },
   "ja": {
@@ -314,7 +316,9 @@
       "cancel": "キャンセル",
       "confirm": "確定",
       "not_signed_in": "未ログイン",
-      "traveler": "旅人"
+      "traveler": "旅人",
+      "view_all": "すべて見る",
+      "my_works_pick": "選ぶと当時の設定を再利用します"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -479,7 +483,9 @@
       "cancel": "취소",
       "confirm": "확인",
       "not_signed_in": "로그인 안 됨",
-      "traveler": "여행자"
+      "traveler": "여행자",
+      "view_all": "전체 보기",
+      "my_works_pick": "하나를 고르면 그때 설정을 재사용합니다"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -644,7 +650,9 @@
       "cancel": "取消",
       "confirm": "确定",
       "not_signed_in": "未登录",
-      "traveler": "旅行者"
+      "traveler": "旅行者",
+      "view_all": "查看全部",
+      "my_works_pick": "选一个，复用它当时的参数"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -809,7 +817,9 @@
       "cancel": "取消",
       "confirm": "確定",
       "not_signed_in": "未登入",
-      "traveler": "旅行者"
+      "traveler": "旅行者",
+      "view_all": "查看全部",
+      "my_works_pick": "選一個，重用它當時的參數"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -974,7 +984,9 @@
       "cancel": "Cancelar",
       "confirm": "Confirmar",
       "not_signed_in": "Sin sesión",
-      "traveler": "Viajero"
+      "traveler": "Viajero",
+      "view_all": "Ver todo",
+      "my_works_pick": "Elige uno para reutilizar su configuración"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1139,7 +1151,9 @@
       "cancel": "Annuler",
       "confirm": "Confirmer",
       "not_signed_in": "Non connecté",
-      "traveler": "Voyageur"
+      "traveler": "Voyageur",
+      "view_all": "Tout voir",
+      "my_works_pick": "Choisissez-en un pour réutiliser ses réglages"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1304,7 +1318,9 @@
       "cancel": "Abbrechen",
       "confirm": "Bestätigen",
       "not_signed_in": "Nicht angemeldet",
-      "traveler": "Reisender"
+      "traveler": "Reisender",
+      "view_all": "Alle ansehen",
+      "my_works_pick": "Wähle eines, um seine Einstellungen zu übernehmen"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1469,7 +1485,9 @@
       "cancel": "Cancelar",
       "confirm": "Confirmar",
       "not_signed_in": "Não conectado",
-      "traveler": "Viajante"
+      "traveler": "Viajante",
+      "view_all": "Ver tudo",
+      "my_works_pick": "Escolha um para reutilizar as configurações"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1634,7 +1652,9 @@
       "cancel": "Annulla",
       "confirm": "Conferma",
       "not_signed_in": "Non connesso",
-      "traveler": "Viaggiatore"
+      "traveler": "Viaggiatore",
+      "view_all": "Vedi tutto",
+      "my_works_pick": "Scegline uno per riusarne le impostazioni"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1799,7 +1819,9 @@
       "cancel": "Отмена",
       "confirm": "Подтвердить",
       "not_signed_in": "Не выполнен вход",
-      "traveler": "Путешественник"
+      "traveler": "Путешественник",
+      "view_all": "Показать все",
+      "my_works_pick": "Выберите трек, чтобы применить его настройки"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1964,7 +1986,9 @@
       "cancel": "إلغاء",
       "confirm": "تأكيد",
       "not_signed_in": "لم تسجّل الدخول",
-      "traveler": "مسافر"
+      "traveler": "مسافر",
+      "view_all": "عرض الكل",
+      "my_works_pick": "اختر مقطعًا لإعادة استخدام إعداداته"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2129,7 +2153,9 @@
       "cancel": "ยกเลิก",
       "confirm": "ยืนยัน",
       "not_signed_in": "ยังไม่เข้าสู่ระบบ",
-      "traveler": "นักเดินทาง"
+      "traveler": "นักเดินทาง",
+      "view_all": "ดูทั้งหมด",
+      "my_works_pick": "เลือกเพลงเพื่อใช้การตั้งค่าเดิม"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2294,7 +2320,9 @@
       "cancel": "Hủy",
       "confirm": "Xác nhận",
       "not_signed_in": "Chưa đăng nhập",
-      "traveler": "Người lữ hành"
+      "traveler": "Người lữ hành",
+      "view_all": "Xem tất cả",
+      "my_works_pick": "Chọn một bản để dùng lại cấu hình"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2459,7 +2487,9 @@
       "cancel": "Batal",
       "confirm": "Konfirmasi",
       "not_signed_in": "Belum masuk",
-      "traveler": "Pelancong"
+      "traveler": "Pelancong",
+      "view_all": "Lihat semua",
+      "my_works_pick": "Pilih satu untuk memakai ulang pengaturannya"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2624,7 +2654,9 @@
       "cancel": "Vazgeç",
       "confirm": "Onayla",
       "not_signed_in": "Giriş yapılmadı",
-      "traveler": "Gezgin"
+      "traveler": "Gezgin",
+      "view_all": "Tümünü gör",
+      "my_works_pick": "Ayarlarını yeniden kullanmak için birini seçin"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",

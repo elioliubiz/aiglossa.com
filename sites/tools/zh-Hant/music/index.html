@@ -245,11 +245,20 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.wide{width:min(720px,92vw);max-height:80vh;display:flex;flex-direction:column}
+  .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .mhead b{font-size:14px}
+  .mhint{font-size:11.5px;color:var(--muted)}
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;
+    overflow-y:auto;padding-right:4px}
+  .mgrid .mtile{width:100%}
   .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
     background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
   .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .ph2 .wv{display:flex;align-items:flex-end;gap:2px;height:36px;width:72%;opacity:.6}
   .ph2 .wv i{flex:1;background:rgba(255,255,255,.5);border-radius:1px}
+  .ph2.more{display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--acc);
+    background:rgba(255,122,26,.10)}
   .mine{margin-bottom:18px}
   .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
@@ -472,6 +481,13 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.wide{width:min(720px,92vw);max-height:80vh;display:flex;flex-direction:column}
+  .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .mhead b{font-size:14px}
+  .mhint{font-size:11.5px;color:var(--muted)}
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;
+    overflow-y:auto;padding-right:4px}
+  .mgrid .mtile{width:100%}
   .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
     background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
   .topup a{color:var(--acc);font-weight:600;text-decoration:none}
@@ -724,6 +740,14 @@
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
   </main>
+  <div class="modal hidden" id="mineModal" role="dialog" aria-modal="true">
+    <div class="mbox wide">
+      <div class="mhead"><b>我的作品</b><span class="mhint">選一個，重用它當時的參數</span></div>
+      <div class="mgrid" id="mineAll"></div>
+      <div class="macts"><button type="button" class="mbtn" id="mineClose">取消</button></div>
+    </div>
+  </div>
+
   <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
     <div class="mbox">
       <p class="mtext" id="mtext"></p>
@@ -739,7 +763,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "AI 音樂生成 — 照片變歌曲，長度精確", "description": "用照片或描述生成 30–90 秒精確長度的背景音樂。歌詞唱出照片裡的內容，支援 10 種語言人聲與無縫循環。", "h1": "做一首曲子", "sub": "從照片或描述開始。長度精確、循環無縫。", "drop": "拖入或選擇照片<br>歌詞會唱出照片裡的內容", "generate": "生成曲子", "how_credits": "額度怎麼算 →", "grp_photo": "聽聽效果", "grp_recipe": "從場景開始", "download": "下載", "save_recipe": "存為配方", "remove_photo": "移除照片", "photo_here": "你的照片放這裡", "note": "右邊的東西都是在這裡做的", "legal_aup": "可接受使用", "legal_refund": "退款政策", "sign_in_first": "登入後即可生成", "generating": "生成中……約 20 秒。", "just_generated": "剛生成", "your_track": "你的曲子", "from_recipe": "來自配方", "from_photo": "由照片生成", "err_load": "無法載入選項", "done_in": "{n} 秒完成", "gen_cost": "生成 · {n}", "err_gen": "生成失敗", "my_track": "我的曲子", "err_net": "網路錯誤", "recipe_name": "配方名稱", "err_save": "儲存失敗", "saved": "已儲存：{name}", "up_to": "最多 {n}", "credits": "額度", "guides_link": "指南 →", "guides_title": "指南", "close": "關閉", "loading": "載入中…", "off": "關閉", "loop_on": "無縫循環", "buy_credits": "購買額度 →", "desc_label": "補充描述（可選）", "desc_ph": "描述你想要的曲子，例如：雨天的咖啡館，鋼琴為主", "mode_photo": "用照片", "mode_text": "用文字", "field_density": "編曲密度", "opt_sparse": "稀疏", "opt_medium": "適中", "opt_full": "密集", "pro_title": "專業選項", "grp_photo_sub": "照片 → 歌詞 → 曲子", "grp_recipe_sub": "選一個用途，參數已經配好", "recipe_names": {"short-form-cut": "快剪短视频", "hook-sting": "Gancho de apertura", "product-loop": "Bucle de producto", "podcast-bed": "Base para pódcast", "documentary-underscore": "Base documental", "game-menu-loop": "Bucle de menú", "calm-focus": "Concentración", "kids-learning": "Infantil y aprendizaje"}, "applied": "將使用", "current_recipe": "目前配方", "mine_title": "我的作品", "share_link": "分享連結", "dl_audio": "下載音訊", "copied": "已複製", "shared_note": "你正在聽一首分享的曲子，下面可以做你自己的", "my_account": "帳戶", "balance": "餘額", "pricing_label": "價格", "confirm_gen": "生成一首 {sec} 秒的曲子？將消耗 {n}。", "err_insufficient": "額度不足", "topup_hint": "儲值後即可繼續生成。", "topup_cta": "去儲值", "cancel": "取消", "confirm": "確定", "not_signed_in": "未登入", "traveler": "旅行者", "li1": "30 秒 = 45 額度，45 秒 = 64，60 秒 = 85，75 秒 = 103，90 秒 = 120。", "li2": "生成失敗會自動退回額度。", "li3": "額度永不過期，所有工具通用。", "li4": "付款由 merchant of record（記錄商戶）Creem 處理。", "li5": "未使用的額度可在 14 天內申請退款。", "refund_link": "退款政策"}</script>
+<script type="application/json" id="ui">{"title": "AI 音樂生成 — 照片變歌曲，長度精確", "description": "用照片或描述生成 30–90 秒精確長度的背景音樂。歌詞唱出照片裡的內容，支援 10 種語言人聲與無縫循環。", "h1": "做一首曲子", "sub": "從照片或描述開始。長度精確、循環無縫。", "drop": "拖入或選擇照片<br>歌詞會唱出照片裡的內容", "generate": "生成曲子", "how_credits": "額度怎麼算 →", "grp_photo": "聽聽效果", "grp_recipe": "從場景開始", "download": "下載", "save_recipe": "存為配方", "remove_photo": "移除照片", "photo_here": "你的照片放這裡", "note": "右邊的東西都是在這裡做的", "legal_aup": "可接受使用", "legal_refund": "退款政策", "sign_in_first": "登入後即可生成", "generating": "生成中……約 20 秒。", "just_generated": "剛生成", "your_track": "你的曲子", "from_recipe": "來自配方", "from_photo": "由照片生成", "err_load": "無法載入選項", "done_in": "{n} 秒完成", "gen_cost": "生成 · {n}", "err_gen": "生成失敗", "my_track": "我的曲子", "err_net": "網路錯誤", "recipe_name": "配方名稱", "err_save": "儲存失敗", "saved": "已儲存：{name}", "up_to": "最多 {n}", "credits": "額度", "guides_link": "指南 →", "guides_title": "指南", "close": "關閉", "loading": "載入中…", "off": "關閉", "loop_on": "無縫循環", "buy_credits": "購買額度 →", "desc_label": "補充描述（可選）", "desc_ph": "描述你想要的曲子，例如：雨天的咖啡館，鋼琴為主", "mode_photo": "用照片", "mode_text": "用文字", "field_density": "編曲密度", "opt_sparse": "稀疏", "opt_medium": "適中", "opt_full": "密集", "pro_title": "專業選項", "grp_photo_sub": "照片 → 歌詞 → 曲子", "grp_recipe_sub": "選一個用途，參數已經配好", "recipe_names": {"short-form-cut": "快剪短视频", "hook-sting": "Gancho de apertura", "product-loop": "Bucle de producto", "podcast-bed": "Base para pódcast", "documentary-underscore": "Base documental", "game-menu-loop": "Bucle de menú", "calm-focus": "Concentración", "kids-learning": "Infantil y aprendizaje"}, "applied": "將使用", "current_recipe": "目前配方", "mine_title": "我的作品", "share_link": "分享連結", "dl_audio": "下載音訊", "copied": "已複製", "shared_note": "你正在聽一首分享的曲子，下面可以做你自己的", "my_account": "帳戶", "balance": "餘額", "pricing_label": "價格", "confirm_gen": "生成一首 {sec} 秒的曲子？將消耗 {n}。", "err_insufficient": "額度不足", "topup_hint": "儲值後即可繼續生成。", "topup_cta": "去儲值", "cancel": "取消", "confirm": "確定", "not_signed_in": "未登入", "traveler": "旅行者", "view_all": "查看全部", "my_works_pick": "選一個，重用它當時的參數", "li1": "30 秒 = 45 額度，45 秒 = 64，60 秒 = 85，75 秒 = 103，90 秒 = 120。", "li2": "生成失敗會自動退回額度。", "li3": "額度永不過期，所有工具通用。", "li4": "付款由 merchant of record（記錄商戶）Creem 處理。", "li5": "未使用的額度可在 14 天內申請退款。", "refund_link": "退款政策"}</script>
 <script>
 (function () {
   "use strict";
@@ -1407,32 +1431,55 @@
   }
 
   // ---- 我的作品（登录后显示） ----
+  var mineItems = [];
+  function applyMine(it) {
+    Object.keys(it.params || {}).forEach(function (k) {
+      if (values[k] !== undefined) values[k] = it.params[k];
+    });
+    renderRail();
+    current = { kind: "result", audio: it.url, cover: it.cover, title: UI.my_track, meta: "mine" };
+    renderBig();
+    toggleAudio(it.url);
+  }
+
+  function mineTile(it, onPick) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "mtile";
+    b.innerHTML = (it.cover
+      ? '<img src="' + it.cover + '" alt="" loading="lazy">'
+      : '<div class="ph2"><div class="wv">' + wave() + '</div></div>') +
+      '<p>' + fmtDur(Math.round((it.duration_ms || 0) / 1000)) + '</p>';
+    b.addEventListener("click", function () { onPick(it); });
+    return b;
+  }
+
+  function openMineModal() {
+    var box = $("mineAll"); box.innerHTML = "";
+    mineItems.forEach(function (it) {
+      box.appendChild(mineTile(it, function (x) {
+        applyMine(x);
+        $("mineModal").classList.add("hidden");
+      }));
+    });
+    $("mineModal").classList.remove("hidden");
+  }
+
   function loadMine() {
     if (!sessionOk) return;
-    call("/ai/music/tracks?limit=6", {}, true).then(function (d) {
+    call("/ai/music/tracks?limit=30", {}, true).then(function (d) {
       if (d.code !== 200) return;
-      var items = (d.data && d.data.items) || [];
-      if (!items.length) return;
+      mineItems = (d.data && d.data.items) || [];
+      if (!mineItems.length) return;
       var row = $("mineRow"); row.innerHTML = "";
       $("mine").classList.remove("hidden");
-      items.forEach(function (it) {
-        var b = document.createElement("button");
-        b.type = "button"; b.className = "mtile";
-        b.innerHTML = (it.cover
-          ? '<img src="' + it.cover + '" alt="" loading="lazy">'
-          : '<div class="ph2"><div class="wv">' + wave() + '</div></div>') +
-          '<p>' + fmtDur(Math.round((it.duration_ms || 0) / 1000)) + '</p>';
-        b.addEventListener("click", function () {
-          Object.keys(it.params || {}).forEach(function (k) {
-            if (values[k] !== undefined) values[k] = it.params[k];
-          });
-          renderRail();
-          current = { kind: "result", audio: it.url, cover: it.cover, title: it.lyrics || "", meta: "mine" };
-          renderBig();
-          toggleAudio(it.url);
-        });
-        row.appendChild(b);
-      });
+      mineItems.slice(0, 6).forEach(function (it) { row.appendChild(mineTile(it, applyMine)); });
+      if (mineItems.length > 6) {
+        var more = document.createElement("button");
+        more.type = "button"; more.className = "mtile more";
+        more.innerHTML = '<div class="ph2 more"><span>+' + (mineItems.length - 6) + '</span></div><p>' + UI.view_all + '</p>';
+        more.addEventListener("click", openMineModal);
+        row.appendChild(more);
+      }
       $("mine").classList.remove("hidden");
     }).catch(function () {});
   }
@@ -1471,6 +1518,11 @@
       .replace("{n}", cost() + " " + UI.credits);
     ask(txt, generate);
   }
+
+  $("mineClose").addEventListener("click", function () { $("mineModal").classList.add("hidden"); });
+  $("mineModal").addEventListener("click", function (e) {
+    if (e.target === $("mineModal")) $("mineModal").classList.add("hidden");
+  });
 
   $("go").addEventListener("click", generateConfirmed);
   // 底部账号栏：未登录一律先去登录（提前拦截），已登录才进入对应页面

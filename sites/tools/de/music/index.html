@@ -245,11 +245,20 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.wide{width:min(720px,92vw);max-height:80vh;display:flex;flex-direction:column}
+  .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .mhead b{font-size:14px}
+  .mhint{font-size:11.5px;color:var(--muted)}
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;
+    overflow-y:auto;padding-right:4px}
+  .mgrid .mtile{width:100%}
   .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
     background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
   .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .ph2 .wv{display:flex;align-items:flex-end;gap:2px;height:36px;width:72%;opacity:.6}
   .ph2 .wv i{flex:1;background:rgba(255,255,255,.5);border-radius:1px}
+  .ph2.more{display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--acc);
+    background:rgba(255,122,26,.10)}
   .mine{margin-bottom:18px}
   .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
@@ -472,6 +481,13 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.wide{width:min(720px,92vw);max-height:80vh;display:flex;flex-direction:column}
+  .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .mhead b{font-size:14px}
+  .mhint{font-size:11.5px;color:var(--muted)}
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;
+    overflow-y:auto;padding-right:4px}
+  .mgrid .mtile{width:100%}
   .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
     background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
   .topup a{color:var(--acc);font-weight:600;text-decoration:none}
@@ -724,6 +740,14 @@
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
   </main>
+  <div class="modal hidden" id="mineModal" role="dialog" aria-modal="true">
+    <div class="mbox wide">
+      <div class="mhead"><b>Meine Tracks</b><span class="mhint">Wähle eines, um seine Einstellungen zu übernehmen</span></div>
+      <div class="mgrid" id="mineAll"></div>
+      <div class="macts"><button type="button" class="mbtn" id="mineClose">Abbrechen</button></div>
+    </div>
+  </div>
+
   <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
     <div class="mbox">
       <p class="mtext" id="mtext"></p>
@@ -739,7 +763,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "KI-Musikgenerator — vom Foto zum Song, exakte Länge", "description": "Aus einem Foto oder einer Beschreibung wird Hintergrundmusik mit exakt 30–90 Sekunden. Der Gesang benennt, was auf dem Bild ist – mit Vocals in 10 Sprachen und nahtlosen Loops.", "h1": "Track erstellen", "sub": "Aus einem Foto oder einer Beschreibung. Exakte Länge, nahtlose Loops.", "drop": "Foto ablegen oder auswählen<br>der Gesang benennt, was darauf ist", "generate": "Track generieren", "how_credits": "So funktionieren Credits →", "grp_photo": "Anhören", "grp_recipe": "Nach Einsatzzweck", "download": "Herunterladen", "save_recipe": "Als Vorlage speichern", "remove_photo": "Foto entfernen", "photo_here": "Dein Foto hier", "note": "Alles rechts wurde hier erzeugt", "legal_aup": "Zulässige Nutzung", "legal_refund": "Rückerstattungen", "sign_in_first": "Zum Generieren anmelden", "generating": "Wird generiert… etwa 20 Sekunden.", "just_generated": "Gerade erzeugt", "your_track": "Dein Track", "from_recipe": "Aus einer Vorlage", "from_photo": "Aus einem Foto", "err_load": "Optionen konnten nicht geladen werden", "done_in": "Fertig in {n} s", "gen_cost": "Erzeugen · {n}", "err_gen": "Generierung fehlgeschlagen", "my_track": "Mein Track", "err_net": "Netzwerkfehler", "recipe_name": "Vorlagenname", "err_save": "Speichern fehlgeschlagen", "saved": "Gespeichert: {name}", "up_to": "Bis zu {n}", "credits": "Credits", "guides_link": "Anleitungen →", "guides_title": "Anleitungen", "close": "Schließen", "loading": "Lädt…", "off": "Aus", "loop_on": "Nahtloser Loop", "buy_credits": "Credits kaufen →", "desc_label": "Beschreibung (optional)", "desc_ph": "Beschreibe den Track: verregnetes Café, sanftes Klavier", "mode_photo": "Foto", "mode_text": "Text", "field_density": "Arrangement-Dichte", "opt_sparse": "Spärlich", "opt_medium": "Mittel", "opt_full": "Dicht", "pro_title": "Erweiterte Optionen", "grp_photo_sub": "Foto → Text → Track", "grp_recipe_sub": "Zweck wählen, Einstellungen sind gesetzt", "recipe_names": {"short-form-cut": "Coupe courte", "hook-sting": "Accroche d'ouverture", "product-loop": "Boucle produit", "podcast-bed": "Fond de podcast", "documentary-underscore": "Fond documentaire", "game-menu-loop": "Boucle de menu", "calm-focus": "Concentration", "kids-learning": "Enfants"}, "applied": "Verwendet", "current_recipe": "Aktuelles Preset", "mine_title": "Meine Tracks", "share_link": "Link teilen", "dl_audio": "Audio laden", "copied": "Kopiert", "shared_note": "Du hörst einen geteilten Track — erstelle unten deinen eigenen", "my_account": "Konto", "balance": "Guthaben", "pricing_label": "Preise", "confirm_gen": "Track mit {sec} s erzeugen? Das kostet {n}.", "err_insufficient": "Nicht genug Credits", "topup_hint": "Lade auf, um weiter zu generieren.", "topup_cta": "Credits kaufen", "cancel": "Abbrechen", "confirm": "Bestätigen", "not_signed_in": "Nicht angemeldet", "traveler": "Reisender", "li1": "30-s-Track = 45 Credits, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Fehlgeschlagene Generierungen werden automatisch erstattet.", "li3": "Credits verfallen nicht und gelten für alle Tools.", "li4": "Zahlungen werden von Creem, unserem Merchant of Record, abgewickelt.", "li5": "Nicht genutzte Credits können innerhalb von 14 Tagen erstattet werden.", "refund_link": "Rückerstattungsrichtlinie"}</script>
+<script type="application/json" id="ui">{"title": "KI-Musikgenerator — vom Foto zum Song, exakte Länge", "description": "Aus einem Foto oder einer Beschreibung wird Hintergrundmusik mit exakt 30–90 Sekunden. Der Gesang benennt, was auf dem Bild ist – mit Vocals in 10 Sprachen und nahtlosen Loops.", "h1": "Track erstellen", "sub": "Aus einem Foto oder einer Beschreibung. Exakte Länge, nahtlose Loops.", "drop": "Foto ablegen oder auswählen<br>der Gesang benennt, was darauf ist", "generate": "Track generieren", "how_credits": "So funktionieren Credits →", "grp_photo": "Anhören", "grp_recipe": "Nach Einsatzzweck", "download": "Herunterladen", "save_recipe": "Als Vorlage speichern", "remove_photo": "Foto entfernen", "photo_here": "Dein Foto hier", "note": "Alles rechts wurde hier erzeugt", "legal_aup": "Zulässige Nutzung", "legal_refund": "Rückerstattungen", "sign_in_first": "Zum Generieren anmelden", "generating": "Wird generiert… etwa 20 Sekunden.", "just_generated": "Gerade erzeugt", "your_track": "Dein Track", "from_recipe": "Aus einer Vorlage", "from_photo": "Aus einem Foto", "err_load": "Optionen konnten nicht geladen werden", "done_in": "Fertig in {n} s", "gen_cost": "Erzeugen · {n}", "err_gen": "Generierung fehlgeschlagen", "my_track": "Mein Track", "err_net": "Netzwerkfehler", "recipe_name": "Vorlagenname", "err_save": "Speichern fehlgeschlagen", "saved": "Gespeichert: {name}", "up_to": "Bis zu {n}", "credits": "Credits", "guides_link": "Anleitungen →", "guides_title": "Anleitungen", "close": "Schließen", "loading": "Lädt…", "off": "Aus", "loop_on": "Nahtloser Loop", "buy_credits": "Credits kaufen →", "desc_label": "Beschreibung (optional)", "desc_ph": "Beschreibe den Track: verregnetes Café, sanftes Klavier", "mode_photo": "Foto", "mode_text": "Text", "field_density": "Arrangement-Dichte", "opt_sparse": "Spärlich", "opt_medium": "Mittel", "opt_full": "Dicht", "pro_title": "Erweiterte Optionen", "grp_photo_sub": "Foto → Text → Track", "grp_recipe_sub": "Zweck wählen, Einstellungen sind gesetzt", "recipe_names": {"short-form-cut": "Coupe courte", "hook-sting": "Accroche d'ouverture", "product-loop": "Boucle produit", "podcast-bed": "Fond de podcast", "documentary-underscore": "Fond documentaire", "game-menu-loop": "Boucle de menu", "calm-focus": "Concentration", "kids-learning": "Enfants"}, "applied": "Verwendet", "current_recipe": "Aktuelles Preset", "mine_title": "Meine Tracks", "share_link": "Link teilen", "dl_audio": "Audio laden", "copied": "Kopiert", "shared_note": "Du hörst einen geteilten Track — erstelle unten deinen eigenen", "my_account": "Konto", "balance": "Guthaben", "pricing_label": "Preise", "confirm_gen": "Track mit {sec} s erzeugen? Das kostet {n}.", "err_insufficient": "Nicht genug Credits", "topup_hint": "Lade auf, um weiter zu generieren.", "topup_cta": "Credits kaufen", "cancel": "Abbrechen", "confirm": "Bestätigen", "not_signed_in": "Nicht angemeldet", "traveler": "Reisender", "view_all": "Alle ansehen", "my_works_pick": "Wähle eines, um seine Einstellungen zu übernehmen", "li1": "30-s-Track = 45 Credits, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Fehlgeschlagene Generierungen werden automatisch erstattet.", "li3": "Credits verfallen nicht und gelten für alle Tools.", "li4": "Zahlungen werden von Creem, unserem Merchant of Record, abgewickelt.", "li5": "Nicht genutzte Credits können innerhalb von 14 Tagen erstattet werden.", "refund_link": "Rückerstattungsrichtlinie"}</script>
 <script>
 (function () {
   "use strict";
@@ -1407,32 +1431,55 @@
   }
 
   // ---- 我的作品（登录后显示） ----
+  var mineItems = [];
+  function applyMine(it) {
+    Object.keys(it.params || {}).forEach(function (k) {
+      if (values[k] !== undefined) values[k] = it.params[k];
+    });
+    renderRail();
+    current = { kind: "result", audio: it.url, cover: it.cover, title: UI.my_track, meta: "mine" };
+    renderBig();
+    toggleAudio(it.url);
+  }
+
+  function mineTile(it, onPick) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "mtile";
+    b.innerHTML = (it.cover
+      ? '<img src="' + it.cover + '" alt="" loading="lazy">'
+      : '<div class="ph2"><div class="wv">' + wave() + '</div></div>') +
+      '<p>' + fmtDur(Math.round((it.duration_ms || 0) / 1000)) + '</p>';
+    b.addEventListener("click", function () { onPick(it); });
+    return b;
+  }
+
+  function openMineModal() {
+    var box = $("mineAll"); box.innerHTML = "";
+    mineItems.forEach(function (it) {
+      box.appendChild(mineTile(it, function (x) {
+        applyMine(x);
+        $("mineModal").classList.add("hidden");
+      }));
+    });
+    $("mineModal").classList.remove("hidden");
+  }
+
   function loadMine() {
     if (!sessionOk) return;
-    call("/ai/music/tracks?limit=6", {}, true).then(function (d) {
+    call("/ai/music/tracks?limit=30", {}, true).then(function (d) {
       if (d.code !== 200) return;
-      var items = (d.data && d.data.items) || [];
-      if (!items.length) return;
+      mineItems = (d.data && d.data.items) || [];
+      if (!mineItems.length) return;
       var row = $("mineRow"); row.innerHTML = "";
       $("mine").classList.remove("hidden");
-      items.forEach(function (it) {
-        var b = document.createElement("button");
-        b.type = "button"; b.className = "mtile";
-        b.innerHTML = (it.cover
-          ? '<img src="' + it.cover + '" alt="" loading="lazy">'
-          : '<div class="ph2"><div class="wv">' + wave() + '</div></div>') +
-          '<p>' + fmtDur(Math.round((it.duration_ms || 0) / 1000)) + '</p>';
-        b.addEventListener("click", function () {
-          Object.keys(it.params || {}).forEach(function (k) {
-            if (values[k] !== undefined) values[k] = it.params[k];
-          });
-          renderRail();
-          current = { kind: "result", audio: it.url, cover: it.cover, title: it.lyrics || "", meta: "mine" };
-          renderBig();
-          toggleAudio(it.url);
-        });
-        row.appendChild(b);
-      });
+      mineItems.slice(0, 6).forEach(function (it) { row.appendChild(mineTile(it, applyMine)); });
+      if (mineItems.length > 6) {
+        var more = document.createElement("button");
+        more.type = "button"; more.className = "mtile more";
+        more.innerHTML = '<div class="ph2 more"><span>+' + (mineItems.length - 6) + '</span></div><p>' + UI.view_all + '</p>';
+        more.addEventListener("click", openMineModal);
+        row.appendChild(more);
+      }
       $("mine").classList.remove("hidden");
     }).catch(function () {});
   }
@@ -1471,6 +1518,11 @@
       .replace("{n}", cost() + " " + UI.credits);
     ask(txt, generate);
   }
+
+  $("mineClose").addEventListener("click", function () { $("mineModal").classList.add("hidden"); });
+  $("mineModal").addEventListener("click", function (e) {
+    if (e.target === $("mineModal")) $("mineModal").classList.add("hidden");
+  });
 
   $("go").addEventListener("click", generateConfirmed);
   // 底部账号栏：未登录一律先去登录（提前拦截），已登录才进入对应页面

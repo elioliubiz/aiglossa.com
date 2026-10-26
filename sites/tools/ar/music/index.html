@@ -245,11 +245,20 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.wide{width:min(720px,92vw);max-height:80vh;display:flex;flex-direction:column}
+  .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .mhead b{font-size:14px}
+  .mhint{font-size:11.5px;color:var(--muted)}
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;
+    overflow-y:auto;padding-right:4px}
+  .mgrid .mtile{width:100%}
   .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
     background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
   .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .ph2 .wv{display:flex;align-items:flex-end;gap:2px;height:36px;width:72%;opacity:.6}
   .ph2 .wv i{flex:1;background:rgba(255,255,255,.5);border-radius:1px}
+  .ph2.more{display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--acc);
+    background:rgba(255,122,26,.10)}
   .mine{margin-bottom:18px}
   .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
@@ -472,6 +481,13 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.wide{width:min(720px,92vw);max-height:80vh;display:flex;flex-direction:column}
+  .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .mhead b{font-size:14px}
+  .mhint{font-size:11.5px;color:var(--muted)}
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;
+    overflow-y:auto;padding-right:4px}
+  .mgrid .mtile{width:100%}
   .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
     background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
   .topup a{color:var(--acc);font-weight:600;text-decoration:none}
@@ -724,6 +740,14 @@
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
   </main>
+  <div class="modal hidden" id="mineModal" role="dialog" aria-modal="true">
+    <div class="mbox wide">
+      <div class="mhead"><b>مقاطعي</b><span class="mhint">اختر مقطعًا لإعادة استخدام إعداداته</span></div>
+      <div class="mgrid" id="mineAll"></div>
+      <div class="macts"><button type="button" class="mbtn" id="mineClose">إلغاء</button></div>
+    </div>
+  </div>
+
   <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
     <div class="mbox">
       <p class="mtext" id="mtext"></p>
@@ -739,7 +763,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق", "description": "حوّل صورة أو وصفًا إلى موسيقى خلفية بطول 30–90 ثانية بالضبط. الكلمات تذكر ما في صورتك، مع غناء بعشر لغات وحلقات بلا فواصل.", "h1": "أنشئ مقطعًا", "sub": "من صورة أو وصف. مدة دقيقة وحلقات بلا فواصل.", "drop": "أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها", "generate": "أنشئ المقطع", "how_credits": "كيف تعمل الأرصدة →", "grp_photo": "اسمعها", "grp_recipe": "من الاستخدام", "download": "تنزيل", "save_recipe": "احفظ كوصفة", "remove_photo": "إزالة الصورة", "photo_here": "صورتك هنا", "note": "كل ما على اليمين أُنشئ هنا", "legal_aup": "الاستخدام المقبول", "legal_refund": "المبالغ المستردة", "sign_in_first": "سجّل الدخول للإنشاء", "generating": "جارٍ الإنشاء… نحو 20 ثانية.", "just_generated": "أُنشئ للتو", "your_track": "مقطعك", "from_recipe": "من وصفة", "from_photo": "من صورة", "err_load": "تعذّر تحميل الخيارات", "done_in": "اكتمل في {n} ثانية", "gen_cost": "إنشاء · {n}", "err_gen": "فشل الإنشاء", "my_track": "مقطعي", "err_net": "خطأ في الشبكة", "recipe_name": "اسم الوصفة", "err_save": "تعذّر الحفظ", "saved": "تم الحفظ: {name}", "up_to": "حتى {n}", "credits": "رصيدًا", "guides_link": "أدلة ←", "guides_title": "أدلة", "close": "إغلاق", "loading": "جارٍ التحميل…", "off": "إيقاف", "loop_on": "حلقة بلا فواصل", "buy_credits": "شراء أرصدة ←", "desc_label": "وصف (اختياري)", "desc_ph": "صِف المقطع: مقهى ممطر، بيانو هادئ", "mode_photo": "صورة", "mode_text": "نص", "field_density": "كثافة التوزيع", "opt_sparse": "متباعد", "opt_medium": "متوسط", "opt_full": "كثيف", "pro_title": "خيارات متقدمة", "grp_photo_sub": "صورة → كلمات → مقطع", "grp_recipe_sub": "اختر الاستخدام والإعدادات جاهزة", "recipe_names": {"short-form-cut": "Короткий клип", "hook-sting": "Хук для заставки", "product-loop": "Луп для продукта", "podcast-bed": "Подложка для подкаста", "documentary-underscore": "Фон для документалки", "game-menu-loop": "Луп для меню", "calm-focus": "Концентрация", "kids-learning": "Для детей"}, "applied": "يُستخدم", "current_recipe": "الإعداد الحالي", "mine_title": "مقاطعي", "share_link": "مشاركة الرابط", "dl_audio": "تنزيل الصوت", "copied": "تم النسخ", "shared_note": "تستمع إلى مقطع تمت مشاركته — أنشئ مقطعك أدناه", "my_account": "الحساب", "balance": "الرصيد", "pricing_label": "الأسعار", "confirm_gen": "هل تريد إنشاء مقطع بمدة {sec} ثانية؟ سيُخصم {n}.", "err_insufficient": "الرصيد غير كافٍ", "topup_hint": "اشحن الرصيد لمتابعة التوليد.", "topup_cta": "شراء رصيد", "cancel": "إلغاء", "confirm": "تأكيد", "not_signed_in": "لم تسجّل الدخول", "traveler": "مسافر", "li1": "مقطع 30 ثانية = 45 رصيدًا، 45 ثانية = 64، 60 ثانية = 85، 75 ثانية = 103، 90 ثانية = 120.", "li2": "الأجيال الفاشلة تُرد تلقائيًا.", "li3": "الأرصدة لا تنتهي وتعمل في كل الأدوات.", "li4": "المدفوعات تعالجها Creem، وهي تاجر السجل لدينا.", "li5": "يمكن استرداد الأرصدة غير المستخدمة خلال 14 يومًا.", "refund_link": "سياسة الاسترداد"}</script>
+<script type="application/json" id="ui">{"title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق", "description": "حوّل صورة أو وصفًا إلى موسيقى خلفية بطول 30–90 ثانية بالضبط. الكلمات تذكر ما في صورتك، مع غناء بعشر لغات وحلقات بلا فواصل.", "h1": "أنشئ مقطعًا", "sub": "من صورة أو وصف. مدة دقيقة وحلقات بلا فواصل.", "drop": "أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها", "generate": "أنشئ المقطع", "how_credits": "كيف تعمل الأرصدة →", "grp_photo": "اسمعها", "grp_recipe": "من الاستخدام", "download": "تنزيل", "save_recipe": "احفظ كوصفة", "remove_photo": "إزالة الصورة", "photo_here": "صورتك هنا", "note": "كل ما على اليمين أُنشئ هنا", "legal_aup": "الاستخدام المقبول", "legal_refund": "المبالغ المستردة", "sign_in_first": "سجّل الدخول للإنشاء", "generating": "جارٍ الإنشاء… نحو 20 ثانية.", "just_generated": "أُنشئ للتو", "your_track": "مقطعك", "from_recipe": "من وصفة", "from_photo": "من صورة", "err_load": "تعذّر تحميل الخيارات", "done_in": "اكتمل في {n} ثانية", "gen_cost": "إنشاء · {n}", "err_gen": "فشل الإنشاء", "my_track": "مقطعي", "err_net": "خطأ في الشبكة", "recipe_name": "اسم الوصفة", "err_save": "تعذّر الحفظ", "saved": "تم الحفظ: {name}", "up_to": "حتى {n}", "credits": "رصيدًا", "guides_link": "أدلة ←", "guides_title": "أدلة", "close": "إغلاق", "loading": "جارٍ التحميل…", "off": "إيقاف", "loop_on": "حلقة بلا فواصل", "buy_credits": "شراء أرصدة ←", "desc_label": "وصف (اختياري)", "desc_ph": "صِف المقطع: مقهى ممطر، بيانو هادئ", "mode_photo": "صورة", "mode_text": "نص", "field_density": "كثافة التوزيع", "opt_sparse": "متباعد", "opt_medium": "متوسط", "opt_full": "كثيف", "pro_title": "خيارات متقدمة", "grp_photo_sub": "صورة → كلمات → مقطع", "grp_recipe_sub": "اختر الاستخدام والإعدادات جاهزة", "recipe_names": {"short-form-cut": "Короткий клип", "hook-sting": "Хук для заставки", "product-loop": "Луп для продукта", "podcast-bed": "Подложка для подкаста", "documentary-underscore": "Фон для документалки", "game-menu-loop": "Луп для меню", "calm-focus": "Концентрация", "kids-learning": "Для детей"}, "applied": "يُستخدم", "current_recipe": "الإعداد الحالي", "mine_title": "مقاطعي", "share_link": "مشاركة الرابط", "dl_audio": "تنزيل الصوت", "copied": "تم النسخ", "shared_note": "تستمع إلى مقطع تمت مشاركته — أنشئ مقطعك أدناه", "my_account": "الحساب", "balance": "الرصيد", "pricing_label": "الأسعار", "confirm_gen": "هل تريد إنشاء مقطع بمدة {sec} ثانية؟ سيُخصم {n}.", "err_insufficient": "الرصيد غير كافٍ", "topup_hint": "اشحن الرصيد لمتابعة التوليد.", "topup_cta": "شراء رصيد", "cancel": "إلغاء", "confirm": "تأكيد", "not_signed_in": "لم تسجّل الدخول", "traveler": "مسافر", "view_all": "عرض الكل", "my_works_pick": "اختر مقطعًا لإعادة استخدام إعداداته", "li1": "مقطع 30 ثانية = 45 رصيدًا، 45 ثانية = 64، 60 ثانية = 85، 75 ثانية = 103، 90 ثانية = 120.", "li2": "الأجيال الفاشلة تُرد تلقائيًا.", "li3": "الأرصدة لا تنتهي وتعمل في كل الأدوات.", "li4": "المدفوعات تعالجها Creem، وهي تاجر السجل لدينا.", "li5": "يمكن استرداد الأرصدة غير المستخدمة خلال 14 يومًا.", "refund_link": "سياسة الاسترداد"}</script>
 <script>
 (function () {
   "use strict";
@@ -1407,32 +1431,55 @@
   }
 
   // ---- 我的作品（登录后显示） ----
+  var mineItems = [];
+  function applyMine(it) {
+    Object.keys(it.params || {}).forEach(function (k) {
+      if (values[k] !== undefined) values[k] = it.params[k];
+    });
+    renderRail();
+    current = { kind: "result", audio: it.url, cover: it.cover, title: UI.my_track, meta: "mine" };
+    renderBig();
+    toggleAudio(it.url);
+  }
+
+  function mineTile(it, onPick) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "mtile";
+    b.innerHTML = (it.cover
+      ? '<img src="' + it.cover + '" alt="" loading="lazy">'
+      : '<div class="ph2"><div class="wv">' + wave() + '</div></div>') +
+      '<p>' + fmtDur(Math.round((it.duration_ms || 0) / 1000)) + '</p>';
+    b.addEventListener("click", function () { onPick(it); });
+    return b;
+  }
+
+  function openMineModal() {
+    var box = $("mineAll"); box.innerHTML = "";
+    mineItems.forEach(function (it) {
+      box.appendChild(mineTile(it, function (x) {
+        applyMine(x);
+        $("mineModal").classList.add("hidden");
+      }));
+    });
+    $("mineModal").classList.remove("hidden");
+  }
+
   function loadMine() {
     if (!sessionOk) return;
-    call("/ai/music/tracks?limit=6", {}, true).then(function (d) {
+    call("/ai/music/tracks?limit=30", {}, true).then(function (d) {
       if (d.code !== 200) return;
-      var items = (d.data && d.data.items) || [];
-      if (!items.length) return;
+      mineItems = (d.data && d.data.items) || [];
+      if (!mineItems.length) return;
       var row = $("mineRow"); row.innerHTML = "";
       $("mine").classList.remove("hidden");
-      items.forEach(function (it) {
-        var b = document.createElement("button");
-        b.type = "button"; b.className = "mtile";
-        b.innerHTML = (it.cover
-          ? '<img src="' + it.cover + '" alt="" loading="lazy">'
-          : '<div class="ph2"><div class="wv">' + wave() + '</div></div>') +
-          '<p>' + fmtDur(Math.round((it.duration_ms || 0) / 1000)) + '</p>';
-        b.addEventListener("click", function () {
-          Object.keys(it.params || {}).forEach(function (k) {
-            if (values[k] !== undefined) values[k] = it.params[k];
-          });
-          renderRail();
-          current = { kind: "result", audio: it.url, cover: it.cover, title: it.lyrics || "", meta: "mine" };
-          renderBig();
-          toggleAudio(it.url);
-        });
-        row.appendChild(b);
-      });
+      mineItems.slice(0, 6).forEach(function (it) { row.appendChild(mineTile(it, applyMine)); });
+      if (mineItems.length > 6) {
+        var more = document.createElement("button");
+        more.type = "button"; more.className = "mtile more";
+        more.innerHTML = '<div class="ph2 more"><span>+' + (mineItems.length - 6) + '</span></div><p>' + UI.view_all + '</p>';
+        more.addEventListener("click", openMineModal);
+        row.appendChild(more);
+      }
       $("mine").classList.remove("hidden");
     }).catch(function () {});
   }
@@ -1471,6 +1518,11 @@
       .replace("{n}", cost() + " " + UI.credits);
     ask(txt, generate);
   }
+
+  $("mineClose").addEventListener("click", function () { $("mineModal").classList.add("hidden"); });
+  $("mineModal").addEventListener("click", function (e) {
+    if (e.target === $("mineModal")) $("mineModal").classList.add("hidden");
+  });
 
   $("go").addEventListener("click", generateConfirmed);
   // 底部账号栏：未登录一律先去登录（提前拦截），已登录才进入对应页面

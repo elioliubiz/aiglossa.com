@@ -245,11 +245,20 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.wide{width:min(720px,92vw);max-height:80vh;display:flex;flex-direction:column}
+  .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .mhead b{font-size:14px}
+  .mhint{font-size:11.5px;color:var(--muted)}
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;
+    overflow-y:auto;padding-right:4px}
+  .mgrid .mtile{width:100%}
   .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
     background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
   .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .ph2 .wv{display:flex;align-items:flex-end;gap:2px;height:36px;width:72%;opacity:.6}
   .ph2 .wv i{flex:1;background:rgba(255,255,255,.5);border-radius:1px}
+  .ph2.more{display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--acc);
+    background:rgba(255,122,26,.10)}
   .mine{margin-bottom:18px}
   .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
@@ -472,6 +481,13 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.wide{width:min(720px,92vw);max-height:80vh;display:flex;flex-direction:column}
+  .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .mhead b{font-size:14px}
+  .mhint{font-size:11.5px;color:var(--muted)}
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;
+    overflow-y:auto;padding-right:4px}
+  .mgrid .mtile{width:100%}
   .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
     background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
   .topup a{color:var(--acc);font-weight:600;text-decoration:none}
@@ -724,6 +740,14 @@
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
   </main>
+  <div class="modal hidden" id="mineModal" role="dialog" aria-modal="true">
+    <div class="mbox wide">
+      <div class="mhead"><b>Trek saya</b><span class="mhint">Pilih satu untuk memakai ulang pengaturannya</span></div>
+      <div class="mgrid" id="mineAll"></div>
+      <div class="macts"><button type="button" class="mbtn" id="mineClose">Batal</button></div>
+    </div>
+  </div>
+
   <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
     <div class="mbox">
       <p class="mtext" id="mtext"></p>
@@ -739,7 +763,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi", "description": "Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus.", "h1": "Buat lagu", "sub": "Dari foto atau deskripsi. Durasi presisi, loop mulus.", "drop": "Seret atau pilih foto<br>lirik akan menyebut isinya", "generate": "Buat lagu", "how_credits": "Cara kerja kredit →", "grp_photo": "Dengarkan", "grp_recipe": "Mulai dari kebutuhan", "download": "Unduh", "save_recipe": "Simpan sebagai resep", "remove_photo": "Hapus foto", "photo_here": "Fotomu di sini", "note": "Semua di sebelah kanan dibuat di sini", "legal_aup": "Penggunaan wajar", "legal_refund": "Pengembalian dana", "sign_in_first": "Masuk untuk membuat", "generating": "Membuat… sekitar 20 detik.", "just_generated": "Baru dibuat", "your_track": "Lagu kamu", "from_recipe": "Dari resep", "from_photo": "Dibuat dari foto", "err_load": "Gagal memuat opsi", "done_in": "Selesai dalam {n} dtk", "gen_cost": "Buat · {n}", "err_gen": "Pembuatan gagal", "my_track": "Trek saya", "err_net": "Kesalahan jaringan", "recipe_name": "Nama resep", "err_save": "Gagal menyimpan", "saved": "Tersimpan: {name}", "up_to": "Maksimal {n}", "credits": "kredit", "guides_link": "Panduan →", "guides_title": "Panduan", "close": "Tutup", "loading": "Memuat…", "off": "Mati", "loop_on": "Loop mulus", "buy_credits": "Beli kredit →", "desc_label": "Deskripsi (opsional)", "desc_ph": "Deskripsikan trek: kafe saat hujan, piano lembut", "mode_photo": "Foto", "mode_text": "Teks", "field_density": "Kepadatan aransemen", "opt_sparse": "Renggang", "opt_medium": "Sedang", "opt_full": "Padat", "pro_title": "Opsi lanjutan", "grp_photo_sub": "Foto → lirik → trek", "grp_recipe_sub": "Pilih kebutuhan, pengaturannya sudah siap", "recipe_names": {"short-form-cut": "Cắt ngắn", "hook-sting": "Mở đầu gây chú ý", "product-loop": "Vòng lặp sản phẩm", "podcast-bed": "Nền podcast", "documentary-underscore": "Nền phim tài liệu", "game-menu-loop": "Vòng lặp menu", "calm-focus": "Tập trung", "kids-learning": "Thiếu nhi"}, "applied": "Memakai", "current_recipe": "Preset aktif", "mine_title": "Trek saya", "share_link": "Bagikan tautan", "dl_audio": "Unduh audio", "copied": "Disalin", "shared_note": "Anda mendengar trek yang dibagikan — buat milik Anda di bawah", "my_account": "Akun", "balance": "Saldo", "pricing_label": "Harga", "confirm_gen": "Buat trek {sec} detik? Ini memakai {n}.", "err_insufficient": "Kredit tidak cukup", "topup_hint": "Isi ulang untuk terus membuat.", "topup_cta": "Beli kredit", "cancel": "Batal", "confirm": "Konfirmasi", "not_signed_in": "Belum masuk", "traveler": "Pelancong", "li1": "Trek 30 dtk = 45 kredit, 45 dtk = 64, 60 dtk = 85, 75 dtk = 103, 90 dtk = 120.", "li2": "Pembuatan yang gagal dikembalikan otomatis.", "li3": "Kredit tidak kedaluwarsa dan berlaku di semua alat.", "li4": "Pembayaran diproses oleh Creem, merchant of record kami.", "li5": "Kredit yang belum terpakai bisa dikembalikan dalam 14 hari.", "refund_link": "Kebijakan pengembalian"}</script>
+<script type="application/json" id="ui">{"title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi", "description": "Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus.", "h1": "Buat lagu", "sub": "Dari foto atau deskripsi. Durasi presisi, loop mulus.", "drop": "Seret atau pilih foto<br>lirik akan menyebut isinya", "generate": "Buat lagu", "how_credits": "Cara kerja kredit →", "grp_photo": "Dengarkan", "grp_recipe": "Mulai dari kebutuhan", "download": "Unduh", "save_recipe": "Simpan sebagai resep", "remove_photo": "Hapus foto", "photo_here": "Fotomu di sini", "note": "Semua di sebelah kanan dibuat di sini", "legal_aup": "Penggunaan wajar", "legal_refund": "Pengembalian dana", "sign_in_first": "Masuk untuk membuat", "generating": "Membuat… sekitar 20 detik.", "just_generated": "Baru dibuat", "your_track": "Lagu kamu", "from_recipe": "Dari resep", "from_photo": "Dibuat dari foto", "err_load": "Gagal memuat opsi", "done_in": "Selesai dalam {n} dtk", "gen_cost": "Buat · {n}", "err_gen": "Pembuatan gagal", "my_track": "Trek saya", "err_net": "Kesalahan jaringan", "recipe_name": "Nama resep", "err_save": "Gagal menyimpan", "saved": "Tersimpan: {name}", "up_to": "Maksimal {n}", "credits": "kredit", "guides_link": "Panduan →", "guides_title": "Panduan", "close": "Tutup", "loading": "Memuat…", "off": "Mati", "loop_on": "Loop mulus", "buy_credits": "Beli kredit →", "desc_label": "Deskripsi (opsional)", "desc_ph": "Deskripsikan trek: kafe saat hujan, piano lembut", "mode_photo": "Foto", "mode_text": "Teks", "field_density": "Kepadatan aransemen", "opt_sparse": "Renggang", "opt_medium": "Sedang", "opt_full": "Padat", "pro_title": "Opsi lanjutan", "grp_photo_sub": "Foto → lirik → trek", "grp_recipe_sub": "Pilih kebutuhan, pengaturannya sudah siap", "recipe_names": {"short-form-cut": "Cắt ngắn", "hook-sting": "Mở đầu gây chú ý", "product-loop": "Vòng lặp sản phẩm", "podcast-bed": "Nền podcast", "documentary-underscore": "Nền phim tài liệu", "game-menu-loop": "Vòng lặp menu", "calm-focus": "Tập trung", "kids-learning": "Thiếu nhi"}, "applied": "Memakai", "current_recipe": "Preset aktif", "mine_title": "Trek saya", "share_link": "Bagikan tautan", "dl_audio": "Unduh audio", "copied": "Disalin", "shared_note": "Anda mendengar trek yang dibagikan — buat milik Anda di bawah", "my_account": "Akun", "balance": "Saldo", "pricing_label": "Harga", "confirm_gen": "Buat trek {sec} detik? Ini memakai {n}.", "err_insufficient": "Kredit tidak cukup", "topup_hint": "Isi ulang untuk terus membuat.", "topup_cta": "Beli kredit", "cancel": "Batal", "confirm": "Konfirmasi", "not_signed_in": "Belum masuk", "traveler": "Pelancong", "view_all": "Lihat semua", "my_works_pick": "Pilih satu untuk memakai ulang pengaturannya", "li1": "Trek 30 dtk = 45 kredit, 45 dtk = 64, 60 dtk = 85, 75 dtk = 103, 90 dtk = 120.", "li2": "Pembuatan yang gagal dikembalikan otomatis.", "li3": "Kredit tidak kedaluwarsa dan berlaku di semua alat.", "li4": "Pembayaran diproses oleh Creem, merchant of record kami.", "li5": "Kredit yang belum terpakai bisa dikembalikan dalam 14 hari.", "refund_link": "Kebijakan pengembalian"}</script>
 <script>
 (function () {
   "use strict";
@@ -1407,32 +1431,55 @@
   }
 
   // ---- 我的作品（登录后显示） ----
+  var mineItems = [];
+  function applyMine(it) {
+    Object.keys(it.params || {}).forEach(function (k) {
+      if (values[k] !== undefined) values[k] = it.params[k];
+    });
+    renderRail();
+    current = { kind: "result", audio: it.url, cover: it.cover, title: UI.my_track, meta: "mine" };
+    renderBig();
+    toggleAudio(it.url);
+  }
+
+  function mineTile(it, onPick) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "mtile";
+    b.innerHTML = (it.cover
+      ? '<img src="' + it.cover + '" alt="" loading="lazy">'
+      : '<div class="ph2"><div class="wv">' + wave() + '</div></div>') +
+      '<p>' + fmtDur(Math.round((it.duration_ms || 0) / 1000)) + '</p>';
+    b.addEventListener("click", function () { onPick(it); });
+    return b;
+  }
+
+  function openMineModal() {
+    var box = $("mineAll"); box.innerHTML = "";
+    mineItems.forEach(function (it) {
+      box.appendChild(mineTile(it, function (x) {
+        applyMine(x);
+        $("mineModal").classList.add("hidden");
+      }));
+    });
+    $("mineModal").classList.remove("hidden");
+  }
+
   function loadMine() {
     if (!sessionOk) return;
-    call("/ai/music/tracks?limit=6", {}, true).then(function (d) {
+    call("/ai/music/tracks?limit=30", {}, true).then(function (d) {
       if (d.code !== 200) return;
-      var items = (d.data && d.data.items) || [];
-      if (!items.length) return;
+      mineItems = (d.data && d.data.items) || [];
+      if (!mineItems.length) return;
       var row = $("mineRow"); row.innerHTML = "";
       $("mine").classList.remove("hidden");
-      items.forEach(function (it) {
-        var b = document.createElement("button");
-        b.type = "button"; b.className = "mtile";
-        b.innerHTML = (it.cover
-          ? '<img src="' + it.cover + '" alt="" loading="lazy">'
-          : '<div class="ph2"><div class="wv">' + wave() + '</div></div>') +
-          '<p>' + fmtDur(Math.round((it.duration_ms || 0) / 1000)) + '</p>';
-        b.addEventListener("click", function () {
-          Object.keys(it.params || {}).forEach(function (k) {
-            if (values[k] !== undefined) values[k] = it.params[k];
-          });
-          renderRail();
-          current = { kind: "result", audio: it.url, cover: it.cover, title: it.lyrics || "", meta: "mine" };
-          renderBig();
-          toggleAudio(it.url);
-        });
-        row.appendChild(b);
-      });
+      mineItems.slice(0, 6).forEach(function (it) { row.appendChild(mineTile(it, applyMine)); });
+      if (mineItems.length > 6) {
+        var more = document.createElement("button");
+        more.type = "button"; more.className = "mtile more";
+        more.innerHTML = '<div class="ph2 more"><span>+' + (mineItems.length - 6) + '</span></div><p>' + UI.view_all + '</p>';
+        more.addEventListener("click", openMineModal);
+        row.appendChild(more);
+      }
       $("mine").classList.remove("hidden");
     }).catch(function () {});
   }
@@ -1471,6 +1518,11 @@
       .replace("{n}", cost() + " " + UI.credits);
     ask(txt, generate);
   }
+
+  $("mineClose").addEventListener("click", function () { $("mineModal").classList.add("hidden"); });
+  $("mineModal").addEventListener("click", function (e) {
+    if (e.target === $("mineModal")) $("mineModal").classList.add("hidden");
+  });
 
   $("go").addEventListener("click", generateConfirmed);
   // 底部账号栏：未登录一律先去登录（提前拦截），已登录才进入对应页面

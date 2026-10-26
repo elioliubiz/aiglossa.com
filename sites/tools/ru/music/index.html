@@ -245,11 +245,20 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.wide{width:min(720px,92vw);max-height:80vh;display:flex;flex-direction:column}
+  .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .mhead b{font-size:14px}
+  .mhint{font-size:11.5px;color:var(--muted)}
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;
+    overflow-y:auto;padding-right:4px}
+  .mgrid .mtile{width:100%}
   .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
     background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
   .topup a{color:var(--acc);font-weight:600;text-decoration:none}
   .ph2 .wv{display:flex;align-items:flex-end;gap:2px;height:36px;width:72%;opacity:.6}
   .ph2 .wv i{flex:1;background:rgba(255,255,255,.5);border-radius:1px}
+  .ph2.more{display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--acc);
+    background:rgba(255,122,26,.10)}
   .mine{margin-bottom:18px}
   .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
@@ -472,6 +481,13 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.wide{width:min(720px,92vw);max-height:80vh;display:flex;flex-direction:column}
+  .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .mhead b{font-size:14px}
+  .mhint{font-size:11.5px;color:var(--muted)}
+  .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(132px,1fr));gap:10px;
+    overflow-y:auto;padding-right:4px}
+  .mgrid .mtile{width:100%}
   .topup{margin-top:8px;padding:10px 12px;border-radius:10px;border:1px solid rgba(255,122,26,.35);
     background:rgba(255,122,26,.08);font-size:12px;line-height:1.6;color:rgba(255,214,180,.95)}
   .topup a{color:var(--acc);font-weight:600;text-decoration:none}
@@ -724,6 +740,14 @@
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
   </main>
+  <div class="modal hidden" id="mineModal" role="dialog" aria-modal="true">
+    <div class="mbox wide">
+      <div class="mhead"><b>Мои треки</b><span class="mhint">Выберите трек, чтобы применить его настройки</span></div>
+      <div class="mgrid" id="mineAll"></div>
+      <div class="macts"><button type="button" class="mbtn" id="mineClose">Отмена</button></div>
+    </div>
+  </div>
+
   <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
     <div class="mbox">
       <p class="mtext" id="mtext"></p>
@@ -739,7 +763,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Генератор музыки на ИИ — из фото в трек, точная длина", "description": "Из фото или описания — фоновая музыка ровно на 30–90 секунд. В тексте называются предметы с изображения; вокал на 10 языках и бесшовные лупы.", "h1": "Создать трек", "sub": "Из фото или описания. Точная длина, бесшовные лупы.", "drop": "Перетащите или выберите фото<br>в тексте песни будут названы предметы с него", "generate": "Создать трек", "how_credits": "Как работают кредиты →", "grp_photo": "Послушать", "grp_recipe": "По задаче", "download": "Скачать", "save_recipe": "Сохранить как рецепт", "remove_photo": "Убрать фото", "photo_here": "Ваше фото здесь", "note": "Всё справа создано здесь", "legal_aup": "Допустимое использование", "legal_refund": "Возвраты", "sign_in_first": "Войдите, чтобы создать", "generating": "Создаём… около 20 секунд.", "just_generated": "Только что создано", "your_track": "Ваш трек", "from_recipe": "Из рецепта", "from_photo": "Из фотографии", "err_load": "Не удалось загрузить параметры", "done_in": "Готово за {n} с", "gen_cost": "Создать · {n}", "err_gen": "Не удалось создать", "my_track": "Мой трек", "err_net": "Ошибка сети", "recipe_name": "Название рецепта", "err_save": "Не удалось сохранить", "saved": "Сохранено: {name}", "up_to": "До {n}", "credits": "кредитов", "guides_link": "Руководства →", "guides_title": "Руководства", "close": "Закрыть", "loading": "Загрузка…", "off": "Выкл", "loop_on": "Бесшовный луп", "buy_credits": "Купить кредиты →", "desc_label": "Описание (необязательно)", "desc_ph": "Опишите трек: дождливое кафе, мягкое пиано", "mode_photo": "Фото", "mode_text": "Текст", "field_density": "Плотность аранжировки", "opt_sparse": "Разрежённая", "opt_medium": "Средняя", "opt_full": "Плотная", "pro_title": "Дополнительно", "grp_photo_sub": "Фото → текст → трек", "grp_recipe_sub": "Выберите задачу — настройки уже готовы", "recipe_names": {"short-form-cut": "Taglio breve", "hook-sting": "Gancio d'apertura", "product-loop": "Loop prodotto", "podcast-bed": "Base per podcast", "documentary-underscore": "Base documentario", "game-menu-loop": "Loop di menu", "calm-focus": "Concentrazione", "kids-learning": "Bambini e studio"}, "applied": "Используем", "current_recipe": "Текущий пресет", "mine_title": "Мои треки", "share_link": "Поделиться ссылкой", "dl_audio": "Скачать аудио", "copied": "Скопировано", "shared_note": "Вы слушаете трек, которым поделились — создайте свой ниже", "my_account": "Аккаунт", "balance": "Баланс", "pricing_label": "Цены", "confirm_gen": "Создать трек на {sec} с? Это спишет {n}.", "err_insufficient": "Недостаточно кредитов", "topup_hint": "Пополните баланс, чтобы продолжить.", "topup_cta": "Купить кредиты", "cancel": "Отмена", "confirm": "Подтвердить", "not_signed_in": "Не выполнен вход", "traveler": "Путешественник", "li1": "Трек 30 с = 45 кредитов, 45 с = 64, 60 с = 85, 75 с = 103, 90 с = 120.", "li2": "Неудачные генерации возвращаются автоматически.", "li3": "Кредиты не сгорают и действуют во всех инструментах.", "li4": "Платежи обрабатывает Creem — наш merchant of record.", "li5": "Неиспользованные кредиты можно вернуть в течение 14 дней.", "refund_link": "Политика возврата"}</script>
+<script type="application/json" id="ui">{"title": "Генератор музыки на ИИ — из фото в трек, точная длина", "description": "Из фото или описания — фоновая музыка ровно на 30–90 секунд. В тексте называются предметы с изображения; вокал на 10 языках и бесшовные лупы.", "h1": "Создать трек", "sub": "Из фото или описания. Точная длина, бесшовные лупы.", "drop": "Перетащите или выберите фото<br>в тексте песни будут названы предметы с него", "generate": "Создать трек", "how_credits": "Как работают кредиты →", "grp_photo": "Послушать", "grp_recipe": "По задаче", "download": "Скачать", "save_recipe": "Сохранить как рецепт", "remove_photo": "Убрать фото", "photo_here": "Ваше фото здесь", "note": "Всё справа создано здесь", "legal_aup": "Допустимое использование", "legal_refund": "Возвраты", "sign_in_first": "Войдите, чтобы создать", "generating": "Создаём… около 20 секунд.", "just_generated": "Только что создано", "your_track": "Ваш трек", "from_recipe": "Из рецепта", "from_photo": "Из фотографии", "err_load": "Не удалось загрузить параметры", "done_in": "Готово за {n} с", "gen_cost": "Создать · {n}", "err_gen": "Не удалось создать", "my_track": "Мой трек", "err_net": "Ошибка сети", "recipe_name": "Название рецепта", "err_save": "Не удалось сохранить", "saved": "Сохранено: {name}", "up_to": "До {n}", "credits": "кредитов", "guides_link": "Руководства →", "guides_title": "Руководства", "close": "Закрыть", "loading": "Загрузка…", "off": "Выкл", "loop_on": "Бесшовный луп", "buy_credits": "Купить кредиты →", "desc_label": "Описание (необязательно)", "desc_ph": "Опишите трек: дождливое кафе, мягкое пиано", "mode_photo": "Фото", "mode_text": "Текст", "field_density": "Плотность аранжировки", "opt_sparse": "Разрежённая", "opt_medium": "Средняя", "opt_full": "Плотная", "pro_title": "Дополнительно", "grp_photo_sub": "Фото → текст → трек", "grp_recipe_sub": "Выберите задачу — настройки уже готовы", "recipe_names": {"short-form-cut": "Taglio breve", "hook-sting": "Gancio d'apertura", "product-loop": "Loop prodotto", "podcast-bed": "Base per podcast", "documentary-underscore": "Base documentario", "game-menu-loop": "Loop di menu", "calm-focus": "Concentrazione", "kids-learning": "Bambini e studio"}, "applied": "Используем", "current_recipe": "Текущий пресет", "mine_title": "Мои треки", "share_link": "Поделиться ссылкой", "dl_audio": "Скачать аудио", "copied": "Скопировано", "shared_note": "Вы слушаете трек, которым поделились — создайте свой ниже", "my_account": "Аккаунт", "balance": "Баланс", "pricing_label": "Цены", "confirm_gen": "Создать трек на {sec} с? Это спишет {n}.", "err_insufficient": "Недостаточно кредитов", "topup_hint": "Пополните баланс, чтобы продолжить.", "topup_cta": "Купить кредиты", "cancel": "Отмена", "confirm": "Подтвердить", "not_signed_in": "Не выполнен вход", "traveler": "Путешественник", "view_all": "Показать все", "my_works_pick": "Выберите трек, чтобы применить его настройки", "li1": "Трек 30 с = 45 кредитов, 45 с = 64, 60 с = 85, 75 с = 103, 90 с = 120.", "li2": "Неудачные генерации возвращаются автоматически.", "li3": "Кредиты не сгорают и действуют во всех инструментах.", "li4": "Платежи обрабатывает Creem — наш merchant of record.", "li5": "Неиспользованные кредиты можно вернуть в течение 14 дней.", "refund_link": "Политика возврата"}</script>
 <script>
 (function () {
   "use strict";
@@ -1407,32 +1431,55 @@
   }
 
   // ---- 我的作品（登录后显示） ----
+  var mineItems = [];
+  function applyMine(it) {
+    Object.keys(it.params || {}).forEach(function (k) {
+      if (values[k] !== undefined) values[k] = it.params[k];
+    });
+    renderRail();
+    current = { kind: "result", audio: it.url, cover: it.cover, title: UI.my_track, meta: "mine" };
+    renderBig();
+    toggleAudio(it.url);
+  }
+
+  function mineTile(it, onPick) {
+    var b = document.createElement("button");
+    b.type = "button"; b.className = "mtile";
+    b.innerHTML = (it.cover
+      ? '<img src="' + it.cover + '" alt="" loading="lazy">'
+      : '<div class="ph2"><div class="wv">' + wave() + '</div></div>') +
+      '<p>' + fmtDur(Math.round((it.duration_ms || 0) / 1000)) + '</p>';
+    b.addEventListener("click", function () { onPick(it); });
+    return b;
+  }
+
+  function openMineModal() {
+    var box = $("mineAll"); box.innerHTML = "";
+    mineItems.forEach(function (it) {
+      box.appendChild(mineTile(it, function (x) {
+        applyMine(x);
+        $("mineModal").classList.add("hidden");
+      }));
+    });
+    $("mineModal").classList.remove("hidden");
+  }
+
   function loadMine() {
     if (!sessionOk) return;
-    call("/ai/music/tracks?limit=6", {}, true).then(function (d) {
+    call("/ai/music/tracks?limit=30", {}, true).then(function (d) {
       if (d.code !== 200) return;
-      var items = (d.data && d.data.items) || [];
-      if (!items.length) return;
+      mineItems = (d.data && d.data.items) || [];
+      if (!mineItems.length) return;
       var row = $("mineRow"); row.innerHTML = "";
       $("mine").classList.remove("hidden");
-      items.forEach(function (it) {
-        var b = document.createElement("button");
-        b.type = "button"; b.className = "mtile";
-        b.innerHTML = (it.cover
-          ? '<img src="' + it.cover + '" alt="" loading="lazy">'
-          : '<div class="ph2"><div class="wv">' + wave() + '</div></div>') +
-          '<p>' + fmtDur(Math.round((it.duration_ms || 0) / 1000)) + '</p>';
-        b.addEventListener("click", function () {
-          Object.keys(it.params || {}).forEach(function (k) {
-            if (values[k] !== undefined) values[k] = it.params[k];
-          });
-          renderRail();
-          current = { kind: "result", audio: it.url, cover: it.cover, title: it.lyrics || "", meta: "mine" };
-          renderBig();
-          toggleAudio(it.url);
-        });
-        row.appendChild(b);
-      });
+      mineItems.slice(0, 6).forEach(function (it) { row.appendChild(mineTile(it, applyMine)); });
+      if (mineItems.length > 6) {
+        var more = document.createElement("button");
+        more.type = "button"; more.className = "mtile more";
+        more.innerHTML = '<div class="ph2 more"><span>+' + (mineItems.length - 6) + '</span></div><p>' + UI.view_all + '</p>';
+        more.addEventListener("click", openMineModal);
+        row.appendChild(more);
+      }
       $("mine").classList.remove("hidden");
     }).catch(function () {});
   }
@@ -1471,6 +1518,11 @@
       .replace("{n}", cost() + " " + UI.credits);
     ask(txt, generate);
   }
+
+  $("mineClose").addEventListener("click", function () { $("mineModal").classList.add("hidden"); });
+  $("mineModal").addEventListener("click", function (e) {
+    if (e.target === $("mineModal")) $("mineModal").classList.add("hidden");
+  });
 
   $("go").addEventListener("click", generateConfirmed);
   // 底部账号栏：未登录一律先去登录（提前拦截），已登录才进入对应页面
