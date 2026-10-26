@@ -76,6 +76,22 @@ def _capitalize(text: str) -> str:
     return text[:1].upper() + text[1:] if text else text
 
 
+# staging 环境：把页面里写死的生产主站链接改写到当前环境。
+# 只影响以 https://aiglossa.com 开头的链接，生产环境执行时是空操作。
+ENV_LINK_FIX = """
+<script>
+(function () {
+  var h = location.hostname;
+  if (h.indexOf("staging.aiglossa.com") < 0) return;
+  var main = "https://staging.aiglossa.com";
+  document.querySelectorAll('a[href^="https://aiglossa.com"]').forEach(function (a) {
+    a.href = main + a.getAttribute("href").slice("https://aiglossa.com".length);
+  });
+})();
+</script>
+</body>"""
+
+
 def render_card(card: dict) -> str:
     rows = []
     # dir="auto"：原词可能是阿拉伯文等 RTL 文字，交给浏览器按内容判定方向，
@@ -387,6 +403,8 @@ def main() -> int:
             if key in values:
                 values[key] = values[key].replace("{{prefix}}", values["prefix"])
         page = render(template_path.read_text(encoding="utf-8"), values, where)
+        if "</body>" in page:
+            page = page.replace("</body>", ENV_LINK_FIX, 1)
         target = SITES_DIR / site / lang / (page_path or "index.html")
         if target in seen_targets:
             raise AssertionError(f"重复的输出路径：{target}")
