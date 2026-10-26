@@ -46,7 +46,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.send_response(resp.status)
         for key, value in resp.getheaders():
             low = key.lower()
-            if low in ("transfer-encoding", "connection", "content-encoding", "content-length"):
+            if low in ("transfer-encoding", "connection", "content-encoding", "content-length", "date", "server"):
                 continue
             if low == "set-cookie":
                 # 本地是 http、且主机是 localhost：去掉 Domain 与 Secure，
