@@ -95,8 +95,11 @@
 </form>
 <script>
 (function () {
-  var API = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
-    ? "/api" : "https://api.aiglossa.com";
+  // 环境判定：第一段描述"是什么"，staging 描述"在哪个环境"
+  var HOST = location.hostname;
+  var IS_STAGING = HOST.indexOf("staging.aiglossa.com") >= 0 && HOST.indexOf("dev.staging") !== 0;
+  var IS_LOCAL = HOST === "localhost" || HOST === "127.0.0.1";
+  var API = IS_LOCAL ? "/api" : (IS_STAGING ? "https://dev.staging.aiglossa.com" : "https://api.aiglossa.com");
   var LANG = document.documentElement.lang || "en";
   var $ = function (id) { return document.getElementById(id); };
   var sent = false, email = "", mode = "code";
@@ -104,7 +107,8 @@
   function next() {
     var q = new URLSearchParams(location.search).get("next");
     if (q) return q;
-    return "https://tools.aiglossa.com/" + LANG + "/music/";
+    return (IS_STAGING ? "https://tools.staging.aiglossa.com" : "https://tools.aiglossa.com")
+      + "/" + LANG + "/music/";
   }
   function call(path, body) {
     var payload = Object.assign({ app_key: "tools", device: device(), timestamp: Math.floor(Date.now() / 1000) }, body || {});

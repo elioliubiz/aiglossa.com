@@ -642,10 +642,15 @@
   // 选项标签由后端下发多语言字典：优先当前页面语言，取不到回退英文。
   var LANG = (document.documentElement.lang || "en").replace("_", "-");
   // 账号/充值页面在平台主站；本地调试时主站跑在 8301
-  var ROOT = (location.hostname === "tools.aiglossa.com" || location.hostname === "aiglossa.com")
-    ? "https://aiglossa.com" : "http://localhost:8301";
+  // 主站地址：staging → staging.aiglossa.com；生产 → aiglossa.com；本地 → 8301
+  var ROOT = IS_STAGING ? "https://staging.aiglossa.com"
+    : IS_LOCAL ? "http://localhost:8301" : "https://aiglossa.com";
   var TOKEN_KEY = "aig_token";
-  var API = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "/api";
+  // 环境判定：第一段描述"是什么"，staging 描述"在哪个环境"
+  var HOST = location.hostname;
+  var IS_STAGING = HOST.indexOf("staging.aiglossa.com") >= 0 && HOST.indexOf("dev.staging") !== 0;
+  var IS_LOCAL = HOST === "localhost" || HOST === "127.0.0.1";
+  var API = IS_LOCAL ? "/api" : (IS_STAGING ? "https://dev.staging.aiglossa.com" : "https://api.aiglossa.com");
   var $ = function (id) { return document.getElementById(id); };
   var token = function () { return localStorage.getItem(TOKEN_KEY) || ""; };
   function device() {

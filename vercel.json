@@ -669,6 +669,66 @@
   ],
   "rewrites": [
     {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/root/:path*"
+    },
+    {
+      "source": "/:lang/",
+      "has": [
+        {
+          "type": "host",
+          "value": "staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/root/:lang/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/tools/:path*"
+    },
+    {
+      "source": "/:lang/",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/tools/:lang/index.html"
+    },
+    {
+      "source": "/:lang/music/",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/tools/:lang/music/index.html"
+    },
+    {
+      "source": "/:lang/guides/",
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/tools/:lang/guides/index.html"
+    },
+    {
       "source": "/inapp",
       "has": [
         {

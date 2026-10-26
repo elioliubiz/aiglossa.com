@@ -118,7 +118,11 @@
   "use strict";
   var UI = JSON.parse(document.getElementById("ui").textContent);
   var TOKEN_KEY = "aig_token";
-  var API = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "https://dev.aiglossa.com";
+  // 环境判定：第一段描述"是什么"，staging 描述"在哪个环境"
+  var HOST = location.hostname;
+  var IS_STAGING = HOST.indexOf("staging.aiglossa.com") >= 0 && HOST.indexOf("dev.staging") !== 0;
+  var IS_LOCAL = HOST === "localhost" || HOST === "127.0.0.1";
+  var API = IS_LOCAL ? "/api" : (IS_STAGING ? "https://dev.staging.aiglossa.com" : "https://api.aiglossa.com");
   var $ = function (id) { return document.getElementById(id); };
   function token() { return localStorage.getItem(TOKEN_KEY) || ""; }
   function device() {
