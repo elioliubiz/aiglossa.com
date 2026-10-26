@@ -597,8 +597,8 @@
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
       <p class="note" style="display:block" id="acctLine">
         <span id="bal" style="color:var(--muted)"></span>
-        <a href="https://aiglossa.com/ru/account.html" id="acctLink" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">Аккаунт</a>
-        <a href="https://aiglossa.com/ru/pricing.html" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">Как работают кредиты →</a>
+        <a href="#" id="acctLink" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">Аккаунт</a>
+        <a href="#" id="priceLink" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">Как работают кредиты →</a>
         <a href="../guides/" style="color:var(--muted);text-decoration:none;margin-inline-start:12px">Руководства →</a>
       </p>
     </div>
@@ -877,7 +877,7 @@
   function needLogin() {
     saveDraft();
     var back = location.origin + location.pathname + location.search;
-    location.href = "https://aiglossa.com/" + LANG + "/login.html?next=" + encodeURIComponent(back);
+    location.href = ROOT + "/" + LANG + "/login.html?next=" + encodeURIComponent(back);
   }
 
   function select(c) {
@@ -1307,6 +1307,8 @@
 
   // ---- 启动 ----
   $("go").addEventListener("click", generate);
+  if ($("acctLink")) $("acctLink").href = ROOT + "/" + LANG + "/account.html";
+  if ($("priceLink")) $("priceLink").href = ROOT + "/" + LANG + "/pricing.html";
   checkSession().then(function (ok) { if (ok) { loadMine(); restoreDraft(); } });
   loadShared();
   call("/ai/music/schema", {}, false).then(function (d) {
