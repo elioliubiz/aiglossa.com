@@ -1299,6 +1299,16 @@
   }
 
   // ---- 启动 ----
+  // 生成会扣额度，先确认一次；未登录先走登录
+  function generateConfirmed() {
+    if (!sessionOk) { needLogin(); return; }
+    var txt = (UI.confirm_gen || "Generate this track?")
+      .replace("{sec}", String(values.duration_seconds || 30))
+      .replace("{n}", cost() + " " + UI.credits);
+    if (!window.confirm(txt)) return;
+    generate();
+  }
+
   $("go").addEventListener("click", generateConfirmed);
   if ($("acctLink")) $("acctLink").href = ROOT + "/" + LANG + "/account.html";
   if ($("priceLink")) $("priceLink").href = ROOT + "/" + LANG + "/pricing.html";
