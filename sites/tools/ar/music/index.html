@@ -46,7 +46,7 @@
   :root{
     --bg:#0e0f11; --panel:#16181c; --ink:#f2f1ec; --mut:#92959c;
     --line:rgba(242,241,236,.12); --acc:#ff7a1a;
-    --on-bg:#f2f1ec; --on-fg:#0e0f11;
+    --on-bg:rgba(255,255,255,.22); --on-fg:#ffffff;
     --chip-on-bg:rgba(255,122,26,.18); --chip-on-fg:#ffd9bf;
   }
   *{box-sizing:border-box}
@@ -73,14 +73,18 @@
   .drop.has{border-style:solid;border-color:var(--line);padding:8px}
   .drop .rm{font-size:11px;color:var(--acc);margin-top:6px}
   .sect{margin-bottom:10px}
-  .lbl{display:flex;justify-content:space-between;align-items:baseline;font:9.5px/1 -apple-system,sans-serif;
-       letter-spacing:.18em;text-transform:uppercase;color:var(--mut);margin-bottom:7px}
+  .lbl{display:flex;justify-content:space-between;align-items:baseline;font:10px/1 -apple-system,sans-serif;
+       letter-spacing:.16em;text-transform:uppercase;color:#9aa0aa;margin-bottom:8px}
   .lbl .r{letter-spacing:0;text-transform:none;font-size:10.5px}
-  .seg{display:flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
-  .seg button{flex:1;padding:8px 2px;border:0;background:transparent;font:inherit;font-size:11.5px;
-              color:var(--ink);cursor:pointer;border-right:1px solid var(--line);white-space:nowrap}
+  .seg{display:flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:11px;
+       background:rgba(255,255,255,.02)}
+  .seg button{flex:1;padding:7px 2px;border:0;border-radius:8px;background:transparent;
+              font:inherit;font-size:11.5px;color:var(--ink);cursor:pointer;white-space:nowrap;
+              transition:background .15s}
   .seg button:last-child{border-right:0}
-  .seg button.on{background:var(--on-bg);color:var(--on-fg);font-weight:600}
+  .seg button:hover{background:rgba(255,255,255,.06)}
+  .seg button.on{background:var(--on-bg);color:var(--on-fg);font-weight:600;
+                box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
   .chips{display:flex;flex-wrap:wrap;gap:6px}
   .chip{padding:6.5px 10.5px;border-radius:7px;border:1px solid var(--line);background:transparent;
         font:inherit;font-size:12px;color:var(--ink);cursor:pointer}
@@ -88,6 +92,48 @@
   .chip.on{background:var(--chip-on-bg);color:var(--chip-on-fg);border-color:var(--acc)}
   input[type=range]{width:100%;accent-color:var(--acc);margin:2px 0 0}
   /* 底部吸附条：用渐隐代替硬边框，避免把上一节"切一半"的观感 */
+  .modes{display:flex;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--line);
+    border-radius:11px;padding:4px;margin-bottom:10px}
+  .mode{flex:1;padding:9px 6px;border:0;border-radius:8px;background:transparent;color:var(--muted);
+    font:inherit;font-size:12.5px;cursor:pointer;transition:background .15s,color .15s}
+  .mode.on{background:var(--ink);color:#101114;font-weight:600}
+  #panelText textarea{width:100%;background:rgba(255,255,255,.03);border:1px solid var(--line);
+    border-radius:11px;color:var(--ink);font:inherit;font-size:12.5px;padding:11px;resize:vertical;
+    line-height:1.6}
+  #panelText textarea::placeholder{color:rgba(242,241,236,.32)}
+  #panelText textarea:focus{outline:none;border-color:var(--acc)}
+  .note{display:block;margin-top:10px}
+  .note>span{display:block;font-size:11px;color:var(--muted);letter-spacing:.06em;margin-bottom:5px}
+  .note textarea{width:100%;background:rgba(255,255,255,.03);border:1px solid var(--line);
+    border-radius:10px;color:var(--ink);font:inherit;font-size:12.5px;padding:9px 11px;resize:vertical;
+    line-height:1.55}
+  .note textarea::placeholder{color:rgba(242,241,236,.32)}
+  .note textarea:focus{outline:none;border-color:var(--acc)}
+  .select{width:100%;appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.04);
+    border:1px solid var(--line);border-radius:9px;color:var(--ink);font:inherit;font-size:12.5px;
+    padding:9px 34px 9px 12px;cursor:pointer;
+    background-image:linear-gradient(45deg,transparent 50%,var(--mut) 50%),linear-gradient(135deg,var(--mut) 50%,transparent 50%);
+    background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;
+    background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+  .select:focus{outline:none;border-color:var(--acc)}
+  .prohead{display:flex;align-items:center;justify-content:space-between;width:100%;
+    margin:14px 0 6px;padding:9px 2px;background:none;border:0;border-block-start:1px solid var(--line);
+    color:var(--muted);font:inherit;font-size:11.5px;letter-spacing:.08em;cursor:pointer}
+  .prohead .chev{transition:transform .2s}
+  .prohead.open .chev{transform:rotate(180deg)}
+  .probody.collapsed{display:none}
+  .shared{margin:10px 0;padding:9px 12px;border-radius:9px;font-size:12px;
+    background:rgba(255,122,26,.08);border:1px solid rgba(255,122,26,.22);color:rgba(255,208,172,.86)}
+  .prechip{display:none;align-items:center;gap:8px;margin:10px 0 12px;padding:8px 10px;
+    border-radius:9px;font-size:12px;background:rgba(255,122,26,.08);
+    border:1px solid rgba(255,122,26,.22);color:rgba(255,208,172,.86)}
+  .prechip.show{display:flex}
+  .prechip .k{color:rgba(255,208,172,.5);font-size:11px}
+  .prechip b{color:rgba(255,157,77,.9);font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .prechip .x{background:none;border:0;color:rgba(255,208,172,.7);font-size:15px;line-height:1;
+    cursor:pointer;padding:0 2px}
+  .prechip .x:hover{color:#fff}
+  .go.flash{box-shadow:0 0 0 3px rgba(255,122,26,.35)}
   .rail-foot{position:sticky;bottom:-22px;margin:0 -24px -22px;padding:46px 24px 22px;
              background:linear-gradient(180deg,rgba(22,24,28,0) 0%,var(--panel) 42%);z-index:2}
   .go{width:100%;display:block;background:var(--acc);color:#1a0e04;border:0;border-radius:11px;padding:15px;
@@ -134,6 +180,14 @@
   .policy a:hover{color:var(--ink)}
   .msg{font-size:11.5px;margin-top:9px;min-height:15px;text-align:center}
   .msg.err{color:#ff9b9b}.msg.ok{color:#9be7b0}
+  .mine{margin-bottom:18px}
+  .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
+  .minerow::-webkit-scrollbar{height:0}
+  .mtile{flex:0 0 auto;width:112px;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+    background:rgba(255,255,255,.03);cursor:pointer;text-align:start;padding:0}
+  .mtile img{width:100%;height:66px;object-fit:cover;display:block}
+  .mtile .ph2{height:66px;background:linear-gradient(135deg,rgba(255,122,26,.22),rgba(255,255,255,.05))}
+  .mtile p{margin:6px 7px;font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .works{padding:20px 26px 30px;overflow-y:auto;min-height:0}
   .whead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
   .whead .t{font:10px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
@@ -183,6 +237,161 @@
   .rec .wv i{flex:1;background:#fff;opacity:.5;border-radius:1px}
   .rec:hover .wv i{opacity:.85}
   .rec .rn{font-size:12.5px;font-weight:600;margin:0 0 2px}
+  .rec .wv{position:relative}
+  .rec .rplay{position:absolute;inset-inline-end:8px;top:8px;width:22px;height:22px;border-radius:50%;
+    display:grid;place-items:center;background:rgba(255,255,255,.14);font-size:9px;color:#fff}
+  .rec .rd{font:10px/1.3 -apple-system,sans-serif;color:var(--mut);margin:0}
+  .thumbs{display:contents}
+  .tile.add{display:grid;place-items:center;background:rgba(255,255,255,.02);border:1px dashed rgba(242,241,236,.2);
+            color:var(--mut);font-size:12px;text-align:center}
+  .hidden{display:none !important}
+  .rec-wrap{position:relative}
+  .swipe{color:var(--acc)}
+
+
+  @media(max-width:1080px){
+    /* 移动端：例子在上、参数在下 */
+    .app{grid-template-columns:1fr;height:auto;display:flex;flex-direction:column}
+    .works{order:-1;padding:16px 0 8px;min-width:0;max-width:100vw;overflow-x:hidden}
+    .works .wrap,.whead,.photos,.rec-wrap,.policy{padding-inline:16px}
+    .whead{flex-wrap:wrap;gap:2px 10px}
+    .whead .n{font-size:11px}
+    .photos{grid-template-columns:repeat(2,1fr);grid-auto-rows:132px}
+    .recipes{grid-template-columns:repeat(2,1fr)!important;grid-template-rows:none!important;
+             grid-auto-flow:row!important;overflow-x:visible!important}
+    .rec-wrap:after{display:none}
+    .rail{border-right:0;border-top:1px solid var(--line);padding:18px 16px 26px;min-width:0;overflow:visible}
+  .select{width:100%;appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.04);
+    border:1px solid var(--line);border-radius:9px;color:var(--ink);font:inherit;font-size:12.5px;
+    padding:9px 34px 9px 12px;cursor:pointer;
+    background-image:linear-gradient(45deg,transparent 50%,var(--mut) 50%),linear-gradient(135deg,var(--mut) 50%,transparent 50%);
+    background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;
+    background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+  .select:focus{outline:none;border-color:var(--acc)}
+  .prohead{display:flex;align-items:center;justify-content:space-between;width:100%;
+    margin:14px 0 6px;padding:9px 2px;background:none;border:0;border-block-start:1px solid var(--line);
+    color:var(--muted);font:inherit;font-size:11.5px;letter-spacing:.08em;cursor:pointer}
+  .prohead .chev{transition:transform .2s}
+  .prohead.open .chev{transform:rotate(180deg)}
+  .probody.collapsed{display:none}
+  .shared{margin:10px 0;padding:9px 12px;border-radius:9px;font-size:12px;
+    background:rgba(255,122,26,.08);border:1px solid rgba(255,122,26,.22);color:rgba(255,208,172,.86)}
+  .prechip{display:none;align-items:center;gap:8px;margin:10px 0 12px;padding:8px 10px;
+    border-radius:9px;font-size:12px;background:rgba(255,122,26,.08);
+    border:1px solid rgba(255,122,26,.22);color:rgba(255,208,172,.86)}
+  .prechip.show{display:flex}
+  .prechip .k{color:rgba(255,208,172,.5);font-size:11px}
+  .prechip b{color:rgba(255,157,77,.9);font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .prechip .x{background:none;border:0;color:rgba(255,208,172,.7);font-size:15px;line-height:1;
+    cursor:pointer;padding:0 2px}
+  .prechip .x:hover{color:#fff}
+  .go.flash{box-shadow:0 0 0 3px rgba(255,122,26,.35)}
+  .rail-foot{position:sticky;bottom:-22px;margin:0 -24px -22px;padding:46px 24px 22px;
+             background:linear-gradient(180deg,rgba(22,24,28,0) 0%,var(--panel) 42%);z-index:2}
+  .go{width:100%;display:block;background:var(--acc);color:#1a0e04;border:0;border-radius:11px;padding:15px;
+      font:600 13.5px/1 inherit;cursor:pointer}
+  .go[disabled]{opacity:.55;cursor:not-allowed}
+  .note{font-size:10.5px;color:var(--mut);text-align:center;margin:9px 0 0}
+  .only-mobile{display:none}
+
+  /* 指南弹窗：左标题列表 + 右文章，不跳页 */
+  .gm{position:fixed;inset:0;z-index:50;display:none}
+  .gm.open{display:block}
+  .gm .bd{position:absolute;inset:0;background:rgba(6,7,9,.72);backdrop-filter:blur(3px)}
+  .gm .panel{position:relative;z-index:1;display:grid;grid-template-columns:280px 1fr;
+             width:min(1080px,92vw);height:min(760px,86vh);margin:7vh auto 0;
+             background:var(--panel);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+             box-shadow:0 24px 80px rgba(0,0,0,.6)}
+  .gm .side{border-inline-end:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+  .gm .side h2{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+               margin:0;padding:18px 18px 10px}
+  .gm .list{list-style:none;margin:0;padding:0 10px 14px;overflow:auto;flex:1}
+  .gm .list a{display:block;padding:10px 12px;border-radius:9px;color:var(--mut);
+              text-decoration:none;font-size:13px;line-height:1.45}
+  .gm .list a:hover{background:rgba(255,255,255,.05);color:var(--ink)}
+  .gm .list a[aria-current="true"]{background:rgba(255,122,26,.14);color:var(--ink)}
+  .gm .body{overflow:auto;padding:34px 40px;min-height:0}
+  .gm .body h1{font-size:26px;line-height:1.2;margin:0 0 18px;font-weight:600;letter-spacing:-.02em}
+  .gm .body h2{font-size:16px;margin:26px 0 8px;font-weight:600}
+  .gm .body p,.gm .body li{color:var(--mut);font-size:14px;line-height:1.7;margin:8px 0}
+  .gm .body ul{padding-inline-start:20px}
+  .gm .body strong{color:var(--ink)}
+  .gm .body .cta{display:none}
+  .gm .body blockquote{margin:14px 0;padding-inline-start:14px;border-inline-start:2px solid var(--acc)}
+  .gm .body .meta{display:none}
+  .gm .x{position:absolute;top:14px;inset-inline-end:14px;z-index:2;width:32px;height:32px;
+         border-radius:8px;border:1px solid var(--line);background:rgba(0,0,0,.35);color:var(--ink);
+         cursor:pointer;font-size:15px;line-height:1}
+  @media(max-width:820px){
+    .gm .panel{grid-template-columns:1fr;height:88vh;margin-block-start:6vh}
+    .gm .side{display:none}
+    .gm .body{padding:28px 22px}
+  }
+  .policy{margin:26px 0 8px;display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px}
+  .policy a{color:var(--mut);text-decoration:none}
+  .policy a:hover{color:var(--ink)}
+  .msg{font-size:11.5px;margin-top:9px;min-height:15px;text-align:center}
+  .msg.err{color:#ff9b9b}.msg.ok{color:#9be7b0}
+  .mine{margin-bottom:18px}
+  .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
+  .minerow::-webkit-scrollbar{height:0}
+  .mtile{flex:0 0 auto;width:112px;border:1px solid var(--line);border-radius:10px;overflow:hidden;
+    background:rgba(255,255,255,.03);cursor:pointer;text-align:start;padding:0}
+  .mtile img{width:100%;height:66px;object-fit:cover;display:block}
+  .mtile .ph2{height:66px;background:linear-gradient(135deg,rgba(255,122,26,.22),rgba(255,255,255,.05))}
+  .mtile p{margin:6px 7px;font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .works{padding:20px 26px 30px;overflow-y:auto;min-height:0}
+  .whead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+  .whead .t{font:10px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+  .whead .n{font-size:11.5px;color:var(--mut)}
+  .photos{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:11px}
+  .tile{position:relative;border-radius:13px;overflow:hidden;cursor:pointer;background:#1b1e23;
+        border:1px solid transparent}
+  .tile:hover{border-color:rgba(255,255,255,.16)}
+  .tile.on{border-color:var(--acc)}
+  .tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .55s}
+  .tile:hover img{transform:scale(1.04)}
+  .tile .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,10,.04) 34%,rgba(10,12,10,.86))}
+  .tile .meta{position:absolute;left:12px;right:12px;bottom:9px;color:#fff}
+  .tile .meta .t{font-size:12.5px;font-weight:600;margin:0 0 1px}
+  .tile .meta .d{font:10px/1.3 -apple-system,sans-serif;opacity:.82;margin:0}
+  .tile .pl{position:absolute;top:9px;right:9px;width:27px;height:27px;border-radius:50%;
+            background:rgba(12,14,12,.55);border:1px solid rgba(255,255,255,.32);color:#fff;
+            font-size:9px;display:grid;place-items:center;backdrop-filter:blur(6px)}
+  .tile.big{grid-column:span 2;grid-row:span 2;cursor:default}
+  .tile.big:hover{border-color:transparent}
+  .tile.big .shade{background:linear-gradient(180deg,rgba(10,12,10,.1),rgba(10,12,10,.55) 52%,rgba(10,12,10,.93))}
+  .tile.big .body{position:absolute;left:16px;right:16px;bottom:14px;color:#fff}
+  .tile.big .body .k{font:9.5px/1 -apple-system,sans-serif;letter-spacing:.22em;text-transform:uppercase;
+                     opacity:.75;margin:0 0 10px}
+  .tile.big .body .ly{font:400 clamp(14px,1.25vw,17.5px)/1.4 "Iowan Old Style",Palatino,Georgia,serif;
+                      margin:0 0 12px}
+  .tile.big .body .ly b{font-weight:400;box-shadow:inset 0 -.42em 0 rgba(255,122,26,.45)}
+  .tile.big .body .noimg{font-size:13px;opacity:.9;margin:0 0 12px}
+  .wave{display:flex;align-items:center;gap:2px;height:26px;margin-bottom:9px}
+  .wave i{flex:1;background:#fff;opacity:.35;border-radius:1px}
+  .wave i.p{opacity:.95;background:var(--acc)}
+  .pbar{height:3px;background:rgba(255,255,255,.18);border-radius:2px;overflow:hidden;margin:0 0 10px}
+  .pbar span{display:block;height:100%;width:0;background:var(--acc);transition:width .25s linear}
+  .brow{display:flex;align-items:center;gap:12px}
+  .pp{width:36px;height:36px;border-radius:50%;background:#fff;color:#111;border:0;font-size:11px;cursor:pointer;
+      display:grid;place-items:center;flex:0 0 36px}
+  .tm{font:11px/1 -apple-system,sans-serif;color:rgba(255,255,255,.75);font-variant-numeric:tabular-nums}
+  .acts{margin-left:auto;display:flex;gap:8px}
+  .acts a,.acts button{font:11.5px/1 inherit;color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.3);
+                       background:rgba(0,0,0,.25);border-radius:7px;padding:7px 10px;cursor:pointer}
+  .recipes{display:grid;grid-template-columns:repeat(4,1fr);gap:11px}
+  .rec{border:1px solid var(--line);border-radius:12px;padding:12px 13px 11px;background:rgba(255,255,255,.02);
+       cursor:pointer;text-align:left;color:var(--ink);font-family:inherit}
+  .rec:hover{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.045)}
+  .rec.on{border-color:var(--acc)}
+  .rec .wv{display:flex;align-items:center;gap:2px;height:30px;margin-bottom:10px}
+  .rec .wv i{flex:1;background:#fff;opacity:.5;border-radius:1px}
+  .rec:hover .wv i{opacity:.85}
+  .rec .rn{font-size:12.5px;font-weight:600;margin:0 0 2px}
+  .rec .wv{position:relative}
+  .rec .rplay{position:absolute;inset-inline-end:8px;top:8px;width:22px;height:22px;border-radius:50%;
+    display:grid;place-items:center;background:rgba(255,255,255,.14);font-size:9px;color:#fff}
   .rec .rd{font:10px/1.3 -apple-system,sans-serif;color:var(--mut);margin:0}
   .thumbs{display:contents}
   .tile.add{display:grid;place-items:center;background:rgba(255,255,255,.02);border:1px dashed rgba(242,241,236,.2);
@@ -195,8 +404,57 @@
     /* 移动端：例子在上、参数在下 */
     .app{grid-template-columns:1fr;height:auto;display:flex;flex-direction:column}
     .works{order:-1;padding:16px 0 8px;min-width:0;max-width:100vw;overflow-x:hidden}
+    .works .wrap,.whead,.photos,.rec-wrap,.policy{padding-inline:16px}
+    .whead{flex-wrap:wrap;gap:2px 10px}
+    .whead .n{font-size:11px}
+    .photos{grid-template-columns:repeat(2,1fr);grid-auto-rows:132px}
+    .recipes{grid-template-columns:repeat(2,1fr)!important;grid-template-rows:none!important;
+             grid-auto-flow:row!important;overflow-x:visible!important}
+    .rec-wrap:after{display:none}
     .rail{border-right:0;border-top:1px solid var(--line);padding:18px 16px 26px;min-width:0;overflow:visible}
-    .rail-foot{position:static;margin:14px 0 0;padding:0;background:none;border-top:0}
+    .modes{display:flex;gap:6px;background:rgba(255,255,255,.04);border:1px solid var(--line);
+    border-radius:11px;padding:4px;margin-bottom:10px}
+  .mode{flex:1;padding:9px 6px;border:0;border-radius:8px;background:transparent;color:var(--muted);
+    font:inherit;font-size:12.5px;cursor:pointer;transition:background .15s,color .15s}
+  .mode.on{background:var(--ink);color:#101114;font-weight:600}
+  #panelText textarea{width:100%;background:rgba(255,255,255,.03);border:1px solid var(--line);
+    border-radius:11px;color:var(--ink);font:inherit;font-size:12.5px;padding:11px;resize:vertical;
+    line-height:1.6}
+  #panelText textarea::placeholder{color:rgba(242,241,236,.32)}
+  #panelText textarea:focus{outline:none;border-color:var(--acc)}
+  .note{display:block;margin-top:10px}
+  .note>span{display:block;font-size:11px;color:var(--muted);letter-spacing:.06em;margin-bottom:5px}
+  .note textarea{width:100%;background:rgba(255,255,255,.03);border:1px solid var(--line);
+    border-radius:10px;color:var(--ink);font:inherit;font-size:12.5px;padding:9px 11px;resize:vertical;
+    line-height:1.55}
+  .note textarea::placeholder{color:rgba(242,241,236,.32)}
+  .note textarea:focus{outline:none;border-color:var(--acc)}
+  .select{width:100%;appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.04);
+    border:1px solid var(--line);border-radius:9px;color:var(--ink);font:inherit;font-size:12.5px;
+    padding:9px 34px 9px 12px;cursor:pointer;
+    background-image:linear-gradient(45deg,transparent 50%,var(--mut) 50%),linear-gradient(135deg,var(--mut) 50%,transparent 50%);
+    background-position:calc(100% - 18px) 50%,calc(100% - 13px) 50%;
+    background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+  .select:focus{outline:none;border-color:var(--acc)}
+  .prohead{display:flex;align-items:center;justify-content:space-between;width:100%;
+    margin:14px 0 6px;padding:9px 2px;background:none;border:0;border-block-start:1px solid var(--line);
+    color:var(--muted);font:inherit;font-size:11.5px;letter-spacing:.08em;cursor:pointer}
+  .prohead .chev{transition:transform .2s}
+  .prohead.open .chev{transform:rotate(180deg)}
+  .probody.collapsed{display:none}
+  .shared{margin:10px 0;padding:9px 12px;border-radius:9px;font-size:12px;
+    background:rgba(255,122,26,.08);border:1px solid rgba(255,122,26,.22);color:rgba(255,208,172,.86)}
+  .prechip{display:none;align-items:center;gap:8px;margin:10px 0 12px;padding:8px 10px;
+    border-radius:9px;font-size:12px;background:rgba(255,122,26,.08);
+    border:1px solid rgba(255,122,26,.22);color:rgba(255,208,172,.86)}
+  .prechip.show{display:flex}
+  .prechip .k{color:rgba(255,208,172,.5);font-size:11px}
+  .prechip b{color:rgba(255,157,77,.9);font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .prechip .x{background:none;border:0;color:rgba(255,208,172,.7);font-size:15px;line-height:1;
+    cursor:pointer;padding:0 2px}
+  .prechip .x:hover{color:#fff}
+  .go.flash{box-shadow:0 0 0 3px rgba(255,122,26,.35)}
+  .rail-foot{position:static;margin:14px 0 0;padding:0;background:none;border-top:0}
     .only-desktop{display:none}
     .only-mobile{display:inline}
 
@@ -223,7 +481,10 @@
     .rec{scroll-snap-align:start;padding:9px 11px;overflow:hidden}
     .rec .wv{height:22px;margin-bottom:6px}
     .rec .rn{font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-    .rec .rd{font-size:9.5px}
+    .rec .wv{position:relative}
+  .rec .rplay{position:absolute;inset-inline-end:8px;top:8px;width:22px;height:22px;border-radius:50%;
+    display:grid;place-items:center;background:rgba(255,255,255,.14);font-size:9px;color:#fff}
+  .rec .rd{font-size:9.5px}
   }
 </style>
 </head>
@@ -234,12 +495,28 @@
     <h1>أنشئ مقطعًا</h1>
     <p class="sub">من صورة أو وصف. مدة دقيقة وحلقات بلا فواصل.</p>
 
-    <label class="drop" id="drop">
-      <span id="dropText">أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها</span>
-      <input type="file" id="file" accept="image/*" class="hidden" />
-    </label>
+    <div class="prechip" id="prechip"></div>
+
+    <div class="shared hidden" id="shared"></div>
+
+    <div class="modes" role="tablist">
+      <button type="button" class="mode on" id="modePhoto" role="tab">صورة</button>
+      <button type="button" class="mode" id="modeText" role="tab">نص</button>
+    </div>
+
+    <div id="panelPhoto">
+      <label class="drop" id="drop">
+        <span id="dropText">أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها</span>
+        <input type="file" id="file" accept="image/*" class="hidden" />
+      </label>
+    </div>
+
+    <div id="panelText" class="hidden">
+      <textarea id="desc" rows="3" maxlength="300" placeholder="صِف المقطع: مقهى ممطر، بيانو هادئ"></textarea>
+    </div>
 
     <div id="rail"></div>
+
 
     <div class="rail-foot">
       <button class="go" id="go" type="button">أنشئ المقطع</button>
@@ -277,13 +554,17 @@
 </div>
 
   <main class="works">
-    <div class="whead"><span class="t">من صورة</span><span class="n">4 from a photo · 8 from a recipe</span></div>
+    <div class="mine hidden" id="mine">
+      <div class="whead"><span class="t">مقاطعي</span></div>
+      <div class="minerow" id="mineRow"></div>
+    </div>
+
+    <div class="whead"><span class="t">اسمعها</span><span class="n">صورة → كلمات → مقطع</span></div>
     <div class="photos" id="photos"></div>
 
     <div class="whead" style="margin-top:24px">
-      <span class="t">من وصفة · بلا صورة</span>
-      <span class="n only-desktop">8 presets · instrumental</span>
-      <span class="n only-mobile swipe">8 presets · swipe →</span>
+      <span class="t">من الاستخدام</span>
+      <span class="n">اختر الاستخدام والإعدادات جاهزة</span>
     </div>
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
@@ -296,7 +577,7 @@
   </main>
 </div>
 
-<script type="application/json" id="ui">{"title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق", "description": "حوّل صورة أو وصفًا إلى موسيقى خلفية بطول 30–90 ثانية بالضبط. الكلمات تذكر ما في صورتك، مع غناء بعشر لغات وحلقات بلا فواصل.", "h1": "أنشئ مقطعًا", "sub": "من صورة أو وصف. مدة دقيقة وحلقات بلا فواصل.", "drop": "أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها", "generate": "أنشئ المقطع", "how_credits": "كيف تعمل الأرصدة →", "grp_photo": "من صورة", "grp_recipe": "من وصفة · بلا صورة", "download": "تنزيل", "save_recipe": "احفظ كوصفة", "remove_photo": "إزالة الصورة", "photo_here": "صورتك هنا", "note": "كل ما على اليمين أُنشئ هنا", "legal_aup": "الاستخدام المقبول", "legal_refund": "المبالغ المستردة", "sign_in_first": "سجّل الدخول للإنشاء", "generating": "جارٍ الإنشاء… نحو 20 ثانية.", "just_generated": "أُنشئ للتو", "your_track": "مقطعك", "from_recipe": "من وصفة", "from_photo": "من صورة", "err_load": "تعذّر تحميل الخيارات", "done_in": "اكتمل في {n} ثانية", "gen_cost": "إنشاء · {n}", "err_gen": "فشل الإنشاء", "my_track": "مقطعي", "err_net": "خطأ في الشبكة", "recipe_name": "اسم الوصفة", "err_save": "تعذّر الحفظ", "saved": "تم الحفظ: {name}", "up_to": "حتى {n}", "credits": "رصيدًا", "guides_link": "أدلة ←", "guides_title": "أدلة", "close": "إغلاق", "loading": "جارٍ التحميل…", "off": "إيقاف", "loop_on": "حلقة بلا فواصل", "buy_credits": "شراء أرصدة ←", "li1": "مقطع 30 ثانية = 45 رصيدًا، 45 ثانية = 64، 60 ثانية = 85، 75 ثانية = 103، 90 ثانية = 120.", "li2": "الأجيال الفاشلة تُرد تلقائيًا.", "li3": "الأرصدة لا تنتهي وتعمل في كل الأدوات.", "li4": "المدفوعات تعالجها Creem، وهي تاجر السجل لدينا.", "li5": "يمكن استرداد الأرصدة غير المستخدمة خلال 14 يومًا.", "refund_link": "سياسة الاسترداد"}</script>
+<script type="application/json" id="ui">{"title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق", "description": "حوّل صورة أو وصفًا إلى موسيقى خلفية بطول 30–90 ثانية بالضبط. الكلمات تذكر ما في صورتك، مع غناء بعشر لغات وحلقات بلا فواصل.", "h1": "أنشئ مقطعًا", "sub": "من صورة أو وصف. مدة دقيقة وحلقات بلا فواصل.", "drop": "أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها", "generate": "أنشئ المقطع", "how_credits": "كيف تعمل الأرصدة →", "grp_photo": "اسمعها", "grp_recipe": "من الاستخدام", "download": "تنزيل", "save_recipe": "احفظ كوصفة", "remove_photo": "إزالة الصورة", "photo_here": "صورتك هنا", "note": "كل ما على اليمين أُنشئ هنا", "legal_aup": "الاستخدام المقبول", "legal_refund": "المبالغ المستردة", "sign_in_first": "سجّل الدخول للإنشاء", "generating": "جارٍ الإنشاء… نحو 20 ثانية.", "just_generated": "أُنشئ للتو", "your_track": "مقطعك", "from_recipe": "من وصفة", "from_photo": "من صورة", "err_load": "تعذّر تحميل الخيارات", "done_in": "اكتمل في {n} ثانية", "gen_cost": "إنشاء · {n}", "err_gen": "فشل الإنشاء", "my_track": "مقطعي", "err_net": "خطأ في الشبكة", "recipe_name": "اسم الوصفة", "err_save": "تعذّر الحفظ", "saved": "تم الحفظ: {name}", "up_to": "حتى {n}", "credits": "رصيدًا", "guides_link": "أدلة ←", "guides_title": "أدلة", "close": "إغلاق", "loading": "جارٍ التحميل…", "off": "إيقاف", "loop_on": "حلقة بلا فواصل", "buy_credits": "شراء أرصدة ←", "desc_label": "وصف (اختياري)", "desc_ph": "صِف المقطع: مقهى ممطر، بيانو هادئ", "mode_photo": "صورة", "mode_text": "نص", "field_density": "كثافة التوزيع", "opt_sparse": "متباعد", "opt_medium": "متوسط", "opt_full": "كثيف", "pro_title": "خيارات متقدمة", "grp_photo_sub": "صورة → كلمات → مقطع", "grp_recipe_sub": "اختر الاستخدام والإعدادات جاهزة", "recipe_names": {"short-form-cut": "Короткий клип", "hook-sting": "Хук для заставки", "product-loop": "Луп для продукта", "podcast-bed": "Подложка для подкаста", "documentary-underscore": "Фон для документалки", "game-menu-loop": "Луп для меню", "calm-focus": "Концентрация", "kids-learning": "Для детей"}, "applied": "يُستخدم", "current_recipe": "الإعداد الحالي", "mine_title": "مقاطعي", "share_link": "مشاركة الرابط", "dl_audio": "تنزيل الصوت", "copied": "تم النسخ", "shared_note": "تستمع إلى مقطع تمت مشاركته — أنشئ مقطعك أدناه", "li1": "مقطع 30 ثانية = 45 رصيدًا، 45 ثانية = 64، 60 ثانية = 85، 75 ثانية = 103، 90 ثانية = 120.", "li2": "الأجيال الفاشلة تُرد تلقائيًا.", "li3": "الأرصدة لا تنتهي وتعمل في كل الأدوات.", "li4": "المدفوعات تعالجها Creem، وهي تاجر السجل لدينا.", "li5": "يمكن استرداد الأرصدة غير المستخدمة خلال 14 يومًا.", "refund_link": "سياسة الاسترداد"}</script>
 <script>
 (function () {
   "use strict";
@@ -395,24 +676,33 @@
           '<button class="pp" id="pp">' + (isPlaying ? "❚❚" : "▶") + '</button>' +
           '<span class="tm">0:00</span>' +
           '<div class="acts">' +
-            (c.audio ? '<a href="' + c.audio + '" download>تنزيل</a>' : '') +
-            (c.kind === "result" ? '<button id="saveR">احفظ كوصفة</button>' : '') +
+            (c.kind === "result"
+              ? '<button id="shFile">تنزيل الصوت</button><button id="shLink">مشاركة الرابط</button>'
+              : (c.audio ? '<a href="' + c.audio + '" download>تنزيل</a>' : '')) +
           '</div>' +
         '</div>' +
       '</div>';
-    $("pp").addEventListener("click", function () {
-      if (audio.src.indexOf(c.audio) >= 0 && !audio.paused) { audio.pause(); }
-      else { audio.src = c.audio; audio.play().catch(function () {}); }
-      setTimeout(renderBig, 30);
-    });
-    var s = $("saveR"); if (s) s.addEventListener("click", saveRecipe);
+    $("pp").addEventListener("click", function () { toggleAudio(c.audio); });
+    var shFile = $("shFile"), shLink = $("shLink");
+    if (shFile) shFile.addEventListener("click", function () { shareFile(); });
+    if (shLink) shLink.addEventListener("click", function () { shareLink(); });
+  }
+
+  // 播放/暂停/切歌：只有换曲时才重设 src，同一首继续播放而不是从头
+  function toggleAudio(src) {
+    if (!src) return;
+    var same = audio.dataset.src === src;
+    if (same && !audio.paused) { audio.pause(); }
+    else if (same && audio.paused) { audio.play().catch(function () {}); }
+    else { audio.dataset.src = src; audio.src = src; audio.play().catch(function () {}); }
+    setTimeout(renderBig, 30);
   }
 
   function select(c) {
     current = c;
     renderPhotos();
     renderBig();
-    if (c.audio) { audio.src = c.audio; audio.play().catch(function () {}); }
+    if (c.audio) toggleAudio(c.audio);
     setTimeout(renderBig, 60);
   }
 
@@ -421,11 +711,36 @@
     if (!l) return "";
     return l[LANG] || l[LANG.split("-")[0]] || l.en || "";
   }
-  function label(f) { return pick(f.label) || f.key; }
+  // 少数后端字段的措辞在前端覆写，避免为改一个词去动后端
+  function override(f, o) {
+    if (f.key === "density") {
+      if (o === undefined) return UI.field_density;
+      return { minimal: UI.opt_sparse, medium: UI.opt_medium, full: UI.opt_full }[o] || null;
+    }
+    return null;
+  }
+  function label(f) { return override(f) || pick(f.label) || f.key; }
 
+  // 基础项常显；其余归入「专业」并默认折叠
+  var BASIC = { duration_seconds:1, loop:1, vocal:1, vocal_language:1, bpm:1, mood:1, genre:1, instrumentation:1 };
   function renderRail() {
     var box = $("rail"); box.innerHTML = "";
-    schema.fields.forEach(function (f) { box.appendChild(groupOf(f)); });
+    var basic = [], pro = [];
+    schema.fields.forEach(function (f) { (BASIC[f.key] ? basic : pro).push(f); });
+    basic.forEach(function (f) { box.appendChild(groupOf(f)); });
+    if (pro.length) {
+      var head = document.createElement("button");
+      head.type = "button"; head.className = "prohead";
+      head.innerHTML = '<span>' + UI.pro_title + '</span><span class="chev">▾</span>';
+      var wrap = document.createElement("div");
+      wrap.className = "probody collapsed";
+      pro.forEach(function (f) { wrap.appendChild(groupOf(f)); });
+      head.addEventListener("click", function () {
+        var open = wrap.classList.toggle("collapsed");
+        head.classList.toggle("open", !open);
+      });
+      box.appendChild(head); box.appendChild(wrap);
+    }
     applyVisibility(); syncCost();
   }
 
@@ -451,6 +766,24 @@
       return wrap;
     }
 
+    // 选项多的枚举用下拉框：列表会越来越长，芯片行会占掉整屏
+    if (f.type === "enum" && f.options.length > 10) {
+      var sel = document.createElement("select");
+      sel.className = "select";
+      f.options.forEach(function (o) {
+        var op = document.createElement("option");
+        op.value = o.value;
+        op.textContent = override(f, o.value) || pick(o.label) || o.value;
+        if (values[f.key] === o.value) op.selected = true;
+        sel.appendChild(op);
+      });
+      sel.addEventListener("change", function () {
+        values[f.key] = sel.value; applyVisibility(); syncCost();
+      });
+      wrap.appendChild(sel);
+      return wrap;
+    }
+
     var asSeg = f.type === "bool" || (f.type === "enum" && f.options.length <= 5);
     if (asSeg) {
       var row = document.createElement("div"); row.className = "seg";
@@ -458,7 +791,7 @@
       opts.forEach(function (o) {
         var b = document.createElement("button");
         b.type = "button";
-        b.textContent = pick(o.label) || o.value;
+        b.textContent = override(f, o.value) || pick(o.label) || o.value;
         if (values[f.key] === o.value) b.classList.add("on");
         b.addEventListener("click", function () {
           values[f.key] = o.value;
@@ -543,6 +876,19 @@
 
   function fmtDur(sec) { var m = Math.floor(sec / 60), r = sec % 60; return m + ":" + (r < 10 ? "0" : "") + r; }
 
+  // 参数摘要：让"配方 = 一组调好的参数"这件事可见
+  function optLabel(key, value) {
+    var f = (schema.fields || []).filter(function (x) { return x.key === key; })[0];
+    if (!f || !f.options) return value;
+    var o = f.options.filter(function (x) { return x.value === value; })[0];
+    return o ? (override(f, value) || pick(o.label) || value) : value;
+  }
+  function paramSummary(p) {
+    var bits = [optLabel("genre", p.genre), optLabel("mood", p.mood)];
+    if (p.drums) bits.push(optLabel("drums", p.drums));
+    return fmtDur(p.duration_seconds || 30) + " · " + bits.filter(Boolean).join(" · ");
+  }
+
   // ---- 配方 ----
   function renderRecipes(items) {
     var box = $("recipes"); box.innerHTML = "";
@@ -550,17 +896,39 @@
       var el = document.createElement("button");
       el.type = "button"; el.className = "rec";
       var p = r.params || {};
-      el.innerHTML = '<div class="wv">' + wave() + '</div><p class="rn">' + r.name + '</p>' +
-        '<p class="rd">' + fmtDur(p.duration_seconds || 30) + (p.loop ? " · seamless" : " · no loop") + '</p>';
+      var locName = (UI.recipe_names && UI.recipe_names[r.slug]) || r.name;
+      el.innerHTML = '<div class="wv">' + wave() +
+        '<span class="rplay" aria-hidden="true">▶</span></div>' +
+        '<p class="rn">' + locName + '</p>' +
+        '<p class="rd">' + paramSummary(p) + '</p>';
       el.addEventListener("click", function () {
         Array.prototype.forEach.call(box.children, function (x) { x.classList.remove("on"); });
         el.classList.add("on");
         Object.keys(p).forEach(function (k) { if (k.indexOf("__") !== 0) values[k] = p[k]; });
         renderRail();
-        if (r.sample_url) select({ kind: "recipe", audio: r.sample_url, title: r.name, meta: "preset" });
+        applied(locName);
+        if (r.sample_url) select({ kind: "recipe", audio: r.sample_url, title: locName, meta: "preset" });
       });
       box.appendChild(el);
     });
+  }
+
+  // 套用配方后的反馈：按钮上方出现"将使用…"，并把生成按钮滚进视野
+  // 套用的配方常驻显示在表单顶部，用户随时知道当前参数来自哪
+  function applied(name) {
+    var chip = $("prechip");
+    chip.innerHTML = '<span class="k">' + UI.current_recipe + '</span><b>' + name +
+      '</b><button type="button" class="x" aria-label="clear">×</button>';
+    chip.classList.add("show");
+    chip.querySelector(".x").addEventListener("click", function (e) {
+      e.stopPropagation(); chip.classList.remove("show"); chip.innerHTML = "";
+    });
+    var go = $("go");
+    if (go && go.getBoundingClientRect().top > innerHeight - 80) {
+      go.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    go.classList.add("flash");
+    setTimeout(function () { go.classList.remove("flash"); }, 900);
   }
 
   // ---- 生成 ----
@@ -569,7 +937,12 @@
     $("go").disabled = true;
     msg(UI.generating);
     var body = { params: values };
-    if (imagePayload) body.image = imagePayload;
+    if (mode === "photo") {
+      if (imagePayload) body.image = imagePayload;
+    } else {
+      var note = ($("desc").value || "").trim();
+      if (note) body.description = note;
+    }
     var t0 = Date.now();
     call("/ai/music/generate", body, true).then(function (d) {
       $("go").disabled = false;
@@ -579,13 +952,13 @@
       msg(UI.done_in.replace("{n}", Math.round((Date.now() - t0) / 1000)), "ok");
       var lines = (x.lyrics || "").replace(/\[[0-9.:]+\]\s?/g, "").split("\n").filter(function (l) { return l.trim(); });
       current = {
-        kind: "result", audio: API + x.url,
+        kind: "result", id: x.id, audio: API + x.url, cover: x.cover ? API + x.cover : "",
         img: (document.getElementById("prevImg") || {}).src || "",
         meta: (x.duration_ms / 1000).toFixed(0) + "s · " + x.credits + " credits",
         lyrics: lines.slice(0, 2).join("<br>")
       };
       renderBig();
-      audio.src = current.audio; audio.play().catch(function () {});
+      toggleAudio(current.audio);
       setTimeout(renderBig, 60);
       Array.prototype.forEach.call($("recipes").children, function (x) { x.classList.remove("on"); });
     }).catch(function () { $("go").disabled = false; msg(UI.err_net, "err"); });
@@ -636,6 +1009,19 @@
     if (f) loadPhoto(f);
   });
 
+  // ---- 输入模式：照片 / 文字，二选一，只提交激活的那个 ----
+  var mode = "photo";
+  function setMode(m) {
+    mode = m;
+    $("modePhoto").classList.toggle("on", m === "photo");
+    $("modeText").classList.toggle("on", m === "text");
+    $("panelPhoto").classList.toggle("hidden", m !== "photo");
+    $("panelText").classList.toggle("hidden", m !== "text");
+    if (m === "text") $("desc").focus();
+  }
+  $("modePhoto").addEventListener("click", function () { setMode("photo"); });
+  $("modeText").addEventListener("click", function () { setMode("text"); });
+
   // ---- 拖放：必须在 drop 区域上 preventDefault，否则浏览器会直接打开图片 ----
   ["dragenter", "dragover"].forEach(function (ev) {
     $("drop").addEventListener(ev, function (e) {
@@ -663,8 +1049,81 @@
   window.addEventListener("drop", function (e) { e.preventDefault(); });
 
 
+  // ---- 分享：直接发文件 / 发播放页链接 ----
+  function shareFile() {
+    var url = current && current.audio;
+    if (!url) return;
+    fetch(url).then(function (r) { return r.blob(); }).then(function (blob) {
+      var file = new File([blob], "aiglossa-track.mp3", { type: blob.type || "audio/mpeg" });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({ files: [file], title: document.title }).catch(function () {});
+      } else {
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob); a.download = file.name; a.click();
+        setTimeout(function () { URL.revokeObjectURL(a.href); }, 4000);
+      }
+    }).catch(function () { msg(UI.err_gen, "err"); });
+  }
+
+  function shareLink() {
+    if (!current || !current.id) return;
+    call("/ai/music/tracks/" + current.id + "/share", {}, true).then(function (d) {
+      if (d.code !== 200) { msg(d.msg || UI.err_gen, "err"); return; }
+      var link = location.origin + location.pathname + "?t=" + current.id + "." + d.data.token;
+      var done = function () { msg(UI.copied, "ok"); };
+      if (navigator.clipboard) navigator.clipboard.writeText(link).then(done).catch(function () { prompt("URL", link); });
+      else prompt("URL", link);
+    }).catch(function () { msg(UI.err_gen, "err"); });
+  }
+
+  // 打开分享链接：?t=<id>.<token> → 读公开信息并载入播放器
+  function loadShared() {
+    var m = /[?&]t=(\d+)\.([a-f0-9]+)/.exec(location.search);
+    if (!m) return;
+    call("/ai/music/public/" + m[1], { t: m[2] }, false).then(function (d) {
+      if (d.code !== 200) return;
+      var it = d.data;
+      current = { kind: "result", id: it.id, audio: API + it.url, cover: it.cover ? API + it.cover : "",
+                  meta: Math.round((it.duration_ms || 0) / 1000) + "s", lyrics: (it.lyrics || "").slice(0, 120) };
+      Object.keys(it.params || {}).forEach(function (k) { if (values[k] !== undefined) values[k] = it.params[k]; });
+      renderRail(); renderBig();
+      var note = $("shared");
+      if (note) { note.textContent = UI.shared_note; note.classList.remove("hidden"); }
+    }).catch(function () {});
+  }
+
+  // ---- 我的作品（登录后显示） ----
+  function loadMine() {
+    if (!token()) return;
+    call("/ai/music/tracks", { limit: 8 }, true).then(function (d) {
+      if (d.code !== 200) return;
+      var items = (d.data && d.data.items) || [];
+      if (!items.length) return;
+      var row = $("mineRow"); row.innerHTML = "";
+      items.forEach(function (it) {
+        var b = document.createElement("button");
+        b.type = "button"; b.className = "mtile";
+        b.innerHTML = (it.cover ? '<img src="' + it.cover + '" alt="" loading="lazy">' : '<div class="ph2"></div>') +
+          '<p>' + fmtDur(Math.round((it.duration_ms || 0) / 1000)) + '</p>';
+        b.addEventListener("click", function () {
+          Object.keys(it.params || {}).forEach(function (k) {
+            if (values[k] !== undefined) values[k] = it.params[k];
+          });
+          renderRail();
+          current = { kind: "result", audio: it.url, cover: it.cover, title: it.lyrics || "", meta: "mine" };
+          renderBig();
+          toggleAudio(it.url);
+        });
+        row.appendChild(b);
+      });
+      $("mine").classList.remove("hidden");
+    }).catch(function () {});
+  }
+
   // ---- 启动 ----
   $("go").addEventListener("click", generate);
+  loadMine();
+  loadShared();
   call("/ai/music/schema", {}, false).then(function (d) {
     if (d.code !== 200) { msg(UI.err_load, "err"); return; }
     schema = d.data;
