@@ -137,7 +137,7 @@
   .rail-foot{position:sticky;bottom:-22px;margin:0 -24px -22px;padding:46px 24px 22px;
              background:linear-gradient(180deg,rgba(22,24,28,0) 0%,var(--panel) 42%);z-index:2}
   .go{width:100%;display:block;background:var(--acc);color:#1a0e04;border:0;border-radius:11px;padding:15px;
-      font:600 13.5px/1 inherit;cursor:pointer}
+      font:700 13.5px/1 inherit;font-weight:700;cursor:pointer}
   .go[disabled]{opacity:.55;cursor:not-allowed}
   .note{font-size:10.5px;color:var(--mut);text-align:center;margin:9px 0 0}
   .only-mobile{display:none}
@@ -218,6 +218,7 @@
     border-top-color:var(--acc);animation:sp .8s linear infinite;display:block}
   @keyframes sp{to{transform:rotate(360deg)}}
   .mine{margin-bottom:18px}
+  .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
   .minerow::-webkit-scrollbar{height:0}
   .mtile{flex:0 0 auto;width:112px;border:1px solid var(--line);border-radius:10px;overflow:hidden;
@@ -326,7 +327,7 @@
   .rail-foot{position:sticky;bottom:-22px;margin:0 -24px -22px;padding:46px 24px 22px;
              background:linear-gradient(180deg,rgba(22,24,28,0) 0%,var(--panel) 42%);z-index:2}
   .go{width:100%;display:block;background:var(--acc);color:#1a0e04;border:0;border-radius:11px;padding:15px;
-      font:600 13.5px/1 inherit;cursor:pointer}
+      font:700 13.5px/1 inherit;font-weight:700;cursor:pointer}
   .go[disabled]{opacity:.55;cursor:not-allowed}
   .note{font-size:10.5px;color:var(--mut);text-align:center;margin:9px 0 0}
   .only-mobile{display:none}
@@ -650,7 +651,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Генератор музыки на ИИ — из фото в трек, точная длина", "description": "Из фото или описания — фоновая музыка ровно на 30–90 секунд. В тексте называются предметы с изображения; вокал на 10 языках и бесшовные лупы.", "h1": "Создать трек", "sub": "Из фото или описания. Точная длина, бесшовные лупы.", "drop": "Перетащите или выберите фото<br>в тексте песни будут названы предметы с него", "generate": "Создать трек", "how_credits": "Как работают кредиты →", "grp_photo": "Послушать", "grp_recipe": "По задаче", "download": "Скачать", "save_recipe": "Сохранить как рецепт", "remove_photo": "Убрать фото", "photo_here": "Ваше фото здесь", "note": "Всё справа создано здесь", "legal_aup": "Допустимое использование", "legal_refund": "Возвраты", "sign_in_first": "Войдите, чтобы создать", "generating": "Создаём… около 20 секунд.", "just_generated": "Только что создано", "your_track": "Ваш трек", "from_recipe": "Из рецепта", "from_photo": "Из фотографии", "err_load": "Не удалось загрузить параметры", "done_in": "Готово за {n} с", "gen_cost": "Создать · {n}", "err_gen": "Не удалось создать", "my_track": "Мой трек", "err_net": "Ошибка сети", "recipe_name": "Название рецепта", "err_save": "Не удалось сохранить", "saved": "Сохранено: {name}", "up_to": "До {n}", "credits": "кредитов", "guides_link": "Руководства →", "guides_title": "Руководства", "close": "Закрыть", "loading": "Загрузка…", "off": "Выкл", "loop_on": "Бесшовный луп", "buy_credits": "Купить кредиты →", "desc_label": "Описание (необязательно)", "desc_ph": "Опишите трек: дождливое кафе, мягкое пиано", "mode_photo": "Фото", "mode_text": "Текст", "field_density": "Плотность аранжировки", "opt_sparse": "Разрежённая", "opt_medium": "Средняя", "opt_full": "Плотная", "pro_title": "Дополнительно", "grp_photo_sub": "Фото → текст → трек", "grp_recipe_sub": "Выберите задачу — настройки уже готовы", "recipe_names": {"short-form-cut": "Taglio breve", "hook-sting": "Gancio d'apertura", "product-loop": "Loop prodotto", "podcast-bed": "Base per podcast", "documentary-underscore": "Base documentario", "game-menu-loop": "Loop di menu", "calm-focus": "Concentrazione", "kids-learning": "Bambini e studio"}, "applied": "Используем", "current_recipe": "Текущий пресет", "mine_title": "Мои треки", "share_link": "Поделиться ссылкой", "dl_audio": "Скачать аудио", "copied": "Скопировано", "shared_note": "Вы слушаете трек, которым поделились — создайте свой ниже", "my_account": "Аккаунт", "balance": "Баланс", "pricing_label": "Цены", "li1": "Трек 30 с = 45 кредитов, 45 с = 64, 60 с = 85, 75 с = 103, 90 с = 120.", "li2": "Неудачные генерации возвращаются автоматически.", "li3": "Кредиты не сгорают и действуют во всех инструментах.", "li4": "Платежи обрабатывает Creem — наш merchant of record.", "li5": "Неиспользованные кредиты можно вернуть в течение 14 дней.", "refund_link": "Политика возврата"}</script>
+<script type="application/json" id="ui">{"title": "Генератор музыки на ИИ — из фото в трек, точная длина", "description": "Из фото или описания — фоновая музыка ровно на 30–90 секунд. В тексте называются предметы с изображения; вокал на 10 языках и бесшовные лупы.", "h1": "Создать трек", "sub": "Из фото или описания. Точная длина, бесшовные лупы.", "drop": "Перетащите или выберите фото<br>в тексте песни будут названы предметы с него", "generate": "Создать трек", "how_credits": "Как работают кредиты →", "grp_photo": "Послушать", "grp_recipe": "По задаче", "download": "Скачать", "save_recipe": "Сохранить как рецепт", "remove_photo": "Убрать фото", "photo_here": "Ваше фото здесь", "note": "Всё справа создано здесь", "legal_aup": "Допустимое использование", "legal_refund": "Возвраты", "sign_in_first": "Войдите, чтобы создать", "generating": "Создаём… около 20 секунд.", "just_generated": "Только что создано", "your_track": "Ваш трек", "from_recipe": "Из рецепта", "from_photo": "Из фотографии", "err_load": "Не удалось загрузить параметры", "done_in": "Готово за {n} с", "gen_cost": "Создать · {n}", "err_gen": "Не удалось создать", "my_track": "Мой трек", "err_net": "Ошибка сети", "recipe_name": "Название рецепта", "err_save": "Не удалось сохранить", "saved": "Сохранено: {name}", "up_to": "До {n}", "credits": "кредитов", "guides_link": "Руководства →", "guides_title": "Руководства", "close": "Закрыть", "loading": "Загрузка…", "off": "Выкл", "loop_on": "Бесшовный луп", "buy_credits": "Купить кредиты →", "desc_label": "Описание (необязательно)", "desc_ph": "Опишите трек: дождливое кафе, мягкое пиано", "mode_photo": "Фото", "mode_text": "Текст", "field_density": "Плотность аранжировки", "opt_sparse": "Разрежённая", "opt_medium": "Средняя", "opt_full": "Плотная", "pro_title": "Дополнительно", "grp_photo_sub": "Фото → текст → трек", "grp_recipe_sub": "Выберите задачу — настройки уже готовы", "recipe_names": {"short-form-cut": "Taglio breve", "hook-sting": "Gancio d'apertura", "product-loop": "Loop prodotto", "podcast-bed": "Base per podcast", "documentary-underscore": "Base documentario", "game-menu-loop": "Loop di menu", "calm-focus": "Concentrazione", "kids-learning": "Bambini e studio"}, "applied": "Используем", "current_recipe": "Текущий пресет", "mine_title": "Мои треки", "share_link": "Поделиться ссылкой", "dl_audio": "Скачать аудио", "copied": "Скопировано", "shared_note": "Вы слушаете трек, которым поделились — создайте свой ниже", "my_account": "Аккаунт", "balance": "Баланс", "pricing_label": "Цены", "confirm_gen": "Создать трек на {sec} с? Это спишет {n}.", "li1": "Трек 30 с = 45 кредитов, 45 с = 64, 60 с = 85, 75 с = 103, 90 с = 120.", "li2": "Неудачные генерации возвращаются автоматически.", "li3": "Кредиты не сгорают и действуют во всех инструментах.", "li4": "Платежи обрабатывает Creem — наш merchant of record.", "li5": "Неиспользованные кредиты можно вернуть в течение 14 дней.", "refund_link": "Политика возврата"}</script>
 <script>
 (function () {
   "use strict";
@@ -1060,7 +1061,7 @@
 
   function syncCost() {
     var c = $("cost"); if (c) c.textContent = cost() + " " + UI.credits;
-    var go = $("go"); if (go) go.textContent = token() ? UI.gen_cost.replace("{n}", cost() + " " + UI.credits) : UI.sign_in_first;
+    var go = $("go"); if (go) go.textContent = sessionOk ? UI.gen_cost.replace("{n}", cost() + " " + UI.credits) : UI.sign_in_first;
   }
 
   function fmtDur(sec) { var m = Math.floor(sec / 60), r = sec % 60; return m + ":" + (r < 10 ? "0" : "") + r; }
@@ -1286,12 +1287,13 @@
 
   // ---- 我的作品（登录后显示） ----
   function loadMine() {
-    if (!token()) return;
+    if (!sessionOk) return;
     call("/ai/music/tracks", { limit: 8 }, true).then(function (d) {
       if (d.code !== 200) return;
       var items = (d.data && d.data.items) || [];
       if (!items.length) return;
       var row = $("mineRow"); row.innerHTML = "";
+      $("mine").classList.remove("hidden");
       items.forEach(function (it) {
         var b = document.createElement("button");
         b.type = "button"; b.className = "mtile";
@@ -1313,10 +1315,10 @@
   }
 
   // ---- 启动 ----
-  $("go").addEventListener("click", generate);
+  $("go").addEventListener("click", generateConfirmed);
   if ($("acctLink")) $("acctLink").href = ROOT + "/" + LANG + "/account.html";
   if ($("priceLink")) $("priceLink").href = ROOT + "/" + LANG + "/pricing.html";
-  checkSession().then(function (ok) { if (ok) { loadMine(); restoreDraft(); } });
+  checkSession().then(function (ok) { syncCost(); if (ok) { loadMine(); restoreDraft(); } });
   loadShared();
   call("/ai/music/schema", {}, false).then(function (d) {
     if (d.code !== 200) { msg(UI.err_load, "err"); return; }

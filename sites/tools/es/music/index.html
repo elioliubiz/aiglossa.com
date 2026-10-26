@@ -137,7 +137,7 @@
   .rail-foot{position:sticky;bottom:-22px;margin:0 -24px -22px;padding:46px 24px 22px;
              background:linear-gradient(180deg,rgba(22,24,28,0) 0%,var(--panel) 42%);z-index:2}
   .go{width:100%;display:block;background:var(--acc);color:#1a0e04;border:0;border-radius:11px;padding:15px;
-      font:600 13.5px/1 inherit;cursor:pointer}
+      font:700 13.5px/1 inherit;font-weight:700;cursor:pointer}
   .go[disabled]{opacity:.55;cursor:not-allowed}
   .note{font-size:10.5px;color:var(--mut);text-align:center;margin:9px 0 0}
   .only-mobile{display:none}
@@ -218,6 +218,7 @@
     border-top-color:var(--acc);animation:sp .8s linear infinite;display:block}
   @keyframes sp{to{transform:rotate(360deg)}}
   .mine{margin-bottom:18px}
+  .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
   .minerow::-webkit-scrollbar{height:0}
   .mtile{flex:0 0 auto;width:112px;border:1px solid var(--line);border-radius:10px;overflow:hidden;
@@ -326,7 +327,7 @@
   .rail-foot{position:sticky;bottom:-22px;margin:0 -24px -22px;padding:46px 24px 22px;
              background:linear-gradient(180deg,rgba(22,24,28,0) 0%,var(--panel) 42%);z-index:2}
   .go{width:100%;display:block;background:var(--acc);color:#1a0e04;border:0;border-radius:11px;padding:15px;
-      font:600 13.5px/1 inherit;cursor:pointer}
+      font:700 13.5px/1 inherit;font-weight:700;cursor:pointer}
   .go[disabled]{opacity:.55;cursor:not-allowed}
   .note{font-size:10.5px;color:var(--mut);text-align:center;margin:9px 0 0}
   .only-mobile{display:none}
@@ -650,7 +651,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Generador de música con IA — de foto a canción, duración exacta", "description": "Convierte una foto o una descripción en música de fondo de 30 a 90 segundos exactos. La letra nombra lo que hay en tu imagen, con voces en 10 idiomas y bucles sin cortes.", "h1": "Crear una pista", "sub": "Desde una foto o una descripción. Duración exacta, bucles sin cortes.", "drop": "Arrastra o elige una foto<br>la letra nombrará lo que hay en ella", "generate": "Generar pista", "how_credits": "Cómo funcionan los créditos →", "grp_photo": "Escúchalo", "grp_recipe": "Desde un caso de uso", "download": "Descargar", "save_recipe": "Guardar como receta", "remove_photo": "Quitar foto", "photo_here": "Tu foto aquí", "note": "Todo lo de la derecha se hizo aquí", "legal_aup": "Uso aceptable", "legal_refund": "Reembolsos", "sign_in_first": "Inicia sesión para generar", "generating": "Generando… unos 20 segundos.", "just_generated": "Recién generado", "your_track": "Tu pista", "from_recipe": "Desde una receta", "from_photo": "Desde una foto", "err_load": "No se pudieron cargar las opciones", "done_in": "Listo en {n} s", "gen_cost": "Generar · {n}", "err_gen": "La generación falló", "my_track": "Mi pista", "err_net": "Error de red", "recipe_name": "Nombre de la receta", "err_save": "No se pudo guardar", "saved": "Guardado: {name}", "up_to": "Hasta {n}", "credits": "créditos", "guides_link": "Guías →", "guides_title": "Guías", "close": "Cerrar", "loading": "Cargando…", "off": "No", "loop_on": "Bucle sin cortes", "buy_credits": "Comprar créditos →", "desc_label": "Descripción (opcional)", "desc_ph": "Describe la pieza: café lluvioso, piano suave", "mode_photo": "Foto", "mode_text": "Texto", "field_density": "Densidad del arreglo", "opt_sparse": "Escaso", "opt_medium": "Medio", "opt_full": "Denso", "pro_title": "Opciones avanzadas", "grp_photo_sub": "Foto → letra → pista", "grp_recipe_sub": "Elige el uso y los ajustes ya vienen puestos", "recipe_names": {"short-form-cut": "숏폼 컷", "hook-sting": "오프닝 훅", "product-loop": "제품 루프", "podcast-bed": "팟캐스트 배경", "documentary-underscore": "다큐 배경", "game-menu-loop": "게임 메뉴 루프", "calm-focus": "집중 학습", "kids-learning": "어린이 학습"}, "applied": "Usando", "current_recipe": "Preajuste actual", "mine_title": "Mis pistas", "share_link": "Compartir enlace", "dl_audio": "Descargar audio", "copied": "Copiado", "shared_note": "Escuchas una pista compartida: crea la tuya abajo", "my_account": "Cuenta", "balance": "Saldo", "pricing_label": "Precios", "li1": "Pista de 30 s = 45 créditos, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Las generaciones fallidas se reembolsan automáticamente.", "li3": "Los créditos no caducan y sirven para todas las herramientas.", "li4": "Los pagos los procesa Creem, nuestro merchant of record.", "li5": "Los créditos sin usar se pueden reembolsar en un plazo de 14 días.", "refund_link": "Política de reembolsos"}</script>
+<script type="application/json" id="ui">{"title": "Generador de música con IA — de foto a canción, duración exacta", "description": "Convierte una foto o una descripción en música de fondo de 30 a 90 segundos exactos. La letra nombra lo que hay en tu imagen, con voces en 10 idiomas y bucles sin cortes.", "h1": "Crear una pista", "sub": "Desde una foto o una descripción. Duración exacta, bucles sin cortes.", "drop": "Arrastra o elige una foto<br>la letra nombrará lo que hay en ella", "generate": "Generar pista", "how_credits": "Cómo funcionan los créditos →", "grp_photo": "Escúchalo", "grp_recipe": "Desde un caso de uso", "download": "Descargar", "save_recipe": "Guardar como receta", "remove_photo": "Quitar foto", "photo_here": "Tu foto aquí", "note": "Todo lo de la derecha se hizo aquí", "legal_aup": "Uso aceptable", "legal_refund": "Reembolsos", "sign_in_first": "Inicia sesión para generar", "generating": "Generando… unos 20 segundos.", "just_generated": "Recién generado", "your_track": "Tu pista", "from_recipe": "Desde una receta", "from_photo": "Desde una foto", "err_load": "No se pudieron cargar las opciones", "done_in": "Listo en {n} s", "gen_cost": "Generar · {n}", "err_gen": "La generación falló", "my_track": "Mi pista", "err_net": "Error de red", "recipe_name": "Nombre de la receta", "err_save": "No se pudo guardar", "saved": "Guardado: {name}", "up_to": "Hasta {n}", "credits": "créditos", "guides_link": "Guías →", "guides_title": "Guías", "close": "Cerrar", "loading": "Cargando…", "off": "No", "loop_on": "Bucle sin cortes", "buy_credits": "Comprar créditos →", "desc_label": "Descripción (opcional)", "desc_ph": "Describe la pieza: café lluvioso, piano suave", "mode_photo": "Foto", "mode_text": "Texto", "field_density": "Densidad del arreglo", "opt_sparse": "Escaso", "opt_medium": "Medio", "opt_full": "Denso", "pro_title": "Opciones avanzadas", "grp_photo_sub": "Foto → letra → pista", "grp_recipe_sub": "Elige el uso y los ajustes ya vienen puestos", "recipe_names": {"short-form-cut": "숏폼 컷", "hook-sting": "오프닝 훅", "product-loop": "제품 루프", "podcast-bed": "팟캐스트 배경", "documentary-underscore": "다큐 배경", "game-menu-loop": "게임 메뉴 루프", "calm-focus": "집중 학습", "kids-learning": "어린이 학습"}, "applied": "Usando", "current_recipe": "Preajuste actual", "mine_title": "Mis pistas", "share_link": "Compartir enlace", "dl_audio": "Descargar audio", "copied": "Copiado", "shared_note": "Escuchas una pista compartida: crea la tuya abajo", "my_account": "Cuenta", "balance": "Saldo", "pricing_label": "Precios", "confirm_gen": "¿Generar una pista de {sec}s? Se gastarán {n}.", "li1": "Pista de 30 s = 45 créditos, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Las generaciones fallidas se reembolsan automáticamente.", "li3": "Los créditos no caducan y sirven para todas las herramientas.", "li4": "Los pagos los procesa Creem, nuestro merchant of record.", "li5": "Los créditos sin usar se pueden reembolsar en un plazo de 14 días.", "refund_link": "Política de reembolsos"}</script>
 <script>
 (function () {
   "use strict";
@@ -1060,7 +1061,7 @@
 
   function syncCost() {
     var c = $("cost"); if (c) c.textContent = cost() + " " + UI.credits;
-    var go = $("go"); if (go) go.textContent = token() ? UI.gen_cost.replace("{n}", cost() + " " + UI.credits) : UI.sign_in_first;
+    var go = $("go"); if (go) go.textContent = sessionOk ? UI.gen_cost.replace("{n}", cost() + " " + UI.credits) : UI.sign_in_first;
   }
 
   function fmtDur(sec) { var m = Math.floor(sec / 60), r = sec % 60; return m + ":" + (r < 10 ? "0" : "") + r; }
@@ -1286,12 +1287,13 @@
 
   // ---- 我的作品（登录后显示） ----
   function loadMine() {
-    if (!token()) return;
+    if (!sessionOk) return;
     call("/ai/music/tracks", { limit: 8 }, true).then(function (d) {
       if (d.code !== 200) return;
       var items = (d.data && d.data.items) || [];
       if (!items.length) return;
       var row = $("mineRow"); row.innerHTML = "";
+      $("mine").classList.remove("hidden");
       items.forEach(function (it) {
         var b = document.createElement("button");
         b.type = "button"; b.className = "mtile";
@@ -1313,10 +1315,10 @@
   }
 
   // ---- 启动 ----
-  $("go").addEventListener("click", generate);
+  $("go").addEventListener("click", generateConfirmed);
   if ($("acctLink")) $("acctLink").href = ROOT + "/" + LANG + "/account.html";
   if ($("priceLink")) $("priceLink").href = ROOT + "/" + LANG + "/pricing.html";
-  checkSession().then(function (ok) { if (ok) { loadMine(); restoreDraft(); } });
+  checkSession().then(function (ok) { syncCost(); if (ok) { loadMine(); restoreDraft(); } });
   loadShared();
   call("/ai/music/schema", {}, false).then(function (d) {
     if (d.code !== 200) { msg(UI.err_load, "err"); return; }

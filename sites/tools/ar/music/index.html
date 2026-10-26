@@ -137,7 +137,7 @@
   .rail-foot{position:sticky;bottom:-22px;margin:0 -24px -22px;padding:46px 24px 22px;
              background:linear-gradient(180deg,rgba(22,24,28,0) 0%,var(--panel) 42%);z-index:2}
   .go{width:100%;display:block;background:var(--acc);color:#1a0e04;border:0;border-radius:11px;padding:15px;
-      font:600 13.5px/1 inherit;cursor:pointer}
+      font:700 13.5px/1 inherit;font-weight:700;cursor:pointer}
   .go[disabled]{opacity:.55;cursor:not-allowed}
   .note{font-size:10.5px;color:var(--mut);text-align:center;margin:9px 0 0}
   .only-mobile{display:none}
@@ -218,6 +218,7 @@
     border-top-color:var(--acc);animation:sp .8s linear infinite;display:block}
   @keyframes sp{to{transform:rotate(360deg)}}
   .mine{margin-bottom:18px}
+  .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
   .minerow::-webkit-scrollbar{height:0}
   .mtile{flex:0 0 auto;width:112px;border:1px solid var(--line);border-radius:10px;overflow:hidden;
@@ -326,7 +327,7 @@
   .rail-foot{position:sticky;bottom:-22px;margin:0 -24px -22px;padding:46px 24px 22px;
              background:linear-gradient(180deg,rgba(22,24,28,0) 0%,var(--panel) 42%);z-index:2}
   .go{width:100%;display:block;background:var(--acc);color:#1a0e04;border:0;border-radius:11px;padding:15px;
-      font:600 13.5px/1 inherit;cursor:pointer}
+      font:700 13.5px/1 inherit;font-weight:700;cursor:pointer}
   .go[disabled]{opacity:.55;cursor:not-allowed}
   .note{font-size:10.5px;color:var(--mut);text-align:center;margin:9px 0 0}
   .only-mobile{display:none}
@@ -650,7 +651,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق", "description": "حوّل صورة أو وصفًا إلى موسيقى خلفية بطول 30–90 ثانية بالضبط. الكلمات تذكر ما في صورتك، مع غناء بعشر لغات وحلقات بلا فواصل.", "h1": "أنشئ مقطعًا", "sub": "من صورة أو وصف. مدة دقيقة وحلقات بلا فواصل.", "drop": "أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها", "generate": "أنشئ المقطع", "how_credits": "كيف تعمل الأرصدة →", "grp_photo": "اسمعها", "grp_recipe": "من الاستخدام", "download": "تنزيل", "save_recipe": "احفظ كوصفة", "remove_photo": "إزالة الصورة", "photo_here": "صورتك هنا", "note": "كل ما على اليمين أُنشئ هنا", "legal_aup": "الاستخدام المقبول", "legal_refund": "المبالغ المستردة", "sign_in_first": "سجّل الدخول للإنشاء", "generating": "جارٍ الإنشاء… نحو 20 ثانية.", "just_generated": "أُنشئ للتو", "your_track": "مقطعك", "from_recipe": "من وصفة", "from_photo": "من صورة", "err_load": "تعذّر تحميل الخيارات", "done_in": "اكتمل في {n} ثانية", "gen_cost": "إنشاء · {n}", "err_gen": "فشل الإنشاء", "my_track": "مقطعي", "err_net": "خطأ في الشبكة", "recipe_name": "اسم الوصفة", "err_save": "تعذّر الحفظ", "saved": "تم الحفظ: {name}", "up_to": "حتى {n}", "credits": "رصيدًا", "guides_link": "أدلة ←", "guides_title": "أدلة", "close": "إغلاق", "loading": "جارٍ التحميل…", "off": "إيقاف", "loop_on": "حلقة بلا فواصل", "buy_credits": "شراء أرصدة ←", "desc_label": "وصف (اختياري)", "desc_ph": "صِف المقطع: مقهى ممطر، بيانو هادئ", "mode_photo": "صورة", "mode_text": "نص", "field_density": "كثافة التوزيع", "opt_sparse": "متباعد", "opt_medium": "متوسط", "opt_full": "كثيف", "pro_title": "خيارات متقدمة", "grp_photo_sub": "صورة → كلمات → مقطع", "grp_recipe_sub": "اختر الاستخدام والإعدادات جاهزة", "recipe_names": {"short-form-cut": "Короткий клип", "hook-sting": "Хук для заставки", "product-loop": "Луп для продукта", "podcast-bed": "Подложка для подкаста", "documentary-underscore": "Фон для документалки", "game-menu-loop": "Луп для меню", "calm-focus": "Концентрация", "kids-learning": "Для детей"}, "applied": "يُستخدم", "current_recipe": "الإعداد الحالي", "mine_title": "مقاطعي", "share_link": "مشاركة الرابط", "dl_audio": "تنزيل الصوت", "copied": "تم النسخ", "shared_note": "تستمع إلى مقطع تمت مشاركته — أنشئ مقطعك أدناه", "my_account": "الحساب", "balance": "الرصيد", "pricing_label": "الأسعار", "li1": "مقطع 30 ثانية = 45 رصيدًا، 45 ثانية = 64، 60 ثانية = 85، 75 ثانية = 103، 90 ثانية = 120.", "li2": "الأجيال الفاشلة تُرد تلقائيًا.", "li3": "الأرصدة لا تنتهي وتعمل في كل الأدوات.", "li4": "المدفوعات تعالجها Creem، وهي تاجر السجل لدينا.", "li5": "يمكن استرداد الأرصدة غير المستخدمة خلال 14 يومًا.", "refund_link": "سياسة الاسترداد"}</script>
+<script type="application/json" id="ui">{"title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق", "description": "حوّل صورة أو وصفًا إلى موسيقى خلفية بطول 30–90 ثانية بالضبط. الكلمات تذكر ما في صورتك، مع غناء بعشر لغات وحلقات بلا فواصل.", "h1": "أنشئ مقطعًا", "sub": "من صورة أو وصف. مدة دقيقة وحلقات بلا فواصل.", "drop": "أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها", "generate": "أنشئ المقطع", "how_credits": "كيف تعمل الأرصدة →", "grp_photo": "اسمعها", "grp_recipe": "من الاستخدام", "download": "تنزيل", "save_recipe": "احفظ كوصفة", "remove_photo": "إزالة الصورة", "photo_here": "صورتك هنا", "note": "كل ما على اليمين أُنشئ هنا", "legal_aup": "الاستخدام المقبول", "legal_refund": "المبالغ المستردة", "sign_in_first": "سجّل الدخول للإنشاء", "generating": "جارٍ الإنشاء… نحو 20 ثانية.", "just_generated": "أُنشئ للتو", "your_track": "مقطعك", "from_recipe": "من وصفة", "from_photo": "من صورة", "err_load": "تعذّر تحميل الخيارات", "done_in": "اكتمل في {n} ثانية", "gen_cost": "إنشاء · {n}", "err_gen": "فشل الإنشاء", "my_track": "مقطعي", "err_net": "خطأ في الشبكة", "recipe_name": "اسم الوصفة", "err_save": "تعذّر الحفظ", "saved": "تم الحفظ: {name}", "up_to": "حتى {n}", "credits": "رصيدًا", "guides_link": "أدلة ←", "guides_title": "أدلة", "close": "إغلاق", "loading": "جارٍ التحميل…", "off": "إيقاف", "loop_on": "حلقة بلا فواصل", "buy_credits": "شراء أرصدة ←", "desc_label": "وصف (اختياري)", "desc_ph": "صِف المقطع: مقهى ممطر، بيانو هادئ", "mode_photo": "صورة", "mode_text": "نص", "field_density": "كثافة التوزيع", "opt_sparse": "متباعد", "opt_medium": "متوسط", "opt_full": "كثيف", "pro_title": "خيارات متقدمة", "grp_photo_sub": "صورة → كلمات → مقطع", "grp_recipe_sub": "اختر الاستخدام والإعدادات جاهزة", "recipe_names": {"short-form-cut": "Короткий клип", "hook-sting": "Хук для заставки", "product-loop": "Луп для продукта", "podcast-bed": "Подложка для подкаста", "documentary-underscore": "Фон для документалки", "game-menu-loop": "Луп для меню", "calm-focus": "Концентрация", "kids-learning": "Для детей"}, "applied": "يُستخدم", "current_recipe": "الإعداد الحالي", "mine_title": "مقاطعي", "share_link": "مشاركة الرابط", "dl_audio": "تنزيل الصوت", "copied": "تم النسخ", "shared_note": "تستمع إلى مقطع تمت مشاركته — أنشئ مقطعك أدناه", "my_account": "الحساب", "balance": "الرصيد", "pricing_label": "الأسعار", "confirm_gen": "هل تريد إنشاء مقطع بمدة {sec} ثانية؟ سيُخصم {n}.", "li1": "مقطع 30 ثانية = 45 رصيدًا، 45 ثانية = 64، 60 ثانية = 85، 75 ثانية = 103، 90 ثانية = 120.", "li2": "الأجيال الفاشلة تُرد تلقائيًا.", "li3": "الأرصدة لا تنتهي وتعمل في كل الأدوات.", "li4": "المدفوعات تعالجها Creem، وهي تاجر السجل لدينا.", "li5": "يمكن استرداد الأرصدة غير المستخدمة خلال 14 يومًا.", "refund_link": "سياسة الاسترداد"}</script>
 <script>
 (function () {
   "use strict";
@@ -1060,7 +1061,7 @@
 
   function syncCost() {
     var c = $("cost"); if (c) c.textContent = cost() + " " + UI.credits;
-    var go = $("go"); if (go) go.textContent = token() ? UI.gen_cost.replace("{n}", cost() + " " + UI.credits) : UI.sign_in_first;
+    var go = $("go"); if (go) go.textContent = sessionOk ? UI.gen_cost.replace("{n}", cost() + " " + UI.credits) : UI.sign_in_first;
   }
 
   function fmtDur(sec) { var m = Math.floor(sec / 60), r = sec % 60; return m + ":" + (r < 10 ? "0" : "") + r; }
@@ -1286,12 +1287,13 @@
 
   // ---- 我的作品（登录后显示） ----
   function loadMine() {
-    if (!token()) return;
+    if (!sessionOk) return;
     call("/ai/music/tracks", { limit: 8 }, true).then(function (d) {
       if (d.code !== 200) return;
       var items = (d.data && d.data.items) || [];
       if (!items.length) return;
       var row = $("mineRow"); row.innerHTML = "";
+      $("mine").classList.remove("hidden");
       items.forEach(function (it) {
         var b = document.createElement("button");
         b.type = "button"; b.className = "mtile";
@@ -1313,10 +1315,10 @@
   }
 
   // ---- 启动 ----
-  $("go").addEventListener("click", generate);
+  $("go").addEventListener("click", generateConfirmed);
   if ($("acctLink")) $("acctLink").href = ROOT + "/" + LANG + "/account.html";
   if ($("priceLink")) $("priceLink").href = ROOT + "/" + LANG + "/pricing.html";
-  checkSession().then(function (ok) { if (ok) { loadMine(); restoreDraft(); } });
+  checkSession().then(function (ok) { syncCost(); if (ok) { loadMine(); restoreDraft(); } });
   loadShared();
   call("/ai/music/schema", {}, false).then(function (d) {
     if (d.code !== 200) { msg(UI.err_load, "err"); return; }

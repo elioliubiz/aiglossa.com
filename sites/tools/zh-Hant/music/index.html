@@ -137,7 +137,7 @@
   .rail-foot{position:sticky;bottom:-22px;margin:0 -24px -22px;padding:46px 24px 22px;
              background:linear-gradient(180deg,rgba(22,24,28,0) 0%,var(--panel) 42%);z-index:2}
   .go{width:100%;display:block;background:var(--acc);color:#1a0e04;border:0;border-radius:11px;padding:15px;
-      font:600 13.5px/1 inherit;cursor:pointer}
+      font:700 13.5px/1 inherit;font-weight:700;cursor:pointer}
   .go[disabled]{opacity:.55;cursor:not-allowed}
   .note{font-size:10.5px;color:var(--mut);text-align:center;margin:9px 0 0}
   .only-mobile{display:none}
@@ -218,6 +218,7 @@
     border-top-color:var(--acc);animation:sp .8s linear infinite;display:block}
   @keyframes sp{to{transform:rotate(360deg)}}
   .mine{margin-bottom:18px}
+  .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
   .minerow::-webkit-scrollbar{height:0}
   .mtile{flex:0 0 auto;width:112px;border:1px solid var(--line);border-radius:10px;overflow:hidden;
@@ -326,7 +327,7 @@
   .rail-foot{position:sticky;bottom:-22px;margin:0 -24px -22px;padding:46px 24px 22px;
              background:linear-gradient(180deg,rgba(22,24,28,0) 0%,var(--panel) 42%);z-index:2}
   .go{width:100%;display:block;background:var(--acc);color:#1a0e04;border:0;border-radius:11px;padding:15px;
-      font:600 13.5px/1 inherit;cursor:pointer}
+      font:700 13.5px/1 inherit;font-weight:700;cursor:pointer}
   .go[disabled]{opacity:.55;cursor:not-allowed}
   .note{font-size:10.5px;color:var(--mut);text-align:center;margin:9px 0 0}
   .only-mobile{display:none}
@@ -650,7 +651,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "AI 音樂生成 — 照片變歌曲，長度精確", "description": "用照片或描述生成 30–90 秒精確長度的背景音樂。歌詞唱出照片裡的內容，支援 10 種語言人聲與無縫循環。", "h1": "做一首曲子", "sub": "從照片或描述開始。長度精確、循環無縫。", "drop": "拖入或選擇照片<br>歌詞會唱出照片裡的內容", "generate": "生成曲子", "how_credits": "額度怎麼算 →", "grp_photo": "聽聽效果", "grp_recipe": "從場景開始", "download": "下載", "save_recipe": "存為配方", "remove_photo": "移除照片", "photo_here": "你的照片放這裡", "note": "右邊的東西都是在這裡做的", "legal_aup": "可接受使用", "legal_refund": "退款政策", "sign_in_first": "登入後即可生成", "generating": "生成中……約 20 秒。", "just_generated": "剛生成", "your_track": "你的曲子", "from_recipe": "來自配方", "from_photo": "由照片生成", "err_load": "無法載入選項", "done_in": "{n} 秒完成", "gen_cost": "生成 · {n}", "err_gen": "生成失敗", "my_track": "我的曲子", "err_net": "網路錯誤", "recipe_name": "配方名稱", "err_save": "儲存失敗", "saved": "已儲存：{name}", "up_to": "最多 {n}", "credits": "額度", "guides_link": "指南 →", "guides_title": "指南", "close": "關閉", "loading": "載入中…", "off": "關閉", "loop_on": "無縫循環", "buy_credits": "購買額度 →", "desc_label": "補充描述（可選）", "desc_ph": "描述你想要的曲子，例如：雨天的咖啡館，鋼琴為主", "mode_photo": "用照片", "mode_text": "用文字", "field_density": "編曲密度", "opt_sparse": "稀疏", "opt_medium": "適中", "opt_full": "密集", "pro_title": "專業選項", "grp_photo_sub": "照片 → 歌詞 → 曲子", "grp_recipe_sub": "選一個用途，參數已經配好", "recipe_names": {"short-form-cut": "快剪短视频", "hook-sting": "Gancho de apertura", "product-loop": "Bucle de producto", "podcast-bed": "Base para pódcast", "documentary-underscore": "Base documental", "game-menu-loop": "Bucle de menú", "calm-focus": "Concentración", "kids-learning": "Infantil y aprendizaje"}, "applied": "將使用", "current_recipe": "目前配方", "mine_title": "我的作品", "share_link": "分享連結", "dl_audio": "下載音訊", "copied": "已複製", "shared_note": "你正在聽一首分享的曲子，下面可以做你自己的", "my_account": "帳戶", "balance": "餘額", "pricing_label": "價格", "li1": "30 秒 = 45 額度，45 秒 = 64，60 秒 = 85，75 秒 = 103，90 秒 = 120。", "li2": "生成失敗會自動退回額度。", "li3": "額度永不過期，所有工具通用。", "li4": "付款由 merchant of record（記錄商戶）Creem 處理。", "li5": "未使用的額度可在 14 天內申請退款。", "refund_link": "退款政策"}</script>
+<script type="application/json" id="ui">{"title": "AI 音樂生成 — 照片變歌曲，長度精確", "description": "用照片或描述生成 30–90 秒精確長度的背景音樂。歌詞唱出照片裡的內容，支援 10 種語言人聲與無縫循環。", "h1": "做一首曲子", "sub": "從照片或描述開始。長度精確、循環無縫。", "drop": "拖入或選擇照片<br>歌詞會唱出照片裡的內容", "generate": "生成曲子", "how_credits": "額度怎麼算 →", "grp_photo": "聽聽效果", "grp_recipe": "從場景開始", "download": "下載", "save_recipe": "存為配方", "remove_photo": "移除照片", "photo_here": "你的照片放這裡", "note": "右邊的東西都是在這裡做的", "legal_aup": "可接受使用", "legal_refund": "退款政策", "sign_in_first": "登入後即可生成", "generating": "生成中……約 20 秒。", "just_generated": "剛生成", "your_track": "你的曲子", "from_recipe": "來自配方", "from_photo": "由照片生成", "err_load": "無法載入選項", "done_in": "{n} 秒完成", "gen_cost": "生成 · {n}", "err_gen": "生成失敗", "my_track": "我的曲子", "err_net": "網路錯誤", "recipe_name": "配方名稱", "err_save": "儲存失敗", "saved": "已儲存：{name}", "up_to": "最多 {n}", "credits": "額度", "guides_link": "指南 →", "guides_title": "指南", "close": "關閉", "loading": "載入中…", "off": "關閉", "loop_on": "無縫循環", "buy_credits": "購買額度 →", "desc_label": "補充描述（可選）", "desc_ph": "描述你想要的曲子，例如：雨天的咖啡館，鋼琴為主", "mode_photo": "用照片", "mode_text": "用文字", "field_density": "編曲密度", "opt_sparse": "稀疏", "opt_medium": "適中", "opt_full": "密集", "pro_title": "專業選項", "grp_photo_sub": "照片 → 歌詞 → 曲子", "grp_recipe_sub": "選一個用途，參數已經配好", "recipe_names": {"short-form-cut": "快剪短视频", "hook-sting": "Gancho de apertura", "product-loop": "Bucle de producto", "podcast-bed": "Base para pódcast", "documentary-underscore": "Base documental", "game-menu-loop": "Bucle de menú", "calm-focus": "Concentración", "kids-learning": "Infantil y aprendizaje"}, "applied": "將使用", "current_recipe": "目前配方", "mine_title": "我的作品", "share_link": "分享連結", "dl_audio": "下載音訊", "copied": "已複製", "shared_note": "你正在聽一首分享的曲子，下面可以做你自己的", "my_account": "帳戶", "balance": "餘額", "pricing_label": "價格", "confirm_gen": "生成一首 {sec} 秒的曲子？將消耗 {n}。", "li1": "30 秒 = 45 額度，45 秒 = 64，60 秒 = 85，75 秒 = 103，90 秒 = 120。", "li2": "生成失敗會自動退回額度。", "li3": "額度永不過期，所有工具通用。", "li4": "付款由 merchant of record（記錄商戶）Creem 處理。", "li5": "未使用的額度可在 14 天內申請退款。", "refund_link": "退款政策"}</script>
 <script>
 (function () {
   "use strict";
@@ -1060,7 +1061,7 @@
 
   function syncCost() {
     var c = $("cost"); if (c) c.textContent = cost() + " " + UI.credits;
-    var go = $("go"); if (go) go.textContent = token() ? UI.gen_cost.replace("{n}", cost() + " " + UI.credits) : UI.sign_in_first;
+    var go = $("go"); if (go) go.textContent = sessionOk ? UI.gen_cost.replace("{n}", cost() + " " + UI.credits) : UI.sign_in_first;
   }
 
   function fmtDur(sec) { var m = Math.floor(sec / 60), r = sec % 60; return m + ":" + (r < 10 ? "0" : "") + r; }
@@ -1286,12 +1287,13 @@
 
   // ---- 我的作品（登录后显示） ----
   function loadMine() {
-    if (!token()) return;
+    if (!sessionOk) return;
     call("/ai/music/tracks", { limit: 8 }, true).then(function (d) {
       if (d.code !== 200) return;
       var items = (d.data && d.data.items) || [];
       if (!items.length) return;
       var row = $("mineRow"); row.innerHTML = "";
+      $("mine").classList.remove("hidden");
       items.forEach(function (it) {
         var b = document.createElement("button");
         b.type = "button"; b.className = "mtile";
@@ -1313,10 +1315,10 @@
   }
 
   // ---- 启动 ----
-  $("go").addEventListener("click", generate);
+  $("go").addEventListener("click", generateConfirmed);
   if ($("acctLink")) $("acctLink").href = ROOT + "/" + LANG + "/account.html";
   if ($("priceLink")) $("priceLink").href = ROOT + "/" + LANG + "/pricing.html";
-  checkSession().then(function (ok) { if (ok) { loadMine(); restoreDraft(); } });
+  checkSession().then(function (ok) { syncCost(); if (ok) { loadMine(); restoreDraft(); } });
   loadShared();
   call("/ai/music/schema", {}, false).then(function (d) {
     if (d.code !== 200) { msg(UI.err_load, "err"); return; }
