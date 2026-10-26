@@ -21,7 +21,8 @@
       "refund_note": "Credits are non-refundable once used. Please buy only what you need.",
       "back_account": "Back to account",
       "lede_buy": "Prepaid credits, no subscription. Choose the pack that fits you.",
-      "li3_generic": "Credits never expire."
+      "li3_generic": "Credits never expire.",
+      "continue_use": "Continue"
     },
     "account": {
       "title": "Sign in — aiglossa tools",
@@ -191,7 +192,8 @@
       "refund_note": "使用済みのクレジットは返金できません。必要な分だけご購入ください。",
       "back_account": "アカウントに戻る",
       "lede_buy": "プリペイド式でサブスクなし。必要なパックをお選びください。",
-      "li3_generic": "クレジットは無期限です。"
+      "li3_generic": "クレジットは無期限です。",
+      "continue_use": "続ける"
     },
     "account": {
       "title": "サインイン — aiglossa tools",
@@ -361,7 +363,8 @@
       "refund_note": "사용한 크레딧은 환불되지 않습니다. 필요한 만큼만 구매하세요.",
       "back_account": "계정으로 돌아가기",
       "lede_buy": "선불 크레딧, 구독 없음. 필요한 패키지를 선택하세요.",
-      "li3_generic": "크레딧은 만료되지 않습니다."
+      "li3_generic": "크레딧은 만료되지 않습니다.",
+      "continue_use": "계속하기"
     },
     "account": {
       "title": "로그인 — aiglossa tools",
@@ -531,7 +534,8 @@
       "refund_note": "额度一经使用不可退款，请按需购买。",
       "back_account": "返回账户",
       "lede_buy": "预付额度，没有订阅。按需选择适合你的额度包。",
-      "li3_generic": "额度永不过期。"
+      "li3_generic": "额度永不过期。",
+      "continue_use": "继续使用"
     },
     "account": {
       "title": "登录 — aiglossa tools",
@@ -701,7 +705,8 @@
       "refund_note": "額度一經使用不可退款，請按需購買。",
       "back_account": "返回帳戶",
       "lede_buy": "預付額度，沒有訂閱。按需選擇適合你的額度包。",
-      "li3_generic": "額度永不過期。"
+      "li3_generic": "額度永不過期。",
+      "continue_use": "繼續使用"
     },
     "account": {
       "title": "登入 — aiglossa tools",
@@ -871,7 +876,8 @@
       "refund_note": "Los créditos usados no son reembolsables. Compra solo lo que necesites.",
       "back_account": "Volver a la cuenta",
       "lede_buy": "Créditos prepago, sin suscripción. Elige el paquete que necesites.",
-      "li3_generic": "Los créditos no caducan."
+      "li3_generic": "Los créditos no caducan.",
+      "continue_use": "Continuar"
     },
     "account": {
       "title": "Iniciar sesión — aiglossa tools",
@@ -1041,7 +1047,8 @@
       "refund_note": "Les crédits utilisés ne sont pas remboursables. Achetez seulement le nécessaire.",
       "back_account": "Retour au compte",
       "lede_buy": "Crédits prépayés, sans abonnement. Choisissez le pack adapté.",
-      "li3_generic": "Les crédits n'expirent jamais."
+      "li3_generic": "Les crédits n'expirent jamais.",
+      "continue_use": "Continuer"
     },
     "account": {
       "title": "Connexion — aiglossa tools",
@@ -1211,7 +1218,8 @@
       "refund_note": "Bereits genutzte Credits werden nicht erstattet. Kaufe nur, was du brauchst.",
       "back_account": "Zurück zum Konto",
       "lede_buy": "Guthaben statt Abo. Wähle das passende Paket.",
-      "li3_generic": "Guthaben verfällt nicht."
+      "li3_generic": "Guthaben verfällt nicht.",
+      "continue_use": "Weiter"
     },
     "account": {
       "title": "Anmelden — aiglossa tools",
@@ -1381,7 +1389,8 @@
       "refund_note": "Créditos usados não são reembolsáveis. Compre apenas o necessário.",
       "back_account": "Voltar à conta",
       "lede_buy": "Créditos pré-pagos, sem assinatura. Escolha o pacote ideal.",
-      "li3_generic": "Os créditos não expiram."
+      "li3_generic": "Os créditos não expiram.",
+      "continue_use": "Continuar"
     },
     "account": {
       "title": "Entrar — aiglossa tools",
@@ -1551,7 +1560,8 @@
       "refund_note": "I crediti utilizzati non sono rimborsabili. Acquista solo il necessario.",
       "back_account": "Torna all'account",
       "lede_buy": "Crediti prepagati, senza abbonamento. Scegli il pacchetto giusto.",
-      "li3_generic": "I crediti non scadono."
+      "li3_generic": "I crediti non scadono.",
+      "continue_use": "Continua"
     },
     "account": {
       "title": "Accedi — aiglossa tools",
@@ -1721,7 +1731,8 @@
       "refund_note": "Использованные кредиты не возвращаются. Покупайте столько, сколько нужно.",
       "back_account": "Назад в аккаунт",
       "lede_buy": "Предоплаченные кредиты без подписки. Выберите подходящий пакет.",
-      "li3_generic": "Кредиты не сгорают."
+      "li3_generic": "Кредиты не сгорают.",
+      "continue_use": "Продолжить"
     },
     "account": {
       "title": "Вход — aiglossa tools",
@@ -1891,7 +1902,8 @@
       "refund_note": "الرصيد المستخدم غير قابل للاسترداد. اشترِ ما تحتاجه فقط.",
       "back_account": "العودة إلى الحساب",
       "lede_buy": "رصيد مدفوع مسبقًا بدون اشتراك. اختر الحزمة المناسبة.",
-      "li3_generic": "الرصيد لا ينتهي."
+      "li3_generic": "الرصيد لا ينتهي.",
+      "continue_use": "متابعة"
     },
     "account": {
       "title": "تسجيل الدخول — aiglossa tools",
@@ -2061,7 +2073,8 @@
       "refund_note": "เครดิตที่ใช้แล้วไม่สามารถขอคืนได้ โปรดซื้อเท่าที่จำเป็น",
       "back_account": "กลับไปที่บัญชี",
       "lede_buy": "เครดิตแบบจ่ายล่วงหน้า ไม่มีสมาชิกรายเดือน เลือกแพ็กที่เหมาะกับคุณ",
-      "li3_generic": "เครดิตไม่มีวันหมดอายุ"
+      "li3_generic": "เครดิตไม่มีวันหมดอายุ",
+      "continue_use": "ใช้งานต่อ"
     },
     "account": {
       "title": "เข้าสู่ระบบ — aiglossa tools",
@@ -2231,7 +2244,8 @@
       "refund_note": "Tín dụng đã dùng không được hoàn lại. Chỉ mua những gì bạn cần.",
       "back_account": "Quay lại tài khoản",
       "lede_buy": "Tín dụng trả trước, không đăng ký. Chọn gói phù hợp với bạn.",
-      "li3_generic": "Tín dụng không hết hạn."
+      "li3_generic": "Tín dụng không hết hạn.",
+      "continue_use": "Tiếp tục"
     },
     "account": {
       "title": "Đăng nhập — aiglossa tools",
@@ -2401,7 +2415,8 @@
       "refund_note": "Kredit yang sudah dipakai tidak dapat dikembalikan. Beli sesuai kebutuhan.",
       "back_account": "Kembali ke akun",
       "lede_buy": "Kredit prabayar, tanpa langganan. Pilih paket yang sesuai.",
-      "li3_generic": "Kredit tidak kedaluwarsa."
+      "li3_generic": "Kredit tidak kedaluwarsa.",
+      "continue_use": "Lanjutkan"
     },
     "account": {
       "title": "Masuk — aiglossa tools",
@@ -2571,7 +2586,8 @@
       "refund_note": "Kullanılan krediler iade edilmez. Yalnızca ihtiyacınız kadar satın alın.",
       "back_account": "Hesaba dön",
       "lede_buy": "Ön ödemeli kredi, abonelik yok. Size uygun paketi seçin.",
-      "li3_generic": "Krediler süresi dolmaz."
+      "li3_generic": "Krediler süresi dolmaz.",
+      "continue_use": "Devam et"
     },
     "account": {
       "title": "Giriş — aiglossa tools",

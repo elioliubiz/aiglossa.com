@@ -41,7 +41,7 @@
   .kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
   h1{font-size:clamp(30px,4.4vw,42px);line-height:1.1;letter-spacing:-.03em;margin-block:14px 12px;font-weight:600}
   .lede{color:var(--muted);font-size:15px;line-height:1.7;margin:0 0 34px;margin-inline:0;max-width:56ch}
-  .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:start}
+  .grid{display:grid;grid-template-columns:1fr;gap:0;align-items:start;max-width:640px}
   @media(max-width:820px){.grid{grid-template-columns:1fr}}
   .packs{display:grid;gap:10px}
   .refundnote{margin:14px 0 0;font-size:11.5px;line-height:1.6;color:var(--muted);
@@ -81,8 +81,11 @@
   .switcher li a{display:block;padding-block:7px;padding-inline:10px;border-radius:8px;
                  color:var(--muted);text-decoration:none;font-size:13px}
   .switcher li a:hover,.switcher li a[aria-current]{color:var(--fg);background:rgba(255,255,255,.06)}
+.btn-continue{margin-top:16px;width:100%;padding:14px;border-radius:11px;border:1px solid var(--line);
+  background:rgba(255,255,255,.05);color:var(--fg);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
+.btn-continue:hover{background:rgba(255,255,255,.09)}
 </style>
-<script type="application/json" id="ui">{"title": "เครดิตและราคา — aiglossa tools", "description": "เครดิตแบบชำระล่วงหน้าสำหรับ aiglossa tools เพลง 30 วินาทีใช้ 45 เครดิต เพลงยาวกว่านั้นใช้มากกว่า", "h1": "เครดิต", "lede": "เครดิตแบบชำระล่วงหน้า ใช้ร่วมกันทุกเครื่องมือ ไม่หมดอายุ ไม่มีสมาชิกรายเดือน จ่ายตามที่สร้างจริง", "side_title": "เครดิตคิดอย่างไร", "li1": "เพลง 30 วินาที = 45 เครดิต, 45 วินาที = 64, 60 วินาที = 85, 75 วินาที = 103, 90 วินาที = 120", "li2": "การสร้างที่ล้มเหลวจะคืนเครดิตอัตโนมัติ", "li3": "เครดิตไม่หมดอายุและใช้ได้กับทุกเครื่องมือ", "li4": "การชำระเงินดำเนินการโดย Creem ซึ่งเป็นผู้ค้าบนบันทึกของเรา", "li5": "เครดิตที่ยังไม่ใช้สามารถขอคืนได้ภายใน 14 วัน", "refund_link": "นโยบายการคืนเงิน", "back": "← กลับไปที่เครื่องมือ", "opening": "กำลังเปิดหน้าชำระเงิน…", "err": "ไม่สามารถเริ่มชำระเงินได้", "neterr": "เครือข่ายขัดข้อง", "per": "≈ {n} เพลง 30 วินาที", "kicker": "aiglossa tools", "refund_note": "เครดิตที่ใช้แล้วไม่สามารถขอคืนได้ โปรดซื้อเท่าที่จำเป็น", "back_account": "กลับไปที่บัญชี", "lede_buy": "เครดิตแบบจ่ายล่วงหน้า ไม่มีสมาชิกรายเดือน เลือกแพ็กที่เหมาะกับคุณ", "li3_generic": "เครดิตไม่มีวันหมดอายุ", "balance": "คงเหลือ", "credits": "เครดิต", "not_signed_in": "ยังไม่เข้าสู่ระบบ"}</script>
+<script type="application/json" id="ui">{"title": "เครดิตและราคา — aiglossa tools", "description": "เครดิตแบบชำระล่วงหน้าสำหรับ aiglossa tools เพลง 30 วินาทีใช้ 45 เครดิต เพลงยาวกว่านั้นใช้มากกว่า", "h1": "เครดิต", "lede": "เครดิตแบบชำระล่วงหน้า ใช้ร่วมกันทุกเครื่องมือ ไม่หมดอายุ ไม่มีสมาชิกรายเดือน จ่ายตามที่สร้างจริง", "side_title": "เครดิตคิดอย่างไร", "li1": "เพลง 30 วินาที = 45 เครดิต, 45 วินาที = 64, 60 วินาที = 85, 75 วินาที = 103, 90 วินาที = 120", "li2": "การสร้างที่ล้มเหลวจะคืนเครดิตอัตโนมัติ", "li3": "เครดิตไม่หมดอายุและใช้ได้กับทุกเครื่องมือ", "li4": "การชำระเงินดำเนินการโดย Creem ซึ่งเป็นผู้ค้าบนบันทึกของเรา", "li5": "เครดิตที่ยังไม่ใช้สามารถขอคืนได้ภายใน 14 วัน", "refund_link": "นโยบายการคืนเงิน", "back": "← กลับไปที่เครื่องมือ", "opening": "กำลังเปิดหน้าชำระเงิน…", "err": "ไม่สามารถเริ่มชำระเงินได้", "neterr": "เครือข่ายขัดข้อง", "per": "≈ {n} เพลง 30 วินาที", "kicker": "aiglossa tools", "refund_note": "เครดิตที่ใช้แล้วไม่สามารถขอคืนได้ โปรดซื้อเท่าที่จำเป็น", "back_account": "กลับไปที่บัญชี", "lede_buy": "เครดิตแบบจ่ายล่วงหน้า ไม่มีสมาชิกรายเดือน เลือกแพ็กที่เหมาะกับคุณ", "li3_generic": "เครดิตไม่มีวันหมดอายุ", "continue_use": "ใช้งานต่อ", "balance": "คงเหลือ", "credits": "เครดิต", "not_signed_in": "ยังไม่เข้าสู่ระบบ"}</script>
 </head>
 <body>
 <main class="page">
@@ -95,18 +98,11 @@
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">เครดิตที่ใช้แล้วไม่สามารถขอคืนได้ โปรดซื้อเท่าที่จำเป็น</p>
+      <button class="btn-continue" id="cont" type="button">ใช้งานต่อ</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
     </div>
 
-    <aside class="side">
-      <h2>เครดิตคิดอย่างไร</h2>
-      <ul>
-        <li>เพลง 30 วินาที = 45 เครดิต, 45 วินาที = 64, 60 วินาที = 85, 75 วินาที = 103, 90 วินาที = 120</li>
-        <li>การสร้างที่ล้มเหลวจะคืนเครดิตอัตโนมัติ</li>
-        <li>เครดิตไม่มีวันหมดอายุ</li>
-        <li>การชำระเงินดำเนินการโดย Creem ซึ่งเป็นผู้ค้าบนบันทึกของเรา</li>
-      </ul>
-    </aside>
+
   </div>
 </main>
 
@@ -180,7 +176,7 @@
     btn.type = "button";
     btn.className = "pack";
     btn.innerHTML = '<span><b>' + p.credits + '</b> <span class="est">' +
-      UI.per.replace("{n}", p.tracks) + '</span></span><span class="price">' + p.price + "</span>";
+      '</span><span class="price">' + p.price + "</span>";
     btn.addEventListener("click", function () { buy(p.credits, btn); });
     $("packs").appendChild(btn);
   });
@@ -195,6 +191,11 @@
       ? UI.balance + " <b>" + Math.round((d.data.balance || 0) / 100) + "</b> " + UI.credits
       : UI.not_signed_in;
   }).catch(function () {});
+
+  document.getElementById("cont").addEventListener("click", function () {
+    if (history.length > 1) history.back();
+    else location.href = "/" + LANG + "/";
+  });
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

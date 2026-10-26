@@ -658,6 +658,7 @@ def main() -> int:
                     out["kicker"] = "aiglossa"
                     out["lede_buy"] = esc(source[lang]["pricing"]["lede_buy"])
                     out["li3_generic"] = esc(source[lang]["pricing"]["li3_generic"])
+                    out["continue_use"] = esc(source[lang]["pricing"]["continue_use"])
                     out["lang_label"] = esc(marketing[lang]["langLabel"])
                     out["current_name"] = esc(languages[lang]["name"])
                     return out
@@ -709,6 +710,7 @@ def main() -> int:
                     out["kicker"] = "aiglossa"
                     out["lede_buy"] = esc(source[lang]["pricing"]["lede_buy"])
                     out["li3_generic"] = esc(source[lang]["pricing"]["li3_generic"])
+                    out["continue_use"] = esc(source[lang]["pricing"]["continue_use"])
                     out["refund_label"] = esc(source[lang]["pricing"]["refund_link"])
                     out["lang_label"] = esc(marketing[lang]["langLabel"])
                     out["current_name"] = esc(languages[lang]["name"])
