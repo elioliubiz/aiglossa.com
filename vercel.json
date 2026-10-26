@@ -278,6 +278,21 @@
       ],
       "destination": "/en/music/",
       "permanent": true
+    },
+    {
+      "source": "/music/",
+      "destination": "/en/music/",
+      "permanent": true
+    },
+    {
+      "source": "/music",
+      "destination": "/en/music/",
+      "permanent": true
+    },
+    {
+      "source": "/guides/",
+      "destination": "/en/guides/",
+      "permanent": true
     }
   ],
   "rewrites": [
