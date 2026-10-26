@@ -644,7 +644,7 @@ def main() -> int:
                 def webaccount_values(lang: str, base: str, source=source) -> dict[str, str]:
                     copy = source[lang]["account"]
                     out = {k: esc(v) for k, v in copy.items() if isinstance(v, str)}
-                    out["api_base"] = "https://api.aiglossa.com"
+                    out["api_base"] = ""  # 由页面脚本按 hostname 选择（见 login/account 模板）
                     out["login_href"] = f"/{lang}/login.html"
                     out["music_href"] = f"https://tools.aiglossa.com/{lang}/music/"
                     out["pricing_href"] = f"/{lang}/pricing.html"
@@ -655,7 +655,7 @@ def main() -> int:
                 def login_values(lang: str, base: str, source=source) -> dict[str, str]:
                     copy = source[lang]["account"]
                     out = {k: esc(v) for k, v in copy.items() if isinstance(v, str)}
-                    out["api_base"] = "https://api.aiglossa.com"
+                    out["api_base"] = ""  # 由页面脚本按 hostname 选择（见 login/account 模板）
                     out["lang_label"] = esc(marketing[lang]["langLabel"])
                     out["current_name"] = esc(languages[lang]["name"])
                     return out

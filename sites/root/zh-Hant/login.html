@@ -105,7 +105,8 @@
 </form>
 <script>
 (function () {
-  var API = "https://api.aiglossa.com";
+  var API = (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+    ? "https://dev.aiglossa.com" : "https://api.aiglossa.com";
   var LANG = document.documentElement.lang || "en";
   var $ = function (id) { return document.getElementById(id); };
   var sent = false, email = "", mode = "code";
