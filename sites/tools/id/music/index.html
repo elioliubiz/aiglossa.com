@@ -134,14 +134,20 @@
     cursor:pointer;padding:0 2px}
   .prechip .x:hover{color:#fff}
   .go.flash{box-shadow:0 0 0 3px rgba(255,122,26,.35)}
-  .rail-foot{flex:0 0 auto;margin:0;padding:14px 24px 16px;background:var(--panel);
+  .rail-foot{flex:0 0 auto;margin:0;padding:12px 24px 14px;background:var(--panel);
              border-top:1px solid var(--line)}
-  .acctbar{display:flex;align-items:center;gap:9px;margin-top:11px}
-  .av{width:24px;height:24px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;padding:0;
-      border:1px solid rgba(255,255,255,.14);background:rgba(255,122,26,.14);color:var(--acc);
-      font-size:10.5px;font-weight:700;cursor:pointer;overflow:hidden}
-  .av img{width:100%;height:100%;object-fit:cover;display:block}
-  .av svg{width:13px;height:13px;opacity:.8}
+  .rail-foot .msg{margin:0;min-height:0;font-size:11.5px;line-height:1.5}
+  .rail-foot .msg:not(:empty){margin:6px 0 0}
+  .acctbar{display:flex;align-items:center;gap:9px;margin-top:10px}
+  /* 对齐 scholan-ios UserAvatarView：外圈描边 + 内缩 2px，无头像时用首字母 */
+  .av{width:26px;height:26px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
+      padding:0;background:var(--panel);color:var(--acc);cursor:pointer;overflow:hidden;
+      box-shadow:0 0 0 1.5px rgba(255,255,255,.14)}
+  .av .inner{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;
+      overflow:hidden;background:rgba(255,122,26,.14);font-size:11px;font-weight:700;
+      font-family:-apple-system,"SF Pro Rounded",sans-serif}
+  .av img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+  .av .inner{padding:2px}
   .bal{flex:1 1 auto;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .alink{font-size:11.5px;color:var(--muted);text-decoration:none;flex:0 0 auto}
   .alink:hover{color:var(--ink)}
@@ -355,14 +361,20 @@
     cursor:pointer;padding:0 2px}
   .prechip .x:hover{color:#fff}
   .go.flash{box-shadow:0 0 0 3px rgba(255,122,26,.35)}
-  .rail-foot{flex:0 0 auto;margin:0;padding:14px 24px 16px;background:var(--panel);
+  .rail-foot{flex:0 0 auto;margin:0;padding:12px 24px 14px;background:var(--panel);
              border-top:1px solid var(--line)}
-  .acctbar{display:flex;align-items:center;gap:9px;margin-top:11px}
-  .av{width:24px;height:24px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;padding:0;
-      border:1px solid rgba(255,255,255,.14);background:rgba(255,122,26,.14);color:var(--acc);
-      font-size:10.5px;font-weight:700;cursor:pointer;overflow:hidden}
-  .av img{width:100%;height:100%;object-fit:cover;display:block}
-  .av svg{width:13px;height:13px;opacity:.8}
+  .rail-foot .msg{margin:0;min-height:0;font-size:11.5px;line-height:1.5}
+  .rail-foot .msg:not(:empty){margin:6px 0 0}
+  .acctbar{display:flex;align-items:center;gap:9px;margin-top:10px}
+  /* 对齐 scholan-ios UserAvatarView：外圈描边 + 内缩 2px，无头像时用首字母 */
+  .av{width:26px;height:26px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
+      padding:0;background:var(--panel);color:var(--acc);cursor:pointer;overflow:hidden;
+      box-shadow:0 0 0 1.5px rgba(255,255,255,.14)}
+  .av .inner{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;
+      overflow:hidden;background:rgba(255,122,26,.14);font-size:11px;font-weight:700;
+      font-family:-apple-system,"SF Pro Rounded",sans-serif}
+  .av img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+  .av .inner{padding:2px}
   .bal{flex:1 1 auto;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .alink{font-size:11.5px;color:var(--muted);text-decoration:none;flex:0 0 auto}
   .alink:hover{color:var(--ink)}
@@ -727,7 +739,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi", "description": "Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus.", "h1": "Buat lagu", "sub": "Dari foto atau deskripsi. Durasi presisi, loop mulus.", "drop": "Seret atau pilih foto<br>lirik akan menyebut isinya", "generate": "Buat lagu", "how_credits": "Cara kerja kredit →", "grp_photo": "Dengarkan", "grp_recipe": "Mulai dari kebutuhan", "download": "Unduh", "save_recipe": "Simpan sebagai resep", "remove_photo": "Hapus foto", "photo_here": "Fotomu di sini", "note": "Semua di sebelah kanan dibuat di sini", "legal_aup": "Penggunaan wajar", "legal_refund": "Pengembalian dana", "sign_in_first": "Masuk untuk membuat", "generating": "Membuat… sekitar 20 detik.", "just_generated": "Baru dibuat", "your_track": "Lagu kamu", "from_recipe": "Dari resep", "from_photo": "Dibuat dari foto", "err_load": "Gagal memuat opsi", "done_in": "Selesai dalam {n} dtk", "gen_cost": "Buat · {n}", "err_gen": "Pembuatan gagal", "my_track": "Trek saya", "err_net": "Kesalahan jaringan", "recipe_name": "Nama resep", "err_save": "Gagal menyimpan", "saved": "Tersimpan: {name}", "up_to": "Maksimal {n}", "credits": "kredit", "guides_link": "Panduan →", "guides_title": "Panduan", "close": "Tutup", "loading": "Memuat…", "off": "Mati", "loop_on": "Loop mulus", "buy_credits": "Beli kredit →", "desc_label": "Deskripsi (opsional)", "desc_ph": "Deskripsikan trek: kafe saat hujan, piano lembut", "mode_photo": "Foto", "mode_text": "Teks", "field_density": "Kepadatan aransemen", "opt_sparse": "Renggang", "opt_medium": "Sedang", "opt_full": "Padat", "pro_title": "Opsi lanjutan", "grp_photo_sub": "Foto → lirik → trek", "grp_recipe_sub": "Pilih kebutuhan, pengaturannya sudah siap", "recipe_names": {"short-form-cut": "Cắt ngắn", "hook-sting": "Mở đầu gây chú ý", "product-loop": "Vòng lặp sản phẩm", "podcast-bed": "Nền podcast", "documentary-underscore": "Nền phim tài liệu", "game-menu-loop": "Vòng lặp menu", "calm-focus": "Tập trung", "kids-learning": "Thiếu nhi"}, "applied": "Memakai", "current_recipe": "Preset aktif", "mine_title": "Trek saya", "share_link": "Bagikan tautan", "dl_audio": "Unduh audio", "copied": "Disalin", "shared_note": "Anda mendengar trek yang dibagikan — buat milik Anda di bawah", "my_account": "Akun", "balance": "Saldo", "pricing_label": "Harga", "confirm_gen": "Buat trek {sec} detik? Ini memakai {n}.", "err_insufficient": "Kredit tidak cukup", "topup_hint": "Isi ulang untuk terus membuat.", "topup_cta": "Beli kredit", "cancel": "Batal", "confirm": "Konfirmasi", "not_signed_in": "Belum masuk", "li1": "Trek 30 dtk = 45 kredit, 45 dtk = 64, 60 dtk = 85, 75 dtk = 103, 90 dtk = 120.", "li2": "Pembuatan yang gagal dikembalikan otomatis.", "li3": "Kredit tidak kedaluwarsa dan berlaku di semua alat.", "li4": "Pembayaran diproses oleh Creem, merchant of record kami.", "li5": "Kredit yang belum terpakai bisa dikembalikan dalam 14 hari.", "refund_link": "Kebijakan pengembalian"}</script>
+<script type="application/json" id="ui">{"title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi", "description": "Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus.", "h1": "Buat lagu", "sub": "Dari foto atau deskripsi. Durasi presisi, loop mulus.", "drop": "Seret atau pilih foto<br>lirik akan menyebut isinya", "generate": "Buat lagu", "how_credits": "Cara kerja kredit →", "grp_photo": "Dengarkan", "grp_recipe": "Mulai dari kebutuhan", "download": "Unduh", "save_recipe": "Simpan sebagai resep", "remove_photo": "Hapus foto", "photo_here": "Fotomu di sini", "note": "Semua di sebelah kanan dibuat di sini", "legal_aup": "Penggunaan wajar", "legal_refund": "Pengembalian dana", "sign_in_first": "Masuk untuk membuat", "generating": "Membuat… sekitar 20 detik.", "just_generated": "Baru dibuat", "your_track": "Lagu kamu", "from_recipe": "Dari resep", "from_photo": "Dibuat dari foto", "err_load": "Gagal memuat opsi", "done_in": "Selesai dalam {n} dtk", "gen_cost": "Buat · {n}", "err_gen": "Pembuatan gagal", "my_track": "Trek saya", "err_net": "Kesalahan jaringan", "recipe_name": "Nama resep", "err_save": "Gagal menyimpan", "saved": "Tersimpan: {name}", "up_to": "Maksimal {n}", "credits": "kredit", "guides_link": "Panduan →", "guides_title": "Panduan", "close": "Tutup", "loading": "Memuat…", "off": "Mati", "loop_on": "Loop mulus", "buy_credits": "Beli kredit →", "desc_label": "Deskripsi (opsional)", "desc_ph": "Deskripsikan trek: kafe saat hujan, piano lembut", "mode_photo": "Foto", "mode_text": "Teks", "field_density": "Kepadatan aransemen", "opt_sparse": "Renggang", "opt_medium": "Sedang", "opt_full": "Padat", "pro_title": "Opsi lanjutan", "grp_photo_sub": "Foto → lirik → trek", "grp_recipe_sub": "Pilih kebutuhan, pengaturannya sudah siap", "recipe_names": {"short-form-cut": "Cắt ngắn", "hook-sting": "Mở đầu gây chú ý", "product-loop": "Vòng lặp sản phẩm", "podcast-bed": "Nền podcast", "documentary-underscore": "Nền phim tài liệu", "game-menu-loop": "Vòng lặp menu", "calm-focus": "Tập trung", "kids-learning": "Thiếu nhi"}, "applied": "Memakai", "current_recipe": "Preset aktif", "mine_title": "Trek saya", "share_link": "Bagikan tautan", "dl_audio": "Unduh audio", "copied": "Disalin", "shared_note": "Anda mendengar trek yang dibagikan — buat milik Anda di bawah", "my_account": "Akun", "balance": "Saldo", "pricing_label": "Harga", "confirm_gen": "Buat trek {sec} detik? Ini memakai {n}.", "err_insufficient": "Kredit tidak cukup", "topup_hint": "Isi ulang untuk terus membuat.", "topup_cta": "Beli kredit", "cancel": "Batal", "confirm": "Konfirmasi", "not_signed_in": "Belum masuk", "traveler": "Pelancong", "li1": "Trek 30 dtk = 45 kredit, 45 dtk = 64, 60 dtk = 85, 75 dtk = 103, 90 dtk = 120.", "li2": "Pembuatan yang gagal dikembalikan otomatis.", "li3": "Kredit tidak kedaluwarsa dan berlaku di semua alat.", "li4": "Pembayaran diproses oleh Creem, merchant of record kami.", "li5": "Kredit yang belum terpakai bisa dikembalikan dalam 14 hari.", "refund_link": "Kebijakan pengembalian"}</script>
 <script>
 (function () {
   "use strict";
@@ -965,14 +977,13 @@
   // 头像：有图用图，无图用首字母，未登录用通用人形图标
   function renderAvatar(user) {
     var el = $("avBtn"); if (!el) return;
-    if (!sessionOk) {
-      el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
-        '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>';
+    // 与 iOS 一致：有头像显示图片，否则昵称首字母；昵称为空用本地化的"旅行者"
+    if (user.avatar) {
+      el.innerHTML = '<span class="inner"><img src="' + user.avatar + '" alt=""></span>';
       return;
     }
-    var name = (user.nickname || user.email || "A").trim();
-    if (user.avatar) el.innerHTML = '<img src="' + user.avatar + '" alt="">';
-    else el.textContent = name.charAt(0).toUpperCase();
+    var name = (user.nickname || "").trim() || UI.traveler;
+    el.innerHTML = '<span class="inner">' + name.slice(0, 1).toUpperCase() + '</span>';
   }
 
   function needLogin() {
@@ -1398,7 +1409,7 @@
   // ---- 我的作品（登录后显示） ----
   function loadMine() {
     if (!sessionOk) return;
-    call("/ai/music/tracks?limit=8", {}, true).then(function (d) {
+    call("/ai/music/tracks?limit=6", {}, true).then(function (d) {
       if (d.code !== 200) return;
       var items = (d.data && d.data.items) || [];
       if (!items.length) return;

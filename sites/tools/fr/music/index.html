@@ -134,14 +134,20 @@
     cursor:pointer;padding:0 2px}
   .prechip .x:hover{color:#fff}
   .go.flash{box-shadow:0 0 0 3px rgba(255,122,26,.35)}
-  .rail-foot{flex:0 0 auto;margin:0;padding:14px 24px 16px;background:var(--panel);
+  .rail-foot{flex:0 0 auto;margin:0;padding:12px 24px 14px;background:var(--panel);
              border-top:1px solid var(--line)}
-  .acctbar{display:flex;align-items:center;gap:9px;margin-top:11px}
-  .av{width:24px;height:24px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;padding:0;
-      border:1px solid rgba(255,255,255,.14);background:rgba(255,122,26,.14);color:var(--acc);
-      font-size:10.5px;font-weight:700;cursor:pointer;overflow:hidden}
-  .av img{width:100%;height:100%;object-fit:cover;display:block}
-  .av svg{width:13px;height:13px;opacity:.8}
+  .rail-foot .msg{margin:0;min-height:0;font-size:11.5px;line-height:1.5}
+  .rail-foot .msg:not(:empty){margin:6px 0 0}
+  .acctbar{display:flex;align-items:center;gap:9px;margin-top:10px}
+  /* 对齐 scholan-ios UserAvatarView：外圈描边 + 内缩 2px，无头像时用首字母 */
+  .av{width:26px;height:26px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
+      padding:0;background:var(--panel);color:var(--acc);cursor:pointer;overflow:hidden;
+      box-shadow:0 0 0 1.5px rgba(255,255,255,.14)}
+  .av .inner{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;
+      overflow:hidden;background:rgba(255,122,26,.14);font-size:11px;font-weight:700;
+      font-family:-apple-system,"SF Pro Rounded",sans-serif}
+  .av img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+  .av .inner{padding:2px}
   .bal{flex:1 1 auto;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .alink{font-size:11.5px;color:var(--muted);text-decoration:none;flex:0 0 auto}
   .alink:hover{color:var(--ink)}
@@ -355,14 +361,20 @@
     cursor:pointer;padding:0 2px}
   .prechip .x:hover{color:#fff}
   .go.flash{box-shadow:0 0 0 3px rgba(255,122,26,.35)}
-  .rail-foot{flex:0 0 auto;margin:0;padding:14px 24px 16px;background:var(--panel);
+  .rail-foot{flex:0 0 auto;margin:0;padding:12px 24px 14px;background:var(--panel);
              border-top:1px solid var(--line)}
-  .acctbar{display:flex;align-items:center;gap:9px;margin-top:11px}
-  .av{width:24px;height:24px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;padding:0;
-      border:1px solid rgba(255,255,255,.14);background:rgba(255,122,26,.14);color:var(--acc);
-      font-size:10.5px;font-weight:700;cursor:pointer;overflow:hidden}
-  .av img{width:100%;height:100%;object-fit:cover;display:block}
-  .av svg{width:13px;height:13px;opacity:.8}
+  .rail-foot .msg{margin:0;min-height:0;font-size:11.5px;line-height:1.5}
+  .rail-foot .msg:not(:empty){margin:6px 0 0}
+  .acctbar{display:flex;align-items:center;gap:9px;margin-top:10px}
+  /* 对齐 scholan-ios UserAvatarView：外圈描边 + 内缩 2px，无头像时用首字母 */
+  .av{width:26px;height:26px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
+      padding:0;background:var(--panel);color:var(--acc);cursor:pointer;overflow:hidden;
+      box-shadow:0 0 0 1.5px rgba(255,255,255,.14)}
+  .av .inner{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;
+      overflow:hidden;background:rgba(255,122,26,.14);font-size:11px;font-weight:700;
+      font-family:-apple-system,"SF Pro Rounded",sans-serif}
+  .av img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+  .av .inner{padding:2px}
   .bal{flex:1 1 auto;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .alink{font-size:11.5px;color:var(--muted);text-decoration:none;flex:0 0 auto}
   .alink:hover{color:var(--ink)}
@@ -727,7 +739,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Générateur de musique IA — de la photo au morceau, durée exacte", "description": "Transformez une photo ou une description en musique de fond de 30 à 90 secondes exactes. Les paroles nomment ce que contient votre image, avec voix en 10 langues et boucles sans coupure.", "h1": "Créer un morceau", "sub": "À partir d'une photo ou d'une description. Durée exacte, boucles sans coupure.", "drop": "Déposez ou choisissez une photo<br>les paroles nommeront ce qu'elle contient", "generate": "Générer un morceau", "how_credits": "Comment marchent les crédits →", "grp_photo": "Écoutez", "grp_recipe": "Depuis un usage", "download": "Télécharger", "save_recipe": "Enregistrer comme recette", "remove_photo": "Retirer la photo", "photo_here": "Votre photo ici", "note": "Tout ce qui est à droite a été créé ici", "legal_aup": "Usage acceptable", "legal_refund": "Remboursements", "sign_in_first": "Connectez-vous pour générer", "generating": "Génération… environ 20 secondes.", "just_generated": "Vient d'être créé", "your_track": "Votre morceau", "from_recipe": "Depuis une recette", "from_photo": "Depuis une photo", "err_load": "Impossible de charger les options", "done_in": "Prêt en {n} s", "gen_cost": "Générer · {n}", "err_gen": "La génération a échoué", "my_track": "Mon morceau", "err_net": "Erreur réseau", "recipe_name": "Nom de la recette", "err_save": "Échec de l'enregistrement", "saved": "Enregistré : {name}", "up_to": "Jusqu'à {n}", "credits": "crédits", "guides_link": "Guides →", "guides_title": "Guides", "close": "Fermer", "loading": "Chargement…", "off": "Non", "loop_on": "Boucle sans coupure", "buy_credits": "Acheter des crédits →", "desc_label": "Description (facultatif)", "desc_ph": "Décrivez le morceau : café pluvieux, piano doux", "mode_photo": "Photo", "mode_text": "Texte", "field_density": "Densité de l'arrangement", "opt_sparse": "Clairsemé", "opt_medium": "Moyen", "opt_full": "Dense", "pro_title": "Options avancées", "grp_photo_sub": "Photo → paroles → morceau", "grp_recipe_sub": "Choisissez un usage, les réglages suivent", "recipe_names": {"short-form-cut": "Corte para redes", "hook-sting": "Gancho de apertura", "product-loop": "Bucle de producto", "podcast-bed": "Base para pódcast", "documentary-underscore": "Base documental", "game-menu-loop": "Bucle de menú", "calm-focus": "Concentración", "kids-learning": "Infantil y aprendizaje"}, "applied": "Utilise", "current_recipe": "Préréglage actuel", "mine_title": "Mes pistes", "share_link": "Partager le lien", "dl_audio": "Télécharger l'audio", "copied": "Copié", "shared_note": "Vous écoutez un morceau partagé — créez le vôtre ci-dessous", "my_account": "Compte", "balance": "Solde", "pricing_label": "Tarifs", "confirm_gen": "Générer un morceau de {sec} s ? Cela coûte {n}.", "err_insufficient": "Crédits insuffisants", "topup_hint": "Rechargez pour continuer à générer.", "topup_cta": "Acheter des crédits", "cancel": "Annuler", "confirm": "Confirmer", "not_signed_in": "Non connecté", "li1": "Morceau de 30 s = 45 crédits, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Les générations échouées sont remboursées automatiquement.", "li3": "Les crédits n'expirent pas et servent pour tous les outils.", "li4": "Les paiements sont traités par Creem, notre merchant of record.", "li5": "Les crédits non utilisés peuvent être remboursés sous 14 jours.", "refund_link": "Politique de remboursement"}</script>
+<script type="application/json" id="ui">{"title": "Générateur de musique IA — de la photo au morceau, durée exacte", "description": "Transformez une photo ou une description en musique de fond de 30 à 90 secondes exactes. Les paroles nomment ce que contient votre image, avec voix en 10 langues et boucles sans coupure.", "h1": "Créer un morceau", "sub": "À partir d'une photo ou d'une description. Durée exacte, boucles sans coupure.", "drop": "Déposez ou choisissez une photo<br>les paroles nommeront ce qu'elle contient", "generate": "Générer un morceau", "how_credits": "Comment marchent les crédits →", "grp_photo": "Écoutez", "grp_recipe": "Depuis un usage", "download": "Télécharger", "save_recipe": "Enregistrer comme recette", "remove_photo": "Retirer la photo", "photo_here": "Votre photo ici", "note": "Tout ce qui est à droite a été créé ici", "legal_aup": "Usage acceptable", "legal_refund": "Remboursements", "sign_in_first": "Connectez-vous pour générer", "generating": "Génération… environ 20 secondes.", "just_generated": "Vient d'être créé", "your_track": "Votre morceau", "from_recipe": "Depuis une recette", "from_photo": "Depuis une photo", "err_load": "Impossible de charger les options", "done_in": "Prêt en {n} s", "gen_cost": "Générer · {n}", "err_gen": "La génération a échoué", "my_track": "Mon morceau", "err_net": "Erreur réseau", "recipe_name": "Nom de la recette", "err_save": "Échec de l'enregistrement", "saved": "Enregistré : {name}", "up_to": "Jusqu'à {n}", "credits": "crédits", "guides_link": "Guides →", "guides_title": "Guides", "close": "Fermer", "loading": "Chargement…", "off": "Non", "loop_on": "Boucle sans coupure", "buy_credits": "Acheter des crédits →", "desc_label": "Description (facultatif)", "desc_ph": "Décrivez le morceau : café pluvieux, piano doux", "mode_photo": "Photo", "mode_text": "Texte", "field_density": "Densité de l'arrangement", "opt_sparse": "Clairsemé", "opt_medium": "Moyen", "opt_full": "Dense", "pro_title": "Options avancées", "grp_photo_sub": "Photo → paroles → morceau", "grp_recipe_sub": "Choisissez un usage, les réglages suivent", "recipe_names": {"short-form-cut": "Corte para redes", "hook-sting": "Gancho de apertura", "product-loop": "Bucle de producto", "podcast-bed": "Base para pódcast", "documentary-underscore": "Base documental", "game-menu-loop": "Bucle de menú", "calm-focus": "Concentración", "kids-learning": "Infantil y aprendizaje"}, "applied": "Utilise", "current_recipe": "Préréglage actuel", "mine_title": "Mes pistes", "share_link": "Partager le lien", "dl_audio": "Télécharger l'audio", "copied": "Copié", "shared_note": "Vous écoutez un morceau partagé — créez le vôtre ci-dessous", "my_account": "Compte", "balance": "Solde", "pricing_label": "Tarifs", "confirm_gen": "Générer un morceau de {sec} s ? Cela coûte {n}.", "err_insufficient": "Crédits insuffisants", "topup_hint": "Rechargez pour continuer à générer.", "topup_cta": "Acheter des crédits", "cancel": "Annuler", "confirm": "Confirmer", "not_signed_in": "Non connecté", "traveler": "Voyageur", "li1": "Morceau de 30 s = 45 crédits, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Les générations échouées sont remboursées automatiquement.", "li3": "Les crédits n'expirent pas et servent pour tous les outils.", "li4": "Les paiements sont traités par Creem, notre merchant of record.", "li5": "Les crédits non utilisés peuvent être remboursés sous 14 jours.", "refund_link": "Politique de remboursement"}</script>
 <script>
 (function () {
   "use strict";
@@ -965,14 +977,13 @@
   // 头像：有图用图，无图用首字母，未登录用通用人形图标
   function renderAvatar(user) {
     var el = $("avBtn"); if (!el) return;
-    if (!sessionOk) {
-      el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
-        '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>';
+    // 与 iOS 一致：有头像显示图片，否则昵称首字母；昵称为空用本地化的"旅行者"
+    if (user.avatar) {
+      el.innerHTML = '<span class="inner"><img src="' + user.avatar + '" alt=""></span>';
       return;
     }
-    var name = (user.nickname || user.email || "A").trim();
-    if (user.avatar) el.innerHTML = '<img src="' + user.avatar + '" alt="">';
-    else el.textContent = name.charAt(0).toUpperCase();
+    var name = (user.nickname || "").trim() || UI.traveler;
+    el.innerHTML = '<span class="inner">' + name.slice(0, 1).toUpperCase() + '</span>';
   }
 
   function needLogin() {
@@ -1398,7 +1409,7 @@
   // ---- 我的作品（登录后显示） ----
   function loadMine() {
     if (!sessionOk) return;
-    call("/ai/music/tracks?limit=8", {}, true).then(function (d) {
+    call("/ai/music/tracks?limit=6", {}, true).then(function (d) {
       if (d.code !== 200) return;
       var items = (d.data && d.data.items) || [];
       if (!items.length) return;

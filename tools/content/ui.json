@@ -160,7 +160,8 @@
       "topup_cta": "Buy credits",
       "cancel": "Cancel",
       "confirm": "Confirm",
-      "not_signed_in": "Not signed in"
+      "not_signed_in": "Not signed in",
+      "traveler": "Traveler"
     }
   },
   "ja": {
@@ -312,7 +313,8 @@
       "topup_cta": "チャージする",
       "cancel": "キャンセル",
       "confirm": "確定",
-      "not_signed_in": "未ログイン"
+      "not_signed_in": "未ログイン",
+      "traveler": "旅人"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -476,7 +478,8 @@
       "topup_cta": "충전하기",
       "cancel": "취소",
       "confirm": "확인",
-      "not_signed_in": "로그인 안 됨"
+      "not_signed_in": "로그인 안 됨",
+      "traveler": "여행자"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -640,7 +643,8 @@
       "topup_cta": "去充值",
       "cancel": "取消",
       "confirm": "确定",
-      "not_signed_in": "未登录"
+      "not_signed_in": "未登录",
+      "traveler": "旅行者"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -804,7 +808,8 @@
       "topup_cta": "去儲值",
       "cancel": "取消",
       "confirm": "確定",
-      "not_signed_in": "未登入"
+      "not_signed_in": "未登入",
+      "traveler": "旅行者"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -968,7 +973,8 @@
       "topup_cta": "Comprar créditos",
       "cancel": "Cancelar",
       "confirm": "Confirmar",
-      "not_signed_in": "Sin sesión"
+      "not_signed_in": "Sin sesión",
+      "traveler": "Viajero"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1132,7 +1138,8 @@
       "topup_cta": "Acheter des crédits",
       "cancel": "Annuler",
       "confirm": "Confirmer",
-      "not_signed_in": "Non connecté"
+      "not_signed_in": "Non connecté",
+      "traveler": "Voyageur"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1296,7 +1303,8 @@
       "topup_cta": "Credits kaufen",
       "cancel": "Abbrechen",
       "confirm": "Bestätigen",
-      "not_signed_in": "Nicht angemeldet"
+      "not_signed_in": "Nicht angemeldet",
+      "traveler": "Reisender"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1460,7 +1468,8 @@
       "topup_cta": "Comprar créditos",
       "cancel": "Cancelar",
       "confirm": "Confirmar",
-      "not_signed_in": "Não conectado"
+      "not_signed_in": "Não conectado",
+      "traveler": "Viajante"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1624,7 +1633,8 @@
       "topup_cta": "Acquista crediti",
       "cancel": "Annulla",
       "confirm": "Conferma",
-      "not_signed_in": "Non connesso"
+      "not_signed_in": "Non connesso",
+      "traveler": "Viaggiatore"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1788,7 +1798,8 @@
       "topup_cta": "Купить кредиты",
       "cancel": "Отмена",
       "confirm": "Подтвердить",
-      "not_signed_in": "Не выполнен вход"
+      "not_signed_in": "Не выполнен вход",
+      "traveler": "Путешественник"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1952,7 +1963,8 @@
       "topup_cta": "شراء رصيد",
       "cancel": "إلغاء",
       "confirm": "تأكيد",
-      "not_signed_in": "لم تسجّل الدخول"
+      "not_signed_in": "لم تسجّل الدخول",
+      "traveler": "مسافر"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2116,7 +2128,8 @@
       "topup_cta": "ซื้อเครดิต",
       "cancel": "ยกเลิก",
       "confirm": "ยืนยัน",
-      "not_signed_in": "ยังไม่เข้าสู่ระบบ"
+      "not_signed_in": "ยังไม่เข้าสู่ระบบ",
+      "traveler": "นักเดินทาง"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2280,7 +2293,8 @@
       "topup_cta": "Mua tín dụng",
       "cancel": "Hủy",
       "confirm": "Xác nhận",
-      "not_signed_in": "Chưa đăng nhập"
+      "not_signed_in": "Chưa đăng nhập",
+      "traveler": "Người lữ hành"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2444,7 +2458,8 @@
       "topup_cta": "Beli kredit",
       "cancel": "Batal",
       "confirm": "Konfirmasi",
-      "not_signed_in": "Belum masuk"
+      "not_signed_in": "Belum masuk",
+      "traveler": "Pelancong"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2608,7 +2623,8 @@
       "topup_cta": "Kredi satın al",
       "cancel": "Vazgeç",
       "confirm": "Onayla",
-      "not_signed_in": "Giriş yapılmadı"
+      "not_signed_in": "Giriş yapılmadı",
+      "traveler": "Gezgin"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",

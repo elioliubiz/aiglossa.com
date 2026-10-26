@@ -134,14 +134,20 @@
     cursor:pointer;padding:0 2px}
   .prechip .x:hover{color:#fff}
   .go.flash{box-shadow:0 0 0 3px rgba(255,122,26,.35)}
-  .rail-foot{flex:0 0 auto;margin:0;padding:14px 24px 16px;background:var(--panel);
+  .rail-foot{flex:0 0 auto;margin:0;padding:12px 24px 14px;background:var(--panel);
              border-top:1px solid var(--line)}
-  .acctbar{display:flex;align-items:center;gap:9px;margin-top:11px}
-  .av{width:24px;height:24px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;padding:0;
-      border:1px solid rgba(255,255,255,.14);background:rgba(255,122,26,.14);color:var(--acc);
-      font-size:10.5px;font-weight:700;cursor:pointer;overflow:hidden}
-  .av img{width:100%;height:100%;object-fit:cover;display:block}
-  .av svg{width:13px;height:13px;opacity:.8}
+  .rail-foot .msg{margin:0;min-height:0;font-size:11.5px;line-height:1.5}
+  .rail-foot .msg:not(:empty){margin:6px 0 0}
+  .acctbar{display:flex;align-items:center;gap:9px;margin-top:10px}
+  /* 对齐 scholan-ios UserAvatarView：外圈描边 + 内缩 2px，无头像时用首字母 */
+  .av{width:26px;height:26px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
+      padding:0;background:var(--panel);color:var(--acc);cursor:pointer;overflow:hidden;
+      box-shadow:0 0 0 1.5px rgba(255,255,255,.14)}
+  .av .inner{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;
+      overflow:hidden;background:rgba(255,122,26,.14);font-size:11px;font-weight:700;
+      font-family:-apple-system,"SF Pro Rounded",sans-serif}
+  .av img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+  .av .inner{padding:2px}
   .bal{flex:1 1 auto;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .alink{font-size:11.5px;color:var(--muted);text-decoration:none;flex:0 0 auto}
   .alink:hover{color:var(--ink)}
@@ -355,14 +361,20 @@
     cursor:pointer;padding:0 2px}
   .prechip .x:hover{color:#fff}
   .go.flash{box-shadow:0 0 0 3px rgba(255,122,26,.35)}
-  .rail-foot{flex:0 0 auto;margin:0;padding:14px 24px 16px;background:var(--panel);
+  .rail-foot{flex:0 0 auto;margin:0;padding:12px 24px 14px;background:var(--panel);
              border-top:1px solid var(--line)}
-  .acctbar{display:flex;align-items:center;gap:9px;margin-top:11px}
-  .av{width:24px;height:24px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;padding:0;
-      border:1px solid rgba(255,255,255,.14);background:rgba(255,122,26,.14);color:var(--acc);
-      font-size:10.5px;font-weight:700;cursor:pointer;overflow:hidden}
-  .av img{width:100%;height:100%;object-fit:cover;display:block}
-  .av svg{width:13px;height:13px;opacity:.8}
+  .rail-foot .msg{margin:0;min-height:0;font-size:11.5px;line-height:1.5}
+  .rail-foot .msg:not(:empty){margin:6px 0 0}
+  .acctbar{display:flex;align-items:center;gap:9px;margin-top:10px}
+  /* 对齐 scholan-ios UserAvatarView：外圈描边 + 内缩 2px，无头像时用首字母 */
+  .av{width:26px;height:26px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
+      padding:0;background:var(--panel);color:var(--acc);cursor:pointer;overflow:hidden;
+      box-shadow:0 0 0 1.5px rgba(255,255,255,.14)}
+  .av .inner{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;
+      overflow:hidden;background:rgba(255,122,26,.14);font-size:11px;font-weight:700;
+      font-family:-apple-system,"SF Pro Rounded",sans-serif}
+  .av img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+  .av .inner{padding:2px}
   .bal{flex:1 1 auto;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .alink{font-size:11.5px;color:var(--muted);text-decoration:none;flex:0 0 auto}
   .alink:hover{color:var(--ink)}
@@ -727,7 +739,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "AI 音樂生成 — 照片變歌曲，長度精確", "description": "用照片或描述生成 30–90 秒精確長度的背景音樂。歌詞唱出照片裡的內容，支援 10 種語言人聲與無縫循環。", "h1": "做一首曲子", "sub": "從照片或描述開始。長度精確、循環無縫。", "drop": "拖入或選擇照片<br>歌詞會唱出照片裡的內容", "generate": "生成曲子", "how_credits": "額度怎麼算 →", "grp_photo": "聽聽效果", "grp_recipe": "從場景開始", "download": "下載", "save_recipe": "存為配方", "remove_photo": "移除照片", "photo_here": "你的照片放這裡", "note": "右邊的東西都是在這裡做的", "legal_aup": "可接受使用", "legal_refund": "退款政策", "sign_in_first": "登入後即可生成", "generating": "生成中……約 20 秒。", "just_generated": "剛生成", "your_track": "你的曲子", "from_recipe": "來自配方", "from_photo": "由照片生成", "err_load": "無法載入選項", "done_in": "{n} 秒完成", "gen_cost": "生成 · {n}", "err_gen": "生成失敗", "my_track": "我的曲子", "err_net": "網路錯誤", "recipe_name": "配方名稱", "err_save": "儲存失敗", "saved": "已儲存：{name}", "up_to": "最多 {n}", "credits": "額度", "guides_link": "指南 →", "guides_title": "指南", "close": "關閉", "loading": "載入中…", "off": "關閉", "loop_on": "無縫循環", "buy_credits": "購買額度 →", "desc_label": "補充描述（可選）", "desc_ph": "描述你想要的曲子，例如：雨天的咖啡館，鋼琴為主", "mode_photo": "用照片", "mode_text": "用文字", "field_density": "編曲密度", "opt_sparse": "稀疏", "opt_medium": "適中", "opt_full": "密集", "pro_title": "專業選項", "grp_photo_sub": "照片 → 歌詞 → 曲子", "grp_recipe_sub": "選一個用途，參數已經配好", "recipe_names": {"short-form-cut": "快剪短视频", "hook-sting": "Gancho de apertura", "product-loop": "Bucle de producto", "podcast-bed": "Base para pódcast", "documentary-underscore": "Base documental", "game-menu-loop": "Bucle de menú", "calm-focus": "Concentración", "kids-learning": "Infantil y aprendizaje"}, "applied": "將使用", "current_recipe": "目前配方", "mine_title": "我的作品", "share_link": "分享連結", "dl_audio": "下載音訊", "copied": "已複製", "shared_note": "你正在聽一首分享的曲子，下面可以做你自己的", "my_account": "帳戶", "balance": "餘額", "pricing_label": "價格", "confirm_gen": "生成一首 {sec} 秒的曲子？將消耗 {n}。", "err_insufficient": "額度不足", "topup_hint": "儲值後即可繼續生成。", "topup_cta": "去儲值", "cancel": "取消", "confirm": "確定", "not_signed_in": "未登入", "li1": "30 秒 = 45 額度，45 秒 = 64，60 秒 = 85，75 秒 = 103，90 秒 = 120。", "li2": "生成失敗會自動退回額度。", "li3": "額度永不過期，所有工具通用。", "li4": "付款由 merchant of record（記錄商戶）Creem 處理。", "li5": "未使用的額度可在 14 天內申請退款。", "refund_link": "退款政策"}</script>
+<script type="application/json" id="ui">{"title": "AI 音樂生成 — 照片變歌曲，長度精確", "description": "用照片或描述生成 30–90 秒精確長度的背景音樂。歌詞唱出照片裡的內容，支援 10 種語言人聲與無縫循環。", "h1": "做一首曲子", "sub": "從照片或描述開始。長度精確、循環無縫。", "drop": "拖入或選擇照片<br>歌詞會唱出照片裡的內容", "generate": "生成曲子", "how_credits": "額度怎麼算 →", "grp_photo": "聽聽效果", "grp_recipe": "從場景開始", "download": "下載", "save_recipe": "存為配方", "remove_photo": "移除照片", "photo_here": "你的照片放這裡", "note": "右邊的東西都是在這裡做的", "legal_aup": "可接受使用", "legal_refund": "退款政策", "sign_in_first": "登入後即可生成", "generating": "生成中……約 20 秒。", "just_generated": "剛生成", "your_track": "你的曲子", "from_recipe": "來自配方", "from_photo": "由照片生成", "err_load": "無法載入選項", "done_in": "{n} 秒完成", "gen_cost": "生成 · {n}", "err_gen": "生成失敗", "my_track": "我的曲子", "err_net": "網路錯誤", "recipe_name": "配方名稱", "err_save": "儲存失敗", "saved": "已儲存：{name}", "up_to": "最多 {n}", "credits": "額度", "guides_link": "指南 →", "guides_title": "指南", "close": "關閉", "loading": "載入中…", "off": "關閉", "loop_on": "無縫循環", "buy_credits": "購買額度 →", "desc_label": "補充描述（可選）", "desc_ph": "描述你想要的曲子，例如：雨天的咖啡館，鋼琴為主", "mode_photo": "用照片", "mode_text": "用文字", "field_density": "編曲密度", "opt_sparse": "稀疏", "opt_medium": "適中", "opt_full": "密集", "pro_title": "專業選項", "grp_photo_sub": "照片 → 歌詞 → 曲子", "grp_recipe_sub": "選一個用途，參數已經配好", "recipe_names": {"short-form-cut": "快剪短视频", "hook-sting": "Gancho de apertura", "product-loop": "Bucle de producto", "podcast-bed": "Base para pódcast", "documentary-underscore": "Base documental", "game-menu-loop": "Bucle de menú", "calm-focus": "Concentración", "kids-learning": "Infantil y aprendizaje"}, "applied": "將使用", "current_recipe": "目前配方", "mine_title": "我的作品", "share_link": "分享連結", "dl_audio": "下載音訊", "copied": "已複製", "shared_note": "你正在聽一首分享的曲子，下面可以做你自己的", "my_account": "帳戶", "balance": "餘額", "pricing_label": "價格", "confirm_gen": "生成一首 {sec} 秒的曲子？將消耗 {n}。", "err_insufficient": "額度不足", "topup_hint": "儲值後即可繼續生成。", "topup_cta": "去儲值", "cancel": "取消", "confirm": "確定", "not_signed_in": "未登入", "traveler": "旅行者", "li1": "30 秒 = 45 額度，45 秒 = 64，60 秒 = 85，75 秒 = 103，90 秒 = 120。", "li2": "生成失敗會自動退回額度。", "li3": "額度永不過期，所有工具通用。", "li4": "付款由 merchant of record（記錄商戶）Creem 處理。", "li5": "未使用的額度可在 14 天內申請退款。", "refund_link": "退款政策"}</script>
 <script>
 (function () {
   "use strict";
@@ -965,14 +977,13 @@
   // 头像：有图用图，无图用首字母，未登录用通用人形图标
   function renderAvatar(user) {
     var el = $("avBtn"); if (!el) return;
-    if (!sessionOk) {
-      el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
-        '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>';
+    // 与 iOS 一致：有头像显示图片，否则昵称首字母；昵称为空用本地化的"旅行者"
+    if (user.avatar) {
+      el.innerHTML = '<span class="inner"><img src="' + user.avatar + '" alt=""></span>';
       return;
     }
-    var name = (user.nickname || user.email || "A").trim();
-    if (user.avatar) el.innerHTML = '<img src="' + user.avatar + '" alt="">';
-    else el.textContent = name.charAt(0).toUpperCase();
+    var name = (user.nickname || "").trim() || UI.traveler;
+    el.innerHTML = '<span class="inner">' + name.slice(0, 1).toUpperCase() + '</span>';
   }
 
   function needLogin() {
@@ -1398,7 +1409,7 @@
   // ---- 我的作品（登录后显示） ----
   function loadMine() {
     if (!sessionOk) return;
-    call("/ai/music/tracks?limit=8", {}, true).then(function (d) {
+    call("/ai/music/tracks?limit=6", {}, true).then(function (d) {
       if (d.code !== 200) return;
       var items = (d.data && d.data.items) || [];
       if (!items.length) return;

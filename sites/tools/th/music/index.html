@@ -134,14 +134,20 @@
     cursor:pointer;padding:0 2px}
   .prechip .x:hover{color:#fff}
   .go.flash{box-shadow:0 0 0 3px rgba(255,122,26,.35)}
-  .rail-foot{flex:0 0 auto;margin:0;padding:14px 24px 16px;background:var(--panel);
+  .rail-foot{flex:0 0 auto;margin:0;padding:12px 24px 14px;background:var(--panel);
              border-top:1px solid var(--line)}
-  .acctbar{display:flex;align-items:center;gap:9px;margin-top:11px}
-  .av{width:24px;height:24px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;padding:0;
-      border:1px solid rgba(255,255,255,.14);background:rgba(255,122,26,.14);color:var(--acc);
-      font-size:10.5px;font-weight:700;cursor:pointer;overflow:hidden}
-  .av img{width:100%;height:100%;object-fit:cover;display:block}
-  .av svg{width:13px;height:13px;opacity:.8}
+  .rail-foot .msg{margin:0;min-height:0;font-size:11.5px;line-height:1.5}
+  .rail-foot .msg:not(:empty){margin:6px 0 0}
+  .acctbar{display:flex;align-items:center;gap:9px;margin-top:10px}
+  /* 对齐 scholan-ios UserAvatarView：外圈描边 + 内缩 2px，无头像时用首字母 */
+  .av{width:26px;height:26px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
+      padding:0;background:var(--panel);color:var(--acc);cursor:pointer;overflow:hidden;
+      box-shadow:0 0 0 1.5px rgba(255,255,255,.14)}
+  .av .inner{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;
+      overflow:hidden;background:rgba(255,122,26,.14);font-size:11px;font-weight:700;
+      font-family:-apple-system,"SF Pro Rounded",sans-serif}
+  .av img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+  .av .inner{padding:2px}
   .bal{flex:1 1 auto;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .alink{font-size:11.5px;color:var(--muted);text-decoration:none;flex:0 0 auto}
   .alink:hover{color:var(--ink)}
@@ -355,14 +361,20 @@
     cursor:pointer;padding:0 2px}
   .prechip .x:hover{color:#fff}
   .go.flash{box-shadow:0 0 0 3px rgba(255,122,26,.35)}
-  .rail-foot{flex:0 0 auto;margin:0;padding:14px 24px 16px;background:var(--panel);
+  .rail-foot{flex:0 0 auto;margin:0;padding:12px 24px 14px;background:var(--panel);
              border-top:1px solid var(--line)}
-  .acctbar{display:flex;align-items:center;gap:9px;margin-top:11px}
-  .av{width:24px;height:24px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;padding:0;
-      border:1px solid rgba(255,255,255,.14);background:rgba(255,122,26,.14);color:var(--acc);
-      font-size:10.5px;font-weight:700;cursor:pointer;overflow:hidden}
-  .av img{width:100%;height:100%;object-fit:cover;display:block}
-  .av svg{width:13px;height:13px;opacity:.8}
+  .rail-foot .msg{margin:0;min-height:0;font-size:11.5px;line-height:1.5}
+  .rail-foot .msg:not(:empty){margin:6px 0 0}
+  .acctbar{display:flex;align-items:center;gap:9px;margin-top:10px}
+  /* 对齐 scholan-ios UserAvatarView：外圈描边 + 内缩 2px，无头像时用首字母 */
+  .av{width:26px;height:26px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
+      padding:0;background:var(--panel);color:var(--acc);cursor:pointer;overflow:hidden;
+      box-shadow:0 0 0 1.5px rgba(255,255,255,.14)}
+  .av .inner{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;
+      overflow:hidden;background:rgba(255,122,26,.14);font-size:11px;font-weight:700;
+      font-family:-apple-system,"SF Pro Rounded",sans-serif}
+  .av img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+  .av .inner{padding:2px}
   .bal{flex:1 1 auto;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .alink{font-size:11.5px;color:var(--muted);text-decoration:none;flex:0 0 auto}
   .alink:hover{color:var(--ink)}
@@ -727,7 +739,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ", "description": "เปลี่ยนรูปหรือคำอธิบายเป็นเพลงประกอบความยาว 30–90 วินาทีพอดี เนื้อเพลงเอ่ยถึงสิ่งที่อยู่ในภาพ พร้อมเสียงร้อง 10 ภาษาและลูปไร้รอยต่อ", "h1": "สร้างเพลง", "sub": "จากรูปหรือคำอธิบาย ความยาวแม่นยำ ลูปไร้รอยต่อ", "drop": "ลากรูปมาวางหรือเลือกไฟล์<br>เนื้อเพลงจะเอ่ยถึงสิ่งที่อยู่ในภาพ", "generate": "สร้างเพลง", "how_credits": "เครดิตคิดอย่างไร →", "grp_photo": "ฟังตัวอย่าง", "grp_recipe": "เริ่มจากงานที่ใช้", "download": "ดาวน์โหลด", "save_recipe": "บันทึกเป็นสูตร", "remove_photo": "ลบรูป", "photo_here": "รูปของคุณที่นี่", "note": "ทุกอย่างทางขวาสร้างที่นี่", "legal_aup": "การใช้งานที่ยอมรับได้", "legal_refund": "การคืนเงิน", "sign_in_first": "เข้าสู่ระบบเพื่อสร้าง", "generating": "กำลังสร้าง… ประมาณ 20 วินาที", "just_generated": "สร้างเสร็จเมื่อครู่", "your_track": "เพลงของคุณ", "from_recipe": "จากสูตรสำเร็จ", "from_photo": "สร้างจากรูป", "err_load": "โหลดตัวเลือกไม่สำเร็จ", "done_in": "เสร็จใน {n} วินาที", "gen_cost": "สร้าง · {n}", "err_gen": "สร้างไม่สำเร็จ", "my_track": "เพลงของฉัน", "err_net": "เครือข่ายขัดข้อง", "recipe_name": "ชื่อสูตร", "err_save": "บันทึกไม่สำเร็จ", "saved": "บันทึกแล้ว: {name}", "up_to": "สูงสุด {n}", "credits": "เครดิต", "guides_link": "คู่มือ →", "guides_title": "คู่มือ", "close": "ปิด", "loading": "กำลังโหลด…", "off": "ปิด", "loop_on": "ลูปไร้รอยต่อ", "buy_credits": "ซื้อเครดิต →", "desc_label": "คำอธิบาย (ไม่บังคับ)", "desc_ph": "บรรยายเพลงที่ต้องการ เช่น คาเฟ่วันฝนตก เปียโนเบา", "mode_photo": "รูปภาพ", "mode_text": "ข้อความ", "field_density": "ความแน่นของเรียบเรียง", "opt_sparse": "โปร่ง", "opt_medium": "ปานกลาง", "opt_full": "แน่น", "pro_title": "ตัวเลือกขั้นสูง", "grp_photo_sub": "รูป → เนื้อร้อง → เพลง", "grp_recipe_sub": "เลือกงานที่ใช้ แล้วค่าตั้งจะพร้อม", "recipe_names": {"short-form-cut": "مقطع قصير", "hook-sting": "جذب الافتتاح", "product-loop": "حلقة منتج", "podcast-bed": "خلفية بودكاست", "documentary-underscore": "خلفية وثائقية", "game-menu-loop": "حلقة قائمة", "calm-focus": "تركيز هادئ", "kids-learning": "تعليم الأطفال"}, "applied": "ใช้", "current_recipe": "พรีเซ็ตที่ใช้", "mine_title": "ผลงานของฉัน", "share_link": "แชร์ลิงก์", "dl_audio": "ดาวน์โหลดเสียง", "copied": "คัดลอกแล้ว", "shared_note": "คุณกำลังฟังเพลงที่แชร์มา สร้างของคุณเองด้านล่าง", "my_account": "บัญชี", "balance": "คงเหลือ", "pricing_label": "ราคา", "confirm_gen": "สร้างเพลง {sec} วินาทีหรือไม่? จะใช้ {n}", "err_insufficient": "เครดิตไม่เพียงพอ", "topup_hint": "เติมเครดิตเพื่อสร้างต่อ", "topup_cta": "ซื้อเครดิต", "cancel": "ยกเลิก", "confirm": "ยืนยัน", "not_signed_in": "ยังไม่เข้าสู่ระบบ", "li1": "เพลง 30 วินาที = 45 เครดิต, 45 วินาที = 64, 60 วินาที = 85, 75 วินาที = 103, 90 วินาที = 120", "li2": "การสร้างที่ล้มเหลวจะคืนเครดิตอัตโนมัติ", "li3": "เครดิตไม่หมดอายุและใช้ได้กับทุกเครื่องมือ", "li4": "การชำระเงินดำเนินการโดย Creem ซึ่งเป็นผู้ค้าบนบันทึกของเรา", "li5": "เครดิตที่ยังไม่ใช้สามารถขอคืนได้ภายใน 14 วัน", "refund_link": "นโยบายการคืนเงิน"}</script>
+<script type="application/json" id="ui">{"title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ", "description": "เปลี่ยนรูปหรือคำอธิบายเป็นเพลงประกอบความยาว 30–90 วินาทีพอดี เนื้อเพลงเอ่ยถึงสิ่งที่อยู่ในภาพ พร้อมเสียงร้อง 10 ภาษาและลูปไร้รอยต่อ", "h1": "สร้างเพลง", "sub": "จากรูปหรือคำอธิบาย ความยาวแม่นยำ ลูปไร้รอยต่อ", "drop": "ลากรูปมาวางหรือเลือกไฟล์<br>เนื้อเพลงจะเอ่ยถึงสิ่งที่อยู่ในภาพ", "generate": "สร้างเพลง", "how_credits": "เครดิตคิดอย่างไร →", "grp_photo": "ฟังตัวอย่าง", "grp_recipe": "เริ่มจากงานที่ใช้", "download": "ดาวน์โหลด", "save_recipe": "บันทึกเป็นสูตร", "remove_photo": "ลบรูป", "photo_here": "รูปของคุณที่นี่", "note": "ทุกอย่างทางขวาสร้างที่นี่", "legal_aup": "การใช้งานที่ยอมรับได้", "legal_refund": "การคืนเงิน", "sign_in_first": "เข้าสู่ระบบเพื่อสร้าง", "generating": "กำลังสร้าง… ประมาณ 20 วินาที", "just_generated": "สร้างเสร็จเมื่อครู่", "your_track": "เพลงของคุณ", "from_recipe": "จากสูตรสำเร็จ", "from_photo": "สร้างจากรูป", "err_load": "โหลดตัวเลือกไม่สำเร็จ", "done_in": "เสร็จใน {n} วินาที", "gen_cost": "สร้าง · {n}", "err_gen": "สร้างไม่สำเร็จ", "my_track": "เพลงของฉัน", "err_net": "เครือข่ายขัดข้อง", "recipe_name": "ชื่อสูตร", "err_save": "บันทึกไม่สำเร็จ", "saved": "บันทึกแล้ว: {name}", "up_to": "สูงสุด {n}", "credits": "เครดิต", "guides_link": "คู่มือ →", "guides_title": "คู่มือ", "close": "ปิด", "loading": "กำลังโหลด…", "off": "ปิด", "loop_on": "ลูปไร้รอยต่อ", "buy_credits": "ซื้อเครดิต →", "desc_label": "คำอธิบาย (ไม่บังคับ)", "desc_ph": "บรรยายเพลงที่ต้องการ เช่น คาเฟ่วันฝนตก เปียโนเบา", "mode_photo": "รูปภาพ", "mode_text": "ข้อความ", "field_density": "ความแน่นของเรียบเรียง", "opt_sparse": "โปร่ง", "opt_medium": "ปานกลาง", "opt_full": "แน่น", "pro_title": "ตัวเลือกขั้นสูง", "grp_photo_sub": "รูป → เนื้อร้อง → เพลง", "grp_recipe_sub": "เลือกงานที่ใช้ แล้วค่าตั้งจะพร้อม", "recipe_names": {"short-form-cut": "مقطع قصير", "hook-sting": "جذب الافتتاح", "product-loop": "حلقة منتج", "podcast-bed": "خلفية بودكاست", "documentary-underscore": "خلفية وثائقية", "game-menu-loop": "حلقة قائمة", "calm-focus": "تركيز هادئ", "kids-learning": "تعليم الأطفال"}, "applied": "ใช้", "current_recipe": "พรีเซ็ตที่ใช้", "mine_title": "ผลงานของฉัน", "share_link": "แชร์ลิงก์", "dl_audio": "ดาวน์โหลดเสียง", "copied": "คัดลอกแล้ว", "shared_note": "คุณกำลังฟังเพลงที่แชร์มา สร้างของคุณเองด้านล่าง", "my_account": "บัญชี", "balance": "คงเหลือ", "pricing_label": "ราคา", "confirm_gen": "สร้างเพลง {sec} วินาทีหรือไม่? จะใช้ {n}", "err_insufficient": "เครดิตไม่เพียงพอ", "topup_hint": "เติมเครดิตเพื่อสร้างต่อ", "topup_cta": "ซื้อเครดิต", "cancel": "ยกเลิก", "confirm": "ยืนยัน", "not_signed_in": "ยังไม่เข้าสู่ระบบ", "traveler": "นักเดินทาง", "li1": "เพลง 30 วินาที = 45 เครดิต, 45 วินาที = 64, 60 วินาที = 85, 75 วินาที = 103, 90 วินาที = 120", "li2": "การสร้างที่ล้มเหลวจะคืนเครดิตอัตโนมัติ", "li3": "เครดิตไม่หมดอายุและใช้ได้กับทุกเครื่องมือ", "li4": "การชำระเงินดำเนินการโดย Creem ซึ่งเป็นผู้ค้าบนบันทึกของเรา", "li5": "เครดิตที่ยังไม่ใช้สามารถขอคืนได้ภายใน 14 วัน", "refund_link": "นโยบายการคืนเงิน"}</script>
 <script>
 (function () {
   "use strict";
@@ -965,14 +977,13 @@
   // 头像：有图用图，无图用首字母，未登录用通用人形图标
   function renderAvatar(user) {
     var el = $("avBtn"); if (!el) return;
-    if (!sessionOk) {
-      el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
-        '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>';
+    // 与 iOS 一致：有头像显示图片，否则昵称首字母；昵称为空用本地化的"旅行者"
+    if (user.avatar) {
+      el.innerHTML = '<span class="inner"><img src="' + user.avatar + '" alt=""></span>';
       return;
     }
-    var name = (user.nickname || user.email || "A").trim();
-    if (user.avatar) el.innerHTML = '<img src="' + user.avatar + '" alt="">';
-    else el.textContent = name.charAt(0).toUpperCase();
+    var name = (user.nickname || "").trim() || UI.traveler;
+    el.innerHTML = '<span class="inner">' + name.slice(0, 1).toUpperCase() + '</span>';
   }
 
   function needLogin() {
@@ -1398,7 +1409,7 @@
   // ---- 我的作品（登录后显示） ----
   function loadMine() {
     if (!sessionOk) return;
-    call("/ai/music/tracks?limit=8", {}, true).then(function (d) {
+    call("/ai/music/tracks?limit=6", {}, true).then(function (d) {
       if (d.code !== 200) return;
       var items = (d.data && d.data.items) || [];
       if (!items.length) return;

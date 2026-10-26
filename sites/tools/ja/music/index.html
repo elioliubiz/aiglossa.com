@@ -134,14 +134,20 @@
     cursor:pointer;padding:0 2px}
   .prechip .x:hover{color:#fff}
   .go.flash{box-shadow:0 0 0 3px rgba(255,122,26,.35)}
-  .rail-foot{flex:0 0 auto;margin:0;padding:14px 24px 16px;background:var(--panel);
+  .rail-foot{flex:0 0 auto;margin:0;padding:12px 24px 14px;background:var(--panel);
              border-top:1px solid var(--line)}
-  .acctbar{display:flex;align-items:center;gap:9px;margin-top:11px}
-  .av{width:24px;height:24px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;padding:0;
-      border:1px solid rgba(255,255,255,.14);background:rgba(255,122,26,.14);color:var(--acc);
-      font-size:10.5px;font-weight:700;cursor:pointer;overflow:hidden}
-  .av img{width:100%;height:100%;object-fit:cover;display:block}
-  .av svg{width:13px;height:13px;opacity:.8}
+  .rail-foot .msg{margin:0;min-height:0;font-size:11.5px;line-height:1.5}
+  .rail-foot .msg:not(:empty){margin:6px 0 0}
+  .acctbar{display:flex;align-items:center;gap:9px;margin-top:10px}
+  /* 对齐 scholan-ios UserAvatarView：外圈描边 + 内缩 2px，无头像时用首字母 */
+  .av{width:26px;height:26px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
+      padding:0;background:var(--panel);color:var(--acc);cursor:pointer;overflow:hidden;
+      box-shadow:0 0 0 1.5px rgba(255,255,255,.14)}
+  .av .inner{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;
+      overflow:hidden;background:rgba(255,122,26,.14);font-size:11px;font-weight:700;
+      font-family:-apple-system,"SF Pro Rounded",sans-serif}
+  .av img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+  .av .inner{padding:2px}
   .bal{flex:1 1 auto;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .alink{font-size:11.5px;color:var(--muted);text-decoration:none;flex:0 0 auto}
   .alink:hover{color:var(--ink)}
@@ -355,14 +361,20 @@
     cursor:pointer;padding:0 2px}
   .prechip .x:hover{color:#fff}
   .go.flash{box-shadow:0 0 0 3px rgba(255,122,26,.35)}
-  .rail-foot{flex:0 0 auto;margin:0;padding:14px 24px 16px;background:var(--panel);
+  .rail-foot{flex:0 0 auto;margin:0;padding:12px 24px 14px;background:var(--panel);
              border-top:1px solid var(--line)}
-  .acctbar{display:flex;align-items:center;gap:9px;margin-top:11px}
-  .av{width:24px;height:24px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;padding:0;
-      border:1px solid rgba(255,255,255,.14);background:rgba(255,122,26,.14);color:var(--acc);
-      font-size:10.5px;font-weight:700;cursor:pointer;overflow:hidden}
-  .av img{width:100%;height:100%;object-fit:cover;display:block}
-  .av svg{width:13px;height:13px;opacity:.8}
+  .rail-foot .msg{margin:0;min-height:0;font-size:11.5px;line-height:1.5}
+  .rail-foot .msg:not(:empty){margin:6px 0 0}
+  .acctbar{display:flex;align-items:center;gap:9px;margin-top:10px}
+  /* 对齐 scholan-ios UserAvatarView：外圈描边 + 内缩 2px，无头像时用首字母 */
+  .av{width:26px;height:26px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;
+      padding:0;background:var(--panel);color:var(--acc);cursor:pointer;overflow:hidden;
+      box-shadow:0 0 0 1.5px rgba(255,255,255,.14)}
+  .av .inner{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;
+      overflow:hidden;background:rgba(255,122,26,.14);font-size:11px;font-weight:700;
+      font-family:-apple-system,"SF Pro Rounded",sans-serif}
+  .av img{width:100%;height:100%;object-fit:cover;display:block;border-radius:50%}
+  .av .inner{padding:2px}
   .bal{flex:1 1 auto;font-size:11.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .alink{font-size:11.5px;color:var(--muted);text-decoration:none;flex:0 0 auto}
   .alink:hover{color:var(--ink)}
@@ -727,7 +739,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "AI音楽生成 — 写真から曲へ、長さはぴったり", "description": "写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。", "h1": "曲を作る", "sub": "写真またはプロンプトから。長さは正確に、ループはシームレスに。", "drop": "写真をドロップまたは選択<br>歌詞が写真の中身を歌います", "generate": "曲を生成", "how_credits": "クレジットの仕組み →", "grp_photo": "聴いてみる", "grp_recipe": "用途から選ぶ", "download": "ダウンロード", "save_recipe": "レシピとして保存", "remove_photo": "写真を削除", "photo_here": "ここにあなたの写真", "note": "右側はすべてここで作られています", "legal_aup": "利用規約（AUP）", "legal_refund": "返金ポリシー", "sign_in_first": "生成するにはサインイン", "generating": "生成中… 約20秒。", "just_generated": "たった今生成", "your_track": "あなたの曲", "from_recipe": "レシピから", "from_photo": "写真から制作", "err_load": "オプションを読み込めませんでした", "done_in": "{n}秒で完成", "gen_cost": "生成 · {n}", "err_gen": "生成に失敗しました", "my_track": "マイトラック", "err_net": "通信エラー", "recipe_name": "レシピ名", "err_save": "保存に失敗しました", "saved": "保存しました: {name}", "up_to": "最大 {n}", "credits": "クレジット", "guides_link": "ガイド →", "guides_title": "ガイド", "close": "閉じる", "loading": "読み込み中…", "off": "オフ", "loop_on": "シームレスループ", "buy_credits": "クレジットを購入 →", "desc_label": "補足の説明（任意）", "desc_ph": "欲しい曲を説明：雨のカフェ、ピアノ中心", "mode_photo": "写真", "mode_text": "文章", "field_density": "編曲の密度", "opt_sparse": "疎ら", "opt_medium": "標準", "opt_full": "密", "pro_title": "詳細設定", "grp_photo_sub": "写真 → 歌詞 → 曲", "grp_recipe_sub": "用途を選ぶと設定が入ります", "recipe_names": {"short-form-cut": "快剪短片", "hook-sting": "Accroche d'ouverture", "product-loop": "Boucle produit", "podcast-bed": "Fond de podcast", "documentary-underscore": "Fond documentaire", "game-menu-loop": "Boucle de menu", "calm-focus": "Concentration", "kids-learning": "Enfants et apprentissage"}, "applied": "使用中", "current_recipe": "使用中のプリセット", "mine_title": "マイ作品", "share_link": "リンクを共有", "dl_audio": "音声を保存", "copied": "コピーしました", "shared_note": "共有された曲を再生中。下から自分用に作れます", "my_account": "アカウント", "balance": "残高", "pricing_label": "料金", "confirm_gen": "{sec} 秒の曲を生成しますか？{n} を消費します。", "err_insufficient": "クレジットが足りません", "topup_hint": "チャージすると生成を続けられます。", "topup_cta": "チャージする", "cancel": "キャンセル", "confirm": "確定", "not_signed_in": "未ログイン", "li1": "30秒＝45クレジット、45秒＝64、60秒＝85、75秒＝103、90秒＝120。", "li2": "生成に失敗した場合は自動で返金されます。", "li3": "クレジットは期限なしで、すべてのツールで使えます。", "li4": "支払いは merchant of record である Creem が処理します。", "li5": "未使用のクレジットは14日以内なら返金できます。", "refund_link": "返金ポリシー"}</script>
+<script type="application/json" id="ui">{"title": "AI音楽生成 — 写真から曲へ、長さはぴったり", "description": "写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。", "h1": "曲を作る", "sub": "写真またはプロンプトから。長さは正確に、ループはシームレスに。", "drop": "写真をドロップまたは選択<br>歌詞が写真の中身を歌います", "generate": "曲を生成", "how_credits": "クレジットの仕組み →", "grp_photo": "聴いてみる", "grp_recipe": "用途から選ぶ", "download": "ダウンロード", "save_recipe": "レシピとして保存", "remove_photo": "写真を削除", "photo_here": "ここにあなたの写真", "note": "右側はすべてここで作られています", "legal_aup": "利用規約（AUP）", "legal_refund": "返金ポリシー", "sign_in_first": "生成するにはサインイン", "generating": "生成中… 約20秒。", "just_generated": "たった今生成", "your_track": "あなたの曲", "from_recipe": "レシピから", "from_photo": "写真から制作", "err_load": "オプションを読み込めませんでした", "done_in": "{n}秒で完成", "gen_cost": "生成 · {n}", "err_gen": "生成に失敗しました", "my_track": "マイトラック", "err_net": "通信エラー", "recipe_name": "レシピ名", "err_save": "保存に失敗しました", "saved": "保存しました: {name}", "up_to": "最大 {n}", "credits": "クレジット", "guides_link": "ガイド →", "guides_title": "ガイド", "close": "閉じる", "loading": "読み込み中…", "off": "オフ", "loop_on": "シームレスループ", "buy_credits": "クレジットを購入 →", "desc_label": "補足の説明（任意）", "desc_ph": "欲しい曲を説明：雨のカフェ、ピアノ中心", "mode_photo": "写真", "mode_text": "文章", "field_density": "編曲の密度", "opt_sparse": "疎ら", "opt_medium": "標準", "opt_full": "密", "pro_title": "詳細設定", "grp_photo_sub": "写真 → 歌詞 → 曲", "grp_recipe_sub": "用途を選ぶと設定が入ります", "recipe_names": {"short-form-cut": "快剪短片", "hook-sting": "Accroche d'ouverture", "product-loop": "Boucle produit", "podcast-bed": "Fond de podcast", "documentary-underscore": "Fond documentaire", "game-menu-loop": "Boucle de menu", "calm-focus": "Concentration", "kids-learning": "Enfants et apprentissage"}, "applied": "使用中", "current_recipe": "使用中のプリセット", "mine_title": "マイ作品", "share_link": "リンクを共有", "dl_audio": "音声を保存", "copied": "コピーしました", "shared_note": "共有された曲を再生中。下から自分用に作れます", "my_account": "アカウント", "balance": "残高", "pricing_label": "料金", "confirm_gen": "{sec} 秒の曲を生成しますか？{n} を消費します。", "err_insufficient": "クレジットが足りません", "topup_hint": "チャージすると生成を続けられます。", "topup_cta": "チャージする", "cancel": "キャンセル", "confirm": "確定", "not_signed_in": "未ログイン", "traveler": "旅人", "li1": "30秒＝45クレジット、45秒＝64、60秒＝85、75秒＝103、90秒＝120。", "li2": "生成に失敗した場合は自動で返金されます。", "li3": "クレジットは期限なしで、すべてのツールで使えます。", "li4": "支払いは merchant of record である Creem が処理します。", "li5": "未使用のクレジットは14日以内なら返金できます。", "refund_link": "返金ポリシー"}</script>
 <script>
 (function () {
   "use strict";
@@ -965,14 +977,13 @@
   // 头像：有图用图，无图用首字母，未登录用通用人形图标
   function renderAvatar(user) {
     var el = $("avBtn"); if (!el) return;
-    if (!sessionOk) {
-      el.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
-        '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>';
+    // 与 iOS 一致：有头像显示图片，否则昵称首字母；昵称为空用本地化的"旅行者"
+    if (user.avatar) {
+      el.innerHTML = '<span class="inner"><img src="' + user.avatar + '" alt=""></span>';
       return;
     }
-    var name = (user.nickname || user.email || "A").trim();
-    if (user.avatar) el.innerHTML = '<img src="' + user.avatar + '" alt="">';
-    else el.textContent = name.charAt(0).toUpperCase();
+    var name = (user.nickname || "").trim() || UI.traveler;
+    el.innerHTML = '<span class="inner">' + name.slice(0, 1).toUpperCase() + '</span>';
   }
 
   function needLogin() {
@@ -1398,7 +1409,7 @@
   // ---- 我的作品（登录后显示） ----
   function loadMine() {
     if (!sessionOk) return;
-    call("/ai/music/tracks?limit=8", {}, true).then(function (d) {
+    call("/ai/music/tracks?limit=6", {}, true).then(function (d) {
       if (d.code !== 200) return;
       var items = (d.data && d.data.items) || [];
       if (!items.length) return;
