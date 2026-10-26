@@ -57,7 +57,10 @@
       "login_methods": "Sign-in methods",
       "delete_account": "Delete account",
       "platform_note": "Credits work across every aiglossa product.",
-      "no_pw_yet": "No password yet — you sign in with a code or Google."
+      "no_pw_yet": "No password yet — you sign in with a code or Google.",
+      "tab_code": "Email code",
+      "tab_password": "Password",
+      "pwd_ph": "Your password"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -203,7 +206,10 @@
       "login_methods": "ログイン方法",
       "delete_account": "アカウント削除",
       "platform_note": "クレジットは aiglossa のすべての製品で使えます。",
-      "no_pw_yet": "パスワード未設定。現在はコードか Google でログインします。"
+      "no_pw_yet": "パスワード未設定。現在はコードか Google でログインします。",
+      "tab_code": "コード",
+      "tab_password": "パスワード",
+      "pwd_ph": "パスワードを入力"
     },
     "make": {
       "title": "AI音楽生成 — 写真から曲へ、長さはぴったり",
@@ -349,7 +355,10 @@
       "login_methods": "로그인 방법",
       "delete_account": "계정 삭제",
       "platform_note": "크레딧은 aiglossa의 모든 제품에서 사용할 수 있습니다.",
-      "no_pw_yet": "비밀번호가 없습니다. 지금은 코드나 Google로 로그인합니다."
+      "no_pw_yet": "비밀번호가 없습니다. 지금은 코드나 Google로 로그인합니다.",
+      "tab_code": "인증코드",
+      "tab_password": "비밀번호",
+      "pwd_ph": "비밀번호 입력"
     },
     "make": {
       "title": "AI 음악 생성 — 사진에서 곡으로, 정확한 길이",
@@ -495,7 +504,10 @@
       "login_methods": "登录方式",
       "delete_account": "注销账号",
       "platform_note": "额度可用于 aiglossa 平台下的所有产品。",
-      "no_pw_yet": "还没有密码，目前用验证码或 Google 登录。"
+      "no_pw_yet": "还没有密码，目前用验证码或 Google 登录。",
+      "tab_code": "验证码",
+      "tab_password": "密码",
+      "pwd_ph": "输入密码"
     },
     "make": {
       "title": "AI 音乐生成 — 照片变歌曲，长度精确",
@@ -641,7 +653,10 @@
       "login_methods": "登入方式",
       "delete_account": "註銷帳號",
       "platform_note": "額度可用於 aiglossa 平台下的所有產品。",
-      "no_pw_yet": "還沒有密碼，目前用驗證碼或 Google 登入。"
+      "no_pw_yet": "還沒有密碼，目前用驗證碼或 Google 登入。",
+      "tab_code": "驗證碼",
+      "tab_password": "密碼",
+      "pwd_ph": "輸入密碼"
     },
     "make": {
       "title": "AI 音樂生成 — 照片變歌曲，長度精確",
@@ -787,7 +802,10 @@
       "login_methods": "Métodos de acceso",
       "delete_account": "Eliminar cuenta",
       "platform_note": "Los créditos sirven en todos los productos de aiglossa.",
-      "no_pw_yet": "Aún sin contraseña: entras con código o Google."
+      "no_pw_yet": "Aún sin contraseña: entras con código o Google.",
+      "tab_code": "Código",
+      "tab_password": "Contraseña",
+      "pwd_ph": "Tu contraseña"
     },
     "make": {
       "title": "Generador de música con IA — de foto a canción, duración exacta",
@@ -933,7 +951,10 @@
       "login_methods": "Méthodes de connexion",
       "delete_account": "Supprimer le compte",
       "platform_note": "Les crédits fonctionnent sur tous les produits aiglossa.",
-      "no_pw_yet": "Pas encore de mot de passe : vous entrez par code ou Google."
+      "no_pw_yet": "Pas encore de mot de passe : vous entrez par code ou Google.",
+      "tab_code": "Code par e-mail",
+      "tab_password": "Mot de passe",
+      "pwd_ph": "Votre mot de passe"
     },
     "make": {
       "title": "Générateur de musique IA — de la photo au morceau, durée exacte",
@@ -1079,7 +1100,10 @@
       "login_methods": "Anmeldemethoden",
       "delete_account": "Konto löschen",
       "platform_note": "Credits gelten für alle aiglossa-Produkte.",
-      "no_pw_yet": "Noch kein Passwort – du meldest dich per Code oder Google an."
+      "no_pw_yet": "Noch kein Passwort – du meldest dich per Code oder Google an.",
+      "tab_code": "Code",
+      "tab_password": "Passwort",
+      "pwd_ph": "Dein Passwort"
     },
     "make": {
       "title": "KI-Musikgenerator — vom Foto zum Song, exakte Länge",
@@ -1225,7 +1249,10 @@
       "login_methods": "Formas de acesso",
       "delete_account": "Excluir conta",
       "platform_note": "Os créditos valem em todos os produtos aiglossa.",
-      "no_pw_yet": "Ainda sem senha: você entra com código ou Google."
+      "no_pw_yet": "Ainda sem senha: você entra com código ou Google.",
+      "tab_code": "Código",
+      "tab_password": "Senha",
+      "pwd_ph": "Sua senha"
     },
     "make": {
       "title": "Gerador de música com IA — de foto a música, duração exata",
@@ -1371,7 +1398,10 @@
       "login_methods": "Metodi di accesso",
       "delete_account": "Elimina account",
       "platform_note": "I crediti valgono su tutti i prodotti aiglossa.",
-      "no_pw_yet": "Ancora nessuna password: accedi con codice o Google."
+      "no_pw_yet": "Ancora nessuna password: accedi con codice o Google.",
+      "tab_code": "Codice",
+      "tab_password": "Password",
+      "pwd_ph": "La tua password"
     },
     "make": {
       "title": "Generatore di musica IA — da foto a brano, durata esatta",
@@ -1517,7 +1547,10 @@
       "login_methods": "Способы входа",
       "delete_account": "Удалить аккаунт",
       "platform_note": "Кредиты действуют во всех продуктах aiglossa.",
-      "no_pw_yet": "Пароля пока нет — вход по коду или через Google."
+      "no_pw_yet": "Пароля пока нет — вход по коду или через Google.",
+      "tab_code": "Код",
+      "tab_password": "Пароль",
+      "pwd_ph": "Ваш пароль"
     },
     "make": {
       "title": "Генератор музыки на ИИ — из фото в трек, точная длина",
@@ -1663,7 +1696,10 @@
       "login_methods": "طرق تسجيل الدخول",
       "delete_account": "حذف الحساب",
       "platform_note": "الرصيد صالح في جميع منتجات aiglossa.",
-      "no_pw_yet": "لا توجد كلمة مرور بعد — تسجيل الدخول بالرمز أو Google."
+      "no_pw_yet": "لا توجد كلمة مرور بعد — تسجيل الدخول بالرمز أو Google.",
+      "tab_code": "رمز",
+      "tab_password": "كلمة المرور",
+      "pwd_ph": "كلمة المرور"
     },
     "make": {
       "title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق",
@@ -1809,7 +1845,10 @@
       "login_methods": "วิธีเข้าสู่ระบบ",
       "delete_account": "ลบบัญชี",
       "platform_note": "เครดิตใช้ได้กับทุกผลิตภัณฑ์ของ aiglossa",
-      "no_pw_yet": "ยังไม่มีรหัสผ่าน เข้าสู่ระบบด้วยรหัสหรือ Google"
+      "no_pw_yet": "ยังไม่มีรหัสผ่าน เข้าสู่ระบบด้วยรหัสหรือ Google",
+      "tab_code": "รหัส",
+      "tab_password": "รหัสผ่าน",
+      "pwd_ph": "รหัสผ่านของคุณ"
     },
     "make": {
       "title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ",
@@ -1955,7 +1994,10 @@
       "login_methods": "Cách đăng nhập",
       "delete_account": "Xóa tài khoản",
       "platform_note": "Tín dụng dùng được cho mọi sản phẩm aiglossa.",
-      "no_pw_yet": "Chưa có mật khẩu — bạn đăng nhập bằng mã hoặc Google."
+      "no_pw_yet": "Chưa có mật khẩu — bạn đăng nhập bằng mã hoặc Google.",
+      "tab_code": "Mã",
+      "tab_password": "Mật khẩu",
+      "pwd_ph": "Mật khẩu của bạn"
     },
     "make": {
       "title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác",
@@ -2101,7 +2143,10 @@
       "login_methods": "Metode masuk",
       "delete_account": "Hapus akun",
       "platform_note": "Kredit berlaku di semua produk aiglossa.",
-      "no_pw_yet": "Belum ada kata sandi — masuk dengan kode atau Google."
+      "no_pw_yet": "Belum ada kata sandi — masuk dengan kode atau Google.",
+      "tab_code": "Kode",
+      "tab_password": "Kata sandi",
+      "pwd_ph": "Kata sandi Anda"
     },
     "make": {
       "title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi",
@@ -2247,7 +2292,10 @@
       "login_methods": "Giriş yöntemleri",
       "delete_account": "Hesabı sil",
       "platform_note": "Krediler tüm aiglossa ürünlerinde geçerlidir.",
-      "no_pw_yet": "Henüz şifre yok — kod veya Google ile giriş yapıyorsunuz."
+      "no_pw_yet": "Henüz şifre yok — kod veya Google ile giriş yapıyorsunuz.",
+      "tab_code": "Kod",
+      "tab_password": "Şifre",
+      "pwd_ph": "Şifreniz"
     },
     "make": {
       "title": "AI Müzik Üretici — fotoğraftan şarkıya, tam uzunluk",
