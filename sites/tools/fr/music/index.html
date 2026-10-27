@@ -294,6 +294,8 @@
     background:linear-gradient(135deg,rgba(255,122,26,.10),rgba(255,255,255,.03))}
   .mtile p{margin:6px 7px;font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .mtools{display:flex;gap:5px;padding:0 7px 7px}.mtools button{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);font:inherit;font-size:10px;border-radius:6px;padding:4px 6px;cursor:pointer}.mtools .mplay{width:26px;padding:4px 0}.mtools button:hover{color:var(--fg);border-color:rgba(255,255,255,.3)}
+  .tile-actions{position:absolute;inset-inline:10px;bottom:9px;display:flex;gap:6px;z-index:3}.tile-actions button{border:1px solid rgba(255,255,255,.35);border-radius:7px;background:rgba(10,10,12,.68);backdrop-filter:blur(5px);color:#fff;font:inherit;font-size:11px;padding:6px 9px;cursor:pointer}.tile-actions button:hover{background:rgba(255,122,26,.85);border-color:transparent;color:#17110d}
+  .rec-actions{display:flex;gap:6px;padding:0 10px 10px}.rec-actions button{flex:1;border:1px solid var(--line);border-radius:7px;background:rgba(255,255,255,.04);color:var(--muted);font:inherit;font-size:10px;padding:5px 6px;cursor:pointer}.rec-actions button:hover{color:var(--fg);border-color:rgba(255,255,255,.3)}
   .works{padding:20px 26px 30px;overflow-y:auto;min-height:0}
   .whead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
   .whead .t{font:10px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
@@ -886,9 +888,13 @@
       var el = document.createElement("div");
       el.className = "tile";
       el.innerHTML = '<img src="' + d.img + '" alt="' + d.title + '"><div class="shade"></div><span class="pl">▶</span>' +
-        '<div class="meta"><p class="t">' + d.title + '</p><p class="d">' + d.meta + '</p></div>';
+        '<div class="meta"><p class="t">' + d.title + '</p><p class="d">' + d.meta + '</p></div>' +
+        '<div class="tile-actions"><button type="button" class="demo-play">▶</button><button type="button" class="demo-use">' + (UI.applied || "Apply") + '</button></div>';
       el.dataset.audio = d.audio || "";
-      el.addEventListener("click", function () { select(Object.assign({ kind: "demo" }, d)); });
+      function playDemo() { select(Object.assign({ kind: "demo" }, d)); }
+      el.addEventListener("click", playDemo);
+      el.querySelector(".demo-play").addEventListener("click", function (e) { e.stopPropagation(); playDemo(); });
+      el.querySelector(".demo-use").addEventListener("click", function (e) { e.stopPropagation(); playDemo(); applied(d.title); });
       thumbs.appendChild(el);
     });
 
@@ -1255,23 +1261,26 @@
   function renderRecipes(items) {
     var box = $("recipes"); box.innerHTML = "";
     items.filter(function (r) { return r.is_system; }).forEach(function (r) {
-      var el = document.createElement("button");
-      el.type = "button"; el.className = "rec";
+      var el = document.createElement("div");
+      el.className = "rec";
       var p = r.params || {};
       var locName = (UI.recipe_names && UI.recipe_names[r.slug]) || r.name;
       el.dataset.name = locName;
       el.innerHTML = '<div class="wv">' + wave() +
         '<span class="rplay" aria-hidden="true">▶</span></div>' +
         '<p class="rn">' + locName + '</p>' +
-        '<p class="rd">' + paramSummary(p) + '</p>';
-      el.addEventListener("click", function () {
+        '<p class="rd">' + paramSummary(p) + '</p>' +
+        '<div class="rec-actions"><button type="button" class="rec-play">▶</button><button type="button" class="rec-use">' + (UI.applied || "Apply") + '</button></div>';
+      function playRecipe() { if (r.sample_url) select({ kind: "recipe", audio: r.sample_url, title: locName, meta: "preset" }); }
+      function useRecipe() {
         Array.prototype.forEach.call(box.children, function (x) { x.classList.remove("on"); });
         el.classList.add("on");
         Object.keys(p).forEach(function (k) { if (k.indexOf("__") !== 0) values[k] = p[k]; });
-        renderRail();
-        applied(locName);
-        if (r.sample_url) select({ kind: "recipe", audio: r.sample_url, title: locName, meta: "preset" });
-      });
+        renderRail(); applied(locName); playRecipe();
+      }
+      el.addEventListener("click", playRecipe);
+      el.querySelector(".rec-play").addEventListener("click", function (e) { e.stopPropagation(); playRecipe(); });
+      el.querySelector(".rec-use").addEventListener("click", function (e) { e.stopPropagation(); useRecipe(); });
       box.appendChild(el);
     });
   }
