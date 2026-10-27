@@ -740,6 +740,8 @@ def main() -> int:
                         "legal_aup": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["make"]["legal_aup"]),
                         "pricing_label": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["make"]["pricing_label"]),
                         "guides_title": esc(locale.get("guides_title", "Guides")),
+                        "account_label": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["account_label"]),
+                        "credits_unit": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["credits_unit"]),
                         "guides_list": "".join(
                             f'      <li><a href="guides/{slug}.html">{esc(g.get("h1") or g["title"])}</a></li>\n'
                             for slug, g in json.loads(

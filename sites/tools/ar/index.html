@@ -73,9 +73,32 @@
   .closing-band .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .closing-band p{margin:0;color:var(--muted,#96a0b5);font-size:14px}
   .closing-band .cta{white-space:nowrap}
+  .tools-nav{border-bottom:1px solid rgba(255,255,255,.08)}
+  .tools-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:16px}
+  .tools-brand{font:11px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);text-decoration:none}
+  .tools-account{display:inline-flex;align-items:center;gap:10px;color:var(--muted,#96a0b5);font-size:13px;text-decoration:none}
+  .tools-account:hover{color:var(--fg)}
+  .tools-avatar{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;
+                border:1px solid rgba(255,255,255,.22);background:rgba(255,122,26,.12);color:#ffb27a;font-size:12px;font-weight:600}
+  .tools-account-copy{display:flex;align-items:baseline;gap:8px}
+  .tools-account-balance{color:var(--fg);font-variant-numeric:tabular-nums}
+  .tools-account-email{max-width:22ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  @media(max-width:560px){.tools-nav .wrap{padding-inline:20px}.tools-account-email{display:none}}
 </style>
 </head>
 <body>
+<header class="tools-nav">
+  <div class="wrap">
+    <a class="tools-brand" href="./">aiglossa tools</a>
+    <a class="tools-account" id="toolsAccount" href="account.html">
+      <span class="tools-avatar" id="toolsAvatar" aria-hidden="true">?</span>
+      <span class="tools-account-copy">
+        <span class="tools-account-email" id="toolsAccountEmail">الحساب</span>
+        <span class="tools-account-balance" id="toolsAccountBalance"></span>
+      </span>
+    </a>
+  </div>
+</header>
 <main>
   <section class="hub-hero">
     <div class="wrap">
@@ -154,6 +177,31 @@
 </footer>
 
 <script src="../assets/site.js" defer></script>
+<script>
+(function () {
+  "use strict";
+  var token = localStorage.getItem("aig_token") || "";
+  if (!token) return;
+  var api = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "https://dev.aiglossa.com";
+  var device = localStorage.getItem("aig_device") || "";
+  if (!device) {
+    device = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
+    localStorage.setItem("aig_device", device);
+  }
+  fetch(api + "/ai/music/credits", {
+    method: "POST",
+    headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token, "X-Client": "web"},
+    body: JSON.stringify({app_key: "tools", device: device, timestamp: Math.floor(Date.now() / 1000)})
+  }).then(function (r) { return r.json(); }).then(function (data) {
+    if (data.code === 401 || data.code !== 200 || !data.data) return;
+    var user = data.data.user || {};
+    var name = user.email || localStorage.getItem("aig_email") || "الحساب";
+    document.getElementById("toolsAccountEmail").textContent = name;
+    document.getElementById("toolsAccountBalance").textContent = Math.round((data.data.balance || 0) / 100) + " رصيد";
+    document.getElementById("toolsAvatar").textContent = name.slice(0, 1).toUpperCase();
+  }).catch(function () {});
+})();
+</script>
 
 <script>
 (function () {
