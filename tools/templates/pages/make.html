@@ -263,7 +263,7 @@
   .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow:hidden;padding-bottom:4px}
   .minerow::-webkit-scrollbar{height:0}
-  .minerow .rec,.minerow .tile{flex:0 0 180px}
+  .minerow .rec,.minerow .tile{flex:0 0 calc((100% - 27px) / 4)}
   .mtools{display:flex;gap:5px;padding:0 7px 7px}.mtools button{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);font:inherit;font-size:10px;border-radius:6px;padding:4px 6px;cursor:pointer}.mtools .mplay{width:26px;padding:4px 0}.mtools button:hover{color:var(--fg);border-color:rgba(255,255,255,.3)}
   .tile-actions,.rec-actions{position:absolute;right:12px;bottom:12px;display:flex;justify-content:flex-end;align-items:center;gap:7px;padding:0;z-index:3}.tile-actions button,.rec-actions button{flex:0 0 auto;min-width:34px;border:1px solid var(--line);border-radius:7px;background:rgba(12,14,12,.62);color:var(--muted);font:inherit;font-size:11px;padding:6px 9px;cursor:pointer}.tile-actions button:hover,.rec-actions button:hover{color:var(--fg);border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.1)}
   .works{padding:20px 26px 30px;overflow-y:auto;min-height:0}
@@ -329,7 +329,7 @@
   .rec .rplay{position:absolute;inset-inline-end:8px;top:8px;width:22px;height:22px;border-radius:50%;
     display:grid;place-items:center;background:rgba(255,255,255,.14);font-size:9px;color:#fff}
   .rec .rd{font:10px/1.3 -apple-system,sans-serif;color:var(--mut);margin:0}
-  .more-tile{flex:0 0 118px;height:260px;border:1px dashed rgba(242,241,236,.2);border-radius:13px;background:rgba(255,255,255,.02);color:var(--acc);cursor:pointer;padding:0;overflow:hidden;text-align:center;font:inherit}
+  .more-tile{flex:0 0 calc((100% - 27px) / 4);height:260px;border:1px dashed rgba(242,241,236,.2);border-radius:13px;background:rgba(255,255,255,.02);color:var(--acc);cursor:pointer;padding:0;overflow:hidden;text-align:center;font:inherit}
   .more-tile .ph2{height:208px;margin:0;border:0;border-radius:0}
   .more-tile .dur{margin:0;color:var(--muted);font-size:11px}
   .thumbs{display:contents}
@@ -348,6 +348,7 @@
     .whead{flex-wrap:wrap;gap:2px 10px}
     .whead .n{font-size:11px}
     .photos{grid-template-columns:repeat(2,1fr);grid-auto-rows:260px}
+    .minerow .rec,.minerow .tile,.more-tile{flex-basis:calc((100% - 9px) / 2)}
     .recipes{grid-template-columns:repeat(2,1fr)!important;grid-template-rows:none!important;
              grid-auto-flow:row!important;overflow-x:visible!important}
     .rec-wrap:after{display:none}
