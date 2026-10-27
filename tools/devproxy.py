@@ -91,9 +91,10 @@ def main() -> None:
 
     # 同时监听 IPv6 与 IPv4：macOS 上 localhost 常解析到 ::1，
     # 只绑 127.0.0.1 会导致 http://localhost:PORT 打不开。
-    class DualStack(socketserver.TCPServer):
+    class DualStack(socketserver.ThreadingTCPServer):
         address_family = socket.AF_INET6
         allow_reuse_address = True
+        daemon_threads = True
 
         def server_bind(self):
             self.socket.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_V6ONLY, 0)

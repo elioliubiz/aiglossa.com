@@ -27,6 +27,7 @@
     "legal": false,
     "pages": [
       "tools",
+      "login",
       "pricing",
       "account",
       "refund",

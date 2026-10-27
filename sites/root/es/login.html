@@ -105,8 +105,8 @@
   <p class="msg" id="msg"></p>
   <p class="foot">¿Primera vez? La cuenta se crea automáticamente.<br>Al continuar aceptas nuestros</p>
   <p class="foot legalrow">
-    <a href="/es/protocol/term.html">Términos</a> ·
-    <a href="/es/protocol/privacy.html">Política de privacidad</a>
+    <a href="https://aiglossa.com/es/protocol/term.html">Términos</a> ·
+    <a href="https://aiglossa.com/es/protocol/privacy.html">Política de privacidad</a>
   </p>
 </form>
 <script>
@@ -123,8 +123,16 @@
   function next() {
     var q = new URLSearchParams(location.search).get("next");
     if (q) return q;
+    if (IS_LOCAL || HOST.indexOf("tools.") === 0) return location.origin + "/" + LANG + "/music/";
     return (IS_STAGING ? "https://tools.staging.aiglossa.com" : "https://tools.aiglossa.com")
       + "/" + LANG + "/music/";
+  }
+  function accept(data) {
+    if (data.code !== 200) { msg(data.msg || "Failed", true); return false; }
+    if (data.data && data.data.access_token) localStorage.setItem("aig_token", data.data.access_token);
+    if (data.data && data.data.user && data.data.user.email) localStorage.setItem("aig_email", data.data.user.email);
+    location.href = next();
+    return true;
   }
   function call(path, body) {
     var payload = Object.assign({ app_key: "tools", device: device(), timestamp: Math.floor(Date.now() / 1000) }, body || {});
@@ -173,7 +181,7 @@
     if (mode === "password") {
       call("/auth/login", { provider: "password", account: $("email").value.trim(), code: $("pwd").value }).then(function (d) {
         if (d.code !== 200) { msg(d.msg || "Failed", true); return; }
-        location.href = next();
+        accept(d);
       }).catch(function () { msg("Network error", true); });
       return;
     }
@@ -205,7 +213,7 @@
     }
     call("/auth/login", { provider: "code", account: email, code: $("code").value.trim() }).then(function (d) {
       if (d.code !== 200) { msg(d.msg || "Failed", true); return; }
-      location.href = next();
+      accept(d);
     }).catch(function () { msg("Network error", true); });
   });
   $("google").addEventListener("click", function () {
