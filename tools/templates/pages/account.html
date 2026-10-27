@@ -176,6 +176,16 @@
   var TOKEN_KEY = "aig_token", EMAIL_KEY = "aig_email";
   var API = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "https://dev.aiglossa.com";
   var balanceUnits = -1;
+  var paymentReturnRequested = /[?&]paid=1/.test(location.search);
+  var paymentReturn = paymentReturnRequested && !!window.opener;
+  if (paymentReturnRequested) {
+    history.replaceState(null, "", location.pathname + location.hash);
+    if (paymentReturn) {
+      // Creem returns the checkout tab to this URL. The opener is the real
+      // account page, so this tab must close instead of entering its history.
+      setTimeout(function () { try { window.close(); } catch (e) {} }, 0);
+    }
+  }
   var $ = function (id) { return document.getElementById(id); };
   function token() { return localStorage.getItem(TOKEN_KEY) || ""; }
   function setToken(t) { if (t) localStorage.setItem(TOKEN_KEY, t); else localStorage.removeItem(TOKEN_KEY); }
@@ -308,7 +318,7 @@
 
   if (token()) {
     renderSignedIn();
-    if (new URLSearchParams(location.search).get("paid")) pollAfterPayment();
+    if (paymentReturnRequested) pollAfterPayment();
   } else {
     renderSignedOut();
   }
