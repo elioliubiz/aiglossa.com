@@ -271,12 +271,7 @@
   .mine.hidden{display:none}
   .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
   .minerow::-webkit-scrollbar{height:0}
-  .mtile{flex:0 0 auto;width:112px;border:1px solid var(--line);border-radius:10px;overflow:hidden;
-    background:rgba(255,255,255,.03);cursor:pointer;text-align:start;padding:0}
-  .mtile img{width:100%;height:66px;object-fit:cover;display:block}
-  .mtile .ph2{height:74px;display:grid;place-items:center;
-    background:linear-gradient(135deg,rgba(255,122,26,.10),rgba(255,255,255,.03))}
-  .mtile p{margin:6px 7px;font-size:10.5px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .minerow .rec{flex:0 0 180px}.minerow .tile{flex:0 0 180px;height:168px}.minerow .tile .meta{bottom:42px}.minerow .tile-actions{bottom:8px}
   .mtools{display:flex;gap:5px;padding:0 7px 7px}.mtools button{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);font:inherit;font-size:10px;border-radius:6px;padding:4px 6px;cursor:pointer}.mtools .mplay{width:26px;padding:4px 0}.mtools button:hover{color:var(--fg);border-color:rgba(255,255,255,.3)}
   .tile-actions{position:absolute;inset-inline:10px;bottom:9px;display:flex;gap:6px;z-index:3}.tile-actions button{border:1px solid rgba(255,255,255,.35);border-radius:7px;background:rgba(10,10,12,.68);backdrop-filter:blur(5px);color:#fff;font:inherit;font-size:11px;padding:6px 9px;cursor:pointer}.tile-actions button:hover{background:rgba(255,122,26,.85);border-color:transparent;color:#17110d}
   .rec-actions{display:flex;gap:6px;padding:0 10px 10px}.rec-actions button{flex:1;border:1px solid var(--line);border-radius:7px;background:rgba(255,255,255,.04);color:var(--muted);font:inherit;font-size:10px;padding:5px 6px;cursor:pointer}.rec-actions button:hover{color:var(--fg);border-color:rgba(255,255,255,.3)}
@@ -1490,20 +1485,22 @@
   }
 
   function mineTile(it, onPick) {
+    var hasCover = !!it.cover;
     var b = document.createElement("div");
-    b.className = "mtile";
+    b.className = hasCover ? "tile" : "rec";
     var d = fmtDur(Math.round((it.duration_ms || 0) / 1000));
-    b.innerHTML = (it.cover
-      ? '<img src="' + it.cover + '" alt="" loading="lazy">'
-      : '<div class="ph2"><div class="wv">' + wave() + '</div></div>') +
-      '<p class="dur">' + d + '</p>' +
-      '<p class="sum">' + (mineSummary(it.params || {}) || "") + '</p>' +
-      '<div class="mtools"><button type="button" class="mplay">▶</button>' +
-      '<button type="button" class="muse">' + (UI.applied || "Apply") + '</button></div>';
+    var summary = mineSummary(it.params || {}) || "";
+    b.innerHTML = hasCover
+      ? '<img src="' + it.cover + '" alt="" loading="lazy"><div class="shade"></div><div class="meta"><p class="t">' + UI.my_track + '</p><p class="d">' + d + ' · ' + summary + '</p></div>' +
+        '<div class="tile-actions"><button type="button" class="demo-play">▶</button><button type="button" class="demo-use">' + (UI.applied || "Apply") + '</button></div>'
+      : '<div class="wv">' + wave() + '<span class="rplay" aria-hidden="true">▶</span></div>' +
+        '<p class="rn">' + UI.my_track + '</p><p class="rd">' + d + (summary ? ' · ' + summary : '') + '</p>' +
+        '<div class="rec-actions"><button type="button" class="rec-play">▶</button><button type="button" class="rec-use">' + (UI.applied || "Apply") + '</button></div>';
     b.title = mineSummary(it.params || {});
-    b.addEventListener("click", function () { current = { kind: "result", id: it.id, audio: it.url, cover: it.cover, title: UI.my_track, meta: "mine" }; renderBig(); toggleAudio(it.url); });
-    b.querySelector(".mplay").addEventListener("click", function (e) { e.stopPropagation(); current = { kind: "result", id: it.id, audio: it.url, cover: it.cover, title: UI.my_track, meta: "mine" }; renderBig(); toggleAudio(it.url); });
-    b.querySelector(".muse").addEventListener("click", function (e) { e.stopPropagation(); onPick(it); });
+    function playMine() { current = { kind: "result", id: it.id, audio: it.url, cover: it.cover, title: UI.my_track, meta: "mine" }; renderBig(); toggleAudio(it.url); }
+    b.addEventListener("click", playMine);
+    b.querySelector(hasCover ? ".demo-play" : ".rec-play").addEventListener("click", function (e) { e.stopPropagation(); playMine(); });
+    b.querySelector(hasCover ? ".demo-use" : ".rec-use").addEventListener("click", function (e) { e.stopPropagation(); onPick(it); });
     return b;
   }
 
