@@ -245,6 +245,19 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.pay{width:min(440px,92vw)}
+  .packs{display:grid;gap:8px;margin-bottom:14px}
+  .pack{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;
+    border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.03);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .pack:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.08)}
+  .pack b{font-weight:600}
+  .toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:120;
+    background:rgba(20,22,26,.96);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+    padding:10px 16px;font-size:12.5px;color:var(--ink);box-shadow:0 12px 30px -14px rgba(0,0,0,.9);
+    transition:opacity .4s}
+  .toast.out{opacity:0}
+  .msgerr{margin:0 0 10px;font-size:12px;color:#ff9b9b;min-height:0}
   .mbox.wide{width:min(720px,92vw);max-height:min(78vh,720px);display:flex;flex-direction:column;
     overflow:hidden}
   .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
@@ -492,6 +505,19 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.pay{width:min(440px,92vw)}
+  .packs{display:grid;gap:8px;margin-bottom:14px}
+  .pack{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;
+    border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.03);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .pack:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.08)}
+  .pack b{font-weight:600}
+  .toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:120;
+    background:rgba(20,22,26,.96);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+    padding:10px 16px;font-size:12.5px;color:var(--ink);box-shadow:0 12px 30px -14px rgba(0,0,0,.9);
+    transition:opacity .4s}
+  .toast.out{opacity:0}
+  .msgerr{margin:0 0 10px;font-size:12px;color:#ff9b9b;min-height:0}
   .mbox.wide{width:min(720px,92vw);max-height:min(78vh,720px);display:flex;flex-direction:column;
     overflow:hidden}
   .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
@@ -759,6 +785,15 @@
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
   </main>
+  <div class="modal hidden" id="payModal" role="dialog" aria-modal="true">
+    <div class="mbox pay">
+      <div class="mhead"><b>Comprar créditos</b><span class="mhint" id="payBal"></span></div>
+      <div class="packs" id="payPacks"></div>
+      <p class="msgerr" id="payMsg"></p>
+      <div class="macts"><button type="button" class="mbtn" id="payClose">Cancelar</button></div>
+    </div>
+  </div>
+
   <div class="modal hidden" id="mineModal" role="dialog" aria-modal="true">
     <div class="mbox wide">
       <div class="mhead"><b>Minhas faixas</b><span class="mhint">Escolha um para reutilizar as configurações</span></div>
@@ -782,7 +817,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Gerador de música com IA — de foto a música, duração exata", "description": "Transforme uma foto ou descrição em música de fundo com 30 a 90 segundos exatos. A letra cita o que está na imagem, com vocais em 10 idiomas e loops sem corte.", "h1": "Criar uma faixa", "sub": "A partir de uma foto ou descrição. Duração exata, loops sem corte.", "drop": "Arraste ou escolha uma foto<br>a letra vai citar o que há nela", "generate": "Gerar faixa", "how_credits": "Como funcionam os créditos →", "grp_photo": "Ouça", "grp_recipe": "A partir de um uso", "download": "Baixar", "save_recipe": "Salvar como receita", "remove_photo": "Remover foto", "photo_here": "Sua foto aqui", "note": "Tudo à direita foi feito aqui", "legal_aup": "Uso aceitável", "legal_refund": "Reembolsos", "sign_in_first": "Entre para gerar", "generating": "Gerando… cerca de 20 segundos.", "just_generated": "Gerado agora", "your_track": "Sua faixa", "from_recipe": "De uma receita", "from_photo": "A partir de uma foto", "err_load": "Não foi possível carregar as opções", "done_in": "Pronto em {n} s", "gen_cost": "Gerar · {n}", "err_gen": "A geração falhou", "my_track": "Minha faixa", "err_net": "Erro de rede", "recipe_name": "Nome da receita", "err_save": "Falha ao salvar", "saved": "Salvo: {name}", "up_to": "Até {n}", "credits": "créditos", "guides_link": "Guias →", "guides_title": "Guias", "close": "Fechar", "loading": "Carregando…", "off": "Desligado", "loop_on": "Loop sem corte", "buy_credits": "Comprar créditos →", "desc_label": "Descrição (opcional)", "desc_ph": "Descreva a faixa: café chuvoso, piano suave", "mode_photo": "Foto", "mode_text": "Texto", "field_density": "Densidade do arranjo", "opt_sparse": "Esparso", "opt_medium": "Médio", "opt_full": "Denso", "pro_title": "Opções avançadas", "grp_photo_sub": "Foto → letra → faixa", "grp_recipe_sub": "Escolha o uso e os ajustes vêm prontos", "recipe_names": {"short-form-cut": "Kurzclip", "hook-sting": "Opener-Hook", "product-loop": "Produkt-Loop", "podcast-bed": "Podcast-Bett", "documentary-underscore": "Doku-Untermalung", "game-menu-loop": "Menü-Loop", "calm-focus": "Fokus", "kids-learning": "Kinder & Lernen"}, "applied": "Usando", "current_recipe": "Predefinição atual", "mine_title": "Minhas faixas", "share_link": "Compartilhar link", "dl_audio": "Baixar áudio", "copied": "Copiado", "shared_note": "Você está ouvindo uma faixa compartilhada — crie a sua abaixo", "my_account": "Conta", "balance": "Saldo", "pricing_label": "Preços", "confirm_gen": "Gerar uma faixa de {sec}s? Isso gasta {n}.", "err_insufficient": "Créditos insuficientes", "topup_hint": "Recarregue para continuar gerando.", "topup_cta": "Comprar créditos", "cancel": "Cancelar", "confirm": "Confirmar", "not_signed_in": "Não conectado", "traveler": "Viajante", "view_all": "Ver tudo", "my_works_pick": "Escolha um para reutilizar as configurações", "li1": "Faixa de 30 s = 45 créditos, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Gerações que falham são reembolsadas automaticamente.", "li3": "Os créditos não expiram e valem para todas as ferramentas.", "li4": "Os pagamentos são processados pela Creem, nosso merchant of record.", "li5": "Créditos não usados podem ser reembolsados em até 14 dias.", "refund_link": "Política de reembolso"}</script>
+<script type="application/json" id="ui">{"title": "Gerador de música com IA — de foto a música, duração exata", "description": "Transforme uma foto ou descrição em música de fundo com 30 a 90 segundos exatos. A letra cita o que está na imagem, com vocais em 10 idiomas e loops sem corte.", "h1": "Criar uma faixa", "sub": "A partir de uma foto ou descrição. Duração exata, loops sem corte.", "drop": "Arraste ou escolha uma foto<br>a letra vai citar o que há nela", "generate": "Gerar faixa", "how_credits": "Como funcionam os créditos →", "grp_photo": "Ouça", "grp_recipe": "A partir de um uso", "download": "Baixar", "save_recipe": "Salvar como receita", "remove_photo": "Remover foto", "photo_here": "Sua foto aqui", "note": "Tudo à direita foi feito aqui", "legal_aup": "Uso aceitável", "legal_refund": "Reembolsos", "sign_in_first": "Entre para gerar", "generating": "Gerando… cerca de 20 segundos.", "just_generated": "Gerado agora", "your_track": "Sua faixa", "from_recipe": "De uma receita", "from_photo": "A partir de uma foto", "err_load": "Não foi possível carregar as opções", "done_in": "Pronto em {n} s", "gen_cost": "Gerar · {n}", "err_gen": "A geração falhou", "my_track": "Minha faixa", "err_net": "Erro de rede", "recipe_name": "Nome da receita", "err_save": "Falha ao salvar", "saved": "Salvo: {name}", "up_to": "Até {n}", "credits": "créditos", "guides_link": "Guias →", "guides_title": "Guias", "close": "Fechar", "loading": "Carregando…", "off": "Desligado", "loop_on": "Loop sem corte", "buy_credits": "Comprar créditos →", "desc_label": "Descrição (opcional)", "desc_ph": "Descreva a faixa: café chuvoso, piano suave", "mode_photo": "Foto", "mode_text": "Texto", "field_density": "Densidade do arranjo", "opt_sparse": "Esparso", "opt_medium": "Médio", "opt_full": "Denso", "pro_title": "Opções avançadas", "grp_photo_sub": "Foto → letra → faixa", "grp_recipe_sub": "Escolha o uso e os ajustes vêm prontos", "recipe_names": {"short-form-cut": "Kurzclip", "hook-sting": "Opener-Hook", "product-loop": "Produkt-Loop", "podcast-bed": "Podcast-Bett", "documentary-underscore": "Doku-Untermalung", "game-menu-loop": "Menü-Loop", "calm-focus": "Fokus", "kids-learning": "Kinder & Lernen"}, "applied": "Usando", "current_recipe": "Predefinição atual", "mine_title": "Minhas faixas", "share_link": "Compartilhar link", "dl_audio": "Baixar áudio", "copied": "Copiado", "shared_note": "Você está ouvindo uma faixa compartilhada — crie a sua abaixo", "my_account": "Conta", "balance": "Saldo", "pricing_label": "Preços", "confirm_gen": "Gerar uma faixa de {sec}s? Isso gasta {n}.", "err_insufficient": "Créditos insuficientes", "topup_hint": "Recarregue para continuar gerando.", "topup_cta": "Comprar créditos", "cancel": "Cancelar", "confirm": "Confirmar", "not_signed_in": "Não conectado", "traveler": "Viajante", "view_all": "Ver tudo", "my_works_pick": "Escolha um para reutilizar as configurações", "pay_title": "Comprar créditos", "pay_success": "Pagamento recebido — créditos adicionados.", "pay_opening": "Abrindo o pagamento…", "li1": "Faixa de 30 s = 45 créditos, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Gerações que falham são reembolsadas automaticamente.", "li3": "Os créditos não expiram e valem para todas as ferramentas.", "li4": "Os pagamentos são processados pela Creem, nosso merchant of record.", "li5": "Créditos não usados podem ser reembolsados em até 14 dias.", "refund_link": "Política de reembolso"}</script>
 <script>
 (function () {
   "use strict";
@@ -1540,7 +1575,50 @@
     $("mcancel").addEventListener("click", close);
   }
 
-  function goTopup() { location.href = ROOT + "/" + LANG + "/pricing.html"; }
+  var PACKS = [
+    { credits: 180, price: "$2.99" }, { credits: 360, price: "$4.99" },
+    { credits: 750, price: "$9.99" }, { credits: 1500, price: "$19.99" },
+    { credits: 4000, price: "$49.99" }
+  ];
+
+  function renderPacks() {
+    var box = $("payPacks"); if (!box) return;
+    box.innerHTML = "";
+    PACKS.forEach(function (p) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "pack";
+      b.innerHTML = "<b>" + p.credits + " " + UI.credits + "</b><span>" + p.price + "</span>";
+      b.addEventListener("click", function () { startCheckout(p.credits); });
+      box.appendChild(b);
+    });
+  }
+
+  function openPay() {
+    if (!sessionOk) { needLogin(); return; }
+    $("payBal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+    renderPacks();
+    $("payMsg").textContent = "";
+    $("payModal").classList.remove("hidden");
+  }
+
+  function startCheckout(credits) {
+    $("payMsg").textContent = UI.pay_opening;
+    var back = location.origin + location.pathname + "?paid=1";
+    call("/ai/music/checkout", { credits: credits, success_url: back }, true).then(function (d) {
+      if (d.code === 200 && d.data && d.data.checkout_url) { location.href = d.data.checkout_url; return; }
+      $("payMsg").textContent = d.msg || UI.err_net;
+    }).catch(function () { $("payMsg").textContent = UI.err_net; });
+  }
+
+  function toast(text) {
+    var t = document.createElement("div");
+    t.className = "toast"; t.textContent = text;
+    document.body.appendChild(t);
+    setTimeout(function () { t.classList.add("out"); }, 2600);
+    setTimeout(function () { t.remove(); }, 3200);
+  }
+
+  function goTopup() { openPay(); }
 
   // 余额不足：弹窗提示 + 去充值，不在左栏常驻
   function showTopup() {
@@ -1559,6 +1637,9 @@
     ask(txt, generate);
   }
 
+  $("payClose").addEventListener("click", function () { $("payModal").classList.add("hidden"); });
+  $("payModal").addEventListener("click", function (e) { if (e.target === $("payModal")) $("payModal").classList.add("hidden"); });
+
   $("mineClose").addEventListener("click", function () { $("mineModal").classList.add("hidden"); });
   $("mineModal").addEventListener("click", function (e) {
     if (e.target === $("mineModal")) $("mineModal").classList.add("hidden");
@@ -1571,7 +1652,7 @@
   var GUIDE_URL = "guides/";
   if ($("priceLink")) {
     $("priceLink").href = PRICING_URL;
-    $("priceLink").addEventListener("click", function (e) { if (!sessionOk) { e.preventDefault(); needLogin(); } });
+    $("priceLink").addEventListener("click", function (e) { e.preventDefault(); openPay(); });
   }
   if ($("guideLink")) $("guideLink").href = GUIDE_URL;
   if ($("avBtn")) $("avBtn").addEventListener("click", function () {
@@ -1580,6 +1661,10 @@
   });
   $("bal").textContent = UI.not_signed_in;
   renderAvatar({});
+  if (/[?&]paid=1/.test(location.search)) {
+    history.replaceState(null, "", location.pathname + location.hash);
+    setTimeout(function () { checkSession().then(function (ok) { if (ok) toast(UI.pay_success); }); }, 600);
+  }
   checkSession().then(function (ok) {
     syncCost();
     if (ok) { loadMine(); restoreDraft(); }

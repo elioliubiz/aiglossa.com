@@ -659,6 +659,7 @@ def main() -> int:
                     out["lede_buy"] = esc(source[lang]["pricing"]["lede_buy"])
                     out["li3_generic"] = esc(source[lang]["pricing"]["li3_generic"])
                     out["continue_use"] = esc(source[lang]["pricing"]["continue_use"])
+                    out["pay_success"] = esc(source[lang]["make"]["pay_success"])
                     out["lang_label"] = esc(marketing[lang]["langLabel"])
                     out["current_name"] = esc(languages[lang]["name"])
                     return out
@@ -672,6 +673,8 @@ def main() -> int:
                     out["login_href"] = f"/{lang}/login.html"
                     out["music_href"] = "https://tools.aiglossa.com/" + lang + "/music/"  # 由页面脚本按环境改写
                     out["pricing_href"] = f"/{lang}/pricing.html"
+                    for k in ("pay_title", "pay_opening", "credits", "cancel"):
+                        out[k] = esc(source[lang]["make"].get(k) or source[lang]["account"].get(k) or "")
                     return out
 
                 values_builder = webaccount_values
@@ -711,6 +714,7 @@ def main() -> int:
                     out["lede_buy"] = esc(source[lang]["pricing"]["lede_buy"])
                     out["li3_generic"] = esc(source[lang]["pricing"]["li3_generic"])
                     out["continue_use"] = esc(source[lang]["pricing"]["continue_use"])
+                    out["pay_success"] = esc(source[lang]["make"]["pay_success"])
                     out["refund_label"] = esc(source[lang]["pricing"]["refund_link"])
                     out["lang_label"] = esc(marketing[lang]["langLabel"])
                     out["current_name"] = esc(languages[lang]["name"])

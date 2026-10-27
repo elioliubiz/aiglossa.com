@@ -245,6 +245,19 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.pay{width:min(440px,92vw)}
+  .packs{display:grid;gap:8px;margin-bottom:14px}
+  .pack{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;
+    border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.03);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .pack:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.08)}
+  .pack b{font-weight:600}
+  .toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:120;
+    background:rgba(20,22,26,.96);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+    padding:10px 16px;font-size:12.5px;color:var(--ink);box-shadow:0 12px 30px -14px rgba(0,0,0,.9);
+    transition:opacity .4s}
+  .toast.out{opacity:0}
+  .msgerr{margin:0 0 10px;font-size:12px;color:#ff9b9b;min-height:0}
   .mbox.wide{width:min(720px,92vw);max-height:min(78vh,720px);display:flex;flex-direction:column;
     overflow:hidden}
   .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
@@ -492,6 +505,19 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.pay{width:min(440px,92vw)}
+  .packs{display:grid;gap:8px;margin-bottom:14px}
+  .pack{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;
+    border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.03);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .pack:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.08)}
+  .pack b{font-weight:600}
+  .toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:120;
+    background:rgba(20,22,26,.96);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+    padding:10px 16px;font-size:12.5px;color:var(--ink);box-shadow:0 12px 30px -14px rgba(0,0,0,.9);
+    transition:opacity .4s}
+  .toast.out{opacity:0}
+  .msgerr{margin:0 0 10px;font-size:12px;color:#ff9b9b;min-height:0}
   .mbox.wide{width:min(720px,92vw);max-height:min(78vh,720px);display:flex;flex-direction:column;
     overflow:hidden}
   .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
@@ -759,6 +785,15 @@
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
   </main>
+  <div class="modal hidden" id="payModal" role="dialog" aria-modal="true">
+    <div class="mbox pay">
+      <div class="mhead"><b>購買額度</b><span class="mhint" id="payBal"></span></div>
+      <div class="packs" id="payPacks"></div>
+      <p class="msgerr" id="payMsg"></p>
+      <div class="macts"><button type="button" class="mbtn" id="payClose">取消</button></div>
+    </div>
+  </div>
+
   <div class="modal hidden" id="mineModal" role="dialog" aria-modal="true">
     <div class="mbox wide">
       <div class="mhead"><b>我的作品</b><span class="mhint">選一個，重用它當時的參數</span></div>
@@ -782,7 +817,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "AI 音樂生成 — 照片變歌曲，長度精確", "description": "用照片或描述生成 30–90 秒精確長度的背景音樂。歌詞唱出照片裡的內容，支援 10 種語言人聲與無縫循環。", "h1": "做一首曲子", "sub": "從照片或描述開始。長度精確、循環無縫。", "drop": "拖入或選擇照片<br>歌詞會唱出照片裡的內容", "generate": "生成曲子", "how_credits": "額度怎麼算 →", "grp_photo": "聽聽效果", "grp_recipe": "從場景開始", "download": "下載", "save_recipe": "存為配方", "remove_photo": "移除照片", "photo_here": "你的照片放這裡", "note": "右邊的東西都是在這裡做的", "legal_aup": "可接受使用", "legal_refund": "退款政策", "sign_in_first": "登入後即可生成", "generating": "生成中……約 20 秒。", "just_generated": "剛生成", "your_track": "你的曲子", "from_recipe": "來自配方", "from_photo": "由照片生成", "err_load": "無法載入選項", "done_in": "{n} 秒完成", "gen_cost": "生成 · {n}", "err_gen": "生成失敗", "my_track": "我的曲子", "err_net": "網路錯誤", "recipe_name": "配方名稱", "err_save": "儲存失敗", "saved": "已儲存：{name}", "up_to": "最多 {n}", "credits": "額度", "guides_link": "指南 →", "guides_title": "指南", "close": "關閉", "loading": "載入中…", "off": "關閉", "loop_on": "無縫循環", "buy_credits": "購買額度 →", "desc_label": "補充描述（可選）", "desc_ph": "描述你想要的曲子，例如：雨天的咖啡館，鋼琴為主", "mode_photo": "用照片", "mode_text": "用文字", "field_density": "編曲密度", "opt_sparse": "稀疏", "opt_medium": "適中", "opt_full": "密集", "pro_title": "專業選項", "grp_photo_sub": "照片 → 歌詞 → 曲子", "grp_recipe_sub": "選一個用途，參數已經配好", "recipe_names": {"short-form-cut": "快剪短视频", "hook-sting": "Gancho de apertura", "product-loop": "Bucle de producto", "podcast-bed": "Base para pódcast", "documentary-underscore": "Base documental", "game-menu-loop": "Bucle de menú", "calm-focus": "Concentración", "kids-learning": "Infantil y aprendizaje"}, "applied": "將使用", "current_recipe": "目前配方", "mine_title": "我的作品", "share_link": "分享連結", "dl_audio": "下載音訊", "copied": "已複製", "shared_note": "你正在聽一首分享的曲子，下面可以做你自己的", "my_account": "帳戶", "balance": "餘額", "pricing_label": "價格", "confirm_gen": "生成一首 {sec} 秒的曲子？將消耗 {n}。", "err_insufficient": "額度不足", "topup_hint": "儲值後即可繼續生成。", "topup_cta": "去儲值", "cancel": "取消", "confirm": "確定", "not_signed_in": "未登入", "traveler": "旅行者", "view_all": "查看全部", "my_works_pick": "選一個，重用它當時的參數", "li1": "30 秒 = 45 額度，45 秒 = 64，60 秒 = 85，75 秒 = 103，90 秒 = 120。", "li2": "生成失敗會自動退回額度。", "li3": "額度永不過期，所有工具通用。", "li4": "付款由 merchant of record（記錄商戶）Creem 處理。", "li5": "未使用的額度可在 14 天內申請退款。", "refund_link": "退款政策"}</script>
+<script type="application/json" id="ui">{"title": "AI 音樂生成 — 照片變歌曲，長度精確", "description": "用照片或描述生成 30–90 秒精確長度的背景音樂。歌詞唱出照片裡的內容，支援 10 種語言人聲與無縫循環。", "h1": "做一首曲子", "sub": "從照片或描述開始。長度精確、循環無縫。", "drop": "拖入或選擇照片<br>歌詞會唱出照片裡的內容", "generate": "生成曲子", "how_credits": "額度怎麼算 →", "grp_photo": "聽聽效果", "grp_recipe": "從場景開始", "download": "下載", "save_recipe": "存為配方", "remove_photo": "移除照片", "photo_here": "你的照片放這裡", "note": "右邊的東西都是在這裡做的", "legal_aup": "可接受使用", "legal_refund": "退款政策", "sign_in_first": "登入後即可生成", "generating": "生成中……約 20 秒。", "just_generated": "剛生成", "your_track": "你的曲子", "from_recipe": "來自配方", "from_photo": "由照片生成", "err_load": "無法載入選項", "done_in": "{n} 秒完成", "gen_cost": "生成 · {n}", "err_gen": "生成失敗", "my_track": "我的曲子", "err_net": "網路錯誤", "recipe_name": "配方名稱", "err_save": "儲存失敗", "saved": "已儲存：{name}", "up_to": "最多 {n}", "credits": "額度", "guides_link": "指南 →", "guides_title": "指南", "close": "關閉", "loading": "載入中…", "off": "關閉", "loop_on": "無縫循環", "buy_credits": "購買額度 →", "desc_label": "補充描述（可選）", "desc_ph": "描述你想要的曲子，例如：雨天的咖啡館，鋼琴為主", "mode_photo": "用照片", "mode_text": "用文字", "field_density": "編曲密度", "opt_sparse": "稀疏", "opt_medium": "適中", "opt_full": "密集", "pro_title": "專業選項", "grp_photo_sub": "照片 → 歌詞 → 曲子", "grp_recipe_sub": "選一個用途，參數已經配好", "recipe_names": {"short-form-cut": "快剪短视频", "hook-sting": "Gancho de apertura", "product-loop": "Bucle de producto", "podcast-bed": "Base para pódcast", "documentary-underscore": "Base documental", "game-menu-loop": "Bucle de menú", "calm-focus": "Concentración", "kids-learning": "Infantil y aprendizaje"}, "applied": "將使用", "current_recipe": "目前配方", "mine_title": "我的作品", "share_link": "分享連結", "dl_audio": "下載音訊", "copied": "已複製", "shared_note": "你正在聽一首分享的曲子，下面可以做你自己的", "my_account": "帳戶", "balance": "餘額", "pricing_label": "價格", "confirm_gen": "生成一首 {sec} 秒的曲子？將消耗 {n}。", "err_insufficient": "額度不足", "topup_hint": "儲值後即可繼續生成。", "topup_cta": "去儲值", "cancel": "取消", "confirm": "確定", "not_signed_in": "未登入", "traveler": "旅行者", "view_all": "查看全部", "my_works_pick": "選一個，重用它當時的參數", "pay_title": "購買額度", "pay_success": "付款成功，額度已到帳。", "pay_opening": "正在跳轉付款…", "li1": "30 秒 = 45 額度，45 秒 = 64，60 秒 = 85，75 秒 = 103，90 秒 = 120。", "li2": "生成失敗會自動退回額度。", "li3": "額度永不過期，所有工具通用。", "li4": "付款由 merchant of record（記錄商戶）Creem 處理。", "li5": "未使用的額度可在 14 天內申請退款。", "refund_link": "退款政策"}</script>
 <script>
 (function () {
   "use strict";
@@ -1540,7 +1575,50 @@
     $("mcancel").addEventListener("click", close);
   }
 
-  function goTopup() { location.href = ROOT + "/" + LANG + "/pricing.html"; }
+  var PACKS = [
+    { credits: 180, price: "$2.99" }, { credits: 360, price: "$4.99" },
+    { credits: 750, price: "$9.99" }, { credits: 1500, price: "$19.99" },
+    { credits: 4000, price: "$49.99" }
+  ];
+
+  function renderPacks() {
+    var box = $("payPacks"); if (!box) return;
+    box.innerHTML = "";
+    PACKS.forEach(function (p) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "pack";
+      b.innerHTML = "<b>" + p.credits + " " + UI.credits + "</b><span>" + p.price + "</span>";
+      b.addEventListener("click", function () { startCheckout(p.credits); });
+      box.appendChild(b);
+    });
+  }
+
+  function openPay() {
+    if (!sessionOk) { needLogin(); return; }
+    $("payBal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+    renderPacks();
+    $("payMsg").textContent = "";
+    $("payModal").classList.remove("hidden");
+  }
+
+  function startCheckout(credits) {
+    $("payMsg").textContent = UI.pay_opening;
+    var back = location.origin + location.pathname + "?paid=1";
+    call("/ai/music/checkout", { credits: credits, success_url: back }, true).then(function (d) {
+      if (d.code === 200 && d.data && d.data.checkout_url) { location.href = d.data.checkout_url; return; }
+      $("payMsg").textContent = d.msg || UI.err_net;
+    }).catch(function () { $("payMsg").textContent = UI.err_net; });
+  }
+
+  function toast(text) {
+    var t = document.createElement("div");
+    t.className = "toast"; t.textContent = text;
+    document.body.appendChild(t);
+    setTimeout(function () { t.classList.add("out"); }, 2600);
+    setTimeout(function () { t.remove(); }, 3200);
+  }
+
+  function goTopup() { openPay(); }
 
   // 余额不足：弹窗提示 + 去充值，不在左栏常驻
   function showTopup() {
@@ -1559,6 +1637,9 @@
     ask(txt, generate);
   }
 
+  $("payClose").addEventListener("click", function () { $("payModal").classList.add("hidden"); });
+  $("payModal").addEventListener("click", function (e) { if (e.target === $("payModal")) $("payModal").classList.add("hidden"); });
+
   $("mineClose").addEventListener("click", function () { $("mineModal").classList.add("hidden"); });
   $("mineModal").addEventListener("click", function (e) {
     if (e.target === $("mineModal")) $("mineModal").classList.add("hidden");
@@ -1571,7 +1652,7 @@
   var GUIDE_URL = "guides/";
   if ($("priceLink")) {
     $("priceLink").href = PRICING_URL;
-    $("priceLink").addEventListener("click", function (e) { if (!sessionOk) { e.preventDefault(); needLogin(); } });
+    $("priceLink").addEventListener("click", function (e) { e.preventDefault(); openPay(); });
   }
   if ($("guideLink")) $("guideLink").href = GUIDE_URL;
   if ($("avBtn")) $("avBtn").addEventListener("click", function () {
@@ -1580,6 +1661,10 @@
   });
   $("bal").textContent = UI.not_signed_in;
   renderAvatar({});
+  if (/[?&]paid=1/.test(location.search)) {
+    history.replaceState(null, "", location.pathname + location.hash);
+    setTimeout(function () { checkSession().then(function (ok) { if (ok) toast(UI.pay_success); }); }, 600);
+  }
   checkSession().then(function (ok) {
     syncCost();
     if (ok) { loadMine(); restoreDraft(); }

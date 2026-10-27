@@ -83,7 +83,7 @@
       <p class="note">크레딧은 aiglossa의 모든 제품에서 사용할 수 있습니다.</p>
       <div class="row">
         <a class="btn primary" href="https://tools.aiglossa.com/ko/music/">음악 만들기 →</a>
-        <a class="btn" href="/ko/pricing.html">크레딧 구매 →</a>
+        <a class="btn" href="/ko/pricing.html" id="buyBtn">크레딧 구매 →</a>
       </div>
     </div>
 
@@ -163,6 +163,65 @@
   $("out") && $("out").addEventListener("click", function () {
     call("/auth/logout", {}, true).then(function () { location.reload(); });
   });
+})();
+</script>
+<div class="modal hidden" id="payModal">
+  <div class="mbox">
+    <h2 style="margin-bottom:14px">크레딧 구매</h2>
+    <div class="packs" id="payPacks"></div>
+    <p class="msg" id="payMsg"></p>
+    <div class="row" style="margin-top:12px">
+      <button class="btn" id="payClose" type="button">취소</button>
+    </div>
+  </div>
+</div>
+<style>
+  .modal{position:fixed;inset:0;z-index:80;display:grid;place-items:center;background:rgba(8,9,11,.66);backdrop-filter:blur(6px)}
+  .modal.hidden{display:none}
+  .mbox{width:min(420px,92vw);background:#15171b;border:1px solid var(--line);border-radius:16px;padding:22px}
+  .packs{display:grid;gap:8px}
+  .pack{display:flex;justify-content:space-between;padding:12px 14px;border:1px solid var(--line);
+    border-radius:10px;background:rgba(255,255,255,.03);color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .pack:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.08)}
+</style>
+<script>
+(function () {
+  var PACKS = [180,360,750,1500,4000].map(function (c) { return { credits: c, price: {180:"$2.99",360:"$4.99",750:"$9.99",1500:"$19.99",4000:"$49.99"}[c] }; });
+  var CREDITS_LABEL = "크레딧", OPENING = "결제 페이지로 이동 중…";
+  function device() {
+    var v = localStorage.getItem("aig_device");
+    if (!v) { v = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())); localStorage.setItem("aig_device", v); }
+    return v;
+  }
+  function post(path, body) {
+    var payload = Object.assign({ app_key: "tools", device: device(), timestamp: Math.floor(Date.now() / 1000) }, body || {});
+    return fetch(API + path, { method: "POST", credentials: "include",
+      headers: { "Content-Type": "application/json", "X-Client": "web" }, body: JSON.stringify(payload) })
+      .then(function (r) { return r.json(); });
+  }
+  var modal = document.getElementById("payModal");
+  function open() {
+    var box = document.getElementById("payPacks"); box.innerHTML = "";
+    PACKS.forEach(function (p) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "pack";
+      b.innerHTML = "<b>" + p.credits + " " + CREDITS_LABEL + "</b><span>" + p.price + "</span>";
+      b.addEventListener("click", function () { checkout(p.credits); });
+      box.appendChild(b);
+    });
+    modal.classList.remove("hidden");
+  }
+  document.getElementById("buyBtn").addEventListener("click", function (e) { e.preventDefault(); open(); });
+  document.getElementById("payClose").addEventListener("click", function () { modal.classList.add("hidden"); });
+  modal.addEventListener("click", function (e) { if (e.target === modal) modal.classList.add("hidden"); });
+  function checkout(credits) {
+    document.getElementById("payMsg").textContent = OPENING;
+    var back = location.origin + location.pathname + "?paid=1";
+    post("/ai/music/checkout", { credits: credits, success_url: back }).then(function (d) {
+      if (d.code === 200 && d.data && d.data.checkout_url) { location.href = d.data.checkout_url; return; }
+      document.getElementById("payMsg").textContent = d.msg || "";
+    }).catch(function () {});
+  }
 })();
 </script>
 

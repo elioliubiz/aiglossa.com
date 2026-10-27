@@ -84,6 +84,9 @@
 .btn-continue{margin-top:16px;width:100%;padding:14px;border-radius:11px;border:1px solid var(--line);
   background:rgba(255,255,255,.05);color:var(--fg);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 .btn-continue:hover{background:rgba(255,255,255,.09)}
+.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:120;
+  background:rgba(20,22,26,.96);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+  padding:10px 16px;font-size:12.5px;color:var(--fg);box-shadow:0 12px 30px -14px rgba(0,0,0,.9)}
 </style>
 <script type="application/json" id="ui">{"title": "Krediler ve fiyatlar — aiglossa tools", "description": "aiglossa tools için ön ödemeli kredi. 30 saniyelik parça 45 kredi; daha uzunları daha pahalı.", "h1": "Krediler", "lede": "Ön ödemeli kredi, tüm araçlarda geçerli. Süresi dolmaz, abonelik yok — yalnızca ürettiğiniz kadar ödersiniz.", "side_title": "Krediler nasıl işler", "li1": "30 sn parça = 45 kredi, 45 sn = 64, 60 sn = 85, 75 sn = 103, 90 sn = 120.", "li2": "Başarısız üretimler otomatik iade edilir.", "li3": "Krediler süresi dolmaz ve tüm araçlarda geçerlidir.", "li4": "Ödemeler merchant of record'umuz Creem tarafından işlenir.", "li5": "Kullanılmayan krediler 14 gün içinde iade edilebilir.", "refund_link": "İade politikası", "back": "← Araçlara dön", "opening": "Ödeme açılıyor…", "err": "Ödeme başlatılamadı", "neterr": "Ağ hatası", "per": "≈ {n} × 30 sn parça", "kicker": "aiglossa tools", "refund_note": "Kullanılan krediler iade edilmez. Yalnızca ihtiyacınız kadar satın alın.", "back_account": "Hesaba dön", "lede_buy": "Ön ödemeli kredi, abonelik yok. Size uygun paketi seçin.", "li3_generic": "Krediler süresi dolmaz.", "continue_use": "Devam et", "balance": "Bakiye", "credits": "kredi", "not_signed_in": "Giriş yapılmadı"}</script>
 </head>
@@ -98,7 +101,6 @@
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">Kullanılan krediler iade edilmez. Yalnızca ihtiyacınız kadar satın alın.</p>
-      <button class="btn-continue" id="cont" type="button">Devam et</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
     </div>
 
@@ -192,10 +194,18 @@
       : UI.not_signed_in;
   }).catch(function () {});
 
-  document.getElementById("cont").addEventListener("click", function () {
-    if (history.length > 1) history.back();
-    else location.href = "/" + LANG + "/";
-  });
+  // 支付回跳：提示已到账，并尝试回到上一页（如果是从站内来的）
+  if (/[?&]paid=1/.test(location.search)) {
+    var t = document.createElement("div");
+    t.className = "toast"; t.textContent = "Ödeme alındı — krediler eklendi.";
+    document.body.appendChild(t);
+    history.replaceState(null, "", location.pathname);
+    if (document.referrer && document.referrer.indexOf(location.host) >= 0) {
+      setTimeout(function () { history.back(); }, 1400);
+    } else {
+      setTimeout(function () { t.remove(); }, 3000);
+    }
+  }
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

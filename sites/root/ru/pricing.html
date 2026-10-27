@@ -84,6 +84,9 @@
 .btn-continue{margin-top:16px;width:100%;padding:14px;border-radius:11px;border:1px solid var(--line);
   background:rgba(255,255,255,.05);color:var(--fg);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 .btn-continue:hover{background:rgba(255,255,255,.09)}
+.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:120;
+  background:rgba(20,22,26,.96);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+  padding:10px 16px;font-size:12.5px;color:var(--fg);box-shadow:0 12px 30px -14px rgba(0,0,0,.9)}
 </style>
 <script type="application/json" id="ui">{"title": "Кредиты и цены — aiglossa tools", "description": "Предоплатные кредиты для aiglossa tools. Трек на 30 секунд стоит 45 кредитов; длинные — дороже.", "h1": "Кредиты", "lede": "Предоплатные кредиты, общие для всех инструментов. Без срока действия и без подписки — платите только за то, что создаёте.", "side_title": "Как работают кредиты", "li1": "Трек 30 с = 45 кредитов, 45 с = 64, 60 с = 85, 75 с = 103, 90 с = 120.", "li2": "Неудачные генерации возвращаются автоматически.", "li3": "Кредиты не сгорают и действуют во всех инструментах.", "li4": "Платежи обрабатывает Creem — наш merchant of record.", "li5": "Неиспользованные кредиты можно вернуть в течение 14 дней.", "refund_link": "Политика возврата", "back": "← Назад к инструментам", "opening": "Открываем оплату…", "err": "Не удалось начать оплату", "neterr": "Ошибка сети", "per": "≈ {n} треков по 30 с", "kicker": "aiglossa tools", "refund_note": "Использованные кредиты не возвращаются. Покупайте столько, сколько нужно.", "back_account": "Назад в аккаунт", "lede_buy": "Предоплаченные кредиты без подписки. Выберите подходящий пакет.", "li3_generic": "Кредиты не сгорают.", "continue_use": "Продолжить", "balance": "Баланс", "credits": "кредитов", "not_signed_in": "Не выполнен вход"}</script>
 </head>
@@ -98,7 +101,6 @@
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">Использованные кредиты не возвращаются. Покупайте столько, сколько нужно.</p>
-      <button class="btn-continue" id="cont" type="button">Продолжить</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
     </div>
 
@@ -192,10 +194,18 @@
       : UI.not_signed_in;
   }).catch(function () {});
 
-  document.getElementById("cont").addEventListener("click", function () {
-    if (history.length > 1) history.back();
-    else location.href = "/" + LANG + "/";
-  });
+  // 支付回跳：提示已到账，并尝试回到上一页（如果是从站内来的）
+  if (/[?&]paid=1/.test(location.search)) {
+    var t = document.createElement("div");
+    t.className = "toast"; t.textContent = "Оплата получена — кредиты зачислены.";
+    document.body.appendChild(t);
+    history.replaceState(null, "", location.pathname);
+    if (document.referrer && document.referrer.indexOf(location.host) >= 0) {
+      setTimeout(function () { history.back(); }, 1400);
+    } else {
+      setTimeout(function () { t.remove(); }, 3000);
+    }
+  }
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

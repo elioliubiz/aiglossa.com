@@ -245,6 +245,19 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.pay{width:min(440px,92vw)}
+  .packs{display:grid;gap:8px;margin-bottom:14px}
+  .pack{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;
+    border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.03);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .pack:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.08)}
+  .pack b{font-weight:600}
+  .toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:120;
+    background:rgba(20,22,26,.96);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+    padding:10px 16px;font-size:12.5px;color:var(--ink);box-shadow:0 12px 30px -14px rgba(0,0,0,.9);
+    transition:opacity .4s}
+  .toast.out{opacity:0}
+  .msgerr{margin:0 0 10px;font-size:12px;color:#ff9b9b;min-height:0}
   .mbox.wide{width:min(720px,92vw);max-height:min(78vh,720px);display:flex;flex-direction:column;
     overflow:hidden}
   .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
@@ -492,6 +505,19 @@
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
   .mbtn.primary{background:var(--acc);border-color:transparent;color:#120a02;font-weight:700}
+  .mbox.pay{width:min(440px,92vw)}
+  .packs{display:grid;gap:8px;margin-bottom:14px}
+  .pack{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;
+    border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.03);
+    color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
+  .pack:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.08)}
+  .pack b{font-weight:600}
+  .toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:120;
+    background:rgba(20,22,26,.96);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+    padding:10px 16px;font-size:12.5px;color:var(--ink);box-shadow:0 12px 30px -14px rgba(0,0,0,.9);
+    transition:opacity .4s}
+  .toast.out{opacity:0}
+  .msgerr{margin:0 0 10px;font-size:12px;color:#ff9b9b;min-height:0}
   .mbox.wide{width:min(720px,92vw);max-height:min(78vh,720px);display:flex;flex-direction:column;
     overflow:hidden}
   .mhead{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
@@ -759,6 +785,15 @@
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
   </main>
+  <div class="modal hidden" id="payModal" role="dialog" aria-modal="true">
+    <div class="mbox pay">
+      <div class="mhead"><b>Beli kredit</b><span class="mhint" id="payBal"></span></div>
+      <div class="packs" id="payPacks"></div>
+      <p class="msgerr" id="payMsg"></p>
+      <div class="macts"><button type="button" class="mbtn" id="payClose">Batal</button></div>
+    </div>
+  </div>
+
   <div class="modal hidden" id="mineModal" role="dialog" aria-modal="true">
     <div class="mbox wide">
       <div class="mhead"><b>Trek saya</b><span class="mhint">Pilih satu untuk memakai ulang pengaturannya</span></div>
@@ -782,7 +817,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi", "description": "Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus.", "h1": "Buat lagu", "sub": "Dari foto atau deskripsi. Durasi presisi, loop mulus.", "drop": "Seret atau pilih foto<br>lirik akan menyebut isinya", "generate": "Buat lagu", "how_credits": "Cara kerja kredit →", "grp_photo": "Dengarkan", "grp_recipe": "Mulai dari kebutuhan", "download": "Unduh", "save_recipe": "Simpan sebagai resep", "remove_photo": "Hapus foto", "photo_here": "Fotomu di sini", "note": "Semua di sebelah kanan dibuat di sini", "legal_aup": "Penggunaan wajar", "legal_refund": "Pengembalian dana", "sign_in_first": "Masuk untuk membuat", "generating": "Membuat… sekitar 20 detik.", "just_generated": "Baru dibuat", "your_track": "Lagu kamu", "from_recipe": "Dari resep", "from_photo": "Dibuat dari foto", "err_load": "Gagal memuat opsi", "done_in": "Selesai dalam {n} dtk", "gen_cost": "Buat · {n}", "err_gen": "Pembuatan gagal", "my_track": "Trek saya", "err_net": "Kesalahan jaringan", "recipe_name": "Nama resep", "err_save": "Gagal menyimpan", "saved": "Tersimpan: {name}", "up_to": "Maksimal {n}", "credits": "kredit", "guides_link": "Panduan →", "guides_title": "Panduan", "close": "Tutup", "loading": "Memuat…", "off": "Mati", "loop_on": "Loop mulus", "buy_credits": "Beli kredit →", "desc_label": "Deskripsi (opsional)", "desc_ph": "Deskripsikan trek: kafe saat hujan, piano lembut", "mode_photo": "Foto", "mode_text": "Teks", "field_density": "Kepadatan aransemen", "opt_sparse": "Renggang", "opt_medium": "Sedang", "opt_full": "Padat", "pro_title": "Opsi lanjutan", "grp_photo_sub": "Foto → lirik → trek", "grp_recipe_sub": "Pilih kebutuhan, pengaturannya sudah siap", "recipe_names": {"short-form-cut": "Cắt ngắn", "hook-sting": "Mở đầu gây chú ý", "product-loop": "Vòng lặp sản phẩm", "podcast-bed": "Nền podcast", "documentary-underscore": "Nền phim tài liệu", "game-menu-loop": "Vòng lặp menu", "calm-focus": "Tập trung", "kids-learning": "Thiếu nhi"}, "applied": "Memakai", "current_recipe": "Preset aktif", "mine_title": "Trek saya", "share_link": "Bagikan tautan", "dl_audio": "Unduh audio", "copied": "Disalin", "shared_note": "Anda mendengar trek yang dibagikan — buat milik Anda di bawah", "my_account": "Akun", "balance": "Saldo", "pricing_label": "Harga", "confirm_gen": "Buat trek {sec} detik? Ini memakai {n}.", "err_insufficient": "Kredit tidak cukup", "topup_hint": "Isi ulang untuk terus membuat.", "topup_cta": "Beli kredit", "cancel": "Batal", "confirm": "Konfirmasi", "not_signed_in": "Belum masuk", "traveler": "Pelancong", "view_all": "Lihat semua", "my_works_pick": "Pilih satu untuk memakai ulang pengaturannya", "li1": "Trek 30 dtk = 45 kredit, 45 dtk = 64, 60 dtk = 85, 75 dtk = 103, 90 dtk = 120.", "li2": "Pembuatan yang gagal dikembalikan otomatis.", "li3": "Kredit tidak kedaluwarsa dan berlaku di semua alat.", "li4": "Pembayaran diproses oleh Creem, merchant of record kami.", "li5": "Kredit yang belum terpakai bisa dikembalikan dalam 14 hari.", "refund_link": "Kebijakan pengembalian"}</script>
+<script type="application/json" id="ui">{"title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi", "description": "Ubah foto atau deskripsi menjadi musik latar dengan durasi tepat 30–90 detik. Lirik menyebut isi fotomu, dengan vokal 10 bahasa dan loop mulus.", "h1": "Buat lagu", "sub": "Dari foto atau deskripsi. Durasi presisi, loop mulus.", "drop": "Seret atau pilih foto<br>lirik akan menyebut isinya", "generate": "Buat lagu", "how_credits": "Cara kerja kredit →", "grp_photo": "Dengarkan", "grp_recipe": "Mulai dari kebutuhan", "download": "Unduh", "save_recipe": "Simpan sebagai resep", "remove_photo": "Hapus foto", "photo_here": "Fotomu di sini", "note": "Semua di sebelah kanan dibuat di sini", "legal_aup": "Penggunaan wajar", "legal_refund": "Pengembalian dana", "sign_in_first": "Masuk untuk membuat", "generating": "Membuat… sekitar 20 detik.", "just_generated": "Baru dibuat", "your_track": "Lagu kamu", "from_recipe": "Dari resep", "from_photo": "Dibuat dari foto", "err_load": "Gagal memuat opsi", "done_in": "Selesai dalam {n} dtk", "gen_cost": "Buat · {n}", "err_gen": "Pembuatan gagal", "my_track": "Trek saya", "err_net": "Kesalahan jaringan", "recipe_name": "Nama resep", "err_save": "Gagal menyimpan", "saved": "Tersimpan: {name}", "up_to": "Maksimal {n}", "credits": "kredit", "guides_link": "Panduan →", "guides_title": "Panduan", "close": "Tutup", "loading": "Memuat…", "off": "Mati", "loop_on": "Loop mulus", "buy_credits": "Beli kredit →", "desc_label": "Deskripsi (opsional)", "desc_ph": "Deskripsikan trek: kafe saat hujan, piano lembut", "mode_photo": "Foto", "mode_text": "Teks", "field_density": "Kepadatan aransemen", "opt_sparse": "Renggang", "opt_medium": "Sedang", "opt_full": "Padat", "pro_title": "Opsi lanjutan", "grp_photo_sub": "Foto → lirik → trek", "grp_recipe_sub": "Pilih kebutuhan, pengaturannya sudah siap", "recipe_names": {"short-form-cut": "Cắt ngắn", "hook-sting": "Mở đầu gây chú ý", "product-loop": "Vòng lặp sản phẩm", "podcast-bed": "Nền podcast", "documentary-underscore": "Nền phim tài liệu", "game-menu-loop": "Vòng lặp menu", "calm-focus": "Tập trung", "kids-learning": "Thiếu nhi"}, "applied": "Memakai", "current_recipe": "Preset aktif", "mine_title": "Trek saya", "share_link": "Bagikan tautan", "dl_audio": "Unduh audio", "copied": "Disalin", "shared_note": "Anda mendengar trek yang dibagikan — buat milik Anda di bawah", "my_account": "Akun", "balance": "Saldo", "pricing_label": "Harga", "confirm_gen": "Buat trek {sec} detik? Ini memakai {n}.", "err_insufficient": "Kredit tidak cukup", "topup_hint": "Isi ulang untuk terus membuat.", "topup_cta": "Beli kredit", "cancel": "Batal", "confirm": "Konfirmasi", "not_signed_in": "Belum masuk", "traveler": "Pelancong", "view_all": "Lihat semua", "my_works_pick": "Pilih satu untuk memakai ulang pengaturannya", "pay_title": "Beli kredit", "pay_success": "Pembayaran diterima — kredit ditambahkan.", "pay_opening": "Membuka pembayaran…", "li1": "Trek 30 dtk = 45 kredit, 45 dtk = 64, 60 dtk = 85, 75 dtk = 103, 90 dtk = 120.", "li2": "Pembuatan yang gagal dikembalikan otomatis.", "li3": "Kredit tidak kedaluwarsa dan berlaku di semua alat.", "li4": "Pembayaran diproses oleh Creem, merchant of record kami.", "li5": "Kredit yang belum terpakai bisa dikembalikan dalam 14 hari.", "refund_link": "Kebijakan pengembalian"}</script>
 <script>
 (function () {
   "use strict";
@@ -1540,7 +1575,50 @@
     $("mcancel").addEventListener("click", close);
   }
 
-  function goTopup() { location.href = ROOT + "/" + LANG + "/pricing.html"; }
+  var PACKS = [
+    { credits: 180, price: "$2.99" }, { credits: 360, price: "$4.99" },
+    { credits: 750, price: "$9.99" }, { credits: 1500, price: "$19.99" },
+    { credits: 4000, price: "$49.99" }
+  ];
+
+  function renderPacks() {
+    var box = $("payPacks"); if (!box) return;
+    box.innerHTML = "";
+    PACKS.forEach(function (p) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "pack";
+      b.innerHTML = "<b>" + p.credits + " " + UI.credits + "</b><span>" + p.price + "</span>";
+      b.addEventListener("click", function () { startCheckout(p.credits); });
+      box.appendChild(b);
+    });
+  }
+
+  function openPay() {
+    if (!sessionOk) { needLogin(); return; }
+    $("payBal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+    renderPacks();
+    $("payMsg").textContent = "";
+    $("payModal").classList.remove("hidden");
+  }
+
+  function startCheckout(credits) {
+    $("payMsg").textContent = UI.pay_opening;
+    var back = location.origin + location.pathname + "?paid=1";
+    call("/ai/music/checkout", { credits: credits, success_url: back }, true).then(function (d) {
+      if (d.code === 200 && d.data && d.data.checkout_url) { location.href = d.data.checkout_url; return; }
+      $("payMsg").textContent = d.msg || UI.err_net;
+    }).catch(function () { $("payMsg").textContent = UI.err_net; });
+  }
+
+  function toast(text) {
+    var t = document.createElement("div");
+    t.className = "toast"; t.textContent = text;
+    document.body.appendChild(t);
+    setTimeout(function () { t.classList.add("out"); }, 2600);
+    setTimeout(function () { t.remove(); }, 3200);
+  }
+
+  function goTopup() { openPay(); }
 
   // 余额不足：弹窗提示 + 去充值，不在左栏常驻
   function showTopup() {
@@ -1559,6 +1637,9 @@
     ask(txt, generate);
   }
 
+  $("payClose").addEventListener("click", function () { $("payModal").classList.add("hidden"); });
+  $("payModal").addEventListener("click", function (e) { if (e.target === $("payModal")) $("payModal").classList.add("hidden"); });
+
   $("mineClose").addEventListener("click", function () { $("mineModal").classList.add("hidden"); });
   $("mineModal").addEventListener("click", function (e) {
     if (e.target === $("mineModal")) $("mineModal").classList.add("hidden");
@@ -1571,7 +1652,7 @@
   var GUIDE_URL = "guides/";
   if ($("priceLink")) {
     $("priceLink").href = PRICING_URL;
-    $("priceLink").addEventListener("click", function (e) { if (!sessionOk) { e.preventDefault(); needLogin(); } });
+    $("priceLink").addEventListener("click", function (e) { e.preventDefault(); openPay(); });
   }
   if ($("guideLink")) $("guideLink").href = GUIDE_URL;
   if ($("avBtn")) $("avBtn").addEventListener("click", function () {
@@ -1580,6 +1661,10 @@
   });
   $("bal").textContent = UI.not_signed_in;
   renderAvatar({});
+  if (/[?&]paid=1/.test(location.search)) {
+    history.replaceState(null, "", location.pathname + location.hash);
+    setTimeout(function () { checkSession().then(function (ok) { if (ok) toast(UI.pay_success); }); }, 600);
+  }
   checkSession().then(function (ok) {
     syncCost();
     if (ok) { loadMine(); restoreDraft(); }

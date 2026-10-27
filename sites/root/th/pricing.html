@@ -84,6 +84,9 @@
 .btn-continue{margin-top:16px;width:100%;padding:14px;border-radius:11px;border:1px solid var(--line);
   background:rgba(255,255,255,.05);color:var(--fg);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 .btn-continue:hover{background:rgba(255,255,255,.09)}
+.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:120;
+  background:rgba(20,22,26,.96);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+  padding:10px 16px;font-size:12.5px;color:var(--fg);box-shadow:0 12px 30px -14px rgba(0,0,0,.9)}
 </style>
 <script type="application/json" id="ui">{"title": "เครดิตและราคา — aiglossa tools", "description": "เครดิตแบบชำระล่วงหน้าสำหรับ aiglossa tools เพลง 30 วินาทีใช้ 45 เครดิต เพลงยาวกว่านั้นใช้มากกว่า", "h1": "เครดิต", "lede": "เครดิตแบบชำระล่วงหน้า ใช้ร่วมกันทุกเครื่องมือ ไม่หมดอายุ ไม่มีสมาชิกรายเดือน จ่ายตามที่สร้างจริง", "side_title": "เครดิตคิดอย่างไร", "li1": "เพลง 30 วินาที = 45 เครดิต, 45 วินาที = 64, 60 วินาที = 85, 75 วินาที = 103, 90 วินาที = 120", "li2": "การสร้างที่ล้มเหลวจะคืนเครดิตอัตโนมัติ", "li3": "เครดิตไม่หมดอายุและใช้ได้กับทุกเครื่องมือ", "li4": "การชำระเงินดำเนินการโดย Creem ซึ่งเป็นผู้ค้าบนบันทึกของเรา", "li5": "เครดิตที่ยังไม่ใช้สามารถขอคืนได้ภายใน 14 วัน", "refund_link": "นโยบายการคืนเงิน", "back": "← กลับไปที่เครื่องมือ", "opening": "กำลังเปิดหน้าชำระเงิน…", "err": "ไม่สามารถเริ่มชำระเงินได้", "neterr": "เครือข่ายขัดข้อง", "per": "≈ {n} เพลง 30 วินาที", "kicker": "aiglossa tools", "refund_note": "เครดิตที่ใช้แล้วไม่สามารถขอคืนได้ โปรดซื้อเท่าที่จำเป็น", "back_account": "กลับไปที่บัญชี", "lede_buy": "เครดิตแบบจ่ายล่วงหน้า ไม่มีสมาชิกรายเดือน เลือกแพ็กที่เหมาะกับคุณ", "li3_generic": "เครดิตไม่มีวันหมดอายุ", "continue_use": "ใช้งานต่อ", "balance": "คงเหลือ", "credits": "เครดิต", "not_signed_in": "ยังไม่เข้าสู่ระบบ"}</script>
 </head>
@@ -98,7 +101,6 @@
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">เครดิตที่ใช้แล้วไม่สามารถขอคืนได้ โปรดซื้อเท่าที่จำเป็น</p>
-      <button class="btn-continue" id="cont" type="button">ใช้งานต่อ</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
     </div>
 
@@ -192,10 +194,18 @@
       : UI.not_signed_in;
   }).catch(function () {});
 
-  document.getElementById("cont").addEventListener("click", function () {
-    if (history.length > 1) history.back();
-    else location.href = "/" + LANG + "/";
-  });
+  // 支付回跳：提示已到账，并尝试回到上一页（如果是从站内来的）
+  if (/[?&]paid=1/.test(location.search)) {
+    var t = document.createElement("div");
+    t.className = "toast"; t.textContent = "ชำระเงินแล้ว เพิ่มเครดิตเรียบร้อย";
+    document.body.appendChild(t);
+    history.replaceState(null, "", location.pathname);
+    if (document.referrer && document.referrer.indexOf(location.host) >= 0) {
+      setTimeout(function () { history.back(); }, 1400);
+    } else {
+      setTimeout(function () { t.remove(); }, 3000);
+    }
+  }
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

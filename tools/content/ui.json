@@ -167,7 +167,10 @@
       "not_signed_in": "Not signed in",
       "traveler": "Traveler",
       "view_all": "View all",
-      "my_works_pick": "Pick one to reuse its settings"
+      "my_works_pick": "Pick one to reuse its settings",
+      "pay_title": "Buy credits",
+      "pay_success": "Payment received — credits added.",
+      "pay_opening": "Opening checkout…"
     }
   },
   "ja": {
@@ -326,7 +329,10 @@
       "not_signed_in": "未ログイン",
       "traveler": "旅人",
       "view_all": "すべて見る",
-      "my_works_pick": "選ぶと当時の設定を再利用します"
+      "my_works_pick": "選ぶと当時の設定を再利用します",
+      "pay_title": "クレジットを購入",
+      "pay_success": "お支払いが完了し、クレジットを追加しました。",
+      "pay_opening": "決済ページを開いています…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -497,7 +503,10 @@
       "not_signed_in": "로그인 안 됨",
       "traveler": "여행자",
       "view_all": "전체 보기",
-      "my_works_pick": "하나를 고르면 그때 설정을 재사용합니다"
+      "my_works_pick": "하나를 고르면 그때 설정을 재사용합니다",
+      "pay_title": "크레딧 구매",
+      "pay_success": "결제가 완료되어 크레딧이 추가되었습니다.",
+      "pay_opening": "결제 페이지로 이동 중…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -668,7 +677,10 @@
       "not_signed_in": "未登录",
       "traveler": "旅行者",
       "view_all": "查看全部",
-      "my_works_pick": "选一个，复用它当时的参数"
+      "my_works_pick": "选一个，复用它当时的参数",
+      "pay_title": "购买额度",
+      "pay_success": "支付成功，额度已到账。",
+      "pay_opening": "正在跳转支付…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -839,7 +851,10 @@
       "not_signed_in": "未登入",
       "traveler": "旅行者",
       "view_all": "查看全部",
-      "my_works_pick": "選一個，重用它當時的參數"
+      "my_works_pick": "選一個，重用它當時的參數",
+      "pay_title": "購買額度",
+      "pay_success": "付款成功，額度已到帳。",
+      "pay_opening": "正在跳轉付款…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1010,7 +1025,10 @@
       "not_signed_in": "Sin sesión",
       "traveler": "Viajero",
       "view_all": "Ver todo",
-      "my_works_pick": "Elige uno para reutilizar su configuración"
+      "my_works_pick": "Elige uno para reutilizar su configuración",
+      "pay_title": "Comprar créditos",
+      "pay_success": "Pago recibido: créditos añadidos.",
+      "pay_opening": "Abriendo el pago…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1181,7 +1199,10 @@
       "not_signed_in": "Non connecté",
       "traveler": "Voyageur",
       "view_all": "Tout voir",
-      "my_works_pick": "Choisissez-en un pour réutiliser ses réglages"
+      "my_works_pick": "Choisissez-en un pour réutiliser ses réglages",
+      "pay_title": "Acheter des crédits",
+      "pay_success": "Paiement reçu — crédits ajoutés.",
+      "pay_opening": "Ouverture du paiement…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1352,7 +1373,10 @@
       "not_signed_in": "Nicht angemeldet",
       "traveler": "Reisender",
       "view_all": "Alle ansehen",
-      "my_works_pick": "Wähle eines, um seine Einstellungen zu übernehmen"
+      "my_works_pick": "Wähle eines, um seine Einstellungen zu übernehmen",
+      "pay_title": "Credits kaufen",
+      "pay_success": "Zahlung erhalten – Guthaben gutgeschrieben.",
+      "pay_opening": "Zahlung wird geöffnet…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1523,7 +1547,10 @@
       "not_signed_in": "Não conectado",
       "traveler": "Viajante",
       "view_all": "Ver tudo",
-      "my_works_pick": "Escolha um para reutilizar as configurações"
+      "my_works_pick": "Escolha um para reutilizar as configurações",
+      "pay_title": "Comprar créditos",
+      "pay_success": "Pagamento recebido — créditos adicionados.",
+      "pay_opening": "Abrindo o pagamento…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1694,7 +1721,10 @@
       "not_signed_in": "Non connesso",
       "traveler": "Viaggiatore",
       "view_all": "Vedi tutto",
-      "my_works_pick": "Scegline uno per riusarne le impostazioni"
+      "my_works_pick": "Scegline uno per riusarne le impostazioni",
+      "pay_title": "Acquista crediti",
+      "pay_success": "Pagamento ricevuto: crediti aggiunti.",
+      "pay_opening": "Apertura del pagamento…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -1865,7 +1895,10 @@
       "not_signed_in": "Не выполнен вход",
       "traveler": "Путешественник",
       "view_all": "Показать все",
-      "my_works_pick": "Выберите трек, чтобы применить его настройки"
+      "my_works_pick": "Выберите трек, чтобы применить его настройки",
+      "pay_title": "Купить кредиты",
+      "pay_success": "Оплата получена — кредиты зачислены.",
+      "pay_opening": "Открываем оплату…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2036,7 +2069,10 @@
       "not_signed_in": "لم تسجّل الدخول",
       "traveler": "مسافر",
       "view_all": "عرض الكل",
-      "my_works_pick": "اختر مقطعًا لإعادة استخدام إعداداته"
+      "my_works_pick": "اختر مقطعًا لإعادة استخدام إعداداته",
+      "pay_title": "شراء رصيد",
+      "pay_success": "تم استلام الدفع وإضافة الرصيد.",
+      "pay_opening": "جارٍ فتح الدفع…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2207,7 +2243,10 @@
       "not_signed_in": "ยังไม่เข้าสู่ระบบ",
       "traveler": "นักเดินทาง",
       "view_all": "ดูทั้งหมด",
-      "my_works_pick": "เลือกเพลงเพื่อใช้การตั้งค่าเดิม"
+      "my_works_pick": "เลือกเพลงเพื่อใช้การตั้งค่าเดิม",
+      "pay_title": "ซื้อเครดิต",
+      "pay_success": "ชำระเงินแล้ว เพิ่มเครดิตเรียบร้อย",
+      "pay_opening": "กำลังเปิดหน้าชำระเงิน…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2378,7 +2417,10 @@
       "not_signed_in": "Chưa đăng nhập",
       "traveler": "Người lữ hành",
       "view_all": "Xem tất cả",
-      "my_works_pick": "Chọn một bản để dùng lại cấu hình"
+      "my_works_pick": "Chọn một bản để dùng lại cấu hình",
+      "pay_title": "Mua tín dụng",
+      "pay_success": "Đã nhận thanh toán — đã cộng tín dụng.",
+      "pay_opening": "Đang mở thanh toán…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2549,7 +2591,10 @@
       "not_signed_in": "Belum masuk",
       "traveler": "Pelancong",
       "view_all": "Lihat semua",
-      "my_works_pick": "Pilih satu untuk memakai ulang pengaturannya"
+      "my_works_pick": "Pilih satu untuk memakai ulang pengaturannya",
+      "pay_title": "Beli kredit",
+      "pay_success": "Pembayaran diterima — kredit ditambahkan.",
+      "pay_opening": "Membuka pembayaran…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -2720,7 +2765,10 @@
       "not_signed_in": "Giriş yapılmadı",
       "traveler": "Gezgin",
       "view_all": "Tümünü gör",
-      "my_works_pick": "Ayarlarını yeniden kullanmak için birini seçin"
+      "my_works_pick": "Ayarlarını yeniden kullanmak için birini seçin",
+      "pay_title": "Kredi satın al",
+      "pay_success": "Ödeme alındı — krediler eklendi.",
+      "pay_opening": "Ödeme açılıyor…"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",

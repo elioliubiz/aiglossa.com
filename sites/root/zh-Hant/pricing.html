@@ -84,6 +84,9 @@
 .btn-continue{margin-top:16px;width:100%;padding:14px;border-radius:11px;border:1px solid var(--line);
   background:rgba(255,255,255,.05);color:var(--fg);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 .btn-continue:hover{background:rgba(255,255,255,.09)}
+.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:120;
+  background:rgba(20,22,26,.96);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+  padding:10px 16px;font-size:12.5px;color:var(--fg);box-shadow:0 12px 30px -14px rgba(0,0,0,.9)}
 </style>
 <script type="application/json" id="ui">{"title": "額度與價格 — aiglossa tools", "description": "aiglossa tools 的預付額度。30 秒的曲子 45 額度，更長的曲子更貴。", "h1": "額度", "lede": "預付額度，所有工具通用。永不過期、沒有訂閱——只為實際生成付費。", "side_title": "額度怎麼算", "li1": "30 秒 = 45 額度，45 秒 = 64，60 秒 = 85，75 秒 = 103，90 秒 = 120。", "li2": "生成失敗會自動退回額度。", "li3": "額度永不過期，所有工具通用。", "li4": "付款由 merchant of record（記錄商戶）Creem 處理。", "li5": "未使用的額度可在 14 天內申請退款。", "refund_link": "退款政策", "back": "← 返回工具列表", "opening": "正在開啟結帳頁…", "err": "無法開始結帳", "neterr": "網路錯誤", "per": "約 {n} 首 30 秒", "kicker": "aiglossa tools", "refund_note": "額度一經使用不可退款，請按需購買。", "back_account": "返回帳戶", "lede_buy": "預付額度，沒有訂閱。按需選擇適合你的額度包。", "li3_generic": "額度永不過期。", "continue_use": "繼續使用", "balance": "餘額", "credits": "額度", "not_signed_in": "未登入"}</script>
 </head>
@@ -98,7 +101,6 @@
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">額度一經使用不可退款，請按需購買。</p>
-      <button class="btn-continue" id="cont" type="button">繼續使用</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
     </div>
 
@@ -192,10 +194,18 @@
       : UI.not_signed_in;
   }).catch(function () {});
 
-  document.getElementById("cont").addEventListener("click", function () {
-    if (history.length > 1) history.back();
-    else location.href = "/" + LANG + "/";
-  });
+  // 支付回跳：提示已到账，并尝试回到上一页（如果是从站内来的）
+  if (/[?&]paid=1/.test(location.search)) {
+    var t = document.createElement("div");
+    t.className = "toast"; t.textContent = "付款成功，額度已到帳。";
+    document.body.appendChild(t);
+    history.replaceState(null, "", location.pathname);
+    if (document.referrer && document.referrer.indexOf(location.host) >= 0) {
+      setTimeout(function () { history.back(); }, 1400);
+    } else {
+      setTimeout(function () { t.remove(); }, 3000);
+    }
+  }
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

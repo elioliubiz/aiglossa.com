@@ -84,6 +84,9 @@
 .btn-continue{margin-top:16px;width:100%;padding:14px;border-radius:11px;border:1px solid var(--line);
   background:rgba(255,255,255,.05);color:var(--fg);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 .btn-continue:hover{background:rgba(255,255,255,.09)}
+.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:120;
+  background:rgba(20,22,26,.96);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+  padding:10px 16px;font-size:12.5px;color:var(--fg);box-shadow:0 12px 30px -14px rgba(0,0,0,.9)}
 </style>
 <script type="application/json" id="ui">{"title": "Credits & pricing — aiglossa tools", "description": "Prepaid credits for aiglossa tools. A 30-second track costs 45 credits; longer tracks cost more.", "h1": "Credits", "lede": "Prepaid credits, shared across every tool. They never expire and there is no subscription — you only pay for what you generate.", "side_title": "How credits work", "li1": "30s track = 45 credits, 45s = 64, 60s = 85, 75s = 103, 90s = 120.", "li2": "Failed generations are refunded automatically.", "li3": "Credits never expire and work across all tools.", "li4": "Payments are processed by Creem, our merchant of record.", "li5": "Unused credits can be refunded within 14 days.", "refund_link": "Refund Policy", "back": "← Back to tools", "opening": "Opening checkout…", "err": "Could not start checkout", "neterr": "Network error", "per": "≈ {n} × 30s tracks", "kicker": "aiglossa tools", "refund_note": "Credits are non-refundable once used. Please buy only what you need.", "back_account": "Back to account", "lede_buy": "Prepaid credits, no subscription. Choose the pack that fits you.", "li3_generic": "Credits never expire.", "continue_use": "Continue", "balance": "Balance", "credits": "credits", "not_signed_in": "Not signed in"}</script>
 </head>
@@ -98,7 +101,6 @@
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">Credits are non-refundable once used. Please buy only what you need.</p>
-      <button class="btn-continue" id="cont" type="button">Continue</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
     </div>
 
@@ -192,10 +194,18 @@
       : UI.not_signed_in;
   }).catch(function () {});
 
-  document.getElementById("cont").addEventListener("click", function () {
-    if (history.length > 1) history.back();
-    else location.href = "/" + LANG + "/";
-  });
+  // 支付回跳：提示已到账，并尝试回到上一页（如果是从站内来的）
+  if (/[?&]paid=1/.test(location.search)) {
+    var t = document.createElement("div");
+    t.className = "toast"; t.textContent = "Payment received — credits added.";
+    document.body.appendChild(t);
+    history.replaceState(null, "", location.pathname);
+    if (document.referrer && document.referrer.indexOf(location.host) >= 0) {
+      setTimeout(function () { history.back(); }, 1400);
+    } else {
+      setTimeout(function () { t.remove(); }, 3000);
+    }
+  }
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

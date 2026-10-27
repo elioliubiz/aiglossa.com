@@ -84,6 +84,9 @@
 .btn-continue{margin-top:16px;width:100%;padding:14px;border-radius:11px;border:1px solid var(--line);
   background:rgba(255,255,255,.05);color:var(--fg);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 .btn-continue:hover{background:rgba(255,255,255,.09)}
+.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:120;
+  background:rgba(20,22,26,.96);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+  padding:10px 16px;font-size:12.5px;color:var(--fg);box-shadow:0 12px 30px -14px rgba(0,0,0,.9)}
 </style>
 <script type="application/json" id="ui">{"title": "크레딧 및 가격 — aiglossa tools", "description": "aiglossa tools의 선불 크레딧. 30초 곡은 45크레딧, 더 긴 곡은 더 듭니다.", "h1": "크레딧", "lede": "선불 크레딧은 모든 도구에서 공용입니다. 만료 없음, 구독 없음. 생성한 만큼만 지불합니다.", "side_title": "크레딧 계산 방식", "li1": "30초 = 45크레딧, 45초 = 64, 60초 = 85, 75초 = 103, 90초 = 120.", "li2": "생성에 실패하면 자동으로 환불됩니다.", "li3": "크레딧은 만료되지 않으며 모든 도구에서 쓸 수 있습니다.", "li4": "결제는 merchant of record인 Creem이 처리합니다.", "li5": "사용하지 않은 크레딧은 14일 이내에 환불받을 수 있습니다.", "refund_link": "환불 정책", "back": "← 도구 목록으로", "opening": "결제 페이지를 여는 중…", "err": "결제를 시작할 수 없습니다", "neterr": "네트워크 오류", "per": "30초 × 약 {n}곡", "kicker": "aiglossa tools", "refund_note": "사용한 크레딧은 환불되지 않습니다. 필요한 만큼만 구매하세요.", "back_account": "계정으로 돌아가기", "lede_buy": "선불 크레딧, 구독 없음. 필요한 패키지를 선택하세요.", "li3_generic": "크레딧은 만료되지 않습니다.", "continue_use": "계속하기", "balance": "잔액", "credits": "크레딧", "not_signed_in": "로그인 안 됨"}</script>
 </head>
@@ -98,7 +101,6 @@
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">사용한 크레딧은 환불되지 않습니다. 필요한 만큼만 구매하세요.</p>
-      <button class="btn-continue" id="cont" type="button">계속하기</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
     </div>
 
@@ -192,10 +194,18 @@
       : UI.not_signed_in;
   }).catch(function () {});
 
-  document.getElementById("cont").addEventListener("click", function () {
-    if (history.length > 1) history.back();
-    else location.href = "/" + LANG + "/";
-  });
+  // 支付回跳：提示已到账，并尝试回到上一页（如果是从站内来的）
+  if (/[?&]paid=1/.test(location.search)) {
+    var t = document.createElement("div");
+    t.className = "toast"; t.textContent = "결제가 완료되어 크레딧이 추가되었습니다.";
+    document.body.appendChild(t);
+    history.replaceState(null, "", location.pathname);
+    if (document.referrer && document.referrer.indexOf(location.host) >= 0) {
+      setTimeout(function () { history.back(); }, 1400);
+    } else {
+      setTimeout(function () { t.remove(); }, 3000);
+    }
+  }
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }

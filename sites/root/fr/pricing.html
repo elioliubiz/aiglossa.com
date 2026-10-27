@@ -84,6 +84,9 @@
 .btn-continue{margin-top:16px;width:100%;padding:14px;border-radius:11px;border:1px solid var(--line);
   background:rgba(255,255,255,.05);color:var(--fg);font:inherit;font-size:14px;font-weight:600;cursor:pointer}
 .btn-continue:hover{background:rgba(255,255,255,.09)}
+.toast{position:fixed;left:50%;top:18px;transform:translateX(-50%);z-index:120;
+  background:rgba(20,22,26,.96);border:1px solid rgba(255,255,255,.14);border-radius:10px;
+  padding:10px 16px;font-size:12.5px;color:var(--fg);box-shadow:0 12px 30px -14px rgba(0,0,0,.9)}
 </style>
 <script type="application/json" id="ui">{"title": "Crédits et tarifs — aiglossa tools", "description": "Crédits prépayés pour aiglossa tools. Un morceau de 30 s coûte 45 crédits ; les plus longs coûtent davantage.", "h1": "Crédits", "lede": "Des crédits prépayés, communs à tous les outils. Sans expiration et sans abonnement : vous payez seulement ce que vous générez.", "side_title": "Comment marchent les crédits", "li1": "Morceau de 30 s = 45 crédits, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Les générations échouées sont remboursées automatiquement.", "li3": "Les crédits n'expirent pas et servent pour tous les outils.", "li4": "Les paiements sont traités par Creem, notre merchant of record.", "li5": "Les crédits non utilisés peuvent être remboursés sous 14 jours.", "refund_link": "Politique de remboursement", "back": "← Retour aux outils", "opening": "Ouverture du paiement…", "err": "Impossible de lancer le paiement", "neterr": "Erreur réseau", "per": "≈ {n} morceaux de 30 s", "kicker": "aiglossa tools", "refund_note": "Les crédits utilisés ne sont pas remboursables. Achetez seulement le nécessaire.", "back_account": "Retour au compte", "lede_buy": "Crédits prépayés, sans abonnement. Choisissez le pack adapté.", "li3_generic": "Les crédits n'expirent jamais.", "continue_use": "Continuer", "balance": "Solde", "credits": "crédits", "not_signed_in": "Non connecté"}</script>
 </head>
@@ -98,7 +101,6 @@
     <div>
       <div class="packs" id="packs"></div>
       <p class="refundnote">Les crédits utilisés ne sont pas remboursables. Achetez seulement le nécessaire.</p>
-      <button class="btn-continue" id="cont" type="button">Continuer</button>
       <div class="msg" id="msg" role="status" aria-live="polite"></div>
     </div>
 
@@ -192,10 +194,18 @@
       : UI.not_signed_in;
   }).catch(function () {});
 
-  document.getElementById("cont").addEventListener("click", function () {
-    if (history.length > 1) history.back();
-    else location.href = "/" + LANG + "/";
-  });
+  // 支付回跳：提示已到账，并尝试回到上一页（如果是从站内来的）
+  if (/[?&]paid=1/.test(location.search)) {
+    var t = document.createElement("div");
+    t.className = "toast"; t.textContent = "Paiement reçu — crédits ajoutés.";
+    document.body.appendChild(t);
+    history.replaceState(null, "", location.pathname);
+    if (document.referrer && document.referrer.indexOf(location.host) >= 0) {
+      setTimeout(function () { history.back(); }, 1400);
+    } else {
+      setTimeout(function () { t.remove(); }, 3000);
+    }
+  }
 
   function buy(credits, btn) {
     if (!sessionOk) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }
