@@ -31,6 +31,7 @@
 <link rel="manifest" href="../assets/manifest-tools.webmanifest">
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/theme.css">
+  <script src="../assets/wallet.js"></script>
 <style>
   body{min-height:100vh;display:flex;flex-direction:column}
   .top{display:flex;align-items:center;justify-content:space-between;gap:16px;
@@ -83,6 +84,9 @@
   .modal.hidden{display:none}.modal-box{width:min(520px,100%);max-height:80vh;border:1px solid var(--line);border-radius:14px;padding:20px;background:#15171b}
   .modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.modal-head h2{margin:0;font-size:18px}
   .icon-close{width:36px;height:36px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--fg);font-size:20px;cursor:pointer}
+  .packs{display:grid;gap:8px;margin-block-start:16px}.pack{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
+    padding:13px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.03);color:var(--fg);font:inherit;cursor:pointer}
+  .pack:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.08)}.pack[disabled]{opacity:.5;cursor:not-allowed}
   footer{border-block-start:1px solid var(--line);padding-block:26px}
   footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
   footer .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
@@ -104,7 +108,7 @@
     .account-grid{grid-template-columns:1fr}
   }
 </style>
-<script type="application/json" id="ui">{"title": "サインイン — aiglossa tools", "description": "aiglossa tools にサインインすると、クレジットの確認と生成した曲のダウンロードができます。", "back": "ツール一覧へ", "h1": "サインイン", "sub": "アカウントにログインして Aiglossa を引き続きご利用ください。", "divider": "またはメールで", "email_label": "メールアドレス", "email_ph": "you@example.com", "code_label": "6桁のコード", "code_ph": "123456", "send_code": "コードを送信", "first_time": "初めての方はアカウントが自動で作成されます。", "agree": "続行すると以下に同意したものとみなされます：", "terms": "利用規約", "privacy": "プライバシーポリシー", "signed_h1": "クレジット", "signout": "サインアウト", "credits_unit": "クレジット", "create": "曲を作る →", "buy": "クレジットを購入 →", "err_load": "読み込みに失敗しました", "err_net": "通信エラー", "err_signin": "サインインに失敗しました", "paid_wait": "お支払いを確認しました — まもなくクレジットが反映されます…", "paid_ok": "クレジットを追加しました。ありがとうございます！", "paid_late": "処理中です — 1分後に再読み込みしてください。", "show_h2": "クレジットを残すためにサインイン。", "show_p": "クレジットは全ツール共通で期限なし。サインインは購入をアカウントに結びつけるためだけのものです。それ以外は保存しません。", "proof_k": "ここで制作 · 英語 · 0:30", "google": "Google で続行", "signin": "ログイン", "set_password": "パスワードを設定", "password_set": "パスワード設定済み", "login_methods": "ログイン方法", "delete_account": "アカウント削除", "platform_note": "クレジットは aiglossa のすべての製品で使えます。", "no_pw_yet": "パスワード未設定。現在はコードか Google でログインします。", "tab_code": "コード", "tab_password": "パスワード", "pwd_ph": "パスワードを入力", "show_password": "表示", "hide_password": "非表示", "forgot": "パスワードをお忘れですか？", "reset_title": "パスワード再設定", "new_password": "新しいパスワード", "reset_done": "更新しました。新しいパスワードでログインしてください。", "account_label": "アカウント", "activity_label": "クレジット履歴", "close": "閉じる", "pw_short": "8文字以上にしてください", "pw_mismatch": "パスワードが一致しません", "pw_failed": "更新に失敗しました", "li1": "30秒＝45クレジット、45秒＝64、60秒＝85、75秒＝103、90秒＝120。", "li2": "生成に失敗した場合は自動で返金されます。", "li3": "クレジットは期限なしで、すべてのツールで使えます。", "li4": "支払いは merchant of record である Creem が処理します。", "li5": "未使用のクレジットは14日以内なら返金できます。", "refund_link": "返金ポリシー"}</script>
+<script type="application/json" id="ui">{"title": "サインイン — aiglossa tools", "description": "aiglossa tools にサインインすると、クレジットの確認と生成した曲のダウンロードができます。", "back": "ツール一覧へ", "h1": "サインイン", "sub": "アカウントにログインして Aiglossa を引き続きご利用ください。", "divider": "またはメールで", "email_label": "メールアドレス", "email_ph": "you@example.com", "code_label": "6桁のコード", "code_ph": "123456", "send_code": "コードを送信", "first_time": "初めての方はアカウントが自動で作成されます。", "agree": "続行すると以下に同意したものとみなされます：", "terms": "利用規約", "privacy": "プライバシーポリシー", "signed_h1": "クレジット", "signout": "サインアウト", "credits_unit": "クレジット", "create": "曲を作る →", "buy": "クレジットを購入 →", "err_load": "読み込みに失敗しました", "err_net": "通信エラー", "err_signin": "サインインに失敗しました", "paid_wait": "お支払いを確認しました — まもなくクレジットが反映されます…", "paid_ok": "クレジットを追加しました。ありがとうございます！", "paid_late": "処理中です — 1分後に再読み込みしてください。", "show_h2": "クレジットを残すためにサインイン。", "show_p": "クレジットは全ツール共通で期限なし。サインインは購入をアカウントに結びつけるためだけのものです。それ以外は保存しません。", "proof_k": "ここで制作 · 英語 · 0:30", "google": "Google で続行", "signin": "ログイン", "set_password": "パスワードを設定", "password_set": "パスワード設定済み", "login_methods": "ログイン方法", "delete_account": "アカウント削除", "platform_note": "クレジットは aiglossa のすべての製品で使えます。", "no_pw_yet": "パスワード未設定。現在はコードか Google でログインします。", "tab_code": "コード", "tab_password": "パスワード", "pwd_ph": "パスワードを入力", "show_password": "表示", "hide_password": "非表示", "forgot": "パスワードをお忘れですか？", "reset_title": "パスワード再設定", "new_password": "新しいパスワード", "reset_done": "更新しました。新しいパスワードでログインしてください。", "account_label": "アカウント", "activity_label": "クレジット履歴", "close": "閉じる", "pw_short": "8文字以上にしてください", "pw_mismatch": "パスワードが一致しません", "pw_failed": "更新に失敗しました", "refund_link": "返金ポリシー", "pay_title": "クレジットを購入", "pay_opening": "決済ページを開いています…", "cancel": "キャンセル", "credits": "クレジット", "pay_success": "お支払いが完了し、クレジットを追加しました。"}</script>
 </head>
 <body>
 <div class="top">
@@ -133,7 +137,7 @@
       </div>
 
       <div class="links">
-        <a class="btn" href="pricing.html">クレジットを購入 →</a>
+        <button class="btn" id="buy" type="button">クレジットを購入 →</button>
         <button class="btn ghost" id="activity" type="button">クレジット履歴</button>
         <button class="btn ghost" id="logout" type="button">サインアウト</button>
       </div>
@@ -150,6 +154,17 @@
       <button class="icon-close" id="activity-close" type="button" aria-label="閉じる">×</button>
     </div>
     <div class="ledger" id="ledger" aria-live="polite"></div>
+  </div>
+</div>
+
+<div class="modal hidden" id="pay-modal" role="dialog" aria-modal="true" aria-labelledby="pay-title">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2 id="pay-title">クレジットを購入</h2>
+      <button class="icon-close" id="pay-close" type="button" aria-label="キャンセル">×</button>
+    </div>
+    <div class="packs" id="pay-packs"></div>
+    <div class="msg" id="pay-msg" role="status" aria-live="polite"></div>
   </div>
 </div>
 
@@ -191,6 +206,7 @@
   var UI = JSON.parse(document.getElementById("ui").textContent);
   var TOKEN_KEY = "aig_token", EMAIL_KEY = "aig_email";
   var API = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "https://dev.aiglossa.com";
+  var balanceUnits = -1;
   var $ = function (id) { return document.getElementById(id); };
   function token() { return localStorage.getItem(TOKEN_KEY) || ""; }
   function setToken(t) { if (t) localStorage.setItem(TOKEN_KEY, t); else localStorage.removeItem(TOKEN_KEY); }
@@ -225,6 +241,7 @@
       $("account-name").textContent = name;
       $("account-email").textContent = maskEmail(email) || "—";
       $("coins").textContent = data.data.coins;
+      balanceUnits = Number(data.data.balance || 0);
       if (user.avatar) {
         var img = document.createElement("img");
         img.src = /^https?:\/\//.test(user.avatar) ? user.avatar : API + user.avatar;
@@ -269,6 +286,40 @@
   $("activity").addEventListener("click", function () { $("activity-modal").classList.remove("hidden"); loadLedger(); });
   $("activity-close").addEventListener("click", function () { $("activity-modal").classList.add("hidden"); });
   $("activity-modal").addEventListener("click", function (e) { if (e.target === $("activity-modal")) $("activity-modal").classList.add("hidden"); });
+
+  var FALLBACK_PACKS = [
+    {credits:180,price:"$2.99"},{credits:360,price:"$4.99"},{credits:750,price:"$9.99"},
+    {credits:1500,price:"$19.99"},{credits:4000,price:"$49.99"}
+  ];
+  function payMsg(text, bad) { $("pay-msg").textContent = text || ""; $("pay-msg").className = "msg" + (bad ? " err" : ""); }
+  function renderPacks(items) {
+    $("pay-packs").innerHTML = "";
+    items.forEach(function (pack) {
+      var button = document.createElement("button"); button.type = "button"; button.className = "pack";
+      var amount = document.createElement("b"); amount.textContent = pack.credits + " クレジット";
+      var price = document.createElement("span"); price.textContent = pack.price;
+      button.appendChild(amount); button.appendChild(price);
+      button.addEventListener("click", function () {
+        button.disabled = true; payMsg("決済ページを開いています…", false);
+        var back = location.origin + location.pathname + "?paid=1";
+        AiglossaWallet.purchase({call:call,credits:pack.credits,successUrl:back,
+          getBalance:function(){return balanceUnits;},refresh:loadCredits,
+          onCompleted:function(){payMsg("お支払いが完了し、クレジットを追加しました。",false);button.disabled=false;},
+          onTimeout:function(){payMsg(UI.paid_late,true);button.disabled=false;},
+          onError:function(){payMsg(UI.err_net,true);button.disabled=false;}});
+      });
+      $("pay-packs").appendChild(button);
+    });
+  }
+  function openPay() {
+    $("pay-modal").classList.remove("hidden"); payMsg("", false);
+    call("/wallet/products", {}, false).then(function (data) {
+      renderPacks(data.code === 200 && data.data && data.data.items && data.data.items.length ? data.data.items : FALLBACK_PACKS);
+    }).catch(function () { renderPacks(FALLBACK_PACKS); });
+  }
+  $("buy").addEventListener("click", openPay);
+  $("pay-close").addEventListener("click", function () { $("pay-modal").classList.add("hidden"); });
+  $("pay-modal").addEventListener("click", function (e) { if (e.target === $("pay-modal")) $("pay-modal").classList.add("hidden"); });
 
   function pollAfterPayment() {
     var tries = 0, initial = $("coins").textContent;

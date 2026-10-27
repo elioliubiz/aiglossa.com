@@ -31,6 +31,7 @@
 <link rel="manifest" href="../assets/manifest-tools.webmanifest">
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/theme.css">
+  <script src="../assets/wallet.js"></script>
 <style>
   body{min-height:100vh;display:flex;flex-direction:column}
   .top{display:flex;align-items:center;justify-content:space-between;gap:16px;
@@ -83,6 +84,9 @@
   .modal.hidden{display:none}.modal-box{width:min(520px,100%);max-height:80vh;border:1px solid var(--line);border-radius:14px;padding:20px;background:#15171b}
   .modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.modal-head h2{margin:0;font-size:18px}
   .icon-close{width:36px;height:36px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--fg);font-size:20px;cursor:pointer}
+  .packs{display:grid;gap:8px;margin-block-start:16px}.pack{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
+    padding:13px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.03);color:var(--fg);font:inherit;cursor:pointer}
+  .pack:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.08)}.pack[disabled]{opacity:.5;cursor:not-allowed}
   footer{border-block-start:1px solid var(--line);padding-block:26px}
   footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
   footer .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
@@ -104,7 +108,7 @@
     .account-grid{grid-template-columns:1fr}
   }
 </style>
-<script type="application/json" id="ui">{"title": "로그인 — aiglossa tools", "description": "aiglossa tools에 로그인하면 크레딧을 확인하고 생성한 음악을 내려받을 수 있습니다.", "back": "도구 목록으로", "h1": "로그인", "sub": "계정에 로그인하여 Aiglossa를 계속 이용하세요.", "divider": "또는 이메일로", "email_label": "이메일", "email_ph": "you@example.com", "code_label": "6자리 코드", "code_ph": "123456", "send_code": "코드 보내기", "first_time": "처음이신가요? 계정은 자동으로 만들어집니다.", "agree": "계속하면 다음에 동의하는 것으로 간주됩니다:", "terms": "이용약관", "privacy": "개인정보처리방침", "signed_h1": "내 크레딧", "signout": "로그아웃", "credits_unit": "크레딧", "create": "음악 만들기 →", "buy": "크레딧 구매 →", "err_load": "불러오지 못했습니다", "err_net": "네트워크 오류", "err_signin": "로그인에 실패했습니다", "paid_wait": "결제가 확인되었습니다 — 곧 크레딧이 반영됩니다…", "paid_ok": "크레딧이 추가되었습니다. 감사합니다!", "paid_late": "처리 중입니다 — 1분 후 새로고침하세요.", "show_h2": "크레딧을 유지하려면 로그인하세요.", "show_p": "크레딧은 모든 도구에서 공용이며 만료되지 않습니다. 로그인은 구매를 계정에 연결하기 위한 것일 뿐, 다른 정보는 저장하지 않습니다.", "proof_k": "여기서 제작 · 영어 · 0:30", "google": "Google로 계속", "signin": "로그인", "set_password": "비밀번호 설정", "password_set": "비밀번호 설정됨", "login_methods": "로그인 방법", "delete_account": "계정 삭제", "platform_note": "크레딧은 aiglossa의 모든 제품에서 사용할 수 있습니다.", "no_pw_yet": "비밀번호가 없습니다. 지금은 코드나 Google로 로그인합니다.", "tab_code": "인증코드", "tab_password": "비밀번호", "pwd_ph": "비밀번호 입력", "show_password": "표시", "hide_password": "숨기기", "forgot": "비밀번호를 잊으셨나요?", "reset_title": "비밀번호 재설정", "new_password": "새 비밀번호", "reset_done": "변경되었습니다. 새 비밀번호로 로그인하세요.", "account_label": "계정", "activity_label": "크레딧 내역", "close": "닫기", "pw_short": "8자 이상 입력하세요", "pw_mismatch": "비밀번호가 일치하지 않습니다", "pw_failed": "변경하지 못했습니다", "li1": "30초 = 45크레딧, 45초 = 64, 60초 = 85, 75초 = 103, 90초 = 120.", "li2": "생성에 실패하면 자동으로 환불됩니다.", "li3": "크레딧은 만료되지 않으며 모든 도구에서 쓸 수 있습니다.", "li4": "결제는 merchant of record인 Creem이 처리합니다.", "li5": "사용하지 않은 크레딧은 14일 이내에 환불받을 수 있습니다.", "refund_link": "환불 정책"}</script>
+<script type="application/json" id="ui">{"title": "로그인 — aiglossa tools", "description": "aiglossa tools에 로그인하면 크레딧을 확인하고 생성한 음악을 내려받을 수 있습니다.", "back": "도구 목록으로", "h1": "로그인", "sub": "계정에 로그인하여 Aiglossa를 계속 이용하세요.", "divider": "또는 이메일로", "email_label": "이메일", "email_ph": "you@example.com", "code_label": "6자리 코드", "code_ph": "123456", "send_code": "코드 보내기", "first_time": "처음이신가요? 계정은 자동으로 만들어집니다.", "agree": "계속하면 다음에 동의하는 것으로 간주됩니다:", "terms": "이용약관", "privacy": "개인정보처리방침", "signed_h1": "내 크레딧", "signout": "로그아웃", "credits_unit": "크레딧", "create": "음악 만들기 →", "buy": "크레딧 구매 →", "err_load": "불러오지 못했습니다", "err_net": "네트워크 오류", "err_signin": "로그인에 실패했습니다", "paid_wait": "결제가 확인되었습니다 — 곧 크레딧이 반영됩니다…", "paid_ok": "크레딧이 추가되었습니다. 감사합니다!", "paid_late": "처리 중입니다 — 1분 후 새로고침하세요.", "show_h2": "크레딧을 유지하려면 로그인하세요.", "show_p": "크레딧은 모든 도구에서 공용이며 만료되지 않습니다. 로그인은 구매를 계정에 연결하기 위한 것일 뿐, 다른 정보는 저장하지 않습니다.", "proof_k": "여기서 제작 · 영어 · 0:30", "google": "Google로 계속", "signin": "로그인", "set_password": "비밀번호 설정", "password_set": "비밀번호 설정됨", "login_methods": "로그인 방법", "delete_account": "계정 삭제", "platform_note": "크레딧은 aiglossa의 모든 제품에서 사용할 수 있습니다.", "no_pw_yet": "비밀번호가 없습니다. 지금은 코드나 Google로 로그인합니다.", "tab_code": "인증코드", "tab_password": "비밀번호", "pwd_ph": "비밀번호 입력", "show_password": "표시", "hide_password": "숨기기", "forgot": "비밀번호를 잊으셨나요?", "reset_title": "비밀번호 재설정", "new_password": "새 비밀번호", "reset_done": "변경되었습니다. 새 비밀번호로 로그인하세요.", "account_label": "계정", "activity_label": "크레딧 내역", "close": "닫기", "pw_short": "8자 이상 입력하세요", "pw_mismatch": "비밀번호가 일치하지 않습니다", "pw_failed": "변경하지 못했습니다", "refund_link": "환불 정책", "pay_title": "크레딧 구매", "pay_opening": "결제 페이지로 이동 중…", "cancel": "취소", "credits": "크레딧", "pay_success": "결제가 완료되어 크레딧이 추가되었습니다."}</script>
 </head>
 <body>
 <div class="top">
@@ -133,7 +137,7 @@
       </div>
 
       <div class="links">
-        <a class="btn" href="pricing.html">크레딧 구매 →</a>
+        <button class="btn" id="buy" type="button">크레딧 구매 →</button>
         <button class="btn ghost" id="activity" type="button">크레딧 내역</button>
         <button class="btn ghost" id="logout" type="button">로그아웃</button>
       </div>
@@ -150,6 +154,17 @@
       <button class="icon-close" id="activity-close" type="button" aria-label="닫기">×</button>
     </div>
     <div class="ledger" id="ledger" aria-live="polite"></div>
+  </div>
+</div>
+
+<div class="modal hidden" id="pay-modal" role="dialog" aria-modal="true" aria-labelledby="pay-title">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2 id="pay-title">크레딧 구매</h2>
+      <button class="icon-close" id="pay-close" type="button" aria-label="취소">×</button>
+    </div>
+    <div class="packs" id="pay-packs"></div>
+    <div class="msg" id="pay-msg" role="status" aria-live="polite"></div>
   </div>
 </div>
 
@@ -191,6 +206,7 @@
   var UI = JSON.parse(document.getElementById("ui").textContent);
   var TOKEN_KEY = "aig_token", EMAIL_KEY = "aig_email";
   var API = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "https://dev.aiglossa.com";
+  var balanceUnits = -1;
   var $ = function (id) { return document.getElementById(id); };
   function token() { return localStorage.getItem(TOKEN_KEY) || ""; }
   function setToken(t) { if (t) localStorage.setItem(TOKEN_KEY, t); else localStorage.removeItem(TOKEN_KEY); }
@@ -225,6 +241,7 @@
       $("account-name").textContent = name;
       $("account-email").textContent = maskEmail(email) || "—";
       $("coins").textContent = data.data.coins;
+      balanceUnits = Number(data.data.balance || 0);
       if (user.avatar) {
         var img = document.createElement("img");
         img.src = /^https?:\/\//.test(user.avatar) ? user.avatar : API + user.avatar;
@@ -269,6 +286,40 @@
   $("activity").addEventListener("click", function () { $("activity-modal").classList.remove("hidden"); loadLedger(); });
   $("activity-close").addEventListener("click", function () { $("activity-modal").classList.add("hidden"); });
   $("activity-modal").addEventListener("click", function (e) { if (e.target === $("activity-modal")) $("activity-modal").classList.add("hidden"); });
+
+  var FALLBACK_PACKS = [
+    {credits:180,price:"$2.99"},{credits:360,price:"$4.99"},{credits:750,price:"$9.99"},
+    {credits:1500,price:"$19.99"},{credits:4000,price:"$49.99"}
+  ];
+  function payMsg(text, bad) { $("pay-msg").textContent = text || ""; $("pay-msg").className = "msg" + (bad ? " err" : ""); }
+  function renderPacks(items) {
+    $("pay-packs").innerHTML = "";
+    items.forEach(function (pack) {
+      var button = document.createElement("button"); button.type = "button"; button.className = "pack";
+      var amount = document.createElement("b"); amount.textContent = pack.credits + " 크레딧";
+      var price = document.createElement("span"); price.textContent = pack.price;
+      button.appendChild(amount); button.appendChild(price);
+      button.addEventListener("click", function () {
+        button.disabled = true; payMsg("결제 페이지로 이동 중…", false);
+        var back = location.origin + location.pathname + "?paid=1";
+        AiglossaWallet.purchase({call:call,credits:pack.credits,successUrl:back,
+          getBalance:function(){return balanceUnits;},refresh:loadCredits,
+          onCompleted:function(){payMsg("결제가 완료되어 크레딧이 추가되었습니다.",false);button.disabled=false;},
+          onTimeout:function(){payMsg(UI.paid_late,true);button.disabled=false;},
+          onError:function(){payMsg(UI.err_net,true);button.disabled=false;}});
+      });
+      $("pay-packs").appendChild(button);
+    });
+  }
+  function openPay() {
+    $("pay-modal").classList.remove("hidden"); payMsg("", false);
+    call("/wallet/products", {}, false).then(function (data) {
+      renderPacks(data.code === 200 && data.data && data.data.items && data.data.items.length ? data.data.items : FALLBACK_PACKS);
+    }).catch(function () { renderPacks(FALLBACK_PACKS); });
+  }
+  $("buy").addEventListener("click", openPay);
+  $("pay-close").addEventListener("click", function () { $("pay-modal").classList.add("hidden"); });
+  $("pay-modal").addEventListener("click", function (e) { if (e.target === $("pay-modal")) $("pay-modal").classList.add("hidden"); });
 
   function pollAfterPayment() {
     var tries = 0, initial = $("coins").textContent;

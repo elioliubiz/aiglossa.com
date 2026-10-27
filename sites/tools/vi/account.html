@@ -31,6 +31,7 @@
 <link rel="manifest" href="../assets/manifest-tools.webmanifest">
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/theme.css">
+  <script src="../assets/wallet.js"></script>
 <style>
   body{min-height:100vh;display:flex;flex-direction:column}
   .top{display:flex;align-items:center;justify-content:space-between;gap:16px;
@@ -83,6 +84,9 @@
   .modal.hidden{display:none}.modal-box{width:min(520px,100%);max-height:80vh;border:1px solid var(--line);border-radius:14px;padding:20px;background:#15171b}
   .modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.modal-head h2{margin:0;font-size:18px}
   .icon-close{width:36px;height:36px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--fg);font-size:20px;cursor:pointer}
+  .packs{display:grid;gap:8px;margin-block-start:16px}.pack{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
+    padding:13px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.03);color:var(--fg);font:inherit;cursor:pointer}
+  .pack:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.08)}.pack[disabled]{opacity:.5;cursor:not-allowed}
   footer{border-block-start:1px solid var(--line);padding-block:26px}
   footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
   footer .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
@@ -104,7 +108,7 @@
     .account-grid{grid-template-columns:1fr}
   }
 </style>
-<script type="application/json" id="ui">{"title": "Đăng nhập — aiglossa tools", "description": "Đăng nhập aiglossa tools để xem tín dụng và tải nhạc đã tạo.", "back": "Quay lại công cụ", "h1": "Đăng nhập", "sub": "Đăng nhập vào tài khoản để tiếp tục sử dụng Aiglossa.", "divider": "hoặc dùng email", "email_label": "Email", "email_ph": "you@example.com", "code_label": "Mã 6 số", "code_ph": "123456", "send_code": "Gửi mã", "first_time": "Lần đầu? Tài khoản được tạo tự động.", "agree": "Khi tiếp tục, bạn đồng ý với", "terms": "Điều khoản", "privacy": "Chính sách bảo mật", "signed_h1": "Tín dụng của bạn", "signout": "Đăng xuất", "credits_unit": "tín dụng", "create": "Tạo nhạc →", "buy": "Mua tín dụng →", "err_load": "Không tải được", "err_net": "Lỗi mạng", "err_signin": "Đăng nhập thất bại", "paid_wait": "Đã nhận thanh toán — tín dụng sẽ hiện ra ngay…", "paid_ok": "Đã cộng tín dụng. Cảm ơn!", "paid_late": "Vẫn đang xử lý — tải lại trang sau một phút.", "show_h2": "Đăng nhập để giữ tín dụng.", "show_p": "Tín dụng dùng chung cho mọi công cụ và không hết hạn. Đăng nhập chỉ để gắn giao dịch với tài khoản của bạn — không lưu gì khác.", "proof_k": "Tạo tại đây · tiếng Anh · 0:30", "google": "Tiếp tục với Google", "signin": "Đăng nhập", "set_password": "Đặt mật khẩu", "password_set": "Đã đặt mật khẩu", "login_methods": "Cách đăng nhập", "delete_account": "Xóa tài khoản", "platform_note": "Tín dụng dùng được cho mọi sản phẩm aiglossa.", "no_pw_yet": "Chưa có mật khẩu — bạn đăng nhập bằng mã hoặc Google.", "tab_code": "Mã", "tab_password": "Mật khẩu", "pwd_ph": "Mật khẩu của bạn", "show_password": "Hiện", "hide_password": "Ẩn", "forgot": "Quên mật khẩu?", "reset_title": "Đặt lại mật khẩu", "new_password": "Mật khẩu mới", "reset_done": "Đã cập nhật mật khẩu — hãy đăng nhập bằng mật khẩu mới.", "account_label": "Tài khoản", "activity_label": "Lịch sử tín dụng", "close": "Đóng", "pw_short": "Ít nhất 8 ký tự", "pw_mismatch": "Mật khẩu không khớp", "pw_failed": "Không cập nhật được", "li1": "Bản 30 giây = 45 tín dụng, 45 giây = 64, 60 giây = 85, 75 giây = 103, 90 giây = 120.", "li2": "Các lần tạo thất bại được hoàn tín dụng tự động.", "li3": "Tín dụng không hết hạn và dùng được cho mọi công cụ.", "li4": "Thanh toán do Creem, đơn vị ghi nhận thương vụ của chúng tôi, xử lý.", "li5": "Tín dụng chưa dùng có thể được hoàn trong 14 ngày.", "refund_link": "Chính sách hoàn tiền"}</script>
+<script type="application/json" id="ui">{"title": "Đăng nhập — aiglossa tools", "description": "Đăng nhập aiglossa tools để xem tín dụng và tải nhạc đã tạo.", "back": "Quay lại công cụ", "h1": "Đăng nhập", "sub": "Đăng nhập vào tài khoản để tiếp tục sử dụng Aiglossa.", "divider": "hoặc dùng email", "email_label": "Email", "email_ph": "you@example.com", "code_label": "Mã 6 số", "code_ph": "123456", "send_code": "Gửi mã", "first_time": "Lần đầu? Tài khoản được tạo tự động.", "agree": "Khi tiếp tục, bạn đồng ý với", "terms": "Điều khoản", "privacy": "Chính sách bảo mật", "signed_h1": "Tín dụng của bạn", "signout": "Đăng xuất", "credits_unit": "tín dụng", "create": "Tạo nhạc →", "buy": "Mua tín dụng →", "err_load": "Không tải được", "err_net": "Lỗi mạng", "err_signin": "Đăng nhập thất bại", "paid_wait": "Đã nhận thanh toán — tín dụng sẽ hiện ra ngay…", "paid_ok": "Đã cộng tín dụng. Cảm ơn!", "paid_late": "Vẫn đang xử lý — tải lại trang sau một phút.", "show_h2": "Đăng nhập để giữ tín dụng.", "show_p": "Tín dụng dùng chung cho mọi công cụ và không hết hạn. Đăng nhập chỉ để gắn giao dịch với tài khoản của bạn — không lưu gì khác.", "proof_k": "Tạo tại đây · tiếng Anh · 0:30", "google": "Tiếp tục với Google", "signin": "Đăng nhập", "set_password": "Đặt mật khẩu", "password_set": "Đã đặt mật khẩu", "login_methods": "Cách đăng nhập", "delete_account": "Xóa tài khoản", "platform_note": "Tín dụng dùng được cho mọi sản phẩm aiglossa.", "no_pw_yet": "Chưa có mật khẩu — bạn đăng nhập bằng mã hoặc Google.", "tab_code": "Mã", "tab_password": "Mật khẩu", "pwd_ph": "Mật khẩu của bạn", "show_password": "Hiện", "hide_password": "Ẩn", "forgot": "Quên mật khẩu?", "reset_title": "Đặt lại mật khẩu", "new_password": "Mật khẩu mới", "reset_done": "Đã cập nhật mật khẩu — hãy đăng nhập bằng mật khẩu mới.", "account_label": "Tài khoản", "activity_label": "Lịch sử tín dụng", "close": "Đóng", "pw_short": "Ít nhất 8 ký tự", "pw_mismatch": "Mật khẩu không khớp", "pw_failed": "Không cập nhật được", "refund_link": "Chính sách hoàn tiền", "pay_title": "Mua tín dụng", "pay_opening": "Đang mở thanh toán…", "cancel": "Hủy", "credits": "tín dụng", "pay_success": "Đã nhận thanh toán — đã cộng tín dụng."}</script>
 </head>
 <body>
 <div class="top">
@@ -133,7 +137,7 @@
       </div>
 
       <div class="links">
-        <a class="btn" href="pricing.html">Mua tín dụng →</a>
+        <button class="btn" id="buy" type="button">Mua tín dụng →</button>
         <button class="btn ghost" id="activity" type="button">Lịch sử tín dụng</button>
         <button class="btn ghost" id="logout" type="button">Đăng xuất</button>
       </div>
@@ -150,6 +154,17 @@
       <button class="icon-close" id="activity-close" type="button" aria-label="Đóng">×</button>
     </div>
     <div class="ledger" id="ledger" aria-live="polite"></div>
+  </div>
+</div>
+
+<div class="modal hidden" id="pay-modal" role="dialog" aria-modal="true" aria-labelledby="pay-title">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2 id="pay-title">Mua tín dụng</h2>
+      <button class="icon-close" id="pay-close" type="button" aria-label="Hủy">×</button>
+    </div>
+    <div class="packs" id="pay-packs"></div>
+    <div class="msg" id="pay-msg" role="status" aria-live="polite"></div>
   </div>
 </div>
 
@@ -191,6 +206,7 @@
   var UI = JSON.parse(document.getElementById("ui").textContent);
   var TOKEN_KEY = "aig_token", EMAIL_KEY = "aig_email";
   var API = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "https://dev.aiglossa.com";
+  var balanceUnits = -1;
   var $ = function (id) { return document.getElementById(id); };
   function token() { return localStorage.getItem(TOKEN_KEY) || ""; }
   function setToken(t) { if (t) localStorage.setItem(TOKEN_KEY, t); else localStorage.removeItem(TOKEN_KEY); }
@@ -225,6 +241,7 @@
       $("account-name").textContent = name;
       $("account-email").textContent = maskEmail(email) || "—";
       $("coins").textContent = data.data.coins;
+      balanceUnits = Number(data.data.balance || 0);
       if (user.avatar) {
         var img = document.createElement("img");
         img.src = /^https?:\/\//.test(user.avatar) ? user.avatar : API + user.avatar;
@@ -269,6 +286,40 @@
   $("activity").addEventListener("click", function () { $("activity-modal").classList.remove("hidden"); loadLedger(); });
   $("activity-close").addEventListener("click", function () { $("activity-modal").classList.add("hidden"); });
   $("activity-modal").addEventListener("click", function (e) { if (e.target === $("activity-modal")) $("activity-modal").classList.add("hidden"); });
+
+  var FALLBACK_PACKS = [
+    {credits:180,price:"$2.99"},{credits:360,price:"$4.99"},{credits:750,price:"$9.99"},
+    {credits:1500,price:"$19.99"},{credits:4000,price:"$49.99"}
+  ];
+  function payMsg(text, bad) { $("pay-msg").textContent = text || ""; $("pay-msg").className = "msg" + (bad ? " err" : ""); }
+  function renderPacks(items) {
+    $("pay-packs").innerHTML = "";
+    items.forEach(function (pack) {
+      var button = document.createElement("button"); button.type = "button"; button.className = "pack";
+      var amount = document.createElement("b"); amount.textContent = pack.credits + " tín dụng";
+      var price = document.createElement("span"); price.textContent = pack.price;
+      button.appendChild(amount); button.appendChild(price);
+      button.addEventListener("click", function () {
+        button.disabled = true; payMsg("Đang mở thanh toán…", false);
+        var back = location.origin + location.pathname + "?paid=1";
+        AiglossaWallet.purchase({call:call,credits:pack.credits,successUrl:back,
+          getBalance:function(){return balanceUnits;},refresh:loadCredits,
+          onCompleted:function(){payMsg("Đã nhận thanh toán — đã cộng tín dụng.",false);button.disabled=false;},
+          onTimeout:function(){payMsg(UI.paid_late,true);button.disabled=false;},
+          onError:function(){payMsg(UI.err_net,true);button.disabled=false;}});
+      });
+      $("pay-packs").appendChild(button);
+    });
+  }
+  function openPay() {
+    $("pay-modal").classList.remove("hidden"); payMsg("", false);
+    call("/wallet/products", {}, false).then(function (data) {
+      renderPacks(data.code === 200 && data.data && data.data.items && data.data.items.length ? data.data.items : FALLBACK_PACKS);
+    }).catch(function () { renderPacks(FALLBACK_PACKS); });
+  }
+  $("buy").addEventListener("click", openPay);
+  $("pay-close").addEventListener("click", function () { $("pay-modal").classList.add("hidden"); });
+  $("pay-modal").addEventListener("click", function (e) { if (e.target === $("pay-modal")) $("pay-modal").classList.add("hidden"); });
 
   function pollAfterPayment() {
     var tries = 0, initial = $("coins").textContent;

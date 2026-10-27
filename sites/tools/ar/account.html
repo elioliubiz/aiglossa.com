@@ -31,6 +31,7 @@
 <link rel="manifest" href="../assets/manifest-tools.webmanifest">
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/theme.css">
+  <script src="../assets/wallet.js"></script>
 <style>
   body{min-height:100vh;display:flex;flex-direction:column}
   .top{display:flex;align-items:center;justify-content:space-between;gap:16px;
@@ -83,6 +84,9 @@
   .modal.hidden{display:none}.modal-box{width:min(520px,100%);max-height:80vh;border:1px solid var(--line);border-radius:14px;padding:20px;background:#15171b}
   .modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.modal-head h2{margin:0;font-size:18px}
   .icon-close{width:36px;height:36px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--fg);font-size:20px;cursor:pointer}
+  .packs{display:grid;gap:8px;margin-block-start:16px}.pack{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
+    padding:13px 14px;border:1px solid var(--line);border-radius:10px;background:rgba(255,255,255,.03);color:var(--fg);font:inherit;cursor:pointer}
+  .pack:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.08)}.pack[disabled]{opacity:.5;cursor:not-allowed}
   footer{border-block-start:1px solid var(--line);padding-block:26px}
   footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
   footer .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
@@ -104,7 +108,7 @@
     .account-grid{grid-template-columns:1fr}
   }
 </style>
-<script type="application/json" id="ui">{"title": "تسجيل الدخول — aiglossa tools", "description": "سجّل الدخول إلى aiglossa tools لعرض أرصدتك وتنزيل الموسيقى التي أنشأتها.", "back": "العودة إلى الأدوات", "h1": "تسجيل الدخول", "sub": "سجّل الدخول إلى حسابك لمتابعة استخدام Aiglossa.", "divider": "أو عبر البريد", "email_label": "البريد الإلكتروني", "email_ph": "you@example.com", "code_label": "رمز من 6 أرقام", "code_ph": "123456", "send_code": "أرسل الرمز", "first_time": "أول مرة هنا؟ يُنشأ الحساب تلقائيًا.", "agree": "بالمتابعة أنت توافق على", "terms": "الشروط", "privacy": "سياسة الخصوصية", "signed_h1": "أرصدتك", "signout": "تسجيل الخروج", "credits_unit": "رصيد", "create": "إنشاء موسيقى →", "buy": "شراء أرصدة →", "err_load": "تعذّر التحميل", "err_net": "خطأ في الشبكة", "err_signin": "تعذّر تسجيل الدخول", "paid_wait": "تم استلام الدفع — ستظهر الأرصدة بعد لحظات…", "paid_ok": "تمت إضافة الأرصدة. شكرًا!", "paid_late": "لا يزال قيد المعالجة — أعد تحميل الصفحة بعد دقيقة.", "show_h2": "سجّل الدخول للاحتفاظ بأرصدتك.", "show_p": "الأرصدة مشتركة بين كل الأدوات ولا تنتهي. تسجيل الدخول يربط عملية الشراء بحسابك فقط، ولا نخزّن شيئًا آخر عنك.", "proof_k": "أُنشئ هنا · الإنجليزية · 0:30", "google": "المتابعة عبر Google", "signin": "تسجيل الدخول", "set_password": "تعيين كلمة مرور", "password_set": "تم تعيين كلمة المرور", "login_methods": "طرق تسجيل الدخول", "delete_account": "حذف الحساب", "platform_note": "الرصيد صالح في جميع منتجات aiglossa.", "no_pw_yet": "لا توجد كلمة مرور بعد — تسجيل الدخول بالرمز أو Google.", "tab_code": "رمز", "tab_password": "كلمة المرور", "pwd_ph": "كلمة المرور", "show_password": "إظهار", "hide_password": "إخفاء", "forgot": "هل نسيت كلمة المرور؟", "reset_title": "إعادة تعيين كلمة المرور", "new_password": "كلمة مرور جديدة", "reset_done": "تم تحديث كلمة المرور — سجّل الدخول بها.", "account_label": "الحساب", "activity_label": "سجل الرصيد", "close": "إغلاق", "pw_short": "استخدم 8 أحرف على الأقل", "pw_mismatch": "كلمتا المرور غير متطابقتين", "pw_failed": "تعذّر التحديث", "li1": "مقطع 30 ثانية = 45 رصيدًا، 45 ثانية = 64، 60 ثانية = 85، 75 ثانية = 103، 90 ثانية = 120.", "li2": "الأجيال الفاشلة تُرد تلقائيًا.", "li3": "الأرصدة لا تنتهي وتعمل في كل الأدوات.", "li4": "المدفوعات تعالجها Creem، وهي تاجر السجل لدينا.", "li5": "يمكن استرداد الأرصدة غير المستخدمة خلال 14 يومًا.", "refund_link": "سياسة الاسترداد"}</script>
+<script type="application/json" id="ui">{"title": "تسجيل الدخول — aiglossa tools", "description": "سجّل الدخول إلى aiglossa tools لعرض أرصدتك وتنزيل الموسيقى التي أنشأتها.", "back": "العودة إلى الأدوات", "h1": "تسجيل الدخول", "sub": "سجّل الدخول إلى حسابك لمتابعة استخدام Aiglossa.", "divider": "أو عبر البريد", "email_label": "البريد الإلكتروني", "email_ph": "you@example.com", "code_label": "رمز من 6 أرقام", "code_ph": "123456", "send_code": "أرسل الرمز", "first_time": "أول مرة هنا؟ يُنشأ الحساب تلقائيًا.", "agree": "بالمتابعة أنت توافق على", "terms": "الشروط", "privacy": "سياسة الخصوصية", "signed_h1": "أرصدتك", "signout": "تسجيل الخروج", "credits_unit": "رصيد", "create": "إنشاء موسيقى →", "buy": "شراء أرصدة →", "err_load": "تعذّر التحميل", "err_net": "خطأ في الشبكة", "err_signin": "تعذّر تسجيل الدخول", "paid_wait": "تم استلام الدفع — ستظهر الأرصدة بعد لحظات…", "paid_ok": "تمت إضافة الأرصدة. شكرًا!", "paid_late": "لا يزال قيد المعالجة — أعد تحميل الصفحة بعد دقيقة.", "show_h2": "سجّل الدخول للاحتفاظ بأرصدتك.", "show_p": "الأرصدة مشتركة بين كل الأدوات ولا تنتهي. تسجيل الدخول يربط عملية الشراء بحسابك فقط، ولا نخزّن شيئًا آخر عنك.", "proof_k": "أُنشئ هنا · الإنجليزية · 0:30", "google": "المتابعة عبر Google", "signin": "تسجيل الدخول", "set_password": "تعيين كلمة مرور", "password_set": "تم تعيين كلمة المرور", "login_methods": "طرق تسجيل الدخول", "delete_account": "حذف الحساب", "platform_note": "الرصيد صالح في جميع منتجات aiglossa.", "no_pw_yet": "لا توجد كلمة مرور بعد — تسجيل الدخول بالرمز أو Google.", "tab_code": "رمز", "tab_password": "كلمة المرور", "pwd_ph": "كلمة المرور", "show_password": "إظهار", "hide_password": "إخفاء", "forgot": "هل نسيت كلمة المرور؟", "reset_title": "إعادة تعيين كلمة المرور", "new_password": "كلمة مرور جديدة", "reset_done": "تم تحديث كلمة المرور — سجّل الدخول بها.", "account_label": "الحساب", "activity_label": "سجل الرصيد", "close": "إغلاق", "pw_short": "استخدم 8 أحرف على الأقل", "pw_mismatch": "كلمتا المرور غير متطابقتين", "pw_failed": "تعذّر التحديث", "refund_link": "سياسة الاسترداد", "pay_title": "شراء رصيد", "pay_opening": "جارٍ فتح الدفع…", "cancel": "إلغاء", "credits": "رصيدًا", "pay_success": "تم استلام الدفع وإضافة الرصيد."}</script>
 </head>
 <body>
 <div class="top">
@@ -133,7 +137,7 @@
       </div>
 
       <div class="links">
-        <a class="btn" href="pricing.html">شراء أرصدة →</a>
+        <button class="btn" id="buy" type="button">شراء أرصدة →</button>
         <button class="btn ghost" id="activity" type="button">سجل الرصيد</button>
         <button class="btn ghost" id="logout" type="button">تسجيل الخروج</button>
       </div>
@@ -150,6 +154,17 @@
       <button class="icon-close" id="activity-close" type="button" aria-label="إغلاق">×</button>
     </div>
     <div class="ledger" id="ledger" aria-live="polite"></div>
+  </div>
+</div>
+
+<div class="modal hidden" id="pay-modal" role="dialog" aria-modal="true" aria-labelledby="pay-title">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2 id="pay-title">شراء رصيد</h2>
+      <button class="icon-close" id="pay-close" type="button" aria-label="إلغاء">×</button>
+    </div>
+    <div class="packs" id="pay-packs"></div>
+    <div class="msg" id="pay-msg" role="status" aria-live="polite"></div>
   </div>
 </div>
 
@@ -191,6 +206,7 @@
   var UI = JSON.parse(document.getElementById("ui").textContent);
   var TOKEN_KEY = "aig_token", EMAIL_KEY = "aig_email";
   var API = location.hostname === "tools.aiglossa.com" ? "https://api.aiglossa.com" : "https://dev.aiglossa.com";
+  var balanceUnits = -1;
   var $ = function (id) { return document.getElementById(id); };
   function token() { return localStorage.getItem(TOKEN_KEY) || ""; }
   function setToken(t) { if (t) localStorage.setItem(TOKEN_KEY, t); else localStorage.removeItem(TOKEN_KEY); }
@@ -225,6 +241,7 @@
       $("account-name").textContent = name;
       $("account-email").textContent = maskEmail(email) || "—";
       $("coins").textContent = data.data.coins;
+      balanceUnits = Number(data.data.balance || 0);
       if (user.avatar) {
         var img = document.createElement("img");
         img.src = /^https?:\/\//.test(user.avatar) ? user.avatar : API + user.avatar;
@@ -269,6 +286,40 @@
   $("activity").addEventListener("click", function () { $("activity-modal").classList.remove("hidden"); loadLedger(); });
   $("activity-close").addEventListener("click", function () { $("activity-modal").classList.add("hidden"); });
   $("activity-modal").addEventListener("click", function (e) { if (e.target === $("activity-modal")) $("activity-modal").classList.add("hidden"); });
+
+  var FALLBACK_PACKS = [
+    {credits:180,price:"$2.99"},{credits:360,price:"$4.99"},{credits:750,price:"$9.99"},
+    {credits:1500,price:"$19.99"},{credits:4000,price:"$49.99"}
+  ];
+  function payMsg(text, bad) { $("pay-msg").textContent = text || ""; $("pay-msg").className = "msg" + (bad ? " err" : ""); }
+  function renderPacks(items) {
+    $("pay-packs").innerHTML = "";
+    items.forEach(function (pack) {
+      var button = document.createElement("button"); button.type = "button"; button.className = "pack";
+      var amount = document.createElement("b"); amount.textContent = pack.credits + " رصيدًا";
+      var price = document.createElement("span"); price.textContent = pack.price;
+      button.appendChild(amount); button.appendChild(price);
+      button.addEventListener("click", function () {
+        button.disabled = true; payMsg("جارٍ فتح الدفع…", false);
+        var back = location.origin + location.pathname + "?paid=1";
+        AiglossaWallet.purchase({call:call,credits:pack.credits,successUrl:back,
+          getBalance:function(){return balanceUnits;},refresh:loadCredits,
+          onCompleted:function(){payMsg("تم استلام الدفع وإضافة الرصيد.",false);button.disabled=false;},
+          onTimeout:function(){payMsg(UI.paid_late,true);button.disabled=false;},
+          onError:function(){payMsg(UI.err_net,true);button.disabled=false;}});
+      });
+      $("pay-packs").appendChild(button);
+    });
+  }
+  function openPay() {
+    $("pay-modal").classList.remove("hidden"); payMsg("", false);
+    call("/wallet/products", {}, false).then(function (data) {
+      renderPacks(data.code === 200 && data.data && data.data.items && data.data.items.length ? data.data.items : FALLBACK_PACKS);
+    }).catch(function () { renderPacks(FALLBACK_PACKS); });
+  }
+  $("buy").addEventListener("click", openPay);
+  $("pay-close").addEventListener("click", function () { $("pay-modal").classList.add("hidden"); });
+  $("pay-modal").addEventListener("click", function (e) { if (e.target === $("pay-modal")) $("pay-modal").classList.add("hidden"); });
 
   function pollAfterPayment() {
     var tries = 0, initial = $("coins").textContent;

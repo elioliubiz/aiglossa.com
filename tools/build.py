@@ -54,8 +54,6 @@ PAGES = {
     "marketing": ("marketing.html", "marketing", ""),
     "support": ("support.html", "support", "support.html"),
     "tools": ("tools.html", "tools", ""),
-    # 工具站的独立页面（每语言一份，深度 1）：/{lang}/pricing.html
-    "pricing": ("pages/pricing.html", "ui", "pricing.html"),
     "account": ("pages/account.html", "ui", "account.html"),
     # 法律页：正文整体从 ui.json 取（与 protocol 页同样的做法），页面数固定
     "refund": ("pages/legal.html", "ui", "refund.html"),
@@ -604,11 +602,7 @@ def main() -> int:
                     out["drop"] = copy["drop"]                      # 含 <br>，按 HTML 原样插入
                     out["title"] = esc(copy["title"])
                     out["description"] = esc(copy["description"])
-                    merged = dict(copy)
-                    pricing_copy = source[lang]["pricing"]
-                    for k in ("li1", "li2", "li3", "li4", "li5", "refund_link"):
-                        merged[k] = pricing_copy[k]
-                    out["ui_json"] = json.dumps(merged, ensure_ascii=False).replace("</", "<\\/")
+                    out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
                     out["alt_sea"] = esc(copy["title"])
                     out["jsonld"] = json.dumps({
                         "@context": "https://schema.org",
@@ -688,26 +682,17 @@ def main() -> int:
                     return out
 
                 values_builder = login_values
-            elif page in ("pricing", "account"):
+            elif page == "account":
                 def tool_page_values(lang: str, base: str, page=page, source=source) -> dict[str, str]:
                     copy = source[lang][page]
                     out = {k: esc(v) for k, v in copy.items()}
                     merged = dict(copy)
                     pricing_copy = source[lang]["pricing"]
-                    for k in ("li1", "li2", "li3", "li4", "li5", "refund_link"):
-                        merged[k] = pricing_copy[k]
+                    merged["refund_link"] = pricing_copy["refund_link"]
+                    for k in ("pay_title", "pay_opening", "cancel", "credits", "pay_success"):
+                        merged[k] = source[lang]["make"][k]
+                        out[k] = esc(source[lang]["make"][k])
                     out["ui_json"] = json.dumps(merged, ensure_ascii=False).replace("</", "<\\/")
-                    out["alt_sea"] = esc(copy["title"])
-                    out["jsonld"] = json.dumps({
-                        "@context": "https://schema.org",
-                        "@type": "SoftwareApplication",
-                        "name": copy["title"],
-                        "description": copy["description"],
-                        "applicationCategory": "MultimediaApplication",
-                        "operatingSystem": "Web",
-                        "url": f"{base}/{lang}/music/",
-                        "inLanguage": languages[lang]["hreflang"],
-                    }, ensure_ascii=False).replace("</", "<\\/")
                     out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
                     out["legal_terms"] = esc(marketing[lang]["legal"]["terms"])
                     out["kicker"] = "aiglossa"
@@ -736,9 +721,8 @@ def main() -> int:
                         "cta_label": esc(locale["cta_label"]),
                         "cta_href": locale["cta_href"].lstrip("/"),   # 同目录：/{lang}/music/
                         # 首页列出当前语言已有的指南（没有译文的语言这一块为空）
-                        # 法务/价格标签取自 ui.json（工具页与工具站共用同一套译文）
+                        # 法务标签取自 ui.json（工具页与工具站共用同一套译文）
                         "legal_aup": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["make"]["legal_aup"]),
-                        "pricing_label": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["make"]["pricing_label"]),
                         "guides_title": esc(locale.get("guides_title", "Guides")),
                         "account_label": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["account_label"]),
                         "credits_unit": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["credits_unit"]),
