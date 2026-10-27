@@ -261,11 +261,11 @@
     background:rgba(255,122,26,.10)}
   .mine{margin-bottom:18px}
   .mine.hidden{display:none}
-  .minerow{display:flex;gap:9px;overflow-x:auto;padding-bottom:4px}
+  .minerow{display:flex;gap:9px;overflow:hidden;padding-bottom:4px}
   .minerow::-webkit-scrollbar{height:0}
   .minerow .rec,.minerow .tile{flex:0 0 180px}
   .mtools{display:flex;gap:5px;padding:0 7px 7px}.mtools button{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--muted);font:inherit;font-size:10px;border-radius:6px;padding:4px 6px;cursor:pointer}.mtools .mplay{width:26px;padding:4px 0}.mtools button:hover{color:var(--fg);border-color:rgba(255,255,255,.3)}
-  .tile-actions,.rec-actions{position:static;display:flex;justify-content:flex-end;align-items:center;gap:7px;padding:10px 12px 12px;margin-top:auto;z-index:3}.tile-actions button,.rec-actions button{flex:0 0 auto;min-width:34px;border:1px solid var(--line);border-radius:7px;background:rgba(255,255,255,.04);color:var(--muted);font:inherit;font-size:11px;padding:6px 9px;cursor:pointer}.tile-actions button:hover,.rec-actions button:hover{color:var(--fg);border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.08)}
+  .tile-actions,.rec-actions{position:absolute;right:12px;bottom:12px;display:flex;justify-content:flex-end;align-items:center;gap:7px;padding:0;z-index:3}.tile-actions button,.rec-actions button{flex:0 0 auto;min-width:34px;border:1px solid var(--line);border-radius:7px;background:rgba(12,14,12,.62);color:var(--muted);font:inherit;font-size:11px;padding:6px 9px;cursor:pointer}.tile-actions button:hover,.rec-actions button:hover{color:var(--fg);border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.1)}
   .works{padding:20px 26px 30px;overflow-y:auto;min-height:0}
   .whead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
   .whead .t{font:10px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
@@ -273,13 +273,13 @@
   .photos{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:220px;gap:11px}
   .tile{position:relative;border-radius:13px;overflow:hidden;cursor:pointer;background:#1b1e23;
         border:1px solid transparent}
-  .photos .tile,.photos .rec,.minerow .tile,.minerow .rec,.mgrid .tile,.mgrid .rec{display:flex;flex-direction:column;height:220px;border-color:var(--line);padding:0}
-  .photos .tile img,.minerow .tile img,.mgrid .tile img{position:static;width:100%;height:128px;flex:0 0 128px;object-fit:cover;transform:none}
+  .photos .tile,.photos .rec,.minerow .tile,.minerow .rec,.mgrid .tile,.mgrid .rec{display:flex;flex-direction:column;height:260px;border-color:var(--line);padding:0;position:relative}
+  .photos .tile img,.minerow .tile img,.mgrid .tile img{position:static;width:100%;height:140px;flex:0 0 140px;object-fit:cover;transform:none}
   .photos .tile .shade,.minerow .tile .shade,.mgrid .tile .shade{display:none}
   .photos .tile .meta,.minerow .tile .meta,.mgrid .tile .meta{position:static;inset:auto;padding:12px 12px 0;color:var(--fg)}
   .photos .tile .meta .t,.minerow .tile .meta .t,.mgrid .tile .meta .t{margin:0 0 3px;font-size:13px;font-weight:600}
   .photos .tile .meta .d,.minerow .tile .meta .d,.mgrid .tile .meta .d{margin:0;color:var(--muted);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .photos .rec .wv,.minerow .rec .wv,.mgrid .rec .wv{height:128px;flex:0 0 128px;margin:0;padding:12px;align-items:flex-end;background:rgba(255,255,255,.025)}
+  .photos .rec .wv,.minerow .rec .wv,.mgrid .rec .wv{height:140px;flex:0 0 140px;margin:0;padding:12px;align-items:flex-end;background:rgba(255,255,255,.025)}
   .photos .rec .rn,.minerow .rec .rn,.mgrid .rec .rn{margin:12px 12px 3px;font-size:13px;font-weight:600}
   .photos .rec .rd,.minerow .rec .rd,.mgrid .rec .rd{margin:0 12px;color:var(--muted);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .photos .rec .rplay,.minerow .rec .rplay,.mgrid .rec .rplay{top:10px;right:10px}
@@ -329,8 +329,8 @@
   .rec .rplay{position:absolute;inset-inline-end:8px;top:8px;width:22px;height:22px;border-radius:50%;
     display:grid;place-items:center;background:rgba(255,255,255,.14);font-size:9px;color:#fff}
   .rec .rd{font:10px/1.3 -apple-system,sans-serif;color:var(--mut);margin:0}
-  .more-tile{flex:0 0 180px;height:220px;border:1px dashed rgba(242,241,236,.2);border-radius:13px;background:rgba(255,255,255,.02);color:var(--acc);cursor:pointer;padding:0;overflow:hidden;text-align:center;font:inherit}
-  .more-tile .ph2{height:168px;margin:0;border:0;border-radius:0}
+  .more-tile{flex:0 0 118px;height:260px;border:1px dashed rgba(242,241,236,.2);border-radius:13px;background:rgba(255,255,255,.02);color:var(--acc);cursor:pointer;padding:0;overflow:hidden;text-align:center;font:inherit}
+  .more-tile .ph2{height:208px;margin:0;border:0;border-radius:0}
   .more-tile .dur{margin:0;color:var(--muted);font-size:11px}
   .thumbs{display:contents}
   .tile.add{display:grid;place-items:center;background:rgba(255,255,255,.02);border:1px dashed rgba(242,241,236,.2);
@@ -347,7 +347,7 @@
     .works .wrap,.whead,.photos,.rec-wrap,.policy{padding-inline:16px}
     .whead{flex-wrap:wrap;gap:2px 10px}
     .whead .n{font-size:11px}
-    .photos{grid-template-columns:repeat(2,1fr);grid-auto-rows:220px}
+    .photos{grid-template-columns:repeat(2,1fr);grid-auto-rows:260px}
     .recipes{grid-template-columns:repeat(2,1fr)!important;grid-template-rows:none!important;
              grid-auto-flow:row!important;overflow-x:visible!important}
     .rec-wrap:after{display:none}
@@ -589,7 +589,7 @@
     .works .wrap,.whead,.photos,.rec-wrap,.policy{padding-inline:16px}
     .whead{flex-wrap:wrap;gap:2px 10px}
     .whead .n{font-size:11px}
-    .photos{grid-template-columns:repeat(2,1fr);grid-auto-rows:220px}
+    .photos{grid-template-columns:repeat(2,1fr);grid-auto-rows:260px}
     .recipes{grid-template-columns:repeat(2,1fr)!important;grid-template-rows:none!important;
              grid-auto-flow:row!important;overflow-x:visible!important}
     .rec-wrap:after{display:none}
@@ -1501,11 +1501,11 @@
     if (!mineItems.length) return;
     var row = $("mineRow"); row.innerHTML = "";
     $("mine").classList.remove("hidden");
-    mineItems.slice(0, 6).forEach(function (it) { row.appendChild(mineTile(it, applyMine)); });
-    if (mineItems.length > 6) {
+    mineItems.slice(0, 5).forEach(function (it) { row.appendChild(mineTile(it, applyMine)); });
+    if (mineItems.length > 5) {
       var more = document.createElement("button");
       more.type = "button"; more.className = "more-tile";
-      more.innerHTML = '<div class="ph2 more"><span>+' + (mineItems.length - 6) + '</span></div>' +
+      more.innerHTML = '<div class="ph2 more"><span>+' + (mineItems.length - 5) + '</span></div>' +
         '<p class="dur">' + UI.view_all + '</p>';
       more.addEventListener("click", openMineModal);
       row.appendChild(more);
