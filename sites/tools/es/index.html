@@ -73,10 +73,6 @@
   .closing-band .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .closing-band p{margin:0;color:var(--muted,#96a0b5);font-size:14px}
   .closing-band .cta{white-space:nowrap}
-  .recent{display:none;padding-block:32px}.recent.on{display:block}.recent h2{font-size:18px;margin:0 0 14px}
-  .recent-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-  .recent-item{padding:14px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.025)}
-  .recent-item audio{width:100%;height:34px}.recent-item small{display:block;color:var(--muted);margin-block-end:8px}
   .tools-nav{border-bottom:1px solid rgba(255,255,255,.08)}
   .tools-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:16px}
   .tools-brand{font:11px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);text-decoration:none}
@@ -110,10 +106,6 @@
       <h1>Herramientas</h1>
       <p class="lede">Utilidades pequeñas para el trabajo creativo diario. Una a la vez, bien hechas.</p>
     </div>
-  </section>
-
-  <section class="recent" id="recent">
-    <div class="wrap"><h2>Mis pistas</h2><div class="recent-grid" id="recentGrid"></div></div>
   </section>
 
   <section class="tools">
@@ -207,17 +199,6 @@
     document.getElementById("toolsAccountBalance").textContent = Math.round((data.data.balance || 0) / 100) + " créditos";
     document.getElementById("toolsAvatar").textContent = name.slice(0, 1).toUpperCase();
     document.getElementById("toolsAccount").href = "account.html";
-    return fetch(api + "/ai/music/tracks", {
-      method:"POST", headers:{"Content-Type":"application/json","Authorization":"Bearer "+token,"X-Client":"web"},
-      body:JSON.stringify({app_key:"tools",device:device,timestamp:Math.floor(Date.now()/1000),limit:6})
-    }).then(function(r){return r.json();});
-  }).then(function (data) {
-    if (!data || data.code !== 200 || !data.data || !data.data.items || !data.data.items.length) return;
-    document.getElementById("recentGrid").innerHTML = data.data.items.map(function (x) {
-      var date = x.created_at ? new Date(x.created_at).toLocaleString(document.documentElement.lang) : "";
-      return '<div class="recent-item"><small>'+date+'</small><audio controls preload="none" src="'+x.url+'"></audio></div>';
-    }).join("");
-    document.getElementById("recent").classList.add("on");
   }).catch(function () {});
 })();
 </script>
