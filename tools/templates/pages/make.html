@@ -998,7 +998,7 @@
   // 会话是否存在（cookie 方案下无法本地判断，用一次轻量请求确认）
   var sessionOk = false, balanceUnits = -1;
   function checkSession() {
-    return call("/ai/music/credits", {}, true).then(function (d) {
+    return call("/wallet/summary", {}, true).then(function (d) {
       sessionOk = d.code === 200;
       if (sessionOk && d.data) {
         balanceUnits = d.data.balance || 0;
@@ -1565,6 +1565,12 @@
     { credits: 750, price: "$9.99" }, { credits: 1500, price: "$19.99" },
     { credits: 4000, price: "$49.99" }
   ];
+  function loadPacks() {
+    return call("/wallet/products", {}, false).then(function (d) {
+      if (d.code === 200 && d.data && d.data.items && d.data.items.length) PACKS = d.data.items;
+      return PACKS;
+    }).catch(function () { return PACKS; });
+  }
 
   function renderPacks() {
     var box = $("payPacks"); if (!box) return;
@@ -1581,7 +1587,7 @@
   function openPay() {
     if (!sessionOk) { needLogin(); return; }
     $("payBal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
-    renderPacks();
+    loadPacks().then(renderPacks);
     $("payMsg").textContent = "";
     $("payModal").classList.remove("hidden");
   }

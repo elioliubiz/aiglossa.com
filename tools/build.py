@@ -742,6 +742,7 @@ def main() -> int:
                         "guides_title": esc(locale.get("guides_title", "Guides")),
                         "account_label": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["account_label"]),
                         "credits_unit": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["credits_unit"]),
+                        "recent_title": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["make"]["mine_title"]),
                         "guides_list": "".join(
                             f'      <li><a href="guides/{slug}.html">{esc(g.get("h1") or g["title"])}</a></li>\n'
                             for slug, g in json.loads(

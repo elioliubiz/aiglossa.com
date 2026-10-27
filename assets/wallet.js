@@ -9,7 +9,7 @@
         if (options.onError) options.onError("popup_blocked");
         return;
       }
-      options.call(options.checkoutPath || "/ai/music/checkout", {
+      options.call(options.checkoutPath || "/wallet/checkout", {
         credits: options.credits,
         success_url: options.successUrl
       }, true).then(function (data) {
@@ -20,12 +20,18 @@
         }
         tab.location = data.data.checkout_url;
         if (options.onWaiting) options.onWaiting();
-        var initial = options.getBalance();
+        var checkoutId = data.data.checkout_id;
         var tries = 0;
         var timer = setInterval(function () {
           tries += 1;
-          options.refresh().then(function (ok) {
-            if (!ok || options.getBalance() <= initial) return;
+          var confirmed = options.call(options.statusPath || "/wallet/checkout/status", {checkout_id: checkoutId}, true)
+            .then(function (status) { return status.code === 200 && status.data && status.data.status === "paid"; })
+            .catch(function () { return false; });
+          confirmed.then(function (paid) {
+            if (!paid) return false;
+            return options.refresh();
+          }).then(function (ok) {
+            if (!ok) return;
             clearInterval(timer);
             try { tab.close(); } catch (e) {}
             if (options.onCompleted) options.onCompleted(options.getBalance());

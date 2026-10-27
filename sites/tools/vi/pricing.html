@@ -166,7 +166,7 @@
   function msg(t, kind) { var el = $("msg"); el.textContent = t || ""; el.className = "msg" + (kind ? " " + kind : ""); }
   var balanceUnits = -1;
   function refreshBalance() {
-    return call("/ai/music/credits", {}, true).then(function (data) {
+    return call("/wallet/summary", {}, true).then(function (data) {
       if (data.code !== 200 || !data.data) return false;
       balanceUnits = Number(data.data.balance || 0); return true;
     }).catch(function () { return false; });
@@ -181,7 +181,7 @@
     { credits: 4000, price: "$49.99", tracks: 88 }
   ];
 
-  PACKS.forEach(function (p) {
+  function renderPacks(packs) { $("packs").innerHTML = ""; packs.forEach(function (p) {
     var btn = document.createElement("button");
     btn.type = "button";
     btn.className = "pack";
@@ -189,7 +189,10 @@
       UI.per.replace("{n}", p.tracks) + '</span></span><span class="price">' + p.price + "</span>";
     btn.addEventListener("click", function () { buy(p.credits, btn); });
     $("packs").appendChild(btn);
-  });
+  }); }
+  call("/wallet/products", {}, false).then(function (d) {
+    renderPacks(d.code === 200 && d.data && d.data.items && d.data.items.length ? d.data.items : PACKS);
+  }).catch(function () { renderPacks(PACKS); });
 
   function buy(credits, btn) {
     if (!token()) { location.href = "account.html?next=pricing.html"; return; }

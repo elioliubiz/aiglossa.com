@@ -184,7 +184,7 @@
   });
 
   var sessionOk = false;
-  call("/ai/music/credits", {}, true).then(function (d) {
+  call("/wallet/summary", {}, true).then(function (d) {
     sessionOk = d.code === 200;
     var row = document.getElementById("balrow");
     if (!row) return;
@@ -212,7 +212,7 @@
     btn.disabled = true;
     msg(UI.opening);
     var back = location.origin + location.pathname.replace(/pricing\.html$/, "account.html") + "?paid=1";
-    call("/ai/music/checkout", { credits: credits, success_url: back }, true).then(function (data) {
+    call("/wallet/checkout", { credits: credits, success_url: back }, true).then(function (data) {
       if (data.code === 401) { location.href = "login.html?next=" + encodeURIComponent(location.href); return; }
       if (data.code !== 200) { msg(data.msg || UI.err, "err"); btn.disabled = false; return; }
       location.href = data.data.checkout_url;

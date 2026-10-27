@@ -116,7 +116,7 @@
     $("signedIn").classList.toggle("hidden", !inIn);
     $("signedOut").classList.toggle("hidden", inIn);
   }
-  call("/ai/music/credits", {}, true).then(function (d) {
+  call("/wallet/summary", {}, true).then(function (d) {
     if (d.code !== 200) { show(false); return; }
     show(true);
     var u = (d.data && d.data.user) || {};
@@ -201,7 +201,7 @@
   function checkout(credits) {
     document.getElementById("payMsg").textContent = OPENING;
     var back = location.origin + location.pathname + "?paid=1";
-    post("/ai/music/checkout", { credits: credits, success_url: back }).then(function (d) {
+    post("/wallet/checkout", { credits: credits, success_url: back }).then(function (d) {
       if (d.code === 200 && d.data && d.data.checkout_url) { location.href = d.data.checkout_url; return; }
       document.getElementById("payMsg").textContent = d.msg || "";
     }).catch(function () {});

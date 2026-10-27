@@ -170,12 +170,12 @@
         <button class="btn ghost" id="logout" style="width:auto;padding:8px 14px">Se déconnecter</button>
       </div>
       <div class="balance"><span id="coins">—</span><small>crédits</small></div>
-      <p class="hint" id="tracks-hint"></p>
       <p class="hint" id="account-email"></p>
 
       <div class="links">
-        <a class="btn" href="music/">Créer de la musique →</a>
+        <a class="btn" href="./">Retour aux outils</a>
         <a class="btn ghost" href="pricing.html">Acheter des crédits →</a>
+        <a class="btn ghost" href="https://aiglossa.com/fr/protocol/delete-account.html">Supprimer le compte</a>
       </div>
 
       <div class="msg" id="account-msg" role="status" aria-live="polite"></div>
@@ -249,18 +249,17 @@
     $("signin-card").classList.remove("hidden");
   }
   function loadCredits() {
-    return call("/ai/music/credits", {}, true).then(function (data) {
+    return call("/wallet/summary", {}, true).then(function (data) {
       if (data.code === 401) { setToken(""); renderSignedOut(); return; }
       if (data.code !== 200) { showMsg($("account-msg"), data.msg || UI.err_load, "err"); return; }
       $("coins").textContent = data.data.coins;
-      $("tracks-hint").textContent = data.data.tracks_left + " × 30s";
       loadLedger();
       return true;
     }).catch(function () { showMsg($("account-msg"), UI.err_net, "err"); return false; });
   }
   function ledgerLabel(kind) {
-    return ({creem_topup:"Credit purchase", ai_music:"Music generation", refund:"Generation refund",
-      creem_refund:"Payment refund", redeem_code:"Redeem code", newbie_gift:"Welcome credits"})[kind] || kind.replace(/_/g, " ");
+    return ({creem_topup:UI.buy, ai_music:UI.create, refund:UI.paid_ok,
+      creem_refund:UI.refund_label, redeem_code:UI.credits_unit, newbie_gift:UI.credits_unit})[kind] || UI.credits_unit;
   }
   function loadLedger() {
     call("/coin/ledger", {page:1, page_size:20}, true).then(function (data) {
@@ -322,7 +321,7 @@
     showMsg($("account-msg"), UI.paid_wait, "ok");
     var timer = setInterval(function () {
       tries += 1;
-      call("/ai/music/credits", {}, true).then(function (data) {
+      call("/wallet/summary", {}, true).then(function (data) {
         if (data.code === 200 && data.data.coins !== initial) {
           $("coins").textContent = data.data.coins;
           showMsg($("account-msg"), UI.paid_ok, "ok");

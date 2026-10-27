@@ -234,7 +234,7 @@
 (function () {
   // 已登录则页脚显示「账户」，否则「登录」——靠一次轻量请求判断 cookie 会话
   var a = document.getElementById("acctLink"); if (!a) return;
-  fetch("https://api.aiglossa.com/ai/music/credits", {
+  fetch("https://api.aiglossa.com/wallet/summary", {
     method: "POST", credentials: "include",
     headers: { "Content-Type": "application/json", "X-Client": "web" },
     body: JSON.stringify({ app_key: "tools", device: "web", timestamp: Math.floor(Date.now() / 1000) })
