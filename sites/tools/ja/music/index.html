@@ -818,6 +818,7 @@
 </div>
 
 <script type="application/json" id="ui">{"title": "AI音楽生成 — 写真から曲へ、長さはぴったり", "description": "写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。", "h1": "曲を作る", "sub": "写真またはプロンプトから。長さは正確に、ループはシームレスに。", "drop": "写真をドロップまたは選択<br>歌詞が写真の中身を歌います", "generate": "曲を生成", "how_credits": "クレジットの仕組み →", "grp_photo": "聴いてみる", "grp_recipe": "用途から選ぶ", "download": "ダウンロード", "save_recipe": "レシピとして保存", "remove_photo": "写真を削除", "photo_here": "ここにあなたの写真", "note": "右側はすべてここで作られています", "legal_aup": "利用規約（AUP）", "legal_refund": "返金ポリシー", "sign_in_first": "生成するにはサインイン", "generating": "生成中… 約20秒。", "just_generated": "たった今生成", "your_track": "あなたの曲", "from_recipe": "レシピから", "from_photo": "写真から制作", "err_load": "オプションを読み込めませんでした", "done_in": "{n}秒で完成", "gen_cost": "生成 · {n}", "err_gen": "生成に失敗しました", "my_track": "マイトラック", "err_net": "通信エラー", "recipe_name": "レシピ名", "err_save": "保存に失敗しました", "saved": "保存しました: {name}", "up_to": "最大 {n}", "credits": "クレジット", "guides_link": "ガイド →", "guides_title": "ガイド", "close": "閉じる", "loading": "読み込み中…", "off": "オフ", "loop_on": "シームレスループ", "buy_credits": "クレジットを購入 →", "desc_label": "補足の説明（任意）", "desc_ph": "欲しい曲を説明：雨のカフェ、ピアノ中心", "mode_photo": "写真", "mode_text": "文章", "field_density": "編曲の密度", "opt_sparse": "疎ら", "opt_medium": "標準", "opt_full": "密", "pro_title": "詳細設定", "grp_photo_sub": "写真 → 歌詞 → 曲", "grp_recipe_sub": "用途を選ぶと設定が入ります", "recipe_names": {"short-form-cut": "快剪短片", "hook-sting": "Accroche d'ouverture", "product-loop": "Boucle produit", "podcast-bed": "Fond de podcast", "documentary-underscore": "Fond documentaire", "game-menu-loop": "Boucle de menu", "calm-focus": "Concentration", "kids-learning": "Enfants et apprentissage"}, "applied": "使用中", "current_recipe": "使用中のプリセット", "mine_title": "マイ作品", "share_link": "リンクを共有", "dl_audio": "音声を保存", "copied": "コピーしました", "shared_note": "共有された曲を再生中。下から自分用に作れます", "my_account": "アカウント", "balance": "残高", "pricing_label": "料金", "confirm_gen": "{sec} 秒の曲を生成しますか？{n} を消費します。", "err_insufficient": "クレジットが足りません", "topup_hint": "チャージすると生成を続けられます。", "topup_cta": "チャージする", "cancel": "キャンセル", "confirm": "確定", "not_signed_in": "未ログイン", "traveler": "旅人", "view_all": "すべて見る", "my_works_pick": "選ぶと当時の設定を再利用します", "pay_title": "クレジットを購入", "pay_success": "お支払いが完了し、クレジットを追加しました。", "pay_opening": "決済ページを開いています…", "li1": "30秒＝45クレジット、45秒＝64、60秒＝85、75秒＝103、90秒＝120。", "li2": "生成に失敗した場合は自動で返金されます。", "li3": "クレジットは期限なしで、すべてのツールで使えます。", "li4": "支払いは merchant of record である Creem が処理します。", "li5": "未使用のクレジットは14日以内なら返金できます。", "refund_link": "返金ポリシー"}</script>
+<script src="../../assets/wallet.js"></script>
 <script>
 (function () {
   "use strict";
@@ -1604,10 +1605,20 @@
   function startCheckout(credits) {
     $("payMsg").textContent = UI.pay_opening;
     var back = location.origin + location.pathname + "?paid=1";
-    call("/ai/music/checkout", { credits: credits, success_url: back }, true).then(function (d) {
-      if (d.code === 200 && d.data && d.data.checkout_url) { location.href = d.data.checkout_url; return; }
-      $("payMsg").textContent = d.msg || UI.err_net;
-    }).catch(function () { $("payMsg").textContent = UI.err_net; });
+    AiglossaWallet.purchase({
+      call: call,
+      credits: credits,
+      successUrl: back,
+      getBalance: function () { return balanceUnits; },
+      refresh: checkSession,
+      onWaiting: function () { $("payMsg").textContent = UI.pay_opening; },
+      onCompleted: function () {
+        $("payModal").classList.add("hidden");
+        toast(UI.pay_success);
+      },
+      onTimeout: function () { $("payMsg").textContent = UI.pay_late || UI.err_net; },
+      onError: function () { $("payMsg").textContent = UI.err_net; }
+    });
   }
 
   function toast(text) {
@@ -1649,7 +1660,9 @@
   // 底部账号栏：未登录一律先去登录（提前拦截），已登录才进入对应页面
   var ACCOUNT_URL = ROOT + "/" + LANG + "/account.html";
   var PRICING_URL = ROOT + "/" + LANG + "/pricing.html";
-  var GUIDE_URL = "guides/";
+  // The guide is an in-page modal. Its article index lives one level above
+  // the tool directory, so the modal handler can intercept this link.
+  var GUIDE_URL = "../guides/";
   if ($("priceLink")) {
     $("priceLink").href = PRICING_URL;
     $("priceLink").addEventListener("click", function (e) { e.preventDefault(); openPay(); });
@@ -1661,7 +1674,11 @@
   });
   $("bal").textContent = UI.not_signed_in;
   renderAvatar({});
-  if (/[?&]paid=1/.test(location.search)) {
+  var paymentReturn = /[?&]paid=1/.test(location.search) && !!window.opener;
+  if (paymentReturn) {
+    try { window.opener.postMessage({ type: "aiglossa-payment-return" }, location.origin); } catch (e) {}
+    setTimeout(function () { try { window.close(); } catch (e) {} }, 150);
+  } else if (/[?&]paid=1/.test(location.search)) {
     history.replaceState(null, "", location.pathname + location.hash);
     setTimeout(function () { checkSession().then(function (ok) { if (ok) toast(UI.pay_success); }); }, 600);
   }

@@ -818,6 +818,7 @@
 </div>
 
 <script type="application/json" id="ui">{"title": "AI 음악 생성 — 사진에서 곡으로, 정확한 길이", "description": "사진이나 프롬프트로 30~90초에 딱 맞는 배경 음악을 만듭니다. 가사는 사진 속 내용을 노래하고, 10개 언어 보컬과 이음새 없는 루프를 지원합니다.", "h1": "곡 만들기", "sub": "사진 또는 프롬프트에서. 길이는 정확하게, 루프는 매끄럽게.", "drop": "사진을 놓거나 선택하세요<br>가사가 사진 속 내용을 노래합니다", "generate": "곡 생성", "how_credits": "크레딧 계산 방식 →", "grp_photo": "들어보기", "grp_recipe": "용도에서 시작", "download": "다운로드", "save_recipe": "레시피로 저장", "remove_photo": "사진 제거", "photo_here": "여기에 사진", "note": "오른쪽은 모두 여기서 만들어졌습니다", "legal_aup": "이용 정책", "legal_refund": "환불 정책", "sign_in_first": "생성하려면 로그인", "generating": "생성 중… 약 20초.", "just_generated": "방금 생성됨", "your_track": "내 곡", "from_recipe": "레시피에서", "from_photo": "사진에서 제작", "err_load": "옵션을 불러오지 못했습니다", "done_in": "{n}초 만에 완료", "gen_cost": "생성 · {n}", "err_gen": "생성에 실패했습니다", "my_track": "내 트랙", "err_net": "네트워크 오류", "recipe_name": "레시피 이름", "err_save": "저장하지 못했습니다", "saved": "저장됨: {name}", "up_to": "최대 {n}", "credits": "크레딧", "guides_link": "가이드 →", "guides_title": "가이드", "close": "닫기", "loading": "불러오는 중…", "off": "끔", "loop_on": "이음새 없는 루프", "buy_credits": "크레딧 구매 →", "desc_label": "추가 설명(선택)", "desc_ph": "원하는 곡을 설명하세요: 비 오는 카페, 피아노 중심", "mode_photo": "사진", "mode_text": "글", "field_density": "편곡 밀도", "opt_sparse": "드문드문", "opt_medium": "보통", "opt_full": "촘촘함", "pro_title": "고급 옵션", "grp_photo_sub": "사진 → 가사 → 곡", "grp_recipe_sub": "용도를 고르면 설정이 채워집니다", "recipe_names": {"short-form-cut": "ショート動画", "hook-sting": "オープニングフック", "product-loop": "製品ループ", "podcast-bed": "ポッドキャストBGM", "documentary-underscore": "ドキュメンタリーBGM", "game-menu-loop": "ゲームメニュー", "calm-focus": "集中学習", "kids-learning": "子ども向け学習"}, "applied": "사용", "current_recipe": "현재 프리셋", "mine_title": "내 작업", "share_link": "링크 공유", "dl_audio": "오디오 저장", "copied": "복사됨", "shared_note": "공유된 곡을 듣는 중입니다. 아래에서 직접 만들 수 있어요", "my_account": "계정", "balance": "잔액", "pricing_label": "가격", "confirm_gen": "{sec}초 곡을 생성할까요? {n}이 차감됩니다.", "err_insufficient": "크레딧이 부족합니다", "topup_hint": "충전하면 계속 생성할 수 있습니다.", "topup_cta": "충전하기", "cancel": "취소", "confirm": "확인", "not_signed_in": "로그인 안 됨", "traveler": "여행자", "view_all": "전체 보기", "my_works_pick": "하나를 고르면 그때 설정을 재사용합니다", "pay_title": "크레딧 구매", "pay_success": "결제가 완료되어 크레딧이 추가되었습니다.", "pay_opening": "결제 페이지로 이동 중…", "li1": "30초 = 45크레딧, 45초 = 64, 60초 = 85, 75초 = 103, 90초 = 120.", "li2": "생성에 실패하면 자동으로 환불됩니다.", "li3": "크레딧은 만료되지 않으며 모든 도구에서 쓸 수 있습니다.", "li4": "결제는 merchant of record인 Creem이 처리합니다.", "li5": "사용하지 않은 크레딧은 14일 이내에 환불받을 수 있습니다.", "refund_link": "환불 정책"}</script>
+<script src="../../assets/wallet.js"></script>
 <script>
 (function () {
   "use strict";
@@ -1604,10 +1605,20 @@
   function startCheckout(credits) {
     $("payMsg").textContent = UI.pay_opening;
     var back = location.origin + location.pathname + "?paid=1";
-    call("/ai/music/checkout", { credits: credits, success_url: back }, true).then(function (d) {
-      if (d.code === 200 && d.data && d.data.checkout_url) { location.href = d.data.checkout_url; return; }
-      $("payMsg").textContent = d.msg || UI.err_net;
-    }).catch(function () { $("payMsg").textContent = UI.err_net; });
+    AiglossaWallet.purchase({
+      call: call,
+      credits: credits,
+      successUrl: back,
+      getBalance: function () { return balanceUnits; },
+      refresh: checkSession,
+      onWaiting: function () { $("payMsg").textContent = UI.pay_opening; },
+      onCompleted: function () {
+        $("payModal").classList.add("hidden");
+        toast(UI.pay_success);
+      },
+      onTimeout: function () { $("payMsg").textContent = UI.pay_late || UI.err_net; },
+      onError: function () { $("payMsg").textContent = UI.err_net; }
+    });
   }
 
   function toast(text) {
@@ -1649,7 +1660,9 @@
   // 底部账号栏：未登录一律先去登录（提前拦截），已登录才进入对应页面
   var ACCOUNT_URL = ROOT + "/" + LANG + "/account.html";
   var PRICING_URL = ROOT + "/" + LANG + "/pricing.html";
-  var GUIDE_URL = "guides/";
+  // The guide is an in-page modal. Its article index lives one level above
+  // the tool directory, so the modal handler can intercept this link.
+  var GUIDE_URL = "../guides/";
   if ($("priceLink")) {
     $("priceLink").href = PRICING_URL;
     $("priceLink").addEventListener("click", function (e) { e.preventDefault(); openPay(); });
@@ -1661,7 +1674,11 @@
   });
   $("bal").textContent = UI.not_signed_in;
   renderAvatar({});
-  if (/[?&]paid=1/.test(location.search)) {
+  var paymentReturn = /[?&]paid=1/.test(location.search) && !!window.opener;
+  if (paymentReturn) {
+    try { window.opener.postMessage({ type: "aiglossa-payment-return" }, location.origin); } catch (e) {}
+    setTimeout(function () { try { window.close(); } catch (e) {} }, 150);
+  } else if (/[?&]paid=1/.test(location.search)) {
     history.replaceState(null, "", location.pathname + location.hash);
     setTimeout(function () { checkSession().then(function (ok) { if (ok) toast(UI.pay_success); }); }, 600);
   }

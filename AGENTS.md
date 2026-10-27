@@ -89,6 +89,16 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 
 ## 工具站（tools.aiglossa.com）现状
 
+### 支付与额度（所有工具共用的边界）
+
+额度是工具平台能力，不属于音乐工具。工具页面只负责决定何时需要额度、显示自己的余额区域，以及在充值完成后刷新自己的 UI；不得在页面内直接写 `location.href = checkout_url`，也不得自行实现 Creem 轮询。
+
+共享支付流程位于 `assets/wallet.js`：它在新标签页打开 Hosted Checkout，原工具页保持不卸载，按服务端余额轮询等待 webhook 入账，到账后关闭支付标签页并调用页面回调。充值完成后**不自动重试或继续执行原业务操作**，由用户自行再次点击业务按钮。
+
+业务页接入时应提供：`call`、`credits`、`successUrl`、`getBalance`、`refresh`，并通过 `onCompleted` 更新自己的余额显示。余额变化必须以服务端查询为准；支付页回跳、`postMessage` 或 Creem 成功页只能作为提示，不能直接视为到账。
+
+“购买额度”按钮可以复用钱包能力，但整行余额栏、指南入口等布局不作为跨工具统一 View；不同工具自行组织页面 UI。
+
 | 页面 | 多语言 |
 |---|---|
 | `/{lang}/index.html` 工具列表 | ✅ 16 种 |

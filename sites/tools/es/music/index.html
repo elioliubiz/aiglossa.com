@@ -818,6 +818,7 @@
 </div>
 
 <script type="application/json" id="ui">{"title": "Generador de música con IA — de foto a canción, duración exacta", "description": "Convierte una foto o una descripción en música de fondo de 30 a 90 segundos exactos. La letra nombra lo que hay en tu imagen, con voces en 10 idiomas y bucles sin cortes.", "h1": "Crear una pista", "sub": "Desde una foto o una descripción. Duración exacta, bucles sin cortes.", "drop": "Arrastra o elige una foto<br>la letra nombrará lo que hay en ella", "generate": "Generar pista", "how_credits": "Cómo funcionan los créditos →", "grp_photo": "Escúchalo", "grp_recipe": "Desde un caso de uso", "download": "Descargar", "save_recipe": "Guardar como receta", "remove_photo": "Quitar foto", "photo_here": "Tu foto aquí", "note": "Todo lo de la derecha se hizo aquí", "legal_aup": "Uso aceptable", "legal_refund": "Reembolsos", "sign_in_first": "Inicia sesión para generar", "generating": "Generando… unos 20 segundos.", "just_generated": "Recién generado", "your_track": "Tu pista", "from_recipe": "Desde una receta", "from_photo": "Desde una foto", "err_load": "No se pudieron cargar las opciones", "done_in": "Listo en {n} s", "gen_cost": "Generar · {n}", "err_gen": "La generación falló", "my_track": "Mi pista", "err_net": "Error de red", "recipe_name": "Nombre de la receta", "err_save": "No se pudo guardar", "saved": "Guardado: {name}", "up_to": "Hasta {n}", "credits": "créditos", "guides_link": "Guías →", "guides_title": "Guías", "close": "Cerrar", "loading": "Cargando…", "off": "No", "loop_on": "Bucle sin cortes", "buy_credits": "Comprar créditos →", "desc_label": "Descripción (opcional)", "desc_ph": "Describe la pieza: café lluvioso, piano suave", "mode_photo": "Foto", "mode_text": "Texto", "field_density": "Densidad del arreglo", "opt_sparse": "Escaso", "opt_medium": "Medio", "opt_full": "Denso", "pro_title": "Opciones avanzadas", "grp_photo_sub": "Foto → letra → pista", "grp_recipe_sub": "Elige el uso y los ajustes ya vienen puestos", "recipe_names": {"short-form-cut": "숏폼 컷", "hook-sting": "오프닝 훅", "product-loop": "제품 루프", "podcast-bed": "팟캐스트 배경", "documentary-underscore": "다큐 배경", "game-menu-loop": "게임 메뉴 루프", "calm-focus": "집중 학습", "kids-learning": "어린이 학습"}, "applied": "Usando", "current_recipe": "Preajuste actual", "mine_title": "Mis pistas", "share_link": "Compartir enlace", "dl_audio": "Descargar audio", "copied": "Copiado", "shared_note": "Escuchas una pista compartida: crea la tuya abajo", "my_account": "Cuenta", "balance": "Saldo", "pricing_label": "Precios", "confirm_gen": "¿Generar una pista de {sec}s? Se gastarán {n}.", "err_insufficient": "Créditos insuficientes", "topup_hint": "Recarga para seguir generando.", "topup_cta": "Comprar créditos", "cancel": "Cancelar", "confirm": "Confirmar", "not_signed_in": "Sin sesión", "traveler": "Viajero", "view_all": "Ver todo", "my_works_pick": "Elige uno para reutilizar su configuración", "pay_title": "Comprar créditos", "pay_success": "Pago recibido: créditos añadidos.", "pay_opening": "Abriendo el pago…", "li1": "Pista de 30 s = 45 créditos, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Las generaciones fallidas se reembolsan automáticamente.", "li3": "Los créditos no caducan y sirven para todas las herramientas.", "li4": "Los pagos los procesa Creem, nuestro merchant of record.", "li5": "Los créditos sin usar se pueden reembolsar en un plazo de 14 días.", "refund_link": "Política de reembolsos"}</script>
+<script src="../../assets/wallet.js"></script>
 <script>
 (function () {
   "use strict";
@@ -1604,10 +1605,20 @@
   function startCheckout(credits) {
     $("payMsg").textContent = UI.pay_opening;
     var back = location.origin + location.pathname + "?paid=1";
-    call("/ai/music/checkout", { credits: credits, success_url: back }, true).then(function (d) {
-      if (d.code === 200 && d.data && d.data.checkout_url) { location.href = d.data.checkout_url; return; }
-      $("payMsg").textContent = d.msg || UI.err_net;
-    }).catch(function () { $("payMsg").textContent = UI.err_net; });
+    AiglossaWallet.purchase({
+      call: call,
+      credits: credits,
+      successUrl: back,
+      getBalance: function () { return balanceUnits; },
+      refresh: checkSession,
+      onWaiting: function () { $("payMsg").textContent = UI.pay_opening; },
+      onCompleted: function () {
+        $("payModal").classList.add("hidden");
+        toast(UI.pay_success);
+      },
+      onTimeout: function () { $("payMsg").textContent = UI.pay_late || UI.err_net; },
+      onError: function () { $("payMsg").textContent = UI.err_net; }
+    });
   }
 
   function toast(text) {
@@ -1649,7 +1660,9 @@
   // 底部账号栏：未登录一律先去登录（提前拦截），已登录才进入对应页面
   var ACCOUNT_URL = ROOT + "/" + LANG + "/account.html";
   var PRICING_URL = ROOT + "/" + LANG + "/pricing.html";
-  var GUIDE_URL = "guides/";
+  // The guide is an in-page modal. Its article index lives one level above
+  // the tool directory, so the modal handler can intercept this link.
+  var GUIDE_URL = "../guides/";
   if ($("priceLink")) {
     $("priceLink").href = PRICING_URL;
     $("priceLink").addEventListener("click", function (e) { e.preventDefault(); openPay(); });
@@ -1661,7 +1674,11 @@
   });
   $("bal").textContent = UI.not_signed_in;
   renderAvatar({});
-  if (/[?&]paid=1/.test(location.search)) {
+  var paymentReturn = /[?&]paid=1/.test(location.search) && !!window.opener;
+  if (paymentReturn) {
+    try { window.opener.postMessage({ type: "aiglossa-payment-return" }, location.origin); } catch (e) {}
+    setTimeout(function () { try { window.close(); } catch (e) {} }, 150);
+  } else if (/[?&]paid=1/.test(location.search)) {
     history.replaceState(null, "", location.pathname + location.hash);
     setTimeout(function () { checkSession().then(function (ok) { if (ok) toast(UI.pay_success); }); }, 600);
   }

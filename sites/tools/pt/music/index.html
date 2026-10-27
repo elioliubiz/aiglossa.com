@@ -818,6 +818,7 @@
 </div>
 
 <script type="application/json" id="ui">{"title": "Gerador de música com IA — de foto a música, duração exata", "description": "Transforme uma foto ou descrição em música de fundo com 30 a 90 segundos exatos. A letra cita o que está na imagem, com vocais em 10 idiomas e loops sem corte.", "h1": "Criar uma faixa", "sub": "A partir de uma foto ou descrição. Duração exata, loops sem corte.", "drop": "Arraste ou escolha uma foto<br>a letra vai citar o que há nela", "generate": "Gerar faixa", "how_credits": "Como funcionam os créditos →", "grp_photo": "Ouça", "grp_recipe": "A partir de um uso", "download": "Baixar", "save_recipe": "Salvar como receita", "remove_photo": "Remover foto", "photo_here": "Sua foto aqui", "note": "Tudo à direita foi feito aqui", "legal_aup": "Uso aceitável", "legal_refund": "Reembolsos", "sign_in_first": "Entre para gerar", "generating": "Gerando… cerca de 20 segundos.", "just_generated": "Gerado agora", "your_track": "Sua faixa", "from_recipe": "De uma receita", "from_photo": "A partir de uma foto", "err_load": "Não foi possível carregar as opções", "done_in": "Pronto em {n} s", "gen_cost": "Gerar · {n}", "err_gen": "A geração falhou", "my_track": "Minha faixa", "err_net": "Erro de rede", "recipe_name": "Nome da receita", "err_save": "Falha ao salvar", "saved": "Salvo: {name}", "up_to": "Até {n}", "credits": "créditos", "guides_link": "Guias →", "guides_title": "Guias", "close": "Fechar", "loading": "Carregando…", "off": "Desligado", "loop_on": "Loop sem corte", "buy_credits": "Comprar créditos →", "desc_label": "Descrição (opcional)", "desc_ph": "Descreva a faixa: café chuvoso, piano suave", "mode_photo": "Foto", "mode_text": "Texto", "field_density": "Densidade do arranjo", "opt_sparse": "Esparso", "opt_medium": "Médio", "opt_full": "Denso", "pro_title": "Opções avançadas", "grp_photo_sub": "Foto → letra → faixa", "grp_recipe_sub": "Escolha o uso e os ajustes vêm prontos", "recipe_names": {"short-form-cut": "Kurzclip", "hook-sting": "Opener-Hook", "product-loop": "Produkt-Loop", "podcast-bed": "Podcast-Bett", "documentary-underscore": "Doku-Untermalung", "game-menu-loop": "Menü-Loop", "calm-focus": "Fokus", "kids-learning": "Kinder & Lernen"}, "applied": "Usando", "current_recipe": "Predefinição atual", "mine_title": "Minhas faixas", "share_link": "Compartilhar link", "dl_audio": "Baixar áudio", "copied": "Copiado", "shared_note": "Você está ouvindo uma faixa compartilhada — crie a sua abaixo", "my_account": "Conta", "balance": "Saldo", "pricing_label": "Preços", "confirm_gen": "Gerar uma faixa de {sec}s? Isso gasta {n}.", "err_insufficient": "Créditos insuficientes", "topup_hint": "Recarregue para continuar gerando.", "topup_cta": "Comprar créditos", "cancel": "Cancelar", "confirm": "Confirmar", "not_signed_in": "Não conectado", "traveler": "Viajante", "view_all": "Ver tudo", "my_works_pick": "Escolha um para reutilizar as configurações", "pay_title": "Comprar créditos", "pay_success": "Pagamento recebido — créditos adicionados.", "pay_opening": "Abrindo o pagamento…", "li1": "Faixa de 30 s = 45 créditos, 45 s = 64, 60 s = 85, 75 s = 103, 90 s = 120.", "li2": "Gerações que falham são reembolsadas automaticamente.", "li3": "Os créditos não expiram e valem para todas as ferramentas.", "li4": "Os pagamentos são processados pela Creem, nosso merchant of record.", "li5": "Créditos não usados podem ser reembolsados em até 14 dias.", "refund_link": "Política de reembolso"}</script>
+<script src="../../assets/wallet.js"></script>
 <script>
 (function () {
   "use strict";
@@ -1604,10 +1605,20 @@
   function startCheckout(credits) {
     $("payMsg").textContent = UI.pay_opening;
     var back = location.origin + location.pathname + "?paid=1";
-    call("/ai/music/checkout", { credits: credits, success_url: back }, true).then(function (d) {
-      if (d.code === 200 && d.data && d.data.checkout_url) { location.href = d.data.checkout_url; return; }
-      $("payMsg").textContent = d.msg || UI.err_net;
-    }).catch(function () { $("payMsg").textContent = UI.err_net; });
+    AiglossaWallet.purchase({
+      call: call,
+      credits: credits,
+      successUrl: back,
+      getBalance: function () { return balanceUnits; },
+      refresh: checkSession,
+      onWaiting: function () { $("payMsg").textContent = UI.pay_opening; },
+      onCompleted: function () {
+        $("payModal").classList.add("hidden");
+        toast(UI.pay_success);
+      },
+      onTimeout: function () { $("payMsg").textContent = UI.pay_late || UI.err_net; },
+      onError: function () { $("payMsg").textContent = UI.err_net; }
+    });
   }
 
   function toast(text) {
@@ -1649,7 +1660,9 @@
   // 底部账号栏：未登录一律先去登录（提前拦截），已登录才进入对应页面
   var ACCOUNT_URL = ROOT + "/" + LANG + "/account.html";
   var PRICING_URL = ROOT + "/" + LANG + "/pricing.html";
-  var GUIDE_URL = "guides/";
+  // The guide is an in-page modal. Its article index lives one level above
+  // the tool directory, so the modal handler can intercept this link.
+  var GUIDE_URL = "../guides/";
   if ($("priceLink")) {
     $("priceLink").href = PRICING_URL;
     $("priceLink").addEventListener("click", function (e) { e.preventDefault(); openPay(); });
@@ -1661,7 +1674,11 @@
   });
   $("bal").textContent = UI.not_signed_in;
   renderAvatar({});
-  if (/[?&]paid=1/.test(location.search)) {
+  var paymentReturn = /[?&]paid=1/.test(location.search) && !!window.opener;
+  if (paymentReturn) {
+    try { window.opener.postMessage({ type: "aiglossa-payment-return" }, location.origin); } catch (e) {}
+    setTimeout(function () { try { window.close(); } catch (e) {} }, 150);
+  } else if (/[?&]paid=1/.test(location.search)) {
     history.replaceState(null, "", location.pathname + location.hash);
     setTimeout(function () { checkSession().then(function (ok) { if (ok) toast(UI.pay_success); }); }, 600);
   }
