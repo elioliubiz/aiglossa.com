@@ -28,6 +28,12 @@
   input{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);
         background:rgba(255,255,255,.04);color:var(--ink);font:inherit;font-size:14px}
   input:focus{outline:none;border-color:var(--acc)}
+  .password-field{position:relative}
+  .password-field input{padding-inline-end:70px}
+  .password-toggle{position:absolute;inset-inline-end:6px;top:50%;transform:translateY(-50%);
+    border:0;background:transparent;color:var(--mut);font:inherit;font-size:12px;padding:7px 8px;
+    border-radius:7px;cursor:pointer}
+  .password-toggle:hover,.password-toggle:focus-visible{color:var(--ink);background:rgba(255,255,255,.07);outline:none}
   .btn{width:100%;margin-top:12px;padding:12px;border:0;border-radius:10px;background:var(--acc);
        color:#101114;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
   .btn.ghost{background:rgba(255,255,255,.06);color:var(--ink);border:1px solid var(--line)}
@@ -69,7 +75,10 @@
 
   <div id="pwdWrap" class="hidden">
     <label for="pwd" style="margin-top:12px">{{tab_password}}</label>
-    <input id="pwd" type="password" placeholder="{{pwd_ph}}" autocomplete="current-password">
+    <div class="password-field">
+      <input id="pwd" type="password" placeholder="{{pwd_ph}}" autocomplete="current-password">
+      <button class="password-toggle" type="button" data-password="pwd" aria-pressed="false">{{show_password}}</button>
+    </div>
   </div>
 
   <div id="codeWrap" class="hidden">
@@ -78,16 +87,19 @@
   </div>
 
   <button class="btn" id="go" type="submit">{{send_code}}</button>
-  <p class="forgot"><a href="#" id="forgot">{{forgot}}</a></p>
+  <p class="forgot hidden" id="forgotWrap"><a href="#" id="forgot">{{forgot}}</a></p>
 
   <div id="resetWrap" class="hidden">
     <label for="npwd" style="margin-top:12px">{{new_password}}</label>
-    <input id="npwd" type="password" autocomplete="new-password">
+    <div class="password-field">
+      <input id="npwd" type="password" autocomplete="new-password">
+      <button class="password-toggle" type="button" data-password="npwd" aria-pressed="false">{{show_password}}</button>
+    </div>
     <button class="btn" id="resetGo" type="button">{{reset_title}}</button>
     <p class="msg" id="rmsg"></p>
   </div>
   <p class="msg" id="msg"></p>
-  <p class="foot">{{first_time}}<br>{{agree}}</p>
+  <p class="foot" id="accountHint">{{first_time}}<br>{{agree}}</p>
   <p class="foot legalrow">
     <a href="https://aiglossa.com/{{lang}}/protocol/term.html">{{terms}}</a> ·
     <a href="https://aiglossa.com/{{lang}}/protocol/privacy.html">{{privacy}}</a>
@@ -132,12 +144,23 @@
     return v;
   }
   var resetTicket = "";
+  document.querySelectorAll("[data-password]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var input = $(button.getAttribute("data-password"));
+      var visible = input.type === "text";
+      input.type = visible ? "password" : "text";
+      button.textContent = visible ? "{{show_password}}" : "{{hide_password}}";
+      button.setAttribute("aria-pressed", visible ? "false" : "true");
+    });
+  });
   $("forgot").addEventListener("click", function (e) {
     e.preventDefault();
     mode = "reset"; sent = false;
     $("resetWrap").classList.add("hidden");
     $("pwdWrap").classList.add("hidden");
     $("codeWrap").classList.add("hidden");
+    $("forgotWrap").classList.add("hidden");
+    $("accountHint").classList.add("hidden");
     $("go").textContent = "{{send_code}}";
     msg("{{reset_title}}");
   });
@@ -153,11 +176,13 @@
   $("tabCode").addEventListener("click", function () {
     mode = "code"; $("tabCode").classList.add("on"); $("tabPwd").classList.remove("on");
     $("pwdWrap").classList.add("hidden"); $("codeWrap").classList.toggle("hidden", !sent);
+    $("forgotWrap").classList.add("hidden"); $("accountHint").classList.remove("hidden");
     $("go").textContent = sent ? "{{signin}}" : "{{send_code}}";
   });
   $("tabPwd").addEventListener("click", function () {
     mode = "password"; $("tabPwd").classList.add("on"); $("tabCode").classList.remove("on");
     $("pwdWrap").classList.remove("hidden"); $("codeWrap").classList.add("hidden");
+    $("forgotWrap").classList.remove("hidden"); $("accountHint").classList.add("hidden");
     $("go").textContent = "{{signin}}";
   });
   $("f").addEventListener("submit", function (e) {

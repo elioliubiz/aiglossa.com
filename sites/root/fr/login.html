@@ -44,6 +44,12 @@
   input{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--line);
         background:rgba(255,255,255,.04);color:var(--ink);font:inherit;font-size:14px}
   input:focus{outline:none;border-color:var(--acc)}
+  .password-field{position:relative}
+  .password-field input{padding-inline-end:70px}
+  .password-toggle{position:absolute;inset-inline-end:6px;top:50%;transform:translateY(-50%);
+    border:0;background:transparent;color:var(--mut);font:inherit;font-size:12px;padding:7px 8px;
+    border-radius:7px;cursor:pointer}
+  .password-toggle:hover,.password-toggle:focus-visible{color:var(--ink);background:rgba(255,255,255,.07);outline:none}
   .btn{width:100%;margin-top:12px;padding:12px;border:0;border-radius:10px;background:var(--acc);
        color:#101114;font:inherit;font-size:14px;font-weight:600;cursor:pointer}
   .btn.ghost{background:rgba(255,255,255,.06);color:var(--ink);border:1px solid var(--line)}
@@ -70,7 +76,7 @@
 <form class="card" id="f">
   <div class="brand"><i></i>aiglossa</div>
   <h1>Connexion</h1>
-  <p class="sub">Pas de mot de passe : utilisez Google, ou nous vous envoyons un code à 6 chiffres par e-mail.</p>
+  <p class="sub">Connectez-vous à votre compte pour continuer à utiliser Aiglossa.</p>
 
   <button type="button" class="btn ghost" id="google">Continuer avec Google</button>
   <div class="div">ou par e-mail</div>
@@ -85,7 +91,10 @@
 
   <div id="pwdWrap" class="hidden">
     <label for="pwd" style="margin-top:12px">Mot de passe</label>
-    <input id="pwd" type="password" placeholder="Votre mot de passe" autocomplete="current-password">
+    <div class="password-field">
+      <input id="pwd" type="password" placeholder="Votre mot de passe" autocomplete="current-password">
+      <button class="password-toggle" type="button" data-password="pwd" aria-pressed="false">Afficher</button>
+    </div>
   </div>
 
   <div id="codeWrap" class="hidden">
@@ -94,16 +103,19 @@
   </div>
 
   <button class="btn" id="go" type="submit">Envoyer le code</button>
-  <p class="forgot"><a href="#" id="forgot">Mot de passe oublié ?</a></p>
+  <p class="forgot hidden" id="forgotWrap"><a href="#" id="forgot">Mot de passe oublié ?</a></p>
 
   <div id="resetWrap" class="hidden">
     <label for="npwd" style="margin-top:12px">Nouveau mot de passe</label>
-    <input id="npwd" type="password" autocomplete="new-password">
+    <div class="password-field">
+      <input id="npwd" type="password" autocomplete="new-password">
+      <button class="password-toggle" type="button" data-password="npwd" aria-pressed="false">Afficher</button>
+    </div>
     <button class="btn" id="resetGo" type="button">Réinitialiser le mot de passe</button>
     <p class="msg" id="rmsg"></p>
   </div>
   <p class="msg" id="msg"></p>
-  <p class="foot">Première visite ? Le compte est créé automatiquement.<br>En continuant, vous acceptez nos</p>
+  <p class="foot" id="accountHint">Première visite ? Le compte est créé automatiquement.<br>En continuant, vous acceptez nos</p>
   <p class="foot legalrow">
     <a href="https://aiglossa.com/fr/protocol/term.html">Conditions</a> ·
     <a href="https://aiglossa.com/fr/protocol/privacy.html">Politique de confidentialité</a>
@@ -148,12 +160,23 @@
     return v;
   }
   var resetTicket = "";
+  document.querySelectorAll("[data-password]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var input = $(button.getAttribute("data-password"));
+      var visible = input.type === "text";
+      input.type = visible ? "password" : "text";
+      button.textContent = visible ? "Afficher" : "Masquer";
+      button.setAttribute("aria-pressed", visible ? "false" : "true");
+    });
+  });
   $("forgot").addEventListener("click", function (e) {
     e.preventDefault();
     mode = "reset"; sent = false;
     $("resetWrap").classList.add("hidden");
     $("pwdWrap").classList.add("hidden");
     $("codeWrap").classList.add("hidden");
+    $("forgotWrap").classList.add("hidden");
+    $("accountHint").classList.add("hidden");
     $("go").textContent = "Envoyer le code";
     msg("Réinitialiser le mot de passe");
   });
@@ -169,11 +192,13 @@
   $("tabCode").addEventListener("click", function () {
     mode = "code"; $("tabCode").classList.add("on"); $("tabPwd").classList.remove("on");
     $("pwdWrap").classList.add("hidden"); $("codeWrap").classList.toggle("hidden", !sent);
+    $("forgotWrap").classList.add("hidden"); $("accountHint").classList.remove("hidden");
     $("go").textContent = sent ? "Se connecter" : "Envoyer le code";
   });
   $("tabPwd").addEventListener("click", function () {
     mode = "password"; $("tabPwd").classList.add("on"); $("tabCode").classList.remove("on");
     $("pwdWrap").classList.remove("hidden"); $("codeWrap").classList.add("hidden");
+    $("forgotWrap").classList.remove("hidden"); $("accountHint").classList.add("hidden");
     $("go").textContent = "Se connecter";
   });
   $("f").addEventListener("submit", function (e) {
