@@ -67,6 +67,7 @@
   .switcher li a:hover,.switcher li a[aria-current]{color:var(--fg);background:rgba(255,255,255,.06)}
 </style>
 <script type="application/json" id="ui">{{ui_json}}</script>
+<script src="{{prefix}}assets/wallet.js"></script>
 </head>
 <body>
 <main class="page">
@@ -132,6 +133,13 @@
     return fetch(API + path, { method: "POST", headers: h, body: JSON.stringify(payload) }).then(function (r) { return r.json(); });
   }
   function msg(t, kind) { var el = $("msg"); el.textContent = t || ""; el.className = "msg" + (kind ? " " + kind : ""); }
+  var balanceUnits = -1;
+  function refreshBalance() {
+    return call("/ai/music/credits", {}, true).then(function (data) {
+      if (data.code !== 200 || !data.data) return false;
+      balanceUnits = Number(data.data.balance || 0); return true;
+    }).catch(function () { return false; });
+  }
 
   // 价格是固定的美元金额（Creem 以 USD 结算），不随界面语言变化。
   var PACKS = [
@@ -157,11 +165,13 @@
     btn.disabled = true;
     msg(UI.opening);
     var back = location.origin + location.pathname.replace(/pricing\.html$/, "account.html") + "?paid=1";
-    call("/ai/music/checkout", { credits: credits, success_url: back }, true).then(function (data) {
-      if (data.code === 401) { localStorage.removeItem(TOKEN_KEY); location.href = "account.html?next=pricing.html"; return; }
-      if (data.code !== 200) { msg(data.msg || UI.err, "err"); btn.disabled = false; return; }
-      location.href = data.data.checkout_url;
-    }).catch(function () { msg(UI.neterr, "err"); btn.disabled = false; });
+    refreshBalance().then(function () {
+      AiglossaWallet.purchase({call:call, credits:credits, successUrl:back,
+        getBalance:function(){return balanceUnits;}, refresh:refreshBalance,
+        onCompleted:function(){msg(UI.continue_use || UI.opening);btn.disabled=false;},
+        onTimeout:function(){msg(UI.neterr,"err");btn.disabled=false;},
+        onError:function(){msg(UI.err,"err");btn.disabled=false;}});
+    });
   }
 })();
 </script>
