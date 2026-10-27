@@ -72,6 +72,8 @@
       "new_password": "New password",
       "reset_done": "Password updated — sign in with it.",
       "account_label": "Account",
+      "activity_label": "Credit activity",
+      "close": "Close",
       "pw_short": "Use at least 8 characters",
       "pw_mismatch": "Passwords do not match",
       "pw_failed": "Could not update password"
@@ -248,6 +250,8 @@
       "new_password": "新しいパスワード",
       "reset_done": "更新しました。新しいパスワードでログインしてください。",
       "account_label": "アカウント",
+      "activity_label": "クレジット履歴",
+      "close": "閉じる",
       "pw_short": "8文字以上にしてください",
       "pw_mismatch": "パスワードが一致しません",
       "pw_failed": "更新に失敗しました"
@@ -424,6 +428,8 @@
       "new_password": "새 비밀번호",
       "reset_done": "변경되었습니다. 새 비밀번호로 로그인하세요.",
       "account_label": "계정",
+      "activity_label": "크레딧 내역",
+      "close": "닫기",
       "pw_short": "8자 이상 입력하세요",
       "pw_mismatch": "비밀번호가 일치하지 않습니다",
       "pw_failed": "변경하지 못했습니다"
@@ -600,6 +606,8 @@
       "new_password": "新密码",
       "reset_done": "密码已更新，请用新密码登录。",
       "account_label": "账户",
+      "activity_label": "额度记录",
+      "close": "关闭",
       "pw_short": "至少 8 位字符",
       "pw_mismatch": "两次输入不一致",
       "pw_failed": "密码更新失败"
@@ -776,6 +784,8 @@
       "new_password": "新密碼",
       "reset_done": "密碼已更新，請用新密碼登入。",
       "account_label": "帳戶",
+      "activity_label": "額度記錄",
+      "close": "關閉",
       "pw_short": "至少 8 位字元",
       "pw_mismatch": "兩次輸入不一致",
       "pw_failed": "密碼更新失敗"
@@ -952,6 +962,8 @@
       "new_password": "Nueva contraseña",
       "reset_done": "Contraseña actualizada: inicia sesión con ella.",
       "account_label": "Cuenta",
+      "activity_label": "Movimientos de créditos",
+      "close": "Cerrar",
       "pw_short": "Usa al menos 8 caracteres",
       "pw_mismatch": "Las contraseñas no coinciden",
       "pw_failed": "No se pudo actualizar"
@@ -1128,6 +1140,8 @@
       "new_password": "Nouveau mot de passe",
       "reset_done": "Mot de passe mis à jour : connectez-vous avec.",
       "account_label": "Compte",
+      "activity_label": "Historique des crédits",
+      "close": "Fermer",
       "pw_short": "Au moins 8 caractères",
       "pw_mismatch": "Les mots de passe ne correspondent pas",
       "pw_failed": "Échec de la mise à jour"
@@ -1304,6 +1318,8 @@
       "new_password": "Neues Passwort",
       "reset_done": "Passwort aktualisiert – jetzt damit anmelden.",
       "account_label": "Konto",
+      "activity_label": "Guthabenverlauf",
+      "close": "Schließen",
       "pw_short": "Mindestens 8 Zeichen",
       "pw_mismatch": "Passwörter stimmen nicht überein",
       "pw_failed": "Aktualisierung fehlgeschlagen"
@@ -1480,6 +1496,8 @@
       "new_password": "Nova senha",
       "reset_done": "Senha atualizada: entre com ela.",
       "account_label": "Conta",
+      "activity_label": "Histórico de créditos",
+      "close": "Fechar",
       "pw_short": "Use pelo menos 8 caracteres",
       "pw_mismatch": "As senhas não coincidem",
       "pw_failed": "Não foi possível atualizar"
@@ -1656,6 +1674,8 @@
       "new_password": "Nuova password",
       "reset_done": "Password aggiornata: accedi con quella.",
       "account_label": "Account",
+      "activity_label": "Movimenti crediti",
+      "close": "Chiudi",
       "pw_short": "Almeno 8 caratteri",
       "pw_mismatch": "Le password non coincidono",
       "pw_failed": "Aggiornamento non riuscito"
@@ -1832,6 +1852,8 @@
       "new_password": "Новый пароль",
       "reset_done": "Пароль обновлён — войдите с ним.",
       "account_label": "Аккаунт",
+      "activity_label": "История кредитов",
+      "close": "Закрыть",
       "pw_short": "Не менее 8 символов",
       "pw_mismatch": "Пароли не совпадают",
       "pw_failed": "Не удалось обновить"
@@ -2008,6 +2030,8 @@
       "new_password": "كلمة مرور جديدة",
       "reset_done": "تم تحديث كلمة المرور — سجّل الدخول بها.",
       "account_label": "الحساب",
+      "activity_label": "سجل الرصيد",
+      "close": "إغلاق",
       "pw_short": "استخدم 8 أحرف على الأقل",
       "pw_mismatch": "كلمتا المرور غير متطابقتين",
       "pw_failed": "تعذّر التحديث"
@@ -2184,6 +2208,8 @@
       "new_password": "รหัสผ่านใหม่",
       "reset_done": "อัปเดตรหัสผ่านแล้ว เข้าสู่ระบบด้วยรหัสใหม่",
       "account_label": "บัญชี",
+      "activity_label": "ประวัติเครดิต",
+      "close": "ปิด",
       "pw_short": "อย่างน้อย 8 ตัวอักษร",
       "pw_mismatch": "รหัสผ่านไม่ตรงกัน",
       "pw_failed": "อัปเดตไม่สำเร็จ"
@@ -2360,6 +2386,8 @@
       "new_password": "Mật khẩu mới",
       "reset_done": "Đã cập nhật mật khẩu — hãy đăng nhập bằng mật khẩu mới.",
       "account_label": "Tài khoản",
+      "activity_label": "Lịch sử tín dụng",
+      "close": "Đóng",
       "pw_short": "Ít nhất 8 ký tự",
       "pw_mismatch": "Mật khẩu không khớp",
       "pw_failed": "Không cập nhật được"
@@ -2536,6 +2564,8 @@
       "new_password": "Kata sandi baru",
       "reset_done": "Kata sandi diperbarui — masuk dengan kata sandi itu.",
       "account_label": "Akun",
+      "activity_label": "Riwayat kredit",
+      "close": "Tutup",
       "pw_short": "Minimal 8 karakter",
       "pw_mismatch": "Kata sandi tidak cocok",
       "pw_failed": "Gagal memperbarui"
@@ -2712,6 +2742,8 @@
       "new_password": "Yeni şifre",
       "reset_done": "Şifre güncellendi — onunla giriş yapın.",
       "account_label": "Hesap",
+      "activity_label": "Kredi geçmişi",
+      "close": "Kapat",
       "pw_short": "En az 8 karakter",
       "pw_mismatch": "Şifreler eşleşmiyor",
       "pw_failed": "Güncellenemedi"

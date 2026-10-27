@@ -131,7 +131,15 @@
   function msg(t, bad) { var m = $("msg"); m.textContent = t || ""; m.className = "msg" + (bad ? " err" : ""); }
   function next() {
     var q = new URLSearchParams(location.search).get("next");
-    if (q) return q;
+    if (q) {
+      try {
+        var target = new URL(q, location.href);
+        var allowed = target.origin === location.origin ||
+          target.origin === "https://tools.aiglossa.com" ||
+          target.origin === "https://tools.staging.aiglossa.com";
+        if (allowed) return target.href;
+      } catch (e) {}
+    }
     if (IS_LOCAL || HOST.indexOf("tools.") === 0) return location.origin + "/" + LANG + "/music/";
     return (IS_STAGING ? "https://tools.staging.aiglossa.com" : "https://tools.aiglossa.com")
       + "/" + LANG + "/music/";
@@ -140,7 +148,7 @@
     if (data.code !== 200) { msg(data.msg || "Failed", true); return false; }
     if (data.data && data.data.access_token) localStorage.setItem("aig_token", data.data.access_token);
     if (data.data && data.data.user && data.data.user.email) localStorage.setItem("aig_email", data.data.user.email);
-    location.href = next();
+    location.replace(next());
     return true;
   }
   function call(path, body) {
@@ -150,6 +158,17 @@
       headers: { "Content-Type": "application/json", "X-Client": "web" },
       body: JSON.stringify(payload)
     }).then(function (r) { return r.json(); });
+  }
+  function busy(button, on, label) {
+    button.disabled = on;
+    if (on) {
+      button.dataset.label = label;
+      button.textContent = label + "…";
+      button.setAttribute("aria-busy", "true");
+    } else {
+      button.textContent = button.dataset.label || label;
+      button.removeAttribute("aria-busy");
+    }
   }
   function device() {
     var v = localStorage.getItem("aig_device");
@@ -180,11 +199,13 @@
   });
   $("resetGo").addEventListener("click", function () {
     if (!resetTicket) return;
+    busy($("resetGo"), true, "{{reset_title}}");
     call("/auth/password/reset", { ticket: resetTicket, password: $("npwd").value }).then(function (d) {
-      if (d.code !== 200) { $("rmsg").textContent = d.msg || "error"; $("rmsg").className = "msg err"; return; }
+      if (d.code !== 200) { busy($("resetGo"), false, "{{reset_title}}"); $("rmsg").textContent = d.msg || "error"; $("rmsg").className = "msg err"; return; }
       $("rmsg").textContent = "{{reset_done}}"; $("rmsg").className = "msg";
       mode = "password"; $("tabPwd").click();
-    });
+      busy($("resetGo"), false, "{{reset_title}}");
+    }).catch(function () { busy($("resetGo"), false, "{{reset_title}}"); $("rmsg").textContent = "{{err_net}}"; $("rmsg").className = "msg err"; });
   });
 
   $("tabCode").addEventListener("click", function () {
@@ -202,42 +223,50 @@
   $("f").addEventListener("submit", function (e) {
     e.preventDefault();
     if (mode === "password") {
+      busy($("go"), true, "{{signin}}");
       call("/auth/login", { provider: "password", account: $("email").value.trim(), code: $("pwd").value }).then(function (d) {
-        if (d.code !== 200) { msg(d.msg || "Failed", true); return; }
+        if (d.code !== 200) { busy($("go"), false, "{{signin}}"); msg(d.msg || "Failed", true); return; }
         accept(d);
-      }).catch(function () { msg("Network error", true); });
+      }).catch(function () { busy($("go"), false, "{{signin}}"); msg("{{err_net}}", true); });
       return;
     }
     if (mode === "reset") {
       email = $("email").value.trim();
       if (!sent) {
+        busy($("go"), true, "{{send_code}}");
         call("/auth/code/send", { account: email, purpose: "reset_password" }).then(function (d) {
+          busy($("go"), false, "{{send_code}}");
           if (d.code !== 200) { msg(d.msg || "Failed", true); return; }
           sent = true; $("codeWrap").classList.remove("hidden"); $("go").textContent = "{{signin}}"; $("code").focus();
-        }).catch(function () { msg("Network error", true); });
+        }).catch(function () { busy($("go"), false, "{{send_code}}"); msg("{{err_net}}", true); });
         return;
       }
+      busy($("go"), true, "{{signin}}");
       call("/auth/code/verify", { account: email, purpose: "reset_password", code: $("code").value.trim() }).then(function (d) {
+        busy($("go"), false, "{{signin}}");
         if (d.code !== 200) { msg(d.msg || "Failed", true); return; }
         resetTicket = (d.data && d.data.ticket) || "";
         $("codeWrap").classList.add("hidden"); $("resetWrap").classList.remove("hidden"); $("npwd").focus();
-      }).catch(function () { msg("Network error", true); });
+      }).catch(function () { busy($("go"), false, "{{signin}}"); msg("{{err_net}}", true); });
       return;
     }
     if (!sent) {
       email = $("email").value.trim();
       if (!email) return;
       msg("");
+      busy($("go"), true, "{{send_code}}");
       call("/auth/code/send", { account: email, purpose: "login" }).then(function (d) {
+        busy($("go"), false, "{{send_code}}");
         if (d.code !== 200) { msg(d.msg || "Failed", true); return; }
         sent = true; $("codeWrap").classList.remove("hidden"); $("go").textContent = "{{signin}}"; $("code").focus();
-      }).catch(function () { msg("Network error", true); });
+      }).catch(function () { busy($("go"), false, "{{send_code}}"); msg("{{err_net}}", true); });
       return;
     }
+    busy($("go"), true, "{{signin}}");
     call("/auth/login", { provider: "code", account: email, code: $("code").value.trim() }).then(function (d) {
-      if (d.code !== 200) { msg(d.msg || "Failed", true); return; }
+      if (d.code !== 200) { busy($("go"), false, "{{signin}}"); msg(d.msg || "Failed", true); return; }
       accept(d);
-    }).catch(function () { msg("Network error", true); });
+    }).catch(function () { busy($("go"), false, "{{signin}}"); msg("{{err_net}}", true); });
   });
   $("google").addEventListener("click", function () {
     location.href = API + "/auth/google/start?app_key=tools&next=" + encodeURIComponent(next());

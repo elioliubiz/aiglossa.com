@@ -94,7 +94,7 @@
 <header class="tools-nav">
   <div class="wrap">
     <a class="tools-brand" href="./">aiglossa tools</a>
-    <a class="tools-account" id="toolsAccount" href="account.html">
+    <a class="tools-account" id="toolsAccount" href="login.html?next=./">
       <span class="tools-avatar" id="toolsAvatar" aria-hidden="true">?</span>
       <span class="tools-account-copy">
         <span class="tools-account-email" id="toolsAccountEmail">Konto</span>
@@ -207,6 +207,7 @@
     document.getElementById("toolsAccountEmail").textContent = name;
     document.getElementById("toolsAccountBalance").textContent = Math.round((data.data.balance || 0) / 100) + " Credits";
     document.getElementById("toolsAvatar").textContent = name.slice(0, 1).toUpperCase();
+    document.getElementById("toolsAccount").href = "account.html";
     return fetch(api + "/ai/music/tracks", {
       method:"POST", headers:{"Content-Type":"application/json","Authorization":"Bearer "+token,"X-Client":"web"},
       body:JSON.stringify({app_key:"tools",device:device,timestamp:Math.floor(Date.now()/1000),limit:6})

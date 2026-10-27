@@ -39,7 +39,7 @@
   .top a{color:var(--muted);text-decoration:none;font-size:13px}
   .top a:hover{color:var(--fg)}
   .pane{flex:1;display:flex;align-items:flex-start;justify-content:center;padding-block:56px;padding-inline:24px}
-  .form{width:100%;max-width:620px}
+  .form{width:100%;max-width:680px}
   .form h1{font-size:26px;line-height:1.2;letter-spacing:-.02em;margin:0 0 6px;font-weight:600}
   .form .sub{color:var(--muted);font-size:13.5px;margin:0 0 26px}
   .divider{display:flex;align-items:center;gap:12px;color:var(--dim);font-size:12px;margin-block:20px}
@@ -61,17 +61,28 @@
   .legal{margin-block-start:14px;font-size:11.5px;color:var(--dim);line-height:1.6}
   .legal a{color:var(--muted)}
   .hidden{display:none !important}
-  .balance{font-size:44px;font-weight:600;letter-spacing:-.03em;margin-block:18px 2px}
-  .balance small{font-size:14px;font-weight:400;color:var(--muted);margin-inline-start:8px;letter-spacing:0}
-  .hint{font-size:12.5px;color:var(--muted);margin-block-start:6px}
-  .links{margin-block-start:26px;display:grid;gap:10px}
-  .ledger{margin-block-start:28px;border-block-start:1px solid var(--line);padding-block-start:8px}
+  .identity{display:flex;align-items:center;gap:18px;margin-block-end:28px}
+  .avatar{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;overflow:hidden;
+    background:rgba(255,122,26,.12);border:1px solid rgba(255,122,26,.3);color:#ffb27a;font-size:24px;font-weight:600}
+  .avatar img{width:100%;height:100%;object-fit:cover}
+  .identity h1{margin:0 0 6px}.identity p{margin:0;color:var(--muted);font-size:13px}
+  .account-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .panel{border:1px solid var(--line);border-radius:12px;padding:18px;background:rgba(255,255,255,.025)}
+  .panel-label{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin:0 0 10px}
+  .balance{font-size:32px;font-weight:600;margin:0}.balance small{font-size:13px;font-weight:400;color:var(--muted);margin-inline-start:7px}
+  .email-value{font-size:15px;margin:0;overflow-wrap:anywhere}
+  .links{margin-block-start:18px;display:flex;gap:10px;flex-wrap:wrap}.links .btn{width:auto;min-width:140px}
+  .ledger{max-height:52vh;overflow:auto;margin-block-start:12px;border-block-start:1px solid var(--line);padding-block-start:8px}
   .ledger-row{display:grid;grid-template-columns:1fr auto;gap:8px;padding-block:13px;border-block-end:1px solid var(--line)}
   .ledger-kind{font-size:13px;color:var(--fg)}
   .ledger-date{display:block;margin-block-start:3px;font-size:11px;color:var(--dim)}
   .ledger-amount{font-variant-numeric:tabular-nums;font-weight:600}
   .ledger-amount.plus{color:#9be7b0}.ledger-amount.minus{color:#ffb27a}
   .ledger-empty{padding-block:18px;color:var(--muted);font-size:13px}
+  .modal{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:20px;background:rgba(0,0,0,.68);backdrop-filter:blur(6px)}
+  .modal.hidden{display:none}.modal-box{width:min(520px,100%);max-height:80vh;border:1px solid var(--line);border-radius:14px;padding:20px;background:#15171b}
+  .modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.modal-head h2{margin:0;font-size:18px}
+  .icon-close{width:36px;height:36px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--fg);font-size:20px;cursor:pointer}
   footer{border-block-start:1px solid var(--line);padding-block:26px}
   footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
   footer .brand{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
@@ -90,9 +101,10 @@
   @media(max-width:900px){
     .pane{align-items:flex-start;justify-content:flex-start;padding-block:34px 56px;padding-inline:20px}
     .form{max-width:420px;margin-inline:auto}
+    .account-grid{grid-template-columns:1fr}
   }
 </style>
-<script type="application/json" id="ui">{"title": "Giriş — aiglossa tools", "description": "Kredilerinizi görmek ve üretilen müziği indirmek için aiglossa tools'a giriş yapın.", "back": "Araçlara dön", "h1": "Giriş yap", "sub": "Aiglossa'yı kullanmaya devam etmek için hesabınıza giriş yapın.", "divider": "veya e-posta ile", "email_label": "E-posta", "email_ph": "you@example.com", "code_label": "6 haneli kod", "code_ph": "123456", "send_code": "Kod gönder", "first_time": "İlk kez mi? Hesap otomatik oluşturulur.", "agree": "Devam ederek şunları kabul edersiniz:", "terms": "Koşullar", "privacy": "Gizlilik politikası", "signed_h1": "Kredileriniz", "signout": "Çıkış yap", "credits_unit": "kredi", "create": "Müzik oluştur →", "buy": "Kredi satın al →", "err_load": "Yüklenemedi", "err_net": "Ağ hatası", "err_signin": "Giriş yapılamadı", "paid_wait": "Ödeme alındı — krediler birazdan görünecek…", "paid_ok": "Krediler eklendi. Teşekkürler!", "paid_late": "Hâlâ işleniyor — bir dakika sonra sayfayı yenileyin.", "show_h2": "Kredilerinizi korumak için giriş yapın.", "show_p": "Krediler tüm araçlarda ortaktır ve süresi dolmaz. Giriş yalnızca satın alımı hesabınıza bağlar; başka hiçbir şey saklanmaz.", "proof_k": "Burada üretildi · İngilizce · 0:30", "google": "Google ile devam et", "signin": "Giriş yap", "set_password": "Şifre belirle", "password_set": "Şifre belirlendi", "login_methods": "Giriş yöntemleri", "delete_account": "Hesabı sil", "platform_note": "Krediler tüm aiglossa ürünlerinde geçerlidir.", "no_pw_yet": "Henüz şifre yok — kod veya Google ile giriş yapıyorsunuz.", "tab_code": "Kod", "tab_password": "Şifre", "pwd_ph": "Şifreniz", "show_password": "Göster", "hide_password": "Gizle", "forgot": "Şifrenizi mi unuttunuz?", "reset_title": "Şifreyi sıfırla", "new_password": "Yeni şifre", "reset_done": "Şifre güncellendi — onunla giriş yapın.", "account_label": "Hesap", "pw_short": "En az 8 karakter", "pw_mismatch": "Şifreler eşleşmiyor", "pw_failed": "Güncellenemedi", "li1": "30 sn parça = 45 kredi, 45 sn = 64, 60 sn = 85, 75 sn = 103, 90 sn = 120.", "li2": "Başarısız üretimler otomatik iade edilir.", "li3": "Krediler süresi dolmaz ve tüm araçlarda geçerlidir.", "li4": "Ödemeler merchant of record'umuz Creem tarafından işlenir.", "li5": "Kullanılmayan krediler 14 gün içinde iade edilebilir.", "refund_link": "İade politikası"}</script>
+<script type="application/json" id="ui">{"title": "Giriş — aiglossa tools", "description": "Kredilerinizi görmek ve üretilen müziği indirmek için aiglossa tools'a giriş yapın.", "back": "Araçlara dön", "h1": "Giriş yap", "sub": "Aiglossa'yı kullanmaya devam etmek için hesabınıza giriş yapın.", "divider": "veya e-posta ile", "email_label": "E-posta", "email_ph": "you@example.com", "code_label": "6 haneli kod", "code_ph": "123456", "send_code": "Kod gönder", "first_time": "İlk kez mi? Hesap otomatik oluşturulur.", "agree": "Devam ederek şunları kabul edersiniz:", "terms": "Koşullar", "privacy": "Gizlilik politikası", "signed_h1": "Kredileriniz", "signout": "Çıkış yap", "credits_unit": "kredi", "create": "Müzik oluştur →", "buy": "Kredi satın al →", "err_load": "Yüklenemedi", "err_net": "Ağ hatası", "err_signin": "Giriş yapılamadı", "paid_wait": "Ödeme alındı — krediler birazdan görünecek…", "paid_ok": "Krediler eklendi. Teşekkürler!", "paid_late": "Hâlâ işleniyor — bir dakika sonra sayfayı yenileyin.", "show_h2": "Kredilerinizi korumak için giriş yapın.", "show_p": "Krediler tüm araçlarda ortaktır ve süresi dolmaz. Giriş yalnızca satın alımı hesabınıza bağlar; başka hiçbir şey saklanmaz.", "proof_k": "Burada üretildi · İngilizce · 0:30", "google": "Google ile devam et", "signin": "Giriş yap", "set_password": "Şifre belirle", "password_set": "Şifre belirlendi", "login_methods": "Giriş yöntemleri", "delete_account": "Hesabı sil", "platform_note": "Krediler tüm aiglossa ürünlerinde geçerlidir.", "no_pw_yet": "Henüz şifre yok — kod veya Google ile giriş yapıyorsunuz.", "tab_code": "Kod", "tab_password": "Şifre", "pwd_ph": "Şifreniz", "show_password": "Göster", "hide_password": "Gizle", "forgot": "Şifrenizi mi unuttunuz?", "reset_title": "Şifreyi sıfırla", "new_password": "Yeni şifre", "reset_done": "Şifre güncellendi — onunla giriş yapın.", "account_label": "Hesap", "activity_label": "Kredi geçmişi", "close": "Kapat", "pw_short": "En az 8 karakter", "pw_mismatch": "Şifreler eşleşmiyor", "pw_failed": "Güncellenemedi", "li1": "30 sn parça = 45 kredi, 45 sn = 64, 60 sn = 85, 75 sn = 103, 90 sn = 120.", "li2": "Başarısız üretimler otomatik iade edilir.", "li3": "Krediler süresi dolmaz ve tüm araçlarda geçerlidir.", "li4": "Ödemeler merchant of record'umuz Creem tarafından işlenir.", "li5": "Kullanılmayan krediler 14 gün içinde iade edilebilir.", "refund_link": "İade politikası"}</script>
 </head>
 <body>
 <div class="top">
@@ -102,23 +114,44 @@
 
 <section class="pane">
     <div class="form hidden" id="account-card">
-      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-        <h1>Kredileriniz</h1>
-        <button class="btn ghost" id="logout" style="width:auto;padding:8px 14px">Çıkış yap</button>
+      <div class="identity">
+        <div class="avatar" id="account-avatar" aria-hidden="true">?</div>
+        <div>
+          <h1 id="account-name">Hesap</h1>
+        </div>
       </div>
-      <div class="balance"><span id="coins">—</span><small>kredi</small></div>
-      <p class="hint" id="account-email"></p>
+
+      <div class="account-grid">
+        <section class="panel">
+          <p class="panel-label">E-posta</p>
+          <p class="email-value" id="account-email">—</p>
+        </section>
+        <section class="panel">
+          <p class="panel-label">kredi</p>
+          <p class="balance"><span id="coins">—</span><small>kredi</small></p>
+        </section>
+      </div>
 
       <div class="links">
-        <a class="btn" href="./">Araçlara dön</a>
-        <a class="btn ghost" href="pricing.html">Kredi satın al →</a>
-        <a class="btn ghost" href="https://aiglossa.com/tr/protocol/delete-account.html">Hesabı sil</a>
+        <a class="btn" href="pricing.html">Kredi satın al →</a>
+        <button class="btn ghost" id="activity" type="button">Kredi geçmişi</button>
+        <button class="btn ghost" id="logout" type="button">Çıkış yap</button>
       </div>
 
       <div class="msg" id="account-msg" role="status" aria-live="polite"></div>
-      <div class="ledger" id="ledger" aria-live="polite"></div>
+      <p class="legal"><a href="https://aiglossa.com/tr/protocol/delete-account.html">Hesabı sil</a></p>
     </div>
   </section>
+
+<div class="modal hidden" id="activity-modal" role="dialog" aria-modal="true" aria-labelledby="activity-title">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h2 id="activity-title">Kredi geçmişi</h2>
+      <button class="icon-close" id="activity-close" type="button" aria-label="Kapat">×</button>
+    </div>
+    <div class="ledger" id="ledger" aria-live="polite"></div>
+  </div>
+</div>
 
 <footer>
   <div class="wrap">
@@ -176,7 +209,6 @@
 
   function renderSignedIn() {
     $("account-card").classList.remove("hidden");
-    $("account-email").textContent = localStorage.getItem(EMAIL_KEY) || "";
     loadCredits();
   }
   function renderSignedOut() {
@@ -187,16 +219,35 @@
     return call("/wallet/summary", {}, true).then(function (data) {
       if (data.code === 401) { setToken(""); renderSignedOut(); return; }
       if (data.code !== 200) { showMsg($("account-msg"), data.msg || UI.err_load, "err"); return; }
+      var user = data.data.user || {};
+      var name = (user.nickname || "").trim() || UI.account_label;
+      var email = user.email || localStorage.getItem(EMAIL_KEY) || "";
+      $("account-name").textContent = name;
+      $("account-email").textContent = maskEmail(email) || "—";
       $("coins").textContent = data.data.coins;
-      loadLedger();
+      if (user.avatar) {
+        var img = document.createElement("img");
+        img.src = /^https?:\/\//.test(user.avatar) ? user.avatar : API + user.avatar;
+        img.alt = "";
+        $("account-avatar").textContent = ""; $("account-avatar").appendChild(img);
+      } else {
+        $("account-avatar").textContent = (user.nickname || email || "?").slice(0, 1).toUpperCase();
+      }
       return true;
     }).catch(function () { showMsg($("account-msg"), UI.err_net, "err"); return false; });
+  }
+  function maskEmail(email) {
+    var parts = String(email || "").split("@");
+    if (parts.length !== 2) return email;
+    var local = parts[0], shown = local.slice(0, Math.min(2, local.length));
+    return shown + "***@" + parts[1];
   }
   function ledgerLabel(kind) {
     return ({creem_topup:UI.buy, ai_music:UI.create, refund:UI.paid_ok,
       creem_refund:UI.refund_label, redeem_code:UI.credits_unit, newbie_gift:UI.credits_unit})[kind] || UI.credits_unit;
   }
   function loadLedger() {
+    $("ledger").innerHTML = '<div class="ledger-empty">…</div>';
     call("/coin/ledger", {page:1, page_size:20}, true).then(function (data) {
       if (data.code !== 200 || !data.data) return;
       var items = data.data.items || [], box = $("ledger");
@@ -215,6 +266,9 @@
     call("/auth/logout", {}, true).catch(function () {});
     setToken(""); renderSignedOut();
   });
+  $("activity").addEventListener("click", function () { $("activity-modal").classList.remove("hidden"); loadLedger(); });
+  $("activity-close").addEventListener("click", function () { $("activity-modal").classList.add("hidden"); });
+  $("activity-modal").addEventListener("click", function (e) { if (e.target === $("activity-modal")) $("activity-modal").classList.add("hidden"); });
 
   function pollAfterPayment() {
     var tries = 0, initial = $("coins").textContent;
