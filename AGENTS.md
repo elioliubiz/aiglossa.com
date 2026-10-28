@@ -118,3 +118,11 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 ## 设计
 
 工具站配色与创作页一致：`#0e0f11` 背景、`#ff7a1a` 主色、白色波形。共享主题在 `assets/theme.css`（只由工具站页面引入，避免污染品牌站的蓝紫色）。
+
+## 官方媒体资源
+
+官方示例音频不属于 Vercel 前端产物，统一由 `https://assets.aiglossa.com/music-samples/` 提供；测试和生产共用这批只读资源。仓库的 `sites/tools/samples/` 只保存示例图片和 `waveforms.json`，禁止提交 MP3、WAV、FLAC 等音频文件。
+
+服务器源文件位于 `/opt/glossa-shared/public/music-samples/`，Nginx 只能公开这个子目录，不得映射整个 `/opt/glossa-shared/`（其中包含敏感 env）。本机独立备份位于项目根之外的 `private-assets/music-samples/`。
+
+示例音频更新后，在仓库根运行 `python3 tools/generate_waveforms.py /绝对路径/music-samples` 重新生成波形，再执行常规的 `build.py` 与 `verify.py`。页面和后端配方必须使用稳定的 `assets.aiglossa.com` URL，不能退回相对 `/samples/` 地址。
