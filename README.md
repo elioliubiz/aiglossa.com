@@ -47,17 +47,17 @@ tools/og.html, icon.html   品牌图源文件（渲染成 assets/og.png、apple-
 App 靠 Build Configuration 在编译期选服务器；网页没有编译步骤，所以**环境由域名决定**：
 同一份产物跑到哪个域名，就连哪个后端。这样一份代码同时服务两套环境，预览部署也永远不可能误连生产。
 
-| 分支 | Vercel 部署 | 域名 | 后端 |
-| --- | --- | --- | --- |
-| `dev` | Preview（绑定分支） | `dev.tools.aiglossa.com` | `https://dev.aiglossa.com` |
-| `main` | Production | `tools.aiglossa.com` | `https://api.aiglossa.com` |
-| 其他分支 / PR | Preview（随机 URL） | `*.vercel.app` | 同 `dev` |
+| 分支 | Vercel 部署 | 品牌站 | 工具站 | 后端 |
+| --- | --- | --- | --- | --- |
+| `dev` | Preview（绑定分支） | `staging.aiglossa.com` | `tools.staging.aiglossa.com` | `https://dev.staging.aiglossa.com` |
+| `main` | Production | `aiglossa.com` | `tools.aiglossa.com` | `https://api.aiglossa.com` |
+| 其他分支 / PR | Preview（随机 URL） | `*.vercel.app` | `*.vercel.app` | 测试后端 |
 
 - 「域名 → 分支」的绑定在 Vercel 面板的 Domains 里设置（Assign to Git Branch），只做一次。
 - 前端判断环境只看 `location.hostname`，**不引入构建期环境变量**：纯静态站没有构建，
   运行期判断反而更简单，也不会出现「预览包写死了生产地址」这类事故。
-- 后端 CORS 与之对应：`dev` 放行 `dev.tools.aiglossa.com` 与 `*.vercel.app`，
-  `main` 只放行 `tools.aiglossa.com`。
+- 后端网页来源白名单必须包含 `staging.aiglossa.com`、`tools.staging.aiglossa.com`、
+  `aiglossa.com` 与 `tools.aiglossa.com`；本地联调另放行约定端口。
 
 **合并时的唯一注意点**：`sites/` 是生成产物，两条分支改过同一页时会冲突。
 不要手工解冲突——合到 `main` 后重跑一次 `build.py`，产物必然收敛（脚本是确定性的）：

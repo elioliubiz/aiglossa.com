@@ -1,6 +1,7 @@
 # AGENTS.md — aiglossa.com
 
-静态站。三个域名共用一套构建：`aiglossa.com`（品牌站）、`scholan.aiglossa.com`、`tools.aiglossa.com`（工具站）。
+静态站。生产域名与 staging 域名共用一套构建：品牌站分别为 `aiglossa.com` / `staging.aiglossa.com`，
+工具站分别为 `tools.aiglossa.com` / `tools.staging.aiglossa.com`；staging 域名固定绑定 Vercel `dev` 分支。
 
 ## 构建
 
@@ -57,12 +58,13 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 
 | 域名 | 归属 | 这个仓库能不能动 |
 |---|---|---|
-| `aiglossa.com`、`scholan.aiglossa.com`、`tools.aiglossa.com` | 本仓库构建，Vercel 部署 | ✅ |
-| `dev.aiglossa.com`、`api.aiglossa.com` | **后端仓库**（FastAPI）在服务器上自建 | ❌ |
+| `aiglossa.com`、`scholan.aiglossa.com`、`tools.aiglossa.com` | 本仓库 `main`，Vercel 部署 | ✅ |
+| `staging.aiglossa.com`、`tools.staging.aiglossa.com` | 本仓库 `dev`，Vercel Preview 部署 | ✅ |
+| `dev.staging.aiglossa.com`、`api.aiglossa.com` | **后端仓库**（FastAPI）在服务器上自建 | ❌ |
 
-`dev` / `api` 两个域名由服务器上的 nginx + systemd 管理，**与本前端工程无关**：不要把静态站部署到它们上面，也不要改它们的 nginx 配置或 `WEB_ORIGINS`。前端页面调用它们时只当 API 用（`https://dev.aiglossa.com/ai/...`）。
+测试 / 正式 API 域名由服务器上的 nginx + systemd 管理，**与本前端工程无关**：不要把静态站部署到它们上面。前端页面只把 `https://dev.staging.aiglossa.com` 和 `https://api.aiglossa.com` 当 API 使用。
 
-测试前端就走本地 `http://localhost:8000` 或 Vercel 的 preview 地址。
+固定公网测试入口是 `https://staging.aiglossa.com` 与 `https://tools.staging.aiglossa.com`；本地工具站入口是 `http://localhost:8000`。
 
 ## 新增一个工具（扩展点）
 
