@@ -286,6 +286,15 @@
   .whead{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
   .whead .t{font:10px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
   .whead .n{font-size:11.5px;color:var(--mut)}
+  .view-all{border:1px solid rgba(255,122,26,.46);border-radius:7px;background:rgba(255,122,26,.09);
+    color:#ff9a52;font:inherit;font-size:11px;padding:5px 9px;cursor:pointer;white-space:nowrap}
+  .view-all:hover{color:#fff0e5;border-color:var(--acc);background:rgba(255,122,26,.18)}
+  .rail-head-actions{display:flex;align-items:center;gap:7px;margin-inline-start:auto}
+  .rail-nav{display:flex;gap:4px}
+  .rail-nav button{width:25px;height:25px;padding:0;border:1px solid var(--line);border-radius:7px;
+    background:rgba(255,255,255,.035);color:var(--muted);font:inherit;font-size:14px;line-height:1;cursor:pointer}
+  .rail-nav button:hover:not(:disabled){color:var(--ink);border-color:rgba(255,255,255,.3)}
+  .rail-nav button:disabled{opacity:.25;cursor:default}
   .photos{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:260px;gap:11px}
   .tile{position:relative;border-radius:13px;overflow:hidden;cursor:pointer;background:#1b1e23;
         border:1px solid transparent}
@@ -694,14 +703,34 @@
 
   /* 所有作品、示例和配方共用同一张卡片；媒体类型只决定显示图片或波形。 */
   .photos,.recipes,.minerow{
-    display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
-    grid-template-rows:none!important;grid-auto-flow:row!important;grid-auto-rows:220px!important;
-    gap:11px!important;overflow:visible!important;padding:0!important;max-width:none!important
+    --rail-columns:4;display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;gap:11px!important;
+    overflow-x:auto!important;overflow-y:hidden!important;scroll-snap-type:x mandatory;
+    scroll-padding-inline:0;padding:0 0 9px!important;max-width:none!important;
+    scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.24) rgba(255,255,255,.06);
+    cursor:grab;overscroll-behavior-inline:contain;height:auto!important;min-height:0!important;
+    grid-template-rows:none!important;grid-auto-rows:auto!important;grid-auto-flow:row!important;
+    align-content:start!important
   }
+  .photos.dragging,.recipes.dragging,.minerow.dragging{cursor:grabbing;scroll-snap-type:none;user-select:none}
+  .photos::-webkit-scrollbar,.recipes::-webkit-scrollbar,.minerow::-webkit-scrollbar{height:4px}
+  .photos::-webkit-scrollbar-track,.recipes::-webkit-scrollbar-track,.minerow::-webkit-scrollbar-track{
+    background:rgba(255,255,255,.06);border-radius:4px
+  }
+  .photos::-webkit-scrollbar-thumb,.recipes::-webkit-scrollbar-thumb,.minerow::-webkit-scrollbar-thumb{
+    background:rgba(255,255,255,.24);border-radius:4px
+  }
+  .whead{align-items:center!important;margin-bottom:12px!important}
+  .whead .t{font:600 17px/1.25 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif!important;
+    letter-spacing:0!important;text-transform:none!important;color:var(--ink)!important}
+  .whead .n{color:rgba(255,255,255,.5)!important}
+  .rail-head-actions{align-items:center}
+  .rec-wrap{min-width:0;height:auto!important;min-height:0!important}
+  .rec-wrap:after{display:none!important;content:none!important}
   .thumbs{display:contents!important}
   .item-card,.photos .item-card,.recipes .item-card,.minerow .item-card{
     display:flex!important;flex-direction:column!important;position:relative!important;
-    width:auto!important;height:220px!important;min-width:0!important;padding:0!important;
+    flex:0 0 calc((100% - (var(--rail-columns) - 1) * 11px) / var(--rail-columns))!important;
+    width:auto!important;height:220px!important;min-width:0!important;padding:0!important;scroll-snap-align:start;
     overflow:hidden!important;border:1px solid var(--line)!important;border-radius:12px!important;
     background:#17191d!important;color:var(--ink);cursor:default!important
   }
@@ -717,32 +746,66 @@
     border:0;background:transparent;color:inherit;cursor:pointer;font:inherit;text-align:inherit}
   .item-card .card-media.image .media-play{padding:0}
   .item-card .media-play canvas{display:block;width:100%;height:100%}
-  .item-card .card-actions{position:absolute;inset-block-start:10px;inset-inline-end:10px;z-index:3;
-    display:flex;align-items:center;gap:7px;pointer-events:none}
+  .item-card .card-actions{position:absolute;inset-block-start:10px;inset-inline-start:10px;z-index:3;
+    display:flex;align-items:center;gap:7px;max-width:calc(100% - 58px);pointer-events:none}
   .item-card .play-mark{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;
     border:1px solid rgba(255,255,255,.28);background:rgba(12,14,16,.68);color:#fff;
     font-size:9px;backdrop-filter:blur(6px)}
   .item-card .card-use{pointer-events:auto;border:1px solid rgba(255,255,255,.24);border-radius:7px;
     background:rgba(12,14,16,.72);color:#fff;font:inherit;font-size:11px;padding:7px 9px;
-    cursor:pointer;backdrop-filter:blur(6px);white-space:nowrap}
+    cursor:pointer;backdrop-filter:blur(6px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    min-width:0;max-width:150px}
   .item-card .card-use:hover{border-color:rgba(255,255,255,.45);background:rgba(30,32,36,.9)}
-  .item-card .card-info{padding:12px 13px;min-width:0}
+  .item-card .card-info{padding:10px 13px;min-width:0;flex:1;display:flex;flex-direction:column;
+    justify-content:center}
   .item-card .card-title{margin:0 0 4px;font-size:13px;font-weight:600;white-space:nowrap;
     overflow:hidden;text-overflow:ellipsis}
   .item-card .card-meta{margin:0;color:var(--muted);font-size:11px;white-space:nowrap;
     overflow:hidden;text-overflow:ellipsis}
+  .item-card .card-more{position:absolute;inset-block-start:10px;inset-inline-end:10px;z-index:5;
+    width:32px;height:32px;padding:0;border:1px solid rgba(255,255,255,.28);border-radius:50%;
+    background:rgba(12,14,16,.72);color:#fff;font:700 15px/1 inherit;letter-spacing:1px;
+    cursor:pointer;backdrop-filter:blur(6px)}
+  .item-card .card-menu{position:absolute;inset-block-start:48px;inset-inline-end:10px;z-index:8;
+    min-width:116px;padding:5px;border:1px solid rgba(255,255,255,.16);border-radius:9px;
+    background:#25282e;box-shadow:0 12px 28px rgba(0,0,0,.45)}
+  .item-card .card-menu button{display:block;width:100%;padding:7px 9px;border:0;border-radius:6px;
+    background:transparent;color:var(--ink);font:inherit;font-size:11px;text-align:start;cursor:pointer}
+  .item-card .card-menu button:hover{background:rgba(255,255,255,.08)}
+  .item-card .card-menu .danger{color:#ff9b9b}
   .more-tile{width:auto!important;height:220px!important;flex:none!important}
   .more-tile .ph2{height:174px}
   .mine{margin-bottom:22px}
+  .mgrid{grid-template-columns:repeat(auto-fill,minmax(190px,1fr));grid-auto-rows:220px}
+  @media(min-width:1081px){
+    body:has(.playerwrap:not(.hidden)) .works{padding-bottom:100px!important}
+  }
 
   @media(max-width:1080px){
     .works{padding:16px!important;max-width:100vw}
     .works .wrap,.works>.whead,.works>.photos,.works>.rec-wrap,.works>.policy{padding-inline:0!important}
-    .photos,.recipes,.minerow{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+    .photos,.recipes,.minerow{--rail-columns:2.45}
   }
   @media(max-width:640px){
-    .photos,.recipes,.minerow{grid-template-columns:minmax(0,1fr)!important}
-    .item-card,.photos .item-card,.recipes .item-card,.minerow .item-card{height:220px!important}
+    .photos,.recipes,.minerow{--rail-columns:2.12;gap:8px!important}
+    .item-card,.photos .item-card,.recipes .item-card,.minerow .item-card{height:176px!important;
+      flex-basis:calc((100% - (var(--rail-columns) - 1) * 8px) / var(--rail-columns))!important}
+    .item-card .card-media{height:106px;flex-basis:106px}
+    .item-card .card-info{padding:9px 10px}
+    .item-card .card-title{font-size:11.5px;margin-bottom:2px}
+    .item-card .card-meta{font-size:9.5px}
+    .item-card .card-actions{inset-block-start:7px;inset-inline-start:7px;gap:5px;max-width:calc(100% - 46px)}
+    .item-card .play-mark{width:25px;height:25px;font-size:8px}
+    .item-card .card-use{font-size:9.5px;padding:5px 6px}
+    .item-card .card-more{inset-block-start:7px;inset-inline-end:7px;width:27px;height:27px;font-size:13px}
+    .item-card .card-menu{inset-block-start:40px;inset-inline-end:7px}
+    .whead .t{font-size:15px!important}
+    .whead .n{display:none}
+  }
+  @media(hover:none) and (pointer:coarse){
+    .rail-nav{display:none!important}
+    .photos::-webkit-scrollbar,.recipes::-webkit-scrollbar,.minerow::-webkit-scrollbar{display:none}
+    .photos,.recipes,.minerow{scrollbar-width:none;cursor:auto}
   }
 </style>
 </head>
@@ -805,16 +868,16 @@
 
   <main class="works">
     <div class="mine hidden" id="mine">
-      <div class="whead"><span class="t">مقاطعي</span></div>
+      <div class="whead"><span class="t">مقاطعي</span><div class="rail-head-actions"><button type="button" class="view-all hidden" id="mineViewAll"></button><span class="rail-nav" data-rail="mineRow"><button type="button" data-dir="-1" aria-label="Previous">‹</button><button type="button" data-dir="1" aria-label="Next">›</button></span></div></div>
       <div class="minerow" id="mineRow"></div>
     </div>
 
-    <div class="whead"><span class="t">اسمعها</span><span class="n">صورة → كلمات → مقطع</span></div>
+    <div class="whead"><span class="t">اسمعها</span><div class="rail-head-actions"><span class="n">صورة → كلمات → مقطع</span><span class="rail-nav" data-rail="photos"><button type="button" data-dir="-1" aria-label="Previous">‹</button><button type="button" data-dir="1" aria-label="Next">›</button></span></div></div>
     <div class="photos" id="photos"></div>
 
     <div class="whead" style="margin-top:24px">
       <span class="t">من الاستخدام</span>
-      <span class="n">اختر الاستخدام والإعدادات جاهزة</span>
+      <div class="rail-head-actions"><span class="n">اختر الاستخدام والإعدادات جاهزة</span><span class="rail-nav" data-rail="recipes"><button type="button" data-dir="-1" aria-label="Previous">‹</button><button type="button" data-dir="1" aria-label="Next">›</button></span></div>
     </div>
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
@@ -851,7 +914,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق", "description": "حوّل صورة أو وصفًا إلى موسيقى خلفية بطول 30–90 ثانية بالضبط. الكلمات تذكر ما في صورتك، مع غناء بعشر لغات وحلقات بلا فواصل.", "h1": "أنشئ مقطعًا", "sub": "من صورة أو وصف. مدة دقيقة وحلقات بلا فواصل.", "drop": "أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها", "generate": "أنشئ المقطع", "how_credits": "كيف تعمل الأرصدة →", "grp_photo": "اسمعها", "grp_recipe": "من الاستخدام", "download": "تنزيل", "save_recipe": "احفظ كوصفة", "use_recipe": "استخدام الوصفة", "remove_photo": "إزالة الصورة", "photo_here": "صورتك هنا", "note": "كل ما على اليمين أُنشئ هنا", "legal_aup": "الاستخدام المقبول", "legal_refund": "المبالغ المستردة", "sign_in_first": "سجّل الدخول للإنشاء", "generating": "جارٍ الإنشاء… نحو 20 ثانية.", "just_generated": "أُنشئ للتو", "your_track": "مقطعك", "from_recipe": "من وصفة", "from_photo": "من صورة", "err_load": "تعذّر تحميل الخيارات", "done_in": "اكتمل في {n} ثانية", "gen_cost": "إنشاء · {n}", "err_gen": "فشل الإنشاء", "my_track": "مقطعي", "err_net": "خطأ في الشبكة", "recipe_name": "اسم الوصفة", "err_save": "تعذّر الحفظ", "saved": "تم الحفظ: {name}", "up_to": "حتى {n}", "credits": "رصيدًا", "guides_link": "أدلة ←", "guides_title": "أدلة", "close": "إغلاق", "loading": "جارٍ التحميل…", "off": "إيقاف", "loop_on": "حلقة بلا فواصل", "buy_credits": "شراء أرصدة ←", "desc_label": "وصف (اختياري)", "desc_ph": "صِف المقطع: مقهى ممطر، بيانو هادئ", "mode_photo": "صورة", "mode_text": "نص", "field_density": "كثافة التوزيع", "opt_sparse": "متباعد", "opt_medium": "متوسط", "opt_full": "كثيف", "pro_title": "خيارات متقدمة", "grp_photo_sub": "صورة → كلمات → مقطع", "grp_recipe_sub": "اختر الاستخدام والإعدادات جاهزة", "recipe_names": {"short-form-cut": "Короткий клип", "hook-sting": "Хук для заставки", "product-loop": "Луп для продукта", "podcast-bed": "Подложка для подкаста", "documentary-underscore": "Фон для документалки", "game-menu-loop": "Луп для меню", "calm-focus": "Концентрация", "kids-learning": "Для детей"}, "applied": "يُستخدم", "current_recipe": "الإعداد الحالي", "mine_title": "مقاطعي", "share_link": "مشاركة الرابط", "dl_audio": "تنزيل الصوت", "copied": "تم النسخ", "shared_note": "تستمع إلى مقطع تمت مشاركته — أنشئ مقطعك أدناه", "my_account": "الحساب", "balance": "الرصيد", "pricing_label": "الأسعار", "confirm_gen": "هل تريد إنشاء مقطع بمدة {sec} ثانية؟ سيُخصم {n}.", "err_insufficient": "الرصيد غير كافٍ", "topup_hint": "اشحن الرصيد لمتابعة التوليد.", "topup_cta": "شراء رصيد", "cancel": "إلغاء", "confirm": "تأكيد", "not_signed_in": "لم تسجّل الدخول", "traveler": "مسافر", "view_all": "عرض الكل", "my_works_pick": "اختر مقطعًا لإعادة استخدام إعداداته", "pay_title": "شراء رصيد", "pay_success": "تم استلام الدفع وإضافة الرصيد.", "pay_opening": "جارٍ فتح الدفع…"}</script>
+<script type="application/json" id="ui">{"title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق", "description": "حوّل صورة أو وصفًا إلى موسيقى خلفية بطول 30–90 ثانية بالضبط. الكلمات تذكر ما في صورتك، مع غناء بعشر لغات وحلقات بلا فواصل.", "h1": "أنشئ مقطعًا", "sub": "من صورة أو وصف. مدة دقيقة وحلقات بلا فواصل.", "drop": "أفلِت صورة أو اخترها<br>ستذكر الكلمات ما فيها", "generate": "أنشئ المقطع", "how_credits": "كيف تعمل الأرصدة →", "grp_photo": "اسمعها", "grp_recipe": "من الاستخدام", "download": "تنزيل", "save_recipe": "احفظ كوصفة", "use_recipe": "استخدام الوصفة", "remove_photo": "إزالة الصورة", "photo_here": "صورتك هنا", "note": "كل ما على اليمين أُنشئ هنا", "legal_aup": "الاستخدام المقبول", "legal_refund": "المبالغ المستردة", "sign_in_first": "سجّل الدخول للإنشاء", "generating": "جارٍ الإنشاء… نحو 20 ثانية.", "just_generated": "أُنشئ للتو", "your_track": "مقطعك", "from_recipe": "من وصفة", "from_photo": "من صورة", "err_load": "تعذّر تحميل الخيارات", "done_in": "اكتمل في {n} ثانية", "gen_cost": "إنشاء · {n}", "err_gen": "فشل الإنشاء", "my_track": "مقطعي", "err_net": "خطأ في الشبكة", "recipe_name": "اسم الوصفة", "err_save": "تعذّر الحفظ", "saved": "تم الحفظ: {name}", "up_to": "حتى {n}", "credits": "رصيدًا", "guides_link": "أدلة ←", "guides_title": "أدلة", "close": "إغلاق", "loading": "جارٍ التحميل…", "off": "إيقاف", "loop_on": "حلقة بلا فواصل", "buy_credits": "شراء أرصدة ←", "desc_label": "وصف (اختياري)", "desc_ph": "صِف المقطع: مقهى ممطر، بيانو هادئ", "mode_photo": "صورة", "mode_text": "نص", "field_density": "كثافة التوزيع", "opt_sparse": "متباعد", "opt_medium": "متوسط", "opt_full": "كثيف", "pro_title": "خيارات متقدمة", "grp_photo_sub": "صورة → كلمات → مقطع", "grp_recipe_sub": "اختر الاستخدام والإعدادات جاهزة", "recipe_names": {"short-form-cut": "Короткий клип", "hook-sting": "Хук для заставки", "product-loop": "Луп для продукта", "podcast-bed": "Подложка для подкаста", "documentary-underscore": "Фон для документалки", "game-menu-loop": "Луп для меню", "calm-focus": "Концентрация", "kids-learning": "Для детей"}, "applied": "يُستخدم", "current_recipe": "الإعداد الحالي", "mine_title": "مقاطعي", "share_link": "مشاركة الرابط", "delete_track": "حذف", "delete_track_confirm": "هل تريد حذف هذا المقطع نهائيًا؟ لا يمكن التراجع عن هذا الإجراء.", "more_actions": "إجراءات إضافية", "dl_audio": "تنزيل الصوت", "copied": "تم النسخ", "shared_note": "تستمع إلى مقطع تمت مشاركته — أنشئ مقطعك أدناه", "my_account": "الحساب", "balance": "الرصيد", "pricing_label": "الأسعار", "confirm_gen": "هل تريد إنشاء مقطع بمدة {sec} ثانية؟ سيُخصم {n}.", "err_insufficient": "الرصيد غير كافٍ", "topup_hint": "اشحن الرصيد لمتابعة التوليد.", "topup_cta": "شراء رصيد", "cancel": "إلغاء", "confirm": "تأكيد", "not_signed_in": "لم تسجّل الدخول", "traveler": "مسافر", "view_all": "عرض الكل", "my_works_pick": "اختر مقطعًا لإعادة استخدام إعداداته", "pay_title": "شراء رصيد", "pay_success": "تم استلام الدفع وإضافة الرصيد.", "pay_opening": "جارٍ فتح الدفع…"}</script>
 <script src="../../assets/wallet.js"></script>
 <script>
 (function () {
@@ -950,7 +1013,7 @@
       el.className = "tile item-card";
       el.innerHTML = '<div class="card-media image"><img src="' + d.img + '" alt="' + d.title + '">' +
         '<button type="button" class="media-play" aria-label="' + d.title + '"></button>' +
-        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use">' + UI.use_recipe + '</button></div></div>' +
+        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + UI.use_recipe + '">' + UI.use_recipe + '</button></div></div>' +
         '<div class="card-info"><p class="card-title">' + d.title + '</p><p class="card-meta">' + d.meta + '</p></div>';
       el.dataset.audio = d.audio || "";
       function playDemo() { select(Object.assign({ kind: "demo" }, d)); }
@@ -963,6 +1026,7 @@
     });
 
     renderBig();
+    requestAnimationFrame(updateRailNav);
   }
 
   // 正在播放的那一项在列表里高亮，列表本身不重排
@@ -1331,7 +1395,7 @@
       var locName = (UI.recipe_names && UI.recipe_names[r.slug]) || r.name;
       el.dataset.audio = r.sample_url || "";
       el.innerHTML = '<div class="card-media"><button type="button" class="media-play" aria-label="' + locName + '">' + wave(waveformForAudio(r.sample_url)) + '</button>' +
-        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use">' + UI.use_recipe + '</button></div></div>' +
+        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + UI.use_recipe + '">' + UI.use_recipe + '</button></div></div>' +
         '<div class="card-info"><p class="card-title">' + locName + '</p><p class="card-meta">' + paramSummary(p) + '</p></div>';
       function playRecipe() { if (r.sample_url) select({ kind: "recipe", audio: r.sample_url, title: locName, meta: "preset" }); }
       function useRecipe() {
@@ -1343,6 +1407,7 @@
       box.appendChild(el);
     });
     drawWaveforms(box);
+    requestAnimationFrame(updateRailNav);
   }
 
   // 套用配方后的反馈：按钮上方出现"将使用…"，并把生成按钮滚进视野
@@ -1556,15 +1621,19 @@
     }).catch(function () { msg(UI.err_gen, "err"); });
   }
 
-  function shareLink() {
-    if (!current || !current.id) return;
-    call("/ai/music/tracks/" + current.id + "/share", {}, true).then(function (d) {
+  function shareTrackLink(trackId) {
+    if (!trackId) return;
+    call("/ai/music/tracks/" + trackId + "/share", {}, true).then(function (d) {
       if (d.code !== 200) { msg(d.msg || UI.err_gen, "err"); return; }
-      var link = location.origin + location.pathname + "?t=" + current.id + "." + d.data.token;
+      var link = location.origin + location.pathname + "?t=" + trackId + "." + d.data.token;
       var done = function () { msg(UI.copied, "ok"); };
       if (navigator.clipboard) navigator.clipboard.writeText(link).then(done).catch(function () { prompt("URL", link); });
       else prompt("URL", link);
     }).catch(function () { msg(UI.err_gen, "err"); });
+  }
+
+  function shareLink() {
+    if (current && current.id) shareTrackLink(current.id);
   }
 
   // 打开分享链接：?t=<id>.<token> → 读公开信息并载入播放器
@@ -1614,31 +1683,110 @@
       ? '<img src="' + it.cover + '" alt="" loading="lazy"><button type="button" class="media-play" aria-label="' + UI.my_track + '"></button>'
       : '<button type="button" class="media-play" aria-label="' + UI.my_track + '">' + wave(it.waveform) + '</button>';
     b.innerHTML = '<div class="card-media' + (hasCover ? ' image' : '') + '">' + media +
-      '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use">' + UI.use_recipe + '</button></div></div>' +
+      '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + UI.use_recipe + '">' + UI.use_recipe + '</button></div>' +
+      '<button type="button" class="card-more" aria-label="' + UI.more_actions + '">•••</button>' +
+      '<div class="card-menu hidden"><button type="button" class="menu-share">' + UI.share_link + '</button>' +
+      '<button type="button" class="menu-delete danger">' + UI.delete_track + '</button></div></div>' +
       '<div class="card-info"><p class="card-title">' + UI.my_track + '</p><p class="card-meta">' + d + (summary ? ' · ' + summary : '') + '</p></div>';
     b.title = mineSummary(it.params || {});
     b.dataset.audio = it.url || "";
     function playMine() { current = { kind: "result", id: it.id, audio: it.url, cover: it.cover, title: UI.my_track, meta: "mine" }; renderBig(); toggleAudio(it.url); }
     b.querySelector(".media-play").addEventListener("click", playMine);
     b.querySelector(".card-use").addEventListener("click", function () { onPick(it); });
+    var menu = b.querySelector(".card-menu");
+    b.querySelector(".card-more").addEventListener("click", function (e) {
+      e.stopPropagation();
+      document.querySelectorAll(".card-menu:not(.hidden)").forEach(function (x) { if (x !== menu) x.classList.add("hidden"); });
+      menu.classList.toggle("hidden");
+    });
+    b.querySelector(".menu-share").addEventListener("click", function () {
+      menu.classList.add("hidden"); shareTrackLink(it.id);
+    });
+    b.querySelector(".menu-delete").addEventListener("click", function () {
+      menu.classList.add("hidden");
+      ask(UI.delete_track_confirm, function () {
+        call("/ai/music/tracks/" + it.id + "/delete", {}, true).then(function (d) {
+          if (d.code !== 200) { msg(d.msg || UI.err_gen, "err"); return; }
+          mineItems = mineItems.filter(function (x) { return x.id !== it.id; });
+          if (current && current.kind === "result" && current.id === it.id) {
+            audio.pause(); current = null; $("playerwrap").classList.add("hidden");
+            document.body.classList.remove("has-player");
+          }
+          renderMineRow();
+          if (!$("mineModal").classList.contains("hidden")) {
+            if (mineItems.length) openMineModal();
+            else $("mineModal").classList.add("hidden");
+          }
+        }).catch(function () { msg(UI.err_net, "err"); });
+      }, UI.delete_track);
+    });
     return b;
   }
 
   function renderMineRow() {
-    if (!mineItems.length) return;
     var row = $("mineRow"); row.innerHTML = "";
+    if (!mineItems.length) { $("mine").classList.add("hidden"); return; }
     $("mine").classList.remove("hidden");
-    mineItems.slice(0, 5).forEach(function (it) { row.appendChild(mineTile(it, applyMine)); });
-    if (mineItems.length > 5) {
-      var more = document.createElement("button");
-      more.type = "button"; more.className = "more-tile";
-      more.innerHTML = '<div class="ph2 more"><span>+' + (mineItems.length - 5) + '</span></div>' +
-        '<p class="dur">' + UI.view_all + '</p>';
-      more.addEventListener("click", openMineModal);
-      row.appendChild(more);
-    }
+    mineItems.slice(0, 8).forEach(function (it) { row.appendChild(mineTile(it, applyMine)); });
+    var all = $("mineViewAll");
+    all.textContent = UI.view_all + " (" + mineItems.length + ")";
+    all.classList.toggle("hidden", mineItems.length <= 4);
     drawWaveforms(row);
+    requestAnimationFrame(updateRailNav);
   }
+
+  function updateRailNav() {
+    document.querySelectorAll(".rail-nav").forEach(function (nav) {
+      var rail = $(nav.dataset.rail); if (!rail) return;
+      var max = Math.max(0, rail.scrollWidth - rail.clientWidth - 2);
+      var prev = nav.querySelector('[data-dir="-1"]'), next = nav.querySelector('[data-dir="1"]');
+      if (prev) prev.disabled = rail.scrollLeft <= 2;
+      if (next) next.disabled = rail.scrollLeft >= max;
+      nav.classList.toggle("hidden", max <= 2);
+    });
+  }
+
+  document.querySelectorAll(".rail-nav").forEach(function (nav) {
+    var rail = $(nav.dataset.rail); if (!rail) return;
+    nav.addEventListener("click", function (e) {
+      var button = e.target.closest("button[data-dir]"); if (!button) return;
+      var card = rail.querySelector(".item-card");
+      var step = card ? card.getBoundingClientRect().width + 11 : rail.clientWidth * .8;
+      rail.scrollBy({ left: Number(button.dataset.dir) * step, behavior: "smooth" });
+    });
+    rail.addEventListener("scroll", updateRailNav, { passive: true });
+  });
+
+  document.querySelectorAll(".photos,.recipes,.minerow").forEach(function (rail) {
+    var pointerId = null, startX = 0, startScroll = 0, moved = false;
+    rail.addEventListener("pointerdown", function (e) {
+      if (e.pointerType === "touch" || e.button !== 0) return;
+      pointerId = e.pointerId; startX = e.clientX; startScroll = rail.scrollLeft; moved = false;
+    });
+    rail.addEventListener("pointermove", function (e) {
+      if (e.pointerId !== pointerId) return;
+      var distance = e.clientX - startX;
+      if (!moved && Math.abs(distance) > 4) {
+        moved = true; rail.setPointerCapture(pointerId); rail.classList.add("dragging");
+      }
+      if (moved) rail.scrollLeft = startScroll - distance;
+    });
+    function stopDrag(e) {
+      if (e.pointerId !== pointerId) return;
+      rail.classList.remove("dragging"); pointerId = null;
+    }
+    rail.addEventListener("pointerup", stopDrag);
+    rail.addEventListener("pointercancel", stopDrag);
+    rail.addEventListener("click", function (e) {
+      if (!moved) return;
+      e.preventDefault(); e.stopPropagation(); moved = false;
+    }, true);
+  });
+  document.addEventListener("click", function (e) {
+    if (e.target.closest(".card-more,.card-menu")) return;
+    document.querySelectorAll(".card-menu:not(.hidden)").forEach(function (menu) { menu.classList.add("hidden"); });
+  });
+  window.addEventListener("resize", updateRailNav);
 
   function openMineModal() {
     var box = $("mineAll"); box.innerHTML = "";
@@ -1774,6 +1922,7 @@
   $("payModal").addEventListener("click", function (e) { if (e.target === $("payModal")) $("payModal").classList.add("hidden"); });
 
   $("mineClose").addEventListener("click", function () { $("mineModal").classList.add("hidden"); });
+  $("mineViewAll").addEventListener("click", openMineModal);
   $("mineModal").addEventListener("click", function (e) {
     if (e.target === $("mineModal")) $("mineModal").classList.add("hidden");
   });
