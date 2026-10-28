@@ -1059,9 +1059,10 @@
     el.style.marginInlineStart = "0px";
     el.style.width = "100%";
     if (works && w > 1080) {
-      // 只覆盖右栏：磨砂层左边缘从内容区开始，不压到参数栏
-      wrap.style.left = works.getBoundingClientRect().left + "px";
-      wrap.style.right = "0px";
+      // Use the rendered content bounds, so the player follows the works pane in both LTR and RTL.
+      var bounds = works.getBoundingClientRect();
+      wrap.style.left = bounds.left + "px";
+      wrap.style.right = Math.max(0, w - bounds.right) + "px";
     } else {
       wrap.style.left = "0px";
       wrap.style.right = "0px";
