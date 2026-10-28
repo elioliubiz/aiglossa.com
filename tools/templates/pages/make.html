@@ -1463,7 +1463,7 @@
       if (d.code !== 200) return;
       var it = d.data;
       current = { kind: "result", id: it.id, audio: API + it.url, cover: it.cover ? API + it.cover : "",
-                  meta: Math.round((it.duration_ms || 0) / 1000) + "s", lyrics: (it.lyrics || "").slice(0, 120) };
+                  meta: Math.round((it.duration_ms || 0) / 1000) + "s", lyrics: (it.output_text || "").slice(0, 120) };
       Object.keys(it.params || {}).forEach(function (k) { if (values[k] !== undefined) values[k] = it.params[k]; });
       renderRail(); renderBig();
       var note = $("shared");
