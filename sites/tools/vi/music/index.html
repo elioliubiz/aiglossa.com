@@ -690,6 +690,60 @@
     display:grid;place-items:center;background:rgba(255,255,255,.14);font-size:9px;color:#fff}
   .rec .rd{font-size:9.5px}
   }
+  }
+
+  /* 所有作品、示例和配方共用同一张卡片；媒体类型只决定显示图片或波形。 */
+  .photos,.recipes,.minerow{
+    display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+    grid-template-rows:none!important;grid-auto-flow:row!important;grid-auto-rows:220px!important;
+    gap:11px!important;overflow:visible!important;padding:0!important;max-width:none!important
+  }
+  .thumbs{display:contents!important}
+  .item-card,.photos .item-card,.recipes .item-card,.minerow .item-card{
+    display:flex!important;flex-direction:column!important;position:relative!important;
+    width:auto!important;height:220px!important;min-width:0!important;padding:0!important;
+    overflow:hidden!important;border:1px solid var(--line)!important;border-radius:12px!important;
+    background:#17191d!important;color:var(--ink);cursor:default!important
+  }
+  .item-card:hover{border-color:rgba(255,255,255,.22)!important;background:#1a1d21!important}
+  .item-card.on{border-color:var(--acc)!important}
+  .item-card .card-media{
+    position:relative;height:136px;flex:0 0 136px;overflow:hidden;background:rgba(255,255,255,.025)
+  }
+  .item-card .card-media>img{display:block;position:static!important;width:100%!important;height:100%!important;
+    object-fit:cover;transform:none!important;transition:transform .35s}
+  .item-card .card-media:hover>img{transform:scale(1.025)!important}
+  .item-card .media-play{position:absolute;inset:0;z-index:1;width:100%;height:100%;margin:0;padding:12px;
+    border:0;background:transparent;color:inherit;cursor:pointer;font:inherit;text-align:inherit}
+  .item-card .card-media.image .media-play{padding:0}
+  .item-card .media-play canvas{display:block;width:100%;height:100%}
+  .item-card .card-actions{position:absolute;inset-block-start:10px;inset-inline-end:10px;z-index:3;
+    display:flex;align-items:center;gap:7px;pointer-events:none}
+  .item-card .play-mark{width:30px;height:30px;display:grid;place-items:center;border-radius:50%;
+    border:1px solid rgba(255,255,255,.28);background:rgba(12,14,16,.68);color:#fff;
+    font-size:9px;backdrop-filter:blur(6px)}
+  .item-card .card-use{pointer-events:auto;border:1px solid rgba(255,255,255,.24);border-radius:7px;
+    background:rgba(12,14,16,.72);color:#fff;font:inherit;font-size:11px;padding:7px 9px;
+    cursor:pointer;backdrop-filter:blur(6px);white-space:nowrap}
+  .item-card .card-use:hover{border-color:rgba(255,255,255,.45);background:rgba(30,32,36,.9)}
+  .item-card .card-info{padding:12px 13px;min-width:0}
+  .item-card .card-title{margin:0 0 4px;font-size:13px;font-weight:600;white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis}
+  .item-card .card-meta{margin:0;color:var(--muted);font-size:11px;white-space:nowrap;
+    overflow:hidden;text-overflow:ellipsis}
+  .more-tile{width:auto!important;height:220px!important;flex:none!important}
+  .more-tile .ph2{height:174px}
+  .mine{margin-bottom:22px}
+
+  @media(max-width:1080px){
+    .works{padding:16px!important;max-width:100vw}
+    .works .wrap,.works>.whead,.works>.photos,.works>.rec-wrap,.works>.policy{padding-inline:0!important}
+    .photos,.recipes,.minerow{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  }
+  @media(max-width:640px){
+    .photos,.recipes,.minerow{grid-template-columns:minmax(0,1fr)!important}
+    .item-card,.photos .item-card,.recipes .item-card,.minerow .item-card{height:220px!important}
+  }
 </style>
 </head>
 <body>
@@ -797,7 +851,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác", "description": "Biến ảnh hoặc mô tả thành nhạc nền dài đúng 30–90 giây. Lời bài hát gọi tên những gì trong ảnh, với giọng hát 10 ngôn ngữ và vòng lặp liền mạch.", "h1": "Tạo một bản nhạc", "sub": "Từ ảnh hoặc mô tả. Độ dài chính xác, vòng lặp liền mạch.", "drop": "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh", "generate": "Tạo bản nhạc", "how_credits": "Tín dụng hoạt động thế nào →", "grp_photo": "Nghe thử", "grp_recipe": "Từ mục đích dùng", "download": "Tải xuống", "save_recipe": "Lưu thành công thức", "remove_photo": "Xóa ảnh", "photo_here": "Ảnh của bạn ở đây", "note": "Mọi thứ bên phải đều được tạo ở đây", "legal_aup": "Sử dụng được chấp nhận", "legal_refund": "Hoàn tiền", "sign_in_first": "Đăng nhập để tạo", "generating": "Đang tạo… khoảng 20 giây.", "just_generated": "Vừa tạo xong", "your_track": "Bản nhạc của bạn", "from_recipe": "Từ công thức", "from_photo": "Tạo từ ảnh", "err_load": "Không tải được tuỳ chọn", "done_in": "Xong sau {n} giây", "gen_cost": "Tạo · {n}", "err_gen": "Tạo thất bại", "my_track": "Bản nhạc của tôi", "err_net": "Lỗi mạng", "recipe_name": "Tên công thức", "err_save": "Lưu thất bại", "saved": "Đã lưu: {name}", "up_to": "Tối đa {n}", "credits": "tín dụng", "guides_link": "Hướng dẫn →", "guides_title": "Hướng dẫn", "close": "Đóng", "loading": "Đang tải…", "off": "Tắt", "loop_on": "Vòng lặp liền mạch", "buy_credits": "Mua tín dụng →", "desc_label": "Mô tả (không bắt buộc)", "desc_ph": "Mô tả bản nhạc: quán cà phê mưa, piano nhẹ", "mode_photo": "Ảnh", "mode_text": "Chữ", "field_density": "Độ dày của hòa âm", "opt_sparse": "Thưa", "opt_medium": "Vừa", "opt_full": "Dày", "pro_title": "Tùy chọn nâng cao", "grp_photo_sub": "Ảnh → lời → bản nhạc", "grp_recipe_sub": "Chọn mục đích, thông số đã đặt sẵn", "recipe_names": {"short-form-cut": "คลิปสั้น", "hook-sting": "ฮุกเปิดคลิป", "product-loop": "ลูปสินค้า", "podcast-bed": "เพลงประกอบพอดแคสต์", "documentary-underscore": "เพลงประกอบสารคดี", "game-menu-loop": "ลูปเมนูเกม", "calm-focus": "สมาธิ", "kids-learning": "เด็กและการเรียนรู้"}, "applied": "Dùng", "current_recipe": "Bộ cài đang dùng", "mine_title": "Bản nhạc của tôi", "share_link": "Chia sẻ liên kết", "dl_audio": "Tải âm thanh", "copied": "Đã sao chép", "shared_note": "Bạn đang nghe bản nhạc được chia sẻ — tạo bản của bạn bên dưới", "my_account": "Tài khoản", "balance": "Số dư", "pricing_label": "Giá", "confirm_gen": "Tạo bản nhạc {sec} giây? Sẽ tiêu {n}.", "err_insufficient": "Không đủ tín dụng", "topup_hint": "Nạp thêm để tiếp tục tạo.", "topup_cta": "Mua tín dụng", "cancel": "Hủy", "confirm": "Xác nhận", "not_signed_in": "Chưa đăng nhập", "traveler": "Người lữ hành", "view_all": "Xem tất cả", "my_works_pick": "Chọn một bản để dùng lại cấu hình", "pay_title": "Mua tín dụng", "pay_success": "Đã nhận thanh toán — đã cộng tín dụng.", "pay_opening": "Đang mở thanh toán…"}</script>
+<script type="application/json" id="ui">{"title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác", "description": "Biến ảnh hoặc mô tả thành nhạc nền dài đúng 30–90 giây. Lời bài hát gọi tên những gì trong ảnh, với giọng hát 10 ngôn ngữ và vòng lặp liền mạch.", "h1": "Tạo một bản nhạc", "sub": "Từ ảnh hoặc mô tả. Độ dài chính xác, vòng lặp liền mạch.", "drop": "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh", "generate": "Tạo bản nhạc", "how_credits": "Tín dụng hoạt động thế nào →", "grp_photo": "Nghe thử", "grp_recipe": "Từ mục đích dùng", "download": "Tải xuống", "save_recipe": "Lưu thành công thức", "use_recipe": "Dùng công thức", "remove_photo": "Xóa ảnh", "photo_here": "Ảnh của bạn ở đây", "note": "Mọi thứ bên phải đều được tạo ở đây", "legal_aup": "Sử dụng được chấp nhận", "legal_refund": "Hoàn tiền", "sign_in_first": "Đăng nhập để tạo", "generating": "Đang tạo… khoảng 20 giây.", "just_generated": "Vừa tạo xong", "your_track": "Bản nhạc của bạn", "from_recipe": "Từ công thức", "from_photo": "Tạo từ ảnh", "err_load": "Không tải được tuỳ chọn", "done_in": "Xong sau {n} giây", "gen_cost": "Tạo · {n}", "err_gen": "Tạo thất bại", "my_track": "Bản nhạc của tôi", "err_net": "Lỗi mạng", "recipe_name": "Tên công thức", "err_save": "Lưu thất bại", "saved": "Đã lưu: {name}", "up_to": "Tối đa {n}", "credits": "tín dụng", "guides_link": "Hướng dẫn →", "guides_title": "Hướng dẫn", "close": "Đóng", "loading": "Đang tải…", "off": "Tắt", "loop_on": "Vòng lặp liền mạch", "buy_credits": "Mua tín dụng →", "desc_label": "Mô tả (không bắt buộc)", "desc_ph": "Mô tả bản nhạc: quán cà phê mưa, piano nhẹ", "mode_photo": "Ảnh", "mode_text": "Chữ", "field_density": "Độ dày của hòa âm", "opt_sparse": "Thưa", "opt_medium": "Vừa", "opt_full": "Dày", "pro_title": "Tùy chọn nâng cao", "grp_photo_sub": "Ảnh → lời → bản nhạc", "grp_recipe_sub": "Chọn mục đích, thông số đã đặt sẵn", "recipe_names": {"short-form-cut": "คลิปสั้น", "hook-sting": "ฮุกเปิดคลิป", "product-loop": "ลูปสินค้า", "podcast-bed": "เพลงประกอบพอดแคสต์", "documentary-underscore": "เพลงประกอบสารคดี", "game-menu-loop": "ลูปเมนูเกม", "calm-focus": "สมาธิ", "kids-learning": "เด็กและการเรียนรู้"}, "applied": "Dùng", "current_recipe": "Bộ cài đang dùng", "mine_title": "Bản nhạc của tôi", "share_link": "Chia sẻ liên kết", "dl_audio": "Tải âm thanh", "copied": "Đã sao chép", "shared_note": "Bạn đang nghe bản nhạc được chia sẻ — tạo bản của bạn bên dưới", "my_account": "Tài khoản", "balance": "Số dư", "pricing_label": "Giá", "confirm_gen": "Tạo bản nhạc {sec} giây? Sẽ tiêu {n}.", "err_insufficient": "Không đủ tín dụng", "topup_hint": "Nạp thêm để tiếp tục tạo.", "topup_cta": "Mua tín dụng", "cancel": "Hủy", "confirm": "Xác nhận", "not_signed_in": "Chưa đăng nhập", "traveler": "Người lữ hành", "view_all": "Xem tất cả", "my_works_pick": "Chọn một bản để dùng lại cấu hình", "pay_title": "Mua tín dụng", "pay_success": "Đã nhận thanh toán — đã cộng tín dụng.", "pay_opening": "Đang mở thanh toán…"}</script>
 <script src="../../assets/wallet.js"></script>
 <script>
 (function () {
@@ -831,13 +885,17 @@
 
   var DEMOS = [
     { title: "Sea — gentle", meta: "English · 0:30", img: "../../samples/demo-sea.jpg", audio: "https://assets.aiglossa.com/music-samples/demo-sea.flac",
-      lyrics: "Gentle <b>sea</b> breathes on the sand. Every <b>wave</b> that meets the <b>beach</b>." },
+      lyrics: "Gentle <b>sea</b> breathes on the sand. Every <b>wave</b> that meets the <b>beach</b>.",
+      params: { duration_seconds:30, loop:false, bpm:72, mood:"calm", genre:"ambient", instrumentation:["piano","synth_pad"], density:"minimal", drums:"soft", vocal:"female", vocal_language:"en" } },
     { title: "Night rain — neon", meta: "English · 0:45", img: "../../samples/demo-city.jpg", audio: "https://assets.aiglossa.com/music-samples/demo-city.flac",
-      lyrics: "A yellow <b>taxi</b> cuts through the <b>neon</b> haze." },
+      lyrics: "A yellow <b>taxi</b> cuts through the <b>neon</b> haze.",
+      params: { duration_seconds:45, loop:false, bpm:96, mood:"dramatic", genre:"electronic", instrumentation:["synth_pad","bass"], density:"medium", drums:"drive", vocal:"female", vocal_language:"en" } },
     { title: "Coffee — cálido", meta: "Español · 0:30", img: "../../samples/demo-coffee.jpg", audio: "https://assets.aiglossa.com/music-samples/demo-coffee.flac",
-      lyrics: "Huele a <b>café</b>. Mi <b>libro</b>, un amigo." },
+      lyrics: "Huele a <b>café</b>. Mi <b>libro</b>, un amigo.",
+      params: { duration_seconds:30, loop:false, bpm:80, mood:"warm", genre:"lofi", instrumentation:["piano","guitar"], density:"minimal", drums:"soft", vocal:"female", vocal_language:"es" } },
     { title: "Bicycle — 古い壁", meta: "日本語 · 0:30", img: "../../samples/demo-bike.jpg", audio: "https://assets.aiglossa.com/music-samples/demo-bike.flac",
-      lyrics: "古い<b>壁</b>にもたれた<b>自転車</b>。" }
+      lyrics: "古い<b>壁</b>にもたれた<b>自転車</b>。",
+      params: { duration_seconds:30, loop:false, bpm:92, mood:"hopeful", genre:"acoustic", instrumentation:["guitar","bells"], density:"medium", drums:"soft", vocal:"female", vocal_language:"ja" } }
   ];
 
   var schema = null, values = {}, imagePayload = null;
@@ -889,15 +947,18 @@
         return;
       }
       var el = document.createElement("div");
-      el.className = "tile";
-      el.innerHTML = '<img src="' + d.img + '" alt="' + d.title + '"><div class="shade"></div><span class="pl">▶</span>' +
-        '<div class="meta"><p class="t">' + d.title + '</p><p class="d">' + d.meta + '</p></div>' +
-        '<div class="tile-actions"><button type="button" class="demo-play">▶</button><button type="button" class="demo-use">' + (UI.applied || "Apply") + '</button></div>';
+      el.className = "tile item-card";
+      el.innerHTML = '<div class="card-media image"><img src="' + d.img + '" alt="' + d.title + '">' +
+        '<button type="button" class="media-play" aria-label="' + d.title + '"></button>' +
+        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use">' + UI.use_recipe + '</button></div></div>' +
+        '<div class="card-info"><p class="card-title">' + d.title + '</p><p class="card-meta">' + d.meta + '</p></div>';
       el.dataset.audio = d.audio || "";
       function playDemo() { select(Object.assign({ kind: "demo" }, d)); }
-      el.addEventListener("click", playDemo);
-      el.querySelector(".demo-play").addEventListener("click", function (e) { e.stopPropagation(); playDemo(); });
-      el.querySelector(".demo-use").addEventListener("click", function (e) { e.stopPropagation(); playDemo(); applied(d.title); });
+      el.querySelector(".media-play").addEventListener("click", playDemo);
+      el.querySelector(".card-use").addEventListener("click", function () {
+        Object.keys(d.params || {}).forEach(function (k) { if (values[k] !== undefined) values[k] = d.params[k]; });
+        renderRail(); applied(d.title);
+      });
       thumbs.appendChild(el);
     });
 
@@ -907,11 +968,11 @@
   // 正在播放的那一项在列表里高亮，列表本身不重排
   function markPlaying() {
     var cur = current || {};
-    Array.prototype.forEach.call(document.querySelectorAll("#photos .tile"), function (el) {
-      el.classList.toggle("on", !!cur.audio && el.dataset.audio === cur.audio);
-    });
-    Array.prototype.forEach.call(document.querySelectorAll("#recipes .rec"), function (el) {
-      el.classList.toggle("on", !!cur.name && el.dataset.name === cur.name);
+    Array.prototype.forEach.call(document.querySelectorAll(".item-card"), function (el) {
+      var active = !!cur.audio && el.dataset.audio === cur.audio && !audio.paused;
+      el.classList.toggle("on", active);
+      var mark = el.querySelector(".play-mark");
+      if (mark) mark.textContent = active && !audio.paused ? "❚❚" : "▶";
     });
   }
 
@@ -975,6 +1036,7 @@
     if (fill) fill.style.width = pct + "%";
     if (knob) knob.style.insetInlineStart = pct + "%";
     if (tm) tm.textContent = fmtT(t) + " / " + (d ? fmtT(d) : "0:00");
+    markPlaying();
   }
   ["timeupdate", "play", "pause", "ended", "loadedmetadata"].forEach(function (ev) {
     audio.addEventListener(ev, syncPlayer);
@@ -1070,7 +1132,6 @@
 
   function select(c) {
     current = c;
-    renderPhotos();
     renderBig();
     if (c.audio) toggleAudio(c.audio);
     setTimeout(renderBig, 60);
@@ -1265,25 +1326,20 @@
     var box = $("recipes"); box.innerHTML = "";
     items.filter(function (r) { return r.is_system; }).forEach(function (r) {
       var el = document.createElement("div");
-      el.className = "rec";
+      el.className = "rec item-card";
       var p = r.params || {};
       var locName = (UI.recipe_names && UI.recipe_names[r.slug]) || r.name;
-      el.dataset.name = locName;
-      el.innerHTML = '<div class="wv">' + wave(waveformForAudio(r.sample_url)) +
-        '<span class="rplay" aria-hidden="true">▶</span></div>' +
-        '<p class="rn">' + locName + '</p>' +
-        '<p class="rd">' + paramSummary(p) + '</p>' +
-        '<div class="rec-actions"><button type="button" class="rec-play">▶</button><button type="button" class="rec-use">' + (UI.applied || "Apply") + '</button></div>';
+      el.dataset.audio = r.sample_url || "";
+      el.innerHTML = '<div class="card-media"><button type="button" class="media-play" aria-label="' + locName + '">' + wave(waveformForAudio(r.sample_url)) + '</button>' +
+        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use">' + UI.use_recipe + '</button></div></div>' +
+        '<div class="card-info"><p class="card-title">' + locName + '</p><p class="card-meta">' + paramSummary(p) + '</p></div>';
       function playRecipe() { if (r.sample_url) select({ kind: "recipe", audio: r.sample_url, title: locName, meta: "preset" }); }
       function useRecipe() {
-        Array.prototype.forEach.call(box.children, function (x) { x.classList.remove("on"); });
-        el.classList.add("on");
         Object.keys(p).forEach(function (k) { if (k.indexOf("__") !== 0) values[k] = p[k]; });
-        renderRail(); applied(locName); playRecipe();
+        renderRail(); applied(locName);
       }
-      el.addEventListener("click", playRecipe);
-      el.querySelector(".rec-play").addEventListener("click", function (e) { e.stopPropagation(); playRecipe(); });
-      el.querySelector(".rec-use").addEventListener("click", function (e) { e.stopPropagation(); useRecipe(); });
+      el.querySelector(".media-play").addEventListener("click", playRecipe);
+      el.querySelector(".card-use").addEventListener("click", useRecipe);
       box.appendChild(el);
     });
     drawWaveforms(box);
@@ -1533,8 +1589,7 @@
     Object.keys(it.params || {}).forEach(function (k) {
       if (values[k] !== undefined) values[k] = it.params[k];
     });
-    renderRail();
-    msg(UI.applied || "");
+    renderRail(); applied(UI.my_track);
   }
 
   // 作品摘要：让用户看得出"用了什么配方"（没有封面时尤其重要）
@@ -1552,20 +1607,20 @@
   function mineTile(it, onPick) {
     var hasCover = !!it.cover;
     var b = document.createElement("div");
-    b.className = hasCover ? "tile" : "rec";
+    b.className = (hasCover ? "tile" : "rec") + " item-card";
     var d = fmtDur(Math.round((it.duration_ms || 0) / 1000));
     var summary = mineSummary(it.params || {}) || "";
-    b.innerHTML = hasCover
-      ? '<img src="' + it.cover + '" alt="" loading="lazy"><div class="shade"></div><div class="meta"><p class="t">' + UI.my_track + '</p><p class="d">' + d + ' · ' + summary + '</p></div>' +
-        '<div class="tile-actions"><button type="button" class="demo-play">▶</button><button type="button" class="demo-use">' + (UI.applied || "Apply") + '</button></div>'
-      : '<div class="wv">' + wave(it.waveform) + '<span class="rplay" aria-hidden="true">▶</span></div>' +
-        '<p class="rn">' + UI.my_track + '</p><p class="rd">' + d + (summary ? ' · ' + summary : '') + '</p>' +
-        '<div class="rec-actions"><button type="button" class="rec-play">▶</button><button type="button" class="rec-use">' + (UI.applied || "Apply") + '</button></div>';
+    var media = hasCover
+      ? '<img src="' + it.cover + '" alt="" loading="lazy"><button type="button" class="media-play" aria-label="' + UI.my_track + '"></button>'
+      : '<button type="button" class="media-play" aria-label="' + UI.my_track + '">' + wave(it.waveform) + '</button>';
+    b.innerHTML = '<div class="card-media' + (hasCover ? ' image' : '') + '">' + media +
+      '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use">' + UI.use_recipe + '</button></div></div>' +
+      '<div class="card-info"><p class="card-title">' + UI.my_track + '</p><p class="card-meta">' + d + (summary ? ' · ' + summary : '') + '</p></div>';
     b.title = mineSummary(it.params || {});
+    b.dataset.audio = it.url || "";
     function playMine() { current = { kind: "result", id: it.id, audio: it.url, cover: it.cover, title: UI.my_track, meta: "mine" }; renderBig(); toggleAudio(it.url); }
-    b.addEventListener("click", playMine);
-    b.querySelector(hasCover ? ".demo-play" : ".rec-play").addEventListener("click", function (e) { e.stopPropagation(); playMine(); });
-    b.querySelector(hasCover ? ".demo-use" : ".rec-use").addEventListener("click", function (e) { e.stopPropagation(); onPick(it); });
+    b.querySelector(".media-play").addEventListener("click", playMine);
+    b.querySelector(".card-use").addEventListener("click", function () { onPick(it); });
     return b;
   }
 
