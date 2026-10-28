@@ -338,6 +338,7 @@
   .rec:hover{border-color:rgba(255,255,255,.22);background:rgba(255,255,255,.045)}
   .rec.on{border-color:var(--acc)}
   .rec .wv{display:flex;align-items:center;gap:2px;height:30px;margin-bottom:10px}
+  .rec .wv canvas{display:block;width:100%;height:100%}
   .rec .wv i{flex:1;background:#fff;opacity:.5;border-radius:1px}
   .rec:hover .wv i{opacity:.85}
   .rec .rn{font-size:12.5px;font-weight:600;margin:0 0 2px}
@@ -829,13 +830,13 @@
   function msg(t, kind) { var el = $("msg"); el.textContent = t || ""; el.className = "msg" + (kind ? " " + kind : ""); }
 
   var DEMOS = [
-    { title: "Sea — gentle", meta: "English · 0:30", img: "../../samples/demo-sea.jpg", audio: "../../samples/demo-sea.mp3",
+    { title: "Sea — gentle", meta: "English · 0:30", img: "../../samples/demo-sea.jpg", audio: "../../samples/demo-sea.flac",
       lyrics: "Gentle <b>sea</b> breathes on the sand. Every <b>wave</b> that meets the <b>beach</b>." },
-    { title: "Night rain — neon", meta: "English · 0:45", img: "../../samples/demo-city.jpg", audio: "../../samples/demo-city.mp3",
+    { title: "Night rain — neon", meta: "English · 0:45", img: "../../samples/demo-city.jpg", audio: "../../samples/demo-city.flac",
       lyrics: "A yellow <b>taxi</b> cuts through the <b>neon</b> haze." },
-    { title: "Coffee — cálido", meta: "Español · 0:30", img: "../../samples/demo-coffee.jpg", audio: "../../samples/demo-coffee.mp3",
+    { title: "Coffee — cálido", meta: "Español · 0:30", img: "../../samples/demo-coffee.jpg", audio: "../../samples/demo-coffee.flac",
       lyrics: "Huele a <b>café</b>. Mi <b>libro</b>, un amigo." },
-    { title: "Bicycle — 古い壁", meta: "日本語 · 0:30", img: "../../samples/demo-bike.jpg", audio: "../../samples/demo-bike.mp3",
+    { title: "Bicycle — 古い壁", meta: "日本語 · 0:30", img: "../../samples/demo-bike.jpg", audio: "../../samples/demo-bike.flac",
       lyrics: "古い<b>壁</b>にもたれた<b>自転車</b>。" }
   ];
 
@@ -853,7 +854,20 @@
   audio.addEventListener("ended", function () { renderBig(); });
 
   function fmt(s) { if (!isFinite(s)) s = 0; var m = Math.floor(s / 60), r = Math.floor(s % 60); return m + ":" + (r < 10 ? "0" : "") + r; }
-  function wave() { var o = "", h; for (var i = 0; i < 36; i++) { h = 16 + Math.abs(Math.sin(i * 0.7)) * 80; o += '<i style="height:' + h.toFixed(0) + '%"></i>'; } return o; }
+  var WAVEFORMS = {};
+  function waveformForAudio(url) { var name = (url || "").split("/").pop().replace(/\.(mp3|flac)$/i, ""); return WAVEFORMS[name] || null; }
+  function wave(wf) { var peaks = wf && wf.peaks && wf.peaks.length ? wf.peaks : []; return '<canvas class="wave-canvas" data-peaks="' + peaks.join(",") + '" aria-hidden="true"></canvas>'; }
+  function drawWaveforms(root) {
+    Array.prototype.forEach.call((root || document).querySelectorAll("canvas.wave-canvas"), function (canvas) {
+      var peaks = (canvas.dataset.peaks || "").split(",").map(Number).filter(function (n) { return isFinite(n); });
+      if (!peaks.length) return;
+      var box = canvas.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
+      canvas.width = Math.max(1, Math.round(box.width * dpr)); canvas.height = Math.max(1, Math.round(box.height * dpr));
+      var ctx = canvas.getContext("2d"), gap = 2 * dpr, step = canvas.width / peaks.length, bar = Math.max(1 * dpr, step - gap);
+      ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = "rgba(255,255,255,.62)";
+      peaks.forEach(function (peak, i) { var h = Math.max(2 * dpr, peak / 255 * canvas.height); ctx.fillRect(i * step, (canvas.height - h) / 2, bar, h); });
+    });
+  }
 
   function renderPhotos() {
     var box = $("photos"); box.innerHTML = "";
@@ -1255,7 +1269,7 @@
       var p = r.params || {};
       var locName = (UI.recipe_names && UI.recipe_names[r.slug]) || r.name;
       el.dataset.name = locName;
-      el.innerHTML = '<div class="wv">' + wave() +
+      el.innerHTML = '<div class="wv">' + wave(waveformForAudio(r.sample_url)) +
         '<span class="rplay" aria-hidden="true">▶</span></div>' +
         '<p class="rn">' + locName + '</p>' +
         '<p class="rd">' + paramSummary(p) + '</p>' +
@@ -1272,6 +1286,7 @@
       el.querySelector(".rec-use").addEventListener("click", function (e) { e.stopPropagation(); useRecipe(); });
       box.appendChild(el);
     });
+    drawWaveforms(box);
   }
 
   // 套用配方后的反馈：按钮上方出现"将使用…"，并把生成按钮滚进视野
@@ -1434,7 +1449,7 @@
     var url = current && current.audio;
     if (!url) return;
     fetch(url).then(function (r) { return r.blob(); }).then(function (blob) {
-      var file = new File([blob], "aiglossa-track.mp3", { type: blob.type || "audio/mpeg" });
+      var file = new File([blob], "aiglossa-track.flac", { type: blob.type || "audio/flac" });
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         navigator.share({ files: [file], title: document.title }).catch(function () {});
       } else {
@@ -1503,7 +1518,7 @@
     b.innerHTML = hasCover
       ? '<img src="' + it.cover + '" alt="" loading="lazy"><div class="shade"></div><div class="meta"><p class="t">' + UI.my_track + '</p><p class="d">' + d + ' · ' + summary + '</p></div>' +
         '<div class="tile-actions"><button type="button" class="demo-play">▶</button><button type="button" class="demo-use">' + (UI.applied || "Apply") + '</button></div>'
-      : '<div class="wv">' + wave() + '<span class="rplay" aria-hidden="true">▶</span></div>' +
+      : '<div class="wv">' + wave(it.waveform) + '<span class="rplay" aria-hidden="true">▶</span></div>' +
         '<p class="rn">' + UI.my_track + '</p><p class="rd">' + d + (summary ? ' · ' + summary : '') + '</p>' +
         '<div class="rec-actions"><button type="button" class="rec-play">▶</button><button type="button" class="rec-use">' + (UI.applied || "Apply") + '</button></div>';
     b.title = mineSummary(it.params || {});
@@ -1527,6 +1542,7 @@
       more.addEventListener("click", openMineModal);
       row.appendChild(more);
     }
+    drawWaveforms(row);
   }
 
   function openMineModal() {
@@ -1538,6 +1554,7 @@
       }));
     });
     $("mineModal").classList.remove("hidden");
+    requestAnimationFrame(function () { drawWaveforms(box); });
   }
 
   function loadMine() {
@@ -1691,9 +1708,10 @@
     // 先定"当前这首"，再渲染照片墙——否则墙里会出现和大画幅重复的那一张
     var d0 = DEMOS[0];
     current = { kind: "demo", img: d0.img, audio: d0.audio, lyrics: d0.lyrics, meta: d0.meta, title: d0.title };
-    renderRail(); renderPhotos(); syncCost();
-    call("/ai/music/recipes/list", {}, false).then(function (r) {
-      if (r.code === 200) renderRecipes(r.data || []);
+    renderRail(); syncCost();
+    fetch("../../samples/waveforms.json").then(function (r) { return r.json(); }).then(function (w) { WAVEFORMS = w || {}; }).catch(function () {}).then(function () {
+      renderPhotos();
+      call("/ai/music/recipes/list", {}, false).then(function (r) { if (r.code === 200) renderRecipes(r.data || []); });
     });
   });
   // 指南：弹窗内切换，不跳页；文章页本身仍可直接访问（SEO）
