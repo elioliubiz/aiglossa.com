@@ -1624,12 +1624,30 @@
   function shareTrackLink(trackId) {
     if (!trackId) return;
     call("/ai/music/tracks/" + trackId + "/share", {}, true).then(function (d) {
-      if (d.code !== 200) { msg(d.msg || UI.err_gen, "err"); return; }
+      if (d.code !== 200) { toast(d.msg || UI.err_gen); return; }
       var link = location.origin + location.pathname + "?t=" + trackId + "." + d.data.token;
-      var done = function () { msg(UI.copied, "ok"); };
-      if (navigator.clipboard) navigator.clipboard.writeText(link).then(done).catch(function () { prompt("URL", link); });
-      else prompt("URL", link);
-    }).catch(function () { msg(UI.err_gen, "err"); });
+      copyText(link).then(function () { toast(UI.copied); }).catch(function () { toast(UI.err_net); });
+    }).catch(function () { toast(UI.err_net); });
+  }
+
+  function copyText(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(text).catch(function () { return legacyCopyText(text); });
+    }
+    return legacyCopyText(text);
+  }
+
+  function legacyCopyText(text) {
+    return new Promise(function (resolve, reject) {
+      var input = document.createElement("textarea");
+      input.value = text; input.setAttribute("readonly", "");
+      input.style.position = "fixed"; input.style.opacity = "0"; input.style.pointerEvents = "none";
+      document.body.appendChild(input); input.select(); input.setSelectionRange(0, input.value.length);
+      var copied = false;
+      try { copied = document.execCommand("copy"); } catch (_) {}
+      input.remove();
+      if (copied) resolve(); else reject(new Error("copy failed"));
+    });
   }
 
   function shareLink() {
