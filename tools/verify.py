@@ -46,6 +46,8 @@ def outputs_for(page: str) -> list[tuple[str, str]]:
                 [(f"guides/{slug}.html", f"guides/{slug}.html") for slug in sorted(slugs)])
     if page == "music":
         return [("music/index.html", "music/")]
+    if page == "music-share":
+        return [("music/share/index.html", "music/share/")]
     if page in ("refund", "acceptable-use"):
         return [(f"{page}.html", f"{page}.html")]
     if page == "webpricing":

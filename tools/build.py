@@ -59,6 +59,7 @@ PAGES = {
     "refund": ("pages/legal.html", "ui", "refund.html"),
     "acceptable-use": ("pages/legal.html", "ui", "acceptable-use.html"),
     "music": ("pages/make.html", "ui", "music/index.html"),
+    "music-share": ("pages/share.html", "ui", "music/share/index.html"),
     # 指南（内容页）：英文优先，生成到 /en/guides/<slug>.html
     "guides": ("pages/guide.html", "guides", "guides/{slug}.html"),
     # 每个工具一个目录（/{lang}/music/、未来 /{lang}/image/），全局页仍在语言根
@@ -617,8 +618,18 @@ def main() -> int:
                     out["legal_aup"] = esc(copy["legal_aup"])
                     out["refund_label"] = esc(copy["legal_refund"])
                     return out
-
                 values_builder = make_values
+            elif page == "music-share":
+                def share_values(lang: str, base: str, source=source) -> dict[str, str]:
+                    copy = source[lang].get("make") or source["en"]["make"]
+                    out = {k: (v if isinstance(v, dict) else esc(v)) for k, v in copy.items()}
+                    out["title"] = esc(copy["title"])
+                    out["description"] = esc(copy["description"])
+                    out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    out["jsonld"] = json.dumps({"@context":"https://schema.org","@type":"AudioObject","name":copy["title"],"description":copy["description"]}, ensure_ascii=False).replace("</", "<\\/")
+                    return out
+
+                values_builder = share_values
             elif page in ("refund", "acceptable-use"):
                 def legal_values(lang: str, base: str, page=page, source=source) -> dict[str, str]:
                     # 未翻译的语言回退到英文，并在构建报告里显式列出（不静默）

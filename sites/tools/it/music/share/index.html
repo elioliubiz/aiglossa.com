@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="it" dir="ltr" data-default-lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Generatore di musica IA — da foto a brano, durata esatta</title>
+<meta name="description" content="Trasforma una foto o una descrizione in musica di sottofondo da 30 a 90 secondi esatti. Il testo nomina ciò che c&#x27;è nell&#x27;immagine, con voci in 10 lingue e loop senza stacchi." />
+<meta name="robots" content="noindex" />
+<link rel="canonical" href="https://tools.aiglossa.com/it/music/share/" />
+<link rel="alternate" hreflang="ar" href="https://tools.aiglossa.com/ar/music/share/">
+<link rel="alternate" hreflang="de" href="https://tools.aiglossa.com/de/music/share/">
+<link rel="alternate" hreflang="en" href="https://tools.aiglossa.com/en/music/share/">
+<link rel="alternate" hreflang="es" href="https://tools.aiglossa.com/es/music/share/">
+<link rel="alternate" hreflang="fr" href="https://tools.aiglossa.com/fr/music/share/">
+<link rel="alternate" hreflang="id" href="https://tools.aiglossa.com/id/music/share/">
+<link rel="alternate" hreflang="it" href="https://tools.aiglossa.com/it/music/share/">
+<link rel="alternate" hreflang="ja" href="https://tools.aiglossa.com/ja/music/share/">
+<link rel="alternate" hreflang="ko" href="https://tools.aiglossa.com/ko/music/share/">
+<link rel="alternate" hreflang="pt" href="https://tools.aiglossa.com/pt/music/share/">
+<link rel="alternate" hreflang="ru" href="https://tools.aiglossa.com/ru/music/share/">
+<link rel="alternate" hreflang="th" href="https://tools.aiglossa.com/th/music/share/">
+<link rel="alternate" hreflang="tr" href="https://tools.aiglossa.com/tr/music/share/">
+<link rel="alternate" hreflang="vi" href="https://tools.aiglossa.com/vi/music/share/">
+<link rel="alternate" hreflang="zh-Hans" href="https://tools.aiglossa.com/zh-Hans/music/share/">
+<link rel="alternate" hreflang="zh-Hant" href="https://tools.aiglossa.com/zh-Hant/music/share/">
+<link rel="alternate" hreflang="x-default" href="https://tools.aiglossa.com/en/music/share/">
+<link rel="icon" href="../../../assets/favicon-tools.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../../assets/theme.css" />
+<style>
+  :root{--bg:#0e0f11;--panel:#16181c;--ink:#f2f1ec;--muted:#92959c;--line:rgba(242,241,236,.13);--acc:#ff7a1a}
+  *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink)}
+  body{font:14px/1.55 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif}
+  .share-shell{min-height:100vh;display:flex;flex-direction:column}
+  .share-top{display:flex;justify-content:space-between;align-items:center;padding:20px clamp(20px,5vw,64px);border-bottom:1px solid var(--line)}
+  .brand{color:var(--muted);font-size:11px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none}
+  .brand i{display:inline-block;width:7px;height:7px;margin-inline-end:8px;border-radius:50%;background:var(--acc)}
+  .top-link{color:var(--muted);text-decoration:none;font-size:13px}.top-link:hover{color:var(--ink)}
+  .share-main{width:min(1080px,100%);margin:0 auto;padding:clamp(28px,6vw,72px) clamp(20px,5vw,64px) 120px}
+  .share-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:clamp(28px,6vw,76px);align-items:center}
+  .art{position:relative;aspect-ratio:1/1;overflow:hidden;border:1px solid var(--line);border-radius:18px;background:#191b20;box-shadow:0 24px 70px rgba(0,0,0,.28)}
+  .art img{width:100%;height:100%;display:block;object-fit:cover}.art canvas{width:82%;height:42%;position:absolute;inset:29% 9%;display:block}
+  .art-wave{background:radial-gradient(circle at 50% 45%,rgba(255,122,26,.16),transparent 56%),#191b20}
+  .art-overlay{position:absolute;inset:0;display:grid;place-items:center;background:linear-gradient(180deg,rgba(0,0,0,.05),rgba(0,0,0,.3))}
+  .play{width:72px;height:72px;border:1px solid rgba(255,255,255,.6);border-radius:50%;background:rgba(10,12,14,.68);color:#fff;font-size:22px;cursor:pointer;backdrop-filter:blur(8px)}
+  .play:hover{background:rgba(255,122,26,.9);border-color:var(--acc)}
+  .copy h1{font-size:clamp(30px,5vw,56px);line-height:1.08;letter-spacing:-.035em;margin:0 0 14px;font-weight:600}
+  .copy .eyebrow{color:var(--acc);font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 12px}
+  .copy .meta{color:var(--muted);margin:0 0 24px;font-size:14px}.copy .lyrics{color:var(--muted);line-height:1.75;margin:0 0 28px;white-space:pre-line;max-height:190px;overflow:auto;scroll-behavior:smooth}
+  .lyrics.sync{display:flex;flex-direction:column;gap:3px;white-space:normal}.lyrics.sync span{display:block;padding:4px 0;transition:color .2s ease,transform .2s ease;transform-origin:inset-inline-start}.lyrics.sync span.active{color:var(--ink);transform:scale(1.035)}.lyrics.sync span.unmatched{opacity:.48}
+  .actions{display:flex;gap:9px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border-radius:9px;padding:11px 16px;border:1px solid var(--line);background:rgba(255,255,255,.05);color:var(--ink);font:inherit;text-decoration:none;cursor:pointer}.btn:hover{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.09)}.btn.primary{background:var(--acc);border-color:var(--acc);color:#1b0d03;font-weight:600}.btn.primary:hover{background:#ff9144}.btn[disabled]{opacity:.5;cursor:default}
+  .hint{margin:18px 0 0;color:var(--muted);font-size:12px}.error{padding:32px;text-align:center;color:var(--muted)}
+  .share-player{position:fixed;inset-inline:0;bottom:0;z-index:10;display:flex;align-items:center;gap:14px;min-height:72px;padding:10px clamp(20px,5vw,64px);background:rgba(14,15,18,.88);border-top:1px solid var(--line);backdrop-filter:blur(16px)}
+  .bar{position:relative;flex:1;height:5px;border-radius:5px;background:rgba(255,255,255,.14);cursor:pointer}.bar span{position:absolute;inset-block:0;inset-inline-start:0;width:0;border-radius:5px;background:var(--acc)}.time{color:var(--muted);font-size:12px;white-space:nowrap}
+  .share-player .mini{width:38px;height:38px;border:0;border-radius:50%;background:var(--ink);color:#111;cursor:pointer}.share-player .name{max-width:220px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  @media(max-width:760px){.share-grid{grid-template-columns:1fr;gap:28px}.art{max-width:520px;margin:auto}.copy{text-align:center}.copy .lyrics{text-align:start}.actions{justify-content:center}.share-player{gap:9px;padding-inline:16px}.share-player .name{display:none}.share-player .bar{min-width:70px}}
+</style>
+</head>
+<body>
+<div class="share-shell">
+  <header class="share-top"><a class="brand" href="../"><i></i>aiglossa tools</a><a class="top-link" href="../">Genera brano</a></header>
+  <main class="share-main" id="share-main"><div class="error">Caricamento…</div></main>
+  <div class="share-player" id="share-player" hidden>
+    <button class="mini" id="mini-play" type="button" aria-label="Play">▶</button><span class="name" id="mini-name"></span>
+    <div class="bar" id="bar"><span></span></div><span class="time" id="time">0:00 / 0:00</span>
+  </div>
+</div>
+<script type="application/json" id="ui">{"title": "Generatore di musica IA — da foto a brano, durata esatta", "description": "Trasforma una foto o una descrizione in musica di sottofondo da 30 a 90 secondi esatti. Il testo nomina ciò che c'è nell'immagine, con voci in 10 lingue e loop senza stacchi.", "h1": "Crea un brano", "sub": "Da una foto o una descrizione. Durata esatta, loop senza stacchi.", "drop": "Trascina o scegli una foto<br>il testo nominerà ciò che contiene", "generate": "Genera brano", "how_credits": "Come funzionano i crediti →", "grp_photo": "Ascolta", "grp_recipe": "Da un caso d'uso", "download": "Scarica", "save_recipe": "Salva come ricetta", "use_recipe": "Usa ricetta", "remove_photo": "Rimuovi foto", "photo_here": "La tua foto qui", "note": "Tutto ciò che è a destra è stato creato qui", "legal_aup": "Uso accettabile", "legal_refund": "Rimborsi", "sign_in_first": "Accedi per generare", "generating": "Generazione… circa 20 secondi.", "just_generated": "Appena generato", "your_track": "Il tuo brano", "from_recipe": "Da una ricetta", "from_photo": "Da una foto", "err_load": "Impossibile caricare le opzioni", "done_in": "Pronto in {n} s", "gen_cost": "Genera · {n}", "err_gen": "Generazione non riuscita", "my_track": "Il mio brano", "err_net": "Errore di rete", "recipe_name": "Nome della ricetta", "err_save": "Salvataggio non riuscito", "saved": "Salvato: {name}", "up_to": "Fino a {n}", "credits": "crediti", "guides_link": "Guide →", "guides_title": "Guide", "close": "Chiudi", "loading": "Caricamento…", "off": "No", "loop_on": "Loop senza stacchi", "buy_credits": "Acquista crediti →", "desc_label": "Descrizione (facoltativa)", "desc_ph": "Descrivi il brano: caffè piovoso, pianoforte dolce", "mode_photo": "Foto", "mode_text": "Testo", "field_density": "Densità dell'arrangiamento", "opt_sparse": "Rado", "opt_medium": "Medio", "opt_full": "Fitto", "pro_title": "Opzioni avanzate", "grp_photo_sub": "Foto → testo → brano", "grp_recipe_sub": "Scegli l'uso, le impostazioni sono già pronte", "recipe_names": {"short-form-cut": "Corte curto", "hook-sting": "Gancho de abertura", "product-loop": "Loop de produto", "podcast-bed": "Trilha de podcast", "documentary-underscore": "Base documental", "game-menu-loop": "Loop de menu", "calm-focus": "Foco", "kids-learning": "Infantil e aprendizado"}, "applied": "Uso", "current_recipe": "Preset attuale", "mine_title": "I miei brani", "share_link": "Condividi link", "delete_track": "Elimina", "delete_track_confirm": "Eliminare definitivamente questo brano? L'azione non può essere annullata.", "more_actions": "Altre azioni", "dl_audio": "Scarica audio", "copied": "Copiato", "shared_note": "Stai ascoltando un brano condiviso: crea il tuo qui sotto", "my_account": "Account", "balance": "Saldo", "pricing_label": "Prezzi", "confirm_gen": "Generare un brano da {sec}s? Costa {n}.", "err_insufficient": "Crediti insufficienti", "topup_hint": "Ricarica per continuare a generare.", "topup_cta": "Acquista crediti", "cancel": "Annulla", "confirm": "Conferma", "not_signed_in": "Non connesso", "traveler": "Viaggiatore", "view_all": "Vedi tutto", "my_works_pick": "Scegline uno per riusarne le impostazioni", "pay_title": "Acquista crediti", "pay_success": "Pagamento ricevuto: crediti aggiunti.", "pay_opening": "Apertura del pagamento…"}</script>
+<script>
+(function(){"use strict";
+  var UI=JSON.parse(document.getElementById("ui").textContent), lang=document.documentElement.lang, host=location.hostname;
+  var api=(host==="localhost"||host==="127.0.0.1")?"/api":host.indexOf("staging.aiglossa.com")>=0?"https://dev.staging.aiglossa.com":"https://api.aiglossa.com";
+  var audio=new Audio();audio.preload="metadata";var track=null,activeLyric=-1;
+  function call(id,token){return fetch(api+"/ai/music/public/"+id,{method:"POST",headers:{"Content-Type":"application/json","X-Client":"web"},body:JSON.stringify({app_key:"tools",device:"share-"+Date.now(),timestamp:Math.floor(Date.now()/1000),t:token})}).then(function(r){return r.json()})}
+  function fmt(s){s=isFinite(s)?s:0;return Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0")}
+  function esc(s){var d=document.createElement("div");d.textContent=s||"";return d.innerHTML}
+  function wave(peaks){var c=document.createElement("canvas"),x=c.getContext("2d"),p=peaks||[];c.width=960;c.height=300;x.fillStyle="rgba(255,255,255,.72)";p.forEach(function(v,i){var h=Math.max(3,v/255*260);x.fillRect(i*960/p.length,150-h/2,Math.max(2,960/p.length-3),h)});return c.toDataURL()}
+  function copy(text){if(navigator.clipboard)return navigator.clipboard.writeText(text);var t=document.createElement("textarea");t.value=text;t.style.position="fixed";t.style.opacity=0;document.body.appendChild(t);t.select();document.execCommand("copy");t.remove();return Promise.resolve()}
+  function plainLyrics(raw){var lines=String(raw||"").split(/\r?\n/).map(function(x){return x.trim()}).filter(Boolean),marked=lines.filter(function(x){return /^\s*\[:\]/.test(x)});if(marked.length)return marked.map(function(x){return x.replace(/^\s*\[:\]\s*/,"")});return lines.filter(function(x){return !/^\s*\[\[.*\]\]\s*$/.test(x)&&!/^<?instrumental>?$/i.test(x)})}
+  function lyricMarkup(it){var timing=it.lyrics_timing&&it.lyrics_timing.lines;if(timing&&timing.length)return '<div class="lyrics sync" id="lyrics">'+timing.map(function(x,i){return '<span data-i="'+i+'" class="'+(x.matched?'':'unmatched')+'">'+esc(x.text)+'</span>'}).join("")+'</div>';var lines=plainLyrics(it.output_text);return lines.length?'<p class="lyrics">'+lines.map(esc).join("\n")+'</p>':""}
+  function updateLyrics(){var lines=track&&track.lyrics;if(!lines||!lines.length)return;var now=Math.round(audio.currentTime*1000),next=-1;for(var i=0;i<lines.length;i++){if(lines[i].matched&&now>=lines[i].start_ms&&now<=lines[i].end_ms){next=i;break}}if(next===activeLyric)return;activeLyric=next;document.querySelectorAll("#lyrics span.active").forEach(function(x){x.classList.remove("active")});if(next>=0){var el=document.querySelector('#lyrics span[data-i="'+next+'"]');if(el){el.classList.add("active");el.scrollIntoView({block:"nearest",behavior:"smooth"})}}}
+  function render(it,id,token){
+    track={id:id,token:token,url:api+it.url,title:UI.my_track,cover:it.cover?api+it.cover:"",lyrics:it.lyrics_timing&&it.lyrics_timing.lines||[]};activeLyric=-1;
+    var p=it.params||{}, sec=Math.round((it.duration_ms||0)/1000), title=UI.my_track, meta=fmt(sec);
+    var art=track.cover?'<img src="'+esc(track.cover)+'" alt="">':'<div class="art-wave"></div>';
+    if(!track.cover&&it.waveform&&it.waveform.peaks)art='<img src="'+wave(it.waveform.peaks)+'" alt="">';
+    document.title=title+" — aiglossa tools";
+    document.getElementById("share-main").innerHTML='<div class="share-grid"><section class="art">'+art+'<div class="art-overlay"><button class="play" id="play" type="button">▶</button></div></section><section class="copy"><p class="eyebrow">'+UI.shared_note+'</p><h1>'+title+'</h1><p class="meta">'+meta+(p.genre?' · '+esc(p.genre):"")+(p.mood?' · '+esc(p.mood):"")+'</p>'+lyricMarkup(it)+'<div class="actions"><a class="btn primary" id="make" href="../?from='+id+'.'+token+'">'+UI.generate+'</a><button class="btn" id="share" type="button">'+UI.share_link+'</button><a class="btn" href="'+esc(track.url)+'" download>'+UI.download+'</a></div><p class="hint">'+UI.shared_note+'</p></section></div>';
+    document.getElementById("share-player").hidden=false;document.getElementById("mini-name").textContent=title;
+    document.getElementById("play").onclick=toggle;document.getElementById("mini-play").onclick=toggle;
+    document.getElementById("share").onclick=function(){var u=location.href;if(navigator.share)navigator.share({title:title,url:u}).catch(function(){});else copy(u).then(function(){alert(UI.copied)})};
+    audio.src=track.url;
+  }
+  function toggle(){if(audio.paused){audio.play().catch(function(){});document.querySelectorAll("#play,#mini-play").forEach(function(b){b.textContent="❚❚"})}else{audio.pause();document.querySelectorAll("#play,#mini-play").forEach(function(b){b.textContent="▶"})}}
+  audio.ontimeupdate=function(){var pct=audio.duration?audio.currentTime/audio.duration*100:0;document.querySelector("#bar span").style.width=pct+"%";document.getElementById("time").textContent=fmt(audio.currentTime)+" / "+fmt(audio.duration);updateLyrics()};
+  audio.onended=function(){document.querySelectorAll("#play,#mini-play").forEach(function(b){b.textContent="▶"})};
+  document.getElementById("bar").onclick=function(e){if(!audio.duration)return;audio.currentTime=(e.offsetX/this.clientWidth)*audio.duration};
+  var m=/[?&]t=(\d+)\.([a-f0-9]+)/.exec(location.search);if(!m){document.getElementById("share-main").innerHTML='<div class="error">'+UI.err_gen+'</div>';return}call(m[1],m[2]).then(function(d){if(d.code!==200)throw Error();render(d.data,m[1],m[2])}).catch(function(){document.getElementById("share-main").innerHTML='<div class="error">'+UI.err_gen+'</div>'});
+})();
+</script>
+
+<script>
+(function () {
+  var h = location.hostname;
+  if (h.indexOf("staging.aiglossa.com") < 0) return;
+  var main = "https://staging.aiglossa.com";
+  document.querySelectorAll('a[href^="https://aiglossa.com"]').forEach(function (a) {
+    a.href = main + a.getAttribute("href").slice("https://aiglossa.com".length);
+  });
+})();
+</script>
+</body>
+</html>

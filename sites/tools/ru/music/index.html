@@ -1626,7 +1626,8 @@
     if (!trackId) return;
     call("/ai/music/tracks/" + trackId + "/share", {}, true).then(function (d) {
       if (d.code !== 200) { toast(d.msg || UI.err_gen); return; }
-      var link = location.origin + location.pathname + "?t=" + trackId + "." + d.data.token;
+      var sharePath = location.pathname.replace(/music\/?$/, "music/share/");
+      var link = location.origin + sharePath + "?t=" + trackId + "." + d.data.token;
       copyText(link).then(function () { toast(UI.copied); }).catch(function () { toast(UI.err_net); });
     }).catch(function () { toast(UI.err_net); });
   }
@@ -1655,19 +1656,15 @@
     if (current && current.id) shareTrackLink(current.id);
   }
 
-  // 打开分享链接：?t=<id>.<token> → 读公开信息并载入播放器
-  function loadShared() {
-    var m = /[?&]t=(\d+)\.([a-f0-9]+)/.exec(location.search);
+  // 从独立分享页进入创作页：?from=<id>.<token> → 读取公开作品并填充同款参数。
+  function loadSharedRecipe() {
+    var m = /[?&]from=(\d+)\.([a-f0-9]+)/.exec(location.search);
     if (!m) return;
     call("/ai/music/public/" + m[1], { t: m[2] }, false).then(function (d) {
       if (d.code !== 200) return;
       var it = d.data;
-      current = { kind: "result", id: it.id, audio: API + it.url, cover: it.cover ? API + it.cover : "",
-                  meta: Math.round((it.duration_ms || 0) / 1000) + "s", lyrics: outputTextPreview(it.output_text) };
       Object.keys(it.params || {}).forEach(function (k) { if (values[k] !== undefined) values[k] = it.params[k]; });
-      renderRail(); renderBig();
-      var note = $("shared");
-      if (note) { note.textContent = UI.shared_note; note.classList.remove("hidden"); }
+      renderRail(); applied(UI.from_photo);
     }).catch(function () {});
   }
 
@@ -1976,7 +1973,7 @@
     if (ok) { loadMine(); restoreDraft(); }
     else { $("bal").textContent = UI.not_signed_in; renderAvatar({}); }
   });
-  loadShared();
+  loadSharedRecipe();
   call("/ai/music/schema", {}, false).then(function (d) {
     if (d.code !== 200) { msg(UI.err_load, "err"); return; }
     schema = d.data;

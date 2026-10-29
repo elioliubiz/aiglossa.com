@@ -709,6 +709,16 @@
       "destination": "/sites/tools/:lang/index.html"
     },
     {
+      "source": "/:lang/music/share/",
+      "has": [{"type": "host", "value": "tools.aiglossa.com"}],
+      "destination": "/sites/tools/:lang/music/share/index.html"
+    },
+    {
+      "source": "/:lang/music/share/",
+      "has": [{"type": "host", "value": "tools.staging.aiglossa.com"}],
+      "destination": "/sites/tools/:lang/music/share/index.html"
+    },
+    {
       "source": "/:lang/music/",
       "has": [
         {
