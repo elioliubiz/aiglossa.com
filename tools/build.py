@@ -622,10 +622,12 @@ def main() -> int:
             elif page == "music-share":
                 def share_values(lang: str, base: str, source=source) -> dict[str, str]:
                     copy = source[lang].get("make") or source["en"]["make"]
-                    out = {k: (v if isinstance(v, dict) else esc(v)) for k, v in copy.items()}
+                    share_copy = json.loads((CONTENT / "share.json").read_text(encoding="utf-8"))[lang]
+                    merged = {**copy, "share_kicker": share_copy["kicker"], "share_try_cta": share_copy["try_cta"]}
+                    out = {k: (v if isinstance(v, dict) else esc(v)) for k, v in merged.items()}
                     out["title"] = esc(copy["title"])
                     out["description"] = esc(copy["description"])
-                    out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    out["ui_json"] = json.dumps(merged, ensure_ascii=False).replace("</", "<\\/")
                     out["jsonld"] = json.dumps({"@context":"https://schema.org","@type":"AudioObject","name":copy["title"],"description":copy["description"]}, ensure_ascii=False).replace("</", "<\\/")
                     return out
 

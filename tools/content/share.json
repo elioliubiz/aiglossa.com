@@ -1,0 +1,18 @@
+{
+  "ar": {"kicker": "مقطع شاركه أحد المبدعين", "try_cta": "جرّب إنشاء مقطعك"},
+  "de": {"kicker": "Von einem Creator geteilt", "try_cta": "Eigenen Track ausprobieren"},
+  "en": {"kicker": "Shared by a creator", "try_cta": "Try creating a track"},
+  "es": {"kicker": "Compartida por un creador", "try_cta": "Prueba a crear una pista"},
+  "fr": {"kicker": "Partagé par un créateur", "try_cta": "Essayez de créer un morceau"},
+  "id": {"kicker": "Dibagikan oleh seorang kreator", "try_cta": "Coba buat trek sendiri"},
+  "it": {"kicker": "Condiviso da un creator", "try_cta": "Prova a creare un brano"},
+  "ja": {"kicker": "クリエイターからシェアされた曲", "try_cta": "自分の曲を作ってみる"},
+  "ko": {"kicker": "크리에이터가 공유한 트랙", "try_cta": "나만의 트랙 만들어 보기"},
+  "pt": {"kicker": "Compartilhada por um criador", "try_cta": "Experimente criar uma faixa"},
+  "ru": {"kicker": "Треком поделился автор", "try_cta": "Попробовать создать свой трек"},
+  "th": {"kicker": "แชร์โดยครีเอเตอร์", "try_cta": "ลองสร้างเพลงของคุณ"},
+  "tr": {"kicker": "Bir üretici tarafından paylaşıldı", "try_cta": "Kendi parçanı oluşturmayı dene"},
+  "vi": {"kicker": "Được chia sẻ bởi một nhà sáng tạo", "try_cta": "Thử tạo một bản nhạc"},
+  "zh-Hans": {"kicker": "来自一位创作者的分享", "try_cta": "试着创作一首"},
+  "zh-Hant": {"kicker": "來自一位創作者的分享", "try_cta": "試著創作一首"}
+}
