@@ -1656,8 +1656,22 @@
       if (d.code !== 200) { toast(d.msg || UI.err_gen); return; }
       var sharePath = location.pathname.replace(/music\/?$/, "music/share/");
       var link = location.origin + sharePath + "?t=" + trackId + "." + d.data.token;
-      copyText(link).then(function () { toast(UI.copied); }).catch(function () { toast(UI.err_net); });
+      shareOrCopy(link, UI.my_track);
     }).catch(function () { toast(UI.err_net); });
+  }
+
+  function shareOrCopy(link, title) {
+    var payload = { title: title || document.title, url: link };
+    var canUseSystemShare = typeof navigator.share === "function" &&
+      (typeof navigator.canShare !== "function" || navigator.canShare(payload));
+    if (canUseSystemShare) {
+      return navigator.share(payload).catch(function (err) {
+        // Closing the native share sheet is intentional; do not replace it with a copy action.
+        if (err && err.name === "AbortError") return;
+        return copyText(link).then(function () { toast(UI.copied); }).catch(function () { toast(UI.err_net); });
+      });
+    }
+    return copyText(link).then(function () { toast(UI.copied); }).catch(function () { toast(UI.err_net); });
   }
 
   function copyText(text) {
