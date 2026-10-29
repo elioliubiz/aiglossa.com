@@ -279,8 +279,10 @@ def _site_urls(site: str, spec: dict) -> list[str]:
                 urls.append((f"guides/{slug}.html", [c for c in langs_with_guides if slug in guides[c]]))
         elif page == "music":
             urls.append(("music/", None))
-        elif page in ("account", "refund"):
-            continue          # noindex，不进 sitemap
+        elif page in ("account", "webaccount", "refund", "login"):
+            continue          # noindex / 内部页面，不进 sitemap
+        elif page == "webpricing":
+            urls.append(("pricing.html", None))   # 输出文件名与页面键不同
         else:
             urls.append((f"{page}.html", None))
     return urls
