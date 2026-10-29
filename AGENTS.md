@@ -54,6 +54,45 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 - 指向源码站的链接（如法律页）显式带语言：`https://aiglossa.com/<lang>/protocol/privacy.html`。
 - 生成器里的片段若要拼前缀，用 `{{prefix}}`；`render()` 只替换一遍，插入片段里的占位符需要 `emit()` 里补替换（见 `build.py`）。
 
+## 页面结构变更与 SEO（改结构时必须同步）
+
+改 URL、加删页面、调整 noindex 时，**必须**同时检查下面四处，漏一处就会出现
+"sitemap 里有不存在的地址"或"noindex 页面被提交"这类问题：
+
+| 位置 | 要做什么 |
+|---|---|
+| `tools/build.py` 的 `_site_urls()` | 新页面加入 sitemap；`noindex` 页面（login / account / refund）显式 `continue` |
+| 同上 | **页面键 ≠ 输出文件名时要显式映射**（如 `webpricing` → `pricing.html`） |
+| `vercel.json` | 旧 URL 加 301/308 到新地址；跨站迁移要带 `has host` 限定，否则会自己跳自己 |
+| 模板 | canonical 指向**自身 host**；hreflang 只在本 host 内闭环，不跨站混排 |
+
+硬规则：
+
+- `noindex` 的页面永远不进 sitemap。
+- 产品页的 canonical **绝不**指向主站，否则等于告诉 Google 这是重复内容。
+- 认证 / 支付页集中在主站（见下文「统一网页账户」），子站只允许 308 过去，不要各写一份。
+- sitemap 每条 URL 必须带 `<lastmod>`（构建时生成），否则搜索引擎判断不了"内容变了"。
+
+构建后自检（必须实际执行，不要假设）：
+
+```bash
+grep -c "<loc>" sites/tools/sitemap.xml sites/root/sitemap.xml
+grep -o "<loc>[^<]*</loc>" sites/root/sitemap.xml | grep -E "/(account|login)\.html" | grep -v delete-account   # 应为空
+grep -c "webpricing" sites/root/sitemap.xml   # 应为 0
+```
+
+部署后自检：
+
+```bash
+curl -s -o /dev/null -w "%{http_code} → %{redirect_url}\n" https://tools.aiglossa.com/en/make.html
+curl -s https://aiglossa.com/sitemap.xml | grep -c lastmod
+```
+
+GSC 侧：**结构变更本身不需要任何操作**。Google 会按固定节奏重抓 sitemap 与内链，
+自动用 301/308 替换旧地址。只有三种情况要进 GSC：换域名（用「更改地址」）、
+旧地址返回 404（先修跳转）、想加快收录（URL 检查 → 请求编入索引）。
+不要反复重提 sitemap，也不要用「移除」工具处理已 301 的地址。
+
 ## 边界：哪些域名不属于这个仓库
 
 | 域名 | 归属 | 这个仓库能不能动 |
