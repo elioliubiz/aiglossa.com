@@ -134,9 +134,15 @@
     if (q) {
       try {
         var target = new URL(q, location.href);
-        var allowed = target.origin === location.origin ||
-          target.origin === "https://tools.aiglossa.com" ||
-          target.origin === "https://tools.staging.aiglossa.com";
+        var allowedOrigins = [
+          location.origin,
+          "https://aiglossa.com",
+          "https://staging.aiglossa.com",
+          "https://tools.aiglossa.com",
+          "https://tools.staging.aiglossa.com",
+          "https://scholan.aiglossa.com"
+        ];
+        var allowed = allowedOrigins.indexOf(target.origin) >= 0;
         if (allowed) return target.href;
       } catch (e) {}
     }
@@ -146,8 +152,8 @@
   }
   function accept(data) {
     if (data.code !== 200) { msg(data.msg || "Failed", true); return false; }
-    if (data.data && data.data.access_token) localStorage.setItem("aig_token", data.data.access_token);
-    if (data.data && data.data.user && data.data.user.email) localStorage.setItem("aig_email", data.data.user.email);
+    localStorage.removeItem("aig_token");
+    localStorage.removeItem("aig_email");
     location.replace(next());
     return true;
   }

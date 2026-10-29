@@ -143,14 +143,13 @@
 (function () {
   "use strict";
   var UI = JSON.parse(document.getElementById("ui").textContent);
-  var TOKEN_KEY = "aig_token";
+  localStorage.removeItem("aig_token");
   // 环境判定：第一段描述"是什么"，staging 描述"在哪个环境"
   var HOST = location.hostname;
   var IS_STAGING = HOST.indexOf("staging.aiglossa.com") >= 0 && HOST.indexOf("dev.staging") !== 0;
   var IS_LOCAL = HOST === "localhost" || HOST === "127.0.0.1";
   var API = IS_LOCAL ? "/api" : (IS_STAGING ? "https://dev.staging.aiglossa.com" : "https://api.aiglossa.com");
   var $ = function (id) { return document.getElementById(id); };
-  function token() { return localStorage.getItem(TOKEN_KEY) || ""; }
   function device() {
     var v = localStorage.getItem("aig_device");
     if (!v) { v = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())); localStorage.setItem("aig_device", v); }
@@ -158,9 +157,8 @@
   }
   function call(path, body, auth) {
     var h = { "Content-Type": "application/json", "X-Client": "web" };
-    if (auth) h["Authorization"] = "Bearer " + token();
     var payload = Object.assign({ app_key: "tools", device: device(), timestamp: Math.floor(Date.now() / 1000) }, body || {});
-    return fetch(API + path, { method: "POST", headers: h, body: JSON.stringify(payload) }).then(function (r) { return r.json(); });
+    return fetch(API + path, { method: "POST", credentials: "include", headers: h, body: JSON.stringify(payload) }).then(function (r) { return r.json(); });
   }
   function msg(t, kind) { var el = $("msg"); el.textContent = t || ""; el.className = "msg" + (kind ? " " + kind : ""); }
 

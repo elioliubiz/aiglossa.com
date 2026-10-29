@@ -179,30 +179,32 @@
 <script>
 (function () {
   "use strict";
-  var token = localStorage.getItem("aig_token") || "";
-  if (!token) return;
+  localStorage.removeItem("aig_token");
+  localStorage.removeItem("aig_email");
   var api = location.hostname === "localhost" || location.hostname === "127.0.0.1"
     ? "/api"
     : (location.hostname === "tools.staging.aiglossa.com"
       ? "https://dev.staging.aiglossa.com"
       : "https://api.aiglossa.com");
+  var root = location.hostname === "tools.staging.aiglossa.com" ? "https://staging.aiglossa.com" : "https://aiglossa.com";
+  document.getElementById("toolsAccount").href = root + "/th/login.html?next=" + encodeURIComponent(location.href);
   var device = localStorage.getItem("aig_device") || "";
   if (!device) {
     device = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
     localStorage.setItem("aig_device", device);
   }
   fetch(api + "/wallet/summary", {
-    method: "POST",
-    headers: {"Content-Type": "application/json", "Authorization": "Bearer " + token, "X-Client": "web"},
+    method: "POST", credentials: "include",
+    headers: {"Content-Type": "application/json", "X-Client": "web"},
     body: JSON.stringify({app_key: "tools", device: device, timestamp: Math.floor(Date.now() / 1000)})
   }).then(function (r) { return r.json(); }).then(function (data) {
     if (data.code === 401 || data.code !== 200 || !data.data) return;
     var user = data.data.user || {};
-    var name = user.email || localStorage.getItem("aig_email") || "บัญชี";
+    var name = user.email || user.nickname || "บัญชี";
     document.getElementById("toolsAccountEmail").textContent = name;
     document.getElementById("toolsAccountBalance").textContent = Math.round((data.data.balance || 0) / 100) + " เครดิต";
     document.getElementById("toolsAvatar").textContent = name.slice(0, 1).toUpperCase();
-    document.getElementById("toolsAccount").href = "account.html";
+    document.getElementById("toolsAccount").href = root + "/th/account.html";
   }).catch(function () {});
 })();
 </script>

@@ -9,10 +9,7 @@
 <link rel="canonical" href="{{canonical}}">
 {{alternates}}
 <meta name="theme-color" content="#0e0f11">
-<link rel="icon" href="{{prefix}}assets/favicon-tools.svg" type="image/svg+xml">
-<link rel="icon" href="{{prefix}}assets/favicon-tools.svg" sizes="any">
-<link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-tools.png">
-<link rel="manifest" href="{{prefix}}assets/manifest-tools.webmanifest">
+<link rel="icon" href="{{prefix}}assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="{{prefix}}assets/site.css">
 <link rel="stylesheet" href="{{prefix}}assets/theme.css">
   <script src="{{prefix}}assets/wallet.js"></script>
@@ -96,7 +93,7 @@
 </head>
 <body>
 <div class="top">
-  <span class="brand">aiglossa tools</span>
+  <span class="brand">aiglossa</span>
   <a href="./">{{back}}</a>
 </div>
 
@@ -154,11 +151,11 @@
 
 <footer>
   <div class="wrap">
-    <span class="brand">aiglossa tools</span>
+    <span class="brand">aiglossa</span>
     <nav>
       <a href="https://aiglossa.com/{{lang}}/protocol/privacy.html">{{privacy}}</a>
       <a href="https://aiglossa.com/{{lang}}/protocol/term.html">{{terms}}</a>
-      <a href="refund.html">{{refund_label}}</a>
+      <a href="{{refund_href}}">{{refund_label}}</a>
     </nav>
     <details class="switcher">
       <summary>{{lang_label}} · {{current_name}}</summary>
@@ -173,10 +170,11 @@
 (function () {
   "use strict";
   var UI = JSON.parse(document.getElementById("ui").textContent);
-  var TOKEN_KEY = "aig_token", EMAIL_KEY = "aig_email";
+  localStorage.removeItem("aig_token");
+  localStorage.removeItem("aig_email");
   var API = location.hostname === "localhost" || location.hostname === "127.0.0.1"
     ? "/api"
-    : (location.hostname === "tools.staging.aiglossa.com"
+    : (location.hostname.indexOf("staging.aiglossa.com") >= 0
       ? "https://dev.staging.aiglossa.com"
       : "https://api.aiglossa.com");
   var balanceUnits = -1;
@@ -191,8 +189,6 @@
     }
   }
   var $ = function (id) { return document.getElementById(id); };
-  function token() { return localStorage.getItem(TOKEN_KEY) || ""; }
-  function setToken(t) { if (t) localStorage.setItem(TOKEN_KEY, t); else localStorage.removeItem(TOKEN_KEY); }
   function device() {
     var v = localStorage.getItem("aig_device");
     if (!v) { v = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now())); localStorage.setItem("aig_device", v); }
@@ -200,27 +196,22 @@
   }
   function call(path, body, auth) {
     var h = { "Content-Type": "application/json", "X-Client": "web" };
-    if (auth) h["Authorization"] = "Bearer " + token();
     var payload = Object.assign({ app_key: "tools", device: device(), timestamp: Math.floor(Date.now() / 1000) }, body || {});
-    return fetch(API + path, { method: "POST", headers: h, body: JSON.stringify(payload) }).then(function (r) { return r.json(); });
+    return fetch(API + path, { method: "POST", credentials: "include", headers: h, body: JSON.stringify(payload) }).then(function (r) { return r.json(); });
   }
   function showMsg(el, text, kind) { if (!el) return; el.textContent = text || ""; el.className = "msg" + (kind ? " " + kind : ""); }
 
-  function renderSignedIn() {
-    $("account-card").classList.remove("hidden");
-    loadCredits();
-  }
   function renderSignedOut() {
     var next = location.pathname.split("/").pop() || "account.html";
     location.replace("login.html?next=" + encodeURIComponent(next + location.search));
   }
   function loadCredits() {
     return call("/wallet/summary", {}, true).then(function (data) {
-      if (data.code === 401) { setToken(""); renderSignedOut(); return; }
+      if (data.code === 401) { renderSignedOut(); return; }
       if (data.code !== 200) { showMsg($("account-msg"), data.msg || UI.err_load, "err"); return; }
       var user = data.data.user || {};
       var name = (user.nickname || "").trim() || UI.account_label;
-      var email = user.email || localStorage.getItem(EMAIL_KEY) || "";
+      var email = user.email || "";
       $("account-name").textContent = name;
       $("account-email").textContent = maskEmail(email) || "—";
       $("coins").textContent = data.data.coins;
@@ -263,8 +254,7 @@
     }).catch(function () {});
   }
   $("logout").addEventListener("click", function () {
-    call("/auth/logout", {}, true).catch(function () {});
-    setToken(""); renderSignedOut();
+    call("/auth/logout", {}, true).finally(renderSignedOut);
   });
   $("activity").addEventListener("click", function () { $("activity-modal").classList.remove("hidden"); loadLedger(); });
   $("activity-close").addEventListener("click", function () { $("activity-modal").classList.add("hidden"); });
@@ -320,12 +310,11 @@
     }, 3000);
   }
 
-  if (token()) {
-    renderSignedIn();
+  loadCredits().then(function (ok) {
+    if (!ok) return;
+    $("account-card").classList.remove("hidden");
     if (paymentReturnRequested) pollAfterPayment();
-  } else {
-    renderSignedOut();
-  }
+  });
 })();
 </script>
 </body>

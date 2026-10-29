@@ -91,6 +91,17 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 
 ## 工具站（tools.aiglossa.com）现状
 
+### 统一网页账户
+
+网页端登录、账户、余额与密码管理只属于主站 `aiglossa.com`。所有子站（当前包括
+`tools.aiglossa.com` 与 `scholan.aiglossa.com`）共享后端下发到 `.aiglossa.com` 的
+HttpOnly Cookie，并在跨域 API 请求中使用 `credentials: "include"`；网页代码禁止把
+access token 写入 `localStorage`，也禁止用本地 Bearer Token 覆盖 Cookie 会话。
+
+子站不得生成自己的 `login.html` 或 `account.html`。需要登录时跳转主站
+`/{lang}/login.html` 并通过 `next` 带回原地址；账户入口统一指向主站
+`/{lang}/account.html`。Bearer Token 仅供原生 App 和非浏览器 API 客户端使用。
+
 ### 支付与额度（所有工具共用的边界）
 
 额度是工具平台能力，不属于音乐工具。工具页面只负责决定何时需要额度、显示自己的余额区域，以及在充值完成后刷新自己的 UI；不得在页面内直接写 `location.href = checkout_url`，也不得自行实现 Creem 轮询。
@@ -108,7 +119,6 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 | `/{lang}/index.html` 工具列表 | ✅ 16 种 |
 | `/{lang}/music/` 音乐工具 | ✅ 16 种（参数标签来自后端 `labels_i18n.py`） |
 | `/{lang}/pricing.html` 价格 | ✅ 16 种 |
-| `/{lang}/account.html` 登录/账户 | ✅ 16 种 |
 | `/{lang}/refund.html` 退款政策 | ✅ 16 种 |
 | `/{lang}/acceptable-use.html` 可接受使用 | ✅ 16 种 |
 

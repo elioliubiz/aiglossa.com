@@ -49,12 +49,11 @@ PAGES = {
     "brand": ("brand.html", "brand", ""),
     # 平台登录页（主站）：/ {lang}/login.html
     "login": ("pages/login.html", "ui", "login.html"),
-    "webaccount": ("pages/account-root.html", "ui", "account.html"),
+    "webaccount": ("pages/account.html", "ui", "account.html"),
     "webpricing": ("pages/pricing-root.html", "ui", "pricing.html"),
     "marketing": ("marketing.html", "marketing", ""),
     "support": ("support.html", "support", "support.html"),
     "tools": ("tools.html", "tools", ""),
-    "account": ("pages/account.html", "ui", "account.html"),
     # 法律页：正文整体从 ui.json 取（与 protocol 页同样的做法），页面数固定
     "refund": ("pages/legal.html", "ui", "refund.html"),
     "acceptable-use": ("pages/legal.html", "ui", "acceptable-use.html"),
@@ -676,12 +675,24 @@ def main() -> int:
                 def webaccount_values(lang: str, base: str, source=source) -> dict[str, str]:
                     copy = source[lang]["account"]
                     out = {k: esc(v) for k, v in copy.items() if isinstance(v, str)}
+                    merged = dict(copy)
+                    pricing_copy = source[lang]["pricing"]
+                    merged["refund_link"] = pricing_copy["refund_link"]
+                    for k in ("pay_title", "pay_opening", "cancel", "credits", "pay_success"):
+                        merged[k] = source[lang]["make"][k]
+                        out[k] = esc(source[lang]["make"][k])
+                    out["ui_json"] = json.dumps(merged, ensure_ascii=False).replace("</", "<\\/")
                     out["api_base"] = ""  # 由页面脚本按 hostname 选择（见 login/account 模板）
-                    out["login_href"] = f"/{lang}/login.html"
-                    out["music_href"] = "https://tools.aiglossa.com/" + lang + "/music/"  # 由页面脚本按环境改写
-                    out["pricing_href"] = f"/{lang}/pricing.html"
-                    for k in ("pay_title", "pay_opening", "credits", "cancel"):
-                        out[k] = esc(source[lang]["make"].get(k) or source[lang]["account"].get(k) or "")
+                    out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
+                    out["legal_terms"] = esc(marketing[lang]["legal"]["terms"])
+                    out["kicker"] = "aiglossa"
+                    out["lede_buy"] = esc(pricing_copy["lede_buy"])
+                    out["li3_generic"] = esc(pricing_copy["li3_generic"])
+                    out["continue_use"] = esc(pricing_copy["continue_use"])
+                    out["refund_label"] = esc(pricing_copy["refund_link"])
+                    out["refund_href"] = f"https://tools.aiglossa.com/{lang}/refund.html"
+                    out["lang_label"] = esc(marketing[lang]["langLabel"])
+                    out["current_name"] = esc(languages[lang]["name"])
                     return out
 
                 values_builder = webaccount_values
@@ -695,30 +706,6 @@ def main() -> int:
                     return out
 
                 values_builder = login_values
-            elif page == "account":
-                def tool_page_values(lang: str, base: str, page=page, source=source) -> dict[str, str]:
-                    copy = source[lang][page]
-                    out = {k: esc(v) for k, v in copy.items()}
-                    merged = dict(copy)
-                    pricing_copy = source[lang]["pricing"]
-                    merged["refund_link"] = pricing_copy["refund_link"]
-                    for k in ("pay_title", "pay_opening", "cancel", "credits", "pay_success"):
-                        merged[k] = source[lang]["make"][k]
-                        out[k] = esc(source[lang]["make"][k])
-                    out["ui_json"] = json.dumps(merged, ensure_ascii=False).replace("</", "<\\/")
-                    out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
-                    out["legal_terms"] = esc(marketing[lang]["legal"]["terms"])
-                    out["kicker"] = "aiglossa"
-                    out["lede_buy"] = esc(source[lang]["pricing"]["lede_buy"])
-                    out["li3_generic"] = esc(source[lang]["pricing"]["li3_generic"])
-                    out["continue_use"] = esc(source[lang]["pricing"]["continue_use"])
-                    out["pay_success"] = esc(source[lang]["make"]["pay_success"])
-                    out["refund_label"] = esc(source[lang]["pricing"]["refund_link"])
-                    out["lang_label"] = esc(marketing[lang]["langLabel"])
-                    out["current_name"] = esc(languages[lang]["name"])
-                    return out
-
-                values_builder = tool_page_values
             elif page == "tools":
                 def tools_values(lang: str, base: str, source=source) -> dict[str, str]:
                     # 工具站：法务标签/语言名复用 marketing.json 与 languages.json 的既有译文，
