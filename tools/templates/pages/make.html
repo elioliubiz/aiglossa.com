@@ -1207,12 +1207,18 @@
   function renderAvatar(user) {
     var el = $("avBtn"); if (!el) return;
     // 与 iOS 一致：有头像显示图片，否则昵称首字母；昵称为空用本地化的"旅行者"
+    var name = (user.nickname || "").trim() || UI.traveler;
+    var initial = name.slice(0, 1).toUpperCase();
     if (user.avatar) {
-      el.innerHTML = '<span class="inner"><img src="' + user.avatar + '" alt=""></span>';
+      var avatar = /^https?:\/\//.test(user.avatar) ? user.avatar : API + user.avatar;
+      var inner = document.createElement("span"); inner.className = "inner";
+      var img = document.createElement("img"); img.alt = "";
+      img.addEventListener("error", function () { inner.textContent = initial; });
+      img.src = avatar; inner.appendChild(img); el.replaceChildren(inner);
       return;
     }
-    var name = (user.nickname || "").trim() || UI.traveler;
-    el.innerHTML = '<span class="inner">' + name.slice(0, 1).toUpperCase() + '</span>';
+    var fallback = document.createElement("span"); fallback.className = "inner";
+    fallback.textContent = initial; el.replaceChildren(fallback);
   }
 
   function needLogin() {
