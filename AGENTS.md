@@ -106,6 +106,10 @@ access token 写入 `localStorage`，也禁止用本地 Bearer Token 覆盖 Cook
 
 额度是工具平台能力，不属于音乐工具。工具页面只负责决定何时需要额度、显示自己的余额区域，以及在充值完成后刷新自己的 UI；不得在页面内直接写 `location.href = checkout_url`，也不得自行实现 Creem 轮询。
 
+### 音乐时长
+
+非循环音乐优先保证完整乐句与自然收尾，用户选择的是目标时长/计价档位，实际成品允许有少量差异；确认生成弹窗必须显示这一说明，作品卡片与播放器显示后端记录的真实时长。无缝循环音乐仍必须严格保持所选时长。不得重新对非循环成品执行固定秒数的硬裁切。
+
 共享支付流程位于 `assets/wallet.js`：它在新标签页打开 Hosted Checkout，原工具页保持不卸载，按服务端余额轮询等待 webhook 入账，到账后关闭支付标签页并调用页面回调。充值完成后**不自动重试或继续执行原业务操作**，由用户自行再次点击业务按钮。
 
 业务页接入时应提供：`call`、`credits`、`successUrl`、`getBalance`、`refresh`，并通过 `onCompleted` 更新自己的余额显示。到账以 `/wallet/checkout/status` 为准，随后用 `/wallet/summary` 刷新余额；支付页回跳、`postMessage` 或 Creem 成功页只能作为提示。

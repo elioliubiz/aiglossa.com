@@ -241,6 +241,8 @@
   .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
     padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
   .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink);white-space:pre-line}
+  .mnote{margin:-9px 0 18px;font-size:12px;line-height:1.55;color:var(--muted)}
+  .mnote.hidden{display:none}
   .macts{display:flex;gap:10px;justify-content:flex-end}
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
@@ -946,6 +948,7 @@
   <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
     <div class="mbox">
       <p class="mtext" id="mtext"></p>
+      <p class="mnote hidden" id="mnote"></p>
       <div class="macts">
         <button type="button" class="mbtn" id="mcancel">Cancelar</button>
         <button type="button" class="mbtn primary" id="mok">Confirmar</button>
@@ -958,7 +961,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Gerador de música com IA — de foto a música, duração exata", "description": "Transforme uma foto ou descrição em música de fundo com 30 a 90 segundos exatos. A letra cita o que está na imagem, com vocais em 10 idiomas e loops sem corte.", "h1": "Criar uma faixa", "sub": "A partir de uma foto ou descrição. Duração exata, loops sem corte.", "drop": "Arraste ou escolha uma foto<br>a letra vai citar o que há nela", "generate": "Gerar faixa", "how_credits": "Como funcionam os créditos →", "grp_photo": "Ouça", "grp_recipe": "A partir de um uso", "download": "Baixar", "save_recipe": "Salvar como receita", "use_recipe": "Usar receita", "remove_photo": "Remover foto", "photo_here": "Sua foto aqui", "note": "Tudo à direita foi feito aqui", "legal_aup": "Uso aceitável", "legal_refund": "Reembolsos", "sign_in_first": "Entre para gerar", "generating": "Gerando… cerca de 20 segundos.", "just_generated": "Gerado agora", "your_track": "Sua faixa", "from_recipe": "De uma receita", "from_photo": "A partir de uma foto", "err_load": "Não foi possível carregar as opções", "done_in": "Pronto em {n} s", "gen_cost": "Gerar · {n}", "err_gen": "A geração falhou", "my_track": "Minha faixa", "err_net": "Erro de rede", "recipe_name": "Nome da receita", "err_save": "Falha ao salvar", "saved": "Salvo: {name}", "up_to": "Até {n}", "credits": "créditos", "guides_link": "Guias →", "guides_title": "Guias", "close": "Fechar", "loading": "Carregando…", "off": "Desligado", "loop_on": "Loop sem corte", "buy_credits": "Comprar créditos →", "desc_label": "Descrição (opcional)", "desc_ph": "Descreva a faixa: café chuvoso, piano suave", "mode_photo": "Foto", "mode_text": "Texto", "field_density": "Densidade do arranjo", "opt_sparse": "Esparso", "opt_medium": "Médio", "opt_full": "Denso", "pro_title": "Opções avançadas", "grp_photo_sub": "Foto → letra → faixa", "grp_recipe_sub": "Escolha o uso e os ajustes vêm prontos", "recipe_names": {"short-form-cut": "Kurzclip", "hook-sting": "Opener-Hook", "product-loop": "Produkt-Loop", "podcast-bed": "Podcast-Bett", "documentary-underscore": "Doku-Untermalung", "game-menu-loop": "Menü-Loop", "calm-focus": "Fokus", "kids-learning": "Kinder & Lernen"}, "applied": "Usando", "current_recipe": "Predefinição atual", "mine_title": "Minhas faixas", "share_link": "Compartilhar link", "delete_track": "Excluir", "delete_track_confirm": "Excluir esta faixa permanentemente? Esta ação não pode ser desfeita.", "more_actions": "Mais ações", "dl_audio": "Baixar áudio", "copied": "Copiado", "shared_note": "Você está ouvindo uma faixa compartilhada — crie a sua abaixo", "my_account": "Conta", "balance": "Saldo", "pricing_label": "Preços", "confirm_gen": "Gerar uma faixa de {sec}s? Isso gasta {n}.", "err_insufficient": "Créditos insuficientes", "topup_hint": "Recarregue para continuar gerando.", "topup_cta": "Comprar créditos", "cancel": "Cancelar", "confirm": "Confirmar", "not_signed_in": "Não conectado", "traveler": "Viajante", "view_all": "Ver tudo", "my_works_pick": "Escolha um para reutilizar as configurações", "pay_title": "Comprar créditos", "pay_success": "Pagamento recebido — créditos adicionados.", "pay_opening": "Abrindo o pagamento…"}</script>
+<script type="application/json" id="ui">{"title": "Gerador de música com IA — de foto a música, duração exata", "description": "Transforme uma foto ou descrição em música de fundo com 30 a 90 segundos exatos. A letra cita o que está na imagem, com vocais em 10 idiomas e loops sem corte.", "h1": "Criar uma faixa", "sub": "A partir de uma foto ou descrição. Duração exata, loops sem corte.", "drop": "Arraste ou escolha uma foto<br>a letra vai citar o que há nela", "generate": "Gerar faixa", "how_credits": "Como funcionam os créditos →", "grp_photo": "Ouça", "grp_recipe": "A partir de um uso", "download": "Baixar", "save_recipe": "Salvar como receita", "use_recipe": "Usar receita", "remove_photo": "Remover foto", "photo_here": "Sua foto aqui", "note": "Tudo à direita foi feito aqui", "legal_aup": "Uso aceitável", "legal_refund": "Reembolsos", "sign_in_first": "Entre para gerar", "generating": "Gerando… cerca de 20 segundos.", "just_generated": "Gerado agora", "your_track": "Sua faixa", "from_recipe": "De uma receita", "from_photo": "A partir de uma foto", "err_load": "Não foi possível carregar as opções", "done_in": "Pronto em {n} s", "gen_cost": "Gerar · {n}", "err_gen": "A geração falhou", "my_track": "Minha faixa", "err_net": "Erro de rede", "recipe_name": "Nome da receita", "err_save": "Falha ao salvar", "saved": "Salvo: {name}", "up_to": "Até {n}", "credits": "créditos", "guides_link": "Guias →", "guides_title": "Guias", "close": "Fechar", "loading": "Carregando…", "off": "Desligado", "loop_on": "Loop sem corte", "buy_credits": "Comprar créditos →", "desc_label": "Descrição (opcional)", "desc_ph": "Descreva a faixa: café chuvoso, piano suave", "mode_photo": "Foto", "mode_text": "Texto", "field_density": "Densidade do arranjo", "opt_sparse": "Esparso", "opt_medium": "Médio", "opt_full": "Denso", "pro_title": "Opções avançadas", "grp_photo_sub": "Foto → letra → faixa", "grp_recipe_sub": "Escolha o uso e os ajustes vêm prontos", "recipe_names": {"short-form-cut": "Kurzclip", "hook-sting": "Opener-Hook", "product-loop": "Produkt-Loop", "podcast-bed": "Podcast-Bett", "documentary-underscore": "Doku-Untermalung", "game-menu-loop": "Menü-Loop", "calm-focus": "Fokus", "kids-learning": "Kinder & Lernen"}, "applied": "Usando", "current_recipe": "Predefinição atual", "mine_title": "Minhas faixas", "share_link": "Compartilhar link", "delete_track": "Excluir", "delete_track_confirm": "Excluir esta faixa permanentemente? Esta ação não pode ser desfeita.", "more_actions": "Mais ações", "dl_audio": "Baixar áudio", "copied": "Copiado", "shared_note": "Você está ouvindo uma faixa compartilhada — crie a sua abaixo", "my_account": "Conta", "balance": "Saldo", "pricing_label": "Preços", "confirm_gen": "Gerar uma faixa de {sec}s? Isso gasta {n}.", "confirm_gen_approx": "Gerar uma faixa de cerca de {sec}s? Isso gasta {n}.", "duration_integrity_note": "Para preservar frases musicais completas e um final natural, a duração real de faixas sem loop pode variar ligeiramente.", "err_insufficient": "Créditos insuficientes", "topup_hint": "Recarregue para continuar gerando.", "topup_cta": "Comprar créditos", "cancel": "Cancelar", "confirm": "Confirmar", "not_signed_in": "Não conectado", "traveler": "Viajante", "view_all": "Ver tudo", "my_works_pick": "Escolha um para reutilizar as configurações", "pay_title": "Comprar créditos", "pay_success": "Pagamento recebido — créditos adicionados.", "pay_opening": "Abrindo o pagamento…"}</script>
 <script src="../../assets/wallet.js"></script>
 <script>
 (function () {
@@ -1904,8 +1907,10 @@
 
   // ---- 启动 ----
   // 轻量确认弹窗（替代系统 alert/confirm）
-  function ask(text, onOk, okLabel) {
+  function ask(text, onOk, okLabel, note) {
     $("mtext").textContent = text;
+    $("mnote").textContent = note || "";
+    $("mnote").classList.toggle("hidden", !note);
     $("mok").textContent = okLabel || UI.confirm;
     $("modal").classList.remove("hidden");
     function close() {
@@ -1990,10 +1995,11 @@
     if (!sessionOk) { needLogin(); return; }
     if (balanceUnits >= 0 && cost() * 100 > balanceUnits) { showTopup(); return; }
     hideTopup();
-    var txt = (UI.confirm_gen || "Generate this track?")
+    var template = values.loop ? UI.confirm_gen : (UI.confirm_gen_approx || UI.confirm_gen);
+    var txt = (template || "Generate this track?")
       .replace("{sec}", String(values.duration_seconds || 30))
       .replace("{n}", cost() + " " + UI.credits);
-    ask(txt, generate);
+    ask(txt, generate, null, values.loop ? "" : UI.duration_integrity_note);
   }
 
   $("payClose").addEventListener("click", function () { $("payModal").classList.add("hidden"); });

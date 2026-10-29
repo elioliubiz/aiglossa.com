@@ -225,6 +225,8 @@
   .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
     padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
   .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink);white-space:pre-line}
+  .mnote{margin:-9px 0 18px;font-size:12px;line-height:1.55;color:var(--muted)}
+  .mnote.hidden{display:none}
   .macts{display:flex;gap:10px;justify-content:flex-end}
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
@@ -930,6 +932,7 @@
   <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
     <div class="mbox">
       <p class="mtext" id="mtext"></p>
+      <p class="mnote hidden" id="mnote"></p>
       <div class="macts">
         <button type="button" class="mbtn" id="mcancel">{{cancel}}</button>
         <button type="button" class="mbtn primary" id="mok">{{confirm}}</button>
@@ -1888,8 +1891,10 @@
 
   // ---- 启动 ----
   // 轻量确认弹窗（替代系统 alert/confirm）
-  function ask(text, onOk, okLabel) {
+  function ask(text, onOk, okLabel, note) {
     $("mtext").textContent = text;
+    $("mnote").textContent = note || "";
+    $("mnote").classList.toggle("hidden", !note);
     $("mok").textContent = okLabel || UI.confirm;
     $("modal").classList.remove("hidden");
     function close() {
@@ -1974,10 +1979,11 @@
     if (!sessionOk) { needLogin(); return; }
     if (balanceUnits >= 0 && cost() * 100 > balanceUnits) { showTopup(); return; }
     hideTopup();
-    var txt = (UI.confirm_gen || "Generate this track?")
+    var template = values.loop ? UI.confirm_gen : (UI.confirm_gen_approx || UI.confirm_gen);
+    var txt = (template || "Generate this track?")
       .replace("{sec}", String(values.duration_seconds || 30))
       .replace("{n}", cost() + " " + UI.credits);
-    ask(txt, generate);
+    ask(txt, generate, null, values.loop ? "" : UI.duration_integrity_note);
   }
 
   $("payClose").addEventListener("click", function () { $("payModal").classList.add("hidden"); });

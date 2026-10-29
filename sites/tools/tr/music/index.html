@@ -241,6 +241,8 @@
   .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
     padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
   .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink);white-space:pre-line}
+  .mnote{margin:-9px 0 18px;font-size:12px;line-height:1.55;color:var(--muted)}
+  .mnote.hidden{display:none}
   .macts{display:flex;gap:10px;justify-content:flex-end}
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
@@ -946,6 +948,7 @@
   <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
     <div class="mbox">
       <p class="mtext" id="mtext"></p>
+      <p class="mnote hidden" id="mnote"></p>
       <div class="macts">
         <button type="button" class="mbtn" id="mcancel">Vazgeç</button>
         <button type="button" class="mbtn primary" id="mok">Onayla</button>
@@ -958,7 +961,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "AI Müzik Üretici — fotoğraftan şarkıya, tam uzunluk", "description": "Bir fotoğrafı veya açıklamayı tam 30–90 saniyelik fon müziğine dönüştürün. Şarkı sözleri fotoğrafınızdakileri adlandırır; 10 dilde vokal ve kesintisiz döngüler.", "h1": "Parça oluştur", "sub": "Fotoğraftan veya açıklamadan. Kesin uzunluk, kesintisiz döngüler.", "drop": "Fotoğrafı sürükleyin veya seçin<br>şarkı sözleri içindekileri adlandıracak", "generate": "Parça oluştur", "how_credits": "Krediler nasıl işler →", "grp_photo": "Dinle", "grp_recipe": "Kullanıma göre", "download": "İndir", "save_recipe": "Tarif olarak kaydet", "use_recipe": "Tarifi kullan", "remove_photo": "Fotoğrafı kaldır", "photo_here": "Fotoğrafınız buraya", "note": "Sağdaki her şey burada üretildi", "legal_aup": "Kabul edilebilir kullanım", "legal_refund": "İadeler", "sign_in_first": "Oluşturmak için giriş yapın", "generating": "Oluşturuluyor… yaklaşık 20 saniye.", "just_generated": "Az önce oluşturuldu", "your_track": "Parçanız", "from_recipe": "Tariften", "from_photo": "Fotoğraftan", "err_load": "Seçenekler yüklenemedi", "done_in": "{n} sn'de hazır", "gen_cost": "Oluştur · {n}", "err_gen": "Oluşturma başarısız", "my_track": "Parçam", "err_net": "Ağ hatası", "recipe_name": "Tarif adı", "err_save": "Kaydedilemedi", "saved": "Kaydedildi: {name}", "up_to": "En fazla {n}", "credits": "kredi", "guides_link": "Rehberler →", "guides_title": "Rehberler", "close": "Kapat", "loading": "Yükleniyor…", "off": "Kapalı", "loop_on": "Kesintisiz döngü", "buy_credits": "Kredi satın al →", "desc_label": "Açıklama (isteğe bağlı)", "desc_ph": "Parçayı tarif edin: yağmurlu kafe, yumuşak piyano", "mode_photo": "Foto", "mode_text": "Metin", "field_density": "Düzenleme yoğunluğu", "opt_sparse": "Seyrek", "opt_medium": "Orta", "opt_full": "Yoğun", "pro_title": "Gelişmiş seçenekler", "grp_photo_sub": "Foto → söz → parça", "grp_recipe_sub": "Kullanımı seçin, ayarlar hazır", "recipe_names": {"short-form-cut": "Potongan pendek", "hook-sting": "Pembuka menarik", "product-loop": "Loop produk", "podcast-bed": "Musik latar podcast", "documentary-underscore": "Musik dokumenter", "game-menu-loop": "Loop menu", "calm-focus": "Fokus", "kids-learning": "Anak & belajar"}, "applied": "Kullanılıyor", "current_recipe": "Geçerli ön ayar", "mine_title": "Parçalarım", "share_link": "Bağlantıyı paylaş", "delete_track": "Sil", "delete_track_confirm": "Bu parça kalıcı olarak silinsin mi? Bu işlem geri alınamaz.", "more_actions": "Diğer işlemler", "dl_audio": "Sesi indir", "copied": "Kopyalandı", "shared_note": "Paylaşılan bir parça dinliyorsunuz — aşağıda kendinizinkini yapın", "my_account": "Hesap", "balance": "Bakiye", "pricing_label": "Fiyatlar", "confirm_gen": "{sec} saniyelik parça oluşturulsun mu? {n} harcanır.", "err_insufficient": "Yeterli kredi yok", "topup_hint": "Üretime devam etmek için yükleme yapın.", "topup_cta": "Kredi satın al", "cancel": "Vazgeç", "confirm": "Onayla", "not_signed_in": "Giriş yapılmadı", "traveler": "Gezgin", "view_all": "Tümünü gör", "my_works_pick": "Ayarlarını yeniden kullanmak için birini seçin", "pay_title": "Kredi satın al", "pay_success": "Ödeme alındı — krediler eklendi.", "pay_opening": "Ödeme açılıyor…"}</script>
+<script type="application/json" id="ui">{"title": "AI Müzik Üretici — fotoğraftan şarkıya, tam uzunluk", "description": "Bir fotoğrafı veya açıklamayı tam 30–90 saniyelik fon müziğine dönüştürün. Şarkı sözleri fotoğrafınızdakileri adlandırır; 10 dilde vokal ve kesintisiz döngüler.", "h1": "Parça oluştur", "sub": "Fotoğraftan veya açıklamadan. Kesin uzunluk, kesintisiz döngüler.", "drop": "Fotoğrafı sürükleyin veya seçin<br>şarkı sözleri içindekileri adlandıracak", "generate": "Parça oluştur", "how_credits": "Krediler nasıl işler →", "grp_photo": "Dinle", "grp_recipe": "Kullanıma göre", "download": "İndir", "save_recipe": "Tarif olarak kaydet", "use_recipe": "Tarifi kullan", "remove_photo": "Fotoğrafı kaldır", "photo_here": "Fotoğrafınız buraya", "note": "Sağdaki her şey burada üretildi", "legal_aup": "Kabul edilebilir kullanım", "legal_refund": "İadeler", "sign_in_first": "Oluşturmak için giriş yapın", "generating": "Oluşturuluyor… yaklaşık 20 saniye.", "just_generated": "Az önce oluşturuldu", "your_track": "Parçanız", "from_recipe": "Tariften", "from_photo": "Fotoğraftan", "err_load": "Seçenekler yüklenemedi", "done_in": "{n} sn'de hazır", "gen_cost": "Oluştur · {n}", "err_gen": "Oluşturma başarısız", "my_track": "Parçam", "err_net": "Ağ hatası", "recipe_name": "Tarif adı", "err_save": "Kaydedilemedi", "saved": "Kaydedildi: {name}", "up_to": "En fazla {n}", "credits": "kredi", "guides_link": "Rehberler →", "guides_title": "Rehberler", "close": "Kapat", "loading": "Yükleniyor…", "off": "Kapalı", "loop_on": "Kesintisiz döngü", "buy_credits": "Kredi satın al →", "desc_label": "Açıklama (isteğe bağlı)", "desc_ph": "Parçayı tarif edin: yağmurlu kafe, yumuşak piyano", "mode_photo": "Foto", "mode_text": "Metin", "field_density": "Düzenleme yoğunluğu", "opt_sparse": "Seyrek", "opt_medium": "Orta", "opt_full": "Yoğun", "pro_title": "Gelişmiş seçenekler", "grp_photo_sub": "Foto → söz → parça", "grp_recipe_sub": "Kullanımı seçin, ayarlar hazır", "recipe_names": {"short-form-cut": "Potongan pendek", "hook-sting": "Pembuka menarik", "product-loop": "Loop produk", "podcast-bed": "Musik latar podcast", "documentary-underscore": "Musik dokumenter", "game-menu-loop": "Loop menu", "calm-focus": "Fokus", "kids-learning": "Anak & belajar"}, "applied": "Kullanılıyor", "current_recipe": "Geçerli ön ayar", "mine_title": "Parçalarım", "share_link": "Bağlantıyı paylaş", "delete_track": "Sil", "delete_track_confirm": "Bu parça kalıcı olarak silinsin mi? Bu işlem geri alınamaz.", "more_actions": "Diğer işlemler", "dl_audio": "Sesi indir", "copied": "Kopyalandı", "shared_note": "Paylaşılan bir parça dinliyorsunuz — aşağıda kendinizinkini yapın", "my_account": "Hesap", "balance": "Bakiye", "pricing_label": "Fiyatlar", "confirm_gen": "{sec} saniyelik parça oluşturulsun mu? {n} harcanır.", "confirm_gen_approx": "Yaklaşık {sec} saniyelik parça oluşturulsun mu? {n} harcanır.", "duration_integrity_note": "Müzikal cümlelerin bütünlüğünü ve doğal bitişi korumak için döngüsüz parçaların gerçek süresi biraz değişebilir.", "err_insufficient": "Yeterli kredi yok", "topup_hint": "Üretime devam etmek için yükleme yapın.", "topup_cta": "Kredi satın al", "cancel": "Vazgeç", "confirm": "Onayla", "not_signed_in": "Giriş yapılmadı", "traveler": "Gezgin", "view_all": "Tümünü gör", "my_works_pick": "Ayarlarını yeniden kullanmak için birini seçin", "pay_title": "Kredi satın al", "pay_success": "Ödeme alındı — krediler eklendi.", "pay_opening": "Ödeme açılıyor…"}</script>
 <script src="../../assets/wallet.js"></script>
 <script>
 (function () {
@@ -1904,8 +1907,10 @@
 
   // ---- 启动 ----
   // 轻量确认弹窗（替代系统 alert/confirm）
-  function ask(text, onOk, okLabel) {
+  function ask(text, onOk, okLabel, note) {
     $("mtext").textContent = text;
+    $("mnote").textContent = note || "";
+    $("mnote").classList.toggle("hidden", !note);
     $("mok").textContent = okLabel || UI.confirm;
     $("modal").classList.remove("hidden");
     function close() {
@@ -1990,10 +1995,11 @@
     if (!sessionOk) { needLogin(); return; }
     if (balanceUnits >= 0 && cost() * 100 > balanceUnits) { showTopup(); return; }
     hideTopup();
-    var txt = (UI.confirm_gen || "Generate this track?")
+    var template = values.loop ? UI.confirm_gen : (UI.confirm_gen_approx || UI.confirm_gen);
+    var txt = (template || "Generate this track?")
       .replace("{sec}", String(values.duration_seconds || 30))
       .replace("{n}", cost() + " " + UI.credits);
-    ask(txt, generate);
+    ask(txt, generate, null, values.loop ? "" : UI.duration_integrity_note);
   }
 
   $("payClose").addEventListener("click", function () { $("payModal").classList.add("hidden"); });

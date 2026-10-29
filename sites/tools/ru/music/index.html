@@ -241,6 +241,8 @@
   .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
     padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
   .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink);white-space:pre-line}
+  .mnote{margin:-9px 0 18px;font-size:12px;line-height:1.55;color:var(--muted)}
+  .mnote.hidden{display:none}
   .macts{display:flex;gap:10px;justify-content:flex-end}
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
@@ -946,6 +948,7 @@
   <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
     <div class="mbox">
       <p class="mtext" id="mtext"></p>
+      <p class="mnote hidden" id="mnote"></p>
       <div class="macts">
         <button type="button" class="mbtn" id="mcancel">Отмена</button>
         <button type="button" class="mbtn primary" id="mok">Подтвердить</button>
@@ -958,7 +961,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Генератор музыки на ИИ — из фото в трек, точная длина", "description": "Из фото или описания — фоновая музыка ровно на 30–90 секунд. В тексте называются предметы с изображения; вокал на 10 языках и бесшовные лупы.", "h1": "Создать трек", "sub": "Из фото или описания. Точная длина, бесшовные лупы.", "drop": "Перетащите или выберите фото<br>в тексте песни будут названы предметы с него", "generate": "Создать трек", "how_credits": "Как работают кредиты →", "grp_photo": "Послушать", "grp_recipe": "По задаче", "download": "Скачать", "save_recipe": "Сохранить как рецепт", "use_recipe": "Использовать рецепт", "remove_photo": "Убрать фото", "photo_here": "Ваше фото здесь", "note": "Всё справа создано здесь", "legal_aup": "Допустимое использование", "legal_refund": "Возвраты", "sign_in_first": "Войдите, чтобы создать", "generating": "Создаём… около 20 секунд.", "just_generated": "Только что создано", "your_track": "Ваш трек", "from_recipe": "Из рецепта", "from_photo": "Из фотографии", "err_load": "Не удалось загрузить параметры", "done_in": "Готово за {n} с", "gen_cost": "Создать · {n}", "err_gen": "Не удалось создать", "my_track": "Мой трек", "err_net": "Ошибка сети", "recipe_name": "Название рецепта", "err_save": "Не удалось сохранить", "saved": "Сохранено: {name}", "up_to": "До {n}", "credits": "кредитов", "guides_link": "Руководства →", "guides_title": "Руководства", "close": "Закрыть", "loading": "Загрузка…", "off": "Выкл", "loop_on": "Бесшовный луп", "buy_credits": "Купить кредиты →", "desc_label": "Описание (необязательно)", "desc_ph": "Опишите трек: дождливое кафе, мягкое пиано", "mode_photo": "Фото", "mode_text": "Текст", "field_density": "Плотность аранжировки", "opt_sparse": "Разрежённая", "opt_medium": "Средняя", "opt_full": "Плотная", "pro_title": "Дополнительно", "grp_photo_sub": "Фото → текст → трек", "grp_recipe_sub": "Выберите задачу — настройки уже готовы", "recipe_names": {"short-form-cut": "Taglio breve", "hook-sting": "Gancio d'apertura", "product-loop": "Loop prodotto", "podcast-bed": "Base per podcast", "documentary-underscore": "Base documentario", "game-menu-loop": "Loop di menu", "calm-focus": "Concentrazione", "kids-learning": "Bambini e studio"}, "applied": "Используем", "current_recipe": "Текущий пресет", "mine_title": "Мои треки", "share_link": "Поделиться ссылкой", "delete_track": "Удалить", "delete_track_confirm": "Удалить этот трек навсегда? Это действие нельзя отменить.", "more_actions": "Другие действия", "dl_audio": "Скачать аудио", "copied": "Скопировано", "shared_note": "Вы слушаете трек, которым поделились — создайте свой ниже", "my_account": "Аккаунт", "balance": "Баланс", "pricing_label": "Цены", "confirm_gen": "Создать трек на {sec} с? Это спишет {n}.", "err_insufficient": "Недостаточно кредитов", "topup_hint": "Пополните баланс, чтобы продолжить.", "topup_cta": "Купить кредиты", "cancel": "Отмена", "confirm": "Подтвердить", "not_signed_in": "Не выполнен вход", "traveler": "Путешественник", "view_all": "Показать все", "my_works_pick": "Выберите трек, чтобы применить его настройки", "pay_title": "Купить кредиты", "pay_success": "Оплата получена — кредиты зачислены.", "pay_opening": "Открываем оплату…"}</script>
+<script type="application/json" id="ui">{"title": "Генератор музыки на ИИ — из фото в трек, точная длина", "description": "Из фото или описания — фоновая музыка ровно на 30–90 секунд. В тексте называются предметы с изображения; вокал на 10 языках и бесшовные лупы.", "h1": "Создать трек", "sub": "Из фото или описания. Точная длина, бесшовные лупы.", "drop": "Перетащите или выберите фото<br>в тексте песни будут названы предметы с него", "generate": "Создать трек", "how_credits": "Как работают кредиты →", "grp_photo": "Послушать", "grp_recipe": "По задаче", "download": "Скачать", "save_recipe": "Сохранить как рецепт", "use_recipe": "Использовать рецепт", "remove_photo": "Убрать фото", "photo_here": "Ваше фото здесь", "note": "Всё справа создано здесь", "legal_aup": "Допустимое использование", "legal_refund": "Возвраты", "sign_in_first": "Войдите, чтобы создать", "generating": "Создаём… около 20 секунд.", "just_generated": "Только что создано", "your_track": "Ваш трек", "from_recipe": "Из рецепта", "from_photo": "Из фотографии", "err_load": "Не удалось загрузить параметры", "done_in": "Готово за {n} с", "gen_cost": "Создать · {n}", "err_gen": "Не удалось создать", "my_track": "Мой трек", "err_net": "Ошибка сети", "recipe_name": "Название рецепта", "err_save": "Не удалось сохранить", "saved": "Сохранено: {name}", "up_to": "До {n}", "credits": "кредитов", "guides_link": "Руководства →", "guides_title": "Руководства", "close": "Закрыть", "loading": "Загрузка…", "off": "Выкл", "loop_on": "Бесшовный луп", "buy_credits": "Купить кредиты →", "desc_label": "Описание (необязательно)", "desc_ph": "Опишите трек: дождливое кафе, мягкое пиано", "mode_photo": "Фото", "mode_text": "Текст", "field_density": "Плотность аранжировки", "opt_sparse": "Разрежённая", "opt_medium": "Средняя", "opt_full": "Плотная", "pro_title": "Дополнительно", "grp_photo_sub": "Фото → текст → трек", "grp_recipe_sub": "Выберите задачу — настройки уже готовы", "recipe_names": {"short-form-cut": "Taglio breve", "hook-sting": "Gancio d'apertura", "product-loop": "Loop prodotto", "podcast-bed": "Base per podcast", "documentary-underscore": "Base documentario", "game-menu-loop": "Loop di menu", "calm-focus": "Concentrazione", "kids-learning": "Bambini e studio"}, "applied": "Используем", "current_recipe": "Текущий пресет", "mine_title": "Мои треки", "share_link": "Поделиться ссылкой", "delete_track": "Удалить", "delete_track_confirm": "Удалить этот трек навсегда? Это действие нельзя отменить.", "more_actions": "Другие действия", "dl_audio": "Скачать аудио", "copied": "Скопировано", "shared_note": "Вы слушаете трек, которым поделились — создайте свой ниже", "my_account": "Аккаунт", "balance": "Баланс", "pricing_label": "Цены", "confirm_gen": "Создать трек на {sec} с? Это спишет {n}.", "confirm_gen_approx": "Создать трек примерно на {sec} с? Это спишет {n}.", "duration_integrity_note": "Чтобы сохранить целостность музыкальных фраз и естественное завершение, фактическая длина треков без зацикливания может немного отличаться.", "err_insufficient": "Недостаточно кредитов", "topup_hint": "Пополните баланс, чтобы продолжить.", "topup_cta": "Купить кредиты", "cancel": "Отмена", "confirm": "Подтвердить", "not_signed_in": "Не выполнен вход", "traveler": "Путешественник", "view_all": "Показать все", "my_works_pick": "Выберите трек, чтобы применить его настройки", "pay_title": "Купить кредиты", "pay_success": "Оплата получена — кредиты зачислены.", "pay_opening": "Открываем оплату…"}</script>
 <script src="../../assets/wallet.js"></script>
 <script>
 (function () {
@@ -1904,8 +1907,10 @@
 
   // ---- 启动 ----
   // 轻量确认弹窗（替代系统 alert/confirm）
-  function ask(text, onOk, okLabel) {
+  function ask(text, onOk, okLabel, note) {
     $("mtext").textContent = text;
+    $("mnote").textContent = note || "";
+    $("mnote").classList.toggle("hidden", !note);
     $("mok").textContent = okLabel || UI.confirm;
     $("modal").classList.remove("hidden");
     function close() {
@@ -1990,10 +1995,11 @@
     if (!sessionOk) { needLogin(); return; }
     if (balanceUnits >= 0 && cost() * 100 > balanceUnits) { showTopup(); return; }
     hideTopup();
-    var txt = (UI.confirm_gen || "Generate this track?")
+    var template = values.loop ? UI.confirm_gen : (UI.confirm_gen_approx || UI.confirm_gen);
+    var txt = (template || "Generate this track?")
       .replace("{sec}", String(values.duration_seconds || 30))
       .replace("{n}", cost() + " " + UI.credits);
-    ask(txt, generate);
+    ask(txt, generate, null, values.loop ? "" : UI.duration_integrity_note);
   }
 
   $("payClose").addEventListener("click", function () { $("payModal").classList.add("hidden"); });

@@ -241,6 +241,8 @@
   .mbox{width:min(380px,90vw);background:#15171b;border:1px solid var(--line);border-radius:16px;
     padding:22px 22px 18px;box-shadow:0 30px 60px -24px rgba(0,0,0,.9)}
   .mtext{margin:0 0 18px;font-size:14px;line-height:1.6;color:var(--ink);white-space:pre-line}
+  .mnote{margin:-9px 0 18px;font-size:12px;line-height:1.55;color:var(--muted)}
+  .mnote.hidden{display:none}
   .macts{display:flex;gap:10px;justify-content:flex-end}
   .mbtn{padding:9px 16px;border-radius:9px;border:1px solid var(--line);background:rgba(255,255,255,.05);
     color:var(--ink);font:inherit;font-size:13px;cursor:pointer}
@@ -946,6 +948,7 @@
   <div class="modal hidden" id="modal" role="dialog" aria-modal="true">
     <div class="mbox">
       <p class="mtext" id="mtext"></p>
+      <p class="mnote hidden" id="mnote"></p>
       <div class="macts">
         <button type="button" class="mbtn" id="mcancel">Hủy</button>
         <button type="button" class="mbtn primary" id="mok">Xác nhận</button>
@@ -958,7 +961,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác", "description": "Biến ảnh hoặc mô tả thành nhạc nền dài đúng 30–90 giây. Lời bài hát gọi tên những gì trong ảnh, với giọng hát 10 ngôn ngữ và vòng lặp liền mạch.", "h1": "Tạo một bản nhạc", "sub": "Từ ảnh hoặc mô tả. Độ dài chính xác, vòng lặp liền mạch.", "drop": "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh", "generate": "Tạo bản nhạc", "how_credits": "Tín dụng hoạt động thế nào →", "grp_photo": "Nghe thử", "grp_recipe": "Từ mục đích dùng", "download": "Tải xuống", "save_recipe": "Lưu thành công thức", "use_recipe": "Dùng công thức", "remove_photo": "Xóa ảnh", "photo_here": "Ảnh của bạn ở đây", "note": "Mọi thứ bên phải đều được tạo ở đây", "legal_aup": "Sử dụng được chấp nhận", "legal_refund": "Hoàn tiền", "sign_in_first": "Đăng nhập để tạo", "generating": "Đang tạo… khoảng 20 giây.", "just_generated": "Vừa tạo xong", "your_track": "Bản nhạc của bạn", "from_recipe": "Từ công thức", "from_photo": "Tạo từ ảnh", "err_load": "Không tải được tuỳ chọn", "done_in": "Xong sau {n} giây", "gen_cost": "Tạo · {n}", "err_gen": "Tạo thất bại", "my_track": "Bản nhạc của tôi", "err_net": "Lỗi mạng", "recipe_name": "Tên công thức", "err_save": "Lưu thất bại", "saved": "Đã lưu: {name}", "up_to": "Tối đa {n}", "credits": "tín dụng", "guides_link": "Hướng dẫn →", "guides_title": "Hướng dẫn", "close": "Đóng", "loading": "Đang tải…", "off": "Tắt", "loop_on": "Vòng lặp liền mạch", "buy_credits": "Mua tín dụng →", "desc_label": "Mô tả (không bắt buộc)", "desc_ph": "Mô tả bản nhạc: quán cà phê mưa, piano nhẹ", "mode_photo": "Ảnh", "mode_text": "Chữ", "field_density": "Độ dày của hòa âm", "opt_sparse": "Thưa", "opt_medium": "Vừa", "opt_full": "Dày", "pro_title": "Tùy chọn nâng cao", "grp_photo_sub": "Ảnh → lời → bản nhạc", "grp_recipe_sub": "Chọn mục đích, thông số đã đặt sẵn", "recipe_names": {"short-form-cut": "คลิปสั้น", "hook-sting": "ฮุกเปิดคลิป", "product-loop": "ลูปสินค้า", "podcast-bed": "เพลงประกอบพอดแคสต์", "documentary-underscore": "เพลงประกอบสารคดี", "game-menu-loop": "ลูปเมนูเกม", "calm-focus": "สมาธิ", "kids-learning": "เด็กและการเรียนรู้"}, "applied": "Dùng", "current_recipe": "Bộ cài đang dùng", "mine_title": "Bản nhạc của tôi", "share_link": "Chia sẻ liên kết", "delete_track": "Xóa", "delete_track_confirm": "Xóa vĩnh viễn bản nhạc này? Thao tác này không thể hoàn tác.", "more_actions": "Thao tác khác", "dl_audio": "Tải âm thanh", "copied": "Đã sao chép", "shared_note": "Bạn đang nghe bản nhạc được chia sẻ — tạo bản của bạn bên dưới", "my_account": "Tài khoản", "balance": "Số dư", "pricing_label": "Giá", "confirm_gen": "Tạo bản nhạc {sec} giây? Sẽ tiêu {n}.", "err_insufficient": "Không đủ tín dụng", "topup_hint": "Nạp thêm để tiếp tục tạo.", "topup_cta": "Mua tín dụng", "cancel": "Hủy", "confirm": "Xác nhận", "not_signed_in": "Chưa đăng nhập", "traveler": "Người lữ hành", "view_all": "Xem tất cả", "my_works_pick": "Chọn một bản để dùng lại cấu hình", "pay_title": "Mua tín dụng", "pay_success": "Đã nhận thanh toán — đã cộng tín dụng.", "pay_opening": "Đang mở thanh toán…"}</script>
+<script type="application/json" id="ui">{"title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác", "description": "Biến ảnh hoặc mô tả thành nhạc nền dài đúng 30–90 giây. Lời bài hát gọi tên những gì trong ảnh, với giọng hát 10 ngôn ngữ và vòng lặp liền mạch.", "h1": "Tạo một bản nhạc", "sub": "Từ ảnh hoặc mô tả. Độ dài chính xác, vòng lặp liền mạch.", "drop": "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh", "generate": "Tạo bản nhạc", "how_credits": "Tín dụng hoạt động thế nào →", "grp_photo": "Nghe thử", "grp_recipe": "Từ mục đích dùng", "download": "Tải xuống", "save_recipe": "Lưu thành công thức", "use_recipe": "Dùng công thức", "remove_photo": "Xóa ảnh", "photo_here": "Ảnh của bạn ở đây", "note": "Mọi thứ bên phải đều được tạo ở đây", "legal_aup": "Sử dụng được chấp nhận", "legal_refund": "Hoàn tiền", "sign_in_first": "Đăng nhập để tạo", "generating": "Đang tạo… khoảng 20 giây.", "just_generated": "Vừa tạo xong", "your_track": "Bản nhạc của bạn", "from_recipe": "Từ công thức", "from_photo": "Tạo từ ảnh", "err_load": "Không tải được tuỳ chọn", "done_in": "Xong sau {n} giây", "gen_cost": "Tạo · {n}", "err_gen": "Tạo thất bại", "my_track": "Bản nhạc của tôi", "err_net": "Lỗi mạng", "recipe_name": "Tên công thức", "err_save": "Lưu thất bại", "saved": "Đã lưu: {name}", "up_to": "Tối đa {n}", "credits": "tín dụng", "guides_link": "Hướng dẫn →", "guides_title": "Hướng dẫn", "close": "Đóng", "loading": "Đang tải…", "off": "Tắt", "loop_on": "Vòng lặp liền mạch", "buy_credits": "Mua tín dụng →", "desc_label": "Mô tả (không bắt buộc)", "desc_ph": "Mô tả bản nhạc: quán cà phê mưa, piano nhẹ", "mode_photo": "Ảnh", "mode_text": "Chữ", "field_density": "Độ dày của hòa âm", "opt_sparse": "Thưa", "opt_medium": "Vừa", "opt_full": "Dày", "pro_title": "Tùy chọn nâng cao", "grp_photo_sub": "Ảnh → lời → bản nhạc", "grp_recipe_sub": "Chọn mục đích, thông số đã đặt sẵn", "recipe_names": {"short-form-cut": "คลิปสั้น", "hook-sting": "ฮุกเปิดคลิป", "product-loop": "ลูปสินค้า", "podcast-bed": "เพลงประกอบพอดแคสต์", "documentary-underscore": "เพลงประกอบสารคดี", "game-menu-loop": "ลูปเมนูเกม", "calm-focus": "สมาธิ", "kids-learning": "เด็กและการเรียนรู้"}, "applied": "Dùng", "current_recipe": "Bộ cài đang dùng", "mine_title": "Bản nhạc của tôi", "share_link": "Chia sẻ liên kết", "delete_track": "Xóa", "delete_track_confirm": "Xóa vĩnh viễn bản nhạc này? Thao tác này không thể hoàn tác.", "more_actions": "Thao tác khác", "dl_audio": "Tải âm thanh", "copied": "Đã sao chép", "shared_note": "Bạn đang nghe bản nhạc được chia sẻ — tạo bản của bạn bên dưới", "my_account": "Tài khoản", "balance": "Số dư", "pricing_label": "Giá", "confirm_gen": "Tạo bản nhạc {sec} giây? Sẽ tiêu {n}.", "confirm_gen_approx": "Tạo bản nhạc khoảng {sec} giây? Sẽ tiêu {n}.", "duration_integrity_note": "Để giữ trọn câu nhạc và phần kết tự nhiên, thời lượng thực tế của bản nhạc không lặp có thể chênh lệch đôi chút.", "err_insufficient": "Không đủ tín dụng", "topup_hint": "Nạp thêm để tiếp tục tạo.", "topup_cta": "Mua tín dụng", "cancel": "Hủy", "confirm": "Xác nhận", "not_signed_in": "Chưa đăng nhập", "traveler": "Người lữ hành", "view_all": "Xem tất cả", "my_works_pick": "Chọn một bản để dùng lại cấu hình", "pay_title": "Mua tín dụng", "pay_success": "Đã nhận thanh toán — đã cộng tín dụng.", "pay_opening": "Đang mở thanh toán…"}</script>
 <script src="../../assets/wallet.js"></script>
 <script>
 (function () {
@@ -1904,8 +1907,10 @@
 
   // ---- 启动 ----
   // 轻量确认弹窗（替代系统 alert/confirm）
-  function ask(text, onOk, okLabel) {
+  function ask(text, onOk, okLabel, note) {
     $("mtext").textContent = text;
+    $("mnote").textContent = note || "";
+    $("mnote").classList.toggle("hidden", !note);
     $("mok").textContent = okLabel || UI.confirm;
     $("modal").classList.remove("hidden");
     function close() {
@@ -1990,10 +1995,11 @@
     if (!sessionOk) { needLogin(); return; }
     if (balanceUnits >= 0 && cost() * 100 > balanceUnits) { showTopup(); return; }
     hideTopup();
-    var txt = (UI.confirm_gen || "Generate this track?")
+    var template = values.loop ? UI.confirm_gen : (UI.confirm_gen_approx || UI.confirm_gen);
+    var txt = (template || "Generate this track?")
       .replace("{sec}", String(values.duration_seconds || 30))
       .replace("{n}", cost() + " " + UI.credits);
-    ask(txt, generate);
+    ask(txt, generate, null, values.loop ? "" : UI.duration_integrity_note);
   }
 
   $("payClose").addEventListener("click", function () { $("payModal").classList.add("hidden"); });
