@@ -305,6 +305,10 @@ def _write_seo_files(site: str, spec: dict, site_langs: list[str],
         encoding="utf-8",
     )
 
+    # lastmod 帮助搜索引擎判断"内容变了，值得重抓"
+    from datetime import datetime, timezone
+    lastmod = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
            '        xmlns:xhtml="http://www.w3.org/1999/xhtml">']
@@ -314,6 +318,7 @@ def _write_seo_files(site: str, spec: dict, site_langs: list[str],
             loc = f"{base}/{lang}/{path}"
             out.append("  <url>")
             out.append(f"    <loc>{loc}</loc>")
+            out.append(f"    <lastmod>{lastmod}</lastmod>")
             for alt in langs:
                 out.append(f'    <xhtml:link rel="alternate" hreflang="{languages[alt]["hreflang"]}" href="{base}/{alt}/{path}"/>')
             out.append(f'    <xhtml:link rel="alternate" hreflang="x-default" href="{base}/{xdef}/{path}"/>')
