@@ -641,7 +641,7 @@ def main() -> int:
                     copy = {**common, **source[lang]}
                     copy["options"] = {**common.get("options", {}), **source[lang].get("options", {})}
                     copy["recipe_names"] = {**common.get("recipe_names", {}), **source[lang].get("recipe_names", {})}
-                    out = {key: (value if isinstance(value, dict) else esc(value)) for key, value in copy.items()}
+                    out = {key: (value if isinstance(value, (dict, list)) else esc(value)) for key, value in copy.items()}
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
                     out["jsonld"] = json.dumps({
                         "@context": "https://schema.org", "@type": "SoftwareApplication",
