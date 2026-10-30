@@ -846,7 +846,7 @@
 
     <div class="prechip" id="prechip"></div>
 
-    <div class="sect template-picker"><div class="lbl"><span>{{current_recipe}}</span></div><select class="select" id="templateSelect"><option value="">{{off}}</option></select><p class="template-help">{{grp_recipe_sub}}</p></div>
+    <div class="sect template-picker"><div class="lbl"><span>{{current_recipe}}</span></div><select class="select" id="templateSelect"><option value="">{{template_none}}</option></select><p class="template-help">{{grp_recipe_sub}}</p></div>
 
     <div class="shared hidden" id="shared"></div>
 
@@ -1264,7 +1264,7 @@
   }
   function renderTemplateSelect() {
     var box = $("templateSelect"); if (!box) return;
-    box.innerHTML = '<option value="">' + UI.off + '</option>';
+    box.innerHTML = '<option value="">' + UI.template_none + '</option>';
     templates.filter(function(r){return r.is_system}).forEach(function(r){var o=document.createElement("option");o.value=String(r.id);o.textContent=(UI.recipe_names&&UI.recipe_names[r.slug])||r.name;o.selected=!!(currentTemplate&&currentTemplate.id===r.id);box.appendChild(o)});
     box.onchange=function(){var found=templates.filter(function(r){return String(r.id)===box.value})[0]||null;selectTemplate(found)};
   }
@@ -1272,7 +1272,7 @@
     currentTemplate=template||null;
     if (currentTemplate) Object.keys(currentTemplate.params||{}).forEach(function(k){values[k]=currentTemplate.params[k]});
     Object.keys(snapshot||{}).forEach(function(k){if(values[k]!==undefined)values[k]=snapshot[k]});
-    renderTemplateSelect();renderRail();applied(currentTemplate?((UI.recipe_names&&UI.recipe_names[currentTemplate.slug])||currentTemplate.name):UI.off);
+    renderTemplateSelect();renderRail();applied(currentTemplate?((UI.recipe_names&&UI.recipe_names[currentTemplate.slug])||currentTemplate.name):UI.template_none);
   }
   function renderRail() {
     var box = $("rail"); box.innerHTML = "";
