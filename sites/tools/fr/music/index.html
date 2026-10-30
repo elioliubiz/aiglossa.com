@@ -966,6 +966,7 @@
 
 <script type="application/json" id="ui">{"title": "Générateur de musique IA — de la photo au morceau, durée exacte", "description": "Transformez une photo ou une description en musique de fond de 30 à 90 secondes exactes. Les paroles nomment ce que contient votre image, avec voix en 10 langues et boucles sans coupure.", "h1": "Créer un morceau", "sub": "À partir d'une photo ou d'une description. Durée exacte, boucles sans coupure.", "drop": "Déposez ou choisissez une photo<br>les paroles nommeront ce qu'elle contient", "generate": "Générer un morceau", "how_credits": "Comment marchent les crédits →", "grp_photo": "Écoutez", "grp_recipe": "Depuis un usage", "download": "Télécharger", "save_recipe": "Enregistrer comme modèle", "use_recipe": "Créer un résultat similaire", "remove_photo": "Retirer la photo", "photo_here": "Votre photo ici", "note": "Tout ce qui est à droite a été créé ici", "legal_aup": "Usage acceptable", "legal_refund": "Remboursements", "sign_in_first": "Connectez-vous pour générer", "generating": "Génération… environ 20 secondes.", "just_generated": "Vient d'être créé", "your_track": "Votre morceau", "from_recipe": "Depuis un modèle", "from_photo": "Depuis une photo", "err_load": "Impossible de charger les options", "done_in": "Prêt en {n} s", "gen_cost": "Générer · {n}", "err_gen": "La génération a échoué", "my_track": "Mon morceau", "err_net": "Erreur réseau", "recipe_name": "Nom du modèle", "err_save": "Échec de l'enregistrement", "saved": "Enregistré : {name}", "up_to": "Jusqu'à {n}", "credits": "crédits", "guides_link": "Guides →", "guides_title": "Guides", "close": "Fermer", "loading": "Chargement…", "off": "Non", "loop_on": "Boucle sans coupure", "buy_credits": "Acheter des crédits →", "desc_label": "Description (facultatif)", "desc_ph": "Décrivez le morceau : café pluvieux, piano doux", "mode_photo": "Photo", "mode_text": "Texte", "field_density": "Densité de l'arrangement", "opt_sparse": "Clairsemé", "opt_medium": "Moyen", "opt_full": "Dense", "pro_title": "Options avancées", "grp_photo_sub": "Photo → paroles → morceau", "grp_recipe_sub": "Choisissez un usage, les réglages suivent", "recipe_names": {"short-form-cut": "Corte para redes", "hook-sting": "Gancho de apertura", "product-loop": "Bucle de producto", "podcast-bed": "Base para pódcast", "documentary-underscore": "Base documental", "game-menu-loop": "Bucle de menú", "calm-focus": "Concentración", "kids-learning": "Infantil y aprendizaje"}, "applied": "Utilise", "current_recipe": "Modèle de création", "template_none": "Aucun", "mine_title": "Mes pistes", "share_link": "Partager le lien", "delete_track": "Supprimer", "delete_track_confirm": "Supprimer définitivement ce morceau ? Cette action est irréversible.", "more_actions": "Plus d'actions", "dl_audio": "Télécharger l'audio", "copied": "Copié", "shared_note": "Vous écoutez un morceau partagé — créez le vôtre ci-dessous", "my_account": "Compte", "balance": "Solde", "pricing_label": "Tarifs", "confirm_gen": "Générer un morceau de {sec} s ? Cela coûte {n}.", "confirm_gen_approx": "Générer un morceau d’environ {sec} s ? Cela coûte {n}.", "duration_integrity_note": "Pour préserver des phrases musicales complètes et une fin naturelle, la durée réelle des morceaux sans boucle peut varier légèrement.", "err_insufficient": "Crédits insuffisants", "topup_hint": "Rechargez pour continuer à générer.", "topup_cta": "Acheter des crédits", "cancel": "Annuler", "confirm": "Confirmer", "not_signed_in": "Non connecté", "traveler": "Voyageur", "view_all": "Tout voir", "my_works_pick": "Choisissez-en un pour réutiliser ses réglages", "pay_title": "Acheter des crédits", "pay_success": "Paiement reçu — crédits ajoutés.", "pay_opening": "Ouverture du paiement…"}</script>
 <script src="../../assets/wallet.js"></script>
+<script src="../../assets/share.js"></script>
 <script>
 (function () {
   "use strict";
@@ -1705,36 +1706,11 @@
   }
 
   function shareOrCopy(link, title) {
-    var payload = { title: title || document.title, url: link };
-    var canUseSystemShare = typeof navigator.share === "function" &&
-      (typeof navigator.canShare !== "function" || navigator.canShare(payload));
-    if (canUseSystemShare) {
-      return navigator.share(payload).catch(function (err) {
-        // Closing the native share sheet is intentional; do not replace it with a copy action.
-        if (err && err.name === "AbortError") return;
-        return copyText(link).then(function () { toast(UI.copied); }).catch(function () { toast(UI.err_net); });
-      });
-    }
-    return copyText(link).then(function () { toast(UI.copied); }).catch(function () { toast(UI.err_net); });
-  }
-
-  function copyText(text) {
-    if (navigator.clipboard && window.isSecureContext) {
-      return navigator.clipboard.writeText(text).catch(function () { return legacyCopyText(text); });
-    }
-    return legacyCopyText(text);
-  }
-
-  function legacyCopyText(text) {
-    return new Promise(function (resolve, reject) {
-      var input = document.createElement("textarea");
-      input.value = text; input.setAttribute("readonly", "");
-      input.style.position = "fixed"; input.style.opacity = "0"; input.style.pointerEvents = "none";
-      document.body.appendChild(input); input.select(); input.setSelectionRange(0, input.value.length);
-      var copied = false;
-      try { copied = document.execCommand("copy"); } catch (_) {}
-      input.remove();
-      if (copied) resolve(); else reject(new Error("copy failed"));
+    return AiglossaShare.shareOrCopy({
+      title: title || document.title,
+      url: link,
+      onCopied: function () { toast(UI.copied); },
+      onError: function () { toast(UI.err_net); }
     });
   }
 

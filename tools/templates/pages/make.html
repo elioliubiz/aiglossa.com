@@ -950,6 +950,7 @@
 
 <script type="application/json" id="ui">{{ui_json}}</script>
 <script src="{{prefix}}assets/wallet.js"></script>
+<script src="{{prefix}}assets/share.js"></script>
 <script>
 (function () {
   "use strict";
@@ -1689,36 +1690,11 @@
   }
 
   function shareOrCopy(link, title) {
-    var payload = { title: title || document.title, url: link };
-    var canUseSystemShare = typeof navigator.share === "function" &&
-      (typeof navigator.canShare !== "function" || navigator.canShare(payload));
-    if (canUseSystemShare) {
-      return navigator.share(payload).catch(function (err) {
-        // Closing the native share sheet is intentional; do not replace it with a copy action.
-        if (err && err.name === "AbortError") return;
-        return copyText(link).then(function () { toast(UI.copied); }).catch(function () { toast(UI.err_net); });
-      });
-    }
-    return copyText(link).then(function () { toast(UI.copied); }).catch(function () { toast(UI.err_net); });
-  }
-
-  function copyText(text) {
-    if (navigator.clipboard && window.isSecureContext) {
-      return navigator.clipboard.writeText(text).catch(function () { return legacyCopyText(text); });
-    }
-    return legacyCopyText(text);
-  }
-
-  function legacyCopyText(text) {
-    return new Promise(function (resolve, reject) {
-      var input = document.createElement("textarea");
-      input.value = text; input.setAttribute("readonly", "");
-      input.style.position = "fixed"; input.style.opacity = "0"; input.style.pointerEvents = "none";
-      document.body.appendChild(input); input.select(); input.setSelectionRange(0, input.value.length);
-      var copied = false;
-      try { copied = document.execCommand("copy"); } catch (_) {}
-      input.remove();
-      if (copied) resolve(); else reject(new Error("copy failed"));
+    return AiglossaShare.shareOrCopy({
+      title: title || document.title,
+      url: link,
+      onCopied: function () { toast(UI.copied); },
+      onError: function () { toast(UI.err_net); }
     });
   }
 

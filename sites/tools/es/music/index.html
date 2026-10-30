@@ -966,6 +966,7 @@
 
 <script type="application/json" id="ui">{"title": "Generador de música con IA — de foto a canción, duración exacta", "description": "Convierte una foto o una descripción en música de fondo de 30 a 90 segundos exactos. La letra nombra lo que hay en tu imagen, con voces en 10 idiomas y bucles sin cortes.", "h1": "Crear una pista", "sub": "Desde una foto o una descripción. Duración exacta, bucles sin cortes.", "drop": "Arrastra o elige una foto<br>la letra nombrará lo que hay en ella", "generate": "Generar pista", "how_credits": "Cómo funcionan los créditos →", "grp_photo": "Escúchalo", "grp_recipe": "Desde un caso de uso", "download": "Descargar", "save_recipe": "Guardar como plantilla", "use_recipe": "Crear algo similar", "remove_photo": "Quitar foto", "photo_here": "Tu foto aquí", "note": "Todo lo de la derecha se hizo aquí", "legal_aup": "Uso aceptable", "legal_refund": "Reembolsos", "sign_in_first": "Inicia sesión para generar", "generating": "Generando… unos 20 segundos.", "just_generated": "Recién generado", "your_track": "Tu pista", "from_recipe": "Desde una plantilla", "from_photo": "Desde una foto", "err_load": "No se pudieron cargar las opciones", "done_in": "Listo en {n} s", "gen_cost": "Generar · {n}", "err_gen": "La generación falló", "my_track": "Mi pista", "err_net": "Error de red", "recipe_name": "Nombre de la plantilla", "err_save": "No se pudo guardar", "saved": "Guardado: {name}", "up_to": "Hasta {n}", "credits": "créditos", "guides_link": "Guías →", "guides_title": "Guías", "close": "Cerrar", "loading": "Cargando…", "off": "No", "loop_on": "Bucle sin cortes", "buy_credits": "Comprar créditos →", "desc_label": "Descripción (opcional)", "desc_ph": "Describe la pieza: café lluvioso, piano suave", "mode_photo": "Foto", "mode_text": "Texto", "field_density": "Densidad del arreglo", "opt_sparse": "Escaso", "opt_medium": "Medio", "opt_full": "Denso", "pro_title": "Opciones avanzadas", "grp_photo_sub": "Foto → letra → pista", "grp_recipe_sub": "Elige el uso y los ajustes ya vienen puestos", "recipe_names": {"short-form-cut": "숏폼 컷", "hook-sting": "오프닝 훅", "product-loop": "제품 루프", "podcast-bed": "팟캐스트 배경", "documentary-underscore": "다큐 배경", "game-menu-loop": "게임 메뉴 루프", "calm-focus": "집중 학습", "kids-learning": "어린이 학습"}, "applied": "Usando", "current_recipe": "Plantilla creativa", "template_none": "Ninguna", "mine_title": "Mis pistas", "share_link": "Compartir enlace", "delete_track": "Eliminar", "delete_track_confirm": "¿Eliminar esta pista permanentemente? Esta acción no se puede deshacer.", "more_actions": "Más acciones", "dl_audio": "Descargar audio", "copied": "Copiado", "shared_note": "Escuchas una pista compartida: crea la tuya abajo", "my_account": "Cuenta", "balance": "Saldo", "pricing_label": "Precios", "confirm_gen": "¿Generar una pista de {sec}s? Se gastarán {n}.", "confirm_gen_approx": "¿Generar una pista de unos {sec}s? Se gastarán {n}.", "duration_integrity_note": "Para conservar frases musicales completas y un final natural, la duración real de las pistas sin bucle puede variar ligeramente.", "err_insufficient": "Créditos insuficientes", "topup_hint": "Recarga para seguir generando.", "topup_cta": "Comprar créditos", "cancel": "Cancelar", "confirm": "Confirmar", "not_signed_in": "Sin sesión", "traveler": "Viajero", "view_all": "Ver todo", "my_works_pick": "Elige uno para reutilizar su configuración", "pay_title": "Comprar créditos", "pay_success": "Pago recibido: créditos añadidos.", "pay_opening": "Abriendo el pago…"}</script>
 <script src="../../assets/wallet.js"></script>
+<script src="../../assets/share.js"></script>
 <script>
 (function () {
   "use strict";
@@ -1705,36 +1706,11 @@
   }
 
   function shareOrCopy(link, title) {
-    var payload = { title: title || document.title, url: link };
-    var canUseSystemShare = typeof navigator.share === "function" &&
-      (typeof navigator.canShare !== "function" || navigator.canShare(payload));
-    if (canUseSystemShare) {
-      return navigator.share(payload).catch(function (err) {
-        // Closing the native share sheet is intentional; do not replace it with a copy action.
-        if (err && err.name === "AbortError") return;
-        return copyText(link).then(function () { toast(UI.copied); }).catch(function () { toast(UI.err_net); });
-      });
-    }
-    return copyText(link).then(function () { toast(UI.copied); }).catch(function () { toast(UI.err_net); });
-  }
-
-  function copyText(text) {
-    if (navigator.clipboard && window.isSecureContext) {
-      return navigator.clipboard.writeText(text).catch(function () { return legacyCopyText(text); });
-    }
-    return legacyCopyText(text);
-  }
-
-  function legacyCopyText(text) {
-    return new Promise(function (resolve, reject) {
-      var input = document.createElement("textarea");
-      input.value = text; input.setAttribute("readonly", "");
-      input.style.position = "fixed"; input.style.opacity = "0"; input.style.pointerEvents = "none";
-      document.body.appendChild(input); input.select(); input.setSelectionRange(0, input.value.length);
-      var copied = false;
-      try { copied = document.execCommand("copy"); } catch (_) {}
-      input.remove();
-      if (copied) resolve(); else reject(new Error("copy failed"));
+    return AiglossaShare.shareOrCopy({
+      title: title || document.title,
+      url: link,
+      onCopied: function () { toast(UI.copied); },
+      onError: function () { toast(UI.err_net); }
     });
   }
 
