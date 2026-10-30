@@ -849,6 +849,7 @@
     .utilitybar .alink{padding:7px 7px;font-size:10.5px}
   }
   @media(max-width:370px){.utility-brand span{display:none}.utilitybar .bal{max-width:84px}}
+  .template-help{margin:6px 0 0;color:var(--mut);font-size:10.5px;line-height:1.45}
 </style>
 </head>
 <body>
@@ -860,6 +861,8 @@
     <p class="sub">Da una foto o una descrizione. Durata esatta, loop senza stacchi.</p>
 
     <div class="prechip" id="prechip"></div>
+
+    <div class="sect template-picker"><div class="lbl"><span>Modello creativo</span></div><select class="select" id="templateSelect"><option value="">No</option></select><p class="template-help">Scegli l&#x27;uso, le impostazioni sono già pronte</p></div>
 
     <div class="shared hidden" id="shared"></div>
 
@@ -961,7 +964,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Generatore di musica IA — da foto a brano, durata esatta", "description": "Trasforma una foto o una descrizione in musica di sottofondo da 30 a 90 secondi esatti. Il testo nomina ciò che c'è nell'immagine, con voci in 10 lingue e loop senza stacchi.", "h1": "Crea un brano", "sub": "Da una foto o una descrizione. Durata esatta, loop senza stacchi.", "drop": "Trascina o scegli una foto<br>il testo nominerà ciò che contiene", "generate": "Genera brano", "how_credits": "Come funzionano i crediti →", "grp_photo": "Ascolta", "grp_recipe": "Da un caso d'uso", "download": "Scarica", "save_recipe": "Salva come ricetta", "use_recipe": "Usa ricetta", "remove_photo": "Rimuovi foto", "photo_here": "La tua foto qui", "note": "Tutto ciò che è a destra è stato creato qui", "legal_aup": "Uso accettabile", "legal_refund": "Rimborsi", "sign_in_first": "Accedi per generare", "generating": "Generazione… circa 20 secondi.", "just_generated": "Appena generato", "your_track": "Il tuo brano", "from_recipe": "Da una ricetta", "from_photo": "Da una foto", "err_load": "Impossibile caricare le opzioni", "done_in": "Pronto in {n} s", "gen_cost": "Genera · {n}", "err_gen": "Generazione non riuscita", "my_track": "Il mio brano", "err_net": "Errore di rete", "recipe_name": "Nome della ricetta", "err_save": "Salvataggio non riuscito", "saved": "Salvato: {name}", "up_to": "Fino a {n}", "credits": "crediti", "guides_link": "Guide →", "guides_title": "Guide", "close": "Chiudi", "loading": "Caricamento…", "off": "No", "loop_on": "Loop senza stacchi", "buy_credits": "Acquista crediti →", "desc_label": "Descrizione (facoltativa)", "desc_ph": "Descrivi il brano: caffè piovoso, pianoforte dolce", "mode_photo": "Foto", "mode_text": "Testo", "field_density": "Densità dell'arrangiamento", "opt_sparse": "Rado", "opt_medium": "Medio", "opt_full": "Fitto", "pro_title": "Opzioni avanzate", "grp_photo_sub": "Foto → testo → brano", "grp_recipe_sub": "Scegli l'uso, le impostazioni sono già pronte", "recipe_names": {"short-form-cut": "Corte curto", "hook-sting": "Gancho de abertura", "product-loop": "Loop de produto", "podcast-bed": "Trilha de podcast", "documentary-underscore": "Base documental", "game-menu-loop": "Loop de menu", "calm-focus": "Foco", "kids-learning": "Infantil e aprendizado"}, "applied": "Uso", "current_recipe": "Preset attuale", "mine_title": "I miei brani", "share_link": "Condividi link", "delete_track": "Elimina", "delete_track_confirm": "Eliminare definitivamente questo brano? L'azione non può essere annullata.", "more_actions": "Altre azioni", "dl_audio": "Scarica audio", "copied": "Copiato", "shared_note": "Stai ascoltando un brano condiviso: crea il tuo qui sotto", "my_account": "Account", "balance": "Saldo", "pricing_label": "Prezzi", "confirm_gen": "Generare un brano da {sec}s? Costa {n}.", "confirm_gen_approx": "Generare un brano di circa {sec}s? Costa {n}.", "duration_integrity_note": "Per conservare frasi musicali complete e una chiusura naturale, la durata effettiva dei brani senza loop può variare leggermente.", "err_insufficient": "Crediti insufficienti", "topup_hint": "Ricarica per continuare a generare.", "topup_cta": "Acquista crediti", "cancel": "Annulla", "confirm": "Conferma", "not_signed_in": "Non connesso", "traveler": "Viaggiatore", "view_all": "Vedi tutto", "my_works_pick": "Scegline uno per riusarne le impostazioni", "pay_title": "Acquista crediti", "pay_success": "Pagamento ricevuto: crediti aggiunti.", "pay_opening": "Apertura del pagamento…"}</script>
+<script type="application/json" id="ui">{"title": "Generatore di musica IA — da foto a brano, durata esatta", "description": "Trasforma una foto o una descrizione in musica di sottofondo da 30 a 90 secondi esatti. Il testo nomina ciò che c'è nell'immagine, con voci in 10 lingue e loop senza stacchi.", "h1": "Crea un brano", "sub": "Da una foto o una descrizione. Durata esatta, loop senza stacchi.", "drop": "Trascina o scegli una foto<br>il testo nominerà ciò che contiene", "generate": "Genera brano", "how_credits": "Come funzionano i crediti →", "grp_photo": "Ascolta", "grp_recipe": "Da un caso d'uso", "download": "Scarica", "save_recipe": "Salva come modello", "use_recipe": "Crea qualcosa di simile", "remove_photo": "Rimuovi foto", "photo_here": "La tua foto qui", "note": "Tutto ciò che è a destra è stato creato qui", "legal_aup": "Uso accettabile", "legal_refund": "Rimborsi", "sign_in_first": "Accedi per generare", "generating": "Generazione… circa 20 secondi.", "just_generated": "Appena generato", "your_track": "Il tuo brano", "from_recipe": "Da un modello", "from_photo": "Da una foto", "err_load": "Impossibile caricare le opzioni", "done_in": "Pronto in {n} s", "gen_cost": "Genera · {n}", "err_gen": "Generazione non riuscita", "my_track": "Il mio brano", "err_net": "Errore di rete", "recipe_name": "Nome del modello", "err_save": "Salvataggio non riuscito", "saved": "Salvato: {name}", "up_to": "Fino a {n}", "credits": "crediti", "guides_link": "Guide →", "guides_title": "Guide", "close": "Chiudi", "loading": "Caricamento…", "off": "No", "loop_on": "Loop senza stacchi", "buy_credits": "Acquista crediti →", "desc_label": "Descrizione (facoltativa)", "desc_ph": "Descrivi il brano: caffè piovoso, pianoforte dolce", "mode_photo": "Foto", "mode_text": "Testo", "field_density": "Densità dell'arrangiamento", "opt_sparse": "Rado", "opt_medium": "Medio", "opt_full": "Fitto", "pro_title": "Opzioni avanzate", "grp_photo_sub": "Foto → testo → brano", "grp_recipe_sub": "Scegli l'uso, le impostazioni sono già pronte", "recipe_names": {"short-form-cut": "Corte curto", "hook-sting": "Gancho de abertura", "product-loop": "Loop de produto", "podcast-bed": "Trilha de podcast", "documentary-underscore": "Base documental", "game-menu-loop": "Loop de menu", "calm-focus": "Foco", "kids-learning": "Infantil e aprendizado"}, "applied": "Uso", "current_recipe": "Modello creativo", "mine_title": "I miei brani", "share_link": "Condividi link", "delete_track": "Elimina", "delete_track_confirm": "Eliminare definitivamente questo brano? L'azione non può essere annullata.", "more_actions": "Altre azioni", "dl_audio": "Scarica audio", "copied": "Copiato", "shared_note": "Stai ascoltando un brano condiviso: crea il tuo qui sotto", "my_account": "Account", "balance": "Saldo", "pricing_label": "Prezzi", "confirm_gen": "Generare un brano da {sec}s? Costa {n}.", "confirm_gen_approx": "Generare un brano di circa {sec}s? Costa {n}.", "duration_integrity_note": "Per conservare frasi musicali complete e una chiusura naturale, la durata effettiva dei brani senza loop può variare leggermente.", "err_insufficient": "Crediti insufficienti", "topup_hint": "Ricarica per continuare a generare.", "topup_cta": "Acquista crediti", "cancel": "Annulla", "confirm": "Conferma", "not_signed_in": "Non connesso", "traveler": "Viaggiatore", "view_all": "Vedi tutto", "my_works_pick": "Scegline uno per riusarne le impostazioni", "pay_title": "Acquista crediti", "pay_success": "Pagamento ricevuto: crediti aggiunti.", "pay_opening": "Apertura del pagamento…"}</script>
 <script src="../../assets/wallet.js"></script>
 <script>
 (function () {
@@ -1006,7 +1009,7 @@
       params: { duration_seconds:30, loop:false, bpm:92, mood:"hopeful", genre:"acoustic", instrumentation:["guitar","bells"], density:"medium", drums:"soft", vocal:"female", vocal_language:"ja" } }
   ];
 
-  var schema = null, values = {}, imagePayload = null;
+  var schema = null, values = {}, imagePayload = null, templates = [], currentTemplate = null;
   var audio = new Audio(), current = null;
   audio.preload = "none";   // 预览音频只在点击时下载，首屏不拉 13MB
 
@@ -1058,14 +1061,15 @@
       el.className = "tile item-card";
       el.innerHTML = '<div class="card-media image"><img src="' + d.img + '" alt="' + d.title + '">' +
         '<button type="button" class="media-play" aria-label="' + d.title + '"></button>' +
-        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + UI.use_recipe + '">' + UI.use_recipe + '</button></div></div>' +
+        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + (UI.create_similar||UI.use_recipe) + '">' + (UI.create_similar||UI.use_recipe) + '</button></div></div>' +
         '<div class="card-info"><p class="card-title">' + d.title + '</p><p class="card-meta">' + d.meta + '</p></div>';
       el.dataset.audio = d.audio || "";
       function playDemo() { select(Object.assign({ kind: "demo" }, d)); }
       el.querySelector(".media-play").addEventListener("click", playDemo);
       el.querySelector(".card-use").addEventListener("click", function () {
         Object.keys(d.params || {}).forEach(function (k) { if (values[k] !== undefined) values[k] = d.params[k]; });
-        renderRail(); applied(d.title);
+        currentTemplate = null; renderTemplateSelect();
+        fetch(d.img).then(function(r){return r.blob()}).then(function(blob){var reader=new FileReader();reader.onload=function(){var raw=String(reader.result);imagePayload={data:raw.split(",")[1],mime:blob.type||"image/jpeg"};setMode("photo");renderRail();applied(d.title)};reader.readAsDataURL(blob)}).catch(function(){renderRail();applied(d.title)});
       });
       thumbs.appendChild(el);
     });
@@ -1270,10 +1274,26 @@
 
   // 基础项常显；其余归入「专业」并默认折叠
   var BASIC = { duration_seconds:1, loop:1, vocal:1, vocal_language:1, bpm:1, mood:1, genre:1, instrumentation:1 };
+  function fieldEditable(key) {
+    var contract = currentTemplate && currentTemplate.contract;
+    return !contract || (contract.editable_fields || []).indexOf(key) >= 0;
+  }
+  function renderTemplateSelect() {
+    var box = $("templateSelect"); if (!box) return;
+    box.innerHTML = '<option value="">' + UI.off + '</option>';
+    templates.filter(function(r){return r.is_system}).forEach(function(r){var o=document.createElement("option");o.value=String(r.id);o.textContent=(UI.recipe_names&&UI.recipe_names[r.slug])||r.name;o.selected=!!(currentTemplate&&currentTemplate.id===r.id);box.appendChild(o)});
+    box.onchange=function(){var found=templates.filter(function(r){return String(r.id)===box.value})[0]||null;selectTemplate(found)};
+  }
+  function selectTemplate(template, snapshot) {
+    currentTemplate=template||null;
+    if (currentTemplate) Object.keys(currentTemplate.params||{}).forEach(function(k){values[k]=currentTemplate.params[k]});
+    Object.keys(snapshot||{}).forEach(function(k){if(values[k]!==undefined)values[k]=snapshot[k]});
+    renderTemplateSelect();renderRail();applied(currentTemplate?((UI.recipe_names&&UI.recipe_names[currentTemplate.slug])||currentTemplate.name):UI.off);
+  }
   function renderRail() {
     var box = $("rail"); box.innerHTML = "";
     var basic = [], pro = [];
-    schema.fields.forEach(function (f) { (BASIC[f.key] ? basic : pro).push(f); });
+    schema.fields.filter(function(f){return fieldEditable(f.key)}).forEach(function (f) { (BASIC[f.key] ? basic : pro).push(f); });
     basic.forEach(function (f) { box.appendChild(groupOf(f)); });
     if (pro.length) {
       var head = document.createElement("button");
@@ -1439,6 +1459,7 @@
 
   // ---- 配方 ----
   function renderRecipes(items) {
+    templates = items || []; renderTemplateSelect();
     var box = $("recipes"); box.innerHTML = "";
     items.filter(function (r) { return r.is_system; }).forEach(function (r) {
       var el = document.createElement("div");
@@ -1447,12 +1468,11 @@
       var locName = (UI.recipe_names && UI.recipe_names[r.slug]) || r.name;
       el.dataset.audio = r.sample_url || "";
       el.innerHTML = '<div class="card-media"><button type="button" class="media-play" aria-label="' + locName + '">' + wave(waveformForAudio(r.sample_url)) + '</button>' +
-        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + UI.use_recipe + '">' + UI.use_recipe + '</button></div></div>' +
+        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + (UI.create_similar||UI.use_recipe) + '">' + (UI.create_similar||UI.use_recipe) + '</button></div></div>' +
         '<div class="card-info"><p class="card-title">' + locName + '</p><p class="card-meta">' + paramSummary(p) + '</p></div>';
       function playRecipe() { if (r.sample_url) select({ kind: "recipe", audio: r.sample_url, title: locName, meta: "preset" }); }
       function useRecipe() {
-        Object.keys(p).forEach(function (k) { if (k.indexOf("__") !== 0) values[k] = p[k]; });
-        renderRail(); applied(locName);
+        selectTemplate(r, p);
       }
       el.querySelector(".media-play").addEventListener("click", playRecipe);
       el.querySelector(".card-use").addEventListener("click", useRecipe);
@@ -1540,9 +1560,10 @@
     if (!sessionOk) { needLogin(); return; }
     $("go").disabled = true;
     msg(UI.generating);
-    var body = { params: values };
+    var body = { params: values, recipe_id: currentTemplate && currentTemplate.id };
     if (mode === "photo") {
-      if (imagePayload) body.image = imagePayload;
+      if (imagePayload && imagePayload.mime === "image/url") body.reference_url = imagePayload.reference_url;
+      else if (imagePayload) body.image = imagePayload;
     } else {
       var note = ($("desc").value || "").trim();
       if (note) body.description = note;
@@ -1736,10 +1757,11 @@
   // ---- 我的作品（登录后显示） ----
   var mineItems = [];
   function applyMine(it) {
-    Object.keys(it.params || {}).forEach(function (k) {
-      if (values[k] !== undefined) values[k] = it.params[k];
-    });
-    renderRail(); applied(UI.my_track);
+    var template=templates.filter(function(r){return r.id===it.recipe_id||r.slug===it.recipe_slug})[0]||null;
+    currentTemplate=template;
+    Object.keys(it.params || {}).forEach(function (k) { if (values[k] !== undefined) values[k] = it.params[k]; });
+    if(it.description){$("desc").value=it.description;setMode("text")}else if(it.reference_url){loadPhotoFromUrl(it.cover);imagePayload={mime:"image/url",reference_url:it.reference_url};setMode("photo")}
+    renderTemplateSelect();renderRail(); applied(UI.my_track);
   }
 
   // 作品摘要：让用户看得出"用了什么配方"（没有封面时尤其重要）
@@ -1764,7 +1786,7 @@
       ? '<img src="' + it.cover + '" alt="" loading="lazy"><button type="button" class="media-play" aria-label="' + UI.my_track + '"></button>'
       : '<button type="button" class="media-play" aria-label="' + UI.my_track + '">' + wave(it.waveform) + '</button>';
     b.innerHTML = '<div class="card-media' + (hasCover ? ' image' : '') + '">' + media +
-      '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + UI.use_recipe + '">' + UI.use_recipe + '</button></div>' +
+      '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + (UI.create_similar||UI.use_recipe) + '">' + (UI.create_similar||UI.use_recipe) + '</button></div>' +
       '<button type="button" class="card-more" aria-label="' + UI.more_actions + '">•••</button>' +
       '<div class="card-menu hidden"><button type="button" class="menu-share">' + UI.share_link + '</button>' +
       '<button type="button" class="menu-delete danger">' + UI.delete_track + '</button></div></div>' +
@@ -1890,7 +1912,8 @@
       mineItems = allItems.filter(function (it) { return it.status === "done"; }).map(function (it) {
         return Object.assign({}, it, {
           url: it.url ? API + it.url : "",
-          cover: it.cover ? API + it.cover : ""
+          cover: it.cover ? API + it.cover : "",
+          reference_url: it.cover || ""
         });
       });
       renderMineRow();

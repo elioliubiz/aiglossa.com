@@ -849,6 +849,7 @@
     .utilitybar .alink{padding:7px 7px;font-size:10.5px}
   }
   @media(max-width:370px){.utility-brand span{display:none}.utilitybar .bal{max-width:84px}}
+  .template-help{margin:6px 0 0;color:var(--mut);font-size:10.5px;line-height:1.45}
 </style>
 </head>
 <body>
@@ -860,6 +861,8 @@
     <p class="sub">Từ ảnh hoặc mô tả. Độ dài chính xác, vòng lặp liền mạch.</p>
 
     <div class="prechip" id="prechip"></div>
+
+    <div class="sect template-picker"><div class="lbl"><span>Mẫu sáng tạo</span></div><select class="select" id="templateSelect"><option value="">Tắt</option></select><p class="template-help">Chọn mục đích, thông số đã đặt sẵn</p></div>
 
     <div class="shared hidden" id="shared"></div>
 
@@ -961,7 +964,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác", "description": "Biến ảnh hoặc mô tả thành nhạc nền dài đúng 30–90 giây. Lời bài hát gọi tên những gì trong ảnh, với giọng hát 10 ngôn ngữ và vòng lặp liền mạch.", "h1": "Tạo một bản nhạc", "sub": "Từ ảnh hoặc mô tả. Độ dài chính xác, vòng lặp liền mạch.", "drop": "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh", "generate": "Tạo bản nhạc", "how_credits": "Tín dụng hoạt động thế nào →", "grp_photo": "Nghe thử", "grp_recipe": "Từ mục đích dùng", "download": "Tải xuống", "save_recipe": "Lưu thành công thức", "use_recipe": "Dùng công thức", "remove_photo": "Xóa ảnh", "photo_here": "Ảnh của bạn ở đây", "note": "Mọi thứ bên phải đều được tạo ở đây", "legal_aup": "Sử dụng được chấp nhận", "legal_refund": "Hoàn tiền", "sign_in_first": "Đăng nhập để tạo", "generating": "Đang tạo… khoảng 20 giây.", "just_generated": "Vừa tạo xong", "your_track": "Bản nhạc của bạn", "from_recipe": "Từ công thức", "from_photo": "Tạo từ ảnh", "err_load": "Không tải được tuỳ chọn", "done_in": "Xong sau {n} giây", "gen_cost": "Tạo · {n}", "err_gen": "Tạo thất bại", "my_track": "Bản nhạc của tôi", "err_net": "Lỗi mạng", "recipe_name": "Tên công thức", "err_save": "Lưu thất bại", "saved": "Đã lưu: {name}", "up_to": "Tối đa {n}", "credits": "tín dụng", "guides_link": "Hướng dẫn →", "guides_title": "Hướng dẫn", "close": "Đóng", "loading": "Đang tải…", "off": "Tắt", "loop_on": "Vòng lặp liền mạch", "buy_credits": "Mua tín dụng →", "desc_label": "Mô tả (không bắt buộc)", "desc_ph": "Mô tả bản nhạc: quán cà phê mưa, piano nhẹ", "mode_photo": "Ảnh", "mode_text": "Chữ", "field_density": "Độ dày của hòa âm", "opt_sparse": "Thưa", "opt_medium": "Vừa", "opt_full": "Dày", "pro_title": "Tùy chọn nâng cao", "grp_photo_sub": "Ảnh → lời → bản nhạc", "grp_recipe_sub": "Chọn mục đích, thông số đã đặt sẵn", "recipe_names": {"short-form-cut": "คลิปสั้น", "hook-sting": "ฮุกเปิดคลิป", "product-loop": "ลูปสินค้า", "podcast-bed": "เพลงประกอบพอดแคสต์", "documentary-underscore": "เพลงประกอบสารคดี", "game-menu-loop": "ลูปเมนูเกม", "calm-focus": "สมาธิ", "kids-learning": "เด็กและการเรียนรู้"}, "applied": "Dùng", "current_recipe": "Bộ cài đang dùng", "mine_title": "Bản nhạc của tôi", "share_link": "Chia sẻ liên kết", "delete_track": "Xóa", "delete_track_confirm": "Xóa vĩnh viễn bản nhạc này? Thao tác này không thể hoàn tác.", "more_actions": "Thao tác khác", "dl_audio": "Tải âm thanh", "copied": "Đã sao chép", "shared_note": "Bạn đang nghe bản nhạc được chia sẻ — tạo bản của bạn bên dưới", "my_account": "Tài khoản", "balance": "Số dư", "pricing_label": "Giá", "confirm_gen": "Tạo bản nhạc {sec} giây? Sẽ tiêu {n}.", "confirm_gen_approx": "Tạo bản nhạc khoảng {sec} giây? Sẽ tiêu {n}.", "duration_integrity_note": "Để giữ trọn câu nhạc và phần kết tự nhiên, thời lượng thực tế của bản nhạc không lặp có thể chênh lệch đôi chút.", "err_insufficient": "Không đủ tín dụng", "topup_hint": "Nạp thêm để tiếp tục tạo.", "topup_cta": "Mua tín dụng", "cancel": "Hủy", "confirm": "Xác nhận", "not_signed_in": "Chưa đăng nhập", "traveler": "Người lữ hành", "view_all": "Xem tất cả", "my_works_pick": "Chọn một bản để dùng lại cấu hình", "pay_title": "Mua tín dụng", "pay_success": "Đã nhận thanh toán — đã cộng tín dụng.", "pay_opening": "Đang mở thanh toán…"}</script>
+<script type="application/json" id="ui">{"title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác", "description": "Biến ảnh hoặc mô tả thành nhạc nền dài đúng 30–90 giây. Lời bài hát gọi tên những gì trong ảnh, với giọng hát 10 ngôn ngữ và vòng lặp liền mạch.", "h1": "Tạo một bản nhạc", "sub": "Từ ảnh hoặc mô tả. Độ dài chính xác, vòng lặp liền mạch.", "drop": "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh", "generate": "Tạo bản nhạc", "how_credits": "Tín dụng hoạt động thế nào →", "grp_photo": "Nghe thử", "grp_recipe": "Từ mục đích dùng", "download": "Tải xuống", "save_recipe": "Lưu thành mẫu", "use_recipe": "Tạo tương tự", "remove_photo": "Xóa ảnh", "photo_here": "Ảnh của bạn ở đây", "note": "Mọi thứ bên phải đều được tạo ở đây", "legal_aup": "Sử dụng được chấp nhận", "legal_refund": "Hoàn tiền", "sign_in_first": "Đăng nhập để tạo", "generating": "Đang tạo… khoảng 20 giây.", "just_generated": "Vừa tạo xong", "your_track": "Bản nhạc của bạn", "from_recipe": "Từ mẫu", "from_photo": "Tạo từ ảnh", "err_load": "Không tải được tuỳ chọn", "done_in": "Xong sau {n} giây", "gen_cost": "Tạo · {n}", "err_gen": "Tạo thất bại", "my_track": "Bản nhạc của tôi", "err_net": "Lỗi mạng", "recipe_name": "Tên mẫu", "err_save": "Lưu thất bại", "saved": "Đã lưu: {name}", "up_to": "Tối đa {n}", "credits": "tín dụng", "guides_link": "Hướng dẫn →", "guides_title": "Hướng dẫn", "close": "Đóng", "loading": "Đang tải…", "off": "Tắt", "loop_on": "Vòng lặp liền mạch", "buy_credits": "Mua tín dụng →", "desc_label": "Mô tả (không bắt buộc)", "desc_ph": "Mô tả bản nhạc: quán cà phê mưa, piano nhẹ", "mode_photo": "Ảnh", "mode_text": "Chữ", "field_density": "Độ dày của hòa âm", "opt_sparse": "Thưa", "opt_medium": "Vừa", "opt_full": "Dày", "pro_title": "Tùy chọn nâng cao", "grp_photo_sub": "Ảnh → lời → bản nhạc", "grp_recipe_sub": "Chọn mục đích, thông số đã đặt sẵn", "recipe_names": {"short-form-cut": "คลิปสั้น", "hook-sting": "ฮุกเปิดคลิป", "product-loop": "ลูปสินค้า", "podcast-bed": "เพลงประกอบพอดแคสต์", "documentary-underscore": "เพลงประกอบสารคดี", "game-menu-loop": "ลูปเมนูเกม", "calm-focus": "สมาธิ", "kids-learning": "เด็กและการเรียนรู้"}, "applied": "Dùng", "current_recipe": "Mẫu sáng tạo", "mine_title": "Bản nhạc của tôi", "share_link": "Chia sẻ liên kết", "delete_track": "Xóa", "delete_track_confirm": "Xóa vĩnh viễn bản nhạc này? Thao tác này không thể hoàn tác.", "more_actions": "Thao tác khác", "dl_audio": "Tải âm thanh", "copied": "Đã sao chép", "shared_note": "Bạn đang nghe bản nhạc được chia sẻ — tạo bản của bạn bên dưới", "my_account": "Tài khoản", "balance": "Số dư", "pricing_label": "Giá", "confirm_gen": "Tạo bản nhạc {sec} giây? Sẽ tiêu {n}.", "confirm_gen_approx": "Tạo bản nhạc khoảng {sec} giây? Sẽ tiêu {n}.", "duration_integrity_note": "Để giữ trọn câu nhạc và phần kết tự nhiên, thời lượng thực tế của bản nhạc không lặp có thể chênh lệch đôi chút.", "err_insufficient": "Không đủ tín dụng", "topup_hint": "Nạp thêm để tiếp tục tạo.", "topup_cta": "Mua tín dụng", "cancel": "Hủy", "confirm": "Xác nhận", "not_signed_in": "Chưa đăng nhập", "traveler": "Người lữ hành", "view_all": "Xem tất cả", "my_works_pick": "Chọn một bản để dùng lại cấu hình", "pay_title": "Mua tín dụng", "pay_success": "Đã nhận thanh toán — đã cộng tín dụng.", "pay_opening": "Đang mở thanh toán…"}</script>
 <script src="../../assets/wallet.js"></script>
 <script>
 (function () {
@@ -1006,7 +1009,7 @@
       params: { duration_seconds:30, loop:false, bpm:92, mood:"hopeful", genre:"acoustic", instrumentation:["guitar","bells"], density:"medium", drums:"soft", vocal:"female", vocal_language:"ja" } }
   ];
 
-  var schema = null, values = {}, imagePayload = null;
+  var schema = null, values = {}, imagePayload = null, templates = [], currentTemplate = null;
   var audio = new Audio(), current = null;
   audio.preload = "none";   // 预览音频只在点击时下载，首屏不拉 13MB
 
@@ -1058,14 +1061,15 @@
       el.className = "tile item-card";
       el.innerHTML = '<div class="card-media image"><img src="' + d.img + '" alt="' + d.title + '">' +
         '<button type="button" class="media-play" aria-label="' + d.title + '"></button>' +
-        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + UI.use_recipe + '">' + UI.use_recipe + '</button></div></div>' +
+        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + (UI.create_similar||UI.use_recipe) + '">' + (UI.create_similar||UI.use_recipe) + '</button></div></div>' +
         '<div class="card-info"><p class="card-title">' + d.title + '</p><p class="card-meta">' + d.meta + '</p></div>';
       el.dataset.audio = d.audio || "";
       function playDemo() { select(Object.assign({ kind: "demo" }, d)); }
       el.querySelector(".media-play").addEventListener("click", playDemo);
       el.querySelector(".card-use").addEventListener("click", function () {
         Object.keys(d.params || {}).forEach(function (k) { if (values[k] !== undefined) values[k] = d.params[k]; });
-        renderRail(); applied(d.title);
+        currentTemplate = null; renderTemplateSelect();
+        fetch(d.img).then(function(r){return r.blob()}).then(function(blob){var reader=new FileReader();reader.onload=function(){var raw=String(reader.result);imagePayload={data:raw.split(",")[1],mime:blob.type||"image/jpeg"};setMode("photo");renderRail();applied(d.title)};reader.readAsDataURL(blob)}).catch(function(){renderRail();applied(d.title)});
       });
       thumbs.appendChild(el);
     });
@@ -1270,10 +1274,26 @@
 
   // 基础项常显；其余归入「专业」并默认折叠
   var BASIC = { duration_seconds:1, loop:1, vocal:1, vocal_language:1, bpm:1, mood:1, genre:1, instrumentation:1 };
+  function fieldEditable(key) {
+    var contract = currentTemplate && currentTemplate.contract;
+    return !contract || (contract.editable_fields || []).indexOf(key) >= 0;
+  }
+  function renderTemplateSelect() {
+    var box = $("templateSelect"); if (!box) return;
+    box.innerHTML = '<option value="">' + UI.off + '</option>';
+    templates.filter(function(r){return r.is_system}).forEach(function(r){var o=document.createElement("option");o.value=String(r.id);o.textContent=(UI.recipe_names&&UI.recipe_names[r.slug])||r.name;o.selected=!!(currentTemplate&&currentTemplate.id===r.id);box.appendChild(o)});
+    box.onchange=function(){var found=templates.filter(function(r){return String(r.id)===box.value})[0]||null;selectTemplate(found)};
+  }
+  function selectTemplate(template, snapshot) {
+    currentTemplate=template||null;
+    if (currentTemplate) Object.keys(currentTemplate.params||{}).forEach(function(k){values[k]=currentTemplate.params[k]});
+    Object.keys(snapshot||{}).forEach(function(k){if(values[k]!==undefined)values[k]=snapshot[k]});
+    renderTemplateSelect();renderRail();applied(currentTemplate?((UI.recipe_names&&UI.recipe_names[currentTemplate.slug])||currentTemplate.name):UI.off);
+  }
   function renderRail() {
     var box = $("rail"); box.innerHTML = "";
     var basic = [], pro = [];
-    schema.fields.forEach(function (f) { (BASIC[f.key] ? basic : pro).push(f); });
+    schema.fields.filter(function(f){return fieldEditable(f.key)}).forEach(function (f) { (BASIC[f.key] ? basic : pro).push(f); });
     basic.forEach(function (f) { box.appendChild(groupOf(f)); });
     if (pro.length) {
       var head = document.createElement("button");
@@ -1439,6 +1459,7 @@
 
   // ---- 配方 ----
   function renderRecipes(items) {
+    templates = items || []; renderTemplateSelect();
     var box = $("recipes"); box.innerHTML = "";
     items.filter(function (r) { return r.is_system; }).forEach(function (r) {
       var el = document.createElement("div");
@@ -1447,12 +1468,11 @@
       var locName = (UI.recipe_names && UI.recipe_names[r.slug]) || r.name;
       el.dataset.audio = r.sample_url || "";
       el.innerHTML = '<div class="card-media"><button type="button" class="media-play" aria-label="' + locName + '">' + wave(waveformForAudio(r.sample_url)) + '</button>' +
-        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + UI.use_recipe + '">' + UI.use_recipe + '</button></div></div>' +
+        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + (UI.create_similar||UI.use_recipe) + '">' + (UI.create_similar||UI.use_recipe) + '</button></div></div>' +
         '<div class="card-info"><p class="card-title">' + locName + '</p><p class="card-meta">' + paramSummary(p) + '</p></div>';
       function playRecipe() { if (r.sample_url) select({ kind: "recipe", audio: r.sample_url, title: locName, meta: "preset" }); }
       function useRecipe() {
-        Object.keys(p).forEach(function (k) { if (k.indexOf("__") !== 0) values[k] = p[k]; });
-        renderRail(); applied(locName);
+        selectTemplate(r, p);
       }
       el.querySelector(".media-play").addEventListener("click", playRecipe);
       el.querySelector(".card-use").addEventListener("click", useRecipe);
@@ -1540,9 +1560,10 @@
     if (!sessionOk) { needLogin(); return; }
     $("go").disabled = true;
     msg(UI.generating);
-    var body = { params: values };
+    var body = { params: values, recipe_id: currentTemplate && currentTemplate.id };
     if (mode === "photo") {
-      if (imagePayload) body.image = imagePayload;
+      if (imagePayload && imagePayload.mime === "image/url") body.reference_url = imagePayload.reference_url;
+      else if (imagePayload) body.image = imagePayload;
     } else {
       var note = ($("desc").value || "").trim();
       if (note) body.description = note;
@@ -1736,10 +1757,11 @@
   // ---- 我的作品（登录后显示） ----
   var mineItems = [];
   function applyMine(it) {
-    Object.keys(it.params || {}).forEach(function (k) {
-      if (values[k] !== undefined) values[k] = it.params[k];
-    });
-    renderRail(); applied(UI.my_track);
+    var template=templates.filter(function(r){return r.id===it.recipe_id||r.slug===it.recipe_slug})[0]||null;
+    currentTemplate=template;
+    Object.keys(it.params || {}).forEach(function (k) { if (values[k] !== undefined) values[k] = it.params[k]; });
+    if(it.description){$("desc").value=it.description;setMode("text")}else if(it.reference_url){loadPhotoFromUrl(it.cover);imagePayload={mime:"image/url",reference_url:it.reference_url};setMode("photo")}
+    renderTemplateSelect();renderRail(); applied(UI.my_track);
   }
 
   // 作品摘要：让用户看得出"用了什么配方"（没有封面时尤其重要）
@@ -1764,7 +1786,7 @@
       ? '<img src="' + it.cover + '" alt="" loading="lazy"><button type="button" class="media-play" aria-label="' + UI.my_track + '"></button>'
       : '<button type="button" class="media-play" aria-label="' + UI.my_track + '">' + wave(it.waveform) + '</button>';
     b.innerHTML = '<div class="card-media' + (hasCover ? ' image' : '') + '">' + media +
-      '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + UI.use_recipe + '">' + UI.use_recipe + '</button></div>' +
+      '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + (UI.create_similar||UI.use_recipe) + '">' + (UI.create_similar||UI.use_recipe) + '</button></div>' +
       '<button type="button" class="card-more" aria-label="' + UI.more_actions + '">•••</button>' +
       '<div class="card-menu hidden"><button type="button" class="menu-share">' + UI.share_link + '</button>' +
       '<button type="button" class="menu-delete danger">' + UI.delete_track + '</button></div></div>' +
@@ -1890,7 +1912,8 @@
       mineItems = allItems.filter(function (it) { return it.status === "done"; }).map(function (it) {
         return Object.assign({}, it, {
           url: it.url ? API + it.url : "",
-          cover: it.cover ? API + it.cover : ""
+          cover: it.cover ? API + it.cover : "",
+          reference_url: it.cover || ""
         });
       });
       renderMineRow();
