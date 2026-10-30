@@ -849,6 +849,7 @@
     .utilitybar .alink{padding:7px 7px;font-size:10.5px}
   }
   @media(max-width:370px){.utility-brand span{display:none}.utilitybar .bal{max-width:84px}}
+  .template-help{margin:6px 0 0;color:var(--mut);font-size:10.5px;line-height:1.45}
 </style>
 </head>
 <body>
@@ -860,6 +861,8 @@
     <p class="sub">從照片或描述開始。長度精確、循環無縫。</p>
 
     <div class="prechip" id="prechip"></div>
+
+    <div class="sect template-picker"><div class="lbl"><span>創作模板</span></div><select class="select" id="templateSelect"><option value="">無</option></select><p class="template-help">選一個用途，參數已經配好</p></div>
 
     <div class="shared hidden" id="shared"></div>
 
@@ -961,8 +964,9 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "AI 音樂生成 — 照片變歌曲，長度精確", "description": "用照片或描述生成 30–90 秒精確長度的背景音樂。歌詞唱出照片裡的內容，支援 10 種語言人聲與無縫循環。", "h1": "做一首曲子", "sub": "從照片或描述開始。長度精確、循環無縫。", "drop": "拖入或選擇照片<br>歌詞會唱出照片裡的內容", "generate": "生成曲子", "how_credits": "額度怎麼算 →", "grp_photo": "聽聽效果", "grp_recipe": "從場景開始", "download": "下載", "save_recipe": "存為配方", "use_recipe": "使用配方", "remove_photo": "移除照片", "photo_here": "你的照片放這裡", "note": "右邊的東西都是在這裡做的", "legal_aup": "可接受使用", "legal_refund": "退款政策", "sign_in_first": "登入後即可生成", "generating": "生成中……約 20 秒。", "just_generated": "剛生成", "your_track": "你的曲子", "from_recipe": "來自配方", "from_photo": "由照片生成", "err_load": "無法載入選項", "done_in": "{n} 秒完成", "gen_cost": "生成 · {n}", "err_gen": "生成失敗", "my_track": "我的曲子", "err_net": "網路錯誤", "recipe_name": "配方名稱", "err_save": "儲存失敗", "saved": "已儲存：{name}", "up_to": "最多 {n}", "credits": "額度", "guides_link": "指南 →", "guides_title": "指南", "close": "關閉", "loading": "載入中…", "off": "關閉", "loop_on": "無縫循環", "buy_credits": "購買額度 →", "desc_label": "補充描述（可選）", "desc_ph": "描述你想要的曲子，例如：雨天的咖啡館，鋼琴為主", "mode_photo": "用照片", "mode_text": "用文字", "field_density": "編曲密度", "opt_sparse": "稀疏", "opt_medium": "適中", "opt_full": "密集", "pro_title": "專業選項", "grp_photo_sub": "照片 → 歌詞 → 曲子", "grp_recipe_sub": "選一個用途，參數已經配好", "recipe_names": {"short-form-cut": "快剪短视频", "hook-sting": "Gancho de apertura", "product-loop": "Bucle de producto", "podcast-bed": "Base para pódcast", "documentary-underscore": "Base documental", "game-menu-loop": "Bucle de menú", "calm-focus": "Concentración", "kids-learning": "Infantil y aprendizaje"}, "applied": "將使用", "current_recipe": "目前配方", "mine_title": "我的作品", "share_link": "分享連結", "delete_track": "刪除", "delete_track_confirm": "確定永久刪除這首曲子嗎？此操作無法復原。", "more_actions": "更多操作", "dl_audio": "下載音訊", "copied": "已複製", "shared_note": "你正在聽一首分享的曲子，下面可以做你自己的", "my_account": "帳戶", "balance": "餘額", "pricing_label": "價格", "confirm_gen": "生成一首 {sec} 秒的曲子？將消耗 {n}。", "confirm_gen_approx": "生成一首約 {sec} 秒的曲子？將消耗 {n}。", "duration_integrity_note": "為保留完整樂句與自然收尾，非循環音樂的實際時長可能略有差異。", "err_insufficient": "額度不足", "topup_hint": "儲值後即可繼續生成。", "topup_cta": "去儲值", "cancel": "取消", "confirm": "確定", "not_signed_in": "未登入", "traveler": "旅行者", "view_all": "查看全部", "my_works_pick": "選一個，重用它當時的參數", "pay_title": "購買額度", "pay_success": "付款成功，額度已到帳。", "pay_opening": "正在跳轉付款…"}</script>
+<script type="application/json" id="ui">{"title": "AI 音樂生成 — 照片變歌曲，長度精確", "description": "用照片或描述生成 30–90 秒精確長度的背景音樂。歌詞唱出照片裡的內容，支援 10 種語言人聲與無縫循環。", "h1": "做一首曲子", "sub": "從照片或描述開始。長度精確、循環無縫。", "drop": "拖入或選擇照片<br>歌詞會唱出照片裡的內容", "generate": "生成曲子", "how_credits": "額度怎麼算 →", "grp_photo": "聽聽效果", "grp_recipe": "從場景開始", "download": "下載", "save_recipe": "存為模板", "use_recipe": "生成同款", "remove_photo": "移除照片", "photo_here": "你的照片放這裡", "note": "右邊的東西都是在這裡做的", "legal_aup": "可接受使用", "legal_refund": "退款政策", "sign_in_first": "登入後即可生成", "generating": "生成中……約 20 秒。", "just_generated": "剛生成", "your_track": "你的曲子", "from_recipe": "來自模板", "from_photo": "由照片生成", "err_load": "無法載入選項", "done_in": "{n} 秒完成", "gen_cost": "生成 · {n}", "err_gen": "生成失敗", "my_track": "我的曲子", "err_net": "網路錯誤", "recipe_name": "模板名稱", "err_save": "儲存失敗", "saved": "已儲存：{name}", "up_to": "最多 {n}", "credits": "額度", "guides_link": "指南 →", "guides_title": "指南", "close": "關閉", "loading": "載入中…", "off": "關閉", "loop_on": "無縫循環", "buy_credits": "購買額度 →", "desc_label": "補充描述（可選）", "desc_ph": "描述你想要的曲子，例如：雨天的咖啡館，鋼琴為主", "mode_photo": "用照片", "mode_text": "用文字", "field_density": "編曲密度", "opt_sparse": "稀疏", "opt_medium": "適中", "opt_full": "密集", "pro_title": "專業選項", "grp_photo_sub": "照片 → 歌詞 → 曲子", "grp_recipe_sub": "選一個用途，參數已經配好", "recipe_names": {"short-form-cut": "快剪短视频", "hook-sting": "Gancho de apertura", "product-loop": "Bucle de producto", "podcast-bed": "Base para pódcast", "documentary-underscore": "Base documental", "game-menu-loop": "Bucle de menú", "calm-focus": "Concentración", "kids-learning": "Infantil y aprendizaje"}, "applied": "將使用", "current_recipe": "創作模板", "template_none": "無", "mine_title": "我的作品", "share_link": "分享連結", "delete_track": "刪除", "delete_track_confirm": "確定永久刪除這首曲子嗎？此操作無法復原。", "more_actions": "更多操作", "dl_audio": "下載音訊", "copied": "已複製", "shared_note": "你正在聽一首分享的曲子，下面可以做你自己的", "my_account": "帳戶", "balance": "餘額", "pricing_label": "價格", "confirm_gen": "生成一首 {sec} 秒的曲子？將消耗 {n}。", "confirm_gen_approx": "生成一首約 {sec} 秒的曲子？將消耗 {n}。", "duration_integrity_note": "為保留完整樂句與自然收尾，非循環音樂的實際時長可能略有差異。", "err_insufficient": "額度不足", "topup_hint": "儲值後即可繼續生成。", "topup_cta": "去儲值", "cancel": "取消", "confirm": "確定", "not_signed_in": "未登入", "traveler": "旅行者", "view_all": "查看全部", "my_works_pick": "選一個，重用它當時的參數", "pay_title": "購買額度", "pay_success": "付款成功，額度已到帳。", "pay_opening": "正在跳轉付款…"}</script>
 <script src="../../assets/wallet.js"></script>
+<script src="../../assets/share.js"></script>
 <script>
 (function () {
   "use strict";
@@ -1006,7 +1010,8 @@
       params: { duration_seconds:30, loop:false, bpm:92, mood:"hopeful", genre:"acoustic", instrumentation:["guitar","bells"], density:"medium", drums:"soft", vocal:"female", vocal_language:"ja" } }
   ];
 
-  var schema = null, values = {}, imagePayload = null;
+  var schema = null, values = {}, imagePayload = null, templates = [], currentTemplate = null;
+  var templatesLoaded = false, pendingSharedRecipe = null;
   var audio = new Audio(), current = null;
   audio.preload = "none";   // 预览音频只在点击时下载，首屏不拉 13MB
 
@@ -1058,14 +1063,15 @@
       el.className = "tile item-card";
       el.innerHTML = '<div class="card-media image"><img src="' + d.img + '" alt="' + d.title + '">' +
         '<button type="button" class="media-play" aria-label="' + d.title + '"></button>' +
-        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + UI.use_recipe + '">' + UI.use_recipe + '</button></div></div>' +
+        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + (UI.create_similar||UI.use_recipe) + '">' + (UI.create_similar||UI.use_recipe) + '</button></div></div>' +
         '<div class="card-info"><p class="card-title">' + d.title + '</p><p class="card-meta">' + d.meta + '</p></div>';
       el.dataset.audio = d.audio || "";
       function playDemo() { select(Object.assign({ kind: "demo" }, d)); }
       el.querySelector(".media-play").addEventListener("click", playDemo);
       el.querySelector(".card-use").addEventListener("click", function () {
         Object.keys(d.params || {}).forEach(function (k) { if (values[k] !== undefined) values[k] = d.params[k]; });
-        renderRail(); applied(d.title);
+        currentTemplate = null; renderTemplateSelect();
+        fetch(d.img).then(function(r){return r.blob()}).then(function(blob){var reader=new FileReader();reader.onload=function(){var raw=String(reader.result);imagePayload={data:raw.split(",")[1],mime:blob.type||"image/jpeg"};setMode("photo");renderRail();applied(d.title)};reader.readAsDataURL(blob)}).catch(function(){renderRail();applied(d.title)});
       });
       thumbs.appendChild(el);
     });
@@ -1270,10 +1276,26 @@
 
   // 基础项常显；其余归入「专业」并默认折叠
   var BASIC = { duration_seconds:1, loop:1, vocal:1, vocal_language:1, bpm:1, mood:1, genre:1, instrumentation:1 };
+  function fieldEditable(key) {
+    var contract = currentTemplate && currentTemplate.contract;
+    return !contract || (contract.editable_fields || []).indexOf(key) >= 0;
+  }
+  function renderTemplateSelect() {
+    var box = $("templateSelect"); if (!box) return;
+    box.innerHTML = '<option value="">' + UI.template_none + '</option>';
+    templates.filter(function(r){return r.is_system}).forEach(function(r){var o=document.createElement("option");o.value=String(r.id);o.textContent=(UI.recipe_names&&UI.recipe_names[r.slug])||r.name;o.selected=!!(currentTemplate&&currentTemplate.id===r.id);box.appendChild(o)});
+    box.onchange=function(){var found=templates.filter(function(r){return String(r.id)===box.value})[0]||null;selectTemplate(found)};
+  }
+  function selectTemplate(template, snapshot) {
+    currentTemplate=template||null;
+    if (currentTemplate) Object.keys(currentTemplate.params||{}).forEach(function(k){values[k]=currentTemplate.params[k]});
+    Object.keys(snapshot||{}).forEach(function(k){if(values[k]!==undefined)values[k]=snapshot[k]});
+    renderTemplateSelect();renderRail();applied(currentTemplate?((UI.recipe_names&&UI.recipe_names[currentTemplate.slug])||currentTemplate.name):UI.template_none);
+  }
   function renderRail() {
     var box = $("rail"); box.innerHTML = "";
     var basic = [], pro = [];
-    schema.fields.forEach(function (f) { (BASIC[f.key] ? basic : pro).push(f); });
+    schema.fields.filter(function(f){return fieldEditable(f.key)}).forEach(function (f) { (BASIC[f.key] ? basic : pro).push(f); });
     basic.forEach(function (f) { box.appendChild(groupOf(f)); });
     if (pro.length) {
       var head = document.createElement("button");
@@ -1439,6 +1461,7 @@
 
   // ---- 配方 ----
   function renderRecipes(items) {
+    templates = items || []; templatesLoaded = true; renderTemplateSelect();
     var box = $("recipes"); box.innerHTML = "";
     items.filter(function (r) { return r.is_system; }).forEach(function (r) {
       var el = document.createElement("div");
@@ -1447,12 +1470,11 @@
       var locName = (UI.recipe_names && UI.recipe_names[r.slug]) || r.name;
       el.dataset.audio = r.sample_url || "";
       el.innerHTML = '<div class="card-media"><button type="button" class="media-play" aria-label="' + locName + '">' + wave(waveformForAudio(r.sample_url)) + '</button>' +
-        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + UI.use_recipe + '">' + UI.use_recipe + '</button></div></div>' +
+        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + (UI.create_similar||UI.use_recipe) + '">' + (UI.create_similar||UI.use_recipe) + '</button></div></div>' +
         '<div class="card-info"><p class="card-title">' + locName + '</p><p class="card-meta">' + paramSummary(p) + '</p></div>';
       function playRecipe() { if (r.sample_url) select({ kind: "recipe", audio: r.sample_url, title: locName, meta: "preset" }); }
       function useRecipe() {
-        Object.keys(p).forEach(function (k) { if (k.indexOf("__") !== 0) values[k] = p[k]; });
-        renderRail(); applied(locName);
+        selectTemplate(r, p);
       }
       el.querySelector(".media-play").addEventListener("click", playRecipe);
       el.querySelector(".card-use").addEventListener("click", useRecipe);
@@ -1460,6 +1482,7 @@
     });
     drawWaveforms(box);
     requestAnimationFrame(updateRailNav);
+    restoreSharedRecipe();
   }
 
   // 套用配方后的反馈：按钮上方出现"将使用…"，并把生成按钮滚进视野
@@ -1540,9 +1563,10 @@
     if (!sessionOk) { needLogin(); return; }
     $("go").disabled = true;
     msg(UI.generating);
-    var body = { params: values };
+    var body = { params: values, recipe_id: currentTemplate && currentTemplate.id };
     if (mode === "photo") {
-      if (imagePayload) body.image = imagePayload;
+      if (imagePayload && imagePayload.mime === "image/url") body.reference_url = imagePayload.reference_url;
+      else if (imagePayload) body.image = imagePayload;
     } else {
       var note = ($("desc").value || "").trim();
       if (note) body.description = note;
@@ -1684,36 +1708,11 @@
   }
 
   function shareOrCopy(link, title) {
-    var payload = { title: title || document.title, url: link };
-    var canUseSystemShare = typeof navigator.share === "function" &&
-      (typeof navigator.canShare !== "function" || navigator.canShare(payload));
-    if (canUseSystemShare) {
-      return navigator.share(payload).catch(function (err) {
-        // Closing the native share sheet is intentional; do not replace it with a copy action.
-        if (err && err.name === "AbortError") return;
-        return copyText(link).then(function () { toast(UI.copied); }).catch(function () { toast(UI.err_net); });
-      });
-    }
-    return copyText(link).then(function () { toast(UI.copied); }).catch(function () { toast(UI.err_net); });
-  }
-
-  function copyText(text) {
-    if (navigator.clipboard && window.isSecureContext) {
-      return navigator.clipboard.writeText(text).catch(function () { return legacyCopyText(text); });
-    }
-    return legacyCopyText(text);
-  }
-
-  function legacyCopyText(text) {
-    return new Promise(function (resolve, reject) {
-      var input = document.createElement("textarea");
-      input.value = text; input.setAttribute("readonly", "");
-      input.style.position = "fixed"; input.style.opacity = "0"; input.style.pointerEvents = "none";
-      document.body.appendChild(input); input.select(); input.setSelectionRange(0, input.value.length);
-      var copied = false;
-      try { copied = document.execCommand("copy"); } catch (_) {}
-      input.remove();
-      if (copied) resolve(); else reject(new Error("copy failed"));
+    return AiglossaShare.shareOrCopy({
+      title: title || document.title,
+      url: link,
+      onCopied: function () { toast(UI.copied); },
+      onError: function () { toast(UI.err_net); }
     });
   }
 
@@ -1722,24 +1721,37 @@
   }
 
   // 从独立分享页进入创作页：?from=<id>.<token> → 读取公开作品并填充同款参数。
+  function restoreSharedRecipe() {
+    if (!schema || !templatesLoaded || !pendingSharedRecipe) return;
+    var it = pendingSharedRecipe; pendingSharedRecipe = null;
+    var template = templates.filter(function (r) {
+      return r.id === it.recipe_id || (it.recipe_slug && r.slug === it.recipe_slug);
+    })[0] || null;
+    selectTemplate(template, it.params || {});
+    if (it.description) {
+      $("desc").value = it.description;
+      setMode("text");
+    }
+  }
+
   function loadSharedRecipe() {
     var m = /[?&]from=(\d+)\.([a-f0-9]+)/.exec(location.search);
     if (!m) return;
     call("/ai/music/public/" + m[1], { t: m[2] }, false).then(function (d) {
       if (d.code !== 200) return;
-      var it = d.data;
-      Object.keys(it.params || {}).forEach(function (k) { if (values[k] !== undefined) values[k] = it.params[k]; });
-      renderRail(); applied(UI.from_photo);
+      pendingSharedRecipe = d.data;
+      restoreSharedRecipe();
     }).catch(function () {});
   }
 
   // ---- 我的作品（登录后显示） ----
   var mineItems = [];
   function applyMine(it) {
-    Object.keys(it.params || {}).forEach(function (k) {
-      if (values[k] !== undefined) values[k] = it.params[k];
-    });
-    renderRail(); applied(UI.my_track);
+    var template=templates.filter(function(r){return r.id===it.recipe_id||r.slug===it.recipe_slug})[0]||null;
+    currentTemplate=template;
+    Object.keys(it.params || {}).forEach(function (k) { if (values[k] !== undefined) values[k] = it.params[k]; });
+    if(it.description){$("desc").value=it.description;setMode("text")}else if(it.reference_url){loadPhotoFromUrl(it.cover);imagePayload={mime:"image/url",reference_url:it.reference_url};setMode("photo")}
+    renderTemplateSelect();renderRail(); applied(UI.my_track);
   }
 
   // 作品摘要：让用户看得出"用了什么配方"（没有封面时尤其重要）
@@ -1764,7 +1776,7 @@
       ? '<img src="' + it.cover + '" alt="" loading="lazy"><button type="button" class="media-play" aria-label="' + UI.my_track + '"></button>'
       : '<button type="button" class="media-play" aria-label="' + UI.my_track + '">' + wave(it.waveform) + '</button>';
     b.innerHTML = '<div class="card-media' + (hasCover ? ' image' : '') + '">' + media +
-      '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + UI.use_recipe + '">' + UI.use_recipe + '</button></div>' +
+      '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + (UI.create_similar||UI.use_recipe) + '">' + (UI.create_similar||UI.use_recipe) + '</button></div>' +
       '<button type="button" class="card-more" aria-label="' + UI.more_actions + '">•••</button>' +
       '<div class="card-menu hidden"><button type="button" class="menu-share">' + UI.share_link + '</button>' +
       '<button type="button" class="menu-delete danger">' + UI.delete_track + '</button></div></div>' +
@@ -1890,7 +1902,8 @@
       mineItems = allItems.filter(function (it) { return it.status === "done"; }).map(function (it) {
         return Object.assign({}, it, {
           url: it.url ? API + it.url : "",
-          cover: it.cover ? API + it.cover : ""
+          cover: it.cover ? API + it.cover : "",
+          reference_url: it.cover || ""
         });
       });
       renderMineRow();
@@ -2057,7 +2070,10 @@
     renderRail(); syncCost();
     fetch("../../samples/waveforms.json").then(function (r) { return r.json(); }).then(function (w) { WAVEFORMS = w || {}; }).catch(function () {}).then(function () {
       renderPhotos();
-      call("/ai/music/recipes/list", {}, false).then(function (r) { if (r.code === 200) renderRecipes(r.data || []); });
+      call("/ai/music/recipes/list", {}, false).then(function (r) {
+        if (r.code === 200) renderRecipes(r.data || []);
+        else { templatesLoaded = true; restoreSharedRecipe(); }
+      }).catch(function () { templatesLoaded = true; restoreSharedRecipe(); });
     });
   });
   // 指南：弹窗内切换，不跳页；文章页本身仍可直接访问（SEO）

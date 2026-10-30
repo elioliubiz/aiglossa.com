@@ -54,6 +54,45 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 - 指向源码站的链接（如法律页）显式带语言：`https://aiglossa.com/<lang>/protocol/privacy.html`。
 - 生成器里的片段若要拼前缀，用 `{{prefix}}`；`render()` 只替换一遍，插入片段里的占位符需要 `emit()` 里补替换（见 `build.py`）。
 
+## 页面结构变更与 SEO（改结构时必须同步）
+
+改 URL、加删页面、调整 noindex 时，**必须**同时检查下面四处，漏一处就会出现
+"sitemap 里有不存在的地址"或"noindex 页面被提交"这类问题：
+
+| 位置 | 要做什么 |
+|---|---|
+| `tools/build.py` 的 `_site_urls()` | 新页面加入 sitemap；`noindex` 页面（login / account / refund）显式 `continue` |
+| 同上 | **页面键 ≠ 输出文件名时要显式映射**（如 `webpricing` → `pricing.html`） |
+| `vercel.json` | 旧 URL 加 301/308 到新地址；跨站迁移要带 `has host` 限定，否则会自己跳自己 |
+| 模板 | canonical 指向**自身 host**；hreflang 只在本 host 内闭环，不跨站混排 |
+
+硬规则：
+
+- `noindex` 的页面永远不进 sitemap。
+- 产品页的 canonical **绝不**指向主站，否则等于告诉 Google 这是重复内容。
+- 认证 / 支付页集中在主站（见下文「统一网页账户」），子站只允许 308 过去，不要各写一份。
+- sitemap 每条 URL 必须带 `<lastmod>`（构建时生成），否则搜索引擎判断不了"内容变了"。
+
+构建后自检（必须实际执行，不要假设）：
+
+```bash
+grep -c "<loc>" sites/tools/sitemap.xml sites/root/sitemap.xml
+grep -o "<loc>[^<]*</loc>" sites/root/sitemap.xml | grep -E "/(account|login)\.html" | grep -v delete-account   # 应为空
+grep -c "webpricing" sites/root/sitemap.xml   # 应为 0
+```
+
+部署后自检：
+
+```bash
+curl -s -o /dev/null -w "%{http_code} → %{redirect_url}\n" https://tools.aiglossa.com/en/make.html
+curl -s https://aiglossa.com/sitemap.xml | grep -c lastmod
+```
+
+GSC 侧：**结构变更本身不需要任何操作**。Google 会按固定节奏重抓 sitemap 与内链，
+自动用 301/308 替换旧地址。只有三种情况要进 GSC：换域名（用「更改地址」）、
+旧地址返回 404（先修跳转）、想加快收录（URL 检查 → 请求编入索引）。
+不要反复重提 sitemap，也不要用「移除」工具处理已 301 的地址。
+
 ## 边界：哪些域名不属于这个仓库
 
 | 域名 | 归属 | 这个仓库能不能动 |
@@ -86,6 +125,30 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 | `tools/build.py` 的 `PAGES` | `"<tool>": ("pages/<tool>.html", "ui", "<tool>/index.html")` |
 | `tools/verify.py` 的 `PAGES` | `return [("<tool>/index.html", "<tool>/")]` |
 | `vercel.json` | rewrite `/:lang/<tool>/` → `/sites/tools/:lang/<tool>/index.html`；sitemap 的 `url_for` 加分支 |
+
+### 生成类工具的模板与创作快照
+
+- 音乐、图片、视频是独立业务页面，禁止合成一个通用页面模板、基类控制器或充满 `tool === ...` 分支的大脚本。图片内部的快速创作与构图创作属于图片自己的模式，也不受音乐页面结构约束。
+- 前端复用只发生在稳定基础层：`theme.css` 设计变量、钱包/系统分享等无业务纯工具、以及确实拥有相同 DOM 契约的小组件。页面布局、表单顺序、媒体交互与作品渲染各自实现；不要为了消除表面重复提前抽象。
+
+- 面向用户统一称“创作模板”，不要把 `recipe` 直译成“配方”；右侧作品和示例的操作统一称“生成同款”。后端表名和字段可继续保留 `recipe`。
+- 模板不是普通参数预设。它同时定义核心描述、固定参数、允许用户调整的字段及默认值，并可带有按用途标注的官方参考素材。模板核心内容与用户描述/参考素材合并，不能用一方覆盖另一方。
+- 未选择模板时展示完整自由创作字段；选择模板后只展示 `contract.editable_fields`，固定字段不得出现在表单中，也必须由服务端拒绝覆盖，不能只靠前端隐藏。
+- 作品必须保存完整创作快照：模板 id/slug/版本、解析后的最终参数、用户描述及输入素材引用。点击“生成同款”恢复这份现场，而不是只选择模板或只复制展开后的参数。
+- 官方示例素材可复用；用户私有参考素材默认只允许本人恢复，不随公开分享返回。以后增加公开参考素材时必须是分享时的明确选择，不能改变默认隐私边界。
+- 小屏幕生成页先展示“我的作品”和示例，再展示创作表单；音乐、图片及后续视频保持相同的信息顺序，降低学习成本。
+
+### 图片快速创作
+
+- 图片入口固定为 `/{lang}/image/`，分享页为 `/{lang}/image/share/?t=<id>.<token>`。
+- 快速创作沿用音乐页的结构认知：左侧创作模板，右侧“我的作品”与可复用示例；不得复制音乐播放逻辑。
+- 页面必须展示“快速创作 / 构图创作 · 即将推出”的可见模式选择，不用下拉隐藏未来能力。
+- 图片描述是自由创作的第一入口；模板必须可选且默认“自由创作”，不得强迫用户先选模板。模板存在核心描述时，用户描述是可选的补充。
+- 风格使用分组下拉；基础区展示描述、最多四张参考图、可选配方、比例、风格、颜色和短文字，专业区折叠展示构图、光线、镜头感、细节、参考图用途与排除内容。用户不选择 Gemini 模型或分辨率。
+- 右侧示例至少分“用途”和“风格”两组，每张必须使用独立主体与视觉语言；禁止用同一底图或近似变体冒充多个示例。
+- 分享页是独立图片查看器，支持缩放、适应屏幕、全屏和系统分享/复制链接；从分享复用时通过公开令牌带回配方快照。
+- 购买额度仍使用 `assets/wallet.js`：原页弹窗选择额度、新标签结账、到账后关闭并刷新余额，不跳走创作页。
+- 生产环境在用户明确验收前不得更新；先部署 `dev` 到 `tools.staging.aiglossa.com`。
 
 模板在深度 2，资源按 `{{prefix}}` 自动变成 `../../`；站内跳转回语言根用 `../pricing.html`。
 

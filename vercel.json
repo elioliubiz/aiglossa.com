@@ -714,6 +714,26 @@
       "destination": "/sites/tools/:lang/music/share/index.html"
     },
     {
+      "source": "/:lang/image/",
+      "has": [{"type": "host", "value": "tools.aiglossa.com"}],
+      "destination": "/sites/tools/:lang/image/index.html"
+    },
+    {
+      "source": "/:lang/image/share/",
+      "has": [{"type": "host", "value": "tools.aiglossa.com"}],
+      "destination": "/sites/tools/:lang/image/share/index.html"
+    },
+    {
+      "source": "/:lang/image/share/",
+      "has": [{"type": "host", "value": "tools.staging.aiglossa.com"}],
+      "destination": "/sites/tools/:lang/image/share/index.html"
+    },
+    {
+      "source": "/:lang/image/",
+      "has": [{"type": "host", "value": "tools.staging.aiglossa.com"}],
+      "destination": "/sites/tools/:lang/image/index.html"
+    },
+    {
       "source": "/:lang/music/share/",
       "has": [{"type": "host", "value": "tools.staging.aiglossa.com"}],
       "destination": "/sites/tools/:lang/music/share/index.html"

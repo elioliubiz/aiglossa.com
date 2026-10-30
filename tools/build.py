@@ -40,6 +40,24 @@ ASSETS = ROOT / "assets"
 # 于是"模板里有占位符、文案里没有对应字段"会在构建时报错，而不是静默留下 {{...}}。
 PLACEHOLDER = re.compile(r"\{\{([a-zA-Z0-9_]+)\}\}")
 
+
+def missing_translation_paths(common: dict, localized: dict, prefix: str = "") -> list[str]:
+    """Return visible common-copy leaves that a localized image page still inherits in English."""
+    missing: list[str] = []
+    for key, value in common.items():
+        if not prefix and key == "examples":
+            continue  # Language-neutral records; their visible names live in example_names.
+        path = f"{prefix}.{key}" if prefix else key
+        if isinstance(value, dict):
+            child = localized.get(key, {})
+            if not isinstance(child, dict):
+                missing.append(path)
+            else:
+                missing.extend(missing_translation_paths(value, child, path))
+        elif key not in localized:
+            missing.append(path)
+    return missing
+
 # 协议页：模板在 templates/protocol/<name>.html，输出 <lang>/protocol/<name>.html。
 PROTOCOL_PAGES = ("privacy", "term", "delete-account")
 
@@ -59,6 +77,8 @@ PAGES = {
     "acceptable-use": ("pages/legal.html", "ui", "acceptable-use.html"),
     "music": ("pages/make.html", "ui", "music/index.html"),
     "music-share": ("pages/share.html", "ui", "music/share/index.html"),
+    "image": ("pages/image.html", "image", "image/index.html"),
+    "image-share": ("pages/image-share.html", "image", "image/share/index.html"),
     # 指南（内容页）：英文优先，生成到 /en/guides/<slug>.html
     "guides": ("pages/guide.html", "guides", "guides/{slug}.html"),
     # 每个工具一个目录（/{lang}/music/、未来 /{lang}/image/），全局页仍在语言根
@@ -279,7 +299,9 @@ def _site_urls(site: str, spec: dict) -> list[str]:
                 urls.append((f"guides/{slug}.html", [c for c in langs_with_guides if slug in guides[c]]))
         elif page == "music":
             urls.append(("music/", None))
-        elif page in ("account", "webaccount", "refund", "login"):
+        elif page == "image":
+            urls.append(("image/", None))
+        elif page in ("account", "webaccount", "refund", "login", "music-share", "image-share"):
             continue          # noindex / 内部页面，不进 sitemap
         elif page == "webpricing":
             urls.append(("pricing.html", None))   # 输出文件名与页面键不同
@@ -464,6 +486,16 @@ def main() -> int:
             if missing:
                 print(f"✗ {source_key} 缺语言：{missing}", file=sys.stderr)
                 return 1
+            if source_key == "image":
+                incomplete = {
+                    lang: missing_translation_paths(source["common"], source[lang])
+                    for lang in site_langs if lang != "en"
+                }
+                incomplete = {lang: paths for lang, paths in incomplete.items() if paths}
+                if incomplete:
+                    for lang, paths in incomplete.items():
+                        print(f"✗ image.{lang} 缺翻译：{', '.join(paths)}", file=sys.stderr)
+                    return 1
 
             depth = page_path.count("/") + 1
             if page == "brand":
@@ -638,6 +670,33 @@ def main() -> int:
                     return out
 
                 values_builder = share_values
+            elif page == "image":
+                def image_values(lang: str, base: str, source=source) -> dict[str, str]:
+                    common = source["common"]
+                    copy = {**common, **source[lang]}
+                    copy["options"] = {**common.get("options", {}), **source[lang].get("options", {})}
+                    copy["recipe_names"] = {**common.get("recipe_names", {}), **source[lang].get("recipe_names", {})}
+                    out = {key: (value if isinstance(value, (dict, list)) else esc(value)) for key, value in copy.items()}
+                    out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    out["jsonld"] = json.dumps({
+                        "@context": "https://schema.org", "@type": "SoftwareApplication",
+                        "name": copy["title"], "description": copy["description"],
+                        "applicationCategory": "MultimediaApplication", "operatingSystem": "Web",
+                        "url": f"{base}/{lang}/image/", "inLanguage": languages[lang]["hreflang"],
+                    }, ensure_ascii=False).replace("</", "<\\/")
+                    return out
+                values_builder = image_values
+            elif page == "image-share":
+                def image_share_values(lang: str, base: str, source=source) -> dict[str, str]:
+                    copy = {**source["common"], **source[lang]}
+                    return {
+                        "title": esc(copy["title"]), "description": esc(copy["description"]),
+                        "share": esc(copy["share"]), "fullscreen": esc(copy["fullscreen"]),
+                        "invalid": esc(copy["share_invalid"]), "kicker": esc(copy["share_kicker"]),
+                        "shared_work": esc(copy["shared_work"]), "try_cta": esc(copy["try_cta"]),
+                        "copied": esc(copy["copied"]),
+                    }
+                values_builder = image_share_values
             elif page in ("refund", "acceptable-use"):
                 def legal_values(lang: str, base: str, page=page, source=source) -> dict[str, str]:
                     # 未翻译的语言回退到英文，并在构建报告里显式列出（不静默）

@@ -20,7 +20,7 @@ import ssl
 import urllib.parse
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent / "sites"
-UPSTREAM = "dev.aiglossa.com"
+UPSTREAM = "dev.staging.aiglossa.com"
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
