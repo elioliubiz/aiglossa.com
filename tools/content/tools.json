@@ -13,17 +13,17 @@
         "meta": "30–90 ثانية · حلقات بلا فواصل · غناء بعشر لغات"
       },
       {
-        "name": "أداة الصور",
-        "status": "قريبًا",
-        "href": "",
-        "desc": "صور المنتجات وتعديلات بسيطة، بالفكرة نفسها: نتيجة دقيقة بلا مفاجآت.",
-        "meta": "قيد التصميم"
+        "name": "إنشاء الصور",
+        "status": "متاح",
+        "href": "/image/",
+        "desc": "Create finished images from reusable recipes, a clear brief, and reference images.",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "أدوات النصوص",
+        "name": "إنشاء الفيديو",
         "status": "قريبًا",
         "href": "",
-        "desc": "أدوات نصية صغيرة للترجمة والترجمات والعناوين.",
+        "desc": "إنشاء الفيديو قادم قريبًا.",
         "meta": "قيد التصميم"
       }
     ],
@@ -46,17 +46,17 @@
         "meta": "30–90 s · nahtlose Loops · Gesang in 10 Sprachen"
       },
       {
-        "name": "Bild-Tool",
-        "status": "Demnächst",
-        "href": "",
-        "desc": "Produktfotos und einfache Bearbeitungen – gleiches Prinzip: exaktes Ergebnis, keine Überraschungen.",
-        "meta": "In Planung"
+        "name": "Bilder erstellen",
+        "status": "Verfügbar",
+        "href": "/image/",
+        "desc": "Create finished images from reusable recipes, a clear brief, and reference images.",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "Text-Tools",
+        "name": "Video erstellen",
         "status": "Demnächst",
         "href": "",
-        "desc": "Kleine Textwerkzeuge für Untertitel, Titel und Übersetzungsprüfung.",
+        "desc": "Videoerstellung folgt demnächst.",
         "meta": "In Planung"
       }
     ],
@@ -79,17 +79,17 @@
         "meta": "30–90s · seamless loops · vocals in 10 languages"
       },
       {
-        "name": "Image tool",
-        "status": "Coming soon",
-        "href": "",
-        "desc": "Product shots and simple edits, with the same idea: exact output, no surprises.",
-        "meta": "In design"
+        "name": "Image creation",
+        "status": "Live",
+        "href": "/image/",
+        "desc": "Create finished images from reusable recipes, a clear brief, and reference images.",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "Text tools",
+        "name": "Video creation",
         "status": "Coming soon",
         "href": "",
-        "desc": "Small text utilities for subtitles, titles and translation checks.",
+        "desc": "Video creation is coming next.",
         "meta": "In design"
       }
     ],
@@ -112,17 +112,17 @@
         "meta": "30–90 s · bucles sin cortes · voces en 10 idiomas"
       },
       {
-        "name": "Herramienta de imagen",
-        "status": "Próximamente",
-        "href": "",
-        "desc": "Fotos de producto y ediciones sencillas, con la misma idea: resultado exacto, sin sorpresas.",
-        "meta": "En diseño"
+        "name": "Creación de imágenes",
+        "status": "Disponible",
+        "href": "/image/",
+        "desc": "Create finished images from reusable recipes, a clear brief, and reference images.",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "Herramientas de texto",
+        "name": "Creación de vídeo",
         "status": "Próximamente",
         "href": "",
-        "desc": "Pequeñas utilidades de texto para subtítulos, títulos y revisión de traducciones.",
+        "desc": "La creación de vídeo llegará próximamente.",
         "meta": "En diseño"
       }
     ],
@@ -145,17 +145,17 @@
         "meta": "30–90 s · boucles sans coupure · voix en 10 langues"
       },
       {
-        "name": "Outil image",
-        "status": "Bientôt",
-        "href": "",
-        "desc": "Photos produit et retouches simples, même principe : un résultat exact, sans surprise.",
-        "meta": "En conception"
+        "name": "Création d’images",
+        "status": "Disponible",
+        "href": "/image/",
+        "desc": "Create finished images from reusable recipes, a clear brief, and reference images.",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "Outils texte",
+        "name": "Création vidéo",
         "status": "Bientôt",
         "href": "",
-        "desc": "De petits utilitaires de texte pour les sous-titres, les titres et la relecture de traductions.",
+        "desc": "La création vidéo arrive prochainement.",
         "meta": "En conception"
       }
     ],
@@ -178,17 +178,17 @@
         "meta": "30–90 dtk · loop mulus · vokal dalam 10 bahasa"
       },
       {
-        "name": "Alat gambar",
-        "status": "Segera hadir",
-        "href": "",
-        "desc": "Foto produk dan penyuntingan sederhana, dengan gagasan sama: hasil presisi, tanpa kejutan.",
-        "meta": "Dalam desain"
+        "name": "Kreasi gambar",
+        "status": "Tersedia",
+        "href": "/image/",
+        "desc": "Create finished images from reusable recipes, a clear brief, and reference images.",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "Alat teks",
+        "name": "Kreasi video",
         "status": "Segera hadir",
         "href": "",
-        "desc": "Utilitas teks kecil untuk subtitel, judul, dan pemeriksaan terjemahan.",
+        "desc": "Kreasi video akan segera hadir.",
         "meta": "Dalam desain"
       }
     ],
@@ -211,17 +211,17 @@
         "meta": "30–90 s · loop senza stacchi · voci in 10 lingue"
       },
       {
-        "name": "Strumento immagine",
-        "status": "In arrivo",
-        "href": "",
-        "desc": "Foto di prodotto e modifiche semplici, con la stessa idea: risultato esatto, nessuna sorpresa.",
-        "meta": "In progettazione"
+        "name": "Creazione immagini",
+        "status": "Disponibile",
+        "href": "/image/",
+        "desc": "Create finished images from reusable recipes, a clear brief, and reference images.",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "Strumenti di testo",
+        "name": "Creazione video",
         "status": "In arrivo",
         "href": "",
-        "desc": "Piccole utilità di testo per sottotitoli, titoli e revisione delle traduzioni.",
+        "desc": "La creazione video arriverà prossimamente.",
         "meta": "In progettazione"
       }
     ],
@@ -244,17 +244,17 @@
         "meta": "30〜90秒・シームレスループ・10言語のボーカル"
       },
       {
-        "name": "画像ツール",
-        "status": "近日公開",
-        "href": "",
-        "desc": "商品写真の加工と簡単な編集。同じ考え方で、出力は正確に、驚きはなし。",
-        "meta": "設計中"
+        "name": "画像作成",
+        "status": "提供中",
+        "href": "/image/",
+        "desc": "Create finished images from reusable recipes, a clear brief, and reference images.",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "テキストツール",
+        "name": "動画作成",
         "status": "近日公開",
         "href": "",
-        "desc": "字幕・タイトル・翻訳チェックのための小さなテキストツール。",
+        "desc": "動画作成は近日公開予定です。",
         "meta": "設計中"
       }
     ],
@@ -277,17 +277,17 @@
         "meta": "30~90초 · 이음새 없는 루프 · 10개 언어 보컬"
       },
       {
-        "name": "이미지 도구",
-        "status": "출시 예정",
-        "href": "",
-        "desc": "제품 사진과 간단한 편집. 같은 원칙: 정확한 결과, 뜻밖의 일은 없음.",
-        "meta": "설계 중"
+        "name": "이미지 제작",
+        "status": "제공 중",
+        "href": "/image/",
+        "desc": "Create finished images from reusable recipes, a clear brief, and reference images.",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "텍스트 도구",
+        "name": "영상 제작",
         "status": "출시 예정",
         "href": "",
-        "desc": "자막, 제목, 번역 검수를 위한 작은 텍스트 도구.",
+        "desc": "영상 제작은 곧 출시됩니다.",
         "meta": "설계 중"
       }
     ],
@@ -310,17 +310,17 @@
         "meta": "30–90 s · loops sem corte · vocais em 10 idiomas"
       },
       {
-        "name": "Ferramenta de imagem",
-        "status": "Em breve",
-        "href": "",
-        "desc": "Fotos de produto e edições simples, com a mesma ideia: resultado exato, sem surpresas.",
-        "meta": "Em design"
+        "name": "Criação de imagens",
+        "status": "Disponível",
+        "href": "/image/",
+        "desc": "Create finished images from reusable recipes, a clear brief, and reference images.",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "Ferramentas de texto",
+        "name": "Criação de vídeo",
         "status": "Em breve",
         "href": "",
-        "desc": "Pequenos utilitários de texto para legendas, títulos e revisão de traduções.",
+        "desc": "A criação de vídeo chegará em breve.",
         "meta": "Em design"
       }
     ],
@@ -343,17 +343,17 @@
         "meta": "30–90 с · бесшовные лупы · вокал на 10 языках"
       },
       {
-        "name": "Инструмент для изображений",
-        "status": "Скоро",
-        "href": "",
-        "desc": "Предметные фото и простая обработка — тот же принцип: точный результат, без сюрпризов.",
-        "meta": "В разработке"
+        "name": "Создание изображений",
+        "status": "Доступно",
+        "href": "/image/",
+        "desc": "Create finished images from reusable recipes, a clear brief, and reference images.",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "Текстовые инструменты",
+        "name": "Создание видео",
         "status": "Скоро",
         "href": "",
-        "desc": "Небольшие текстовые утилиты для субтитров, заголовков и проверки переводов.",
+        "desc": "Создание видео скоро появится.",
         "meta": "В разработке"
       }
     ],
@@ -376,17 +376,17 @@
         "meta": "30–90 วินาที · ลูปไร้รอยต่อ · เสียงร้อง 10 ภาษา"
       },
       {
-        "name": "เครื่องมือภาพ",
-        "status": "เร็ว ๆ นี้",
-        "href": "",
-        "desc": "ภาพสินค้าและการแก้ไขง่าย ๆ แนวคิดเดียวกัน: ผลลัพธ์แม่นยำ ไม่มีเซอร์ไพรส์",
-        "meta": "กำลังออกแบบ"
+        "name": "สร้างภาพ",
+        "status": "เปิดใช้แล้ว",
+        "href": "/image/",
+        "desc": "Create finished images from reusable recipes, a clear brief, and reference images.",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "เครื่องมือข้อความ",
+        "name": "สร้างวิดีโอ",
         "status": "เร็ว ๆ นี้",
         "href": "",
-        "desc": "เครื่องมือข้อความเล็ก ๆ สำหรับคำบรรยาย หัวข้อ และตรวจงานแปล",
+        "desc": "การสร้างวิดีโอกำลังจะเปิดตัว",
         "meta": "กำลังออกแบบ"
       }
     ],
@@ -409,17 +409,17 @@
         "meta": "30–90 sn · kesintisiz döngüler · 10 dilde vokal"
       },
       {
-        "name": "Görsel aracı",
-        "status": "Yakında",
-        "href": "",
-        "desc": "Ürün fotoğrafları ve basit düzenlemeler, aynı fikir: kesin sonuç, sürpriz yok.",
-        "meta": "Tasarımda"
+        "name": "Görsel oluşturma",
+        "status": "Kullanımda",
+        "href": "/image/",
+        "desc": "Create finished images from reusable recipes, a clear brief, and reference images.",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "Metin araçları",
+        "name": "Video oluşturma",
         "status": "Yakında",
         "href": "",
-        "desc": "Altyazı, başlık ve çeviri kontrolü için küçük metin araçları.",
+        "desc": "Video oluşturma yakında geliyor.",
         "meta": "Tasarımda"
       }
     ],
@@ -442,17 +442,17 @@
         "meta": "30–90 giây · vòng lặp liền mạch · giọng hát 10 ngôn ngữ"
       },
       {
-        "name": "Công cụ ảnh",
-        "status": "Sắp ra mắt",
-        "href": "",
-        "desc": "Ảnh sản phẩm và chỉnh sửa đơn giản, cùng ý tưởng: kết quả chính xác, không bất ngờ.",
-        "meta": "Đang thiết kế"
+        "name": "Sáng tạo hình ảnh",
+        "status": "Đang hoạt động",
+        "href": "/image/",
+        "desc": "Create finished images from reusable recipes, a clear brief, and reference images.",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "Công cụ văn bản",
+        "name": "Sáng tạo video",
         "status": "Sắp ra mắt",
         "href": "",
-        "desc": "Tiện ích văn bản nhỏ cho phụ đề, tiêu đề và kiểm tra bản dịch.",
+        "desc": "Tính năng tạo video sắp ra mắt.",
         "meta": "Đang thiết kế"
       }
     ],
@@ -468,24 +468,24 @@
     "lede": "为日常创作准备的小工具。一次做一个，认真做。",
     "tools": [
       {
-        "name": "AI Music",
+        "name": "音乐创作",
         "status": "已上线",
         "href": "/music/",
         "desc": "用照片或描述生成精确长度的曲子。歌词会唱出照片里的东西。",
         "meta": "30–90 秒 · 无缝循环 · 10 种语言人声"
       },
       {
-        "name": "图片工具",
-        "status": "即将推出",
-        "href": "",
-        "desc": "产品图与简单编辑，同样的思路：输出精确，没有意外。",
-        "meta": "设计中"
+        "name": "图片创作",
+        "status": "已上线",
+        "href": "/image/",
+        "desc": "从用途配方开始，用描述和参考图创作完整图片。",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "文本工具",
+        "name": "视频创作",
         "status": "即将推出",
         "href": "",
-        "desc": "字幕、标题、译文检查的小工具。",
+        "desc": "视频创作即将推出。",
         "meta": "设计中"
       }
     ],
@@ -501,24 +501,24 @@
     "lede": "為日常創作準備的小工具。一次做一個，認真做。",
     "tools": [
       {
-        "name": "AI Music",
+        "name": "音樂創作",
         "status": "已上線",
         "href": "/music/",
         "desc": "用照片或描述生成精確長度的曲子。歌詞會唱出照片裡的東西。",
         "meta": "30–90 秒 · 無縫循環 · 10 種語言人聲"
       },
       {
-        "name": "圖片工具",
-        "status": "即將推出",
-        "href": "",
-        "desc": "產品圖與簡單編輯，同樣的思路：輸出精確，沒有意外。",
-        "meta": "設計中"
+        "name": "圖片創作",
+        "status": "已上線",
+        "href": "/image/",
+        "desc": "從用途配方開始，用描述和參考圖創作完整圖片。",
+        "meta": "1K · JPEG · up to 4 references"
       },
       {
-        "name": "文字工具",
+        "name": "影片創作",
         "status": "即將推出",
         "href": "",
-        "desc": "字幕、標題、譯文檢查的小工具。",
+        "desc": "影片創作即將推出。",
         "meta": "設計中"
       }
     ],

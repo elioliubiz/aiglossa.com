@@ -59,6 +59,8 @@ PAGES = {
     "acceptable-use": ("pages/legal.html", "ui", "acceptable-use.html"),
     "music": ("pages/make.html", "ui", "music/index.html"),
     "music-share": ("pages/share.html", "ui", "music/share/index.html"),
+    "image": ("pages/image.html", "image", "image/index.html"),
+    "image-share": ("pages/image-share.html", "image", "image/share/index.html"),
     # 指南（内容页）：英文优先，生成到 /en/guides/<slug>.html
     "guides": ("pages/guide.html", "guides", "guides/{slug}.html"),
     # 每个工具一个目录（/{lang}/music/、未来 /{lang}/image/），全局页仍在语言根
@@ -279,7 +281,9 @@ def _site_urls(site: str, spec: dict) -> list[str]:
                 urls.append((f"guides/{slug}.html", [c for c in langs_with_guides if slug in guides[c]]))
         elif page == "music":
             urls.append(("music/", None))
-        elif page in ("account", "refund"):
+        elif page == "image":
+            urls.append(("image/", None))
+        elif page in ("account", "refund", "music-share", "image-share"):
             continue          # noindex，不进 sitemap
         else:
             urls.append((f"{page}.html", None))
@@ -631,6 +635,33 @@ def main() -> int:
                     return out
 
                 values_builder = share_values
+            elif page == "image":
+                def image_values(lang: str, base: str, source=source) -> dict[str, str]:
+                    common = source["common"]
+                    copy = {**common, **source[lang]}
+                    copy["options"] = {**common.get("options", {}), **source[lang].get("options", {})}
+                    copy["recipe_names"] = {**common.get("recipe_names", {}), **source[lang].get("recipe_names", {})}
+                    out = {key: (value if isinstance(value, dict) else esc(value)) for key, value in copy.items()}
+                    out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    out["jsonld"] = json.dumps({
+                        "@context": "https://schema.org", "@type": "SoftwareApplication",
+                        "name": copy["title"], "description": copy["description"],
+                        "applicationCategory": "MultimediaApplication", "operatingSystem": "Web",
+                        "url": f"{base}/{lang}/image/", "inLanguage": languages[lang]["hreflang"],
+                    }, ensure_ascii=False).replace("</", "<\\/")
+                    return out
+                values_builder = image_values
+            elif page == "image-share":
+                def image_share_values(lang: str, base: str, source=source) -> dict[str, str]:
+                    copy = {**source["common"], **source[lang]}
+                    labels = {
+                        "share": "Share", "fullscreen": "Fullscreen", "invalid": "This share link is invalid or no longer available.",
+                        "kicker": "Shared image", "shared_work": "An image made with aiglossa", "try_cta": "Create your own", "copied": "Copied",
+                    }
+                    if lang == "zh-Hans": labels.update({"share":"分享","fullscreen":"全屏","invalid":"这个分享链接无效或已不可用。","kicker":"分享的图片作品","shared_work":"由 aiglossa 创作的图片","try_cta":"尝试创作自己的作品","copied":"已复制"})
+                    if lang == "zh-Hant": labels.update({"share":"分享","fullscreen":"全螢幕","invalid":"這個分享連結無效或已不可用。","kicker":"分享的圖片作品","shared_work":"由 aiglossa 創作的圖片","try_cta":"嘗試創作自己的作品","copied":"已複製"})
+                    return {"title": esc(copy["title"]), "description": esc(copy["description"]), **{k:esc(v) for k,v in labels.items()}}
+                values_builder = image_share_values
             elif page in ("refund", "acceptable-use"):
                 def legal_values(lang: str, base: str, page=page, source=source) -> dict[str, str]:
                     # 未翻译的语言回退到英文，并在构建报告里显式列出（不静默）

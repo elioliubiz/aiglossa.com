@@ -126,6 +126,16 @@ GSC 侧：**结构变更本身不需要任何操作**。Google 会按固定节�
 | `tools/verify.py` 的 `PAGES` | `return [("<tool>/index.html", "<tool>/")]` |
 | `vercel.json` | rewrite `/:lang/<tool>/` → `/sites/tools/:lang/<tool>/index.html`；sitemap 的 `url_for` 加分支 |
 
+### 图片快速创作
+
+- 图片入口固定为 `/{lang}/image/`，分享页为 `/{lang}/image/share/?t=<id>.<token>`。
+- 快速创作沿用音乐页的结构认知：左侧配方，右侧“我的作品”与可复用示例；不得复制音乐播放逻辑。
+- 页面必须展示“快速创作 / 构图创作 · 即将推出”的可见模式选择，不用下拉隐藏未来能力。
+- 生成参数只展示用途配方、描述、最多四张参考图、比例、视觉风格、颜色和短文字。用户不选择 Gemini 模型或分辨率。
+- 分享页是独立图片查看器，支持缩放、适应屏幕、全屏和系统分享/复制链接；从分享复用时通过公开令牌带回配方快照。
+- 购买额度仍使用 `assets/wallet.js`：原页弹窗选择额度、新标签结账、到账后关闭并刷新余额，不跳走创作页。
+- 生产环境在用户明确验收前不得更新；先部署 `dev` 到 `tools.staging.aiglossa.com`。
+
 模板在深度 2，资源按 `{{prefix}}` 自动变成 `../../`；站内跳转回语言根用 `../pricing.html`。
 
 ## 工具站（tools.aiglossa.com）现状

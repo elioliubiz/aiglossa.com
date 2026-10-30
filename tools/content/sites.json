@@ -31,6 +31,8 @@
       "acceptable-use",
       "music",
       "music-share",
+      "image",
+      "image-share",
       "guides"
     ],
     "extra": []
