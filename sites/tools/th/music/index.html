@@ -1011,6 +1011,7 @@
   ];
 
   var schema = null, values = {}, imagePayload = null, templates = [], currentTemplate = null;
+  var templatesLoaded = false, pendingSharedRecipe = null;
   var audio = new Audio(), current = null;
   audio.preload = "none";   // 预览音频只在点击时下载，首屏不拉 13MB
 
@@ -1460,7 +1461,7 @@
 
   // ---- 配方 ----
   function renderRecipes(items) {
-    templates = items || []; renderTemplateSelect();
+    templates = items || []; templatesLoaded = true; renderTemplateSelect();
     var box = $("recipes"); box.innerHTML = "";
     items.filter(function (r) { return r.is_system; }).forEach(function (r) {
       var el = document.createElement("div");
@@ -1481,6 +1482,7 @@
     });
     drawWaveforms(box);
     requestAnimationFrame(updateRailNav);
+    restoreSharedRecipe();
   }
 
   // 套用配方后的反馈：按钮上方出现"将使用…"，并把生成按钮滚进视野
@@ -1719,14 +1721,26 @@
   }
 
   // 从独立分享页进入创作页：?from=<id>.<token> → 读取公开作品并填充同款参数。
+  function restoreSharedRecipe() {
+    if (!schema || !templatesLoaded || !pendingSharedRecipe) return;
+    var it = pendingSharedRecipe; pendingSharedRecipe = null;
+    var template = templates.filter(function (r) {
+      return r.id === it.recipe_id || (it.recipe_slug && r.slug === it.recipe_slug);
+    })[0] || null;
+    selectTemplate(template, it.params || {});
+    if (it.description) {
+      $("desc").value = it.description;
+      setMode("text");
+    }
+  }
+
   function loadSharedRecipe() {
     var m = /[?&]from=(\d+)\.([a-f0-9]+)/.exec(location.search);
     if (!m) return;
     call("/ai/music/public/" + m[1], { t: m[2] }, false).then(function (d) {
       if (d.code !== 200) return;
-      var it = d.data;
-      Object.keys(it.params || {}).forEach(function (k) { if (values[k] !== undefined) values[k] = it.params[k]; });
-      renderRail(); applied(UI.from_photo);
+      pendingSharedRecipe = d.data;
+      restoreSharedRecipe();
     }).catch(function () {});
   }
 
@@ -2056,7 +2070,10 @@
     renderRail(); syncCost();
     fetch("../../samples/waveforms.json").then(function (r) { return r.json(); }).then(function (w) { WAVEFORMS = w || {}; }).catch(function () {}).then(function () {
       renderPhotos();
-      call("/ai/music/recipes/list", {}, false).then(function (r) { if (r.code === 200) renderRecipes(r.data || []); });
+      call("/ai/music/recipes/list", {}, false).then(function (r) {
+        if (r.code === 200) renderRecipes(r.data || []);
+        else { templatesLoaded = true; restoreSharedRecipe(); }
+      }).catch(function () { templatesLoaded = true; restoreSharedRecipe(); });
     });
   });
   // 指南：弹窗内切换，不跳页；文章页本身仍可直接访问（SEO）
