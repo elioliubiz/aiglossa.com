@@ -40,6 +40,24 @@ ASSETS = ROOT / "assets"
 # 于是"模板里有占位符、文案里没有对应字段"会在构建时报错，而不是静默留下 {{...}}。
 PLACEHOLDER = re.compile(r"\{\{([a-zA-Z0-9_]+)\}\}")
 
+
+def missing_translation_paths(common: dict, localized: dict, prefix: str = "") -> list[str]:
+    """Return visible common-copy leaves that a localized image page still inherits in English."""
+    missing: list[str] = []
+    for key, value in common.items():
+        if not prefix and key == "examples":
+            continue  # Language-neutral records; their visible names live in example_names.
+        path = f"{prefix}.{key}" if prefix else key
+        if isinstance(value, dict):
+            child = localized.get(key, {})
+            if not isinstance(child, dict):
+                missing.append(path)
+            else:
+                missing.extend(missing_translation_paths(value, child, path))
+        elif key not in localized:
+            missing.append(path)
+    return missing
+
 # 协议页：模板在 templates/protocol/<name>.html，输出 <lang>/protocol/<name>.html。
 PROTOCOL_PAGES = ("privacy", "term", "delete-account")
 
@@ -461,6 +479,16 @@ def main() -> int:
             if missing:
                 print(f"✗ {source_key} 缺语言：{missing}", file=sys.stderr)
                 return 1
+            if source_key == "image":
+                incomplete = {
+                    lang: missing_translation_paths(source["common"], source[lang])
+                    for lang in site_langs if lang != "en"
+                }
+                incomplete = {lang: paths for lang, paths in incomplete.items() if paths}
+                if incomplete:
+                    for lang, paths in incomplete.items():
+                        print(f"✗ image.{lang} 缺翻译：{', '.join(paths)}", file=sys.stderr)
+                    return 1
 
             depth = page_path.count("/") + 1
             if page == "brand":
@@ -654,13 +682,13 @@ def main() -> int:
             elif page == "image-share":
                 def image_share_values(lang: str, base: str, source=source) -> dict[str, str]:
                     copy = {**source["common"], **source[lang]}
-                    labels = {
-                        "share": "Share", "fullscreen": "Fullscreen", "invalid": "This share link is invalid or no longer available.",
-                        "kicker": "Shared image", "shared_work": "An image made with aiglossa", "try_cta": "Create your own", "copied": "Copied",
+                    return {
+                        "title": esc(copy["title"]), "description": esc(copy["description"]),
+                        "share": esc(copy["share"]), "fullscreen": esc(copy["fullscreen"]),
+                        "invalid": esc(copy["share_invalid"]), "kicker": esc(copy["share_kicker"]),
+                        "shared_work": esc(copy["shared_work"]), "try_cta": esc(copy["try_cta"]),
+                        "copied": esc(copy["copied"]),
                     }
-                    if lang == "zh-Hans": labels.update({"share":"分享","fullscreen":"全屏","invalid":"这个分享链接无效或已不可用。","kicker":"分享的图片作品","shared_work":"由 aiglossa 创作的图片","try_cta":"尝试创作自己的作品","copied":"已复制"})
-                    if lang == "zh-Hant": labels.update({"share":"分享","fullscreen":"全螢幕","invalid":"這個分享連結無效或已不可用。","kicker":"分享的圖片作品","shared_work":"由 aiglossa 創作的圖片","try_cta":"嘗試創作自己的作品","copied":"已複製"})
-                    return {"title": esc(copy["title"]), "description": esc(copy["description"]), **{k:esc(v) for k,v in labels.items()}}
                 values_builder = image_share_values
             elif page in ("refund", "acceptable-use"):
                 def legal_values(lang: str, base: str, page=page, source=source) -> dict[str, str]:
