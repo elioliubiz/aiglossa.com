@@ -1677,6 +1677,26 @@
       "has": [
         {
           "type": "host",
+          "value": "staging.aiglossa.com"
+        }
+      ],
+      "destination": "/assets/favicon-aiglossa.ico"
+    },
+    {
+      "source": "/favicon.ico",
+      "has": [
+        {
+          "type": "host",
+          "value": "aiglossa.com"
+        }
+      ],
+      "destination": "/assets/favicon-aiglossa.ico"
+    },
+    {
+      "source": "/favicon.ico",
+      "has": [
+        {
+          "type": "host",
           "value": "food.staging.aiglossa.com"
         }
       ],
