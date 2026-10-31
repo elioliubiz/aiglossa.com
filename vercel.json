@@ -10,7 +10,7 @@
           "value": "food.aiglossa.com"
         }
       ],
-      "destination": "/en/",
+      "destination": "/en/food/",
       "permanent": true
     },
     {
@@ -21,7 +21,7 @@
           "value": "food.staging.aiglossa.com"
         }
       ],
-      "destination": "/en/",
+      "destination": "/en/food/",
       "permanent": true
     },
     {
