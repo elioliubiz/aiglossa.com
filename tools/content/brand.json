@@ -1,8 +1,8 @@
 {
   "zh-Hans": {
-    "title": "aiglossa — 独立开发的应用",
-    "h1": "想用的工具，就自己做",
-    "lede": "这里是 aiglossa，我发布自己做的应用的地方。它们大多从一个很小的需求开始——现有的工具总差那么一点，于是干脆自己写一个。",
+    "title": "AIGLOSSA — 阅读、食品与护肤工具",
+    "h1": "读得进去，看得明白，也做得出来。",
+    "lede": "一组专注的小工具：读原版书、看懂食品和护肤标签，也可以做音乐和图片。",
     "apps_title": "产品",
     "scholan_meta": "iOS · 16 种语言",
     "learn_more": "了解 Scholan",
@@ -27,9 +27,9 @@
     "more_apps": "更多 App 正在开发中"
   },
   "zh-Hant": {
-    "title": "aiglossa — 獨立開發的應用",
-    "h1": "想用的工具，就自己做",
-    "lede": "這裡是 aiglossa，我發表自己做的應用的地方。它們大多從一個很小的需求開始——現有工具總差那麼一點，於是乾脆自己寫一個。",
+    "title": "AIGLOSSA — 閱讀、食品與護膚工具",
+    "h1": "閱讀。理解。創作。",
+    "lede": "一系列小巧的工具，助你閱讀原文書籍、解析食品與護膚成分，並創作音樂或影像。",
     "apps_title": "產品",
     "scholan_meta": "iOS · 16 種語言",
     "learn_more": "了解 Scholan",
@@ -54,9 +54,9 @@
     "more_apps": "更多應用開發中"
   },
   "en": {
-    "title": "aiglossa — apps, built independently",
-    "h1": "If I want a tool, I build it",
-    "lede": "This is aiglossa, where I publish the apps I build myself. Most of them start from one small need: the existing tools were almost right, so I wrote my own.",
+    "title": "AIGLOSSA — tools for reading, food, and skin",
+    "h1": "Read. Understand. Create.",
+    "lede": "A small family of tools for reading original books, understanding food and skincare labels, and making music or images.",
     "apps_title": "Products",
     "scholan_meta": "iOS · 16 languages",
     "learn_more": "About Scholan",
@@ -81,9 +81,9 @@
     "more_apps": "More apps in development"
   },
   "ja": {
-    "title": "aiglossa — 個人開発のアプリ",
-    "h1": "欲しい道具は、自分で作る",
-    "lede": "ここは aiglossa、自分で作ったアプリを公開している場所です。多くは小さな困りごとから始まります——既存の道具があと少し足りない、ならば自分で書いてしまおう、という具合に。",
+    "title": "AIGLOSSA — 読書、食、肌のためのツール",
+    "h1": "読む。理解する。創り出す。",
+    "lede": "原書を読み、食品やスキンケアの成分を理解し、音楽や画像を創り出す。そんな小さなツール群です。",
     "apps_title": "プロダクト",
     "scholan_meta": "iOS · 16 言語",
     "learn_more": "Scholan について",
@@ -108,9 +108,9 @@
     "more_apps": "その他のアプリも開発中"
   },
   "ko": {
-    "title": "aiglossa — 1인 개발 앱",
-    "h1": "쓰고 싶은 도구는 직접 만듭니다",
-    "lede": "여기는 aiglossa, 제가 만든 앱을 공개하는 곳입니다. 대부분 아주 작은 필요에서 시작합니다 — 기존 도구가 딱 하나 아쉬워서, 그냥 직접 만들었습니다.",
+    "title": "AIGLOSSA — 독서, 음식, 피부를 위한 도구",
+    "h1": "읽고, 이해하고, 창조하세요.",
+    "lede": "원서 읽기, 식품 및 화장품 성분 분석, 그리고 음악과 이미지 제작을 위한 작은 도구 모음입니다.",
     "apps_title": "제품",
     "scholan_meta": "iOS · 16개 언어",
     "learn_more": "Scholan 알아보기",
@@ -135,9 +135,9 @@
     "more_apps": "추가 앱 개발 중"
   },
   "de": {
-    "title": "aiglossa — Apps, unabhängig entwickelt",
-    "h1": "Wenn ich ein Werkzeug brauche, baue ich es",
-    "lede": "Das ist aiglossa, wo ich meine selbst gebauten Apps veröffentliche. Die meisten fangen bei einem kleinen Bedürfnis an: die bestehenden Werkzeuge waren fast richtig, also habe ich mein eigenes geschrieben.",
+    "title": "AIGLOSSA — Tools für Lesen, Ernährung und Hautpflege",
+    "h1": "Lesen. Verstehen. Erschaffen.",
+    "lede": "Eine kleine Auswahl an Tools zum Lesen fremdsprachiger Bücher, zum Entschlüsseln von Lebensmittel- und Hautpflegeetiketten sowie zum Erstellen von Musik und Bildern.",
     "apps_title": "Produkte",
     "scholan_meta": "iOS · 16 Sprachen",
     "learn_more": "Mehr über Scholan",
@@ -162,9 +162,9 @@
     "more_apps": "Weitere Apps in Entwicklung"
   },
   "fr": {
-    "title": "aiglossa — des applis développées en solo",
-    "h1": "Si je veux un outil, je le fabrique",
-    "lede": "Voici aiglossa, où je publie les applis que je développe moi-même. La plupart partent d'un petit besoin : les outils existants étaient presque bien, alors j'ai écrit le mien.",
+    "title": "AIGLOSSA — outils pour la lecture, l'alimentation et la peau",
+    "h1": "Lire. Comprendre. Créer.",
+    "lede": "Une petite famille d'outils pour lire des livres originaux, décrypter les étiquettes alimentaires et cosmétiques, et créer de la musique ou des images.",
     "apps_title": "Produits",
     "scholan_meta": "iOS · 16 langues",
     "learn_more": "En savoir plus sur Scholan",
@@ -189,9 +189,9 @@
     "more_apps": "D'autres applications en développement"
   },
   "es": {
-    "title": "aiglossa — apps desarrolladas en solitario",
-    "h1": "Si quiero una herramienta, la hago yo",
-    "lede": "Esto es aiglossa, donde publico las apps que desarrollo yo mismo. La mayoría parten de una necesidad pequeña: las herramientas existentes casi servían, así que escribí la mía.",
+    "title": "AIGLOSSA — herramientas para lectura, alimentación y cuidado de la piel",
+    "h1": "Lee. Entiende. Crea.",
+    "lede": "Una pequeña familia de herramientas para leer libros originales, entender etiquetas de alimentos y cosméticos, y crear música o imágenes.",
     "apps_title": "Productos",
     "scholan_meta": "iOS · 16 idiomas",
     "learn_more": "Conocer Scholan",
@@ -216,9 +216,9 @@
     "more_apps": "Más aplicaciones en desarrollo"
   },
   "pt": {
-    "title": "aiglossa — apps desenvolvidas de forma independente",
-    "h1": "Se quero uma ferramenta, faço eu mesmo",
-    "lede": "Isto é a aiglossa, onde publico as apps que desenvolvo sozinho. A maioria começa numa necessidade pequena: as ferramentas existentes quase serviam, então escrevi a minha.",
+    "title": "AIGLOSSA — ferramentas para leitura, alimentação e pele",
+    "h1": "Leia. Entenda. Crie.",
+    "lede": "Uma pequena família de ferramentas para ler livros originais, entender rótulos de alimentos e cosméticos, e criar música ou imagens.",
     "apps_title": "Produtos",
     "scholan_meta": "iOS · 16 idiomas",
     "learn_more": "Conhecer o Scholan",
@@ -243,9 +243,9 @@
     "more_apps": "Mais aplicativos em desenvolvimento"
   },
   "it": {
-    "title": "aiglossa — app sviluppate da soli",
-    "h1": "Se voglio uno strumento, me lo costruisco",
-    "lede": "Questo è aiglossa, dove pubblico le app che sviluppo da solo. La maggior parte nasce da un'esigenza piccola: gli strumenti esistenti erano quasi giusti, così ho scritto il mio.",
+    "title": "AIGLOSSA — strumenti per la lettura, il cibo e la pelle",
+    "h1": "Leggi. Comprendi. Crea.",
+    "lede": "Una piccola famiglia di strumenti per leggere libri in lingua originale, comprendere le etichette di cibi e cosmetici, e creare musica o immagini.",
     "apps_title": "Prodotti",
     "scholan_meta": "iOS · 16 lingue",
     "learn_more": "Scopri Scholan",
@@ -270,9 +270,9 @@
     "more_apps": "Altre app in fase di sviluppo"
   },
   "ru": {
-    "title": "aiglossa — приложения, сделанные в одиночку",
-    "h1": "Нужен инструмент — сделаю сам",
-    "lede": "Это aiglossa, где я публикую приложения, которые делаю сам. Почти все начинаются с небольшой потребности: готовые инструменты были почти хороши, поэтому я написал свой.",
+    "title": "AIGLOSSA — инструменты для чтения, еды и ухода за кожей",
+    "h1": "Читай. Понимай. Создавай.",
+    "lede": "Небольшая коллекция инструментов для чтения книг в оригинале, анализа состава продуктов и косметики, а также для создания музыки и изображений.",
     "apps_title": "Продукты",
     "scholan_meta": "iOS · 16 языков",
     "learn_more": "О Scholan",
@@ -297,9 +297,9 @@
     "more_apps": "Другие приложения в разработке"
   },
   "ar": {
-    "title": "aiglossa — تطبيقات بتطوير فردي",
-    "h1": "إن أردتُ أداة، أصنعها بنفسي",
-    "lede": "هذه aiglossa، حيث أنشر التطبيقات التي أطوّرها بنفسي. معظمها يبدأ من حاجة صغيرة: الأدوات الموجودة كانت قريبة مما أريد، فكتبتُ أداتي.",
+    "title": "AIGLOSSA — أدوات للقراءة، والطعام، والبشرة",
+    "h1": "اقرأ. افهم. أبدع.",
+    "lede": "مجموعة صغيرة من الأدوات لقراءة الكتب الأصلية، وفهم ملصقات الطعام ومستحضرات العناية بالبشرة، وصناعة الموسيقى أو الصور.",
     "apps_title": "المنتجات",
     "scholan_meta": "iOS · 16 لغة",
     "learn_more": "تعرّف على Scholan",
@@ -324,9 +324,9 @@
     "more_apps": "المزيد من التطبيقات قيد التطوير"
   },
   "th": {
-    "title": "aiglossa — แอปที่พัฒนาโดยคนเดียว",
-    "h1": "อยากได้เครื่องมือ ก็ทำเองเลย",
-    "lede": "นี่คือ aiglossa ที่ฉันเผยแพร่แอปที่เขียนเอง ส่วนใหญ่เริ่มจากความต้องการเล็ก ๆ อย่างเดียว — เครื่องมือที่มีอยู่เกือบดีแล้ว เลยเขียนของตัวเองขึ้นมา",
+    "title": "AIGLOSSA — เครื่องมือสำหรับการอ่าน อาหาร และผิวพรรณ",
+    "h1": "อ่าน เข้าใจ สร้างสรรค์",
+    "lede": "ชุดเครื่องมือขนาดเล็กสำหรับอ่านหนังสือต้นฉบับ ทำความเข้าใจฉลากอาหารและสกินแคร์ รวมถึงสร้างสรรค์ดนตรีและภาพ",
     "apps_title": "ผลิตภัณฑ์",
     "scholan_meta": "iOS · 16 ภาษา",
     "learn_more": "รู้จัก Scholan",
@@ -351,9 +351,9 @@
     "more_apps": "แอปพลิเคชันเพิ่มเติมกำลังพัฒนา"
   },
   "vi": {
-    "title": "aiglossa — ứng dụng phát triển độc lập",
-    "h1": "Muốn một công cụ, tôi tự làm",
-    "lede": "Đây là aiglossa, nơi tôi công bố những ứng dụng do mình tự làm. Phần lớn bắt đầu từ một nhu cầu nhỏ: công cụ sẵn có gần đúng ý, nên tôi tự viết lấy.",
+    "title": "AIGLOSSA — công cụ cho việc đọc, thực phẩm và chăm sóc da",
+    "h1": "Đọc. Hiểu. Sáng tạo.",
+    "lede": "Bộ công cụ nhỏ giúp bạn đọc sách nguyên bản, hiểu nhãn thực phẩm và mỹ phẩm, cũng như sáng tạo âm nhạc hoặc hình ảnh.",
     "apps_title": "Sản phẩm",
     "scholan_meta": "iOS · 16 ngôn ngữ",
     "learn_more": "Tìm hiểu Scholan",
@@ -378,9 +378,9 @@
     "more_apps": "Đang phát triển thêm ứng dụng mới"
   },
   "id": {
-    "title": "aiglossa — aplikasi yang dikembangkan sendiri",
-    "h1": "Kalau butuh alat, saya buat sendiri",
-    "lede": "Ini aiglossa, tempat saya menerbitkan aplikasi yang saya buat sendiri. Sebagian besar berawal dari satu kebutuhan kecil: alat yang ada hampir pas, jadi saya tulis sendiri.",
+    "title": "AIGLOSSA — alat untuk membaca, makanan, dan kulit",
+    "h1": "Baca. Pahami. Ciptakan.",
+    "lede": "Kumpulan alat sederhana untuk membaca buku asli, memahami label makanan dan perawatan kulit, serta menciptakan musik atau gambar.",
     "apps_title": "Produk",
     "scholan_meta": "iOS · 16 bahasa",
     "learn_more": "Kenali Scholan",
@@ -405,9 +405,9 @@
     "more_apps": "Aplikasi lain dalam pengembangan"
   },
   "tr": {
-    "title": "aiglossa — tek başına geliştirilen uygulamalar",
-    "h1": "Bir araca ihtiyacım varsa, kendim yaparım",
-    "lede": "Burası aiglossa; kendi yaptığım uygulamaları yayımladığım yer. Çoğu küçük bir ihtiyaçtan doğuyor: var olan araçlar neredeyse istediğim gibiydi, ben de kendiminkini yazdım.",
+    "title": "AIGLOSSA — okuma, gıda ve cilt bakımı için araçlar",
+    "h1": "Oku. Anla. Yarat.",
+    "lede": "Orijinal kitapları okumak, gıda ve cilt bakım etiketlerini anlamak, müzik veya görsel üretmek için küçük bir araç ailesi.",
     "apps_title": "Ürünler",
     "scholan_meta": "iOS · 16 dil",
     "learn_more": "Scholan'ı keşfet",
