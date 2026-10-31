@@ -8,9 +8,489 @@
         {
           "type": "host",
           "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh-(TW|HK|MO|Hant|tw|hk|mo).*"
+        }
+      ],
+      "destination": "/zh-Hant/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh.*"
+        }
+      ],
+      "destination": "/zh-Hans/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ja.*"
+        }
+      ],
+      "destination": "/ja/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ko.*"
+        }
+      ],
+      "destination": "/ko/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^es.*"
+        }
+      ],
+      "destination": "/es/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^pt.*"
+        }
+      ],
+      "destination": "/pt/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^fr.*"
+        }
+      ],
+      "destination": "/fr/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^de.*"
+        }
+      ],
+      "destination": "/de/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^it.*"
+        }
+      ],
+      "destination": "/it/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ru.*"
+        }
+      ],
+      "destination": "/ru/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ar.*"
+        }
+      ],
+      "destination": "/ar/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^th.*"
+        }
+      ],
+      "destination": "/th/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^vi.*"
+        }
+      ],
+      "destination": "/vi/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^id.*"
+        }
+      ],
+      "destination": "/id/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^tr.*"
+        }
+      ],
+      "destination": "/tr/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
         }
       ],
       "destination": "/en/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh-(TW|HK|MO|Hant|tw|hk|mo).*"
+        }
+      ],
+      "destination": "/zh-Hant/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh.*"
+        }
+      ],
+      "destination": "/zh-Hans/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ja.*"
+        }
+      ],
+      "destination": "/ja/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ko.*"
+        }
+      ],
+      "destination": "/ko/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^es.*"
+        }
+      ],
+      "destination": "/es/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^pt.*"
+        }
+      ],
+      "destination": "/pt/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^fr.*"
+        }
+      ],
+      "destination": "/fr/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^de.*"
+        }
+      ],
+      "destination": "/de/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^it.*"
+        }
+      ],
+      "destination": "/it/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ru.*"
+        }
+      ],
+      "destination": "/ru/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ar.*"
+        }
+      ],
+      "destination": "/ar/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^th.*"
+        }
+      ],
+      "destination": "/th/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^vi.*"
+        }
+      ],
+      "destination": "/vi/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^id.*"
+        }
+      ],
+      "destination": "/id/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^tr.*"
+        }
+      ],
+      "destination": "/tr/skin/",
       "permanent": false
     },
     {
