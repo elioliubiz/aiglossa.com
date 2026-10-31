@@ -93,3 +93,5 @@ body{
   .skin-ing-row span{max-width:38%}
   .share-wrap{padding-block:24px 60px}
 }
+.result-chip{top:auto;bottom:7%;height:auto;background:#fff;color:var(--muted);border:1px solid var(--line);box-shadow:0 10px 30px rgba(142,78,90,.1)}
+.result-chip .dot{background:#C97B7F;box-shadow:0 0 0 4px rgba(201,123,127,.14)}
