@@ -35,10 +35,10 @@
 <meta property="og:image:alt" content="AIGLOSSA TOOLS">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "aiglossa tools", "url": "https://tools.aiglossa.com/ar/", "inLanguage": "ar", "publisher": {"@type": "Organization", "name": "aiglossa", "url": "https://aiglossa.com"}}</script>
-<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-22" type="image/svg+xml">
-<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-22" sizes="any">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261031-22">
-<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261031-22">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-23" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-23" sizes="any">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261031-23">
+<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261031-23">
 <meta name="theme-color" content="#0e0f11">
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/theme.css">
@@ -83,6 +83,7 @@
   .tools-lang li a{display:block;padding:7px 9px;border-radius:7px;font-size:11.5px;color:var(--ink);white-space:nowrap}
   .tools-lang li a:hover,.tools-lang li a[aria-current=true]{background:rgba(255,122,26,.12);color:#ffc08d}
   .tools-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:16px}
+  .hidden{display:none!important}
   .tools-brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);text-decoration:none}
   .tools-brand img{width:26px;height:26px;border-radius:7px;display:block}
   .footer-lang{position:relative;color:#8A94A3;font-size:11px}
@@ -95,6 +96,8 @@
   .foot .brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
   .foot .legal{margin-inline:auto}
   .foot .brand img{width:22px;height:22px;border-radius:6px;display:block}
+  .tools-login{color:#ffc69e;font:11px/1 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:7px 0}
+  .tools-login:hover{color:#fff}
   .tools-account{display:inline-flex;align-items:center;gap:7px;color:var(--muted,#96a0b5);font-size:12px;text-decoration:none;border:0;background:transparent;padding:0}
   .tools-account:hover{color:var(--ink)}
   .tools-account:hover{color:var(--fg)}
@@ -102,7 +105,7 @@
                 border:1px solid rgba(255,255,255,.22);background:rgba(255,122,26,.12);color:#ffb27a;font-size:10px;font-weight:600;overflow:hidden}
   .tools-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
   .tools-account-copy{display:flex;align-items:baseline;gap:8px}
-  .tools-account-balance{color:var(--fg);font-variant-numeric:tabular-nums}
+  .tools-account-balance{color:var(--fg);font:11px/1 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:.08em;font-weight:400;font-variant-numeric:tabular-nums}
   .tools-account-email{display:none}
   .tools-buy{padding:7px 10px;border:1px solid rgba(255,122,26,.28);border-radius:8px;color:#ffc69e;background:rgba(255,122,26,.075);font-size:12px;text-decoration:none;white-space:nowrap}
   .tools-buy-full{display:inline}
@@ -128,16 +131,17 @@
 <body>
 <header class="tools-nav">
   <div class="wrap">
-    <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261031-22" alt=""> AIGLOSSA</a>
+    <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261031-23" alt=""> AIGLOSSA</a>
     <div class="tools-actions">
-      <a class="tools-account" id="toolsAccount" href="login.html?next=./">
+      <a class="tools-login" id="toolsLogin" href="login.html?next=./">تسجيل الدخول</a>
+      <a class="tools-account hidden" id="toolsAccount" href="login.html?next=./">
         <span class="tools-avatar" id="toolsAvatar" aria-hidden="true">?</span>
         <span class="tools-account-copy">
           <span class="tools-account-email" id="toolsAccountEmail">الحساب</span>
           <span class="tools-account-balance" id="toolsAccountBalance"></span>
         </span>
       </a>
-      <a class="tools-buy" id="toolsBuy" href="https://aiglossa.com/ar/webpricing"><span class="tools-buy-full">شراء أرصدة →</span><span class="tools-buy-short">شراء</span></a>
+      <a class="tools-buy hidden" id="toolsBuy" href="https://aiglossa.com/ar/webpricing"><span class="tools-buy-full">شراء أرصدة →</span><span class="tools-buy-short">شراء</span></a>
     </div>
   </div>
 </header>
@@ -223,6 +227,7 @@
       : "https://api.aiglossa.com");
   var root = location.hostname === "tools.staging.aiglossa.com" ? "https://staging.aiglossa.com" : "https://aiglossa.com";
   document.getElementById("toolsAccount").href = root + "/ar/login.html?next=" + encodeURIComponent(location.href);
+  document.getElementById("toolsLogin").href = root + "/ar/login.html?next=" + encodeURIComponent(location.href);
   var device = localStorage.getItem("aig_device") || "";
   if (!device) {
     device = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
@@ -233,7 +238,13 @@
     headers: {"Content-Type": "application/json", "X-Client": "web"},
     body: JSON.stringify({app_key: "tools", device: device, timestamp: Math.floor(Date.now() / 1000)})
   }).then(function (r) { return r.json(); }).then(function (data) {
-    if (data.code === 401 || data.code !== 200 || !data.data) return;
+    function setToolsAuth(signedIn) {
+      document.getElementById("toolsLogin").classList.toggle("hidden", signedIn);
+      document.getElementById("toolsAccount").classList.toggle("hidden", !signedIn);
+      document.getElementById("toolsBuy").classList.toggle("hidden", !signedIn);
+    }
+    if (data.code === 401 || data.code !== 200 || !data.data) { setToolsAuth(false); return; }
+    setToolsAuth(true);
     var user = data.data.user || {};
     var name = user.email || user.nickname || "الحساب";
     document.getElementById("toolsAccountEmail").textContent = name;

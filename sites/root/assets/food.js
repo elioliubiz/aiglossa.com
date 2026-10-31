@@ -73,6 +73,10 @@
   function syncAuth(signedIn) {
     var recent = $("recentSection");
     if (recent) recent.classList.toggle("hidden", !signedIn);
+    var account = $("accountBtn"), login = $("loginBtn"), buy = $("buyBtn");
+    if (account) account.classList.toggle("hidden", !signedIn);
+    if (login) login.classList.toggle("hidden", signedIn);
+    if (buy) buy.classList.toggle("hidden", !signedIn);
     if (!signedIn && !$("resultView").classList.contains("hidden")) showHome();
   }
 
@@ -491,6 +495,7 @@
   $("confirmScan").onclick = startScan;
   $("accountBtn").onclick = function () { if (state.user) location.href = accountUrl(); else needLogin(); };
   $("buyBtn").onclick = function (e) { e.preventDefault(); openPay(); };
+  $("loginBtn").onclick = function (e) { e.preventDefault(); needLogin(); };
   Array.prototype.forEach.call(document.querySelectorAll(".scan-actions label"), function (label) {
     label.addEventListener("click", function (e) {
       if (!state.user) { e.preventDefault(); needLogin(); }

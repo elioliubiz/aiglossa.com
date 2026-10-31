@@ -14,8 +14,9 @@
 <header class="topbar"><div class="wrap topbar-inner">
   <a class="brand" href="./" aria-label="AIGLOSSA FOOD"><span class="brand-mark food-logo"><img src="{{prefix}}assets/favicon-food.svg?v={{asset_v}}" alt=""></span> AIGLOSSA</a>
   <div class="top-actions">
-    <button class="account-flat" id="accountBtn"><span class="avatar" id="avatar">?</span><span class="balance" id="balanceText">—<span>{{credits}}</span></span></button>
-    <a class="pill-btn buy-btn" id="buyBtn" href="#"><span class="buy-full">{{buy}}</span><span class="buy-short">{{buy_short}}</span></a>
+    <a class="login-link" id="loginBtn" href="#">{{sign_in}}</a>
+    <button class="account-flat hidden" id="accountBtn"><span class="avatar" id="avatar">?</span><span class="balance" id="balanceText">—<span>{{credits}}</span></span></button>
+    <a class="pill-btn buy-btn hidden" id="buyBtn" href="#"><span class="buy-full">{{buy}}</span><span class="buy-short">{{buy_short}}</span></a>
   </div>
 </div></header>
 <div class="offline-bar hidden" id="offlineBar">{{offline}}</div>

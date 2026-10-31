@@ -465,3 +465,8 @@ body{min-height:100vh}
 .footer-lang ul{position:absolute;inset-inline-start:0;bottom:calc(100% + 8px);min-width:150px;max-height:300px;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px;list-style:none;box-shadow:0 14px 30px rgba(20,32,27,.12);z-index:20}
 .footer-lang li a{display:block;padding:7px 9px;border-radius:6px;font-size:11px;white-space:nowrap}
 .footer-lang li a:hover{background:var(--green-soft);color:var(--green)}
+
+.login-link{font:11px/1 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--green);text-decoration:none;padding:7px 0}
+.login-link:hover{color:var(--ink)}
+.account-flat .balance{font:11px/1 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:.08em;font-weight:400}
+.account-flat .balance span{font-size:10px;letter-spacing:.05em}
