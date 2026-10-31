@@ -324,6 +324,10 @@ def _site_urls(site: str, spec: dict) -> list[str]:
             urls.append(("food/", None))
         elif page == "food-share":
             continue
+        elif page == "skin":
+            urls.append(("skin/", None))
+        elif page == "skin-share":
+            continue
         elif page in ("account", "webaccount", "refund", "login", "music-share", "image-share"):
             continue          # noindex / 内部页面，不进 sitemap
         elif page == "webpricing":
