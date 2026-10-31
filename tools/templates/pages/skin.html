@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="{{lang}}" dir="{{dir}}" data-lang-name="{{current_name}}">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{{title}}</title><meta name="description" content="{{description}}"><link rel="canonical" href="{{canonical}}">{{alternates}}
+<meta property="og:type" content="website"><meta property="og:site_name" content="AIGLOSSA SKIN"><meta property="og:locale" content="{{og_locale}}"><meta property="og:title" content="{{title}}"><meta property="og:description" content="{{description}}"><meta property="og:url" content="{{canonical}}"><meta property="og:image" content="{{site_base}}/assets/og-skin.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{title}}"><meta name="twitter:description" content="{{description}}"><meta name="twitter:image" content="{{site_base}}/assets/og-skin.png">
+<meta name="theme-color" content="#FBF7F2"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest?v={{asset_v}}">
+<link rel="icon" href="{{prefix}}assets/favicon-skin.svg?v={{asset_v}}"><link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-skin.png?v={{asset_v}}">
+<link rel="stylesheet" href="{{prefix}}assets/skin.css?v={{asset_v}}">
+<script type="application/ld+json">{{jsonld}}</script>
+</head>
+<body>
+<header class="topbar"><div class="wrap topbar-inner">
+  <a class="brand" href="./" aria-label="AIGLOSSA SKIN"><span class="brand-mark skin-logo"><img src="{{prefix}}assets/favicon-skin.svg?v={{asset_v}}" alt=""></span> AIGLOSSA</a>
+  <div class="top-actions">
+    <a class="login-link" id="loginBtn" href="#">{{sign_in}}</a>
+    <button class="account-flat hidden" id="accountBtn"><span class="avatar" id="avatar">?</span><span class="balance" id="balanceText">—<span>{{credits}}</span></span></button>
+    <a class="pill-btn buy-btn hidden" id="buyBtn" href="#"><span class="buy-full">{{buy}}</span><span class="buy-short">{{buy_short}}</span></a>
+  </div>
+</div></header>
+<div class="offline-bar hidden" id="offlineBar">{{offline}}</div>
+
+<main id="heroView">
+  <section class="wrap skin-hero">
+    <div class="hero-copy">
+      <span class="kicker">SKINCARE INGREDIENT SCAN</span>
+      <h1>{{h1}}</h1>
+      <p class="lede">{{sub}}</p>
+      <div class="scan-card">
+        <div class="scan-icon skin-scan-icon"><svg viewBox="0 0 24 24"><path d="M5 8V6a2 2 0 0 1 2-2h2M15 4h2a2 2 0 0 1 2 2v2M19 16v2a2 2 0 0 1-2 2h-2M9 20H7a2 2 0 0 1-2-2v-2"/><path d="M8.5 12h7M9.5 15h5"/></svg></div>
+        <div class="scan-copy"><b>{{upload}}</b><span>{{scan_sub}}</span></div>
+        <div class="scan-actions"><label class="btn" for="fileInput">{{choose_file}}</label><label class="btn ghost" for="cameraInput">{{camera}}</label></div>
+        <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+        <input class="file-input" id="cameraInput" type="file" accept="image/*" capture="environment">
+        <p class="multi-hint">{{multi_hint}}</p>
+        <div class="preview-wrap hidden" id="previewWrap"><div class="preview-grid" id="previewGrid"></div></div>
+        <div class="scan-loading hidden" id="scanLoading"><span class="spinner"></span><span id="scanLoadingText">{{scanning}}</span></div>
+        <button class="btn hidden" id="scanButton" style="width:100%;margin-top:12px">{{scan_button}}</button>
+      </div>
+      <div class="meta-row"><span>{{scan_cost}}</span><span>{{scan_seconds}}</span><span>{{scan_languages}}</span></div>
+      <div class="pwa-banner hidden" id="pwaBanner"><span>{{install_hint}}</span><button id="installBtn">{{install}}</button></div>
+    </div>
+    <div class="hero-visual skin-visual">
+      <div class="skin-orbit"><img src="{{prefix}}assets/skin-icon-512.png?v={{asset_v}}" alt=""></div>
+      <div class="scan-frame"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+      <div class="result-chip"><span class="dot"></span> {{sample}}</div>
+    </div>
+  </section>
+  <section class="wrap recent hidden" id="recentSection">
+    <div class="recent-head"><h2>{{history}}</h2><a href="#" id="historyRefresh">{{view_all}} →</a></div>
+    <div class="history-list" id="historyList"><div class="history-empty">{{no_history}}</div></div>
+  </section>
+</main>
+
+<section class="result-view hidden" id="resultView">
+  <div class="wrap result-top">
+    <a class="back" href="#" id="backBtn">← {{back}}</a>
+    <div class="product-row">
+      <div class="thumb" id="resultThumb"></div>
+      <div><span class="kicker" id="resultKicker">{{result_title}}</span><h2 id="resultName">—</h2><p id="resultMeta"></p></div>
+      <div class="result-head-actions"><button class="small-btn" id="shareBtn">{{share}}</button><button class="small-btn" id="deleteBtn">{{delete}}</button></div>
+    </div>
+  </div>
+  <div class="wrap result-grid">
+    <div class="result-main" id="reportMain"></div>
+    <aside class="sidebar"><div class="side-card" id="reportSide"></div></aside>
+  </div>
+</section>
+
+<div class="modal hidden" id="warningModal"><div class="modal-box"><h3>{{warning_title}}</h3><p>{{warning_body}}</p><div class="modal-actions"><button class="btn ghost" data-close>{{cancel}}</button><button class="btn" id="warningContinue">{{continue}}</button></div></div></div>
+<div class="modal hidden" id="confirmModal"><div class="modal-box"><h3>{{scan_button}}</h3><p id="confirmText"></p><div class="modal-actions"><button class="btn ghost" data-close>{{cancel}}</button><button class="btn" id="confirmScan">{{scan_button}}</button></div></div></div>
+<div class="modal hidden" id="payModal"><div class="modal-box"><h3>{{pay_title}}</h3><p id="payBalance"></p><div class="pay-packs" id="payPacks"></div><p id="payMsg"></p><div class="modal-actions"><button class="btn ghost" data-close>{{pay_close}}</button></div></div></div>
+<div class="toast hidden" id="toast"></div>
+
+<footer><div class="wrap footer-inner">
+  <details class="footer-lang" id="footerLang"><summary>{{current_name}}</summary><ul>{{switcher}}</ul></details>
+  <div class="footer-links"><a href="{{legal_privacy_href}}">{{privacy}}</a><a href="{{legal_terms_href}}">{{terms}}</a></div>
+  <span>{{footer_disclaimer}}</span>
+</div></footer>
+
+<script type="application/json" id="ui">{{ui_json}}</script>
+<script src="{{prefix}}assets/wallet.js?v={{asset_v}}"></script>
+<script src="{{prefix}}assets/skin.js?v={{asset_v}}"></script>
+</body>
+</html>
