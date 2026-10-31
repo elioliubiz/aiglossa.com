@@ -48,11 +48,15 @@
   function accountUrl() { return MAIN + "/" + LANG + "/account.html?next=" + encodeURIComponent(location.href); }
   function needLogin() { location.href = loginUrl(); }
 
+  function avatarUrl(url) {
+    return /^https?:\/\//.test(url) ? url : API + url;
+  }
+
   function setAvatar(user) {
     var el = $("avatar");
     var initial = user ? String(user.email || user.nickname || "?").charAt(0).toUpperCase() : "?";
     if (user && user.avatar) {
-      el.innerHTML = '<img src="' + esc(user.avatar) + '" alt="">';
+      el.innerHTML = '<img src="' + esc(avatarUrl(user.avatar)) + '" alt="">';
       var img = el.querySelector("img");
       img.onerror = function () { el.textContent = initial; };
     } else {
@@ -430,6 +434,7 @@
   $("scanButton").onclick = showScanConfirm;
   $("confirmScan").onclick = startScan;
   $("accountBtn").onclick = function () { if (state.user) location.href = accountUrl(); else needLogin(); };
+  $("buyBtn").onclick = function (e) { e.preventDefault(); openPay(); };
   $("navPricing").onclick = function (e) { e.preventDefault(); openPay(); };
   $("navScan").onclick = function (e) { e.preventDefault(); showHome(); };
   Array.prototype.forEach.call(document.querySelectorAll(".scan-actions label"), function (label) {

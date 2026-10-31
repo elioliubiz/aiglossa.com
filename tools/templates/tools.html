@@ -81,7 +81,20 @@
   .tools-account-copy{display:flex;align-items:baseline;gap:8px}
   .tools-account-balance{color:var(--fg);font-variant-numeric:tabular-nums}
   .tools-account-email{display:none}
-  @media(max-width:560px){.tools-nav .wrap{padding-inline:20px}.tools-account-email{display:none}}
+  .tools-buy{padding:7px 10px;border:1px solid rgba(255,122,26,.28);border-radius:8px;color:#ffc69e;background:rgba(255,122,26,.075);font-size:12px;text-decoration:none;white-space:nowrap}
+  .tools-buy:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.13);color:#fff}
+  @media(max-width:560px){
+    .tools-nav .wrap{padding-inline:14px;gap:10px}
+    .tools-brand{font-size:10px;letter-spacing:.15em;gap:7px}
+    .tools-brand img{width:24px;height:24px;border-radius:7px}
+    .tools-lang{display:none}
+    .tools-actions{gap:8px}
+    .tools-account{padding:4px 9px 4px 4px;font-size:11px;gap:6px}
+    .tools-avatar{width:22px;height:22px}
+    .tools-account-balance{font-size:11px}
+    .tools-buy{display:none}
+    .tools-account-email{display:none}
+  }
 </style>
 </head>
 <body>
@@ -97,6 +110,7 @@
           <span class="tools-account-balance" id="toolsAccountBalance"></span>
         </span>
       </a>
+      <a class="tools-buy" id="toolsBuy" href="https://aiglossa.com/{{lang}}/webpricing">{{buy}}</a>
     </div>
   </div>
 </header>
@@ -168,7 +182,8 @@
     document.getElementById("toolsAccountBalance").textContent = (Number.isInteger(coins) ? String(coins) : coins.toFixed(2)) + " {{credits_unit}}";
     var avatar = document.getElementById("toolsAvatar");
     if (user.avatar) {
-      avatar.innerHTML = '<img src="' + String(user.avatar).replace(/"/g, "&quot;") + '" alt="">';
+      var avatarSrc = /^https?:\/\//.test(user.avatar) ? user.avatar : api + user.avatar;
+      avatar.innerHTML = '<img src="' + String(avatarSrc).replace(/"/g, "&quot;") + '" alt="">';
       var avatarImg = avatar.querySelector("img");
       avatarImg.onerror = function () { avatar.textContent = name.slice(0, 1).toUpperCase(); };
     } else {

@@ -36,10 +36,10 @@
 <meta name="theme-color" content="#0e0f11">
 <!-- 结构化数据：告诉 Google 这是一个网页应用，而不是普通文章 -->
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "AI音楽生成 — 写真から曲へ、長さはぴったり", "description": "写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。", "applicationCategory": "MultimediaApplication", "operatingSystem": "Web", "url": "https://tools.aiglossa.com/ja/music/", "inLanguage": "ja"}</script>
-<link rel="icon" href="../../assets/favicon-tools.svg?v=20261031-9" type="image/svg+xml">
-<link rel="icon" href="../../assets/favicon-tools.svg?v=20261031-9" sizes="any">
-<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png?v=20261031-9">
-<link rel="manifest" href="../../assets/manifest-tools.webmanifest?v=20261031-9">
+<link rel="icon" href="../../assets/favicon-tools.svg?v=20261031-12" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-tools.svg?v=20261031-12" sizes="any">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png?v=20261031-12">
+<link rel="manifest" href="../../assets/manifest-tools.webmanifest?v=20261031-12">
 <link rel="stylesheet" href="../../assets/theme.css" />
 <style>
   :root{
@@ -1187,13 +1187,17 @@
   }
 
   // 会话是否存在（cookie 方案下无法本地判断，用一次轻量请求确认）
+  function fmtCoins(value) {
+    var n = Number(value || 0);
+    return Number.isInteger(n) ? String(n) : n.toFixed(2);
+  }
   var sessionOk = false, balanceUnits = -1;
   function checkSession() {
     return call("/wallet/summary", {}, true).then(function (d) {
       sessionOk = d.code === 200;
       if (sessionOk && d.data) {
         balanceUnits = d.data.balance || 0;
-        $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+        $("bal").textContent = fmtCoins(d.data.coins != null ? d.data.coins : balanceUnits / 100) + " " + UI.credits;
         renderAvatar(d.data.user || {});
         syncCost();
       }
@@ -1522,7 +1526,7 @@
     hideTopup();
     if (typeof x.balance === "number") {
       balanceUnits = Math.round(x.balance * 100);
-      $("bal").textContent = UI.balance + " " + Math.round(x.balance) + " " + UI.credits;
+      $("bal").textContent = fmtCoins(x.balance) + " " + UI.credits;
     }
     msg(UI.done_in.replace("{n}", Math.round((Date.now() - startedAt) / 1000)), "ok");
     current = {
@@ -1590,7 +1594,7 @@
       var x = d.data;
       if (typeof x.balance === "number") {
         balanceUnits = Math.round(x.balance * 100);
-        $("bal").textContent = UI.balance + " " + Math.round(x.balance) + " " + UI.credits;
+        $("bal").textContent = fmtCoins(x.balance) + " " + UI.credits;
       }
       pollGeneration(x.id, t0);
     }).catch(function () { $("go").disabled = false; msg(UI.err_net, "err"); });

@@ -35,10 +35,10 @@
 <meta property="og:image:alt" content="AIGLOSSA TOOLS">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "aiglossa tools", "url": "https://tools.aiglossa.com/vi/", "inLanguage": "vi", "publisher": {"@type": "Organization", "name": "aiglossa", "url": "https://aiglossa.com"}}</script>
-<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-9" type="image/svg+xml">
-<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-9" sizes="any">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261031-9">
-<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261031-9">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-12" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-12" sizes="any">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261031-12">
+<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261031-12">
 <meta name="theme-color" content="#0e0f11">
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/theme.css">
@@ -97,13 +97,26 @@
   .tools-account-copy{display:flex;align-items:baseline;gap:8px}
   .tools-account-balance{color:var(--fg);font-variant-numeric:tabular-nums}
   .tools-account-email{display:none}
-  @media(max-width:560px){.tools-nav .wrap{padding-inline:20px}.tools-account-email{display:none}}
+  .tools-buy{padding:7px 10px;border:1px solid rgba(255,122,26,.28);border-radius:8px;color:#ffc69e;background:rgba(255,122,26,.075);font-size:12px;text-decoration:none;white-space:nowrap}
+  .tools-buy:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.13);color:#fff}
+  @media(max-width:560px){
+    .tools-nav .wrap{padding-inline:14px;gap:10px}
+    .tools-brand{font-size:10px;letter-spacing:.15em;gap:7px}
+    .tools-brand img{width:24px;height:24px;border-radius:7px}
+    .tools-lang{display:none}
+    .tools-actions{gap:8px}
+    .tools-account{padding:4px 9px 4px 4px;font-size:11px;gap:6px}
+    .tools-avatar{width:22px;height:22px}
+    .tools-account-balance{font-size:11px}
+    .tools-buy{display:none}
+    .tools-account-email{display:none}
+  }
 </style>
 </head>
 <body>
 <header class="tools-nav">
   <div class="wrap">
-    <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261031-9" alt=""> AIGLOSSA TOOLS</a>
+    <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261031-12" alt=""> AIGLOSSA TOOLS</a>
     <div class="tools-actions">
       <details class="tools-lang"><summary>Tiếng Việt</summary><ul>        <li><a href="../ar/" data-lang="ar">العربية</a></li>
         <li><a href="../de/" data-lang="de">Deutsch</a></li>
@@ -128,6 +141,7 @@
           <span class="tools-account-balance" id="toolsAccountBalance"></span>
         </span>
       </a>
+      <a class="tools-buy" id="toolsBuy" href="https://aiglossa.com/vi/webpricing">Mua tín dụng →</a>
     </div>
   </div>
 </header>
@@ -177,7 +191,7 @@
 
 <footer>
   <div class="wrap foot">
-    <span class="brand"><img src="../assets/favicon-tools.svg?v=20261031-9" alt=""> AIGLOSSA TOOLS</span>
+    <span class="brand"><img src="../assets/favicon-tools.svg?v=20261031-12" alt=""> AIGLOSSA TOOLS</span>
     <nav class="legal">
       <a href="https://aiglossa.com/vi/protocol/privacy.html">Chính sách Quyền riêng tư</a>
       <a href="https://aiglossa.com/vi/protocol/term.html">Điều khoản Dịch vụ</a>
@@ -216,7 +230,8 @@
     document.getElementById("toolsAccountBalance").textContent = (Number.isInteger(coins) ? String(coins) : coins.toFixed(2)) + " tín dụng";
     var avatar = document.getElementById("toolsAvatar");
     if (user.avatar) {
-      avatar.innerHTML = '<img src="' + String(user.avatar).replace(/"/g, "&quot;") + '" alt="">';
+      var avatarSrc = /^https?:\/\//.test(user.avatar) ? user.avatar : api + user.avatar;
+      avatar.innerHTML = '<img src="' + String(avatarSrc).replace(/"/g, "&quot;") + '" alt="">';
       var avatarImg = avatar.querySelector("img");
       avatarImg.onerror = function () { avatar.textContent = name.slice(0, 1).toUpperCase(); };
     } else {

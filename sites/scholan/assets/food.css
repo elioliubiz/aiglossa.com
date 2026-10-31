@@ -387,3 +387,12 @@ body{min-height:100vh}
 .history-copy{min-width:0}
 
 .history-thumb{margin-top:0!important}
+
+@media(max-width:640px){
+  .top-actions{gap:6px}
+  .top-actions .pill-btn{padding:6px 9px;font-size:11px}
+  .top-actions .avatar{width:22px;height:22px;font-size:10px}
+  .top-actions .balance span{font-size:10px}
+}
+
+@media(max-width:640px){#buyBtn{display:none}}

@@ -1171,13 +1171,17 @@
   }
 
   // 会话是否存在（cookie 方案下无法本地判断，用一次轻量请求确认）
+  function fmtCoins(value) {
+    var n = Number(value || 0);
+    return Number.isInteger(n) ? String(n) : n.toFixed(2);
+  }
   var sessionOk = false, balanceUnits = -1;
   function checkSession() {
     return call("/wallet/summary", {}, true).then(function (d) {
       sessionOk = d.code === 200;
       if (sessionOk && d.data) {
         balanceUnits = d.data.balance || 0;
-        $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+        $("bal").textContent = fmtCoins(d.data.coins != null ? d.data.coins : balanceUnits / 100) + " " + UI.credits;
         renderAvatar(d.data.user || {});
         syncCost();
       }
@@ -1506,7 +1510,7 @@
     hideTopup();
     if (typeof x.balance === "number") {
       balanceUnits = Math.round(x.balance * 100);
-      $("bal").textContent = UI.balance + " " + Math.round(x.balance) + " " + UI.credits;
+      $("bal").textContent = fmtCoins(x.balance) + " " + UI.credits;
     }
     msg(UI.done_in.replace("{n}", Math.round((Date.now() - startedAt) / 1000)), "ok");
     current = {
@@ -1574,7 +1578,7 @@
       var x = d.data;
       if (typeof x.balance === "number") {
         balanceUnits = Math.round(x.balance * 100);
-        $("bal").textContent = UI.balance + " " + Math.round(x.balance) + " " + UI.credits;
+        $("bal").textContent = fmtCoins(x.balance) + " " + UI.credits;
       }
       pollGeneration(x.id, t0);
     }).catch(function () { $("go").disabled = false; msg(UI.err_net, "err"); });
