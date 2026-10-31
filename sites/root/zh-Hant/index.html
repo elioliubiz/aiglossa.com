@@ -214,17 +214,19 @@
 
   /* editorial product rows */
   .product-list{display:grid;gap:12px}
-  .product-row{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);align-items:stretch;min-height:210px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(150deg,rgba(255,255,255,.055),rgba(255,255,255,.018));text-decoration:none;color:inherit;overflow:hidden;position:relative;transition:transform .22s,border-color .22s}
+  .product-row{display:block;min-height:210px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(150deg,rgba(255,255,255,.055),rgba(255,255,255,.018));text-decoration:none;color:inherit;overflow:hidden;position:relative;transition:transform .22s,border-color .22s}
   .product-row:hover{transform:translateY(-2px);border-color:rgba(255,255,255,.22)}
   .product-row.food:hover{border-color:rgba(79,191,122,.5)}
   .product-row.skin:hover{border-color:rgba(226,145,158,.55)}
   .product-row.music:hover,.product-row.image:hover{border-color:rgba(255,122,26,.5)}
-  .product-copy{padding:24px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;min-width:0}
+  .product-copy{padding:24px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2;min-width:0;max-width:48%;min-height:210px}
   .product-copy h3{font-size:23px;letter-spacing:-.02em;margin-top:16px}
   .product-copy p{color:var(--mut);font-size:12.5px;line-height:1.65;margin-top:8px;max-width:40ch}
-  .product-media{position:relative;min-height:210px;overflow:hidden;background:#111}
-  .product-media img{width:100%;height:100%;object-fit:cover;display:block;opacity:.92;filter:saturate(.9);mask-image:linear-gradient(to left,#000 42%,transparent 100%);-webkit-mask-image:linear-gradient(to left,#000 42%,transparent 100%)}
+  .product-media{position:absolute;inset:0 0 0 auto;width:100%;height:100%;overflow:hidden;background:#111;z-index:0}
+  .product-media img{width:100%;height:100%;object-fit:cover;display:block;opacity:.92;filter:saturate(.9)}
+  .product-row:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(8,8,10,.98) 0%,rgba(8,8,10,.92) 30%,rgba(8,8,10,.52) 55%,rgba(8,8,10,.05) 82%)}
   .scholan-row{min-height:300px;background:linear-gradient(140deg,rgba(124,149,255,.14),rgba(255,255,255,.02) 62%)}
+  .scholan-row .product-copy{min-height:300px;max-width:48%}
   .scholan-row .product-media{min-height:300px}
   .scholan-row .product-copy h3{font-size:30px}
   .scholan-row .product-copy p{max-width:32ch}
@@ -232,10 +234,10 @@
   @media(max-width:760px){
     .site-head .wrap{padding:0 18px;height:60px}
     .family .wrap{padding-inline:18px}
-    .product-row{grid-template-columns:1fr;min-height:0}
-    .product-media,.scholan-row .product-media{order:-1;height:178px;min-height:178px;width:100%}
-    .product-media img{mask-image:linear-gradient(to bottom,#000 52%,transparent 100%);-webkit-mask-image:linear-gradient(to bottom,#000 52%,transparent 100%)}
-    .product-copy{padding:17px 18px 19px}
+    .product-row{display:flex;flex-direction:column;min-height:0}
+    .product-media,.scholan-row .product-media{position:relative;order:-1;height:178px;min-height:178px;width:100%}
+    .product-row:after{display:none}
+    .product-copy,.scholan-row .product-copy{max-width:100%;min-height:0;padding:17px 18px 19px}
     .product-copy h3{font-size:20px;margin-top:12px}
     .scholan-row .product-copy h3{font-size:24px}
   }
@@ -279,7 +281,7 @@
         <div class="group-label">閱讀</div>
         <a class="product-row scholan-row" href="https://scholan.aiglossa.com/zh-Hant/">
           <div class="product-copy">
-            <span class="product-status">iOS · 16 種語言</span>
+            <div class="product-top"><span class="product-icon"><img src="../assets/scholan/icon.png" alt="" loading="lazy"></span><span class="product-status">iOS · 16 種語言</span></div>
             <h3>Scholan</h3>
             <p>讀原文書，別被查詞打斷</p>
             <span class="scholan-open">了解 Scholan →</span>
@@ -307,11 +309,11 @@
         <div class="group-label">創作</div>
         <div class="product-list">
           <a class="product-row music" href="https://tools.aiglossa.com/zh-Hant/music/">
-            <div class="product-copy"><div class="product-top"><span class="product-icon"><svg viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></span><span class="product-status">Web</span></div><h3>Music</h3><p>輸入簡短指令，即可為影片、播客或貼文製作背景音樂。</p><span class="product-open">開啟 →</span></div>
+            <div class="product-copy"><div class="product-top"><span class="product-icon"><img src="../assets/icon-music-512.png" alt="" loading="lazy"></span><span class="product-status">Web</span></div><h3>Music</h3><p>輸入簡短指令，即可為影片、播客或貼文製作背景音樂。</p><span class="product-open">開啟 →</span></div>
             <div class="product-media"><img src="../assets/brand/music.jpg" alt="" loading="lazy"></div>
           </a>
           <a class="product-row image" href="https://tools.aiglossa.com/zh-Hant/image/">
-            <div class="product-copy"><div class="product-top"><span class="product-icon"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m5 17 5-5 4 4 2-2 4 4"/></svg></span><span class="product-status">Web</span></div><h3>Image</h3><p>輸入提示詞，即可為網頁、貼文或產品構想生成精美圖像。</p><span class="product-open">開啟 →</span></div>
+            <div class="product-copy"><div class="product-top"><span class="product-icon"><img src="../assets/icon-image-512.png" alt="" loading="lazy"></span><span class="product-status">Web</span></div><h3>Image</h3><p>輸入提示詞，即可為網頁、貼文或產品構想生成精美圖像。</p><span class="product-open">開啟 →</span></div>
             <div class="product-media"><img src="../assets/brand/image.jpg" alt="" loading="lazy"></div>
           </a>
         </div>
