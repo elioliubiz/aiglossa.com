@@ -32,9 +32,10 @@
         <div class="scan-icon"><svg viewBox="0 0 24 24"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2l1.1-1.8h6.4L16.3 6h1.2A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5z"/><circle cx="12" cy="12.3" r="3.2"/></svg></div>
         <div class="scan-copy"><b>{{upload}}</b><span>{{scan_sub}}</span></div>
         <div class="scan-actions"><label class="btn" for="fileInput">{{choose_file}}</label><label class="btn ghost" for="cameraInput">{{camera}}</label></div>
-        <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp">
+        <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" multiple>
         <input class="file-input" id="cameraInput" type="file" accept="image/*" capture="environment">
-        <div class="preview-wrap hidden" id="previewWrap"><img id="preview" alt="{{image_alt}}"></div>
+        <p class="multi-hint">{{multi_hint}}</p>
+        <div class="preview-wrap hidden" id="previewWrap"><div class="preview-grid" id="previewGrid"></div></div>
         <div class="scan-loading hidden" id="scanLoading"><span class="spinner"></span><span id="scanLoadingText">{{scanning}}</span></div>
         <button class="btn hidden" id="scanButton" style="width:100%;margin-top:12px">{{scan_button}}</button>
       </div>

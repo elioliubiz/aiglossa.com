@@ -14,7 +14,7 @@
   var SCAN_CREDITS = 3;
   var device = localStorage.getItem("aig_device") || (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()));
   localStorage.setItem("aig_device", device);
-  var state = { user: null, balance: 0, file: null, preview: "", scan: null, history: [], lastScan: null, thumbUrls: [] };
+  var state = { user: null, balance: 0, files: [], previews: [], scan: null, history: [], lastScan: null, thumbUrls: [] };
 
   function esc(value) {
     return String(value == null ? "" : value).replace(/[&<>"']/g, function (ch) {
@@ -136,20 +136,40 @@
     });
   }
 
-  function handleFile(file) {
-    if (!file) return;
-    if (!/^image\/(jpeg|png|webp)$/.test(file.type || "")) { toast(UI.image_invalid); return; }
-    if (file.size > 8 * 1024 * 1024) { toast(UI.image_invalid); return; }
-    state.file = file;
-    var reader = new FileReader();
-    reader.onload = function () {
-      state.preview = String(reader.result);
-      $("preview").src = state.preview;
-      $("previewWrap").classList.remove("hidden");
-      $("scanButton").classList.remove("hidden");
-      $("scanButton").disabled = false;
-    };
-    reader.readAsDataURL(file);
+  function renderPreviews() {
+    var grid = $("previewGrid");
+    if (!grid) return;
+    grid.innerHTML = state.previews.map(function (url, index) {
+      return '<div class="preview-item"><img src="' + esc(url) + '" alt=""><button type="button" class="preview-remove" data-index="' + index + '" aria-label="remove">×</button></div>';
+    }).join("");
+    $("previewWrap").classList.toggle("hidden", !state.previews.length);
+    $("scanButton").classList.toggle("hidden", !state.files.length);
+    $("scanButton").disabled = false;
+    Array.prototype.forEach.call(grid.querySelectorAll(".preview-remove"), function (btn) {
+      btn.onclick = function () {
+        var index = Number(btn.dataset.index);
+        var [url] = state.previews.splice(index, 1);
+        state.files.splice(index, 1);
+        if (url) URL.revokeObjectURL(url);
+        renderPreviews();
+      };
+    });
+  }
+
+  function handleFiles(files) {
+    var remaining = 3 - state.files.length;
+    if (remaining <= 0) { toast(UI.multi_hint); return; }
+    var accepted = [];
+    Array.prototype.forEach.call(files || [], function (file) {
+      if (accepted.length >= remaining) return;
+      if (!/^image\/(jpeg|png|webp)$/.test(file.type || "")) { toast(UI.image_invalid); return; }
+      if (file.size > 8 * 1024 * 1024) { toast(UI.image_invalid); return; }
+      accepted.push(file);
+    });
+    if (!accepted.length) return;
+    state.files = state.files.concat(accepted).slice(0, 3);
+    accepted.forEach(function (file) { state.previews.push(URL.createObjectURL(file)); });
+    renderPreviews();
   }
 
   function setScanning(on, text) {
@@ -176,7 +196,7 @@
   }
 
   function loadScanImage(scan) {
-    if (!scan || state.preview) return;
+    if (!scan || state.previews.length) return;
     if (!scan.has_image) { thumbFallback(); return; }
     imageCall(scan.id).then(function (blob) {
       if (!blob) { thumbFallback(); return; }
@@ -189,7 +209,7 @@
 
   function showScanConfirm() {
     if (!state.user) { needLogin(); return; }
-    if (!state.file) { toast(UI.image_invalid); return; }
+    if (!state.files.length) { toast(UI.image_invalid); return; }
     if (state.balance < SCAN_CREDITS) { openPay(); toast(UI.insufficient); return; }
     $("confirmText").textContent = UI.one_scan + " · " + UI.scan_cost;
     $("confirmModal").classList.remove("hidden");
@@ -201,12 +221,12 @@
 
   function startScan() {
     $("confirmModal").classList.add("hidden");
-    if (!state.file) return;
+    if (!state.files.length) return;
     setScanning(true, UI.scanning);
     toast(UI.scanning);
-    compress(state.file).then(function (data) {
+    Promise.all(state.files.map(compress)).then(function (items) {
       return call("/ai/food/scan", {
-        language: LANG, request_id: requestId(), image: data.image, mime: data.mime
+        language: LANG, request_id: requestId(), images: items.map(function (x) { return x.image; }), mime: "image/jpeg"
       });
     }).then(function (data) {
       if (data.code === 401) { needLogin(); return; }
@@ -263,6 +283,11 @@
     if (value === null || value === undefined || value === "") return UI.not_labeled;
     return esc(value) + (unit ? " " + esc(unit) : "");
   }
+  function hasNutrition(n) {
+    return ["energy_kj", "calories_kcal", "protein_g", "fat_g", "saturated_fat_g", "carbohydrate_g", "sugars_g", "sodium_mg", "fiber_g"].some(function (key) {
+      return n[key] !== null && n[key] !== undefined && n[key] !== "";
+    });
+  }
   function nrvOf(report, key) {
     var n = (report.nrv_percent || {})[key];
     return (n === null || n === undefined) ? null : Number(n);
@@ -295,7 +320,7 @@
     if (report.serving && report.serving.basis) meta.push(report.serving.basis);
     $("resultMeta").textContent = meta.join(" · ");
     var thumb = $("resultThumb");
-    thumb.innerHTML = state.preview ? '<img src="' + esc(state.preview) + '" alt="' + esc(UI.image_alt) + '">' : '<span class="thumb-skeleton" aria-label=""></span>';
+    thumb.innerHTML = state.previews.length ? '<img src="' + esc(state.previews[0]) + '" alt="' + esc(UI.image_alt) + '">' : '<span class="thumb-skeleton" aria-label=""></span>';
     loadScanImage(scan);
 
     var analysis = report.analysis || {};
@@ -307,34 +332,42 @@
       '<h2>' + esc(analysis.headline || UI.result_title) + '</h2><p>' + esc(analysis.summary || "") + '</p>' +
       (cautions ? '<div class="report-section"><h3>' + esc(UI.cautions) + '</h3><ul class="report-note">' + cautions + '</ul></div>' : '') + '</section>';
 
-    var nut = '<section class="card"><div class="card-head"><h3>' + esc(UI.nutrition) + '</h3><span>' + esc(report.serving && report.serving.basis || UI.per_100g) + '</span></div><div class="nut-grid report">';
-    nut += nutItem(UI.energy, nutrition.calories_kcal !== null && nutrition.calories_kcal !== undefined ? nutrition.calories_kcal : (nutrition.energy_kj ? Math.round(nutrition.energy_kj / 4.184) : null), "kcal", nrvOf(report, "energy"), nutrition.energy_kj ? nutrition.energy_kj + " kJ" : "", false);
-    nut += nutItem(UI.protein, nutrition.protein_g, "g", nrvOf(report, "protein"), "", false);
-    nut += nutItem(UI.fat, nutrition.fat_g, "g", nrvOf(report, "fat"), "", false);
-    nut += nutItem(UI.sat_fat, nutrition.saturated_fat_g, "g", nrvOf(report, "saturated_fat"), "", true);
-    nut += nutItem(UI.carb, nutrition.carbohydrate_g, "g", nrvOf(report, "carbohydrate"), "", false);
-    nut += nutItem(UI.sugar, nutrition.sugars_g, "g", nrvOf(report, "sugars"), "", true);
-    nut += nutItem(UI.sodium, nutrition.sodium_mg, "mg", nrvOf(report, "sodium"), "", true);
-    nut += nutItem(UI.fiber, nutrition.fiber_g, "g", null, "", false);
-    nut += '</div><p class="nutrition-note">' + esc(UI.nutrition_note) + '</p><p class="nutrition-note">' + esc(UI.energy_note) + '</p></section>';
+    var nut;
+    if (!hasNutrition(nutrition)) {
+      nut = '<section class="card"><div class="card-head"><h3>' + esc(UI.nutrition) + '</h3><span>' + esc(UI.not_labeled) + '</span></div><div class="nutrition-empty"><b>' + esc(UI.nutrition_empty_title) + '</b><p>' + esc(UI.nutrition_empty_body) + '</p></div></section>';
+    } else {
+      nut = '<section class="card"><div class="card-head"><h3>' + esc(UI.nutrition) + '</h3><span>' + esc(report.serving && report.serving.basis || UI.per_100g) + '</span></div><div class="nut-grid report">';
+      nut += nutItem(UI.energy, nutrition.calories_kcal !== null && nutrition.calories_kcal !== undefined ? nutrition.calories_kcal : (nutrition.energy_kj ? Math.round(nutrition.energy_kj / 4.184) : null), "kcal", nrvOf(report, "energy"), nutrition.energy_kj ? nutrition.energy_kj + " kJ" : "", false);
+      nut += nutItem(UI.protein, nutrition.protein_g, "g", nrvOf(report, "protein"), "", false);
+      nut += nutItem(UI.fat, nutrition.fat_g, "g", nrvOf(report, "fat"), "", false);
+      nut += nutItem(UI.sat_fat, nutrition.saturated_fat_g, "g", nrvOf(report, "saturated_fat"), "", true);
+      nut += nutItem(UI.carb, nutrition.carbohydrate_g, "g", nrvOf(report, "carbohydrate"), "", false);
+      nut += nutItem(UI.sugar, nutrition.sugars_g, "g", nrvOf(report, "sugars"), "", true);
+      nut += nutItem(UI.sodium, nutrition.sodium_mg, "mg", nrvOf(report, "sodium"), "", true);
+      nut += nutItem(UI.fiber, nutrition.fiber_g, "g", null, "", false);
+      nut += '</div><p class="nutrition-note">' + esc(UI.nutrition_note_generic) + '</p><p class="nutrition-note">' + esc(UI.energy_note) + '</p></section>';
+    }
 
     var allIng = report.ingredients || [];
     var normalize = function (text) { return String(text || "").replace(/\s+/g, "").toLowerCase(); };
+    var hasInferred = false;
     var ing = allIng.slice(0, 80).map(function (item, index) {
       var fn = String(item.function || "").trim();
       var flags = (item.flags || []).map(function (flag) { return String(flag || "").trim(); }).filter(Boolean);
-      var flagHtml = flags.map(function (flag) { return '<span class="ing-badge add">' + esc(flag) + '</span>'; }).join("");
+      var inferred = item.flags_source === "inferred" || item.flags_source === "mixed";
+      if (inferred && flags.length) hasInferred = true;
+      var flagHtml = flags.map(function (flag) { return '<span class="ing-badge add' + (inferred ? " inferred" : "") + '">' + esc(flag) + (inferred ? "*" : "") + '</span>'; }).join("");
       var badgeHtml = (fn || flagHtml) ? '<div class="ing-badges">' + (fn ? '<span class="ing-badge">' + esc(fn) + '</span>' : "") + flagHtml + '</div>' : "";
       var why = [item.what_it_is || "", item.note || ""].filter(Boolean).join(" ");
       var orig = String(item.original_text || "").trim();
       var nm = String(item.name || "").trim();
       var same = orig && normalize(orig) === normalize(nm);
-      var origHtml = (orig && !same) ? ' <span class="orig-inline">' + esc(orig) + '</span>' : "";
+      var origHtml = (orig && !same) ? ' <span class="orig-inline">' + esc(UI.original) + ': ' + esc(orig) + '</span>' : "";
       var extra = index >= 6 ? " ing-extra hidden" : "";
       return '<div class="report-ing' + extra + '"><div class="ing-title"><div class="nm">' + esc(nm) + origHtml + '</div></div><div class="why">' + esc(why) + '</div>' + badgeHtml + '</div>';
     }).join("");
     var more = allIng.length > 6 ? '<button class="ing-more" id="ingMore">' + esc(UI.show_all) + " (" + allIng.length + ')</button>' : "";
-    var ingCard = '<section class="card"><div class="card-head"><h3>' + esc(UI.ingredients) + '</h3><span>' + allIng.length + '</span></div>' + (ing || '<p class="report-note">' + esc(UI.not_labeled) + '</p>') + more + '</section>';
+    var ingCard = '<section class="card"><div class="card-head"><h3>' + esc(UI.ingredients) + '</h3><span>' + allIng.length + '</span></div>' + (ing || '<p class="report-note">' + esc(UI.not_labeled) + '</p>') + (hasInferred ? '<p class="ing-legend">* ' + esc(UI.inferred) + '</p>' : '') + more + '</section>';
 
     var people = (report.population_notes || []).map(function (item) {
       var lvl = item.level === "high" ? "high" : item.level === "medium" ? "medium" : "";
@@ -371,13 +404,12 @@
   }
 
   function resetScan() {
-    state.file = null; state.preview = "";
+    state.files.forEach(function () {}); state.files = []; state.previews.forEach(function (url) { URL.revokeObjectURL(url); }); state.previews = [];
     $("previewWrap").classList.add("hidden");
     $("scanButton").classList.add("hidden");
     $("scanButton").disabled = false;
     setScanning(false);
     if (state.imageUrl) { URL.revokeObjectURL(state.imageUrl); state.imageUrl = ""; }
-    $("preview").removeAttribute("src");
     $("fileInput").value = "";
     $("cameraInput").value = "";
   }
@@ -412,7 +444,7 @@
           var item = state.history[Number(btn.dataset.index)];
           if (!item) return;
           call("/ai/food/scan/" + item.id, {}).then(function (data) {
-            if (data.code === 200 && data.data) { state.preview = ""; renderResult(data.data); }
+            if (data.code === 200 && data.data) { state.previews = []; renderResult(data.data); }
           });
         };
       });
@@ -489,8 +521,8 @@
     });
   }
 
-  $("fileInput").onchange = function () { handleFile(this.files && this.files[0]); };
-  $("cameraInput").onchange = function () { handleFile(this.files && this.files[0]); };
+  $("fileInput").onchange = function () { handleFiles(this.files); this.value = ""; };
+  $("cameraInput").onchange = function () { handleFiles(this.files); this.value = ""; };
   $("scanButton").onclick = showScanConfirm;
   $("confirmScan").onclick = startScan;
   $("accountBtn").onclick = function () { if (state.user) location.href = accountUrl(); else needLogin(); };
