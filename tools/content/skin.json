@@ -154,7 +154,8 @@
     "skin_acne": "Acne-prone",
     "level_suitable": "Generally suitable",
     "level_neutral": "Neutral",
-    "level_caution": "Caution"
+    "level_caution": "Caution",
+    "product_unit": "products"
   },
   "zh-Hans": {
     "title": "护肤成分分析 — AIGLOSSA",
@@ -311,7 +312,8 @@
     "skin_acne": "痘痘肌",
     "level_suitable": "一般适用",
     "level_neutral": "中性",
-    "level_caution": "谨慎"
+    "level_caution": "谨慎",
+    "product_unit": "个产品"
   },
   "zh-Hant": {
     "title": "保養成分分析 — AIGLOSSA",
@@ -468,7 +470,8 @@
     "skin_acne": "痘痘肌",
     "level_suitable": "一般適用",
     "level_neutral": "中性",
-    "level_caution": "謹慎使用"
+    "level_caution": "謹慎使用",
+    "product_unit": "項保養品"
   },
   "ja": {
     "title": "スキンケア成分解析 — AIGLOSSA",
@@ -625,7 +628,8 @@
     "skin_acne": "ニキビ肌",
     "level_suitable": "適している",
     "level_neutral": "中立",
-    "level_caution": "注意"
+    "level_caution": "注意",
+    "product_unit": "個のスキンケア製品"
   },
   "ko": {
     "title": "스킨케어 성분 분석 — AIGLOSSA",
@@ -782,7 +786,8 @@
     "skin_acne": "여드름성",
     "level_suitable": "모든 피부용",
     "level_neutral": "보통",
-    "level_caution": "주의"
+    "level_caution": "주의",
+    "product_unit": "개"
   },
   "es": {
     "title": "Análisis de ingredientes de cuidado de la piel — AIGLOSSA",
@@ -939,7 +944,8 @@
     "skin_acne": "Tendencia acneica",
     "level_suitable": "Generalmente apto",
     "level_neutral": "Neutral",
-    "level_caution": "Precaución"
+    "level_caution": "Precaución",
+    "product_unit": "productos"
   },
   "fr": {
     "title": "Analyse des ingrédients de soins — AIGLOSSA",
@@ -1096,7 +1102,8 @@
     "skin_acne": "À tendance acnéique",
     "level_suitable": "Généralement adapté",
     "level_neutral": "Neutre",
-    "level_caution": "Prudence"
+    "level_caution": "Prudence",
+    "product_unit": "produits"
   },
   "de": {
     "title": "Hautpflege-Inhaltsstoffanalyse — AIGLOSSA",
@@ -1253,7 +1260,8 @@
     "skin_acne": "Zu Unreinheiten neigend",
     "level_suitable": "Allgemein geeignet",
     "level_neutral": "Neutral",
-    "level_caution": "Vorsicht"
+    "level_caution": "Vorsicht",
+    "product_unit": "Hautpflegeprodukte"
   },
   "pt": {
     "title": "Análise de ingredientes de skincare — AIGLOSSA",
@@ -1410,7 +1418,8 @@
     "skin_acne": "Com tendência à acne",
     "level_suitable": "Geralmente adequado",
     "level_neutral": "Neutro",
-    "level_caution": "Cuidado"
+    "level_caution": "Cuidado",
+    "product_unit": "produtos"
   },
   "it": {
     "title": "Analisi degli ingredienti skincare — AIGLOSSA",
@@ -1567,7 +1576,8 @@
     "skin_acne": "A tendenza acneica",
     "level_suitable": "Generalmente adatta",
     "level_neutral": "Neutro",
-    "level_caution": "Attenzione"
+    "level_caution": "Attenzione",
+    "product_unit": "prodotti"
   },
   "ru": {
     "title": "Анализ состава косметики — AIGLOSSA",
@@ -1724,7 +1734,8 @@
     "skin_acne": "Проблемная",
     "level_suitable": "Подходит",
     "level_neutral": "Нейтрально",
-    "level_caution": "С осторожностью"
+    "level_caution": "С осторожностью",
+    "product_unit": "средств"
   },
   "ar": {
     "title": "تحليل مكونات العناية بالبشرة — AIGLOSSA",
@@ -1881,7 +1892,8 @@
     "skin_acne": "معرضة للحبوب",
     "level_suitable": "مناسب للجميع",
     "level_neutral": "محايد",
-    "level_caution": "يُنصح بالحذر"
+    "level_caution": "يُنصح بالحذر",
+    "product_unit": "منتجات"
   },
   "th": {
     "title": "วิเคราะห์ส่วนผสมสกินแคร์ — AIGLOSSA",
@@ -2038,7 +2050,8 @@
     "skin_acne": "ผิวเป็นสิวง่าย",
     "level_suitable": "ใช้ได้ทั่วไป",
     "level_neutral": "ปกติ",
-    "level_caution": "ควรระวัง"
+    "level_caution": "ควรระวัง",
+    "product_unit": "ชิ้น"
   },
   "vi": {
     "title": "Phân tích thành phần mỹ phẩm — AIGLOSSA",
@@ -2195,7 +2208,8 @@
     "skin_acne": "Da mụn",
     "level_suitable": "Phù hợp",
     "level_neutral": "Trung tính",
-    "level_caution": "Cần thận trọng"
+    "level_caution": "Cần thận trọng",
+    "product_unit": "sản phẩm"
   },
   "id": {
     "title": "Analisis bahan skincare — AIGLOSSA",
@@ -2352,7 +2366,8 @@
     "skin_acne": "Berjerawat",
     "level_suitable": "Umumnya cocok",
     "level_neutral": "Netral",
-    "level_caution": "Perlu hati-hati"
+    "level_caution": "Perlu hati-hati",
+    "product_unit": "produk"
   },
   "tr": {
     "title": "Cilt bakım içerik analizi — AIGLOSSA",
@@ -2509,6 +2524,7 @@
     "skin_acne": "Akneye eğilimli",
     "level_suitable": "Genel kullanıma uygun",
     "level_neutral": "Nötr",
-    "level_caution": "Dikkat"
+    "level_caution": "Dikkat",
+    "product_unit": "cilt bakım ürünü"
   }
 }

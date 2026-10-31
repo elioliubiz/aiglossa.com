@@ -228,14 +228,14 @@
     var first = products[0] || {}; var pr = first.product || {};
     $("resultKicker").textContent = UI.result_title;
     $("resultName").textContent = multi ? UI.combined : (pr.name || pr.name_original || UI.product);
-    $("resultMeta").textContent = multi ? (products.length + " " + UI.products) : ((pr.brand || "") + (pr.category ? " · " + pr.category : ""));
+    $("resultMeta").textContent = multi ? (products.length + " " + (UI.product_unit || UI.products)) : ((pr.brand || "") + (pr.category ? " · " + pr.category : ""));
     renderStack(products);
     var tabs = multi ? '<div class="skin-tabs" id="skinTabs" role="tablist"></div>' : "";
     $("reportMain").innerHTML = (multi ? overviewCard(report.combined, products) : "") + tabs + '<div id="productPanel" class="skin-panel"></div>';
     if (multi) renderTabs(products);
     renderProductPanel(products);
     $("reportSide").innerHTML = '<div class="skin-side">' +
-      '<div class="skin-side-kicker">ANALYSIS</div>' +
+      '<div class="skin-side-kicker">' + esc(UI.result_title) + '</div>' +
       '<div class="skin-side-price">' + coinText(row.credits || 0) + '<span> ' + esc(UI.credits) + '</span></div>' +
       '<div class="side-line"><span>' + esc(UI.products) + '</span><b>' + products.length + '</b></div>' +
       '<div class="side-line"><span>' + esc(UI.pay_balance) + '</span><b>' + coinText(state.balance) + '</b></div>' +
