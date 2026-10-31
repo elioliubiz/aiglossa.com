@@ -3,6 +3,28 @@
   "cleanUrls": false,
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        }
+      ],
+      "destination": "/en/",
+      "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/en/",
+      "permanent": true
+    },
+    {
       "source": "/music/",
       "has": [
         {
@@ -669,6 +691,106 @@
   ],
   "rewrites": [
     {
+      "source": "/:lang/food/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/index.html"
+    },
+    {
+      "source": "/:lang/food/sw.js",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/sw.js"
+    },
+    {
+      "source": "/:lang/food/manifest.webmanifest",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/manifest.webmanifest"
+    },
+    {
+      "source": "/:lang/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:path*"
+    },
+    {
+      "source": "/:lang/food/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/index.html"
+    },
+    {
+      "source": "/:lang/food/sw.js",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/sw.js"
+    },
+    {
+      "source": "/:lang/food/manifest.webmanifest",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/manifest.webmanifest"
+    },
+    {
+      "source": "/:lang/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:path*"
+    },
+    {
       "source": "/:path*",
       "has": [
         {
@@ -710,32 +832,62 @@
     },
     {
       "source": "/:lang/music/share/",
-      "has": [{"type": "host", "value": "tools.aiglossa.com"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
       "destination": "/sites/tools/:lang/music/share/index.html"
     },
     {
       "source": "/:lang/image/",
-      "has": [{"type": "host", "value": "tools.aiglossa.com"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
       "destination": "/sites/tools/:lang/image/index.html"
     },
     {
       "source": "/:lang/image/share/",
-      "has": [{"type": "host", "value": "tools.aiglossa.com"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
       "destination": "/sites/tools/:lang/image/share/index.html"
     },
     {
       "source": "/:lang/image/share/",
-      "has": [{"type": "host", "value": "tools.staging.aiglossa.com"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.staging.aiglossa.com"
+        }
+      ],
       "destination": "/sites/tools/:lang/image/share/index.html"
     },
     {
       "source": "/:lang/image/",
-      "has": [{"type": "host", "value": "tools.staging.aiglossa.com"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.staging.aiglossa.com"
+        }
+      ],
       "destination": "/sites/tools/:lang/image/index.html"
     },
     {
       "source": "/:lang/music/share/",
-      "has": [{"type": "host", "value": "tools.staging.aiglossa.com"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.staging.aiglossa.com"
+        }
+      ],
       "destination": "/sites/tools/:lang/music/share/index.html"
     },
     {
@@ -920,6 +1072,32 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=604800"
+        }
+      ]
+    },
+    {
+      "source": "/:lang/food/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    },
+    {
+      "source": "/:lang/food/manifest.webmanifest",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
         }
       ]
     }

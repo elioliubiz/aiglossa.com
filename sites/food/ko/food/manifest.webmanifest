@@ -1,0 +1,30 @@
+{
+  "name": "식품 라벨 스캔 — aiglossa food",
+  "short_name": "aiglossa food",
+  "description": "식품 라벨을 스캔하여 영양 성분 보고서, 원재료 설명, 주의가 필요한 사람을 위한 일반적인 정보를 확인하세요.",
+  "lang": "ko",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBFAF7",
+  "theme_color": "#FBFAF7",
+  "icons": [
+    {
+      "src": "../../assets/food-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "../../assets/food-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "../../assets/food-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

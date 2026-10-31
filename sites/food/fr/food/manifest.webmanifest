@@ -1,0 +1,30 @@
+{
+  "name": "Scan d'étiquettes alimentaires — aiglossa food",
+  "short_name": "aiglossa food",
+  "description": "Scannez une étiquette alimentaire pour obtenir un rapport nutritionnel clair, des explications sur les ingrédients et des conseils pour les personnes concernées.",
+  "lang": "fr",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBFAF7",
+  "theme_color": "#FBFAF7",
+  "icons": [
+    {
+      "src": "../../assets/food-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "../../assets/food-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "../../assets/food-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

@@ -36,5 +36,11 @@
       "guides"
     ],
     "extra": []
+  },
+  "food": {
+    "host": "food.aiglossa.com",
+    "pages": [
+      "food"
+    ]
   }
 }

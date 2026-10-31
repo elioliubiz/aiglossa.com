@@ -1,0 +1,30 @@
+{
+  "name": "สแกนฉลากอาหาร — aiglossa food",
+  "short_name": "aiglossa food",
+  "description": "สแกนฉลากอาหารเพื่อรับรายงานโภชนาการที่ชัดเจน คำอธิบายส่วนประกอบ และข้อควรระวังสำหรับผู้ที่ต้องดูแลสุขภาพเป็นพิเศษ",
+  "lang": "th",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBFAF7",
+  "theme_color": "#FBFAF7",
+  "icons": [
+    {
+      "src": "../../assets/food-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "../../assets/food-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "../../assets/food-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

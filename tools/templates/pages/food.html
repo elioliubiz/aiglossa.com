@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="{{lang}}" dir="{{dir}}">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{{title}}</title><meta name="description" content="{{description}}"><link rel="canonical" href="{{canonical}}">{{alternates}}
+<meta property="og:type" content="website"><meta property="og:title" content="{{title}}"><meta property="og:description" content="{{description}}"><meta property="og:url" content="{{canonical}}"><meta property="og:image" content="{{site_base}}/assets/og.png">
+<meta name="theme-color" content="#FBFAF7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="{{prefix}}assets/favicon-tools.svg"><link rel="apple-touch-icon" href="{{prefix}}assets/food-icon-192.png">
+<link rel="stylesheet" href="{{prefix}}assets/food.css">
+<script type="application/ld+json">{{jsonld}}</script>
+</head>
+<body>
+<header class="topbar"><div class="wrap topbar-inner">
+  <a class="brand" href="./"><span class="brand-mark"><svg viewBox="0 0 24 24"><path d="M5 5.5h14v13H5z"/><path d="M8 9h8M8 12h8M8 15h5"/></svg></span> aiglossa <b>food</b></a>
+  <nav class="topnav"><a href="#" id="navScan">{{nav_scan}}</a><a href="#how">{{nav_how}}</a><a href="#" id="navPricing">{{nav_pricing}}</a></nav>
+  <div class="top-actions">
+    <details class="top-lang"><summary>{{current_name}}</summary><ul>{{switcher}}</ul></details>
+    <button class="pill-btn" id="accountBtn"><span class="avatar" id="avatar">?</span><span class="balance" id="balanceText">—<span>{{credits}}</span></span></button>
+  </div>
+</div></header>
+<div class="offline-bar hidden" id="offlineBar">{{offline}}</div>
+
+<main id="heroView">
+  <section class="wrap hero">
+    <div class="hero-copy">
+      <span class="kicker">FOOD LABEL SCAN</span>
+      <h1>{{h1}}</h1>
+      <p class="lede">{{sub}}</p>
+      <div class="scan-card">
+        <div class="scan-icon"><svg viewBox="0 0 24 24"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2l1.1-1.8h6.4L16.3 6h1.2A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5z"/><circle cx="12" cy="12.3" r="3.2"/></svg></div>
+        <div class="scan-copy"><b>{{upload}}</b><span>{{scan_sub}}</span></div>
+        <div class="scan-actions"><button class="btn" id="pickFile">{{choose_file}}</button><button class="btn ghost" id="pickCamera">{{camera}}</button></div>
+        <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp">
+        <input class="file-input" id="cameraInput" type="file" accept="image/*" capture="environment">
+        <div class="preview-wrap hidden" id="previewWrap"><img id="preview" alt="{{image_alt}}"></div>
+        <button class="btn hidden" id="scanButton" style="width:100%;margin-top:12px">{{scan_button}}</button>
+      </div>
+      <div class="meta-row"><span>{{scan_cost}}</span><span>{{scan_seconds}}</span><span>{{scan_languages}}</span></div>
+      <div class="pwa-banner hidden" id="pwaBanner"><span>{{install_hint}}</span><button id="installBtn">{{install}}</button></div>
+    </div>
+    <div class="hero-visual">
+      <div class="photo-card"><img src="{{prefix}}assets/food-sample.jpg" alt="{{sample}}"></div>
+      <div class="scan-frame"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+      <div class="result-chip"><span class="dot"></span> {{sample}}</div>
+      <div class="float-card"><b>{{sat_fat}}</b><span>10.5g / 100g</span><i class="bar"></i><small>{{nrv}} 53% · {{high}}</small></div>
+    </div>
+  </section>
+
+  <section class="wrap value" id="how">
+    <div class="value-head"><h2>{{value_head}}</h2><p>{{value_3_body}}</p></div>
+    <div class="value-grid">
+      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M5 6.5h14M5 11h14M5 15.5h9"/><circle cx="18" cy="17" r="3"/><path d="m20.2 19.2 1.6 1.6"/></svg></div><h3>{{value_1_title}}</h3><p>{{value_1_body}}</p></article>
+      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M5 19V9M12 19V5M19 19v-6"/><path d="M4 19h16"/></svg></div><h3>{{value_2_title}}</h3><p>{{value_2_body}}</p></article>
+      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.5c0 4.2-2.8 7.2-7 9-4.2-1.8-7-4.8-7-9V6z"/><path d="M9.3 11.8 11.4 14l3.6-4"/></svg></div><h3>{{value_3_title}}</h3><p>{{value_3_body}}</p></article>
+    </div>
+  </section>
+
+  <section class="wrap recent">
+    <div class="recent-head"><h2>{{history}}</h2><a href="#" id="historyRefresh">{{view_all}} →</a></div>
+    <div class="history-list" id="historyList"><div class="history-empty">{{no_history}}</div></div>
+  </section>
+</main>
+
+<section class="result-view hidden" id="resultView">
+  <div class="wrap result-top">
+    <a class="back" href="#" id="backBtn">← {{back}}</a>
+    <div class="product-row">
+      <div class="thumb" id="resultThumb"></div>
+      <div><span class="kicker" id="resultKicker">{{result_title}}</span><h1 id="resultName">—</h1><p id="resultMeta"></p></div>
+      <div class="result-head-actions"><button class="small-btn" id="deleteBtn">{{delete}}</button></div>
+    </div>
+  </div>
+  <div class="wrap result-grid">
+    <div class="result-main" id="reportMain"></div>
+    <aside class="sidebar"><div class="side-card" id="reportSide"></div></aside>
+  </div>
+</section>
+
+<div class="modal hidden" id="confirmModal"><div class="modal-box"><h3>{{scan_button}}</h3><p id="confirmText"></p><div class="modal-actions"><button class="btn ghost" data-close>{{cancel}}</button><button class="btn" id="confirmScan">{{scan_button}}</button></div></div></div>
+<div class="modal hidden" id="payModal"><div class="modal-box"><h3>{{pay_title}}</h3><p id="payBalance"></p><div class="pay-packs" id="payPacks"></div><p id="payMsg"></p><div class="modal-actions"><button class="btn ghost" data-close>{{pay_close}}</button></div></div></div>
+<div class="toast hidden" id="toast"></div>
+
+<footer><div class="wrap footer-inner">
+  <span class="brand"><span class="brand-mark" style="width:22px;height:22px;border-radius:7px"><svg viewBox="0 0 24 24"><path d="M5 5.5h14v13H5z"/><path d="M8 9h8M8 12h8M8 15h5"/></svg></span> aiglossa <b>food</b></span>
+  <div class="footer-links"><a href="{{legal_privacy_href}}">{{privacy}}</a><a href="{{legal_terms_href}}">{{terms}}</a><a href="{{refund_href}}">{{refund}}</a><a href="mailto:{{contact_email}}">{{contact}}</a></div>
+  <span>{{footer_disclaimer}}</span>
+</div></footer>
+
+<script type="application/json" id="ui">{{ui_json}}</script>
+<script src="{{prefix}}assets/wallet.js"></script>
+<script src="{{prefix}}assets/food.js"></script>
+</body>
+</html>

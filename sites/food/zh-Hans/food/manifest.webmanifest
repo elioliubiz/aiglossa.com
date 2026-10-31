@@ -1,0 +1,30 @@
+{
+  "name": "食品标签扫描 — aiglossa food",
+  "short_name": "aiglossa food",
+  "description": "扫描食品标签，几秒内获得营养分析、配料解释和通用的人群注意事项。",
+  "lang": "zh-Hans",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBFAF7",
+  "theme_color": "#FBFAF7",
+  "icons": [
+    {
+      "src": "../../assets/food-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "../../assets/food-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "../../assets/food-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

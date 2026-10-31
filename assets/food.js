@@ -1,0 +1,379 @@
+/* aiglossa food — scan, report, history, wallet, PWA. */
+(function () {
+  "use strict";
+  var UI = JSON.parse(document.getElementById("ui").textContent);
+  var $ = function (id) { return document.getElementById(id); };
+  var host = location.hostname;
+  var IS_LOCAL = host === "localhost" || host === "127.0.0.1";
+  var IS_STAGING = host.indexOf("staging.aiglossa.com") >= 0;
+  var API = IS_LOCAL ? "/api" : (IS_STAGING ? "https://dev.staging.aiglossa.com" : "https://api.aiglossa.com");
+  var MAIN = IS_LOCAL ? "http://localhost:8000" : (IS_STAGING ? "https://staging.aiglossa.com" : "https://aiglossa.com");
+  var LANG = document.documentElement.lang || "en";
+  var FEATURE = "food-scan";
+  var SCAN_CREDITS = 3;
+  var device = localStorage.getItem("aig_device") || (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()));
+  localStorage.setItem("aig_device", device);
+  var state = { user: null, balance: 0, file: null, preview: "", scan: null, history: [], lastScan: null };
+
+  function esc(value) {
+    return String(value == null ? "" : value).replace(/[&<>"']/g, function (ch) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[ch];
+    });
+  }
+  function call(path, data) {
+    var body = Object.assign({ app_key: "tools", feature: FEATURE, device: device, timestamp: Math.floor(Date.now() / 1000) }, data || {});
+    return fetch(API + path, {
+      method: "POST", credentials: "include",
+      headers: { "Content-Type": "application/json", "X-Client": "web" },
+      body: JSON.stringify(body)
+    }).then(function (r) { return r.json(); });
+  }
+  function toast(text) {
+    var el = $("toast");
+    el.textContent = text || "";
+    el.classList.toggle("hidden", !text);
+    clearTimeout(el._timer);
+    if (text) el._timer = setTimeout(function () { el.classList.add("hidden"); }, 2800);
+  }
+  function loginUrl() { return MAIN + "/" + LANG + "/login.html?next=" + encodeURIComponent(location.href); }
+  function accountUrl() { return MAIN + "/" + LANG + "/account.html?next=" + encodeURIComponent(location.href); }
+  function needLogin() { location.href = loginUrl(); }
+
+  function refreshAccount() {
+    return call("/wallet/summary", {}).then(function (data) {
+      if (data.code === 200 && data.data) {
+        state.user = data.data.user || {};
+        state.balance = Number(data.data.coins || 0);
+        var name = state.user.nickname || state.user.email || "?";
+        $("avatar").textContent = name.charAt(0).toUpperCase();
+        $("balanceText").innerHTML = state.balance.toFixed(2) + "<span>" + esc(UI.credits) + "</span>";
+        return true;
+      }
+      state.user = null;
+      state.balance = 0;
+      $("avatar").textContent = "?";
+      $("balanceText").innerHTML = esc(UI.sign_in) + "<span>" + esc(UI.credits) + "</span>";
+      return false;
+    }).catch(function () {
+      state.user = null;
+      $("balanceText").innerHTML = esc(UI.sign_in) + "<span>" + esc(UI.credits) + "</span>";
+      return false;
+    });
+  }
+
+  function fileToImage(file) {
+    return new Promise(function (resolve, reject) {
+      var reader = new FileReader();
+      reader.onerror = function () { reject(new Error("read failed")); };
+      reader.onload = function () {
+        var img = new Image();
+        img.onerror = function () { reject(new Error("decode failed")); };
+        img.onload = function () { resolve(img); };
+        img.src = String(reader.result);
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function compress(file) {
+    return fileToImage(file).then(function (img) {
+      var max = 1600;
+      var width = img.naturalWidth || img.width;
+      var height = img.naturalHeight || img.height;
+      var scale = Math.min(1, max / Math.max(width, height));
+      var canvas = document.createElement("canvas");
+      canvas.width = Math.max(1, Math.round(width * scale));
+      canvas.height = Math.max(1, Math.round(height * scale));
+      var ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#fff"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      var data = canvas.toDataURL("image/jpeg", 0.88);
+      return { image: data.split(",")[1], mime: "image/jpeg", preview: data };
+    });
+  }
+
+  function handleFile(file) {
+    if (!file) return;
+    if (!/^image\/(jpeg|png|webp)$/.test(file.type || "")) { toast(UI.image_invalid); return; }
+    if (file.size > 8 * 1024 * 1024) { toast(UI.image_invalid); return; }
+    state.file = file;
+    var reader = new FileReader();
+    reader.onload = function () {
+      state.preview = String(reader.result);
+      $("preview").src = state.preview;
+      $("previewWrap").classList.remove("hidden");
+      $("scanButton").classList.remove("hidden");
+      $("scanButton").disabled = false;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function showScanConfirm() {
+    if (!state.user) { needLogin(); return; }
+    if (!state.file) { toast(UI.image_invalid); return; }
+    if (state.balance < SCAN_CREDITS) { openPay(); toast(UI.insufficient); return; }
+    $("confirmText").textContent = UI.one_scan + " · " + UI.scan_cost;
+    $("confirmModal").classList.remove("hidden");
+  }
+
+  function requestId() {
+    return crypto.randomUUID ? crypto.randomUUID() : "scan-" + Date.now() + "-" + Math.random().toString(16).slice(2);
+  }
+
+  function startScan() {
+    $("confirmModal").classList.add("hidden");
+    if (!state.file) return;
+    $("scanButton").disabled = true;
+    toast(UI.scanning);
+    compress(state.file).then(function (data) {
+      return call("/ai/food/scan", {
+        language: LANG, request_id: requestId(), image: data.image, mime: data.mime
+      });
+    }).then(function (data) {
+      if (data.code === 401) { needLogin(); return; }
+      if (data.code === 402) { $("scanButton").disabled = false; openPay(); toast(UI.insufficient); return; }
+      if (data.code === 409 && data.data && data.data.id) { poll(data.data.id); return; }
+      if (data.code !== 200 || !data.data) { $("scanButton").disabled = false; toast(UI.scan_failed); return; }
+      state.balance = Number(data.data.balance || state.balance);
+      poll(data.data.id);
+    }).catch(function () { $("scanButton").disabled = false; toast(UI.network_error); });
+  }
+
+  function poll(id, tries) {
+    tries = tries || 0;
+    if (tries > 40) { $("scanButton").disabled = false; toast(UI.scan_timeout); return; }
+    setTimeout(function () {
+      call("/ai/food/scan/" + id, {}).then(function (data) {
+        if (data.code === 401) { needLogin(); return; }
+        if (data.code !== 200 || !data.data) { $("scanButton").disabled = false; toast(UI.scan_failed); return; }
+        var row = data.data;
+        if (row.status === "done") {
+          state.balance = Number(row.balance || state.balance);
+          $("balanceText").innerHTML = state.balance.toFixed(2) + "<span>" + esc(UI.credits) + "</span>";
+          renderResult(row);
+          loadHistory();
+          $("scanButton").disabled = false;
+          return;
+        }
+        if (row.status === "failed") {
+          $("scanButton").disabled = false;
+          toast(UI.scan_failed);
+          loadHistory();
+          return;
+        }
+        poll(id, tries + 1);
+      }).catch(function () { poll(id, tries + 1); });
+    }, 1400);
+  }
+
+  function showResult() {
+    $("heroView").classList.add("hidden");
+    $("resultView").classList.remove("hidden");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  function showHome() {
+    $("resultView").classList.add("hidden");
+    $("heroView").classList.remove("hidden");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function fmt(value, unit) {
+    if (value === null || value === undefined || value === "") return UI.not_labeled;
+    return esc(value) + (unit ? " " + esc(unit) : "");
+  }
+  function nrvOf(report, key) {
+    var n = (report.nrv_percent || {})[key];
+    return (n === null || n === undefined) ? null : Number(n);
+  }
+  function levelOf(nrv) {
+    if (nrv === null) return "";
+    if (nrv >= 30) return "red";
+    if (nrv >= 15) return "amber";
+    return "";
+  }
+  function nutItem(label, value, unit, nrv, key) {
+    var level = levelOf(nrv);
+    var width = nrv === null ? 0 : Math.min(100, Math.max(2, nrv));
+    return '<div class="nut-item"><div class="nut-top"><span>' + esc(label) + '</span><b>' + fmt(value, unit) + '</b></div>' +
+      '<div class="bar"><i class="' + level + '" style="width:' + width + '%"></i></div>' +
+      '<div class="nut-note"><span>' + esc(key || "") + '</span><span class="' + (level === "red" ? "hi" : level === "amber" ? "mid" : "") + '">' +
+      (nrv === null ? esc(UI.not_labeled) : esc(UI.nrv) + " " + nrv + "%") + '</span></div></div>';
+  }
+
+  function renderResult(scan) {
+    var report = scan.report || {};
+    state.scan = scan;
+    state.lastScan = report;
+    var product = report.product || {};
+    var name = product.name || product.name_original || UI.result_title;
+    $("resultName").textContent = name;
+    $("resultKicker").textContent = UI.result_title + " · " + (scan.language || LANG);
+    var meta = [];
+    if (product.brand) meta.push(product.brand);
+    if (product.category) meta.push(product.category);
+    if (report.serving && report.serving.basis) meta.push(report.serving.basis);
+    $("resultMeta").textContent = meta.join(" · ");
+    var thumb = $("resultThumb");
+    thumb.innerHTML = state.preview ? '<img src="' + esc(state.preview) + '" alt="' + esc(UI.image_alt) + '">' : '<span>' + esc(UI.image_alt) + '</span>';
+
+    var analysis = report.analysis || {};
+    var nutrition = report.nutrition || {};
+    var cautions = (analysis.cautions || []).map(function (item) {
+      return '<li>' + esc(item.text || "") + '</li>';
+    }).join("");
+    var main = '<section class="card verdict"><div class="verdict-top"><span class="pill ' + (cautions ? "warn" : "good") + '">' + esc(UI.verdict) + '</span></div>' +
+      '<h2>' + esc(analysis.headline || UI.result_title) + '</h2><p>' + esc(analysis.summary || "") + '</p>' +
+      (cautions ? '<div class="report-section"><h3>' + esc(UI.cautions) + '</h3><ul class="report-note">' + cautions + '</ul></div>' : '') + '</section>';
+
+    var nut = '<section class="card"><div class="card-head"><h3>' + esc(UI.nutrition) + '</h3><span>' + esc(report.serving && report.serving.basis || UI.per_100g) + ' · ' + esc(UI.nrv) + '</span></div><div class="nut-grid report">';
+    nut += nutItem(UI.energy, nutrition.calories_kcal !== null && nutrition.calories_kcal !== undefined ? nutrition.calories_kcal : (nutrition.energy_kj ? Math.round(nutrition.energy_kj / 4.184) : null), "kcal", nrvOf(report, "energy"), nutrition.energy_kj ? nutrition.energy_kj + " kJ" : "");
+    nut += nutItem(UI.protein, nutrition.protein_g, "g", nrvOf(report, "protein"), UI.per_100g);
+    nut += nutItem(UI.fat, nutrition.fat_g, "g", nrvOf(report, "fat"), UI.per_100g);
+    nut += nutItem(UI.sat_fat, nutrition.saturated_fat_g, "g", nrvOf(report, "saturated_fat"), UI.per_100g);
+    nut += nutItem(UI.carb, nutrition.carbohydrate_g, "g", nrvOf(report, "carbohydrate"), UI.per_100g);
+    nut += nutItem(UI.sugar, nutrition.sugars_g, "g", nrvOf(report, "sugars"), UI.per_100g);
+    nut += nutItem(UI.sodium, nutrition.sodium_mg, "mg", nrvOf(report, "sodium"), UI.per_100g);
+    nut += nutItem(UI.fiber, nutrition.fiber_g, "g", null, UI.per_100g);
+    nut += '</div></section>';
+
+    var ing = (report.ingredients || []).slice(0, 80).map(function (item) {
+      var flags = (item.flags || []).map(function (flag) { return '<span class="ing-badge add">' + esc(flag) + '</span>'; }).join("");
+      var why = [item.what_it_is || "", item.note || ""].filter(Boolean).join(" ");
+      return '<div class="report-ing"><div><div class="orig">' + esc(item.original_text || "") + '</div><div class="nm">' + esc(item.name || "") + '</div></div><div class="why">' + esc(why) + '</div><div class="ing-badges"><span class="ing-badge">' + esc(item.function || "") + '</span>' + flags + '</div></div>';
+    }).join("");
+    var ingCard = '<section class="card"><div class="card-head"><h3>' + esc(UI.ingredients) + '</h3><span>' + (report.ingredients || []).length + '</span></div>' + (ing || '<p class="report-note">' + esc(UI.not_labeled) + '</p>') + '</section>';
+
+    var people = (report.population_notes || []).map(function (item) {
+      var lvl = item.level === "high" ? "high" : item.level === "medium" ? "medium" : "";
+      return '<div class="report-person ' + lvl + '"><div class="rp-head"><b>' + esc(item.group || "") + '</b><span class="rp-advice">' + esc(item.advice || "") + '</span></div><p>' + esc(item.reason || "") + '</p></div>';
+    }).join("");
+    var peopleCard = people ? '<section class="card"><div class="card-head"><h3>' + esc(UI.who_notes) + '</h3><span>' + esc(UI.info) + '</span></div><div class="report-people">' + people + '</div></section>' : '';
+
+    var eat = (analysis.how_to_eat || []).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join("");
+    var eatCard = eat ? '<section class="card eat"><h3>' + esc(UI.how_to_eat) + '</h3><ul>' + eat + '</ul></section>' : '';
+    var dataNotes = (analysis.data_notes || []).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join("");
+    var dataCard = dataNotes ? '<section class="card"><h3>' + esc(UI.data_notes) + '</h3><ul class="report-note">' + dataNotes + '</ul></section>' : '';
+    var disc = report.disclaimer ? '<p class="report-disclaimer">' + esc(report.disclaimer) + '</p>' : '';
+    $("reportMain").innerHTML = main + nut + ingCard + peopleCard + eatCard + dataCard + disc;
+
+    $("reportSide").innerHTML = '<h3>' + esc(UI.result_title) + '</h3><div class="sc-stats">' +
+      '<div class="sc-row"><span>' + esc(UI.scan_cost) + '</span><b>' + SCAN_CREDITS + ' ' + esc(UI.credits) + '</b></div>' +
+      '<div class="sc-row"><span>' + esc(UI.analyzed_in) + '</span><b>' + esc(scan.language || LANG) + '</b></div>' +
+      '<div class="sc-row"><span>' + esc(UI.pay_balance) + '</span><b>' + state.balance.toFixed(2) + ' ' + esc(UI.credits) + '</b></div>' +
+      '</div><hr><button class="btn full" id="newScan">' + esc(UI.new_scan) + '</button>' +
+      '<button class="btn ghost full" id="sideBuy">' + esc(UI.buy) + '</button>' +
+      '<p class="small">' + esc(UI.footer_disclaimer) + '</p>';
+    $("newScan").onclick = function () { showHome(); resetScan(); };
+    $("sideBuy").onclick = openPay;
+    showResult();
+  }
+
+  function resetScan() {
+    state.file = null; state.preview = "";
+    $("previewWrap").classList.add("hidden");
+    $("scanButton").classList.add("hidden");
+    $("scanButton").disabled = false;
+    $("preview").removeAttribute("src");
+    $("fileInput").value = "";
+    $("cameraInput").value = "";
+  }
+
+  function loadHistory() {
+    if (!state.user) { $("historyList").innerHTML = '<div class="history-empty">' + esc(UI.login_required) + '</div>'; return; }
+    call("/ai/food/works?limit=20", {}).then(function (data) {
+      if (data.code !== 200 || !data.data) return;
+      state.history = data.data.items || [];
+      if (!state.history.length) { $("historyList").innerHTML = '<div class="history-empty">' + esc(UI.no_history) + '</div>'; return; }
+      $("historyList").innerHTML = state.history.map(function (item, index) {
+        return '<button class="history-item" data-index="' + index + '"><span class="history-icon">▤</span><span><b>' + esc(item.product_name || UI.result_title) + '</b><span>' + esc(item.headline || item.created_at || "") + '</span></span><span class="mini">' + esc(item.status) + '</span></button>';
+      }).join("");
+      Array.prototype.forEach.call($("historyList").querySelectorAll(".history-item"), function (btn) {
+        btn.onclick = function () {
+          var item = state.history[Number(btn.dataset.index)];
+          if (!item) return;
+          call("/ai/food/scan/" + item.id, {}).then(function (data) {
+            if (data.code === 200 && data.data) { state.preview = ""; renderResult(data.data); }
+          });
+        };
+      });
+    });
+  }
+
+  function openPay() {
+    if (!state.user) { needLogin(); return; }
+    $("payBalance").textContent = UI.pay_balance + " " + state.balance.toFixed(2) + " " + UI.credits;
+    $("payMsg").textContent = "";
+    $("payPacks").innerHTML = "";
+    $("payModal").classList.remove("hidden");
+    call("/wallet/products", {}).then(function (data) {
+      var items = (data.data && data.data.items) || [];
+      if (!items.length) { $("payMsg").textContent = UI.network_error; return; }
+      items.forEach(function (item) {
+        var btn = document.createElement("button");
+        btn.className = "pay-pack";
+        btn.innerHTML = "<b>" + item.credits + " " + esc(UI.credits) + "</b><span>" + esc(item.price) + "</span>";
+        btn.onclick = function () { buy(item.credits); };
+        $("payPacks").appendChild(btn);
+      });
+    }).catch(function () { $("payMsg").textContent = UI.network_error; });
+  }
+
+  function buy(credits) {
+    $("payMsg").textContent = UI.pay_waiting;
+    AiglossaWallet.purchase({
+      call: call, credits: credits, successUrl: location.href,
+      getBalance: function () { return state.balance; },
+      refresh: refreshAccount,
+      onWaiting: function () { $("payMsg").textContent = UI.pay_waiting; },
+      onCompleted: function () { $("payModal").classList.add("hidden"); toast(UI.pay_success); loadHistory(); },
+      onTimeout: function () { $("payMsg").textContent = UI.scan_timeout; },
+      onError: function () { $("payMsg").textContent = UI.pay_failed; }
+    });
+  }
+
+  function deleteScan() {
+    if (!state.scan || !state.scan.id) return;
+    if (!confirm(UI.delete_confirm)) return;
+    call("/ai/food/scan/" + state.scan.id + "/delete", {}).then(function (data) {
+      if (data.code === 200) { showHome(); loadHistory(); toast(UI.delete); }
+      else toast(UI.scan_failed);
+    });
+  }
+
+  $("pickFile").onclick = function () { $("fileInput").click(); };
+  $("pickCamera").onclick = function () { $("cameraInput").click(); };
+  $("fileInput").onchange = function () { handleFile(this.files && this.files[0]); };
+  $("cameraInput").onchange = function () { handleFile(this.files && this.files[0]); };
+  $("scanButton").onclick = showScanConfirm;
+  $("confirmScan").onclick = startScan;
+  $("accountBtn").onclick = function () { if (state.user) location.href = accountUrl(); else needLogin(); };
+  $("navPricing").onclick = function (e) { e.preventDefault(); openPay(); };
+  $("navScan").onclick = function (e) { e.preventDefault(); showHome(); };
+  $("historyRefresh").onclick = function (e) { e.preventDefault(); loadHistory(); };
+  $("backBtn").onclick = function (e) { e.preventDefault(); showHome(); };
+  $("deleteBtn").onclick = deleteScan;
+  Array.prototype.forEach.call(document.querySelectorAll("[data-close]"), function (btn) {
+    btn.onclick = function () { btn.closest(".modal").classList.add("hidden"); };
+  });
+  Array.prototype.forEach.call(document.querySelectorAll(".modal"), function (modal) {
+    modal.onclick = function (e) { if (e.target === modal) modal.classList.add("hidden"); };
+  });
+
+  // PWA
+  var deferredPrompt = null;
+  window.addEventListener("beforeinstallprompt", function (e) {
+    e.preventDefault(); deferredPrompt = e; $("pwaBanner").classList.remove("hidden");
+  });
+  $("installBtn").onclick = function () {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then(function () { deferredPrompt = null; $("pwaBanner").classList.add("hidden"); });
+  };
+  if ("serviceWorker" in navigator && (location.protocol === "https:" || IS_LOCAL)) {
+    navigator.serviceWorker.register("sw.js").catch(function () {});
+  }
+  function syncOnline() { $("offlineBar").classList.toggle("hidden", navigator.onLine); }
+  window.addEventListener("online", syncOnline); window.addEventListener("offline", syncOnline); syncOnline();
+
+  refreshAccount().then(function () { loadHistory(); });
+})();

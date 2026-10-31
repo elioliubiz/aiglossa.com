@@ -79,6 +79,7 @@ PAGES = {
     "music-share": ("pages/share.html", "ui", "music/share/index.html"),
     "image": ("pages/image.html", "image", "image/index.html"),
     "image-share": ("pages/image-share.html", "image", "image/share/index.html"),
+    "food": ("pages/food.html", "food", "food/index.html"),
     # 指南（内容页）：英文优先，生成到 /en/guides/<slug>.html
     "guides": ("pages/guide.html", "guides", "guides/{slug}.html"),
     # 每个工具一个目录（/{lang}/music/、未来 /{lang}/image/），全局页仍在语言根
@@ -301,6 +302,8 @@ def _site_urls(site: str, spec: dict) -> list[str]:
             urls.append(("music/", None))
         elif page == "image":
             urls.append(("image/", None))
+        elif page == "food":
+            urls.append(("food/", None))
         elif page in ("account", "webaccount", "refund", "login", "music-share", "image-share"):
             continue          # noindex / 内部页面，不进 sitemap
         elif page == "webpricing":
@@ -308,6 +311,66 @@ def _site_urls(site: str, spec: dict) -> list[str]:
         else:
             urls.append((f"{page}.html", None))
     return urls
+
+
+def _write_food_pwa(site: str, site_langs: list[str], languages: dict) -> None:
+    """Write per-language manifest + service worker for the food PWA.
+
+    The service worker sits in /<lang>/food/, so its default scope is exactly the
+    language directory. Only the shell is cached; API calls always go to network.
+    """
+    source = json.loads((CONTENT / "food.json").read_text(encoding="utf-8"))
+    icons = [
+        {"src": "../../assets/food-icon-192.png", "sizes": "192x192", "type": "image/png"},
+        {"src": "../../assets/food-icon-512.png", "sizes": "512x512", "type": "image/png"},
+        {"src": "../../assets/food-icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
+    ]
+    for lang in site_langs:
+        copy = source[lang]
+        folder = SITES_DIR / site / lang / "food"
+        folder.mkdir(parents=True, exist_ok=True)
+        manifest = {
+            "name": copy["title"],
+            "short_name": "aiglossa food",
+            "description": copy["description"],
+            "lang": languages[lang]["hreflang"],
+            "dir": languages[lang]["dir"],
+            "start_url": "./",
+            "scope": "./",
+            "display": "standalone",
+            "background_color": "#FBFAF7",
+            "theme_color": "#FBFAF7",
+            "icons": icons,
+        }
+        (folder / "manifest.webmanifest").write_text(
+            json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        sw = f"""/* aiglossa food service worker — shell only, API is network-only. */
+const CACHE = "aiglossa-food-{lang}-v1";
+const SHELL = ["./", "../../assets/food.css", "../../assets/food.js", "../../assets/wallet.js", "../../assets/food-icon-192.png", "../../assets/food-icon-512.png", "../../assets/food-sample.jpg"];
+self.addEventListener("install", (event) => {{
+  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting()));
+}});
+self.addEventListener("activate", (event) => {{
+  event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)))).then(() => self.clients.claim()));
+}});
+self.addEventListener("fetch", (event) => {{
+  const request = event.request;
+  if (request.method !== "GET") return;
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+  event.respondWith(
+    caches.match(request).then((cached) => cached || fetch(request).then((response) => {{
+      if (response.ok && url.pathname.includes("/food/")) {{
+        const copy = response.clone();
+        caches.open(CACHE).then((cache) => cache.put(request, copy));
+      }}
+      return response;
+    }}).catch(() => caches.match("./")))
+  );
+}});
+"""
+        (folder / "sw.js").write_text(sw, encoding="utf-8")
 
 
 def _write_seo_files(site: str, spec: dict, site_langs: list[str],
@@ -670,6 +733,29 @@ def main() -> int:
                     return out
 
                 values_builder = share_values
+            elif page == "food":
+                def food_values(lang: str, base: str, source=source) -> dict[str, str]:
+                    copy = source[lang]
+                    out = {key: (value if isinstance(value, str) else value) for key, value in copy.items()}
+                    out = {key: (esc(value) if isinstance(value, str) else value) for key, value in out.items()}
+                    out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    out["contact_email"] = "support@aiglossa.com"
+                    out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
+                    out["legal_terms"] = esc(marketing[lang]["legal"]["terms"])
+                    out["legal_privacy_href"] = f"{legal_base}/{lang}/protocol/privacy.html"
+                    out["legal_terms_href"] = f"{legal_base}/{lang}/protocol/term.html"
+                    out["refund_href"] = f"https://tools.aiglossa.com/{lang}/refund.html"
+                    out["lang_label"] = esc(marketing[lang]["langLabel"])
+                    out["current_name"] = esc(languages[lang]["name"])
+                    out["brand"] = esc("aiglossa food")
+                    out["jsonld"] = json.dumps({
+                        "@context": "https://schema.org", "@type": "SoftwareApplication",
+                        "name": copy["title"], "description": copy["description"],
+                        "applicationCategory": "HealthApplication", "operatingSystem": "Web",
+                        "url": f"{base}/{lang}/food/", "inLanguage": languages[lang]["hreflang"],
+                    }, ensure_ascii=False).replace("</", "<\\/")
+                    return out
+                values_builder = food_values
             elif page == "image":
                 def image_values(lang: str, base: str, source=source) -> dict[str, str]:
                     common = source["common"]
@@ -844,6 +930,8 @@ def main() -> int:
 
         if not args.check:
             _write_seo_files(site, spec, site_langs, languages, default)
+            if site == "food":
+                _write_food_pwa(site, site_langs, languages)
         if not args.check and ASSETS.is_dir():
             target_assets = SITES_DIR / site / "assets"
             if target_assets.exists():
