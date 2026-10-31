@@ -56,6 +56,8 @@
   .closing-band{padding:26px 0 72px;border-top:1px solid rgba(255,255,255,.07);margin-top:34px}
   .closing-band .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .closing-band p{margin:0;color:var(--muted,#96a0b5);font-size:14px}
+  .closing-band .food-link{color:#ffc69e;text-decoration:none;margin-inline-start:6px}
+  .closing-band .food-link:hover{color:#fff}
   .closing-band .cta{white-space:nowrap}
   .tools-nav{position:sticky;top:0;z-index:40;background:rgba(14,15,17,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
   .tools-actions{display:flex;align-items:center;gap:14px}
@@ -150,7 +152,7 @@
 
   <section class="closing-band">
     <div class="wrap">
-      <p>{{note}}</p>
+      <p>{{note}} · <a class="food-link" href="{{food_href}}">{{food_link}} →</a></p>
       <a class="cta" href="{{cta_href}}">{{cta_label}}</a>
     </div>
   </section>

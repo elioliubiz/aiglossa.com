@@ -1,7 +1,7 @@
 {
-  "name": "สแกนฉลากอาหาร — AIGLOSSA FOOD",
+  "name": "วิเคราะห์ฉลากอาหาร: ส่วนประกอบและโภชนาการ — AIGLOSSA FOOD",
   "short_name": "AIGLOSSA FOOD",
-  "description": "สแกนฉลากอาหารเพื่อรับรายงานโภชนาการที่ชัดเจน คำอธิบายส่วนประกอบ และข้อควรระวังสำหรับผู้ที่ต้องดูแลสุขภาพเป็นพิเศษ",
+  "description": "วิเคราะห์ฉลากอาหาร เข้าใจส่วนประกอบ ข้อมูลโภชนาการ สารเติมแต่ง และข้อควรระวังสำหรับแต่ละบุคคล ไม่ใช่คำแนะนำทางการแพทย์",
   "lang": "th",
   "dir": "ltr",
   "start_url": "./",
@@ -11,17 +11,17 @@
   "theme_color": "#FBFAF7",
   "icons": [
     {
-      "src": "../../assets/food-icon-192.png?v=20261031-23",
+      "src": "../../assets/food-icon-192.png?v=20261031-24",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "../../assets/food-icon-512.png?v=20261031-23",
+      "src": "../../assets/food-icon-512.png?v=20261031-24",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "../../assets/food-icon-maskable-512.png?v=20261031-23",
+      "src": "../../assets/food-icon-maskable-512.png?v=20261031-24",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

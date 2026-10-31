@@ -1,7 +1,7 @@
 {
-  "name": "Pindai label makanan — AIGLOSSA FOOD",
+  "name": "Analisis label makanan: bahan & nutrisi — AIGLOSSA FOOD",
   "short_name": "AIGLOSSA FOOD",
-  "description": "Pindai label makanan untuk mendapatkan laporan nutrisi yang jelas, penjelasan bahan, dan catatan penting bagi mereka yang perlu memperhatikan.",
+  "description": "Analisis label makanan: pahami bahan, fakta nutrisi, zat aditif, dan siapa yang perlu waspada. Bukan saran medis.",
   "lang": "id",
   "dir": "ltr",
   "start_url": "./",
@@ -11,17 +11,17 @@
   "theme_color": "#FBFAF7",
   "icons": [
     {
-      "src": "../../assets/food-icon-192.png?v=20261031-23",
+      "src": "../../assets/food-icon-192.png?v=20261031-24",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "../../assets/food-icon-512.png?v=20261031-23",
+      "src": "../../assets/food-icon-512.png?v=20261031-24",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "../../assets/food-icon-maskable-512.png?v=20261031-23",
+      "src": "../../assets/food-icon-maskable-512.png?v=20261031-24",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
