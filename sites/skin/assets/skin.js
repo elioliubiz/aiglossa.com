@@ -226,9 +226,9 @@
     var multi = products.length > 1;
     $("heroView").classList.add("hidden"); $("resultView").classList.remove("hidden");
     var first = products[0] || {}; var pr = first.product || {};
-    $("resultKicker").textContent = multi ? UI.combined : UI.result_title;
-    $("resultName").textContent = multi ? (products.length + " · " + UI.products) : (pr.name || pr.name_original || UI.product);
-    $("resultMeta").textContent = multi ? (UI.combined + " · " + products.length + " " + UI.products) : ((pr.brand || "") + (pr.category ? " · " + pr.category : ""));
+    $("resultKicker").textContent = UI.result_title;
+    $("resultName").textContent = multi ? UI.combined : (pr.name || pr.name_original || UI.product);
+    $("resultMeta").textContent = multi ? (products.length + " " + UI.products) : ((pr.brand || "") + (pr.category ? " · " + pr.category : ""));
     renderStack(products);
     var tabs = multi ? '<div class="skin-tabs" id="skinTabs" role="tablist"></div>' : "";
     $("reportMain").innerHTML = (multi ? overviewCard(report.combined, products) : "") + tabs + '<div id="productPanel" class="skin-panel"></div>';
@@ -247,21 +247,24 @@
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
   function ensureImages(row, products) {
+    var jobs = [];
     for (var i = 0; i < products.length; i++) {
       if (imageFor(i)) continue;
-      (function (index) {
-        fetch(API + "/ai/skin/scan/" + row.id + "/image?index=" + index, {
+      jobs.push((function (index) {
+        return fetch(API + "/ai/skin/scan/" + row.id + "/image?index=" + index, {
           method: "POST", credentials: "include",
           headers: { "Content-Type": "application/json", "X-Client": "web" },
           body: JSON.stringify({ app_key: "tools", feature: FEATURE, device: device, timestamp: Math.floor(Date.now() / 1000) })
         }).then(function (r) { return r.ok ? r.blob() : null; }).then(function (blob) {
-          if (!blob) return;
-          state.images[index] = URL.createObjectURL(blob);
-          renderStack(products);
-          if (products.length > 1) renderTabs(products);
+          if (blob) state.images[index] = URL.createObjectURL(blob);
         }).catch(function () {});
-      })(i);
+      })(i));
     }
+    if (!jobs.length) return;
+    Promise.all(jobs).then(function () {
+      renderStack(products);
+      if (products.length > 1) renderTabs(products);
+    });
   }
   function showHome() { $("heroView").classList.remove("hidden"); $("resultView").classList.add("hidden"); }
   function resetScan() {
