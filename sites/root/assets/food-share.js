@@ -9,6 +9,11 @@
   var $ = function (id) { return document.getElementById(id); };
   function esc(v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
   function fmt(v, unit) { return v === null || v === undefined || v === "" ? UI.not_labeled : esc(v) + (unit ? " " + esc(unit) : ""); }
+  function hasNutrition(n) {
+    return ["energy_kj", "calories_kcal", "protein_g", "fat_g", "saturated_fat_g", "carbohydrate_g", "sugars_g", "sodium_mg", "fiber_g"].some(function (key) {
+      return n[key] !== null && n[key] !== undefined && n[key] !== "";
+    });
+  }
   function nrv(report, key) { var n = (report.nrv_percent || {})[key]; return n == null ? "—" : esc(UI.daily_ref) + " " + n + "%"; }
   function level(n) { return n >= 30 ? "red" : n >= 15 ? "amber" : ""; }
   function nut(label, value, unit, value2, report, key, limit) {
@@ -34,20 +39,30 @@
     var people = (report.population_notes || []).map(function (x) { var lv = x.level === "high" ? "high" : x.level === "medium" ? "medium" : ""; return '<div class="report-person ' + lv + '"><div class="rp-head"><b>' + esc(x.group || "") + '</b><span class="rp-advice">' + esc(x.advice || "") + '</span></div><p>' + esc(x.reason || "") + '</p></div>'; }).join("");
     if (people) { $("sharePeople").classList.remove("hidden"); $("sharePeople").innerHTML = '<div class="card-head"><h3>' + esc(UI.who_notes) + '</h3><span>' + esc(UI.info) + '</span></div><div class="report-people">' + people + '</div>'; }
     var n = report.nutrition || {};
-    $("shareServing").textContent = ((report.serving && report.serving.basis) || UI.per_100g);
-    $("shareNutrition").innerHTML = nut(UI.energy, n.calories_kcal != null ? n.calories_kcal : (n.energy_kj ? Math.round(n.energy_kj / 4.184) : null), "kcal", n.energy_kj ? n.energy_kj + " kJ" : "", report, "energy", false) + nut(UI.protein, n.protein_g, "g", "", report, "protein", false) + nut(UI.fat, n.fat_g, "g", "", report, "fat", false) + nut(UI.sat_fat, n.saturated_fat_g, "g", "", report, "saturated_fat", true) + nut(UI.carb, n.carbohydrate_g, "g", "", report, "carbohydrate", false) + nut(UI.sugar, n.sugars_g, "g", "", report, "sugars", true) + nut(UI.sodium, n.sodium_mg, "mg", "", report, "sodium", true) + nut(UI.fiber, n.fiber_g, "g", "", report, "fiber", false);
+    if (!hasNutrition(n)) {
+      $("shareServing").textContent = UI.not_labeled;
+      $("shareNutrition").innerHTML = '<div class="nutrition-empty"><b>' + esc(UI.nutrition_empty_title) + '</b><p>' + esc(UI.nutrition_empty_body) + '</p></div>';
+      $("shareNutritionNotes").classList.add("hidden");
+    } else {
+      $("shareServing").textContent = ((report.serving && report.serving.basis) || UI.per_100g);
+      $("shareNutritionNotes").classList.remove("hidden");
+      $("shareNutrition").innerHTML = nut(UI.energy, n.calories_kcal != null ? n.calories_kcal : (n.energy_kj ? Math.round(n.energy_kj / 4.184) : null), "kcal", n.energy_kj ? n.energy_kj + " kJ" : "", report, "energy", false) + nut(UI.protein, n.protein_g, "g", "", report, "protein", false) + nut(UI.fat, n.fat_g, "g", "", report, "fat", false) + nut(UI.sat_fat, n.saturated_fat_g, "g", "", report, "saturated_fat", true) + nut(UI.carb, n.carbohydrate_g, "g", "", report, "carbohydrate", false) + nut(UI.sugar, n.sugars_g, "g", "", report, "sugars", true) + nut(UI.sodium, n.sodium_mg, "mg", "", report, "sodium", true) + nut(UI.fiber, n.fiber_g, "g", "", report, "fiber", false);
+    }
     var all = report.ingredients || [];
     var normalize = function (x) { return String(x || "").replace(/\s+/g, "").toLowerCase(); };
+    var hasInferred = false;
     var ing = all.slice(0, 80).map(function (x, i) {
       var orig = String(x.original_text || "").trim(), nm = String(x.name || "").trim();
-      var origHtml = orig && normalize(orig) !== normalize(nm) ? ' <span class="orig-inline">' + esc(orig) + '</span>' : "";
+      var origHtml = orig && normalize(orig) !== normalize(nm) ? ' <span class="orig-inline">' + esc(UI.original) + '：' + esc(orig) + '</span>' : "";
       var fn = String(x.function || "").trim();
       var flags = (x.flags || []).map(function (f) { return String(f || "").trim(); }).filter(Boolean);
-      var badges = (fn || flags.length) ? '<div class="ing-badges">' + (fn ? '<span class="ing-badge">' + esc(fn) + '</span>' : "") + flags.map(function (f) { return '<span class="ing-badge add">' + esc(f) + '</span>'; }).join("") + '</div>' : "";
+      var inferred = x.flags_source === "inferred" || x.flags_source === "mixed";
+      if (inferred && flags.length) hasInferred = true;
+      var badges = (fn || flags.length) ? '<div class="ing-badges">' + (fn ? '<span class="ing-badge">' + esc(fn) + '</span>' : "") + flags.map(function (f) { return '<span class="ing-badge add' + (inferred ? " inferred" : "") + '">' + esc(f) + (inferred ? "*" : "") + '</span>'; }).join("") + '</div>' : "";
       return '<div class="report-ing' + (i >= 6 ? ' ing-extra hidden' : '') + '"><div class="ing-title"><div class="nm">' + esc(nm) + origHtml + '</div></div><div class="why">' + esc([x.what_it_is || "", x.note || ""].filter(Boolean).join(" ")) + '</div>' + badges + '</div>';
     }).join("");
     $("shareIngCount").textContent = all.length;
-    $("shareIngredients").innerHTML = ing || '<p class="report-note">' + esc(UI.not_labeled) + '</p>';
+    $("shareIngredients").innerHTML = (ing || '<p class="report-note">' + esc(UI.not_labeled) + '</p>') + (hasInferred ? '<p class="ing-legend">* ' + esc(UI.inferred) + '</p>' : "");
     if (all.length > 6) {
       var more = document.createElement("button"); more.className = "ing-more"; more.textContent = UI.show_all + " (" + all.length + ")";
       more.onclick = function () { var open = more.dataset.open === "1"; Array.prototype.forEach.call(document.querySelectorAll(".ing-extra"), function (row) { row.classList.toggle("hidden", open); }); more.dataset.open = open ? "0" : "1"; more.textContent = open ? UI.show_all + " (" + all.length + ")" : UI.show_less; };
