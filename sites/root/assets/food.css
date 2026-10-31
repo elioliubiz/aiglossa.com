@@ -371,3 +371,9 @@ body{min-height:100vh}
 :lang(zh-Hans) .hero h1,:lang(zh-Hant) .hero h1,:lang(ja) .hero h1,:lang(ko) .hero h1{max-width:6.9em}
 :lang(zh-Hans) .hero h1,:lang(zh-Hant) .hero h1{max-width:6.1em}
 :lang(ja) .hero h1,:lang(ko) .hero h1{max-width:8em}
+
+/* mobile-reliable file inputs: use native label activation, keep inputs technically focusable */
+.file-input{position:absolute;width:1px;height:1px;opacity:0;clip:rect(0 0 0 0);overflow:hidden;pointer-events:none}
+.scan-actions label.btn{cursor:pointer;text-align:center}
+.scan-loading{display:flex;align-items:center;justify-content:center;gap:9px;margin-top:12px;padding:11px 12px;border-radius:10px;background:var(--green-soft);color:#335245;font-size:12px}
+.avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
