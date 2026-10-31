@@ -140,11 +140,92 @@
   .food-cross{margin:16px 0 0;font-size:13px}
   .food-cross a{color:var(--tools);text-decoration:none;font-weight:600}
   .food-cross a:hover{color:#fff}
+
+  /* ---- product family homepage ---- */
+  .site-head{position:absolute;inset-block-start:0;inset-inline:0;z-index:10;border-block-end:1px solid rgba(255,255,255,.06);background:rgba(8,8,10,.55);backdrop-filter:blur(14px)}
+  .site-head .wrap{max-width:1080px;margin-inline:auto;padding:18px 24px;display:flex;align-items:center;gap:24px}
+  .site-brand{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)}
+  .site-head nav{display:flex;gap:20px;margin-inline-start:auto;align-items:center}
+  .site-head nav a{font-size:12px;color:var(--mut);text-decoration:none}
+  .site-head nav a:hover{color:var(--ink)}
+  .site-head .web-link{font-size:12px;color:var(--tools);text-decoration:none;border:1px solid rgba(255,122,26,.35);border-radius:999px;padding:8px 13px;white-space:nowrap}
+  .hero{min-height:82vh;padding-block:120px 40px}
+  .hero h1{max-width:14ch;margin-inline:auto}
+  .hero .lede{max-width:52ch}
+  .hero-cta .hbtn.p{background:var(--ink);color:#0a0a0c}
+  .hero-cta .hbtn.s{border-color:rgba(255,122,26,.36);color:var(--ink)}
+  .family{padding-block:86px 40px}
+  .family .wrap{max-width:1080px;margin-inline:auto;padding-inline:24px}
+  .family .eyebrow{text-align:start;color:var(--tools)}
+  .family h2{text-align:start;font-size:clamp(28px,3.6vw,44px);margin-top:8px}
+  .family-intro{max-width:56ch;color:var(--mut);font-size:14px;line-height:1.7;margin-top:14px}
+  .group{margin-top:34px}
+  .group-label{display:flex;align-items:center;gap:10px;color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.18em;margin-bottom:10px}
+  .group-label:after{content:"";height:1px;flex:1;background:rgba(255,255,255,.08)}
+  .scholan-card{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:26px;align-items:center;padding:28px;border:1px solid rgba(124,149,255,.28);border-radius:24px;background:linear-gradient(135deg,rgba(124,149,255,.16),rgba(255,255,255,.025) 60%);text-decoration:none;color:inherit;position:relative;overflow:hidden}
+  .scholan-card:hover{border-color:rgba(124,149,255,.55)}
+  .scholan-copy h3{font-size:30px;letter-spacing:-.03em;margin-top:6px}
+  .scholan-copy p{color:var(--mut);font-size:13.5px;line-height:1.65;margin-top:10px;max-width:34ch}
+  .scholan-open{display:inline-flex;margin-top:18px;color:var(--apps);font-size:12px;font-weight:600}
+  .product-status{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:4px 7px;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+  .scholan-shots{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0}
+  .scholan-shots img{width:29%;max-height:220px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.16);box-shadow:0 18px 44px rgba(0,0,0,.35)}
+  .scholan-shots img:nth-child(2){transform:translateY(-10px)}
+  .web-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .product-card{display:flex;flex-direction:column;min-height:190px;padding:20px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(150deg,rgba(255,255,255,.055),rgba(255,255,255,.018));text-decoration:none;color:inherit;transition:transform .22s,border-color .22s}
+  .product-card:hover{transform:translateY(-3px)}
+  .product-card.food:hover{border-color:rgba(79,191,122,.55)}
+  .product-card.skin:hover{border-color:rgba(226,145,158,.6)}
+  .product-card.music:hover,.product-card.image:hover{border-color:rgba(255,122,26,.5)}
+  .product-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+  .product-icon{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;background:rgba(255,255,255,.06);overflow:hidden}
+  .product-icon img{width:42px;height:42px;display:block}
+  .product-icon svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+  .food .product-icon{color:#4FBF7A;background:rgba(79,191,122,.12)}
+  .skin .product-icon{color:#E2919E;background:rgba(226,145,158,.12)}
+  .music .product-icon,.image .product-icon{color:var(--tools);background:rgba(255,122,26,.1)}
+  .product-card h3{font-size:16px;letter-spacing:-.01em;margin-top:20px}
+  .product-card p{color:var(--mut);font-size:12px;line-height:1.65;margin-top:7px}
+  .product-open{margin-top:auto;padding-top:16px;color:var(--mut);font-size:11px}
+  .product-card:hover .product-open{color:var(--ink)}
+  .more-apps{margin:12px 0 0 2px;color:var(--mut);font-size:11px}
+  .more-apps a{color:var(--mut);text-decoration:underline;text-underline-offset:3px}
+  .about-sec{padding-block:60px 80px}
+  .about-sec .about{text-align:start;max-width:620px;margin:0;color:var(--mut);font-size:13px;line-height:1.8}
+  .about-sec .eyebrow{text-align:start;color:var(--tools)}
+  .about-sec h2{text-align:start;font-size:24px;margin-top:8px}
+  @media(max-width:760px){
+    .site-head nav a:not(.web-link){display:none}
+    .site-head .wrap{padding:14px 18px}
+    .hero{min-height:auto;padding-block:104px 34px}
+    .hero h1{max-width:13ch}
+    .family{padding-block:56px 30px}
+    .family .wrap{padding-inline:18px}
+    .scholan-card{grid-template-columns:1fr;padding:20px}
+    .scholan-shots{order:-1}
+    .scholan-shots img{max-height:150px}
+    .scholan-copy h3{font-size:24px}
+    .web-grid{grid-template-columns:1fr}
+    .product-card{min-height:0}
+    .about-sec{padding-block:36px 56px}
+  }
+
 </style>
 </head>
 <body>
 <div class="bg" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div>
 <div class="mesh" aria-hidden="true"></div>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="site-brand" href="./">AIGLOSSA</a>
+    <nav>
+      <a href="#products">Produits</a>
+      <a href="#about">Assistance</a>
+      <a class="web-link" href="https://tools.aiglossa.com/fr/">Outils web →</a>
+    </nav>
+  </div>
+</header>
 
 <main>
   <section class="hero">
@@ -153,52 +234,82 @@
       <h1>Si je veux un outil, je le fabrique</h1>
       <p class="lede">Voici aiglossa, où je publie les applis que je développe moi-même. La plupart partent d&#x27;un petit besoin : les outils existants étaient presque bien, alors j&#x27;ai écrit le mien.</p>
       <div class="hero-cta">
-        <a class="hbtn p" href="https://scholan.aiglossa.com/fr/">Lire sans être interrompu</a>
-        <a class="hbtn s" href="https://tools.aiglossa.com/fr/">Tools →</a>
+        <a class="hbtn p" href="#products">Découvrir les produits</a>
+        <a class="hbtn s" href="https://tools.aiglossa.com/fr/">Ouvrir les outils web →</a>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="apps">
+  <section class="family" id="products">
     <div class="wrap">
-      <p class="eyebrow rv">iOS</p>
-      <div class="app-head rv">
-        <img src="../assets/scholan/icon.png" alt="" width="56" height="56" loading="lazy">
-        <div><h2>Scholan</h2><span>Lire sans être interrompu</span></div>
+      <p class="eyebrow">Gamme de produits</p>
+      <h2>Cinq outils spécialisés</h2>
+      <p class="family-intro">Lisez des livres originaux, décryptez vos étiquettes alimentaires ou cosmétiques, et créez de la musique ou des images. Chaque outil a sa spécialité.</p>
+
+      <div class="group">
+        <div class="group-label">Lire</div>
+        <a class="scholan-card rv" href="https://scholan.aiglossa.com/fr/">
+          <div class="scholan-copy">
+            <span class="product-status">iOS · 16 langues</span>
+            <h3>Scholan</h3>
+            <p>Lire sans être interrompu</p>
+            <span class="scholan-open">En savoir plus sur Scholan →</span>
+          </div>
+          <div class="scholan-shots">
+            <img src="/assets/scholan/fr-1.jpg" alt="" loading="lazy">
+            <img src="/assets/scholan/fr-2.jpg" alt="" loading="lazy">
+            <img src="/assets/scholan/fr-3.jpg" alt="" loading="lazy">
+          </div>
+        </a>
+        <p class="more-apps">D&#x27;autres applications en développement</p>
       </div>
-      <div class="phones rv">
-        <figure class="phone p1"><img src="/assets/scholan/fr-1.jpg" alt="" loading="lazy" width="460" height="996"></figure>
-        <figure class="phone p2"><img src="/assets/scholan/fr-2.jpg" alt="" loading="lazy" width="460" height="996"></figure>
-        <figure class="phone p3"><img src="/assets/scholan/fr-3.jpg" alt="" loading="lazy" width="460" height="996"></figure>
+
+      <div class="group">
+        <div class="group-label">Comprendre</div>
+        <div class="web-grid">
+          <a class="product-card food rv" href="https://food.aiglossa.com/fr/food/">
+            <div class="product-top"><span class="product-icon"><img src="../assets/food-icon-512.png" alt="" loading="lazy"></span><span class="product-status">Web</span></div>
+            <h3>AIGLOSSA FOOD</h3>
+            <p>Prenez en photo une étiquette alimentaire. Analysez les ingrédients, la valeur nutritionnelle et les points de vigilance.</p>
+            <span class="product-open">Ouvrir →</span>
+          </a>
+          <a class="product-card skin rv" href="https://skin.aiglossa.com/fr/skin/">
+            <div class="product-top"><span class="product-icon"><img src="../assets/skin-icon-512.png" alt="" loading="lazy"></span><span class="product-status">Web</span></div>
+            <h3>AIGLOSSA SKIN</h3>
+            <p>Prenez en photo la liste des ingrédients d&#x27;un soin. Comprenez la formule, les actifs et les précautions d&#x27;usage.</p>
+            <span class="product-open">Ouvrir →</span>
+          </a>
+        </div>
       </div>
-      <p class="app-note rv">Lisez des livres en langue étrangère avec de l&#x27;avance · <a href="https://scholan.aiglossa.com/fr/">En savoir plus sur Scholan</a></p>
+
+      <div class="group">
+        <div class="group-label">Créer</div>
+        <div class="web-grid">
+          <a class="product-card music rv" href="https://tools.aiglossa.com/fr/music/">
+            <div class="product-top"><span class="product-icon"><svg viewBox="0 0 24 24"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg></span><span class="product-status">Web</span></div>
+            <h3>Music</h3>
+            <p>Transformez une courte consigne en musique de fond pour vos vidéos, podcasts ou publications.</p>
+            <span class="product-open">Ouvrir →</span>
+          </a>
+          <a class="product-card image rv" href="https://tools.aiglossa.com/fr/image/">
+            <div class="product-top"><span class="product-icon"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="m5 17 5-5 4 4 2-2 4 4"/></svg></span><span class="product-status">Web</span></div>
+            <h3>Image</h3>
+            <p>Transformez un prompt en une image épurée pour une page, un post ou une idée de produit.</p>
+            <span class="product-open">Ouvrir →</span>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="sec" id="tools">
+  <section class="about-sec" id="about">
     <div class="wrap">
-      <p class="eyebrow rv">Web</p>
-      <h2 class="rv">Tools</h2>
-      <a class="tools-card rv" href="https://tools.aiglossa.com/fr/">
-        <div>
-          <h3>AI Music</h3>
-          <p>Transformez une photo ou une description en morceau à la durée exacte. Les paroles nomment ce que contient votre image.</p>
-        </div>
-        <div class="wave" aria-hidden="true">
-          <b style="animation-delay:-.1s"></b><b style="animation-delay:-.5s"></b><b style="animation-delay:-.3s"></b>
-          <b style="animation-delay:-.7s"></b><b style="animation-delay:-.2s"></b><b style="animation-delay:-.6s"></b>
-          <b style="animation-delay:-.4s"></b><b style="animation-delay:-.8s"></b>
-        </div>
-        <span class="tools-go">Ouvrir →</span>
-      </a>
-      <p class="food-cross rv"><a href="https://food.aiglossa.com/fr/food/">Analyse d’étiquette →</a> · <a href="https://skin.aiglossa.com/fr/skin/">Analyse d&#x27;ingrédients cosmétiques →</a></p>
-    </div>
-  </section>
-
-  <section class="sec">
-    <div class="about rv">
-      <p>Je suis développeur indépendant. Chaque appli résout en général une chose précise — je me soucie moins des listes de fonctionnalités que du fait que cette chose soit vraiment agréable à utiliser. Idées et points gênants sont bienvenus par e-mail.</p>
-      <p><a href="mailto:support@aiglossa.com">support@aiglossa.com</a></p>
+      <p class="eyebrow">Assistance</p>
+      <h2>AIGLOSSA</h2>
+      <div class="about">
+        <p>Je suis développeur indépendant. Chaque appli résout en général une chose précise — je me soucie moins des listes de fonctionnalités que du fait que cette chose soit vraiment agréable à utiliser. Idées et points gênants sont bienvenus par e-mail.</p>
+        <p><a href="mailto:support@aiglossa.com">support@aiglossa.com</a></p>
+      </div>
     </div>
   </section>
 </main>
@@ -236,28 +347,21 @@
 </footer>
 <script>
 (function () {
-  // 已登录则页脚显示「账户」，否则「登录」——靠一次轻量请求判断 cookie 会话
   var a = document.getElementById("acctLink"); if (!a) return;
   fetch("https://api.aiglossa.com/wallet/summary", {
     method: "POST", credentials: "include",
     headers: { "Content-Type": "application/json", "X-Client": "web" },
     body: JSON.stringify({ app_key: "tools", device: "web", timestamp: Math.floor(Date.now() / 1000) })
   }).then(function (r) { return r.json(); }).then(function (d) {
-    if (d.code === 200) {
-      a.href = "/fr/account.html";
-      a.textContent = "Compte";
-    } else {
-      a.href = "/fr/login.html";
-    }
+    if (d.code === 200) { a.href = "/fr/account.html"; a.textContent = "Compte"; }
+    else { a.href = "/fr/login.html"; }
   }).catch(function () { a.href = "/fr/login.html"; });
 })();
 </script>
-
 <script src="../assets/site.js" defer></script>
 <script>
 (function(){
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // 指针跟光
   if (!reduce) {
     document.addEventListener('pointermove', function(e){
       var x = (e.clientX / innerWidth) * 100, y = (e.clientY / innerHeight) * 100;
@@ -265,16 +369,10 @@
       document.documentElement.style.setProperty('--my', y + '%');
     }, {passive: true});
   }
-  // 进入视口时上浮
   var items = document.querySelectorAll('.rv');
-  if (reduce || !('IntersectionObserver' in window)) {
-    items.forEach(function(el){ el.classList.add('in'); });
-    return;
-  }
+  if (reduce || !('IntersectionObserver' in window)) { items.forEach(function(el){ el.classList.add('in'); }); return; }
   var io = new IntersectionObserver(function(entries){
-    entries.forEach(function(en){
-      if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
-    });
+    entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
   }, {rootMargin: '-8% 0px -8% 0px'});
   items.forEach(function(el){ io.observe(el); });
 })();
