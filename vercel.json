@@ -1677,6 +1677,16 @@
       "has": [
         {
           "type": "host",
+          "value": "scholan.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/scholan/assets/favicon-scholan.ico"
+    },
+    {
+      "source": "/favicon.ico",
+      "has": [
+        {
+          "type": "host",
           "value": "food.staging.aiglossa.com"
         }
       ],
