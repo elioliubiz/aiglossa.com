@@ -73,16 +73,27 @@
   .closing-band .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .closing-band p{margin:0;color:var(--muted,#96a0b5);font-size:14px}
   .closing-band .cta{white-space:nowrap}
-  .tools-nav{border-bottom:1px solid rgba(255,255,255,.08)}
+  .tools-nav{position:sticky;top:0;z-index:40;background:rgba(14,15,17,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .tools-actions{display:flex;align-items:center;gap:14px}
+  .tools-lang{position:relative;font-size:12px;color:var(--muted,#96a0b5)}
+  .tools-lang summary{list-style:none;cursor:pointer;padding:8px 4px;border-radius:8px}
+  .tools-lang summary::-webkit-details-marker{display:none}
+  .tools-lang summary:hover{color:var(--fg)}
+  .tools-lang ul{position:absolute;inset-inline-end:0;top:calc(100% + 8px);min-width:150px;max-height:320px;overflow:auto;background:#16181c;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:6px;list-style:none;box-shadow:0 18px 40px rgba(0,0,0,.35);z-index:50}
+  .tools-lang li a{display:block;padding:7px 9px;border-radius:7px;font-size:11.5px;color:var(--ink);white-space:nowrap}
+  .tools-lang li a:hover,.tools-lang li a[aria-current=true]{background:rgba(255,122,26,.12);color:#ffc08d}
   .tools-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:16px}
   .tools-brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);text-decoration:none}
   .tools-brand img{width:26px;height:26px;border-radius:7px;display:block}
   .foot .brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
+  .foot .legal{margin-inline:auto}
   .foot .brand img{width:22px;height:22px;border-radius:6px;display:block}
-  .tools-account{display:inline-flex;align-items:center;gap:10px;color:var(--muted,#96a0b5);font-size:13px;text-decoration:none}
+  .tools-account{display:inline-flex;align-items:center;gap:7px;color:var(--muted,#96a0b5);font-size:12px;text-decoration:none;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:5px 12px 5px 5px;background:rgba(255,255,255,.03)}
+  .tools-account:hover{border-color:rgba(255,255,255,.24);color:var(--ink)}
   .tools-account:hover{color:var(--fg)}
-  .tools-avatar{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;
-                border:1px solid rgba(255,255,255,.22);background:rgba(255,122,26,.12);color:#ffb27a;font-size:12px;font-weight:600}
+  .tools-avatar{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;
+                border:1px solid rgba(255,255,255,.22);background:rgba(255,122,26,.12);color:#ffb27a;font-size:10px;font-weight:600;overflow:hidden}
+  .tools-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
   .tools-account-copy{display:flex;align-items:baseline;gap:8px}
   .tools-account-balance{color:var(--fg);font-variant-numeric:tabular-nums}
   .tools-account-email{max-width:22ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
@@ -93,13 +104,31 @@
 <header class="tools-nav">
   <div class="wrap">
     <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261031-6" alt=""> AIGLOSSA TOOLS</a>
-    <a class="tools-account" id="toolsAccount" href="login.html?next=./">
-      <span class="tools-avatar" id="toolsAvatar" aria-hidden="true">?</span>
-      <span class="tools-account-copy">
-        <span class="tools-account-email" id="toolsAccountEmail">Account</span>
-        <span class="tools-account-balance" id="toolsAccountBalance"></span>
-      </span>
-    </a>
+    <div class="tools-actions">
+      <details class="tools-lang"><summary>English</summary><ul>        <li><a href="../ar/" data-lang="ar">العربية</a></li>
+        <li><a href="../de/" data-lang="de">Deutsch</a></li>
+        <li><a href="../en/" data-lang="en" aria-current="true">English</a></li>
+        <li><a href="../es/" data-lang="es">Español</a></li>
+        <li><a href="../fr/" data-lang="fr">Français</a></li>
+        <li><a href="../id/" data-lang="id">Bahasa Indonesia</a></li>
+        <li><a href="../it/" data-lang="it">Italiano</a></li>
+        <li><a href="../ja/" data-lang="ja">日本語</a></li>
+        <li><a href="../ko/" data-lang="ko">한국어</a></li>
+        <li><a href="../pt/" data-lang="pt">Português</a></li>
+        <li><a href="../ru/" data-lang="ru">Русский</a></li>
+        <li><a href="../th/" data-lang="th">ไทย</a></li>
+        <li><a href="../tr/" data-lang="tr">Türkçe</a></li>
+        <li><a href="../vi/" data-lang="vi">Tiếng Việt</a></li>
+        <li><a href="../zh-Hans/" data-lang="zh-Hans">简体中文</a></li>
+        <li><a href="../zh-Hant/" data-lang="zh-Hant">繁體中文</a></li></ul></details>
+      <a class="tools-account" id="toolsAccount" href="login.html?next=./">
+        <span class="tools-avatar" id="toolsAvatar" aria-hidden="true">?</span>
+        <span class="tools-account-copy">
+          <span class="tools-account-email" id="toolsAccountEmail">Account</span>
+          <span class="tools-account-balance" id="toolsAccountBalance"></span>
+        </span>
+      </a>
+    </div>
   </div>
 </header>
 <main>
@@ -153,27 +182,6 @@
       <a href="https://aiglossa.com/en/protocol/privacy.html">Privacy Policy</a>
       <a href="https://aiglossa.com/en/protocol/term.html">Terms of Service</a>
     </nav>
-    <details class="switcher">
-      <summary>Language · English</summary>
-      <ul>
-        <li><a href="../ar/" data-lang="ar">العربية</a></li>
-        <li><a href="../de/" data-lang="de">Deutsch</a></li>
-        <li><a href="../en/" data-lang="en" aria-current="true">English</a></li>
-        <li><a href="../es/" data-lang="es">Español</a></li>
-        <li><a href="../fr/" data-lang="fr">Français</a></li>
-        <li><a href="../id/" data-lang="id">Bahasa Indonesia</a></li>
-        <li><a href="../it/" data-lang="it">Italiano</a></li>
-        <li><a href="../ja/" data-lang="ja">日本語</a></li>
-        <li><a href="../ko/" data-lang="ko">한국어</a></li>
-        <li><a href="../pt/" data-lang="pt">Português</a></li>
-        <li><a href="../ru/" data-lang="ru">Русский</a></li>
-        <li><a href="../th/" data-lang="th">ไทย</a></li>
-        <li><a href="../tr/" data-lang="tr">Türkçe</a></li>
-        <li><a href="../vi/" data-lang="vi">Tiếng Việt</a></li>
-        <li><a href="../zh-Hans/" data-lang="zh-Hans">简体中文</a></li>
-        <li><a href="../zh-Hant/" data-lang="zh-Hant">繁體中文</a></li>
-      </ul>
-    </details>
   </div>
 </footer>
 
