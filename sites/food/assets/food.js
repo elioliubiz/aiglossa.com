@@ -34,7 +34,7 @@
     return (Number.isInteger(n) ? String(n) : n.toFixed(2));
   }
   function coinHtml(value) {
-    return coinText(value) + "<span>" + esc(UI.credits) + "</span>";
+    return coinText(value) + " <span>" + esc(UI.credits) + "</span>";
   }
 
   function toast(text) {
@@ -85,13 +85,13 @@
       state.user = null;
       state.balance = 0;
       setAvatar(null);
-      $("balanceText").innerHTML = esc(UI.sign_in) + "<span>" + esc(UI.credits) + "</span>";
+      $("balanceText").innerHTML = esc(UI.sign_in) + " <span>" + esc(UI.credits) + "</span>";
       syncAuth(false);
       return false;
     }).catch(function () {
       state.user = null;
       setAvatar(null);
-      $("balanceText").innerHTML = esc(UI.sign_in) + "<span>" + esc(UI.credits) + "</span>";
+      $("balanceText").innerHTML = esc(UI.sign_in) + " <span>" + esc(UI.credits) + "</span>";
       syncAuth(false);
       return false;
     });

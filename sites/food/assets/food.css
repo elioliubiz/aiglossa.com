@@ -51,7 +51,7 @@ button{font:inherit;cursor:pointer}
 .pill-btn:hover{border-color:#CFC8BA;color:var(--ink)}
 .avatar{width:24px;height:24px;border-radius:50%;background:var(--green-soft);color:var(--green);display:grid;place-items:center;font-size:11px;font-weight:700}
 .balance{color:var(--ink);font-variant-numeric:tabular-nums}
-.balance span{color:var(--muted);font-size:11px;margin-inline-start:4px}
+.balance span{color:var(--muted);font-size:11px;margin-inline-start:0}
 
 /* ---------- home ---------- */
 .hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:center;padding-block:74px 58px}
