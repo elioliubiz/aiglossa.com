@@ -38,18 +38,18 @@ ASSETS = ROOT / "assets"
 
 # food 只使用自己的少量资源，避免把 scholan 截图等整套 assets 复制过去。
 FOOD_ASSETS = (
-    "food.css", "food.js", "food-share.js", "wallet.js", "favicon-food.svg", "apple-touch-icon-food.png", "og.png",
+    "food.css", "food.js", "food-share.js", "wallet.js", "favicon-food.svg", "favicon-food-64.png", "favicon-food.ico", "apple-touch-icon-food.png", "og.png",
     "food-icon-192.png", "food-icon-512.png", "food-icon-maskable-512.png", "food-sample.jpg",
 )
 
-FOOD_ASSET_VERSION = "20261031-26"
+FOOD_ASSET_VERSION = "20261031-27"
 
 SKIN_ASSETS = (
     "food.css", "skin.css", "skin.js", "skin-share.js", "wallet.js", "favicon-skin.svg",
     "apple-touch-icon-skin.png", "og-skin.png", "skin-sample.jpg", "favicon-skin-64.png", "favicon-skin.ico", "skin-icon-192.png", "skin-icon-512.png",
     "skin-icon-maskable-512.png",
 )
-SKIN_ASSET_VERSION = "20261101-6"
+SKIN_ASSET_VERSION = "20261101-7"
 
 # 占位符统一用 {{key}}：模板是纯文件，渲染器只知道这一种语法，
 # 于是"模板里有占位符、文案里没有对应字段"会在构建时报错，而不是静默留下 {{...}}。
@@ -345,7 +345,7 @@ def _write_skin_pwa(site: str, site_langs: list[str], languages: dict) -> None:
         ]
         manifest = {"name": "AIGLOSSA Skin", "short_name": "AIGLOSSA", "start_url": f"/{lang}/skin/", "scope": f"/{lang}/skin/", "display": "standalone", "background_color": "#FBF7F2", "theme_color": "#FBF7F2", "icons": icons, "lang": lang, "dir": "rtl" if lang == "ar" else "ltr"}
         (folder / "manifest.webmanifest").write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
-        sw = "const CACHE = \"aiglossa-skin-" + lang + "-v6\";\n"
+        sw = "const CACHE = \"aiglossa-skin-" + lang + "-v7\";\n"
         sw += "const ASSETS = [\"/" + lang + "/skin/\", \"/assets/skin.css?v=" + SKIN_ASSET_VERSION + "\", \"/assets/skin.js?v=" + SKIN_ASSET_VERSION + "\", \"/assets/wallet.js?v=" + SKIN_ASSET_VERSION + "\"];\n"
         sw += "self.addEventListener(\"install\", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).catch(()=>{})); self.skipWaiting(); });\n"
         sw += "self.addEventListener(\"activate\", e => { e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE && k.indexOf(\"aiglossa-skin-\") === 0).map(k => caches.delete(k))))); self.clients.claim(); });\n"
@@ -386,7 +386,7 @@ def _write_food_pwa(site: str, site_langs: list[str], languages: dict) -> None:
             json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
         sw = f"""/* aiglossa food service worker — network-first; cache is only an offline fallback. */
-const CACHE = "aiglossa-food-{lang}-v30";
+const CACHE = "aiglossa-food-{lang}-v31";
 const V = "{FOOD_ASSET_VERSION}";
 const SHELL = ["./", "../../assets/food.css?v=" + V, "../../assets/food.js?v=" + V, "../../assets/wallet.js?v=" + V, "../../assets/food-icon-192.png?v=" + V, "../../assets/food-icon-512.png?v=" + V, "../../assets/food-sample.jpg?v=" + V];
 self.addEventListener("install", (event) => {{

@@ -259,5 +259,11 @@
   window.addEventListener("online", function () { $("offlineBar").classList.add("hidden"); });
   window.addEventListener("offline", function () { $("offlineBar").classList.remove("hidden"); });
   if (!navigator.onLine) $("offlineBar").classList.remove("hidden");
+  function closeLangOutside(e) {
+    var el = $("footerLang");
+    if (el && el.open && !el.contains(e.target)) el.open = false;
+  }
+  document.addEventListener("click", closeLangOutside);
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { var el = $("footerLang"); if (el) el.open = false; } });
   refreshAccount();
 })();

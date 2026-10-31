@@ -7,7 +7,7 @@
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{title}}"><meta name="twitter:description" content="{{description}}"><meta name="twitter:image" content="{{site_base}}/assets/og.png">
 <meta name="theme-color" content="#FBFAF7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest?v={{asset_v}}">
-<link rel="icon" href="{{prefix}}assets/favicon-food.svg?v={{asset_v}}"><link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-food.png?v={{asset_v}}">
+<link rel="icon" type="image/png" sizes="64x64" href="{{prefix}}assets/favicon-food-64.png?v={{asset_v}}"><link rel="icon" type="image/svg+xml" href="{{prefix}}assets/favicon-food.svg?v={{asset_v}}"><link rel="shortcut icon" href="{{prefix}}assets/favicon-food.ico?v={{asset_v}}"><link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-food.png?v={{asset_v}}">
 <link rel="stylesheet" href="{{prefix}}assets/food.css?v={{asset_v}}">
 <script type="application/ld+json">{{jsonld}}</script>
 </head>
@@ -39,7 +39,7 @@
         <div class="scan-loading hidden" id="scanLoading"><span class="spinner"></span><span id="scanLoadingText">{{scanning}}</span></div>
         <button class="btn hidden" id="scanButton" style="width:100%;margin-top:12px">{{scan_button}}</button>
       </div>
-      <div class="meta-row"><span>{{scan_cost}}</span><span>{{scan_seconds}}</span><span>{{scan_languages}}</span></div>
+      <div class="meta-row"><span>{{scan_cost}}</span><span>{{scan_seconds}}</span></div>
       <div class="pwa-banner hidden" id="pwaBanner"><span>{{install_hint}}</span><button id="installBtn">{{install}}</button></div>
     </div>
     <div class="hero-visual">
