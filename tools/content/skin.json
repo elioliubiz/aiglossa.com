@@ -20,7 +20,7 @@
     "scan_button": "Start scan",
     "scanning": "Reading the label…",
     "scan_cost": "4 credits for 1 product",
-    "scan_seconds": "about 4 seconds",
+    "scan_seconds": "about 20–40 seconds",
     "scan_languages": "16 languages",
     "retake": "Retake",
     "change_image": "Change photo",
@@ -141,7 +141,10 @@
     "products": "Products",
     "unsupported": "This product may not be skincare. Only ingredient facts are shown.",
     "product": "Product",
-    "no_ingredients": "No complete ingredient list was read."
+    "no_ingredients": "No complete ingredient list was read.",
+    "warning_title": "Before you scan",
+    "warning_body": "Currently only skincare ingredient lists are supported. Makeup, hair care, fragrance, nail, oral care, and sunscreen are not supported. You can continue, but the report may not be suitable for those products.",
+    "continue": "Continue"
   },
   "zh-Hans": {
     "title": "护肤成分分析 — AIGLOSSA",
@@ -164,7 +167,7 @@
     "scan_button": "开始扫描",
     "scanning": "正在读标签……",
     "scan_cost": "1 个产品 4 额度",
-    "scan_seconds": "约 4 秒",
+    "scan_seconds": "约 20–40 秒",
     "scan_languages": "支持 16 种语言",
     "retake": "重拍",
     "change_image": "换一张",
@@ -285,7 +288,10 @@
     "products": "产品",
     "unsupported": "这个产品可能不属于护肤品。本报告只解释成分。",
     "product": "产品",
-    "no_ingredients": "没有读到完整成分表。"
+    "no_ingredients": "没有读到完整成分表。",
+    "warning_title": "扫描前请确认",
+    "warning_body": "目前仅支持护肤品成分表。彩妆、洗护、香水、美甲、口腔护理和防晒暂不支持。你可以继续，但报告可能不适用于这些产品。",
+    "continue": "继续"
   },
   "zh-Hant": {
     "title": "保養成分分析 — AIGLOSSA",
@@ -308,7 +314,7 @@
     "scan_button": "開始掃描",
     "scanning": "正在讀取標籤…",
     "scan_cost": "每項產品需 4 點積分",
-    "scan_seconds": "約 4 秒",
+    "scan_seconds": "約 20–40 秒",
     "scan_languages": "支援 16 種語言",
     "retake": "重拍",
     "change_image": "更換照片",
@@ -429,7 +435,10 @@
     "products": "產品",
     "unsupported": "此產品可能非保養品，僅顯示成分資訊。",
     "product": "產品",
-    "no_ingredients": "未能讀取到完整的成分表。"
+    "no_ingredients": "未能讀取到完整的成分表。",
+    "warning_title": "掃描前須知",
+    "warning_body": "目前僅支援護膚品成分表。彩妝、護髮、香氛、美甲、口腔護理及防曬產品尚不支援。您可以繼續掃描，但分析結果可能不適用於上述產品。",
+    "continue": "繼續"
   },
   "ja": {
     "title": "スキンケア成分解析 — AIGLOSSA",
@@ -452,7 +461,7 @@
     "scan_button": "スキャン開始",
     "scanning": "ラベルを読み取り中…",
     "scan_cost": "1製品につき4クレジット",
-    "scan_seconds": "約4秒",
+    "scan_seconds": "約20〜40秒",
     "scan_languages": "16言語対応",
     "retake": "撮り直す",
     "change_image": "写真を変更",
@@ -573,7 +582,10 @@
     "products": "製品",
     "unsupported": "スキンケア製品ではない可能性があります。成分情報のみを表示しています。",
     "product": "製品",
-    "no_ingredients": "成分表示を正しく読み取れませんでした。"
+    "no_ingredients": "成分表示を正しく読み取れませんでした。",
+    "warning_title": "スキャンする前に",
+    "warning_body": "現在はスキンケア製品の成分リストのみに対応しています。メイクアップ、ヘアケア、フレグランス、ネイル、オーラルケア、日焼け止めには対応しておりません。そのまま進めることも可能ですが、正確な診断結果が得られない場合があります。",
+    "continue": "続ける"
   },
   "ko": {
     "title": "스킨케어 성분 분석 — AIGLOSSA",
@@ -596,7 +608,7 @@
     "scan_button": "스캔 시작",
     "scanning": "라벨 읽는 중…",
     "scan_cost": "제품 1개당 4 크레딧",
-    "scan_seconds": "약 4초 소요",
+    "scan_seconds": "약 20~40초 소요",
     "scan_languages": "16개 언어 지원",
     "retake": "다시 촬영",
     "change_image": "사진 변경",
@@ -717,7 +729,10 @@
     "products": "제품",
     "unsupported": "스킨케어 제품이 아닐 수 있습니다. 성분 정보만 표시됩니다.",
     "product": "제품",
-    "no_ingredients": "전체 성분표를 읽어오지 못했습니다."
+    "no_ingredients": "전체 성분표를 읽어오지 못했습니다.",
+    "warning_title": "스캔 전 확인해 주세요",
+    "warning_body": "현재 스킨케어 성분 분석만 지원합니다. 메이크업, 헤어, 향수, 네일, 구강 케어, 자외선 차단제는 분석이 어렵습니다. 계속 진행할 수 있으나, 해당 제품군에는 결과가 정확하지 않을 수 있습니다.",
+    "continue": "계속하기"
   },
   "es": {
     "title": "Análisis de ingredientes de cuidado de la piel — AIGLOSSA",
@@ -740,7 +755,7 @@
     "scan_button": "Iniciar escaneo",
     "scanning": "Leyendo la etiqueta…",
     "scan_cost": "4 créditos por 1 producto",
-    "scan_seconds": "aprox. 4 segundos",
+    "scan_seconds": "aprox. 20–40 segundos",
     "scan_languages": "16 idiomas",
     "retake": "Repetir",
     "change_image": "Cambiar foto",
@@ -861,7 +876,10 @@
     "products": "Productos",
     "unsupported": "Este producto podría no ser de cuidado de la piel. Solo se muestran datos de los ingredientes.",
     "product": "Producto",
-    "no_ingredients": "No se pudo leer una lista completa de ingredientes."
+    "no_ingredients": "No se pudo leer una lista completa de ingredientes.",
+    "warning_title": "Antes de escanear",
+    "warning_body": "Actualmente solo admitimos listas de ingredientes de productos para el cuidado de la piel. No se admiten maquillaje, cuidado capilar, fragancias, uñas, cuidado bucal ni protectores solares. Puedes continuar, pero es posible que el informe no sea adecuado para esos productos.",
+    "continue": "Continuar"
   },
   "fr": {
     "title": "Analyse des ingrédients de soins — AIGLOSSA",
@@ -884,7 +902,7 @@
     "scan_button": "Démarrer le scan",
     "scanning": "Lecture de l'étiquette…",
     "scan_cost": "4 crédits pour 1 produit",
-    "scan_seconds": "environ 4 secondes",
+    "scan_seconds": "environ 20 à 40 secondes",
     "scan_languages": "16 langues",
     "retake": "Recommencer",
     "change_image": "Changer la photo",
@@ -1005,7 +1023,10 @@
     "products": "Produits",
     "unsupported": "Ce produit n'est peut-être pas un soin. Seuls les faits relatifs aux ingrédients sont affichés.",
     "product": "Produit",
-    "no_ingredients": "Aucune liste d'ingrédients complète n'a été détectée."
+    "no_ingredients": "Aucune liste d'ingrédients complète n'a été détectée.",
+    "warning_title": "Avant de scanner",
+    "warning_body": "Seules les listes d'ingrédients de soins pour la peau sont actuellement prises en charge. Le maquillage, les soins capillaires, les parfums, les produits pour les ongles, l'hygiène bucco-dentaire et les protections solaires ne sont pas compatibles. Vous pouvez continuer, mais le rapport pourrait ne pas être adapté à ces produits.",
+    "continue": "Continuer"
   },
   "de": {
     "title": "Hautpflege-Inhaltsstoffanalyse — AIGLOSSA",
@@ -1028,7 +1049,7 @@
     "scan_button": "Scan starten",
     "scanning": "Etikett wird gelesen…",
     "scan_cost": "4 Credits für 1 Produkt",
-    "scan_seconds": "ca. 4 Sekunden",
+    "scan_seconds": "ca. 20–40 Sekunden",
     "scan_languages": "16 Sprachen",
     "retake": "Neu aufnehmen",
     "change_image": "Foto ändern",
@@ -1149,7 +1170,10 @@
     "products": "Produkte",
     "unsupported": "Dieses Produkt ist möglicherweise keine Hautpflege. Es werden nur die Inhaltsstoffe angezeigt.",
     "product": "Produkt",
-    "no_ingredients": "Es konnte keine vollständige Inhaltsstoffliste gelesen werden."
+    "no_ingredients": "Es konnte keine vollständige Inhaltsstoffliste gelesen werden.",
+    "warning_title": "Vor dem Scannen",
+    "warning_body": "Derzeit werden nur Inhaltsstofflisten für Hautpflege unterstützt. Make-up, Haarpflege, Düfte, Nagel- und Mundpflege sowie Sonnenschutz werden nicht unterstützt. Du kannst fortfahren, aber das Ergebnis ist für diese Produkte möglicherweise nicht aussagekräftig.",
+    "continue": "Weiter"
   },
   "pt": {
     "title": "Análise de ingredientes de skincare — AIGLOSSA",
@@ -1172,7 +1196,7 @@
     "scan_button": "Iniciar digitalização",
     "scanning": "Lendo o rótulo…",
     "scan_cost": "4 créditos por 1 produto",
-    "scan_seconds": "cerca de 4 segundos",
+    "scan_seconds": "cerca de 20 a 40 segundos",
     "scan_languages": "16 idiomas",
     "retake": "Tirar novamente",
     "change_image": "Alterar foto",
@@ -1293,7 +1317,10 @@
     "products": "Produtos",
     "unsupported": "Este produto pode não ser de skincare. Apenas fatos sobre os ingredientes são exibidos.",
     "product": "Produto",
-    "no_ingredients": "Nenhuma lista completa de ingredientes foi lida."
+    "no_ingredients": "Nenhuma lista completa de ingredientes foi lida.",
+    "warning_title": "Antes de escanear",
+    "warning_body": "Atualmente, apenas listas de ingredientes de produtos de skincare são suportadas. Maquiagem, cuidados com o cabelo, fragrâncias, unhas, higiene bucal e protetor solar não são suportados. Você pode continuar, mas o relatório pode não ser adequado para esses produtos.",
+    "continue": "Continuar"
   },
   "it": {
     "title": "Analisi degli ingredienti skincare — AIGLOSSA",
@@ -1316,7 +1343,7 @@
     "scan_button": "Avvia scansione",
     "scanning": "Lettura dell'etichetta…",
     "scan_cost": "4 crediti per 1 prodotto",
-    "scan_seconds": "circa 4 secondi",
+    "scan_seconds": "circa 20–40 secondi",
     "scan_languages": "16 lingue",
     "retake": "Riprova",
     "change_image": "Cambia foto",
@@ -1437,7 +1464,10 @@
     "products": "Prodotti",
     "unsupported": "Questo prodotto potrebbe non essere un cosmetico. Vengono mostrati solo i fatti relativi agli ingredienti.",
     "product": "Prodotto",
-    "no_ingredients": "Non è stato rilevato alcun elenco completo di ingredienti."
+    "no_ingredients": "Non è stato rilevato alcun elenco completo di ingredienti.",
+    "warning_title": "Prima di scansionare",
+    "warning_body": "Al momento sono supportati solo gli elenchi di ingredienti per la cura della pelle. Trucco, prodotti per capelli, profumi, unghie, igiene orale e solari non sono supportati. Puoi continuare, ma il report potrebbe non essere adatto a questi prodotti.",
+    "continue": "Continua"
   },
   "ru": {
     "title": "Анализ состава косметики — AIGLOSSA",
@@ -1460,7 +1490,7 @@
     "scan_button": "Начать сканирование",
     "scanning": "Читаем этикетку…",
     "scan_cost": "4 кредита за 1 продукт",
-    "scan_seconds": "около 4 секунд",
+    "scan_seconds": "около 20–40 секунд",
     "scan_languages": "16 языков",
     "retake": "Переснять",
     "change_image": "Сменить фото",
@@ -1581,7 +1611,10 @@
     "products": "Продукты",
     "unsupported": "Возможно, это не косметическое средство. Показаны только факты об ингредиентах.",
     "product": "Продукт",
-    "no_ingredients": "Полный список ингредиентов не был распознан."
+    "no_ingredients": "Полный список ингредиентов не был распознан.",
+    "warning_title": "Перед сканированием",
+    "warning_body": "Сейчас поддерживаются только составы средств по уходу за кожей. Декоративная косметика, средства для волос, парфюмерия, лаки для ногтей, средства для полости рта и солнцезащитные кремы не поддерживаются. Вы можете продолжить, но результат может быть неточным.",
+    "continue": "Продолжить"
   },
   "ar": {
     "title": "تحليل مكونات العناية بالبشرة — AIGLOSSA",
@@ -1604,7 +1637,7 @@
     "scan_button": "بدء المسح",
     "scanning": "جاري قراءة الملصق…",
     "scan_cost": "4 رصيد للمنتج الواحد",
-    "scan_seconds": "حوالي 4 ثوانٍ",
+    "scan_seconds": "حوالي 20–40 ثانية",
     "scan_languages": "16 لغة",
     "retake": "إعادة التصوير",
     "change_image": "تغيير الصورة",
@@ -1725,7 +1758,10 @@
     "products": "المنتجات",
     "unsupported": "قد لا يكون هذا المنتج من مستحضرات العناية بالبشرة. تم عرض حقائق المكونات فقط.",
     "product": "المنتج",
-    "no_ingredients": "لم يتم قراءة قائمة مكونات كاملة."
+    "no_ingredients": "لم يتم قراءة قائمة مكونات كاملة.",
+    "warning_title": "قبل البدء بالمسح",
+    "warning_body": "ندعم حالياً قوائم مكونات العناية بالبشرة فقط. لا يتم دعم المكياج، العناية بالشعر، العطور، طلاء الأظافر، العناية بالفم، وواقيات الشمس. يمكنك المتابعة، لكن التقرير قد لا يكون دقيقاً لهذه المنتجات.",
+    "continue": "متابعة"
   },
   "th": {
     "title": "วิเคราะห์ส่วนผสมสกินแคร์ — AIGLOSSA",
@@ -1748,7 +1784,7 @@
     "scan_button": "เริ่มสแกน",
     "scanning": "กำลังอ่านฉลาก…",
     "scan_cost": "4 เครดิตต่อ 1 ผลิตภัณฑ์",
-    "scan_seconds": "ประมาณ 4 วินาที",
+    "scan_seconds": "ใช้เวลาประมาณ 20–40 วินาที",
     "scan_languages": "16 ภาษา",
     "retake": "ถ่ายใหม่",
     "change_image": "เปลี่ยนรูปภาพ",
@@ -1869,7 +1905,10 @@
     "products": "ผลิตภัณฑ์",
     "unsupported": "ผลิตภัณฑ์นี้อาจไม่ใช่สกินแคร์ แสดงเฉพาะข้อมูลส่วนผสมเท่านั้น",
     "product": "ผลิตภัณฑ์",
-    "no_ingredients": "ไม่พบรายการส่วนผสมที่สมบูรณ์"
+    "no_ingredients": "ไม่พบรายการส่วนผสมที่สมบูรณ์",
+    "warning_title": "ก่อนเริ่มสแกน",
+    "warning_body": "ขณะนี้รองรับเฉพาะรายการส่วนผสมสกินแคร์เท่านั้น ไม่รองรับเครื่องสำอาง ผลิตภัณฑ์ดูแลเส้นผม น้ำหอม ผลิตภัณฑ์ดูแลเล็บ ช่องปาก และครีมกันแดด คุณสามารถดำเนินการต่อได้ แต่ผลลัพธ์อาจไม่แม่นยำสำหรับผลิตภัณฑ์กลุ่มดังกล่าว",
+    "continue": "ดำเนินการต่อ"
   },
   "vi": {
     "title": "Phân tích thành phần mỹ phẩm — AIGLOSSA",
@@ -1892,7 +1931,7 @@
     "scan_button": "Bắt đầu quét",
     "scanning": "Đang đọc nhãn…",
     "scan_cost": "4 tín dụng cho 1 sản phẩm",
-    "scan_seconds": "khoảng 4 giây",
+    "scan_seconds": "khoảng 20–40 giây",
     "scan_languages": "16 ngôn ngữ",
     "retake": "Chụp lại",
     "change_image": "Đổi ảnh",
@@ -2013,7 +2052,10 @@
     "products": "Sản phẩm",
     "unsupported": "Sản phẩm này có thể không phải là mỹ phẩm dưỡng da. Chỉ hiển thị thông tin thành phần.",
     "product": "Sản phẩm",
-    "no_ingredients": "Không đọc được bảng thành phần đầy đủ."
+    "no_ingredients": "Không đọc được bảng thành phần đầy đủ.",
+    "warning_title": "Trước khi quét",
+    "warning_body": "Hiện tại ứng dụng chỉ hỗ trợ phân tích bảng thành phần sản phẩm chăm sóc da. Các sản phẩm trang điểm, chăm sóc tóc, nước hoa, chăm sóc móng, chăm sóc răng miệng và kem chống nắng chưa được hỗ trợ. Bạn có thể tiếp tục, nhưng kết quả có thể không chính xác cho các loại sản phẩm này.",
+    "continue": "Tiếp tục"
   },
   "id": {
     "title": "Analisis bahan skincare — AIGLOSSA",
@@ -2036,7 +2078,7 @@
     "scan_button": "Mulai pindai",
     "scanning": "Membaca label…",
     "scan_cost": "4 kredit untuk 1 produk",
-    "scan_seconds": "sekitar 4 detik",
+    "scan_seconds": "sekitar 20–40 detik",
     "scan_languages": "16 bahasa",
     "retake": "Ambil ulang",
     "change_image": "Ganti foto",
@@ -2157,7 +2199,10 @@
     "products": "Produk",
     "unsupported": "Produk ini mungkin bukan skincare. Hanya fakta bahan yang ditampilkan.",
     "product": "Produk",
-    "no_ingredients": "Daftar bahan lengkap tidak terbaca."
+    "no_ingredients": "Daftar bahan lengkap tidak terbaca.",
+    "warning_title": "Sebelum memindai",
+    "warning_body": "Saat ini hanya daftar bahan perawatan kulit (skincare) yang didukung. Produk makeup, perawatan rambut, wewangian, kuku, perawatan mulut, dan tabir surya tidak didukung. Anda bisa melanjutkan, namun hasilnya mungkin tidak akurat untuk produk tersebut.",
+    "continue": "Lanjutkan"
   },
   "tr": {
     "title": "Cilt bakım içerik analizi — AIGLOSSA",
@@ -2180,7 +2225,7 @@
     "scan_button": "Taramayı başlat",
     "scanning": "Etiket okunuyor…",
     "scan_cost": "1 ürün için 4 kredi",
-    "scan_seconds": "yaklaşık 4 saniye",
+    "scan_seconds": "yaklaşık 20–40 saniye",
     "scan_languages": "16 dil",
     "retake": "Yeniden çek",
     "change_image": "Fotoğrafı değiştir",
@@ -2301,6 +2346,9 @@
     "products": "Ürünler",
     "unsupported": "Bu ürün bir cilt bakım ürünü olmayabilir. Sadece içerik bilgileri gösterilmektedir.",
     "product": "Ürün",
-    "no_ingredients": "Eksiksiz bir içerik listesi okunamadı."
+    "no_ingredients": "Eksiksiz bir içerik listesi okunamadı.",
+    "warning_title": "Taramadan önce",
+    "warning_body": "Şu an sadece cilt bakım ürünlerinin içerik listeleri desteklenmektedir. Makyaj, saç bakımı, parfüm, tırnak, ağız bakımı ve güneş kremleri desteklenmemektedir. Devam edebilirsiniz ancak analiz bu ürünler için uygun olmayabilir.",
+    "continue": "Devam et"
   }
 }
