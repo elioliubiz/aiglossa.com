@@ -22,14 +22,14 @@
 <meta property="og:type" content="website"><meta property="og:site_name" content="AIGLOSSA SKIN"><meta property="og:locale" content="ja_JP"><meta property="og:title" content="スキンケア成分解析 — AIGLOSSA"><meta property="og:description" content="スキンケア製品の成分表示を撮影するだけで、成分の役割や注目の有効成分、肌質別の注意点、使い方のコツを分かりやすく解説します。（※医療診断ではありません）"><meta property="og:url" content="https://skin.aiglossa.com/ja/skin/"><meta property="og:image" content="https://skin.aiglossa.com/assets/og-skin.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="スキンケア成分解析 — AIGLOSSA"><meta name="twitter:description" content="スキンケア製品の成分表示を撮影するだけで、成分の役割や注目の有効成分、肌質別の注意点、使い方のコツを分かりやすく解説します。（※医療診断ではありません）"><meta name="twitter:image" content="https://skin.aiglossa.com/assets/og-skin.png">
 <meta name="theme-color" content="#FBF7F2"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="manifest" href="manifest.webmanifest?v=20261101-2">
-<link rel="icon" href="../../assets/favicon-skin.svg?v=20261101-2"><link rel="apple-touch-icon" href="../../assets/apple-touch-icon-skin.png?v=20261101-2">
-<link rel="stylesheet" href="../../assets/skin.css?v=20261101-2">
+<link rel="manifest" href="manifest.webmanifest?v=20261101-3">
+<link rel="icon" href="../../assets/favicon-skin.svg?v=20261101-3"><link rel="apple-touch-icon" href="../../assets/apple-touch-icon-skin.png?v=20261101-3">
+<link rel="stylesheet" href="../../assets/skin.css?v=20261101-3">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "スキンケア成分解析 — AIGLOSSA", "description": "スキンケア製品の成分表示を撮影するだけで、成分の役割や注目の有効成分、肌質別の注意点、使い方のコツを分かりやすく解説します。（※医療診断ではありません）", "applicationCategory": "HealthApplication", "operatingSystem": "Web", "url": "https://skin.aiglossa.com/ja/skin/", "inLanguage": "ja"}</script>
 </head>
 <body>
 <header class="topbar"><div class="wrap topbar-inner">
-  <a class="brand" href="./" aria-label="AIGLOSSA SKIN"><span class="brand-mark skin-logo"><img src="../../assets/favicon-skin.svg?v=20261101-2" alt=""></span> AIGLOSSA</a>
+  <a class="brand" href="./" aria-label="AIGLOSSA SKIN"><span class="brand-mark skin-logo"><img src="../../assets/favicon-skin.svg?v=20261101-3" alt=""></span> AIGLOSSA</a>
   <div class="top-actions">
     <a class="login-link" id="loginBtn" href="#">ログイン</a>
     <button class="account-flat hidden" id="accountBtn"><span class="avatar" id="avatar">?</span><span class="balance" id="balanceText">—<span>クレジット</span></span></button>
@@ -39,31 +39,45 @@
 <div class="offline-bar hidden" id="offlineBar">オフラインです。スキャンには接続が必要です。</div>
 
 <main id="heroView">
-  <section class="wrap skin-hero">
+  <section class="wrap hero skin-hero">
     <div class="hero-copy">
       <span class="kicker">SKINCARE INGREDIENT SCAN</span>
       <h1>成分を読み解き、<br><em>肌の真実を知る。</em></h1>
       <p class="lede">成分表示を撮影してください。各成分の働きや注意が必要な方、効果的な使い方を詳しく解説します。</p>
       <div class="scan-card">
         <div class="scan-icon skin-scan-icon"><svg viewBox="0 0 24 24"><path d="M5 8V6a2 2 0 0 1 2-2h2M15 4h2a2 2 0 0 1 2 2v2M19 16v2a2 2 0 0 1-2 2h-2M9 20H7a2 2 0 0 1-2-2v-2"/><path d="M8.5 12h7M9.5 15h5"/></svg></div>
-        <div class="scan-copy"><b>写真を撮影またはアップロード</b><span>全成分表示 · 1〜3製品まで</span></div>
+        <div class="scan-copy"><b>写真を撮影またはアップロード</b><span>全成分表示 · 最大3製品まで</span></div>
         <div class="scan-actions"><label class="btn" for="fileInput">ファイルを選択</label><label class="btn ghost" for="cameraInput">カメラ</label></div>
         <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" multiple>
         <input class="file-input" id="cameraInput" type="file" accept="image/*" capture="environment">
-        <p class="multi-hint">同一製品：最大3枚まで（表面、原材料、栄養成分）</p>
+        <p class="multi-hint">製品ごとに成分ラベルを1枚ずつ、最大3製品までスキャン可能です。</p>
         <div class="preview-wrap hidden" id="previewWrap"><div class="preview-grid" id="previewGrid"></div></div>
         <div class="scan-loading hidden" id="scanLoading"><span class="spinner"></span><span id="scanLoadingText">ラベルを読み取り中…</span></div>
         <button class="btn hidden" id="scanButton" style="width:100%;margin-top:12px">スキャン開始</button>
       </div>
-      <div class="meta-row"><span>1製品につき4クレジット</span><span>約20〜40秒</span><span>16言語対応</span></div>
+      <div class="meta-row"><span>1製品 4クレジット · 2製品 7クレジット · 3製品 9クレジット</span><span>約20〜40秒</span><span>16言語対応</span></div>
       <div class="pwa-banner hidden" id="pwaBanner"><span>AIGLOSSA skinをホーム画面に追加して、スキャンをよりスムーズに。</span><button id="installBtn">アプリをインストール</button></div>
     </div>
     <div class="hero-visual skin-visual">
-      <div class="skin-orbit"><img src="../../assets/skin-icon-512.png?v=20261101-2" alt=""></div>
+      <div class="skin-photo-card"><img src="../../assets/skin-sample.jpg?v=20261101-3" alt="成分スキャン"></div>
       <div class="scan-frame"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
       <div class="result-chip"><span class="dot"></span> 成分スキャン</div>
+      <div class="skin-float">
+        <small>注目の成分</small>
+        <b>Niacinamide</b>
+        <span>注意 · 適した肌質</span>
+      </div>
     </div>
   </section>
+  <section class="wrap value" id="how">
+    <div class="value-head"><h2>解析内容</h2><p>広告文句ではなく、成分そのものを分析します。</p></div>
+    <div class="value-grid">
+      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M6 4.5h12v15H6z"/><path d="M9 8h6M9 11h6M9 14h4"/></svg></div><h3>成分解説</h3><p>聞き慣れない成分名も、その役割や目的、注意点まで分かりやすく解説します。</p></article>
+      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 3.5c3.5 4 6 7.2 6 10.5a6 6 0 0 1-12 0c0-3.3 2.5-6.5 6-10.5z"/><path d="M9.2 14.2a3 3 0 0 0 3 2.3"/></svg></div><h3>主要成分</h3><p>重要な有効成分をピックアップ。専門用語を使わず、濃度に惑わされない解説を提供します。</p></article>
+      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.5c0 4.2-2.8 7.2-7 9-4.2-1.8-7-4.8-7-9V6z"/><path d="M9.3 11.8 11.4 14l3.6-4"/></svg></div><h3>ルーティン適合性</h3><p>肌質別の注意点や妊娠中の使用可否、製品同士の組み合わせまでアドバイスします。</p></article>
+    </div>
+  </section>
+
   <section class="wrap recent hidden" id="recentSection">
     <div class="recent-head"><h2>最近のスキャン</h2><a href="#" id="historyRefresh">すべて表示 →</a></div>
     <div class="history-list" id="historyList"><div class="history-empty">スキャン履歴はありません。</div></div>
@@ -111,9 +125,9 @@
   <span>本情報は一般的なスキンケア成分の解説であり、医療アドバイスではありません。</span>
 </div></footer>
 
-<script type="application/json" id="ui">{"title": "スキンケア成分解析 — AIGLOSSA", "description": "スキンケア製品の成分表示を撮影するだけで、成分の役割や注目の有効成分、肌質別の注意点、使い方のコツを分かりやすく解説します。（※医療診断ではありません）", "h1": "成分を読み解き、<br><em>肌の真実を知る。<\/em>", "sub": "成分表示を撮影してください。各成分の働きや注意が必要な方、効果的な使い方を詳しく解説します。", "nav_scan": "スキャン", "nav_how": "使い方", "nav_pricing": "料金プラン", "sign_in": "ログイン", "account": "アカウント", "credits": "クレジット", "buy": "クレジットを購入", "scan_title": "ラベルをスキャン", "scan_sub": "全成分表示 · 1〜3製品まで", "upload": "写真を撮影またはアップロード", "upload_hint": "JPG, PNG, WebP形式 · 最大8MB", "choose_file": "ファイルを選択", "camera": "カメラ", "scan_button": "スキャン開始", "scanning": "ラベルを読み取り中…", "scan_cost": "1製品につき4クレジット", "scan_seconds": "約20〜40秒", "scan_languages": "16言語対応", "retake": "撮り直す", "change_image": "写真を変更", "login_required": "スキャンするにはログインしてください。", "insufficient": "クレジットが不足しています。購入して続けてください。", "scan_failed": "ラベルを解析できませんでした。もう一度お試しください。", "image_invalid": "画像を読み取れませんでした。より鮮明な写真を試してください。", "network_error": "ネットワークエラーが発生しました。もう一度お試しください。", "scan_pending": "解析中…", "scan_timeout": "通常より時間がかかっています。履歴は後ほど確認できます。", "unsupported_language": "この言語は現在サポートされていません。", "result_title": "解析結果", "analyzed_in": "レポート言語", "original": "原文", "translated": "翻訳", "save": "保存", "saved": "保存済み", "delete": "削除", "delete_confirm": "このスキャンを削除しますか？", "delete_body": "レポートと画像が削除されます。", "new_scan": "別のラベルをスキャン", "history": "最近のスキャン", "view_all": "すべて表示", "no_history": "スキャン履歴はありません。", "back": "戻る", "verdict": "概要", "nutrition": "栄養成分", "ingredients": "原材料", "who_notes": "注意が必要な方", "how_to_eat": "食べ方のアドバイス", "data_notes": "データに関する注記", "disclaimer_label": "免責事項", "per_100g": "100gあたり", "per_serving": "1食分あたり", "nrv": "NRV（栄養素基準値）", "not_labeled": "表示なし", "high": "高い", "medium": "標準", "info": "情報", "avoid": "避ける", "caution": "注意", "limit": "控える", "energy": "エネルギー", "protein": "タンパク質", "fat": "脂質", "sat_fat": "飽和脂肪酸", "carb": "炭水化物", "sugar": "糖類", "sodium": "ナトリウム", "fiber": "食物繊維", "salt": "食塩相当量", "cholesterol": "コレステロール", "trans_fat": "トランス脂肪酸", "added_sugar": "添加糖", "value_1_title": "原材料の解説", "value_1_body": "馴染みのない成分を解説：何であるか、なぜ含まれているか、誰が注意すべきかを説明します。", "value_2_title": "栄養分析", "value_2_body": "100gあたり、1食分あたり、NRVを統合し、高・中・低を分かりやすく表示します。", "value_3_title": "注意が必要な方", "value_3_body": "ナトリウム、糖、アレルゲン、添加物などに注意が必要な人向けの一般的な情報。", "recent": "最近のスキャン", "how_title": "使い方", "how_1": "ラベルを撮影する", "how_2": "原材料と栄養成分を読み取る", "how_3": "分かりやすいレポートを受け取る", "cta": "スキャンを開始", "footer_disclaimer": "本情報は一般的なスキンケア成分の解説であり、医療アドバイスではありません。", "pay_title": "クレジットを購入", "pay_balance": "残高", "pay_waiting": "決済処理中…", "pay_success": "クレジットが追加されました。", "pay_failed": "決済に失敗しました。もう一度お試しください。", "pay_close": "閉じる", "credits_unit": "クレジット", "one_scan": "製品1点 = 4クレジット", "install": "アプリをインストール", "install_hint": "AIGLOSSA skinをホーム画面に追加して、スキャンをよりスムーズに。", "offline": "オフラインです。スキャンには接続が必要です。", "update": "新しいバージョンが利用可能です。", "sample": "成分スキャン", "image_alt": "スキンケア成分ラベル", "privacy": "プライバシーポリシー", "terms": "利用規約", "refund": "返金について", "contact": "お問い合わせ", "cancel": "キャンセル", "cautions": "注意点", "value_head": "解析内容", "value_intro": "広告文句ではなく、成分そのものを分析します。", "status_done": "完了", "status_failed": "失敗", "status_pending": "分析中", "show_all": "すべて表示", "show_less": "折りたたむ", "share": "共有", "share_text": "「{product}」のラベルをスキャンしました：{headline}。", "share_copied": "共有リンクをコピーしました", "share_failed": "共有リンクを作成できませんでした", "share_heading": "スキンケア成分分析", "share_cta": "成分分析を試す", "daily_ref": "1日の参考量の", "nutrition_note": "100gあたり。割合は一般的な成人の1日の参考量に対する目安で、健康スコアではありません。「未表示」は0ではありません。", "energy_note": "kcal と kJ は同じエネルギーの2つの単位です。1 kcal ≈ 4.184 kJ。", "buy_short": "購入", "multi_hint": "同一製品：最大3枚まで（表面、原材料、栄養成分）", "nutrition_empty_title": "栄養成分表示なし", "nutrition_empty_body": "読み取れる栄養成分表が見つかりませんでした。", "nutrition_note_generic": "％は一般的な成人向け基準値であり、健康スコアではありません。「表示なし」はゼロを意味するものではありません。", "inferred": "推定", "key_ingredients": "注目の成分", "skin_types": "適した肌質", "population": "注意が必要な方", "usage": "使い方", "combined": "ルーティン解析", "roles": "製品の役割", "overlaps": "重複成分", "routine": "推奨する使用順序", "products": "製品", "unsupported": "スキンケア製品ではない可能性があります。成分情報のみを表示しています。", "product": "製品", "no_ingredients": "成分表示を正しく読み取れませんでした。", "warning_title": "スキャンする前に", "warning_body": "現在はスキンケア製品の成分リストのみに対応しています。メイクアップ、ヘアケア、フレグランス、ネイル、オーラルケア、日焼け止めには対応しておりません。そのまま進めることも可能ですが、正確な診断結果が得られない場合があります。", "continue": "続ける"}</script>
-<script src="../../assets/wallet.js?v=20261101-2"></script>
-<script src="../../assets/skin.js?v=20261101-2"></script>
+<script type="application/json" id="ui">{"title": "スキンケア成分解析 — AIGLOSSA", "description": "スキンケア製品の成分表示を撮影するだけで、成分の役割や注目の有効成分、肌質別の注意点、使い方のコツを分かりやすく解説します。（※医療診断ではありません）", "h1": "成分を読み解き、<br><em>肌の真実を知る。<\/em>", "sub": "成分表示を撮影してください。各成分の働きや注意が必要な方、効果的な使い方を詳しく解説します。", "nav_scan": "スキャン", "nav_how": "使い方", "nav_pricing": "料金プラン", "sign_in": "ログイン", "account": "アカウント", "credits": "クレジット", "buy": "クレジットを購入", "scan_title": "ラベルをスキャン", "scan_sub": "全成分表示 · 最大3製品まで", "upload": "写真を撮影またはアップロード", "upload_hint": "JPG, PNG, WebP形式 · 最大8MB", "choose_file": "ファイルを選択", "camera": "カメラ", "scan_button": "スキャン開始", "scanning": "ラベルを読み取り中…", "scan_cost": "1製品 4クレジット · 2製品 7クレジット · 3製品 9クレジット", "scan_seconds": "約20〜40秒", "scan_languages": "16言語対応", "retake": "撮り直す", "change_image": "写真を変更", "login_required": "スキャンするにはログインしてください。", "insufficient": "クレジットが不足しています。購入して続けてください。", "scan_failed": "ラベルを解析できませんでした。もう一度お試しください。", "image_invalid": "画像を読み取れませんでした。より鮮明な写真を試してください。", "network_error": "ネットワークエラーが発生しました。もう一度お試しください。", "scan_pending": "解析中…", "scan_timeout": "通常より時間がかかっています。履歴は後ほど確認できます。", "unsupported_language": "この言語は現在サポートされていません。", "result_title": "解析結果", "analyzed_in": "レポート言語", "original": "原文", "translated": "翻訳", "save": "保存", "saved": "保存済み", "delete": "削除", "delete_confirm": "このスキャンを削除しますか？", "delete_body": "レポートと画像が削除されます。", "new_scan": "別のラベルをスキャン", "history": "最近のスキャン", "view_all": "すべて表示", "no_history": "スキャン履歴はありません。", "back": "戻る", "verdict": "概要", "nutrition": "栄養成分", "ingredients": "原材料", "who_notes": "注意が必要な方", "how_to_eat": "食べ方のアドバイス", "data_notes": "データに関する注記", "disclaimer_label": "免責事項", "per_100g": "100gあたり", "per_serving": "1食分あたり", "nrv": "NRV（栄養素基準値）", "not_labeled": "表示なし", "high": "高い", "medium": "標準", "info": "情報", "avoid": "避ける", "caution": "注意", "limit": "控える", "energy": "エネルギー", "protein": "タンパク質", "fat": "脂質", "sat_fat": "飽和脂肪酸", "carb": "炭水化物", "sugar": "糖類", "sodium": "ナトリウム", "fiber": "食物繊維", "salt": "食塩相当量", "cholesterol": "コレステロール", "trans_fat": "トランス脂肪酸", "added_sugar": "添加糖", "value_1_title": "成分解説", "value_1_body": "聞き慣れない成分名も、その役割や目的、注意点まで分かりやすく解説します。", "value_2_title": "主要成分", "value_2_body": "重要な有効成分をピックアップ。専門用語を使わず、濃度に惑わされない解説を提供します。", "value_3_title": "ルーティン適合性", "value_3_body": "肌質別の注意点や妊娠中の使用可否、製品同士の組み合わせまでアドバイスします。", "recent": "最近のスキャン", "how_title": "使い方", "how_1": "ラベルを撮影する", "how_2": "原材料と栄養成分を読み取る", "how_3": "分かりやすいレポートを受け取る", "cta": "スキャンを開始", "footer_disclaimer": "本情報は一般的なスキンケア成分の解説であり、医療アドバイスではありません。", "pay_title": "クレジットを購入", "pay_balance": "残高", "pay_waiting": "決済処理中…", "pay_success": "クレジットが追加されました。", "pay_failed": "決済に失敗しました。もう一度お試しください。", "pay_close": "閉じる", "credits_unit": "クレジット", "one_scan": "製品1点 = 4クレジット", "install": "アプリをインストール", "install_hint": "AIGLOSSA skinをホーム画面に追加して、スキャンをよりスムーズに。", "offline": "オフラインです。スキャンには接続が必要です。", "update": "新しいバージョンが利用可能です。", "sample": "成分スキャン", "image_alt": "スキンケア成分ラベル", "privacy": "プライバシーポリシー", "terms": "利用規約", "refund": "返金について", "contact": "お問い合わせ", "cancel": "キャンセル", "cautions": "注意点", "value_head": "解析内容", "value_intro": "広告文句ではなく、成分そのものを分析します。", "status_done": "完了", "status_failed": "失敗", "status_pending": "分析中", "show_all": "すべて表示", "show_less": "折りたたむ", "share": "共有", "share_text": "「{product}」のラベルをスキャンしました：{headline}。", "share_copied": "共有リンクをコピーしました", "share_failed": "共有リンクを作成できませんでした", "share_heading": "スキンケア成分分析", "share_cta": "成分分析を試す", "daily_ref": "1日の参考量の", "nutrition_note": "100gあたり。割合は一般的な成人の1日の参考量に対する目安で、健康スコアではありません。「未表示」は0ではありません。", "energy_note": "kcal と kJ は同じエネルギーの2つの単位です。1 kcal ≈ 4.184 kJ。", "buy_short": "購入", "multi_hint": "製品ごとに成分ラベルを1枚ずつ、最大3製品までスキャン可能です。", "nutrition_empty_title": "栄養成分表示なし", "nutrition_empty_body": "読み取れる栄養成分表が見つかりませんでした。", "nutrition_note_generic": "％は一般的な成人向け基準値であり、健康スコアではありません。「表示なし」はゼロを意味するものではありません。", "inferred": "推定", "key_ingredients": "注目の成分", "skin_types": "適した肌質", "population": "注意が必要な方", "usage": "使い方", "combined": "ルーティン解析", "roles": "製品の役割", "overlaps": "重複成分", "routine": "推奨する使用順序", "products": "製品", "unsupported": "スキンケア製品ではない可能性があります。成分情報のみを表示しています。", "product": "製品", "no_ingredients": "成分表示を正しく読み取れませんでした。", "warning_title": "スキャンする前に", "warning_body": "現在はスキンケア製品の成分リストのみに対応しています。メイクアップ、ヘアケア、フレグランス、ネイル、オーラルケア、日焼け止めには対応しておりません。そのまま進めることも可能ですが、正確な診断結果が得られない場合があります。", "continue": "続ける"}</script>
+<script src="../../assets/wallet.js?v=20261101-3"></script>
+<script src="../../assets/skin.js?v=20261101-3"></script>
 
 <script>
 (function () {
