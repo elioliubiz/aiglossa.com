@@ -14,7 +14,7 @@
   var SCAN_CREDITS = 3;
   var device = localStorage.getItem("aig_device") || (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()));
   localStorage.setItem("aig_device", device);
-  var state = { user: null, balance: 0, file: null, preview: "", scan: null, history: [], lastScan: null };
+  var state = { user: null, balance: 0, file: null, preview: "", scan: null, history: [], lastScan: null, thumbUrls: [] };
 
   function esc(value) {
     return String(value == null ? "" : value).replace(/[&<>"']/g, function (ch) {
@@ -42,11 +42,20 @@
 
   function setAvatar(user) {
     var el = $("avatar");
+    var initial = user ? String(user.nickname || user.email || "?").charAt(0).toUpperCase() : "?";
     if (user && user.avatar) {
       el.innerHTML = '<img src="' + esc(user.avatar) + '" alt="">';
+      var img = el.querySelector("img");
+      img.onerror = function () { el.textContent = initial; };
     } else {
-      el.textContent = user ? String(user.nickname || user.email || "?").charAt(0).toUpperCase() : "?";
+      el.textContent = initial;
     }
+  }
+
+  function statusLabel(status) {
+    if (status === "done") return UI.status_done;
+    if (status === "failed") return UI.status_failed;
+    return UI.status_pending;
   }
 
   function syncAuth(signedIn) {
@@ -330,15 +339,31 @@
     $("cameraInput").value = "";
   }
 
+  function loadHistoryThumb(id, box) {
+    if (!id || !box || !state.user) return;
+    imageCall(id).then(function (blob) {
+      if (!blob) return;
+      var url = URL.createObjectURL(blob);
+      state.thumbUrls.push(url);
+      box.innerHTML = '<img src="' + esc(url) + '" alt="' + esc(UI.image_alt) + '">';
+    }).catch(function () {});
+  }
+
   function loadHistory() {
     if (!state.user) { $("historyList").innerHTML = '<div class="history-empty">' + esc(UI.login_required) + '</div>'; return; }
     call("/ai/food/works?limit=20", {}).then(function (data) {
       if (data.code !== 200 || !data.data) return;
       state.history = data.data.items || [];
       if (!state.history.length) { $("historyList").innerHTML = '<div class="history-empty">' + esc(UI.no_history) + '</div>'; return; }
+      state.thumbUrls.forEach(function (url) { URL.revokeObjectURL(url); });
+      state.thumbUrls = [];
       $("historyList").innerHTML = state.history.map(function (item, index) {
-        return '<button class="history-item" data-index="' + index + '"><span class="history-icon">▤</span><span><b>' + esc(item.product_name || UI.result_title) + '</b><span>' + esc(item.headline || item.created_at || "") + '</span></span><span class="mini">' + esc(item.status) + '</span></button>';
+        return '<button class="history-item" data-index="' + index + '"><span class="history-thumb" data-scan-id="' + item.id + '"><svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="3"/><path d="M8 8h8M8 11h8M8 14h5"/></svg></span><span class="history-copy"><b>' + esc(item.product_name || UI.result_title) + '</b><span>' + esc(item.headline || item.created_at || "") + '</span></span><span class="mini">' + esc(statusLabel(item.status)) + '</span></button>';
       }).join("");
+      Array.prototype.forEach.call($("historyList").querySelectorAll(".history-thumb"), function (box) {
+        var item = state.history.find(function (x) { return String(x.id) === box.dataset.scanId; });
+        if (item && item.has_image) loadHistoryThumb(item.id, box);
+      });
       Array.prototype.forEach.call($("historyList").querySelectorAll(".history-item"), function (btn) {
         btn.onclick = function () {
           var item = state.history[Number(btn.dataset.index)];

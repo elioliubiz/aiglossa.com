@@ -109,7 +109,10 @@
     "cancel": "Cancel",
     "cautions": "Cautions",
     "value_head": "One label, three layers",
-    "value_intro": "Ingredients, nutrition, and who may need to pay attention — explained in plain language."
+    "value_intro": "Ingredients, nutrition, and who may need to pay attention — explained in plain language.",
+    "status_done": "Done",
+    "status_failed": "Failed",
+    "status_pending": "Analyzing"
   },
   "zh-Hans": {
     "title": "食品标签扫描 — AIGLOSSA FOOD",
@@ -221,7 +224,10 @@
     "cancel": "取消",
     "cautions": "注意事项",
     "value_head": "一张标签，三层信息",
-    "value_intro": "配料、营养，以及哪些人需要注意，用看得懂的方式讲清楚。"
+    "value_intro": "配料、营养，以及哪些人需要注意，用看得懂的方式讲清楚。",
+    "status_done": "已完成",
+    "status_failed": "失败",
+    "status_pending": "分析中"
   },
   "zh-Hant": {
     "title": "食品標籤掃描 — AIGLOSSA FOOD",
@@ -333,7 +339,10 @@
     "cancel": "取消",
     "cautions": "注意事項",
     "value_head": "一張標籤，三層資訊",
-    "value_intro": "配料、營養，以及哪些人需要注意，用看得懂的方式講清楚。"
+    "value_intro": "配料、營養，以及哪些人需要注意，用看得懂的方式講清楚。",
+    "status_done": "已完成",
+    "status_failed": "失敗",
+    "status_pending": "分析中"
   },
   "ja": {
     "title": "食品ラベルスキャン — AIGLOSSA FOOD",
@@ -445,7 +454,10 @@
     "cancel": "キャンセル",
     "cautions": "注意点",
     "value_head": "1枚のラベル、3つの情報",
-    "value_intro": "原材料、栄養、そして注意が必要な人を、わかりやすい言葉で。"
+    "value_intro": "原材料、栄養、そして注意が必要な人を、わかりやすい言葉で。",
+    "status_done": "完了",
+    "status_failed": "失敗",
+    "status_pending": "分析中"
   },
   "ko": {
     "title": "식품 라벨 스캔 — AIGLOSSA FOOD",
@@ -557,7 +569,10 @@
     "cancel": "취소",
     "cautions": "주의사항",
     "value_head": "라벨 하나, 세 가지 정보",
-    "value_intro": "원재료, 영양, 주의가 필요한 사람까지 알기 쉽게 설명합니다."
+    "value_intro": "원재료, 영양, 주의가 필요한 사람까지 알기 쉽게 설명합니다.",
+    "status_done": "완료",
+    "status_failed": "실패",
+    "status_pending": "분석 중"
   },
   "es": {
     "title": "Escáner de etiquetas de alimentos — AIGLOSSA FOOD",
@@ -669,7 +684,10 @@
     "cancel": "Cancelar",
     "cautions": "Precauciones",
     "value_head": "Una etiqueta, tres capas",
-    "value_intro": "Ingredientes, nutrición y quién debería prestar atención, explicado con claridad."
+    "value_intro": "Ingredientes, nutrición y quién debería prestar atención, explicado con claridad.",
+    "status_done": "Listo",
+    "status_failed": "Fallido",
+    "status_pending": "Analizando"
   },
   "fr": {
     "title": "Scan d'étiquettes alimentaires — AIGLOSSA FOOD",
@@ -781,7 +799,10 @@
     "cancel": "Annuler",
     "cautions": "Précautions",
     "value_head": "Une étiquette, trois niveaux",
-    "value_intro": "Ingrédients, nutrition et personnes à surveiller, expliqués simplement."
+    "value_intro": "Ingrédients, nutrition et personnes à surveiller, expliqués simplement.",
+    "status_done": "Terminé",
+    "status_failed": "Échec",
+    "status_pending": "Analyse"
   },
   "de": {
     "title": "Lebensmittel-Scan — AIGLOSSA FOOD",
@@ -893,7 +914,10 @@
     "cancel": "Abbrechen",
     "cautions": "Hinweise",
     "value_head": "Ein Etikett, drei Ebenen",
-    "value_intro": "Zutaten, Nährwerte und wer aufpassen sollte – verständlich erklärt."
+    "value_intro": "Zutaten, Nährwerte und wer aufpassen sollte – verständlich erklärt.",
+    "status_done": "Fertig",
+    "status_failed": "Fehlgeschlagen",
+    "status_pending": "Analyse läuft"
   },
   "pt": {
     "title": "Scanner de rótulos — AIGLOSSA FOOD",
@@ -1005,7 +1029,10 @@
     "cancel": "Cancelar",
     "cautions": "Atenção",
     "value_head": "Um rótulo, três camadas",
-    "value_intro": "Ingredientes, nutrição e quem deve ficar atento, explicado de forma clara."
+    "value_intro": "Ingredientes, nutrição e quem deve ficar atento, explicado de forma clara.",
+    "status_done": "Concluído",
+    "status_failed": "Falhou",
+    "status_pending": "Analisando"
   },
   "it": {
     "title": "Scansione etichette alimentari — AIGLOSSA FOOD",
@@ -1117,7 +1144,10 @@
     "cancel": "Annulla",
     "cautions": "Attenzione",
     "value_head": "Un'etichetta, tre livelli",
-    "value_intro": "Ingredienti, nutrizione e chi dovrebbe prestare attenzione, spiegati con chiarezza."
+    "value_intro": "Ingredienti, nutrizione e chi dovrebbe prestare attenzione, spiegati con chiarezza.",
+    "status_done": "Completato",
+    "status_failed": "Non riuscito",
+    "status_pending": "Analisi"
   },
   "ru": {
     "title": "Сканирование этикеток — AIGLOSSA FOOD",
@@ -1229,7 +1259,10 @@
     "cancel": "Отмена",
     "cautions": "Внимание",
     "value_head": "Одна этикетка — три уровня",
-    "value_intro": "Состав, пищевая ценность и кому стоит быть внимательнее — простыми словами."
+    "value_intro": "Состав, пищевая ценность и кому стоит быть внимательнее — простыми словами.",
+    "status_done": "Готово",
+    "status_failed": "Ошибка",
+    "status_pending": "Анализ"
   },
   "ar": {
     "title": "مسح ملصقات الطعام — AIGLOSSA FOOD",
@@ -1341,7 +1374,10 @@
     "cancel": "إلغاء",
     "cautions": "تنبيهات",
     "value_head": "ملصق واحد، ثلاث طبقات",
-    "value_intro": "المكونات والتغذية ومن يجب أن ينتبه — بشرح واضح."
+    "value_intro": "المكونات والتغذية ومن يجب أن ينتبه — بشرح واضح.",
+    "status_done": "تم",
+    "status_failed": "فشل",
+    "status_pending": "جارٍ التحليل"
   },
   "th": {
     "title": "สแกนฉลากอาหาร — AIGLOSSA FOOD",
@@ -1453,7 +1489,10 @@
     "cancel": "ยกเลิก",
     "cautions": "ข้อควรระวัง",
     "value_head": "ฉลากหนึ่งใบ สามชั้นข้อมูล",
-    "value_intro": "ส่วนผสม โภชนาการ และใครที่ควรระวัง — อธิบายให้เข้าใจง่าย"
+    "value_intro": "ส่วนผสม โภชนาการ และใครที่ควรระวัง — อธิบายให้เข้าใจง่าย",
+    "status_done": "เสร็จแล้ว",
+    "status_failed": "ล้มเหลว",
+    "status_pending": "กำลังวิเคราะห์"
   },
   "vi": {
     "title": "Quét nhãn thực phẩm — AIGLOSSA FOOD",
@@ -1565,7 +1604,10 @@
     "cancel": "Hủy",
     "cautions": "Lưu ý",
     "value_head": "Một nhãn, ba lớp thông tin",
-    "value_intro": "Thành phần, dinh dưỡng và những ai cần lưu ý — giải thích dễ hiểu."
+    "value_intro": "Thành phần, dinh dưỡng và những ai cần lưu ý — giải thích dễ hiểu.",
+    "status_done": "Xong",
+    "status_failed": "Thất bại",
+    "status_pending": "Đang phân tích"
   },
   "id": {
     "title": "Pindai label makanan — AIGLOSSA FOOD",
@@ -1677,7 +1719,10 @@
     "cancel": "Batal",
     "cautions": "Perhatian",
     "value_head": "Satu label, tiga lapisan",
-    "value_intro": "Bahan, nutrisi, dan siapa yang perlu berhati-hati — dijelaskan dengan jelas."
+    "value_intro": "Bahan, nutrisi, dan siapa yang perlu berhati-hati — dijelaskan dengan jelas.",
+    "status_done": "Selesai",
+    "status_failed": "Gagal",
+    "status_pending": "Menganalisis"
   },
   "tr": {
     "title": "Gıda etiketi tarama — AIGLOSSA FOOD",
@@ -1789,6 +1834,9 @@
     "cancel": "İptal",
     "cautions": "Dikkat",
     "value_head": "Bir etiket, üç katman",
-    "value_intro": "İçindekiler, besin değerleri ve kimlerin dikkat etmesi gerektiği — anlaşılır bir dille."
+    "value_intro": "İçindekiler, besin değerleri ve kimlerin dikkat etmesi gerektiği — anlaşılır bir dille.",
+    "status_done": "Tamam",
+    "status_failed": "Başarısız",
+    "status_pending": "Analiz ediliyor"
   }
 }
