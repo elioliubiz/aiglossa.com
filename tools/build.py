@@ -44,6 +44,13 @@ FOOD_ASSETS = (
 
 FOOD_ASSET_VERSION = "20261031-26"
 
+SKIN_ASSETS = (
+    "food.css", "skin.css", "skin.js", "skin-share.js", "wallet.js", "favicon-skin.svg",
+    "apple-touch-icon-skin.png", "og-skin.png", "skin-icon-192.png", "skin-icon-512.png",
+    "skin-icon-maskable-512.png",
+)
+SKIN_ASSET_VERSION = "20261101-1"
+
 # 占位符统一用 {{key}}：模板是纯文件，渲染器只知道这一种语法，
 # 于是"模板里有占位符、文案里没有对应字段"会在构建时报错，而不是静默留下 {{...}}。
 PLACEHOLDER = re.compile(r"\{\{([a-zA-Z0-9_]+)\}\}")
@@ -89,6 +96,8 @@ PAGES = {
     "image-share": ("pages/image-share.html", "image", "image/share/index.html"),
     "food": ("pages/food.html", "food", "food/index.html"),
     "food-share": ("pages/food-share.html", "food", "food/share/index.html"),
+    "skin": ("pages/skin.html", "skin", "skin/index.html"),
+    "skin-share": ("pages/skin-share.html", "skin", "skin/share/index.html"),
     # 指南（内容页）：英文优先，生成到 /en/guides/<slug>.html
     "guides": ("pages/guide.html", "guides", "guides/{slug}.html"),
     # 每个工具一个目录（/{lang}/music/、未来 /{lang}/image/），全局页仍在语言根
@@ -322,6 +331,26 @@ def _site_urls(site: str, spec: dict) -> list[str]:
         else:
             urls.append((f"{page}.html", None))
     return urls
+
+
+
+def _write_skin_pwa(site: str, site_langs: list[str], languages: dict) -> None:
+    for lang in site_langs:
+        folder = SITES_DIR / site / lang / "skin"
+        folder.mkdir(parents=True, exist_ok=True)
+        icons = [
+            {"src": f"../../assets/skin-icon-192.png?v={SKIN_ASSET_VERSION}", "sizes": "192x192", "type": "image/png"},
+            {"src": f"../../assets/skin-icon-512.png?v={SKIN_ASSET_VERSION}", "sizes": "512x512", "type": "image/png"},
+            {"src": f"../../assets/skin-icon-maskable-512.png?v={SKIN_ASSET_VERSION}", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
+        ]
+        manifest = {"name": "AIGLOSSA Skin", "short_name": "AIGLOSSA", "start_url": f"/{lang}/skin/", "scope": f"/{lang}/skin/", "display": "standalone", "background_color": "#FBF7F2", "theme_color": "#FBF7F2", "icons": icons, "lang": lang, "dir": "rtl" if lang == "ar" else "ltr"}
+        (folder / "manifest.webmanifest").write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
+        sw = "const CACHE = \"aiglossa-skin-" + lang + "-v1\";\n"
+        sw += "const ASSETS = [\"/" + lang + "/skin/\", \"/assets/skin.css?v=" + SKIN_ASSET_VERSION + "\", \"/assets/skin.js?v=" + SKIN_ASSET_VERSION + "\", \"/assets/wallet.js?v=" + SKIN_ASSET_VERSION + "\"];\n"
+        sw += "self.addEventListener(\"install\", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).catch(()=>{})); self.skipWaiting(); });\n"
+        sw += "self.addEventListener(\"activate\", e => { e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE && k.indexOf(\"aiglossa-skin-\") === 0).map(k => caches.delete(k))))); self.clients.claim(); });\n"
+        sw += "self.addEventListener(\"fetch\", e => { if (e.request.method !== \"GET\") return; e.respondWith(fetch(e.request).then(r => { const copy = r.clone(); caches.open(CACHE).then(c => c.put(e.request, copy)); return r; }).catch(() => caches.match(e.request).then(r => r || caches.match(\"/" + lang + "/skin/\")))); });\n"
+        (folder / "sw.js").write_text(sw, encoding="utf-8")
 
 
 def _write_food_pwa(site: str, site_langs: list[str], languages: dict) -> None:
@@ -773,6 +802,30 @@ def main() -> int:
                     }, ensure_ascii=False).replace("</", "<\\/")
                     return out
                 values_builder = food_values
+            elif page in ("skin", "skin-share"):
+                def skin_values(lang: str, base: str, source=source) -> dict[str, str]:
+                    copy = source[lang]
+                    out = {key: (esc(value) if isinstance(value, str) else value) for key, value in copy.items()}
+                    out["h1"] = copy["h1"]
+                    out["asset_v"] = SKIN_ASSET_VERSION
+                    out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    out["contact_email"] = "support@aiglossa.com"
+                    out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
+                    out["legal_terms"] = esc(marketing[lang]["legal"]["terms"])
+                    out["legal_privacy_href"] = f"{legal_base}/{lang}/protocol/privacy.html"
+                    out["legal_terms_href"] = f"{legal_base}/{lang}/protocol/term.html"
+                    out["refund_href"] = f"https://tools.aiglossa.com/{lang}/refund.html"
+                    out["lang_label"] = esc(marketing[lang]["langLabel"])
+                    out["current_name"] = esc(languages[lang]["name"])
+                    out["brand"] = esc("aiglossa skin")
+                    out["jsonld"] = json.dumps({
+                        "@context": "https://schema.org", "@type": "SoftwareApplication",
+                        "name": copy["title"], "description": copy["description"],
+                        "applicationCategory": "HealthApplication", "operatingSystem": "Web",
+                        "url": f"{base}/{lang}/skin/", "inLanguage": languages[lang]["hreflang"],
+                    }, ensure_ascii=False).replace("</", "<\\/")
+                    return out
+                values_builder = skin_values
             elif page == "image":
                 def image_values(lang: str, base: str, source=source) -> dict[str, str]:
                     common = source["common"]
@@ -956,13 +1009,16 @@ def main() -> int:
             _write_seo_files(site, spec, site_langs, languages, default)
             if site == "food":
                 _write_food_pwa(site, site_langs, languages)
+            if site == "skin":
+                _write_skin_pwa(site, site_langs, languages)
         if not args.check and ASSETS.is_dir():
             target_assets = SITES_DIR / site / "assets"
             if target_assets.exists():
                 shutil.rmtree(target_assets)
-            if site == "food":
+            if site in {"food", "skin"}:
                 target_assets.mkdir(parents=True)
-                for name in FOOD_ASSETS:
+                names = FOOD_ASSETS if site == "food" else SKIN_ASSETS
+                for name in names:
                     source_asset = ASSETS / name
                     if source_asset.exists():
                         shutil.copy2(source_asset, target_assets / name)

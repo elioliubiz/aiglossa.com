@@ -1167,6 +1167,28 @@
       ],
       "destination": "/en/music/",
       "permanent": true
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        }
+      ],
+      "destination": "/en/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/en/skin/",
+      "permanent": false
     }
   ],
   "rewrites": [
@@ -1539,6 +1561,126 @@
         }
       ],
       "destination": "/sites/scholan/sitemap.xml"
+    },
+    {
+      "source": "/:lang/skin/share/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/skin/:lang/skin/share/index.html"
+    },
+    {
+      "source": "/:lang/skin/share/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/skin/:lang/skin/share/index.html"
+    },
+    {
+      "source": "/:lang/skin/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/skin/:lang/skin/index.html"
+    },
+    {
+      "source": "/:lang/skin/sw.js",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/skin/:lang/skin/sw.js"
+    },
+    {
+      "source": "/:lang/skin/manifest.webmanifest",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/skin/:lang/skin/manifest.webmanifest"
+    },
+    {
+      "source": "/:lang/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/skin/:lang/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/skin/:path*"
+    },
+    {
+      "source": "/:lang/skin/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/skin/:lang/skin/index.html"
+    },
+    {
+      "source": "/:lang/skin/sw.js",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/skin/:lang/skin/sw.js"
+    },
+    {
+      "source": "/:lang/skin/manifest.webmanifest",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/skin/:lang/skin/manifest.webmanifest"
+    },
+    {
+      "source": "/:lang/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/skin/:lang/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/skin/:path*"
     }
   ],
   "headers": [
@@ -1602,6 +1744,32 @@
       ]
     },
     {
+      "source": "/:lang/skin/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    },
+    {
+      "source": "/:lang/skin/manifest.webmanifest",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
+        }
+      ]
+    },
+    {
       "source": "/(.*)",
       "has": [
         {
@@ -1652,6 +1820,21 @@
         {
           "type": "host",
           "value": "scholan.staging.aiglossa.com"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
         }
       ],
       "headers": [
