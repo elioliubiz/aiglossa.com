@@ -267,13 +267,14 @@
     if (nrv >= 15) return "amber";
     return "";
   }
-  function nutItem(label, value, unit, nrv, key) {
+  function nutItem(label, value, unit, nrv, secondary) {
     var level = levelOf(nrv);
     var width = nrv === null ? 0 : Math.min(100, Math.max(2, nrv));
-    return '<div class="nut-item"><div class="nut-top"><span>' + esc(label) + '</span><b>' + fmt(value, unit) + '</b></div>' +
-      '<div class="bar"><i class="' + level + '" style="width:' + width + '%"></i></div>' +
-      '<div class="nut-note"><span>' + esc(key || "") + '</span><span class="' + (level === "red" ? "hi" : level === "amber" ? "mid" : "") + '">' +
-      (nrv === null ? "—" : esc(UI.nrv) + " " + nrv + "%") + '</span></div></div>';
+    var nrvText = nrv === null ? "—" : esc(UI.nrv) + " " + nrv + "%";
+    return '<div class="nut-item"><div class="nut-line"><span class="nut-label">' + esc(label) + '</span>' +
+      '<span class="nut-value"><b>' + fmt(value, unit) + '</b>' + (secondary ? '<em>· ' + esc(secondary) + '</em>' : "") + '</span>' +
+      '<span class="nut-nrv ' + (level === "red" ? "hi" : level === "amber" ? "mid" : "") + '">' + nrvText + '</span></div>' +
+      '<div class="bar"><i class="' + level + '" style="width:' + width + '%"></i></div></div>';
   }
 
   function renderResult(scan) {
@@ -304,24 +305,29 @@
 
     var nut = '<section class="card"><div class="card-head"><h3>' + esc(UI.nutrition) + '</h3><span>' + esc(report.serving && report.serving.basis || UI.per_100g) + ' · ' + esc(UI.nrv) + '</span></div><div class="nut-grid report">';
     nut += nutItem(UI.energy, nutrition.calories_kcal !== null && nutrition.calories_kcal !== undefined ? nutrition.calories_kcal : (nutrition.energy_kj ? Math.round(nutrition.energy_kj / 4.184) : null), "kcal", nrvOf(report, "energy"), nutrition.energy_kj ? nutrition.energy_kj + " kJ" : "");
-    nut += nutItem(UI.protein, nutrition.protein_g, "g", nrvOf(report, "protein"), UI.per_100g);
-    nut += nutItem(UI.fat, nutrition.fat_g, "g", nrvOf(report, "fat"), UI.per_100g);
-    nut += nutItem(UI.sat_fat, nutrition.saturated_fat_g, "g", nrvOf(report, "saturated_fat"), UI.per_100g);
-    nut += nutItem(UI.carb, nutrition.carbohydrate_g, "g", nrvOf(report, "carbohydrate"), UI.per_100g);
-    nut += nutItem(UI.sugar, nutrition.sugars_g, "g", nrvOf(report, "sugars"), UI.per_100g);
-    nut += nutItem(UI.sodium, nutrition.sodium_mg, "mg", nrvOf(report, "sodium"), UI.per_100g);
-    nut += nutItem(UI.fiber, nutrition.fiber_g, "g", null, UI.per_100g);
+    nut += nutItem(UI.protein, nutrition.protein_g, "g", nrvOf(report, "protein"), "");
+    nut += nutItem(UI.fat, nutrition.fat_g, "g", nrvOf(report, "fat"), "");
+    nut += nutItem(UI.sat_fat, nutrition.saturated_fat_g, "g", nrvOf(report, "saturated_fat"), "");
+    nut += nutItem(UI.carb, nutrition.carbohydrate_g, "g", nrvOf(report, "carbohydrate"), "");
+    nut += nutItem(UI.sugar, nutrition.sugars_g, "g", nrvOf(report, "sugars"), "");
+    nut += nutItem(UI.sodium, nutrition.sodium_mg, "mg", nrvOf(report, "sodium"), "");
+    nut += nutItem(UI.fiber, nutrition.fiber_g, "g", null, "");
     nut += '</div></section>';
 
     var allIng = report.ingredients || [];
+    var normalize = function (text) { return String(text || "").replace(/\s+/g, "").toLowerCase(); };
     var ing = allIng.slice(0, 80).map(function (item, index) {
       var fn = String(item.function || "").trim();
       var flags = (item.flags || []).map(function (flag) { return String(flag || "").trim(); }).filter(Boolean);
       var flagHtml = flags.map(function (flag) { return '<span class="ing-badge add">' + esc(flag) + '</span>'; }).join("");
       var badgeHtml = (fn || flagHtml) ? '<div class="ing-badges">' + (fn ? '<span class="ing-badge">' + esc(fn) + '</span>' : "") + flagHtml + '</div>' : "";
       var why = [item.what_it_is || "", item.note || ""].filter(Boolean).join(" ");
+      var orig = String(item.original_text || "").trim();
+      var nm = String(item.name || "").trim();
+      var same = orig && normalize(orig) === normalize(nm);
+      var origHtml = (orig && !same) ? ' <span class="orig-inline">' + esc(orig) + '</span>' : "";
       var extra = index >= 6 ? " ing-extra hidden" : "";
-      return '<div class="report-ing' + extra + '"><div><div class="orig">' + esc(item.original_text || "") + '</div><div class="nm">' + esc(item.name || "") + '</div></div><div class="why">' + esc(why) + '</div>' + badgeHtml + '</div>';
+      return '<div class="report-ing' + extra + '"><div class="ing-title"><div class="nm">' + esc(nm) + origHtml + '</div></div><div class="why">' + esc(why) + '</div>' + badgeHtml + '</div>';
     }).join("");
     var more = allIng.length > 6 ? '<button class="ing-more" id="ingMore">' + esc(UI.show_all) + " (" + allIng.length + ')</button>' : "";
     var ingCard = '<section class="card"><div class="card-head"><h3>' + esc(UI.ingredients) + '</h3><span>' + allIng.length + '</span></div>' + (ing || '<p class="report-note">' + esc(UI.not_labeled) + '</p>') + more + '</section>';
@@ -337,7 +343,7 @@
     var dataNotes = (analysis.data_notes || []).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join("");
     var dataCard = dataNotes ? '<section class="card"><h3>' + esc(UI.data_notes) + '</h3><ul class="report-note">' + dataNotes + '</ul></section>' : '';
     var disc = report.disclaimer ? '<p class="report-disclaimer">' + esc(report.disclaimer) + '</p>' : '';
-    $("reportMain").innerHTML = main + nut + ingCard + peopleCard + eatCard + dataCard + disc;
+    $("reportMain").innerHTML = main + peopleCard + nut + ingCard + eatCard + dataCard + disc;
     var ingMore = $("ingMore");
     if (ingMore) {
       ingMore.onclick = function () {
@@ -441,6 +447,35 @@
     });
   }
 
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) return navigator.clipboard.writeText(text);
+    return new Promise(function (resolve, reject) {
+      var area = document.createElement("textarea");
+      area.value = text; area.style.position = "fixed"; area.style.opacity = "0";
+      document.body.appendChild(area); area.select();
+      try { document.execCommand("copy"); resolve(); } catch (err) { reject(err); }
+      document.body.removeChild(area);
+    });
+  }
+
+  function shareScan() {
+    if (!state.scan || !state.scan.id) return;
+    call("/ai/food/scan/" + state.scan.id + "/share", {}).then(function (data) {
+      if (data.code !== 200 || !data.data || !data.data.token) { toast(UI.share_failed); return; }
+      var report = state.scan.report || {};
+      var product = report.product || {};
+      var name = product.name || product.name_original || UI.result_title;
+      var headline = (report.analysis && report.analysis.headline) || "";
+      var url = location.origin + "/" + LANG + "/food/share/?token=" + encodeURIComponent(data.data.token);
+      var text = String(UI.share_text || "{product}").replace("{product}", name).replace("{headline}", headline);
+      if (navigator.share) {
+        navigator.share({ title: name + " · AIGLOSSA FOOD", text: text, url: url }).catch(function () {});
+        return;
+      }
+      copyText(text + "\n" + url).then(function () { toast(UI.share_copied); }).catch(function () { toast(UI.share_failed); });
+    }).catch(function () { toast(UI.share_failed); });
+  }
+
   function deleteScan() {
     if (!state.scan || !state.scan.id) return;
     if (!confirm(UI.delete_confirm)) return;
@@ -466,6 +501,7 @@
   $("historyRefresh").onclick = function (e) { e.preventDefault(); loadHistory(); };
   $("backBtn").onclick = function (e) { e.preventDefault(); showHome(); };
   $("deleteBtn").onclick = deleteScan;
+  $("shareBtn").onclick = shareScan;
   Array.prototype.forEach.call(document.querySelectorAll("[data-close]"), function (btn) {
     btn.onclick = function () { btn.closest(".modal").classList.add("hidden"); };
   });

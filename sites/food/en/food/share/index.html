@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Analysis · AIGLOSSA FOOD</title><meta name="robots" content="noindex"><link rel="canonical" href="https://food.aiglossa.com/en/food/share/"><link rel="alternate" hreflang="ar" href="https://food.aiglossa.com/ar/food/share/">
+<link rel="alternate" hreflang="de" href="https://food.aiglossa.com/de/food/share/">
+<link rel="alternate" hreflang="en" href="https://food.aiglossa.com/en/food/share/">
+<link rel="alternate" hreflang="es" href="https://food.aiglossa.com/es/food/share/">
+<link rel="alternate" hreflang="fr" href="https://food.aiglossa.com/fr/food/share/">
+<link rel="alternate" hreflang="id" href="https://food.aiglossa.com/id/food/share/">
+<link rel="alternate" hreflang="it" href="https://food.aiglossa.com/it/food/share/">
+<link rel="alternate" hreflang="ja" href="https://food.aiglossa.com/ja/food/share/">
+<link rel="alternate" hreflang="ko" href="https://food.aiglossa.com/ko/food/share/">
+<link rel="alternate" hreflang="pt" href="https://food.aiglossa.com/pt/food/share/">
+<link rel="alternate" hreflang="ru" href="https://food.aiglossa.com/ru/food/share/">
+<link rel="alternate" hreflang="th" href="https://food.aiglossa.com/th/food/share/">
+<link rel="alternate" hreflang="tr" href="https://food.aiglossa.com/tr/food/share/">
+<link rel="alternate" hreflang="vi" href="https://food.aiglossa.com/vi/food/share/">
+<link rel="alternate" hreflang="zh-Hans" href="https://food.aiglossa.com/zh-Hans/food/share/">
+<link rel="alternate" hreflang="zh-Hant" href="https://food.aiglossa.com/zh-Hant/food/share/">
+<link rel="alternate" hreflang="x-default" href="https://food.aiglossa.com/en/food/share/">
+<meta name="description" content="For general nutrition information only. Not medical advice.">
+<meta name="theme-color" content="#FBFAF7"><meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="icon" href="../../../assets/favicon-food.svg?v=20261031-15"><link rel="apple-touch-icon" href="../../../assets/apple-touch-icon-food.png?v=20261031-15">
+<link rel="stylesheet" href="../../../assets/food.css?v=20261031-15">
+<style>
+.share-main{max-width:860px;padding-block:36px 74px}
+.share-head{padding-bottom:22px}
+.share-head h1{font-size:34px;line-height:1.1;letter-spacing:-.04em;margin-top:8px}
+.share-meta{color:var(--muted);font-size:12px;margin-top:8px}
+.share-verdict h2{font-size:23px;line-height:1.25;letter-spacing:-.03em}
+.share-verdict p{font-size:13px;line-height:1.7;color:#4A554D;margin-top:9px}
+.share-verdict ul{margin-top:8px}
+.share-loading{display:flex;align-items:center;justify-content:center;gap:9px;padding:80px 0;color:var(--muted);font-size:13px}
+.share-error{padding:60px 0;text-align:center}
+.share-error h1{font-size:22px}
+.share-error .btn{margin-top:18px}
+.share-cta{margin:24px 0 0;padding:20px;border-radius:16px;background:var(--green-soft);border:1px solid #D7E8DC;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.share-cta p{font-size:13px;color:#335245}
+.share-page .topbar-inner{height:60px}
+.share-page .brand{font-size:11px}
+@media(max-width:640px){
+  .share-main{padding-block:26px 52px}
+  .share-head h1{font-size:27px}
+  .share-cta{align-items:flex-start;flex-direction:column}
+  .share-cta .btn{width:100%}
+}
+</style>
+</head>
+<body class="share-page">
+<header class="topbar"><div class="wrap topbar-inner">
+  <a class="brand" href="../"><span class="brand-mark food-logo"><img src="../../../assets/favicon-food.svg?v=20261031-15" alt=""></span> AIGLOSSA <b>FOOD</b></a>
+  <a class="pill-btn" href="../">Start scanning</a>
+</div></header>
+<main class="wrap share-main">
+  <div class="share-loading" id="shareLoading"><span class="spinner"></span><span>Analyzing…</span></div>
+  <div class="share-error hidden" id="shareError"><h1>Could not analyze this label. Please try again.</h1><a class="btn" href="../">Start scanning</a></div>
+  <article class="hidden" id="shareContent">
+    <header class="share-head"><span class="kicker">Analysis · AIGLOSSA FOOD</span><h1 id="shareName">—</h1><p class="share-meta" id="shareMeta"></p></header>
+    <section class="card share-verdict" id="shareVerdict"></section>
+    <section class="card hidden" id="sharePeople"></section>
+    <section class="card"><div class="card-head"><h3>Nutrition</h3><span id="shareServing"></span></div><div class="nut-grid report" id="shareNutrition"></div></section>
+    <section class="card"><div class="card-head"><h3>Ingredients</h3><span id="shareIngCount"></span></div><div id="shareIngredients"></div></section>
+    <div class="share-cta"><p>Scan a label</p><a class="btn" href="../">Start scanning</a></div>
+    <p class="report-disclaimer" id="shareDisclaimer"></p>
+  </article>
+</main>
+<footer><div class="wrap footer-inner">
+  <span class="brand"><span class="brand-mark food-logo" style="width:22px;height:22px;border-radius:7px"><img src="../../../assets/favicon-food.svg?v=20261031-15" alt=""></span> AIGLOSSA <b>FOOD</b></span>
+  <div class="footer-links"><a href="https://aiglossa.com/en/protocol/privacy.html">Privacy</a><a href="https://aiglossa.com/en/protocol/term.html">Terms</a></div>
+  <span>For general nutrition information only. Not medical advice.</span>
+</div></footer>
+<script type="application/json" id="ui">{"title": "Food label scan — AIGLOSSA FOOD", "description": "Scan a food label and get a clear nutrition report, ingredient explanations, and general notes for who should pay attention.", "h1": "Read the label. Understand the food.", "sub": "Scan ingredients, nutrition facts, or an imported package. Get a clear report in seconds — not medical advice.", "nav_scan": "Scan", "nav_how": "How it works", "nav_pricing": "Pricing", "sign_in": "Sign in", "account": "Account", "credits": "credits", "buy": "Buy credits", "scan_title": "Scan a label", "scan_sub": "Ingredients · Nutrition facts · Imported labels", "upload": "Take a photo or upload", "upload_hint": "JPG, PNG or WebP · up to 8 MB", "choose_file": "Choose file", "camera": "Camera", "scan_button": "Start scan", "scanning": "Reading the label…", "scan_cost": "3 credits / scan", "scan_seconds": "about 4 seconds", "scan_languages": "16 languages", "retake": "Retake", "change_image": "Change photo", "login_required": "Please sign in to scan.", "insufficient": "Not enough credits. Buy credits to continue.", "scan_failed": "Could not analyze this label. Please try again.", "image_invalid": "This image could not be read. Try a clearer photo.", "network_error": "Network error. Please try again.", "scan_pending": "Analyzing…", "scan_timeout": "This is taking longer than usual. You can check history in a moment.", "unsupported_language": "This language is not supported yet.", "result_title": "Analysis", "analyzed_in": "Report language", "original": "Original", "translated": "Translated", "save": "Save", "saved": "Saved", "delete": "Delete", "delete_confirm": "Delete this scan?", "delete_body": "The report and image will be deleted.", "new_scan": "Scan another", "history": "Recent scans", "view_all": "View all", "no_history": "No scans yet.", "back": "Back", "verdict": "Summary", "nutrition": "Nutrition", "ingredients": "Ingredients", "who_notes": "Who should pay attention", "how_to_eat": "How to eat", "data_notes": "Data notes", "disclaimer_label": "Disclaimer", "per_100g": "per 100g", "per_serving": "per serving", "nrv": "NRV", "not_labeled": "Not labeled", "high": "High", "medium": "Medium", "info": "Info", "avoid": "Avoid", "caution": "Caution", "limit": "Limit", "energy": "Energy", "protein": "Protein", "fat": "Fat", "sat_fat": "Saturated fat", "carb": "Carbohydrate", "sugar": "Sugar", "sodium": "Sodium", "fiber": "Fiber", "salt": "Salt", "cholesterol": "Cholesterol", "trans_fat": "Trans fat", "added_sugar": "Added sugar", "value_1_title": "Ingredient explainer", "value_1_body": "Every unfamiliar word, explained: what it is, why it is there, and who should note it.", "value_2_title": "Nutrition analysis", "value_2_body": "Per 100g, per serving and NRV together — high, medium and low in a way you can read.", "value_3_title": "Who should note", "value_3_body": "General notes for people who may need to watch sodium, sugar, allergens, or additives.", "recent": "Recent scans", "how_title": "How it works", "how_1": "Photograph the label", "how_2": "We read ingredients and nutrition", "how_3": "Get a clear, general report", "cta": "Start scanning", "footer_disclaimer": "For general nutrition information only. Not medical advice.", "pay_title": "Buy credits", "pay_balance": "Balance", "pay_waiting": "Waiting for payment…", "pay_success": "Credits added.", "pay_failed": "Payment failed. Please try again.", "pay_close": "Close", "credits_unit": "credits", "one_scan": "1 scan = 3 credits", "install": "Install app", "install_hint": "Add aiglossa food to your home screen for faster scanning.", "offline": "You are offline. Scanning needs a connection.", "update": "A new version is ready.", "sample": "Sample label", "image_alt": "Food label", "privacy": "Privacy", "terms": "Terms", "refund": "Refund", "contact": "Contact", "cancel": "Cancel", "cautions": "Cautions", "value_head": "One label, three layers", "value_intro": "Ingredients, nutrition, and who may need to pay attention — explained in plain language.", "status_done": "Done", "status_failed": "Failed", "status_pending": "Analyzing", "show_all": "Show all", "show_less": "Show less", "share": "Share", "share_text": "I scanned “{product}” — {headline}.", "share_copied": "Share link copied", "share_failed": "Could not create share link"}</script>
+<script src="../../../assets/food-share.js?v=20261031-15"></script>
+
+<script>
+(function () {
+  var h = location.hostname;
+  if (h.indexOf("staging.aiglossa.com") < 0) return;
+  var main = "https://staging.aiglossa.com";
+  document.querySelectorAll('a[href^="https://aiglossa.com"]').forEach(function (a) {
+    a.href = main + a.getAttribute("href").slice("https://aiglossa.com".length);
+  });
+})();
+</script>
+</body>
+</html>

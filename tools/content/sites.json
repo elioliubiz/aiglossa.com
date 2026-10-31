@@ -40,7 +40,8 @@
   "food": {
     "host": "food.aiglossa.com",
     "pages": [
-      "food"
+      "food",
+      "food-share"
     ]
   }
 }

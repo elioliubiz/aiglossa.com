@@ -38,11 +38,11 @@ ASSETS = ROOT / "assets"
 
 # food 只使用自己的少量资源，避免把 scholan 截图等整套 assets 复制过去。
 FOOD_ASSETS = (
-    "food.css", "food.js", "wallet.js", "favicon-food.svg", "apple-touch-icon-food.png", "og.png",
+    "food.css", "food.js", "food-share.js", "wallet.js", "favicon-food.svg", "apple-touch-icon-food.png", "og.png",
     "food-icon-192.png", "food-icon-512.png", "food-icon-maskable-512.png", "food-sample.jpg",
 )
 
-FOOD_ASSET_VERSION = "20261031-13"
+FOOD_ASSET_VERSION = "20261031-15"
 
 # 占位符统一用 {{key}}：模板是纯文件，渲染器只知道这一种语法，
 # 于是"模板里有占位符、文案里没有对应字段"会在构建时报错，而不是静默留下 {{...}}。
@@ -88,6 +88,7 @@ PAGES = {
     "image": ("pages/image.html", "image", "image/index.html"),
     "image-share": ("pages/image-share.html", "image", "image/share/index.html"),
     "food": ("pages/food.html", "food", "food/index.html"),
+    "food-share": ("pages/food-share.html", "food", "food/share/index.html"),
     # 指南（内容页）：英文优先，生成到 /en/guides/<slug>.html
     "guides": ("pages/guide.html", "guides", "guides/{slug}.html"),
     # 每个工具一个目录（/{lang}/music/、未来 /{lang}/image/），全局页仍在语言根
@@ -312,6 +313,8 @@ def _site_urls(site: str, spec: dict) -> list[str]:
             urls.append(("image/", None))
         elif page == "food":
             urls.append(("food/", None))
+        elif page == "food-share":
+            continue
         elif page in ("account", "webaccount", "refund", "login", "music-share", "image-share"):
             continue          # noindex / 内部页面，不进 sitemap
         elif page == "webpricing":
@@ -354,7 +357,7 @@ def _write_food_pwa(site: str, site_langs: list[str], languages: dict) -> None:
             json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
         sw = f"""/* aiglossa food service worker — network-first; cache is only an offline fallback. */
-const CACHE = "aiglossa-food-{lang}-v17";
+const CACHE = "aiglossa-food-{lang}-v19";
 const V = "{FOOD_ASSET_VERSION}";
 const SHELL = ["./", "../../assets/food.css?v=" + V, "../../assets/food.js?v=" + V, "../../assets/wallet.js?v=" + V, "../../assets/food-icon-192.png?v=" + V, "../../assets/food-icon-512.png?v=" + V, "../../assets/food-sample.jpg?v=" + V];
 self.addEventListener("install", (event) => {{
@@ -744,7 +747,7 @@ def main() -> int:
                     return out
 
                 values_builder = share_values
-            elif page == "food":
+            elif page in ("food", "food-share"):
                 def food_values(lang: str, base: str, source=source) -> dict[str, str]:
                     copy = source[lang]
                     out = {key: (value if isinstance(value, str) else value) for key, value in copy.items()}

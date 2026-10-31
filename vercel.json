@@ -1171,6 +1171,26 @@
   ],
   "rewrites": [
     {
+      "source": "/:lang/food/share/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/share/index.html"
+    },
+    {
+      "source": "/:lang/food/share/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/share/index.html"
+    },
+    {
       "source": "/:lang/food/",
       "has": [
         {

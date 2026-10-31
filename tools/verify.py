@@ -54,6 +54,8 @@ def outputs_for(page: str) -> list[tuple[str, str]]:
         return [("image/share/index.html", "image/share/")]
     if page == "food":
         return [("food/index.html", "food/")]
+    if page == "food-share":
+        return [("food/share/index.html", "food/share/")]
     if page in ("refund", "acceptable-use"):
         return [(f"{page}.html", f"{page}.html")]
     if page == "webpricing":

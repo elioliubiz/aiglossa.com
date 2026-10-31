@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ru" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Анализ · AIGLOSSA FOOD</title><meta name="robots" content="noindex"><link rel="canonical" href="https://food.aiglossa.com/ru/food/share/"><link rel="alternate" hreflang="ar" href="https://food.aiglossa.com/ar/food/share/">
+<link rel="alternate" hreflang="de" href="https://food.aiglossa.com/de/food/share/">
+<link rel="alternate" hreflang="en" href="https://food.aiglossa.com/en/food/share/">
+<link rel="alternate" hreflang="es" href="https://food.aiglossa.com/es/food/share/">
+<link rel="alternate" hreflang="fr" href="https://food.aiglossa.com/fr/food/share/">
+<link rel="alternate" hreflang="id" href="https://food.aiglossa.com/id/food/share/">
+<link rel="alternate" hreflang="it" href="https://food.aiglossa.com/it/food/share/">
+<link rel="alternate" hreflang="ja" href="https://food.aiglossa.com/ja/food/share/">
+<link rel="alternate" hreflang="ko" href="https://food.aiglossa.com/ko/food/share/">
+<link rel="alternate" hreflang="pt" href="https://food.aiglossa.com/pt/food/share/">
+<link rel="alternate" hreflang="ru" href="https://food.aiglossa.com/ru/food/share/">
+<link rel="alternate" hreflang="th" href="https://food.aiglossa.com/th/food/share/">
+<link rel="alternate" hreflang="tr" href="https://food.aiglossa.com/tr/food/share/">
+<link rel="alternate" hreflang="vi" href="https://food.aiglossa.com/vi/food/share/">
+<link rel="alternate" hreflang="zh-Hans" href="https://food.aiglossa.com/zh-Hans/food/share/">
+<link rel="alternate" hreflang="zh-Hant" href="https://food.aiglossa.com/zh-Hant/food/share/">
+<link rel="alternate" hreflang="x-default" href="https://food.aiglossa.com/en/food/share/">
+<meta name="description" content="Только для ознакомления. Не является медицинской консультацией.">
+<meta name="theme-color" content="#FBFAF7"><meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="icon" href="../../../assets/favicon-food.svg?v=20261031-15"><link rel="apple-touch-icon" href="../../../assets/apple-touch-icon-food.png?v=20261031-15">
+<link rel="stylesheet" href="../../../assets/food.css?v=20261031-15">
+<style>
+.share-main{max-width:860px;padding-block:36px 74px}
+.share-head{padding-bottom:22px}
+.share-head h1{font-size:34px;line-height:1.1;letter-spacing:-.04em;margin-top:8px}
+.share-meta{color:var(--muted);font-size:12px;margin-top:8px}
+.share-verdict h2{font-size:23px;line-height:1.25;letter-spacing:-.03em}
+.share-verdict p{font-size:13px;line-height:1.7;color:#4A554D;margin-top:9px}
+.share-verdict ul{margin-top:8px}
+.share-loading{display:flex;align-items:center;justify-content:center;gap:9px;padding:80px 0;color:var(--muted);font-size:13px}
+.share-error{padding:60px 0;text-align:center}
+.share-error h1{font-size:22px}
+.share-error .btn{margin-top:18px}
+.share-cta{margin:24px 0 0;padding:20px;border-radius:16px;background:var(--green-soft);border:1px solid #D7E8DC;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.share-cta p{font-size:13px;color:#335245}
+.share-page .topbar-inner{height:60px}
+.share-page .brand{font-size:11px}
+@media(max-width:640px){
+  .share-main{padding-block:26px 52px}
+  .share-head h1{font-size:27px}
+  .share-cta{align-items:flex-start;flex-direction:column}
+  .share-cta .btn{width:100%}
+}
+</style>
+</head>
+<body class="share-page">
+<header class="topbar"><div class="wrap topbar-inner">
+  <a class="brand" href="../"><span class="brand-mark food-logo"><img src="../../../assets/favicon-food.svg?v=20261031-15" alt=""></span> AIGLOSSA <b>FOOD</b></a>
+  <a class="pill-btn" href="../">Начать сканирование</a>
+</div></header>
+<main class="wrap share-main">
+  <div class="share-loading" id="shareLoading"><span class="spinner"></span><span>Анализируем…</span></div>
+  <div class="share-error hidden" id="shareError"><h1>Не удалось распознать этикетку. Попробуйте еще раз.</h1><a class="btn" href="../">Начать сканирование</a></div>
+  <article class="hidden" id="shareContent">
+    <header class="share-head"><span class="kicker">Анализ · AIGLOSSA FOOD</span><h1 id="shareName">—</h1><p class="share-meta" id="shareMeta"></p></header>
+    <section class="card share-verdict" id="shareVerdict"></section>
+    <section class="card hidden" id="sharePeople"></section>
+    <section class="card"><div class="card-head"><h3>Пищевая ценность</h3><span id="shareServing"></span></div><div class="nut-grid report" id="shareNutrition"></div></section>
+    <section class="card"><div class="card-head"><h3>Состав</h3><span id="shareIngCount"></span></div><div id="shareIngredients"></div></section>
+    <div class="share-cta"><p>Сканировать этикетку</p><a class="btn" href="../">Начать сканирование</a></div>
+    <p class="report-disclaimer" id="shareDisclaimer"></p>
+  </article>
+</main>
+<footer><div class="wrap footer-inner">
+  <span class="brand"><span class="brand-mark food-logo" style="width:22px;height:22px;border-radius:7px"><img src="../../../assets/favicon-food.svg?v=20261031-15" alt=""></span> AIGLOSSA <b>FOOD</b></span>
+  <div class="footer-links"><a href="https://aiglossa.com/ru/protocol/privacy.html">Конфиденциальность</a><a href="https://aiglossa.com/ru/protocol/term.html">Условия использования</a></div>
+  <span>Только для ознакомления. Не является медицинской консультацией.</span>
+</div></footer>
+<script type="application/json" id="ui">{"title": "Сканирование этикеток — AIGLOSSA FOOD", "description": "Отсканируйте этикетку продукта и получите понятный отчет о пищевой ценности, разбор состава и рекомендации для тех, кому стоит быть внимательнее.", "h1": "Читайте этикетки. Понимайте, что едите.", "sub": "Сканируйте состав, пищевую ценность или импортные этикетки. Получите отчет за секунды — не является медицинской консультацией.", "nav_scan": "Сканировать", "nav_how": "Как это работает", "nav_pricing": "Тарифы", "sign_in": "Войти", "account": "Аккаунт", "credits": "кредитов", "buy": "Купить кредиты", "scan_title": "Сканировать этикетку", "scan_sub": "Состав · Пищевая ценность · Импортные этикетки", "upload": "Сделайте фото или загрузите файл", "upload_hint": "JPG, PNG или WebP · до 8 МБ", "choose_file": "Выберите файл", "camera": "Камера", "scan_button": "Начать сканирование", "scanning": "Читаем этикетку…", "scan_cost": "3 кредита / скан", "scan_seconds": "около 4 секунд", "scan_languages": "16 языков", "retake": "Переснять", "change_image": "Сменить фото", "login_required": "Пожалуйста, войдите, чтобы сканировать.", "insufficient": "Недостаточно кредитов. Купите кредиты, чтобы продолжить.", "scan_failed": "Не удалось распознать этикетку. Попробуйте еще раз.", "image_invalid": "Изображение не читается. Попробуйте сделать фото четче.", "network_error": "Ошибка сети. Попробуйте еще раз.", "scan_pending": "Анализируем…", "scan_timeout": "Это занимает больше времени, чем обычно. Вы сможете проверить историю чуть позже.", "unsupported_language": "Этот язык пока не поддерживается.", "result_title": "Анализ", "analyzed_in": "Язык отчета", "original": "Оригинал", "translated": "Перевод", "save": "Сохранить", "saved": "Сохранено", "delete": "Удалить", "delete_confirm": "Удалить этот скан?", "delete_body": "Отчет и изображение будут удалены.", "new_scan": "Новый скан", "history": "История сканирований", "view_all": "Смотреть все", "no_history": "Сканирований пока нет.", "back": "Назад", "verdict": "Итог", "nutrition": "Пищевая ценность", "ingredients": "Состав", "who_notes": "Кому стоит обратить внимание", "how_to_eat": "Рекомендации", "data_notes": "Примечания к данным", "disclaimer_label": "Отказ от ответственности", "per_100g": "на 100 г", "per_serving": "на порцию", "nrv": "NRV", "not_labeled": "Нет данных", "high": "Высокое", "medium": "Среднее", "info": "Инфо", "avoid": "Избегать", "caution": "Осторожно", "limit": "Ограничить", "energy": "Энергетическая ценность", "protein": "Белки", "fat": "Жиры", "sat_fat": "Насыщенные жиры", "carb": "Углеводы", "sugar": "Сахар", "sodium": "Натрий", "fiber": "Клетчатка", "salt": "Соль", "cholesterol": "Холестерин", "trans_fat": "Трансжиры", "added_sugar": "Добавленный сахар", "value_1_title": "Разбор состава", "value_1_body": "Объяснение каждого непонятного ингредиента: что это, зачем нужно и кому стоит обратить внимание.", "value_2_title": "Анализ ценности", "value_2_body": "Данные на 100 г, на порцию и NRV — наглядно о содержании веществ.", "value_3_title": "Кому стоит обратить внимание", "value_3_body": "Общие рекомендации для тех, кому важно следить за натрием, сахаром, аллергенами или добавками.", "recent": "Недавние сканы", "how_title": "Как это работает", "how_1": "Сфотографируйте этикетку", "how_2": "Мы анализируем состав и ценность", "how_3": "Получите понятный отчет", "cta": "Начать сканирование", "footer_disclaimer": "Только для ознакомления. Не является медицинской консультацией.", "pay_title": "Купить кредиты", "pay_balance": "Баланс", "pay_waiting": "Ожидание оплаты…", "pay_success": "Кредиты начислены.", "pay_failed": "Ошибка оплаты. Попробуйте еще раз.", "pay_close": "Закрыть", "credits_unit": "кредитов", "one_scan": "1 скан = 3 кредита", "install": "Установить приложение", "install_hint": "Добавьте aiglossa food на главный экран для быстрого доступа.", "offline": "Нет подключения к сети. Для сканирования нужен интернет.", "update": "Доступна новая версия.", "sample": "Пример этикетки", "image_alt": "Этикетка продукта", "privacy": "Конфиденциальность", "terms": "Условия использования", "refund": "Возврат средств", "contact": "Контакты", "cancel": "Отмена", "cautions": "Внимание", "value_head": "Одна этикетка — три уровня", "value_intro": "Состав, пищевая ценность и кому стоит быть внимательнее — простыми словами.", "status_done": "Готово", "status_failed": "Ошибка", "status_pending": "Анализ", "show_all": "Показать все", "show_less": "Свернуть", "share": "Поделиться", "share_text": "Я отсканировал «{product}»: {headline}.", "share_copied": "Ссылка скопирована", "share_failed": "Не удалось создать ссылку"}</script>
+<script src="../../../assets/food-share.js?v=20261031-15"></script>
+
+<script>
+(function () {
+  var h = location.hostname;
+  if (h.indexOf("staging.aiglossa.com") < 0) return;
+  var main = "https://staging.aiglossa.com";
+  document.querySelectorAll('a[href^="https://aiglossa.com"]').forEach(function (a) {
+    a.href = main + a.getAttribute("href").slice("https://aiglossa.com".length);
+  });
+})();
+</script>
+</body>
+</html>
