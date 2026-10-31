@@ -7,6 +7,28 @@
       "has": [
         {
           "type": "host",
+          "value": "skin.aiglossa.com"
+        }
+      ],
+      "destination": "/en/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/en/skin/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
           "value": "food.aiglossa.com"
         },
         {
@@ -1167,28 +1189,6 @@
       ],
       "destination": "/en/music/",
       "permanent": true
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "skin.aiglossa.com"
-        }
-      ],
-      "destination": "/en/skin/",
-      "permanent": false
-    },
-    {
-      "source": "/",
-      "has": [
-        {
-          "type": "host",
-          "value": "skin.staging.aiglossa.com"
-        }
-      ],
-      "destination": "/en/skin/",
-      "permanent": false
     }
   ],
   "rewrites": [
