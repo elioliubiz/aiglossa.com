@@ -14,7 +14,6 @@
 <header class="topbar"><div class="wrap topbar-inner">
   <a class="brand" href="./" aria-label="AIGLOSSA FOOD"><span class="brand-mark food-logo"><img src="{{prefix}}assets/favicon-food.svg?v={{asset_v}}" alt=""></span> AIGLOSSA</a>
   <div class="top-actions">
-    <details class="top-lang"><summary>{{current_name}}</summary><ul>{{switcher}}</ul></details>
     <button class="account-flat" id="accountBtn"><span class="avatar" id="avatar">?</span><span class="balance" id="balanceText">—<span>{{credits}}</span></span></button>
     <a class="pill-btn buy-btn" id="buyBtn" href="#"><span class="buy-full">{{buy}}</span><span class="buy-short">{{buy_short}}</span></a>
   </div>
@@ -83,7 +82,7 @@
 <div class="toast hidden" id="toast"></div>
 
 <footer><div class="wrap footer-inner">
-  <span class="brand"><span class="brand-mark food-logo" style="width:22px;height:22px;border-radius:7px"><img src="{{prefix}}assets/favicon-food.svg?v={{asset_v}}" alt=""></span> AIGLOSSA</span>
+  <details class="footer-lang" id="footerLang"><summary>{{current_name}}</summary><ul>{{switcher}}</ul></details>
   <div class="footer-links"><a href="{{legal_privacy_href}}">{{privacy}}</a><a href="{{legal_terms_href}}">{{terms}}</a></div>
   <span>{{footer_disclaimer}}</span>
 </div></footer>

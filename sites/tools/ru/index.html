@@ -35,10 +35,10 @@
 <meta property="og:image:alt" content="AIGLOSSA TOOLS">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "aiglossa tools", "url": "https://tools.aiglossa.com/ru/", "inLanguage": "ru", "publisher": {"@type": "Organization", "name": "aiglossa", "url": "https://aiglossa.com"}}</script>
-<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-21" type="image/svg+xml">
-<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-21" sizes="any">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261031-21">
-<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261031-21">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-22" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-22" sizes="any">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261031-22">
+<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261031-22">
 <meta name="theme-color" content="#0e0f11">
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/theme.css">
@@ -85,6 +85,13 @@
   .tools-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:16px}
   .tools-brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);text-decoration:none}
   .tools-brand img{width:26px;height:26px;border-radius:7px;display:block}
+  .footer-lang{position:relative;color:#8A94A3;font-size:11px}
+  .footer-lang summary{list-style:none;cursor:pointer;padding:4px 0}
+  .footer-lang summary::-webkit-details-marker{display:none}
+  .footer-lang summary:hover{color:var(--fg)}
+  .footer-lang ul{position:absolute;inset-inline-start:0;bottom:calc(100% + 8px);min-width:150px;max-height:300px;overflow:auto;background:#16181c;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:6px;list-style:none;box-shadow:0 14px 30px rgba(0,0,0,.35);z-index:20}
+  .footer-lang li a{display:block;padding:7px 9px;border-radius:6px;font-size:11px;color:var(--ink);white-space:nowrap}
+  .footer-lang li a:hover{background:rgba(255,122,26,.12);color:#ffc08d}
   .foot .brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
   .foot .legal{margin-inline:auto}
   .foot .brand img{width:22px;height:22px;border-radius:6px;display:block}
@@ -121,24 +128,8 @@
 <body>
 <header class="tools-nav">
   <div class="wrap">
-    <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261031-21" alt=""> AIGLOSSA</a>
+    <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261031-22" alt=""> AIGLOSSA</a>
     <div class="tools-actions">
-      <details class="tools-lang"><summary>Русский</summary><ul>        <li><a href="../ar/" data-lang="ar">العربية</a></li>
-        <li><a href="../de/" data-lang="de">Deutsch</a></li>
-        <li><a href="../en/" data-lang="en">English</a></li>
-        <li><a href="../es/" data-lang="es">Español</a></li>
-        <li><a href="../fr/" data-lang="fr">Français</a></li>
-        <li><a href="../id/" data-lang="id">Bahasa Indonesia</a></li>
-        <li><a href="../it/" data-lang="it">Italiano</a></li>
-        <li><a href="../ja/" data-lang="ja">日本語</a></li>
-        <li><a href="../ko/" data-lang="ko">한국어</a></li>
-        <li><a href="../pt/" data-lang="pt">Português</a></li>
-        <li><a href="../ru/" data-lang="ru" aria-current="true">Русский</a></li>
-        <li><a href="../th/" data-lang="th">ไทย</a></li>
-        <li><a href="../tr/" data-lang="tr">Türkçe</a></li>
-        <li><a href="../vi/" data-lang="vi">Tiếng Việt</a></li>
-        <li><a href="../zh-Hans/" data-lang="zh-Hans">简体中文</a></li>
-        <li><a href="../zh-Hant/" data-lang="zh-Hant">繁體中文</a></li></ul></details>
       <a class="tools-account" id="toolsAccount" href="login.html?next=./">
         <span class="tools-avatar" id="toolsAvatar" aria-hidden="true">?</span>
         <span class="tools-account-copy">
@@ -196,7 +187,22 @@
 
 <footer>
   <div class="wrap foot">
-    <span class="brand"><img src="../assets/favicon-tools.svg?v=20261031-21" alt=""> AIGLOSSA</span>
+    <details class="footer-lang"><summary>Русский</summary><ul>        <li><a href="../ar/" data-lang="ar">العربية</a></li>
+        <li><a href="../de/" data-lang="de">Deutsch</a></li>
+        <li><a href="../en/" data-lang="en">English</a></li>
+        <li><a href="../es/" data-lang="es">Español</a></li>
+        <li><a href="../fr/" data-lang="fr">Français</a></li>
+        <li><a href="../id/" data-lang="id">Bahasa Indonesia</a></li>
+        <li><a href="../it/" data-lang="it">Italiano</a></li>
+        <li><a href="../ja/" data-lang="ja">日本語</a></li>
+        <li><a href="../ko/" data-lang="ko">한국어</a></li>
+        <li><a href="../pt/" data-lang="pt">Português</a></li>
+        <li><a href="../ru/" data-lang="ru" aria-current="true">Русский</a></li>
+        <li><a href="../th/" data-lang="th">ไทย</a></li>
+        <li><a href="../tr/" data-lang="tr">Türkçe</a></li>
+        <li><a href="../vi/" data-lang="vi">Tiếng Việt</a></li>
+        <li><a href="../zh-Hans/" data-lang="zh-Hans">简体中文</a></li>
+        <li><a href="../zh-Hant/" data-lang="zh-Hant">繁體中文</a></li></ul></details>
     <nav class="legal">
       <a href="https://aiglossa.com/ru/protocol/privacy.html">Политика конфиденциальности</a>
       <a href="https://aiglossa.com/ru/protocol/term.html">Условия обслуживания</a>

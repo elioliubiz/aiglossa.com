@@ -69,6 +69,13 @@
   .tools-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:16px}
   .tools-brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);text-decoration:none}
   .tools-brand img{width:26px;height:26px;border-radius:7px;display:block}
+  .footer-lang{position:relative;color:#8A94A3;font-size:11px}
+  .footer-lang summary{list-style:none;cursor:pointer;padding:4px 0}
+  .footer-lang summary::-webkit-details-marker{display:none}
+  .footer-lang summary:hover{color:var(--fg)}
+  .footer-lang ul{position:absolute;inset-inline-start:0;bottom:calc(100% + 8px);min-width:150px;max-height:300px;overflow:auto;background:#16181c;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:6px;list-style:none;box-shadow:0 14px 30px rgba(0,0,0,.35);z-index:20}
+  .footer-lang li a{display:block;padding:7px 9px;border-radius:6px;font-size:11px;color:var(--ink);white-space:nowrap}
+  .footer-lang li a:hover{background:rgba(255,122,26,.12);color:#ffc08d}
   .foot .brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
   .foot .legal{margin-inline:auto}
   .foot .brand img{width:22px;height:22px;border-radius:6px;display:block}
@@ -107,7 +114,6 @@
   <div class="wrap">
     <a class="tools-brand" href="./"><img src="{{prefix}}assets/favicon-tools.svg?v={{asset_v}}" alt=""> AIGLOSSA</a>
     <div class="tools-actions">
-      <details class="tools-lang"><summary>{{current_name}}</summary><ul>{{switcher}}</ul></details>
       <a class="tools-account" id="toolsAccount" href="login.html?next=./">
         <span class="tools-avatar" id="toolsAvatar" aria-hidden="true">?</span>
         <span class="tools-account-copy">
@@ -148,7 +154,7 @@
 
 <footer>
   <div class="wrap foot">
-    <span class="brand"><img src="{{prefix}}assets/favicon-tools.svg?v={{asset_v}}" alt=""> AIGLOSSA</span>
+    <details class="footer-lang"><summary>{{current_name}}</summary><ul>{{switcher}}</ul></details>
     <nav class="legal">
       <a href="{{legal_privacy_href}}">{{legal_privacy}}</a>
       <a href="{{legal_terms_href}}">{{legal_terms}}</a>

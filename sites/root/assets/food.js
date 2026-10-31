@@ -243,11 +243,13 @@
   }
 
   function showResult() {
+    var footerLang = $("footerLang"); if (footerLang) footerLang.classList.add("hidden");
     $("heroView").classList.add("hidden");
     $("resultView").classList.remove("hidden");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
   function showHome() {
+    var footerLang = $("footerLang"); if (footerLang) footerLang.classList.remove("hidden");
     $("resultView").classList.add("hidden");
     $("heroView").classList.remove("hidden");
     window.scrollTo({ top: 0, behavior: "smooth" });

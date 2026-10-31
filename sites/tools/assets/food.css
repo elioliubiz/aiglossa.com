@@ -457,3 +457,11 @@ body{min-height:100vh}
   .buy-btn{padding:6px 9px;font-size:11px}
 }
 @media(max-width:640px){#buyBtn{display:inline-flex}}
+
+.footer-lang{position:relative;color:#8A8F88;font-size:10.5px;letter-spacing:.02em}
+.footer-lang summary{list-style:none;cursor:pointer;padding:4px 0}
+.footer-lang summary::-webkit-details-marker{display:none}
+.footer-lang summary:hover{color:var(--ink)}
+.footer-lang ul{position:absolute;inset-inline-start:0;bottom:calc(100% + 8px);min-width:150px;max-height:300px;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px;list-style:none;box-shadow:0 14px 30px rgba(20,32,27,.12);z-index:20}
+.footer-lang li a{display:block;padding:7px 9px;border-radius:6px;font-size:11px;white-space:nowrap}
+.footer-lang li a:hover{background:var(--green-soft);color:var(--green)}
