@@ -19,10 +19,10 @@
 <meta property="og:image:alt" content="AIGLOSSA TOOLS">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{{jsonld}}</script>
-<link rel="icon" href="{{prefix}}assets/favicon-tools.svg" type="image/svg+xml">
-<link rel="icon" href="{{prefix}}assets/favicon-tools.svg" sizes="any">
-<link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-tools.png">
-<link rel="manifest" href="{{prefix}}assets/manifest-tools.webmanifest">
+<link rel="icon" href="{{prefix}}assets/favicon-tools.svg?v={{asset_v}}" type="image/svg+xml">
+<link rel="icon" href="{{prefix}}assets/favicon-tools.svg?v={{asset_v}}" sizes="any">
+<link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-tools.png?v={{asset_v}}">
+<link rel="manifest" href="{{prefix}}assets/manifest-tools.webmanifest?v={{asset_v}}">
 <meta name="theme-color" content="#0e0f11">
 <link rel="stylesheet" href="{{prefix}}assets/site.css">
 <link rel="stylesheet" href="{{prefix}}assets/theme.css">
@@ -61,7 +61,7 @@
   .tools-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:16px}
   .tools-brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);text-decoration:none}
   .tools-brand img{width:26px;height:26px;border-radius:7px;display:block}
-  .foot .brand{display:inline-flex;align-items:center;gap:9px}
+  .foot .brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
   .foot .brand img{width:22px;height:22px;border-radius:6px;display:block}
   .tools-account{display:inline-flex;align-items:center;gap:10px;color:var(--muted,#96a0b5);font-size:13px;text-decoration:none}
   .tools-account:hover{color:var(--fg)}
@@ -119,7 +119,6 @@
     <nav class="legal">
       <a href="{{legal_privacy_href}}">{{legal_privacy}}</a>
       <a href="{{legal_terms_href}}">{{legal_terms}}</a>
-      <a href="acceptable-use.html">{{legal_aup}}</a>
     </nav>
     <details class="switcher">
       <summary>{{lang_label}} · {{current_name}}</summary>
