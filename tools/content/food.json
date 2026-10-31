@@ -112,7 +112,9 @@
     "value_intro": "Ingredients, nutrition, and who may need to pay attention — explained in plain language.",
     "status_done": "Done",
     "status_failed": "Failed",
-    "status_pending": "Analyzing"
+    "status_pending": "Analyzing",
+    "show_all": "Show all",
+    "show_less": "Show less"
   },
   "zh-Hans": {
     "title": "食品标签扫描 — AIGLOSSA FOOD",
@@ -227,7 +229,9 @@
     "value_intro": "配料、营养，以及哪些人需要注意，用看得懂的方式讲清楚。",
     "status_done": "已完成",
     "status_failed": "失败",
-    "status_pending": "分析中"
+    "status_pending": "分析中",
+    "show_all": "展开全部",
+    "show_less": "收起"
   },
   "zh-Hant": {
     "title": "食品標籤掃描 — AIGLOSSA FOOD",
@@ -342,7 +346,9 @@
     "value_intro": "配料、營養，以及哪些人需要注意，用看得懂的方式講清楚。",
     "status_done": "已完成",
     "status_failed": "失敗",
-    "status_pending": "分析中"
+    "status_pending": "分析中",
+    "show_all": "展開全部",
+    "show_less": "收起"
   },
   "ja": {
     "title": "食品ラベルスキャン — AIGLOSSA FOOD",
@@ -457,7 +463,9 @@
     "value_intro": "原材料、栄養、そして注意が必要な人を、わかりやすい言葉で。",
     "status_done": "完了",
     "status_failed": "失敗",
-    "status_pending": "分析中"
+    "status_pending": "分析中",
+    "show_all": "すべて表示",
+    "show_less": "折りたたむ"
   },
   "ko": {
     "title": "식품 라벨 스캔 — AIGLOSSA FOOD",
@@ -572,7 +580,9 @@
     "value_intro": "원재료, 영양, 주의가 필요한 사람까지 알기 쉽게 설명합니다.",
     "status_done": "완료",
     "status_failed": "실패",
-    "status_pending": "분석 중"
+    "status_pending": "분석 중",
+    "show_all": "전체 보기",
+    "show_less": "접기"
   },
   "es": {
     "title": "Escáner de etiquetas de alimentos — AIGLOSSA FOOD",
@@ -687,7 +697,9 @@
     "value_intro": "Ingredientes, nutrición y quién debería prestar atención, explicado con claridad.",
     "status_done": "Listo",
     "status_failed": "Fallido",
-    "status_pending": "Analizando"
+    "status_pending": "Analizando",
+    "show_all": "Ver todo",
+    "show_less": "Mostrar menos"
   },
   "fr": {
     "title": "Scan d'étiquettes alimentaires — AIGLOSSA FOOD",
@@ -802,7 +814,9 @@
     "value_intro": "Ingrédients, nutrition et personnes à surveiller, expliqués simplement.",
     "status_done": "Terminé",
     "status_failed": "Échec",
-    "status_pending": "Analyse"
+    "status_pending": "Analyse",
+    "show_all": "Tout afficher",
+    "show_less": "Réduire"
   },
   "de": {
     "title": "Lebensmittel-Scan — AIGLOSSA FOOD",
@@ -917,7 +931,9 @@
     "value_intro": "Zutaten, Nährwerte und wer aufpassen sollte – verständlich erklärt.",
     "status_done": "Fertig",
     "status_failed": "Fehlgeschlagen",
-    "status_pending": "Analyse läuft"
+    "status_pending": "Analyse läuft",
+    "show_all": "Alle anzeigen",
+    "show_less": "Weniger anzeigen"
   },
   "pt": {
     "title": "Scanner de rótulos — AIGLOSSA FOOD",
@@ -1032,7 +1048,9 @@
     "value_intro": "Ingredientes, nutrição e quem deve ficar atento, explicado de forma clara.",
     "status_done": "Concluído",
     "status_failed": "Falhou",
-    "status_pending": "Analisando"
+    "status_pending": "Analisando",
+    "show_all": "Ver tudo",
+    "show_less": "Mostrar menos"
   },
   "it": {
     "title": "Scansione etichette alimentari — AIGLOSSA FOOD",
@@ -1147,7 +1165,9 @@
     "value_intro": "Ingredienti, nutrizione e chi dovrebbe prestare attenzione, spiegati con chiarezza.",
     "status_done": "Completato",
     "status_failed": "Non riuscito",
-    "status_pending": "Analisi"
+    "status_pending": "Analisi",
+    "show_all": "Mostra tutto",
+    "show_less": "Mostra meno"
   },
   "ru": {
     "title": "Сканирование этикеток — AIGLOSSA FOOD",
@@ -1262,7 +1282,9 @@
     "value_intro": "Состав, пищевая ценность и кому стоит быть внимательнее — простыми словами.",
     "status_done": "Готово",
     "status_failed": "Ошибка",
-    "status_pending": "Анализ"
+    "status_pending": "Анализ",
+    "show_all": "Показать все",
+    "show_less": "Свернуть"
   },
   "ar": {
     "title": "مسح ملصقات الطعام — AIGLOSSA FOOD",
@@ -1377,7 +1399,9 @@
     "value_intro": "المكونات والتغذية ومن يجب أن ينتبه — بشرح واضح.",
     "status_done": "تم",
     "status_failed": "فشل",
-    "status_pending": "جارٍ التحليل"
+    "status_pending": "جارٍ التحليل",
+    "show_all": "عرض الكل",
+    "show_less": "عرض أقل"
   },
   "th": {
     "title": "สแกนฉลากอาหาร — AIGLOSSA FOOD",
@@ -1492,7 +1516,9 @@
     "value_intro": "ส่วนผสม โภชนาการ และใครที่ควรระวัง — อธิบายให้เข้าใจง่าย",
     "status_done": "เสร็จแล้ว",
     "status_failed": "ล้มเหลว",
-    "status_pending": "กำลังวิเคราะห์"
+    "status_pending": "กำลังวิเคราะห์",
+    "show_all": "แสดงทั้งหมด",
+    "show_less": "ย่อ"
   },
   "vi": {
     "title": "Quét nhãn thực phẩm — AIGLOSSA FOOD",
@@ -1607,7 +1633,9 @@
     "value_intro": "Thành phần, dinh dưỡng và những ai cần lưu ý — giải thích dễ hiểu.",
     "status_done": "Xong",
     "status_failed": "Thất bại",
-    "status_pending": "Đang phân tích"
+    "status_pending": "Đang phân tích",
+    "show_all": "Xem tất cả",
+    "show_less": "Thu gọn"
   },
   "id": {
     "title": "Pindai label makanan — AIGLOSSA FOOD",
@@ -1722,7 +1750,9 @@
     "value_intro": "Bahan, nutrisi, dan siapa yang perlu berhati-hati — dijelaskan dengan jelas.",
     "status_done": "Selesai",
     "status_failed": "Gagal",
-    "status_pending": "Menganalisis"
+    "status_pending": "Menganalisis",
+    "show_all": "Lihat semua",
+    "show_less": "Tutup"
   },
   "tr": {
     "title": "Gıda etiketi tarama — AIGLOSSA FOOD",
@@ -1837,6 +1867,8 @@
     "value_intro": "İçindekiler, besin değerleri ve kimlerin dikkat etmesi gerektiği — anlaşılır bir dille.",
     "status_done": "Tamam",
     "status_failed": "Başarısız",
-    "status_pending": "Analiz ediliyor"
+    "status_pending": "Analiz ediliyor",
+    "show_all": "Tümünü göster",
+    "show_less": "Daralt"
   }
 }

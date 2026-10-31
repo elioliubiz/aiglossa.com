@@ -166,15 +166,21 @@
     }).then(function (r) { return r.ok ? r.blob() : null; });
   }
 
+  function thumbFallback() {
+    var thumb = $("resultThumb");
+    if (thumb) thumb.innerHTML = '<span class="thumb-empty"><svg viewBox="0 0 24 24"><rect x="4" y="3.5" width="16" height="17" rx="3"/><path d="M8 8h8M8 11h8M8 14h5"/></svg></span>';
+  }
+
   function loadScanImage(scan) {
-    if (!scan || !scan.has_image || state.preview) return;
+    if (!scan || state.preview) return;
+    if (!scan.has_image) { thumbFallback(); return; }
     imageCall(scan.id).then(function (blob) {
-      if (!blob) return;
+      if (!blob) { thumbFallback(); return; }
       if (state.imageUrl) URL.revokeObjectURL(state.imageUrl);
       state.imageUrl = URL.createObjectURL(blob);
       var thumb = $("resultThumb");
       thumb.innerHTML = '<img src="' + esc(state.imageUrl) + '" alt="' + esc(UI.image_alt) + '">';
-    }).catch(function () {});
+    }).catch(function () { thumbFallback(); });
   }
 
   function showScanConfirm() {
@@ -284,7 +290,7 @@
     if (report.serving && report.serving.basis) meta.push(report.serving.basis);
     $("resultMeta").textContent = meta.join(" · ");
     var thumb = $("resultThumb");
-    thumb.innerHTML = state.preview ? '<img src="' + esc(state.preview) + '" alt="' + esc(UI.image_alt) + '">' : '<span>' + esc(UI.image_alt) + '</span>';
+    thumb.innerHTML = state.preview ? '<img src="' + esc(state.preview) + '" alt="' + esc(UI.image_alt) + '">' : '<span class="thumb-skeleton" aria-label=""></span>';
     loadScanImage(scan);
 
     var analysis = report.analysis || {};
@@ -307,12 +313,18 @@
     nut += nutItem(UI.fiber, nutrition.fiber_g, "g", null, UI.per_100g);
     nut += '</div></section>';
 
-    var ing = (report.ingredients || []).slice(0, 80).map(function (item) {
-      var flags = (item.flags || []).map(function (flag) { return '<span class="ing-badge add">' + esc(flag) + '</span>'; }).join("");
+    var allIng = report.ingredients || [];
+    var ing = allIng.slice(0, 80).map(function (item, index) {
+      var fn = String(item.function || "").trim();
+      var flags = (item.flags || []).map(function (flag) { return String(flag || "").trim(); }).filter(Boolean);
+      var flagHtml = flags.map(function (flag) { return '<span class="ing-badge add">' + esc(flag) + '</span>'; }).join("");
+      var badgeHtml = (fn || flagHtml) ? '<div class="ing-badges">' + (fn ? '<span class="ing-badge">' + esc(fn) + '</span>' : "") + flagHtml + '</div>' : "";
       var why = [item.what_it_is || "", item.note || ""].filter(Boolean).join(" ");
-      return '<div class="report-ing"><div><div class="orig">' + esc(item.original_text || "") + '</div><div class="nm">' + esc(item.name || "") + '</div></div><div class="why">' + esc(why) + '</div><div class="ing-badges"><span class="ing-badge">' + esc(item.function || "") + '</span>' + flags + '</div></div>';
+      var extra = index >= 6 ? " ing-extra hidden" : "";
+      return '<div class="report-ing' + extra + '"><div><div class="orig">' + esc(item.original_text || "") + '</div><div class="nm">' + esc(item.name || "") + '</div></div><div class="why">' + esc(why) + '</div>' + badgeHtml + '</div>';
     }).join("");
-    var ingCard = '<section class="card"><div class="card-head"><h3>' + esc(UI.ingredients) + '</h3><span>' + (report.ingredients || []).length + '</span></div>' + (ing || '<p class="report-note">' + esc(UI.not_labeled) + '</p>') + '</section>';
+    var more = allIng.length > 6 ? '<button class="ing-more" id="ingMore">' + esc(UI.show_all) + " (" + allIng.length + ')</button>' : "";
+    var ingCard = '<section class="card"><div class="card-head"><h3>' + esc(UI.ingredients) + '</h3><span>' + allIng.length + '</span></div>' + (ing || '<p class="report-note">' + esc(UI.not_labeled) + '</p>') + more + '</section>';
 
     var people = (report.population_notes || []).map(function (item) {
       var lvl = item.level === "high" ? "high" : item.level === "medium" ? "medium" : "";
@@ -326,6 +338,15 @@
     var dataCard = dataNotes ? '<section class="card"><h3>' + esc(UI.data_notes) + '</h3><ul class="report-note">' + dataNotes + '</ul></section>' : '';
     var disc = report.disclaimer ? '<p class="report-disclaimer">' + esc(report.disclaimer) + '</p>' : '';
     $("reportMain").innerHTML = main + nut + ingCard + peopleCard + eatCard + dataCard + disc;
+    var ingMore = $("ingMore");
+    if (ingMore) {
+      ingMore.onclick = function () {
+        var open = ingMore.dataset.open === "1";
+        Array.prototype.forEach.call(document.querySelectorAll("#reportMain .ing-extra"), function (row) { row.classList.toggle("hidden", open); });
+        ingMore.dataset.open = open ? "0" : "1";
+        ingMore.textContent = open ? (UI.show_all + " (" + allIng.length + ")") : UI.show_less;
+      };
+    }
 
     $("reportSide").innerHTML = '<h3>' + esc(UI.result_title) + '</h3><div class="sc-stats">' +
       '<div class="sc-row"><span>' + esc(UI.scan_cost) + '</span><b>' + SCAN_CREDITS + ' ' + esc(UI.credits) + '</b></div>' +

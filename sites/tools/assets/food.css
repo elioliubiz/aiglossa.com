@@ -396,3 +396,11 @@ body{min-height:100vh}
 }
 
 @media(max-width:640px){#buyBtn{display:none}}
+
+.thumb-skeleton{display:block;width:100%;height:100%;background:linear-gradient(100deg,#F0EDE5 20%,#FAF8F2 40%,#F0EDE5 60%);background-size:200% 100%;animation:thumbShimmer 1.2s linear infinite}
+@keyframes thumbShimmer{to{background-position:-200% 0}}
+.thumb-empty{display:grid;place-items:center;width:100%;height:100%;color:#A7AAA2;background:#F3F0E8}
+.thumb-empty svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;opacity:.7}
+.ing-more{display:block;margin:14px auto 2px;border:1px solid #DCE8DF;background:#F7FBF8;color:var(--green);border-radius:999px;padding:8px 16px;font-size:11.5px;cursor:pointer}
+.ing-more:hover{background:var(--green-soft);border-color:#BFDCCB}
+.ing-extra.hidden{display:none}
