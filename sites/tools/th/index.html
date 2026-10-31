@@ -35,10 +35,10 @@
 <meta property="og:image:alt" content="AIGLOSSA TOOLS">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "aiglossa tools", "url": "https://tools.aiglossa.com/th/", "inLanguage": "th", "publisher": {"@type": "Organization", "name": "aiglossa", "url": "https://aiglossa.com"}}</script>
-<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-7" type="image/svg+xml">
-<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-7" sizes="any">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261031-7">
-<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261031-7">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-8" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-8" sizes="any">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261031-8">
+<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261031-8">
 <meta name="theme-color" content="#0e0f11">
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/theme.css">
@@ -96,14 +96,14 @@
   .tools-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
   .tools-account-copy{display:flex;align-items:baseline;gap:8px}
   .tools-account-balance{color:var(--fg);font-variant-numeric:tabular-nums}
-  .tools-account-email{max-width:22ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .tools-account-email{display:none}
   @media(max-width:560px){.tools-nav .wrap{padding-inline:20px}.tools-account-email{display:none}}
 </style>
 </head>
 <body>
 <header class="tools-nav">
   <div class="wrap">
-    <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261031-7" alt=""> AIGLOSSA TOOLS</a>
+    <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261031-8" alt=""> AIGLOSSA TOOLS</a>
     <div class="tools-actions">
       <details class="tools-lang"><summary>ไทย</summary><ul>        <li><a href="../ar/" data-lang="ar">العربية</a></li>
         <li><a href="../de/" data-lang="de">Deutsch</a></li>
@@ -177,7 +177,7 @@
 
 <footer>
   <div class="wrap foot">
-    <span class="brand"><img src="../assets/favicon-tools.svg?v=20261031-7" alt=""> AIGLOSSA TOOLS</span>
+    <span class="brand"><img src="../assets/favicon-tools.svg?v=20261031-8" alt=""> AIGLOSSA TOOLS</span>
     <nav class="legal">
       <a href="https://aiglossa.com/th/protocol/privacy.html">นโยบายความเป็นส่วนตัว</a>
       <a href="https://aiglossa.com/th/protocol/term.html">ข้อกำหนดการให้บริการ</a>
@@ -212,8 +212,16 @@
     var user = data.data.user || {};
     var name = user.email || user.nickname || "บัญชี";
     document.getElementById("toolsAccountEmail").textContent = name;
-    document.getElementById("toolsAccountBalance").textContent = Math.round((data.data.balance || 0) / 100) + " เครดิต";
-    document.getElementById("toolsAvatar").textContent = name.slice(0, 1).toUpperCase();
+    var coins = Number(data.data.coins || 0);
+    document.getElementById("toolsAccountBalance").textContent = (Number.isInteger(coins) ? String(coins) : coins.toFixed(2)) + " เครดิต";
+    var avatar = document.getElementById("toolsAvatar");
+    if (user.avatar) {
+      avatar.innerHTML = '<img src="' + String(user.avatar).replace(/"/g, "&quot;") + '" alt="">';
+      var avatarImg = avatar.querySelector("img");
+      avatarImg.onerror = function () { avatar.textContent = name.slice(0, 1).toUpperCase(); };
+    } else {
+      avatar.textContent = name.slice(0, 1).toUpperCase();
+    }
     document.getElementById("toolsAccount").href = root + "/th/account.html";
   }).catch(function () {});
 })();

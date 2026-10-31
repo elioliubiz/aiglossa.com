@@ -29,6 +29,14 @@
       body: JSON.stringify(body)
     }).then(function (r) { return r.json(); });
   }
+  function coinText(value) {
+    var n = Number(value || 0);
+    return (Number.isInteger(n) ? String(n) : n.toFixed(2));
+  }
+  function coinHtml(value) {
+    return coinText(value) + "<span>" + esc(UI.credits) + "</span>";
+  }
+
   function toast(text) {
     var el = $("toast");
     el.textContent = text || "";
@@ -42,7 +50,7 @@
 
   function setAvatar(user) {
     var el = $("avatar");
-    var initial = user ? String(user.nickname || user.email || "?").charAt(0).toUpperCase() : "?";
+    var initial = user ? String(user.email || user.nickname || "?").charAt(0).toUpperCase() : "?";
     if (user && user.avatar) {
       el.innerHTML = '<img src="' + esc(user.avatar) + '" alt="">';
       var img = el.querySelector("img");
@@ -70,7 +78,7 @@
         state.user = data.data.user || {};
         state.balance = Number(data.data.coins || 0);
         setAvatar(state.user);
-        $("balanceText").innerHTML = state.balance.toFixed(2) + "<span>" + esc(UI.credits) + "</span>";
+        $("balanceText").innerHTML = coinHtml(state.balance);
         syncAuth(true);
         return true;
       }
@@ -206,7 +214,7 @@
         var row = data.data;
         if (row.status === "done") {
           state.balance = Number(row.balance || state.balance);
-          $("balanceText").innerHTML = state.balance.toFixed(2) + "<span>" + esc(UI.credits) + "</span>";
+          $("balanceText").innerHTML = coinHtml(state.balance);
           setScanning(false);
           renderResult(row);
           loadHistory();
@@ -318,7 +326,7 @@
     $("reportSide").innerHTML = '<h3>' + esc(UI.result_title) + '</h3><div class="sc-stats">' +
       '<div class="sc-row"><span>' + esc(UI.scan_cost) + '</span><b>' + SCAN_CREDITS + ' ' + esc(UI.credits) + '</b></div>' +
       '<div class="sc-row"><span>' + esc(UI.analyzed_in) + '</span><b>' + esc(LANG_NAME) + '</b></div>' +
-      '<div class="sc-row"><span>' + esc(UI.pay_balance) + '</span><b>' + state.balance.toFixed(2) + ' ' + esc(UI.credits) + '</b></div>' +
+      '<div class="sc-row"><span>' + esc(UI.pay_balance) + '</span><b>' + coinText(state.balance) + ' ' + esc(UI.credits) + '</b></div>' +
       '</div><hr><button class="btn full" id="newScan">' + esc(UI.new_scan) + '</button>' +
       '<button class="btn ghost full" id="sideBuy">' + esc(UI.buy) + '</button>' +
       '<p class="small">' + esc(UI.footer_disclaimer) + '</p>';
@@ -378,7 +386,7 @@
 
   function openPay() {
     if (!state.user) { needLogin(); return; }
-    $("payBalance").textContent = UI.pay_balance + " " + state.balance.toFixed(2) + " " + UI.credits;
+    $("payBalance").textContent = UI.pay_balance + " " + coinText(state.balance) + " " + UI.credits;
     $("payMsg").textContent = "";
     $("payPacks").innerHTML = "";
     $("payModal").classList.remove("hidden");

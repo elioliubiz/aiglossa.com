@@ -80,7 +80,7 @@
   .tools-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
   .tools-account-copy{display:flex;align-items:baseline;gap:8px}
   .tools-account-balance{color:var(--fg);font-variant-numeric:tabular-nums}
-  .tools-account-email{max-width:22ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .tools-account-email{display:none}
   @media(max-width:560px){.tools-nav .wrap{padding-inline:20px}.tools-account-email{display:none}}
 </style>
 </head>
@@ -164,8 +164,16 @@
     var user = data.data.user || {};
     var name = user.email || user.nickname || "{{account_label}}";
     document.getElementById("toolsAccountEmail").textContent = name;
-    document.getElementById("toolsAccountBalance").textContent = Math.round((data.data.balance || 0) / 100) + " {{credits_unit}}";
-    document.getElementById("toolsAvatar").textContent = name.slice(0, 1).toUpperCase();
+    var coins = Number(data.data.coins || 0);
+    document.getElementById("toolsAccountBalance").textContent = (Number.isInteger(coins) ? String(coins) : coins.toFixed(2)) + " {{credits_unit}}";
+    var avatar = document.getElementById("toolsAvatar");
+    if (user.avatar) {
+      avatar.innerHTML = '<img src="' + String(user.avatar).replace(/"/g, "&quot;") + '" alt="">';
+      var avatarImg = avatar.querySelector("img");
+      avatarImg.onerror = function () { avatar.textContent = name.slice(0, 1).toUpperCase(); };
+    } else {
+      avatar.textContent = name.slice(0, 1).toUpperCase();
+    }
     document.getElementById("toolsAccount").href = root + "/{{lang}}/account.html";
   }).catch(function () {});
 })();
