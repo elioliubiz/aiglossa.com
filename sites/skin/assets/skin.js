@@ -179,7 +179,7 @@
     var route = "";
     if (routine.am && routine.am.length) route += '<span class="skin-route">AM ' + routine.am.map(function (i) { return Number(i) + 1; }).join(" → ") + '</span>';
     if (routine.pm && routine.pm.length) route += '<span class="skin-route">PM ' + routine.pm.map(function (i) { return Number(i) + 1; }).join(" → ") + '</span>';
-    return '<section class="skin-overview"><div class="skin-overview-kicker">OVERALL</div><h2>' + esc(UI.combined) + '</h2><p class="skin-overview-summary">' + esc(c.summary || "") + '</p>' +
+    return '<section class="skin-overview"><div class="skin-overview-kicker">' + esc(UI.result_title) + '</div><h2>' + esc(UI.combined) + '</h2><p class="skin-overview-summary">' + esc(c.summary || "") + '</p>' +
       (roles ? '<div class="skin-role-row">' + roles + '</div>' : '') +
       (overlaps ? '<div class="skin-overview-block"><h4>' + esc(UI.overlaps) + '</h4><ul class="skin-list">' + overlaps + '</ul></div>' : '') +
       (cautions ? '<div class="skin-overview-block"><h4>' + esc(UI.cautions) + '</h4><ul class="skin-list">' + cautions + '</ul></div>' : '') +
