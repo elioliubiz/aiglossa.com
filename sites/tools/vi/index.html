@@ -75,7 +75,10 @@
   .closing-band .cta{white-space:nowrap}
   .tools-nav{border-bottom:1px solid rgba(255,255,255,.08)}
   .tools-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:16px}
-  .tools-brand{font:11px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);text-decoration:none}
+  .tools-brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);text-decoration:none}
+  .tools-brand img{width:26px;height:26px;border-radius:7px;display:block}
+  .foot .brand{display:inline-flex;align-items:center;gap:9px}
+  .foot .brand img{width:22px;height:22px;border-radius:6px;display:block}
   .tools-account{display:inline-flex;align-items:center;gap:10px;color:var(--muted,#96a0b5);font-size:13px;text-decoration:none}
   .tools-account:hover{color:var(--fg)}
   .tools-avatar{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;
@@ -89,7 +92,7 @@
 <body>
 <header class="tools-nav">
   <div class="wrap">
-    <a class="tools-brand" href="./">AIGLOSSA TOOLS</a>
+    <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261031-5" alt=""> AIGLOSSA TOOLS</a>
     <a class="tools-account" id="toolsAccount" href="login.html?next=./">
       <span class="tools-avatar" id="toolsAvatar" aria-hidden="true">?</span>
       <span class="tools-account-copy">
@@ -145,7 +148,7 @@
 
 <footer>
   <div class="wrap foot">
-    <span class="brand">AIGLOSSA TOOLS</span>
+    <span class="brand"><img src="../assets/favicon-tools.svg?v=20261031-5" alt=""> AIGLOSSA TOOLS</span>
     <nav class="legal">
       <a href="https://aiglossa.com/vi/protocol/privacy.html">Chính sách Quyền riêng tư</a>
       <a href="https://aiglossa.com/vi/protocol/term.html">Điều khoản Dịch vụ</a>

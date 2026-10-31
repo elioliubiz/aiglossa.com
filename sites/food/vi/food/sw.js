@@ -1,6 +1,6 @@
 /* aiglossa food service worker — network-first; cache is only an offline fallback. */
-const CACHE = "aiglossa-food-vi-v8";
-const V = "20261031-4";
+const CACHE = "aiglossa-food-vi-v9";
+const V = "20261031-5";
 const SHELL = ["./", "../../assets/food.css?v=" + V, "../../assets/food.js?v=" + V, "../../assets/wallet.js?v=" + V, "../../assets/food-icon-192.png?v=" + V, "../../assets/food-icon-512.png?v=" + V, "../../assets/food-sample.jpg?v=" + V];
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting()));
