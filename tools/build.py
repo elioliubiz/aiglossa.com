@@ -1013,9 +1013,18 @@ def main() -> int:
                     # 支持页：正文按原样插入（contact_text 里有 mailto 链接、footer 里有 &copy;），
                     # 只有标题转义。法务标签与页脚**复用**协议页/营销页已有的译文，不重复翻译。
                     locale = source[lang]
+                    faq = {
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        "mainEntity": [
+                            {"@type": "Question", "name": locale[f"q{i}"], "acceptedAnswer": {"@type": "Answer", "text": locale[f"a{i}"]}}
+                            for i in range(1, 7)
+                        ],
+                    }
                     return {
                         **locale,
                         "title": esc(locale["title"]),
+                        "jsonld": '<script type="application/ld+json">' + json.dumps(faq, ensure_ascii=False).replace("</", "<\\/") + '</script>',
                         "legal_privacy": esc(marketing[lang]["legal"]["privacy"]),
                         "legal_terms": esc(marketing[lang]["legal"]["terms"]),
                         "legal_delete_label": esc(protocol["delete-account"][lang]["page_title"]),

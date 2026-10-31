@@ -6,6 +6,19 @@
 <link rel="canonical" href="{{canonical}}">
 {{alternates}}
     <title>{{title}}</title>
+    <meta name="description" content="{{sub_title}}">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{sub_title}}">
+    <meta property="og:url" content="{{canonical}}">
+    <meta property="og:image" content="{{site_base}}/assets/og.png">
+    <meta property="og:image:alt" content="Scholan Support">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{title}}">
+    <meta name="twitter:description" content="{{sub_title}}">
+    <meta name="twitter:image" content="{{site_base}}/assets/og.png">
+    {{jsonld}}
     <link rel="icon" type="image/png" sizes="64x64" href="{{prefix}}assets/favicon-scholan-64.png?v=1">
     <link rel="shortcut icon" href="{{prefix}}assets/favicon-scholan.ico?v=1">
     <link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-scholan.png?v=1">
