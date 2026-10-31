@@ -61,10 +61,11 @@
       <div class="scan-card">
         <div class="scan-icon"><svg viewBox="0 0 24 24"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2l1.1-1.8h6.4L16.3 6h1.2A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5z"/><circle cx="12" cy="12.3" r="3.2"/></svg></div>
         <div class="scan-copy"><b>拍照或上传标签</b><span>配料表 · 营养成分表 · 进口标签</span></div>
-        <div class="scan-actions"><button class="btn" id="pickFile">选择文件</button><button class="btn ghost" id="pickCamera">相机</button></div>
+        <div class="scan-actions"><label class="btn" for="fileInput">选择文件</label><label class="btn ghost" for="cameraInput">相机</label></div>
         <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp">
         <input class="file-input" id="cameraInput" type="file" accept="image/*" capture="environment">
         <div class="preview-wrap hidden" id="previewWrap"><img id="preview" alt="食品标签"></div>
+        <div class="scan-loading hidden" id="scanLoading"><span class="spinner"></span><span id="scanLoadingText">正在读标签……</span></div>
         <button class="btn hidden" id="scanButton" style="width:100%;margin-top:12px">开始扫描</button>
       </div>
       <div class="meta-row"><span>3 额度 / 次</span><span>约 4 秒</span><span>支持 16 种语言</span></div>

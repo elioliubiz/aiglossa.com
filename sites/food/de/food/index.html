@@ -61,10 +61,11 @@
       <div class="scan-card">
         <div class="scan-icon"><svg viewBox="0 0 24 24"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2l1.1-1.8h6.4L16.3 6h1.2A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5z"/><circle cx="12" cy="12.3" r="3.2"/></svg></div>
         <div class="scan-copy"><b>Foto aufnehmen oder hochladen</b><span>Inhaltsstoffe · Nährwerte · Importierte Etiketten</span></div>
-        <div class="scan-actions"><button class="btn" id="pickFile">Datei auswählen</button><button class="btn ghost" id="pickCamera">Kamera</button></div>
+        <div class="scan-actions"><label class="btn" for="fileInput">Datei auswählen</label><label class="btn ghost" for="cameraInput">Kamera</label></div>
         <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp">
         <input class="file-input" id="cameraInput" type="file" accept="image/*" capture="environment">
         <div class="preview-wrap hidden" id="previewWrap"><img id="preview" alt="Lebensmitteletikett"></div>
+        <div class="scan-loading hidden" id="scanLoading"><span class="spinner"></span><span id="scanLoadingText">Etikett wird gelesen…</span></div>
         <button class="btn hidden" id="scanButton" style="width:100%;margin-top:12px">Scan starten</button>
       </div>
       <div class="meta-row"><span>3 Credits / Scan</span><span>ca. 4 Sekunden</span><span>16 Sprachen</span></div>

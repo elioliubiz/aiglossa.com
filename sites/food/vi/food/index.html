@@ -61,10 +61,11 @@
       <div class="scan-card">
         <div class="scan-icon"><svg viewBox="0 0 24 24"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2l1.1-1.8h6.4L16.3 6h1.2A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5z"/><circle cx="12" cy="12.3" r="3.2"/></svg></div>
         <div class="scan-copy"><b>Chụp ảnh hoặc tải lên</b><span>Thành phần · Thông tin dinh dưỡng · Nhãn nhập khẩu</span></div>
-        <div class="scan-actions"><button class="btn" id="pickFile">Chọn tệp</button><button class="btn ghost" id="pickCamera">Máy ảnh</button></div>
+        <div class="scan-actions"><label class="btn" for="fileInput">Chọn tệp</label><label class="btn ghost" for="cameraInput">Máy ảnh</label></div>
         <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp">
         <input class="file-input" id="cameraInput" type="file" accept="image/*" capture="environment">
         <div class="preview-wrap hidden" id="previewWrap"><img id="preview" alt="Nhãn thực phẩm"></div>
+        <div class="scan-loading hidden" id="scanLoading"><span class="spinner"></span><span id="scanLoadingText">Đang đọc nhãn…</span></div>
         <button class="btn hidden" id="scanButton" style="width:100%;margin-top:12px">Bắt đầu quét</button>
       </div>
       <div class="meta-row"><span>3 tín dụng / lần quét</span><span>khoảng 4 giây</span><span>16 ngôn ngữ</span></div>

@@ -61,10 +61,11 @@
       <div class="scan-card">
         <div class="scan-icon"><svg viewBox="0 0 24 24"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2l1.1-1.8h6.4L16.3 6h1.2A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5z"/><circle cx="12" cy="12.3" r="3.2"/></svg></div>
         <div class="scan-copy"><b>Сделайте фото или загрузите файл</b><span>Состав · Пищевая ценность · Импортные этикетки</span></div>
-        <div class="scan-actions"><button class="btn" id="pickFile">Выберите файл</button><button class="btn ghost" id="pickCamera">Камера</button></div>
+        <div class="scan-actions"><label class="btn" for="fileInput">Выберите файл</label><label class="btn ghost" for="cameraInput">Камера</label></div>
         <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp">
         <input class="file-input" id="cameraInput" type="file" accept="image/*" capture="environment">
         <div class="preview-wrap hidden" id="previewWrap"><img id="preview" alt="Этикетка продукта"></div>
+        <div class="scan-loading hidden" id="scanLoading"><span class="spinner"></span><span id="scanLoadingText">Читаем этикетку…</span></div>
         <button class="btn hidden" id="scanButton" style="width:100%;margin-top:12px">Начать сканирование</button>
       </div>
       <div class="meta-row"><span>3 кредита / скан</span><span>около 4 секунд</span><span>16 языков</span></div>

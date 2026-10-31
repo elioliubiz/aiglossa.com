@@ -40,23 +40,32 @@
   function accountUrl() { return MAIN + "/" + LANG + "/account.html?next=" + encodeURIComponent(location.href); }
   function needLogin() { location.href = loginUrl(); }
 
+  function setAvatar(user) {
+    var el = $("avatar");
+    if (user && user.avatar) {
+      el.innerHTML = '<img src="' + esc(user.avatar) + '" alt="">';
+    } else {
+      el.textContent = user ? String(user.nickname || user.email || "?").charAt(0).toUpperCase() : "?";
+    }
+  }
+
   function refreshAccount() {
     return call("/wallet/summary", {}).then(function (data) {
       if (data.code === 200 && data.data) {
         state.user = data.data.user || {};
         state.balance = Number(data.data.coins || 0);
-        var name = state.user.nickname || state.user.email || "?";
-        $("avatar").textContent = name.charAt(0).toUpperCase();
+        setAvatar(state.user);
         $("balanceText").innerHTML = state.balance.toFixed(2) + "<span>" + esc(UI.credits) + "</span>";
         return true;
       }
       state.user = null;
       state.balance = 0;
-      $("avatar").textContent = "?";
+      setAvatar(null);
       $("balanceText").innerHTML = esc(UI.sign_in) + "<span>" + esc(UI.credits) + "</span>";
       return false;
     }).catch(function () {
       state.user = null;
+      setAvatar(null);
       $("balanceText").innerHTML = esc(UI.sign_in) + "<span>" + esc(UI.credits) + "</span>";
       return false;
     });
@@ -109,6 +118,35 @@
     reader.readAsDataURL(file);
   }
 
+  function setScanning(on, text) {
+    $("scanLoading").classList.toggle("hidden", !on);
+    if (text) $("scanLoadingText").textContent = text;
+    var button = $("scanButton");
+    if (button) button.disabled = !!on;
+    Array.prototype.forEach.call(document.querySelectorAll(".scan-actions .btn"), function (btn) {
+      btn.classList.toggle("disabled", !!on);
+    });
+  }
+
+  function imageCall(id) {
+    return fetch(API + "/ai/food/scan/" + id + "/image", {
+      method: "POST", credentials: "include",
+      headers: { "Content-Type": "application/json", "X-Client": "web" },
+      body: JSON.stringify({ app_key: "tools", feature: FEATURE, device: device, timestamp: Math.floor(Date.now() / 1000) })
+    }).then(function (r) { return r.ok ? r.blob() : null; });
+  }
+
+  function loadScanImage(scan) {
+    if (!scan || !scan.has_image || state.preview) return;
+    imageCall(scan.id).then(function (blob) {
+      if (!blob) return;
+      if (state.imageUrl) URL.revokeObjectURL(state.imageUrl);
+      state.imageUrl = URL.createObjectURL(blob);
+      var thumb = $("resultThumb");
+      thumb.innerHTML = '<img src="' + esc(state.imageUrl) + '" alt="' + esc(UI.image_alt) + '">';
+    }).catch(function () {});
+  }
+
   function showScanConfirm() {
     if (!state.user) { needLogin(); return; }
     if (!state.file) { toast(UI.image_invalid); return; }
@@ -124,7 +162,7 @@
   function startScan() {
     $("confirmModal").classList.add("hidden");
     if (!state.file) return;
-    $("scanButton").disabled = true;
+    setScanning(true, UI.scanning);
     toast(UI.scanning);
     compress(state.file).then(function (data) {
       return call("/ai/food/scan", {
@@ -132,36 +170,37 @@
       });
     }).then(function (data) {
       if (data.code === 401) { needLogin(); return; }
-      if (data.code === 402) { $("scanButton").disabled = false; openPay(); toast(UI.insufficient); return; }
+      if (data.code === 402) { setScanning(false); openPay(); toast(UI.insufficient); return; }
       if (data.code === 409 && data.data && data.data.id) { poll(data.data.id); return; }
-      if (data.code !== 200 || !data.data) { $("scanButton").disabled = false; toast(UI.scan_failed); return; }
+      if (data.code !== 200 || !data.data) { setScanning(false); toast(UI.scan_failed); return; }
       state.balance = Number(data.data.balance || state.balance);
       poll(data.data.id);
-    }).catch(function () { $("scanButton").disabled = false; toast(UI.network_error); });
+    }).catch(function () { setScanning(false); toast(UI.network_error); });
   }
 
   function poll(id, tries) {
     tries = tries || 0;
-    if (tries > 40) { $("scanButton").disabled = false; toast(UI.scan_timeout); return; }
+    if (tries > 40) { setScanning(false); toast(UI.scan_timeout); return; }
     setTimeout(function () {
       call("/ai/food/scan/" + id, {}).then(function (data) {
         if (data.code === 401) { needLogin(); return; }
-        if (data.code !== 200 || !data.data) { $("scanButton").disabled = false; toast(UI.scan_failed); return; }
+        if (data.code !== 200 || !data.data) { setScanning(false); toast(UI.scan_failed); return; }
         var row = data.data;
         if (row.status === "done") {
           state.balance = Number(row.balance || state.balance);
           $("balanceText").innerHTML = state.balance.toFixed(2) + "<span>" + esc(UI.credits) + "</span>";
+          setScanning(false);
           renderResult(row);
           loadHistory();
-          $("scanButton").disabled = false;
           return;
         }
         if (row.status === "failed") {
-          $("scanButton").disabled = false;
+          setScanning(false);
           toast(UI.scan_failed);
           loadHistory();
           return;
         }
+        setScanning(true, UI.scan_pending);
         poll(id, tries + 1);
       }).catch(function () { poll(id, tries + 1); });
     }, 1400);
@@ -216,6 +255,7 @@
     $("resultMeta").textContent = meta.join(" · ");
     var thumb = $("resultThumb");
     thumb.innerHTML = state.preview ? '<img src="' + esc(state.preview) + '" alt="' + esc(UI.image_alt) + '">' : '<span>' + esc(UI.image_alt) + '</span>';
+    loadScanImage(scan);
 
     var analysis = report.analysis || {};
     var nutrition = report.nutrition || {};
@@ -274,6 +314,8 @@
     $("previewWrap").classList.add("hidden");
     $("scanButton").classList.add("hidden");
     $("scanButton").disabled = false;
+    setScanning(false);
+    if (state.imageUrl) { URL.revokeObjectURL(state.imageUrl); state.imageUrl = ""; }
     $("preview").removeAttribute("src");
     $("fileInput").value = "";
     $("cameraInput").value = "";
@@ -341,8 +383,6 @@
     });
   }
 
-  $("pickFile").onclick = function () { $("fileInput").click(); };
-  $("pickCamera").onclick = function () { $("cameraInput").click(); };
   $("fileInput").onchange = function () { handleFile(this.files && this.files[0]); };
   $("cameraInput").onchange = function () { handleFile(this.files && this.files[0]); };
   $("scanButton").onclick = showScanConfirm;
