@@ -9,6 +9,7 @@
   var API = IS_LOCAL ? "/api" : (IS_STAGING ? "https://dev.staging.aiglossa.com" : "https://api.aiglossa.com");
   var MAIN = IS_LOCAL ? "http://localhost:8000" : (IS_STAGING ? "https://staging.aiglossa.com" : "https://aiglossa.com");
   var LANG = document.documentElement.lang || "en";
+  var LANG_NAME = document.documentElement.getAttribute("data-lang-name") || LANG;
   var FEATURE = "food-scan";
   var SCAN_CREDITS = 3;
   var device = localStorage.getItem("aig_device") || (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()));
@@ -197,7 +198,7 @@
     return '<div class="nut-item"><div class="nut-top"><span>' + esc(label) + '</span><b>' + fmt(value, unit) + '</b></div>' +
       '<div class="bar"><i class="' + level + '" style="width:' + width + '%"></i></div>' +
       '<div class="nut-note"><span>' + esc(key || "") + '</span><span class="' + (level === "red" ? "hi" : level === "amber" ? "mid" : "") + '">' +
-      (nrv === null ? esc(UI.not_labeled) : esc(UI.nrv) + " " + nrv + "%") + '</span></div></div>';
+      (nrv === null ? "—" : esc(UI.nrv) + " " + nrv + "%") + '</span></div></div>';
   }
 
   function renderResult(scan) {
@@ -207,7 +208,7 @@
     var product = report.product || {};
     var name = product.name || product.name_original || UI.result_title;
     $("resultName").textContent = name;
-    $("resultKicker").textContent = UI.result_title + " · " + (scan.language || LANG);
+    $("resultKicker").textContent = UI.result_title + " · " + LANG_NAME;
     var meta = [];
     if (product.brand) meta.push(product.brand);
     if (product.category) meta.push(product.category);
@@ -258,7 +259,7 @@
 
     $("reportSide").innerHTML = '<h3>' + esc(UI.result_title) + '</h3><div class="sc-stats">' +
       '<div class="sc-row"><span>' + esc(UI.scan_cost) + '</span><b>' + SCAN_CREDITS + ' ' + esc(UI.credits) + '</b></div>' +
-      '<div class="sc-row"><span>' + esc(UI.analyzed_in) + '</span><b>' + esc(scan.language || LANG) + '</b></div>' +
+      '<div class="sc-row"><span>' + esc(UI.analyzed_in) + '</span><b>' + esc(LANG_NAME) + '</b></div>' +
       '<div class="sc-row"><span>' + esc(UI.pay_balance) + '</span><b>' + state.balance.toFixed(2) + ' ' + esc(UI.credits) + '</b></div>' +
       '</div><hr><button class="btn full" id="newScan">' + esc(UI.new_scan) + '</button>' +
       '<button class="btn ghost full" id="sideBuy">' + esc(UI.buy) + '</button>' +
