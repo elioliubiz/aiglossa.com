@@ -176,7 +176,7 @@
     $("resultName").textContent = pr.name || pr.name_original || UI.product;
     $("resultMeta").textContent = products.length + " " + UI.products + " · " + (row.language || LANG).toUpperCase();
     $("resultThumb").innerHTML = state.previews.length ? '<img src="' + esc(state.previews[0]) + '" alt="">' : '<span class="thumb-skeleton"></span>';
-    $("reportMain").innerHTML = (products.length > 1 ? combinedCard(report.combined) : "") + products.map(productCard).join("") + '<p class="nutrition-note">' + esc(report.disclaimer || "") + '</p>';
+    $("reportMain").innerHTML = (products.length > 1 ? combinedCard(report.combined) : "") + products.map(productCard).join("") + '<p class="nutrition-note">' + esc(UI.footer_disclaimer || report.disclaimer || "") + '</p>';
     $("reportSide").innerHTML = '<div class="skin-side">' +
       '<div class="skin-side-kicker">ANALYSIS</div>' +
       '<div class="skin-side-price">' + coinText(row.credits || 0) + '<span> ' + esc(UI.credits) + '</span></div>' +
@@ -184,7 +184,7 @@
       '<div class="side-line"><span>' + esc(UI.pay_balance) + '</span><b>' + coinText(state.balance) + '</b></div>' +
       '<button class="btn full" id="scanAnother">' + esc(UI.scan_button) + '</button>' +
       '<a class="btn ghost full skin-side-buy" href="' + pricingUrl() + '">' + esc(UI.buy) + '</a>' +
-      '<p class="skin-side-note">' + esc(report.disclaimer || "") + '</p></div>';
+      '<p class="skin-side-note">' + esc(UI.footer_disclaimer || report.disclaimer || "") + '</p></div>';
     $("scanAnother").onclick = resetScan;
     Array.prototype.forEach.call(document.querySelectorAll("[data-more]"), function (btn) {
       btn.onclick = function () { var card = btn.closest(".skin-product"); Array.prototype.forEach.call(card.querySelectorAll(".ing-extra"), function (x) { x.classList.toggle("hidden"); }); btn.textContent = btn.textContent === UI.show_less ? UI.show_all : UI.show_less; };

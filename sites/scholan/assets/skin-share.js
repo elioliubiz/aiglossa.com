@@ -37,7 +37,7 @@
   call("/ai/skin/share/" + encodeURIComponent(token), {}).then(function (d) {
     if (d.code !== 200 || !d.data) { $("shareContent").innerHTML = '<div class="skin-empty">' + esc(UI.scan_failed) + '</div>'; return; }
     var report = d.data.report || {}, products = report.products || [];
-    $("shareContent").innerHTML = (products.length > 1 ? combined(report.combined) : "") + products.map(card).join("") + '<p class="nutrition-note">' + esc(report.disclaimer || "") + '</p>';
+    $("shareContent").innerHTML = (products.length > 1 ? combined(report.combined) : "") + products.map(card).join("") + '<p class="nutrition-note">' + esc(UI.footer_disclaimer || report.disclaimer || "") + '</p>';
     document.title = (products[0] && (products[0].product.name || products[0].product.name_original) || document.title) + " — AIGLOSSA";
   }).catch(function () { $("shareContent").innerHTML = '<div class="skin-empty">' + esc(UI.network_error) + '</div>'; });
 })();
