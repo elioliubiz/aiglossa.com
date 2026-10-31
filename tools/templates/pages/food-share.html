@@ -9,7 +9,9 @@
 <link rel="stylesheet" href="{{prefix}}assets/food.css?v={{asset_v}}">
 <style>
 .share-main{max-width:860px;padding-block:36px 74px}
-.share-head{padding-bottom:22px}
+.share-head{padding-bottom:22px;display:flex;align-items:flex-start;gap:16px}
+.share-label{width:86px;height:108px;border-radius:10px;overflow:hidden;flex:none;border:1px solid var(--line);background:#fff;box-shadow:0 8px 24px rgba(15,107,79,.08);margin-top:4px}
+.share-label img{width:100%;height:100%;object-fit:cover;display:block}
 .share-head h1{font-size:34px;line-height:1.1;letter-spacing:-.04em;margin-top:8px}
 .share-meta{color:var(--muted);font-size:12px;margin-top:8px}
 .share-verdict h2{font-size:23px;line-height:1.25;letter-spacing:-.03em}
@@ -38,7 +40,7 @@
   <div class="share-loading" id="shareLoading"><span class="spinner"></span><span>{{scan_pending}}</span></div>
   <div class="share-error hidden" id="shareError"><h1>{{scan_failed}}</h1><a class="btn" href="../">{{cta}}</a></div>
   <article class="hidden" id="shareContent">
-    <header class="share-head"><span class="kicker">{{share_heading}} · AIGLOSSA FOOD</span><h1 id="shareName">—</h1><p class="share-meta" id="shareMeta"></p></header>
+    <header class="share-head"><div class="share-label hidden" id="shareLabel"><img id="shareImage" alt=""></div><div class="share-copy"><span class="kicker">{{share_heading}} · AIGLOSSA FOOD</span><h1 id="shareName">—</h1><p class="share-meta" id="shareMeta"></p></div></header>
     <section class="card share-verdict" id="shareVerdict"></section>
     <section class="card hidden" id="sharePeople"></section>
     <section class="card"><div class="card-head"><h3>{{nutrition}}</h3><span id="shareServing"></span></div><div class="nut-grid report" id="shareNutrition"></div><div id="shareNutritionNotes"><p class="nutrition-note">{{nutrition_note_generic}}</p><p class="nutrition-note">{{energy_note}}</p></div></section>
