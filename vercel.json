@@ -8,10 +8,490 @@
         {
           "type": "host",
           "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh-(TW|HK|MO|Hant|tw|hk|mo).*"
+        }
+      ],
+      "destination": "/zh-Hant/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh.*"
+        }
+      ],
+      "destination": "/zh-Hans/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ja.*"
+        }
+      ],
+      "destination": "/ja/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ko.*"
+        }
+      ],
+      "destination": "/ko/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^es.*"
+        }
+      ],
+      "destination": "/es/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^pt.*"
+        }
+      ],
+      "destination": "/pt/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^fr.*"
+        }
+      ],
+      "destination": "/fr/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^de.*"
+        }
+      ],
+      "destination": "/de/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^it.*"
+        }
+      ],
+      "destination": "/it/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ru.*"
+        }
+      ],
+      "destination": "/ru/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ar.*"
+        }
+      ],
+      "destination": "/ar/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^th.*"
+        }
+      ],
+      "destination": "/th/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^vi.*"
+        }
+      ],
+      "destination": "/vi/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^id.*"
+        }
+      ],
+      "destination": "/id/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^tr.*"
+        }
+      ],
+      "destination": "/tr/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
         }
       ],
       "destination": "/en/food/",
-      "permanent": true
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh-(TW|HK|MO|Hant|tw|hk|mo).*"
+        }
+      ],
+      "destination": "/zh-Hant/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh.*"
+        }
+      ],
+      "destination": "/zh-Hans/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ja.*"
+        }
+      ],
+      "destination": "/ja/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ko.*"
+        }
+      ],
+      "destination": "/ko/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^es.*"
+        }
+      ],
+      "destination": "/es/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^pt.*"
+        }
+      ],
+      "destination": "/pt/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^fr.*"
+        }
+      ],
+      "destination": "/fr/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^de.*"
+        }
+      ],
+      "destination": "/de/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^it.*"
+        }
+      ],
+      "destination": "/it/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ru.*"
+        }
+      ],
+      "destination": "/ru/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ar.*"
+        }
+      ],
+      "destination": "/ar/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^th.*"
+        }
+      ],
+      "destination": "/th/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^vi.*"
+        }
+      ],
+      "destination": "/vi/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^id.*"
+        }
+      ],
+      "destination": "/id/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^tr.*"
+        }
+      ],
+      "destination": "/tr/food/",
+      "permanent": false
     },
     {
       "source": "/",
@@ -22,7 +502,7 @@
         }
       ],
       "destination": "/en/food/",
-      "permanent": true
+      "permanent": false
     },
     {
       "source": "/music/",
