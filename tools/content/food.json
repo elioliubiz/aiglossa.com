@@ -80,7 +80,7 @@
     "value_2_title": "Nutrition analysis",
     "value_2_body": "Per 100g, per serving and NRV together — high, medium and low in a way you can read.",
     "value_3_title": "Who should note",
-    "value_3_body": "General notes for people who may need to be careful: sodium, sugar, allergens, additives.",
+    "value_3_body": "General notes for people who may need to watch sodium, sugar, allergens, or additives.",
     "recent": "Recent scans",
     "how_title": "How it works",
     "how_1": "Photograph the label",
@@ -108,7 +108,8 @@
     "contact": "Contact",
     "cancel": "Cancel",
     "cautions": "Cautions",
-    "value_head": "One label, three layers"
+    "value_head": "One label, three layers",
+    "value_intro": "Ingredients, nutrition, and who may need to pay attention — explained in plain language."
   },
   "zh-Hans": {
     "title": "食品标签扫描 — AIGLOSSA FOOD",
@@ -191,7 +192,7 @@
     "value_2_title": "营养分析",
     "value_2_body": "每 100g、每份和 NRV 放在一起看，高/中/低用你能看懂的方式标出来。",
     "value_3_title": "人群注意",
-    "value_3_body": "不假设你是谁，但会提示钠、糖、过敏原、添加剂等需要注意的人群。",
+    "value_3_body": "对钠、糖、过敏原、添加剂等需要留意的人群，给出通用提示。",
     "recent": "最近扫描",
     "how_title": "怎么用",
     "how_1": "拍下标签",
@@ -219,7 +220,8 @@
     "contact": "联系",
     "cancel": "取消",
     "cautions": "注意事项",
-    "value_head": "一张标签，三层信息"
+    "value_head": "一张标签，三层信息",
+    "value_intro": "配料、营养，以及哪些人需要注意，用看得懂的方式讲清楚。"
   },
   "zh-Hant": {
     "title": "食品標籤掃描 — AIGLOSSA FOOD",
@@ -302,7 +304,7 @@
     "value_2_title": "營養分析",
     "value_2_body": "結合每 100 克、每份及 NRV 數據，以易讀方式呈現高、中、低含量。",
     "value_3_title": "注意事項",
-    "value_3_body": "針對鈉、糖、過敏原及添加物等，為需要特別留意的人士提供建議。",
+    "value_3_body": "對鈉、糖、過敏原、添加劑等需要留意的人群，給出通用提示。",
     "recent": "近期掃描",
     "how_title": "運作方式",
     "how_1": "拍攝標籤照片",
@@ -330,7 +332,8 @@
     "contact": "聯絡我們",
     "cancel": "取消",
     "cautions": "注意事項",
-    "value_head": "一張標籤，三層資訊"
+    "value_head": "一張標籤，三層資訊",
+    "value_intro": "配料、營養，以及哪些人需要注意，用看得懂的方式講清楚。"
   },
   "ja": {
     "title": "食品ラベルスキャン — AIGLOSSA FOOD",
@@ -413,7 +416,7 @@
     "value_2_title": "栄養分析",
     "value_2_body": "100gあたり、1食分あたり、NRVを統合し、高・中・低を分かりやすく表示します。",
     "value_3_title": "注意が必要な方",
-    "value_3_body": "ナトリウム、糖分、アレルゲン、添加物など、注意が必要な方への一般的なアドバイスです。",
+    "value_3_body": "ナトリウム、糖、アレルゲン、添加物などに注意が必要な人向けの一般的な情報。",
     "recent": "最近のスキャン",
     "how_title": "使い方",
     "how_1": "ラベルを撮影する",
@@ -441,7 +444,8 @@
     "contact": "お問い合わせ",
     "cancel": "キャンセル",
     "cautions": "注意点",
-    "value_head": "1枚のラベル、3つの情報"
+    "value_head": "1枚のラベル、3つの情報",
+    "value_intro": "原材料、栄養、そして注意が必要な人を、わかりやすい言葉で。"
   },
   "ko": {
     "title": "식품 라벨 스캔 — AIGLOSSA FOOD",
@@ -524,7 +528,7 @@
     "value_2_title": "영양 분석",
     "value_2_body": "100g당, 1회 제공량당, NRV를 종합하여 높음/보통/낮음을 한눈에 확인하세요.",
     "value_3_title": "주의 대상",
-    "value_3_body": "나트륨, 당류, 알레르기 유발 물질, 첨가물 등 주의가 필요한 분들을 위한 일반적인 참고사항입니다.",
+    "value_3_body": "나트륨, 당, 알레르겐, 첨가물 등에 주의가 필요한 사람을 위한 일반적인 안내.",
     "recent": "최근 스캔",
     "how_title": "이용 방법",
     "how_1": "라벨을 촬영하세요",
@@ -552,7 +556,8 @@
     "contact": "문의하기",
     "cancel": "취소",
     "cautions": "주의사항",
-    "value_head": "라벨 하나, 세 가지 정보"
+    "value_head": "라벨 하나, 세 가지 정보",
+    "value_intro": "원재료, 영양, 주의가 필요한 사람까지 알기 쉽게 설명합니다."
   },
   "es": {
     "title": "Escáner de etiquetas de alimentos — AIGLOSSA FOOD",
@@ -635,7 +640,7 @@
     "value_2_title": "Análisis nutricional",
     "value_2_body": "Por 100g, por porción y VRN juntos: niveles altos, medios y bajos explicados de forma sencilla.",
     "value_3_title": "Quién debe prestar atención",
-    "value_3_body": "Notas generales para personas que deben ser precavidas: sodio, azúcar, alérgenos, aditivos.",
+    "value_3_body": "Notas generales para quienes deben cuidar el sodio, el azúcar, los alérgenos o los aditivos.",
     "recent": "Escaneos recientes",
     "how_title": "Cómo funciona",
     "how_1": "Fotografía la etiqueta",
@@ -663,7 +668,8 @@
     "contact": "Contacto",
     "cancel": "Cancelar",
     "cautions": "Precauciones",
-    "value_head": "Una etiqueta, tres capas"
+    "value_head": "Una etiqueta, tres capas",
+    "value_intro": "Ingredientes, nutrición y quién debería prestar atención, explicado con claridad."
   },
   "fr": {
     "title": "Scan d'étiquettes alimentaires — AIGLOSSA FOOD",
@@ -746,7 +752,7 @@
     "value_2_title": "Analyse nutritionnelle",
     "value_2_body": "Par 100g, par portion et VNR combinés — des indicateurs clairs de teneur élevée, moyenne ou faible.",
     "value_3_title": "Qui doit faire attention",
-    "value_3_body": "Notes générales pour les personnes devant être vigilantes : sodium, sucres, allergènes, additifs.",
+    "value_3_body": "Des notes générales pour les personnes attentives au sodium, au sucre, aux allergènes ou aux additifs.",
     "recent": "Scans récents",
     "how_title": "Comment ça marche",
     "how_1": "Prenez l'étiquette en photo",
@@ -774,7 +780,8 @@
     "contact": "Contact",
     "cancel": "Annuler",
     "cautions": "Précautions",
-    "value_head": "Une étiquette, trois niveaux"
+    "value_head": "Une étiquette, trois niveaux",
+    "value_intro": "Ingrédients, nutrition et personnes à surveiller, expliqués simplement."
   },
   "de": {
     "title": "Lebensmittel-Scan — AIGLOSSA FOOD",
@@ -857,7 +864,7 @@
     "value_2_title": "Nährwertanalyse",
     "value_2_body": "Pro 100g, pro Portion und NRV zusammengefasst – verständliche Einordnung in hoch, mittel und niedrig.",
     "value_3_title": "Wer sollte aufpassen",
-    "value_3_body": "Allgemeine Hinweise für Personen, die vorsichtig sein sollten: Natrium, Zucker, Allergene, Zusatzstoffe.",
+    "value_3_body": "Allgemeine Hinweise für Menschen, die auf Natrium, Zucker, Allergene oder Zusatzstoffe achten sollten.",
     "recent": "Letzte Scans",
     "how_title": "Funktionsweise",
     "how_1": "Etikett fotografieren",
@@ -885,7 +892,8 @@
     "contact": "Kontakt",
     "cancel": "Abbrechen",
     "cautions": "Hinweise",
-    "value_head": "Ein Etikett, drei Ebenen"
+    "value_head": "Ein Etikett, drei Ebenen",
+    "value_intro": "Zutaten, Nährwerte und wer aufpassen sollte – verständlich erklärt."
   },
   "pt": {
     "title": "Scanner de rótulos — AIGLOSSA FOOD",
@@ -968,7 +976,7 @@
     "value_2_title": "Análise nutricional",
     "value_2_body": "Por 100g, por porção e VRN juntos — alto, médio e baixo de forma fácil de ler.",
     "value_3_title": "Quem deve observar",
-    "value_3_body": "Notas gerais para pessoas que precisam de cautela: sódio, açúcar, alérgenos, aditivos.",
+    "value_3_body": "Notas gerais para quem precisa ficar atento a sódio, açúcar, alérgenos ou aditivos.",
     "recent": "Digitalizações recentes",
     "how_title": "Como funciona",
     "how_1": "Fotografe o rótulo",
@@ -996,7 +1004,8 @@
     "contact": "Contato",
     "cancel": "Cancelar",
     "cautions": "Atenção",
-    "value_head": "Um rótulo, três camadas"
+    "value_head": "Um rótulo, três camadas",
+    "value_intro": "Ingredientes, nutrição e quem deve ficar atento, explicado de forma clara."
   },
   "it": {
     "title": "Scansione etichette alimentari — AIGLOSSA FOOD",
@@ -1079,7 +1088,7 @@
     "value_2_title": "Analisi nutrizionale",
     "value_2_body": "Valori per 100g, per porzione e VNR — livelli alti, medi e bassi presentati in modo leggibile.",
     "value_3_title": "Chi deve prestare attenzione",
-    "value_3_body": "Note generali per chi deve essere cauto: sodio, zuccheri, allergeni, additivi.",
+    "value_3_body": "Note generali per chi deve prestare attenzione a sodio, zuccheri, allergeni o additivi.",
     "recent": "Scansioni recenti",
     "how_title": "Come funziona",
     "how_1": "Fotografa l'etichetta",
@@ -1107,7 +1116,8 @@
     "contact": "Contatti",
     "cancel": "Annulla",
     "cautions": "Attenzione",
-    "value_head": "Un'etichetta, tre livelli"
+    "value_head": "Un'etichetta, tre livelli",
+    "value_intro": "Ingredienti, nutrizione e chi dovrebbe prestare attenzione, spiegati con chiarezza."
   },
   "ru": {
     "title": "Сканирование этикеток — AIGLOSSA FOOD",
@@ -1190,7 +1200,7 @@
     "value_2_title": "Анализ ценности",
     "value_2_body": "Данные на 100 г, на порцию и NRV — наглядно о содержании веществ.",
     "value_3_title": "Кому стоит обратить внимание",
-    "value_3_body": "Общие рекомендации для тех, кому нужно следить за потреблением натрия, сахара, аллергенов или добавок.",
+    "value_3_body": "Общие рекомендации для тех, кому важно следить за натрием, сахаром, аллергенами или добавками.",
     "recent": "Недавние сканы",
     "how_title": "Как это работает",
     "how_1": "Сфотографируйте этикетку",
@@ -1218,7 +1228,8 @@
     "contact": "Контакты",
     "cancel": "Отмена",
     "cautions": "Внимание",
-    "value_head": "Одна этикетка — три уровня"
+    "value_head": "Одна этикетка — три уровня",
+    "value_intro": "Состав, пищевая ценность и кому стоит быть внимательнее — простыми словами."
   },
   "ar": {
     "title": "مسح ملصقات الطعام — AIGLOSSA FOOD",
@@ -1301,7 +1312,7 @@
     "value_2_title": "التحليل الغذائي",
     "value_2_body": "لكل 100 جرام، لكل حصة، ونسبة NRV معاً — مستويات مرتفعة، متوسطة، ومنخفضة بطريقة سهلة القراءة.",
     "value_3_title": "لمن يجب عليهم الانتباه",
-    "value_3_body": "ملاحظات عامة للأشخاص الذين قد يحتاجون إلى الحذر: الصوديوم، السكر، مسببات الحساسية، والإضافات.",
+    "value_3_body": "ملاحظات عامة لمن يحتاج إلى الانتباه إلى الصوديوم أو السكر أو مسببات الحساسية أو المضافات.",
     "recent": "عمليات المسح الأخيرة",
     "how_title": "كيف يعمل",
     "how_1": "صور الملصق",
@@ -1329,7 +1340,8 @@
     "contact": "اتصل بنا",
     "cancel": "إلغاء",
     "cautions": "تنبيهات",
-    "value_head": "ملصق واحد، ثلاث طبقات"
+    "value_head": "ملصق واحد، ثلاث طبقات",
+    "value_intro": "المكونات والتغذية ومن يجب أن ينتبه — بشرح واضح."
   },
   "th": {
     "title": "สแกนฉลากอาหาร — AIGLOSSA FOOD",
@@ -1412,7 +1424,7 @@
     "value_2_title": "วิเคราะห์โภชนาการ",
     "value_2_body": "แสดงข้อมูลต่อ 100 กรัม ต่อหน่วยบริโภค และ NRV พร้อมระดับสูง ปานกลาง ต่ำ ที่อ่านง่าย",
     "value_3_title": "ข้อควรระวัง",
-    "value_3_body": "สรุปข้อมูลสำหรับผู้ที่ต้องดูแลสุขภาพเป็นพิเศษ เช่น โซเดียม น้ำตาล สารก่อภูมิแพ้ และสารเติมแต่ง",
+    "value_3_body": "คำแนะนำทั่วไปสำหรับผู้ที่ควรระวังโซเดียม น้ำตาล สารก่อภูมิแพ้ หรือสารเติมแต่ง",
     "recent": "การสแกนล่าสุด",
     "how_title": "วิธีการใช้งาน",
     "how_1": "ถ่ายรูปฉลากอาหาร",
@@ -1440,7 +1452,8 @@
     "contact": "ติดต่อเรา",
     "cancel": "ยกเลิก",
     "cautions": "ข้อควรระวัง",
-    "value_head": "ฉลากหนึ่งใบ สามชั้นข้อมูล"
+    "value_head": "ฉลากหนึ่งใบ สามชั้นข้อมูล",
+    "value_intro": "ส่วนผสม โภชนาการ และใครที่ควรระวัง — อธิบายให้เข้าใจง่าย"
   },
   "vi": {
     "title": "Quét nhãn thực phẩm — AIGLOSSA FOOD",
@@ -1523,7 +1536,7 @@
     "value_2_title": "Phân tích dinh dưỡng",
     "value_2_body": "Số liệu trên 100g, mỗi khẩu phần và NRV — mức cao, trung bình, thấp được trình bày dễ đọc.",
     "value_3_title": "Ai cần lưu ý",
-    "value_3_body": "Lưu ý chung cho những người cần cẩn trọng: natri, đường, chất gây dị ứng, phụ gia.",
+    "value_3_body": "Lưu ý chung cho những người cần chú ý đến natri, đường, chất gây dị ứng hoặc phụ gia.",
     "recent": "Quét gần đây",
     "how_title": "Cách hoạt động",
     "how_1": "Chụp ảnh nhãn thực phẩm",
@@ -1551,7 +1564,8 @@
     "contact": "Liên hệ",
     "cancel": "Hủy",
     "cautions": "Lưu ý",
-    "value_head": "Một nhãn, ba lớp thông tin"
+    "value_head": "Một nhãn, ba lớp thông tin",
+    "value_intro": "Thành phần, dinh dưỡng và những ai cần lưu ý — giải thích dễ hiểu."
   },
   "id": {
     "title": "Pindai label makanan — AIGLOSSA FOOD",
@@ -1634,7 +1648,7 @@
     "value_2_title": "Analisis nutrisi",
     "value_2_body": "Per 100g, per sajian, dan NRV disajikan bersama — tinggi, sedang, dan rendah dalam format yang mudah dibaca.",
     "value_3_title": "Catatan penting",
-    "value_3_body": "Catatan umum bagi mereka yang perlu berhati-hati: natrium, gula, alergen, dan zat aditif.",
+    "value_3_body": "Catatan umum bagi orang yang perlu memperhatikan natrium, gula, alergen, atau aditif.",
     "recent": "Riwayat pindai",
     "how_title": "Cara kerja",
     "how_1": "Foto labelnya",
@@ -1662,7 +1676,8 @@
     "contact": "Kontak",
     "cancel": "Batal",
     "cautions": "Perhatian",
-    "value_head": "Satu label, tiga lapisan"
+    "value_head": "Satu label, tiga lapisan",
+    "value_intro": "Bahan, nutrisi, dan siapa yang perlu berhati-hati — dijelaskan dengan jelas."
   },
   "tr": {
     "title": "Gıda etiketi tarama — AIGLOSSA FOOD",
@@ -1745,7 +1760,7 @@
     "value_2_title": "Besin analizi",
     "value_2_body": "100g ve porsiyon başına değerler ile BRD; yüksek, orta ve düşük seviyeler kolay okunabilir şekilde.",
     "value_3_title": "Dikkat etmesi gerekenler",
-    "value_3_body": "Sodyum, şeker, alerjenler ve katkı maddeleri gibi konularda dikkatli olması gerekenler için genel notlar.",
+    "value_3_body": "Sodyum, şeker, alerjenler veya katkı maddelerine dikkat etmesi gerekenler için genel notlar.",
     "recent": "Son taramalar",
     "how_title": "Nasıl çalışır",
     "how_1": "Etiketin fotoğrafını çekin",
@@ -1773,6 +1788,7 @@
     "contact": "İletişim",
     "cancel": "İptal",
     "cautions": "Dikkat",
-    "value_head": "Bir etiket, üç katman"
+    "value_head": "Bir etiket, üç katman",
+    "value_intro": "İçindekiler, besin değerleri ve kimlerin dikkat etmesi gerektiği — anlaşılır bir dille."
   }
 }
