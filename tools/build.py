@@ -46,7 +46,7 @@ FOOD_ASSET_VERSION = "20261031-26"
 
 SKIN_ASSETS = (
     "food.css", "skin.css", "skin.js", "skin-share.js", "wallet.js", "favicon-skin.svg",
-    "apple-touch-icon-skin.png", "og-skin.png", "skin-sample.jpg", "skin-icon-192.png", "skin-icon-512.png",
+    "apple-touch-icon-skin.png", "og-skin.png", "skin-sample.jpg", "favicon-skin-64.png", "favicon-skin.ico", "skin-icon-192.png", "skin-icon-512.png",
     "skin-icon-maskable-512.png",
 )
 SKIN_ASSET_VERSION = "20261101-5"
