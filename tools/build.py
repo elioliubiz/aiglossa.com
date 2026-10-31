@@ -36,6 +36,12 @@ TEMPLATES = ROOT / "tools" / "templates"
 SITES_DIR = ROOT / "sites"
 ASSETS = ROOT / "assets"
 
+# food 只使用自己的少量资源，避免把 scholan 截图等整套 assets 复制过去。
+FOOD_ASSETS = (
+    "food.css", "food.js", "wallet.js", "favicon-tools.svg", "og.png",
+    "food-icon-192.png", "food-icon-512.png", "food-icon-maskable-512.png", "food-sample.jpg",
+)
+
 # 占位符统一用 {{key}}：模板是纯文件，渲染器只知道这一种语法，
 # 于是"模板里有占位符、文案里没有对应字段"会在构建时报错，而不是静默留下 {{...}}。
 PLACEHOLDER = re.compile(r"\{\{([a-zA-Z0-9_]+)\}\}")
@@ -936,7 +942,14 @@ def main() -> int:
             target_assets = SITES_DIR / site / "assets"
             if target_assets.exists():
                 shutil.rmtree(target_assets)
-            shutil.copytree(ASSETS, target_assets)
+            if site == "food":
+                target_assets.mkdir(parents=True)
+                for name in FOOD_ASSETS:
+                    source_asset = ASSETS / name
+                    if source_asset.exists():
+                        shutil.copy2(source_asset, target_assets / name)
+            else:
+                shutil.copytree(ASSETS, target_assets)
             written.append(f'{site:34s} -> sites/{site}/assets/（资源副本）')
 
     print(("校验通过（未写文件）" if args.check else "已生成页面") + "：")
