@@ -12,7 +12,7 @@
   var FEATURE = "skin-scan";
   var device = localStorage.getItem("aig_device") || (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()));
   localStorage.setItem("aig_device", device);
-  var state = { user: null, balance: 0, files: [], previews: [], images: [], active: 0, scan: null, history: [], warned: false };
+  var state = { user: null, balance: 0, files: [], previews: [], images: [], active: 0, scan: null, history: [], historyUrls: [], warned: false };
 
   function esc(v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function call(path, data) {
@@ -33,6 +33,7 @@
       var img = el.querySelector("img"); img.onerror = function () { el.textContent = initial; };
     } else el.textContent = initial;
   }
+  function statusLabel(status) { return UI["status_" + status] || status; }
   function syncAuth(signedIn) {
     ["accountBtn", "buyBtn"].forEach(function (id) { if ($(id)) $(id).classList.toggle("hidden", !signedIn); });
     if ($("loginBtn")) $("loginBtn").classList.toggle("hidden", signedIn);
@@ -275,15 +276,32 @@
   }
   function loadHistory() {
     if (!state.user) return;
+    state.historyUrls.forEach(function (u) { URL.revokeObjectURL(u); });
+    state.historyUrls = [];
     call("/ai/skin/works", {}).then(function (d) {
       if (d.code !== 200 || !d.data) return;
       state.history = d.data.items || [];
       if (!state.history.length) { $("historyList").innerHTML = '<div class="history-empty">' + esc(UI.no_history) + '</div>'; return; }
       $("historyList").innerHTML = state.history.map(function (x) {
-        return '<button class="history-item" data-id="' + x.id + '"><span class="history-thumb">' + (x.has_image ? "◌" : "—") + '</span><span class="history-copy"><b>' + esc(x.product_name || UI.product) + '</b><small>' + esc(x.headline || "") + '</small></span><span class="history-status">' + esc(x.product_count || 1) + ' · ' + esc(x.status) + '</span></button>';
+        var count = x.product_count || 1;
+        var meta = count + " " + (UI.product_unit || UI.products) + " · " + statusLabel(x.status);
+        return '<button class="history-item" data-id="' + x.id + '"><span class="history-thumb" data-history-thumb="' + x.id + '">' + (x.has_image ? "◌" : "—") + '</span><span class="history-copy"><b>' + esc(x.product_name || UI.product) + '</b><small>' + esc(x.headline || "") + '</small></span><span class="history-status">' + esc(meta) + '</span></button>';
       }).join("");
       Array.prototype.forEach.call(document.querySelectorAll(".history-item"), function (el) { el.onclick = function () { openHistory(Number(el.dataset.id)); }; });
+      state.history.forEach(function (x) { if (x.has_image) loadHistoryThumb(x.id); });
     });
+  }
+  function loadHistoryThumb(id) {
+    fetch(API + "/ai/skin/scan/" + id + "/image?index=0", {
+      method: "POST", credentials: "include",
+      headers: { "Content-Type": "application/json", "X-Client": "web" },
+      body: JSON.stringify({ app_key: "tools", feature: FEATURE, device: device, timestamp: Math.floor(Date.now() / 1000) })
+    }).then(function (r) { return r.ok ? r.blob() : null; }).then(function (blob) {
+      if (!blob) return;
+      var url = URL.createObjectURL(blob); state.historyUrls.push(url);
+      var el = document.querySelector('[data-history-thumb="' + id + '"]');
+      if (el) el.innerHTML = '<img src="' + esc(url) + '" alt="">';
+    }).catch(function () {});
   }
   function openHistory(id) {
     call("/ai/skin/scan/" + id, {}).then(function (d) {
