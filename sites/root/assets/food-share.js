@@ -53,7 +53,7 @@
     var hasInferred = false;
     var ing = all.slice(0, 80).map(function (x, i) {
       var orig = String(x.original_text || "").trim(), nm = String(x.name || "").trim();
-      var origHtml = orig && normalize(orig) !== normalize(nm) ? ' <span class="orig-inline">' + esc(UI.original) + '：' + esc(orig) + '</span>' : "";
+      var origHtml = orig && normalize(orig) !== normalize(nm) ? ' <span class="orig-inline">' + esc(UI.original) + ': ' + esc(orig) + '</span>' : "";
       var fn = String(x.function || "").trim();
       var flags = (x.flags || []).map(function (f) { return String(f || "").trim(); }).filter(Boolean);
       var inferred = x.flags_source === "inferred" || x.flags_source === "mixed";

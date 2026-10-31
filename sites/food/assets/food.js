@@ -362,7 +362,7 @@
       var orig = String(item.original_text || "").trim();
       var nm = String(item.name || "").trim();
       var same = orig && normalize(orig) === normalize(nm);
-      var origHtml = (orig && !same) ? ' <span class="orig-inline">' + esc(UI.original) + '：' + esc(orig) + '</span>' : "";
+      var origHtml = (orig && !same) ? ' <span class="orig-inline">' + esc(UI.original) + ': ' + esc(orig) + '</span>' : "";
       var extra = index >= 6 ? " ing-extra hidden" : "";
       return '<div class="report-ing' + extra + '"><div class="ing-title"><div class="nm">' + esc(nm) + origHtml + '</div></div><div class="why">' + esc(why) + '</div>' + badgeHtml + '</div>';
     }).join("");
