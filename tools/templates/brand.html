@@ -248,8 +248,8 @@
   .tile-desc{font-size:11.5px;line-height:1.55;color:rgba(246,245,241,.76);margin-top:10px;max-width:34ch}
   .tile-open{margin-top:auto;padding-top:14px;font-size:11px;color:rgba(246,245,241,.8)}
   .product-tile:hover .tile-open{color:#fff}
-  .more-tile{cursor:default;background:linear-gradient(150deg,rgba(255,122,26,.08),rgba(255,255,255,.015))}
-  .more-tile:after{background:linear-gradient(160deg,rgba(8,8,10,.2),rgba(8,8,10,.8))}
+  .more-tile{cursor:default;background:transparent;border:0;border-radius:0}
+  .more-tile:after{display:none}
   .more-tile .tile-desc{color:var(--mut)}
   .more-tile .tile-icon{background:rgba(255,122,26,.14);color:var(--tools)}
   .more-tile .tile-icon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
@@ -310,6 +310,7 @@
           <div class="product-tile more-tile">
             <div class="tile-content">
               <div class="tile-head"><span class="tile-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><h3>{{more_apps}}</h3></div>
+              <p class="tile-desc">{{more_apps_desc}}</p>
             </div>
           </div>
         </div>
@@ -445,8 +446,8 @@
   .tile-desc{font-size:11.5px;line-height:1.55;color:rgba(246,245,241,.76);margin-top:10px;max-width:34ch}
   .tile-open{margin-top:auto;padding-top:14px;font-size:11px;color:rgba(246,245,241,.8)}
   .product-tile:hover .tile-open{color:#fff}
-  .more-tile{cursor:default;background:linear-gradient(150deg,rgba(255,122,26,.08),rgba(255,255,255,.015))}
-  .more-tile:after{background:linear-gradient(160deg,rgba(8,8,10,.2),rgba(8,8,10,.8))}
+  .more-tile{cursor:default;background:transparent;border:0;border-radius:0}
+  .more-tile:after{display:none}
   .more-tile .tile-desc{color:var(--mut)}
   .more-tile .tile-icon{background:rgba(255,122,26,.14);color:var(--tools)}
   .more-tile .tile-icon svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
@@ -468,5 +469,5 @@
 .tile-content{text-shadow:0 1px 12px rgba(0,0,0,.55)}
 .tile-status{flex:none;background:rgba(8,8,10,.52)}
 .tile-head h3{max-width:calc(100% - 82px)}
-.more-tile .tile-content{justify-content:flex-start}
+.more-tile .tile-content{justify-content:center;padding-inline:24px}
 </style>

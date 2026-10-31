@@ -661,6 +661,7 @@ def main() -> int:
                         "hero_cta_products": esc(locale["hero_cta_products"]),
                         "hero_cta_tools": esc(locale["hero_cta_tools"]),
                         "more_apps": esc(locale["more_apps"]),
+                        "more_apps_desc": esc(locale.get("more_apps_desc", "")),
                         "support_label": esc(locale["support_label"]),
                         "scholan_desc": esc(_capitalize(marketing_title.split("—", 1)[1].strip())),
                         "scholan_href": f"{scholan_base}/{lang}/",
