@@ -42,7 +42,7 @@ FOOD_ASSETS = (
     "food-icon-192.png", "food-icon-512.png", "food-icon-maskable-512.png", "food-sample.jpg",
 )
 
-FOOD_ASSET_VERSION = "20261031-19"
+FOOD_ASSET_VERSION = "20261031-21"
 
 # 占位符统一用 {{key}}：模板是纯文件，渲染器只知道这一种语法，
 # 于是"模板里有占位符、文案里没有对应字段"会在构建时报错，而不是静默留下 {{...}}。
@@ -357,7 +357,7 @@ def _write_food_pwa(site: str, site_langs: list[str], languages: dict) -> None:
             json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
         sw = f"""/* aiglossa food service worker — network-first; cache is only an offline fallback. */
-const CACHE = "aiglossa-food-{lang}-v23";
+const CACHE = "aiglossa-food-{lang}-v25";
 const V = "{FOOD_ASSET_VERSION}";
 const SHELL = ["./", "../../assets/food.css?v=" + V, "../../assets/food.js?v=" + V, "../../assets/wallet.js?v=" + V, "../../assets/food-icon-192.png?v=" + V, "../../assets/food-icon-512.png?v=" + V, "../../assets/food-sample.jpg?v=" + V];
 self.addEventListener("install", (event) => {{
@@ -896,6 +896,7 @@ def main() -> int:
                         "account_label": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["account_label"]),
                         "credits_unit": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["credits_unit"]),
                         "buy": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["buy"]),
+                        "buy_short": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["buy_short"]),
                         "recent_title": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["make"]["mine_title"]),
                         "guides_list": "".join(
                             f'      <li><a href="guides/{slug}.html">{esc(g.get("h1") or g["title"])}</a></li>\n'

@@ -35,10 +35,10 @@
 <meta property="og:image:alt" content="AIGLOSSA TOOLS">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "aiglossa tools", "url": "https://tools.aiglossa.com/th/", "inLanguage": "th", "publisher": {"@type": "Organization", "name": "aiglossa", "url": "https://aiglossa.com"}}</script>
-<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-19" type="image/svg+xml">
-<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-19" sizes="any">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261031-19">
-<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261031-19">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-21" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-21" sizes="any">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261031-21">
+<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261031-21">
 <meta name="theme-color" content="#0e0f11">
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/theme.css">
@@ -75,8 +75,8 @@
   .closing-band .cta{white-space:nowrap}
   .tools-nav{position:sticky;top:0;z-index:40;background:rgba(14,15,17,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
   .tools-actions{display:flex;align-items:center;gap:14px}
-  .tools-lang{position:relative;font-size:12px;color:var(--muted,#96a0b5)}
-  .tools-lang summary{list-style:none;cursor:pointer;padding:8px 4px;border-radius:8px}
+  .tools-lang{position:relative;font-size:12px;color:var(--muted,#96a0b5);border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03);border-radius:999px;padding:0 10px}
+  .tools-lang summary{list-style:none;cursor:pointer;padding:7px 0;border-radius:8px;font-size:12px}
   .tools-lang summary::-webkit-details-marker{display:none}
   .tools-lang summary:hover{color:var(--fg)}
   .tools-lang ul{position:absolute;inset-inline-end:0;top:calc(100% + 8px);min-width:150px;max-height:320px;overflow:auto;background:#16181c;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:6px;list-style:none;box-shadow:0 18px 40px rgba(0,0,0,.35);z-index:50}
@@ -88,8 +88,8 @@
   .foot .brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
   .foot .legal{margin-inline:auto}
   .foot .brand img{width:22px;height:22px;border-radius:6px;display:block}
-  .tools-account{display:inline-flex;align-items:center;gap:7px;color:var(--muted,#96a0b5);font-size:12px;text-decoration:none;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:5px 12px 5px 5px;background:rgba(255,255,255,.03)}
-  .tools-account:hover{border-color:rgba(255,255,255,.24);color:var(--ink)}
+  .tools-account{display:inline-flex;align-items:center;gap:7px;color:var(--muted,#96a0b5);font-size:12px;text-decoration:none;border:0;background:transparent;padding:0}
+  .tools-account:hover{color:var(--ink)}
   .tools-account:hover{color:var(--fg)}
   .tools-avatar{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;
                 border:1px solid rgba(255,255,255,.22);background:rgba(255,122,26,.12);color:#ffb27a;font-size:10px;font-weight:600;overflow:hidden}
@@ -98,17 +98,22 @@
   .tools-account-balance{color:var(--fg);font-variant-numeric:tabular-nums}
   .tools-account-email{display:none}
   .tools-buy{padding:7px 10px;border:1px solid rgba(255,122,26,.28);border-radius:8px;color:#ffc69e;background:rgba(255,122,26,.075);font-size:12px;text-decoration:none;white-space:nowrap}
+  .tools-buy-full{display:inline}
+  .tools-buy-short{display:none}
   .tools-buy:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.13);color:#fff}
   @media(max-width:560px){
     .tools-nav .wrap{padding-inline:14px;gap:10px}
     .tools-brand{font-size:10px;letter-spacing:.15em;gap:7px}
     .tools-brand img{width:24px;height:24px;border-radius:7px}
-    .tools-lang{display:none}
+    .tools-lang{display:block;padding:0 8px}
+    .tools-lang summary{font-size:11px;padding:6px 0}
     .tools-actions{gap:8px}
     .tools-account{padding:4px 9px 4px 4px;font-size:11px;gap:6px}
     .tools-avatar{width:22px;height:22px}
     .tools-account-balance{font-size:11px}
-    .tools-buy{display:none}
+    .tools-buy{padding:6px 9px;font-size:11px}
+    .tools-buy-full{display:none}
+    .tools-buy-short{display:inline}
     .tools-account-email{display:none}
   }
 </style>
@@ -116,7 +121,7 @@
 <body>
 <header class="tools-nav">
   <div class="wrap">
-    <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261031-19" alt=""> AIGLOSSA TOOLS</a>
+    <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261031-21" alt=""> AIGLOSSA</a>
     <div class="tools-actions">
       <details class="tools-lang"><summary>ไทย</summary><ul>        <li><a href="../ar/" data-lang="ar">العربية</a></li>
         <li><a href="../de/" data-lang="de">Deutsch</a></li>
@@ -141,7 +146,7 @@
           <span class="tools-account-balance" id="toolsAccountBalance"></span>
         </span>
       </a>
-      <a class="tools-buy" id="toolsBuy" href="https://aiglossa.com/th/webpricing">ซื้อเครดิต →</a>
+      <a class="tools-buy" id="toolsBuy" href="https://aiglossa.com/th/webpricing"><span class="tools-buy-full">ซื้อเครดิต →</span><span class="tools-buy-short">ซื้อ</span></a>
     </div>
   </div>
 </header>
@@ -191,7 +196,7 @@
 
 <footer>
   <div class="wrap foot">
-    <span class="brand"><img src="../assets/favicon-tools.svg?v=20261031-19" alt=""> AIGLOSSA TOOLS</span>
+    <span class="brand"><img src="../assets/favicon-tools.svg?v=20261031-21" alt=""> AIGLOSSA</span>
     <nav class="legal">
       <a href="https://aiglossa.com/th/protocol/privacy.html">นโยบายความเป็นส่วนตัว</a>
       <a href="https://aiglossa.com/th/protocol/term.html">ข้อกำหนดการให้บริการ</a>

@@ -123,7 +123,8 @@
     "share_cta": "Try label analysis",
     "daily_ref": "of daily ref.",
     "nutrition_note": "Per 100g. Percentages are based on a general adult daily reference, not a health score. “Not labeled” does not mean zero.",
-    "energy_note": "kcal and kJ are two units for the same energy; 1 kcal ≈ 4.184 kJ."
+    "energy_note": "kcal and kJ are two units for the same energy; 1 kcal ≈ 4.184 kJ.",
+    "buy_short": "Buy"
   },
   "zh-Hans": {
     "title": "食品标签扫描 — AIGLOSSA FOOD",
@@ -249,7 +250,8 @@
     "share_cta": "试试标签分析",
     "daily_ref": "占每日参考量",
     "nutrition_note": "以下为每100g的含量；百分比按一般成年人每日参考量估算，不是健康评分。“未标注”不等于 0。",
-    "energy_note": "kcal 和 kJ 是同一能量的两种单位；1 kcal ≈ 4.184 kJ。"
+    "energy_note": "kcal 和 kJ 是同一能量的两种单位；1 kcal ≈ 4.184 kJ。",
+    "buy_short": "购买"
   },
   "zh-Hant": {
     "title": "食品標籤掃描 — AIGLOSSA FOOD",
@@ -375,7 +377,8 @@
     "share_cta": "試試標籤分析",
     "daily_ref": "佔每日參考量",
     "nutrition_note": "以下為每100g的含量；百分比按一般成年人每日參考量估算，不是健康評分。「未標示」不等於 0。",
-    "energy_note": "kcal 和 kJ 是同一能量的兩種單位；1 kcal ≈ 4.184 kJ。"
+    "energy_note": "kcal 和 kJ 是同一能量的兩種單位；1 kcal ≈ 4.184 kJ。",
+    "buy_short": "購買"
   },
   "ja": {
     "title": "食品ラベルスキャン — AIGLOSSA FOOD",
@@ -501,7 +504,8 @@
     "share_cta": "ラベル分析を試す",
     "daily_ref": "1日の参考量の",
     "nutrition_note": "100gあたり。割合は一般的な成人の1日の参考量に対する目安で、健康スコアではありません。「未表示」は0ではありません。",
-    "energy_note": "kcal と kJ は同じエネルギーの2つの単位です。1 kcal ≈ 4.184 kJ。"
+    "energy_note": "kcal と kJ は同じエネルギーの2つの単位です。1 kcal ≈ 4.184 kJ。",
+    "buy_short": "購入"
   },
   "ko": {
     "title": "식품 라벨 스캔 — AIGLOSSA FOOD",
@@ -627,7 +631,8 @@
     "share_cta": "라벨 분석 해보기",
     "daily_ref": "일일 참고량의",
     "nutrition_note": "100g 기준. 비율은 일반 성인의 일일 참고량에 대한 비율이며 건강 점수가 아닙니다. \"미표시\"는 0이 아닙니다.",
-    "energy_note": "kcal와 kJ는 같은 에너지의 두 단위입니다. 1 kcal ≈ 4.184 kJ."
+    "energy_note": "kcal와 kJ는 같은 에너지의 두 단위입니다. 1 kcal ≈ 4.184 kJ.",
+    "buy_short": "구매"
   },
   "es": {
     "title": "Escáner de etiquetas de alimentos — AIGLOSSA FOOD",
@@ -753,7 +758,8 @@
     "share_cta": "Prueba el análisis de etiquetas",
     "daily_ref": "de la referencia diaria",
     "nutrition_note": "Por 100 g. Los porcentajes se basan en la referencia diaria de un adulto general, no son una puntuación de salud. «No indicado» no significa cero.",
-    "energy_note": "kcal y kJ son dos unidades de la misma energía; 1 kcal ≈ 4.184 kJ."
+    "energy_note": "kcal y kJ son dos unidades de la misma energía; 1 kcal ≈ 4.184 kJ.",
+    "buy_short": "Comprar"
   },
   "fr": {
     "title": "Scan d'étiquettes alimentaires — AIGLOSSA FOOD",
@@ -879,7 +885,8 @@
     "share_cta": "Essayer l’analyse d’étiquette",
     "daily_ref": "de la référence journalière",
     "nutrition_note": "Pour 100 g. Les pourcentages se basent sur la référence journalière d’un adulte moyen, pas sur un score santé. « Non indiqué » ne signifie pas zéro.",
-    "energy_note": "kcal et kJ sont deux unités de la même énergie ; 1 kcal ≈ 4.184 kJ."
+    "energy_note": "kcal et kJ sont deux unités de la même énergie ; 1 kcal ≈ 4.184 kJ.",
+    "buy_short": "Acheter"
   },
   "de": {
     "title": "Lebensmittel-Scan — AIGLOSSA FOOD",
@@ -1005,7 +1012,8 @@
     "share_cta": "Etikettenanalyse testen",
     "daily_ref": "der Tagesreferenz",
     "nutrition_note": "Pro 100 g. Prozentangaben beziehen sich auf die Tagesreferenz eines durchschnittlichen Erwachsenen, nicht auf einen Gesundheitswert. „Nicht angegeben“ bedeutet nicht null.",
-    "energy_note": "kcal und kJ sind zwei Einheiten derselben Energie; 1 kcal ≈ 4.184 kJ."
+    "energy_note": "kcal und kJ sind zwei Einheiten derselben Energie; 1 kcal ≈ 4.184 kJ.",
+    "buy_short": "Kaufen"
   },
   "pt": {
     "title": "Scanner de rótulos — AIGLOSSA FOOD",
@@ -1131,7 +1139,8 @@
     "share_cta": "Experimente a análise de rótulo",
     "daily_ref": "da referência diária",
     "nutrition_note": "Por 100 g. As percentagens baseiam-se na referência diária de um adulto médio, não são uma pontuação de saúde. «Não indicado» não significa zero.",
-    "energy_note": "kcal e kJ são duas unidades da mesma energia; 1 kcal ≈ 4.184 kJ."
+    "energy_note": "kcal e kJ são duas unidades da mesma energia; 1 kcal ≈ 4.184 kJ.",
+    "buy_short": "Comprar"
   },
   "it": {
     "title": "Scansione etichette alimentari — AIGLOSSA FOOD",
@@ -1257,7 +1266,8 @@
     "share_cta": "Prova l’analisi dell’etichetta",
     "daily_ref": "della referenza giornaliera",
     "nutrition_note": "Per 100 g. Le percentuali si basano sulla referenza giornaliera di un adulto medio, non sono un punteggio di salute. «Non indicato» non significa zero.",
-    "energy_note": "kcal e kJ sono due unità della stessa energia; 1 kcal ≈ 4.184 kJ."
+    "energy_note": "kcal e kJ sono due unità della stessa energia; 1 kcal ≈ 4.184 kJ.",
+    "buy_short": "Acquista"
   },
   "ru": {
     "title": "Сканирование этикеток — AIGLOSSA FOOD",
@@ -1383,7 +1393,8 @@
     "share_cta": "Попробовать анализ этикетки",
     "daily_ref": "от суточной нормы",
     "nutrition_note": "На 100 г. Проценты основаны на суточной норме среднего взрослого, это не оценка здоровья. «Не указано» не означает ноль.",
-    "energy_note": "kcal и kJ — две единицы одной энергии; 1 kcal ≈ 4.184 kJ."
+    "energy_note": "kcal и kJ — две единицы одной энергии; 1 kcal ≈ 4.184 kJ.",
+    "buy_short": "Купить"
   },
   "ar": {
     "title": "مسح ملصقات الطعام — AIGLOSSA FOOD",
@@ -1509,7 +1520,8 @@
     "share_cta": "جرّب تحليل الملصق",
     "daily_ref": "من المرجع اليومي",
     "nutrition_note": "لكل 100 غرام. النسب مبنية على المرجع اليومي لشخص بالغ عادي وليست تقييماً صحياً. «غير مذكور» لا يعني صفراً.",
-    "energy_note": "kcal وkJ وحدتان للطاقة نفسها؛ 1 kcal ≈ 4.184 kJ."
+    "energy_note": "kcal وkJ وحدتان للطاقة نفسها؛ 1 kcal ≈ 4.184 kJ.",
+    "buy_short": "شراء"
   },
   "th": {
     "title": "สแกนฉลากอาหาร — AIGLOSSA FOOD",
@@ -1635,7 +1647,8 @@
     "share_cta": "ลองวิเคราะห์ฉลาก",
     "daily_ref": "ของปริมาณอ้างอิงต่อวัน",
     "nutrition_note": "ต่อ 100 กรัม เปอร์เซ็นต์อิงจากปริมาณอ้างอิงต่อวันของผู้ใหญ่ทั่วไป ไม่ใช่คะแนนสุขภาพ \"ไม่ระบุ\" ไม่ได้หมายถึงศูนย์",
-    "energy_note": "kcal และ kJ เป็นหน่วยของพลังงานเดียวกัน 1 kcal ≈ 4.184 kJ"
+    "energy_note": "kcal และ kJ เป็นหน่วยของพลังงานเดียวกัน 1 kcal ≈ 4.184 kJ",
+    "buy_short": "ซื้อ"
   },
   "vi": {
     "title": "Quét nhãn thực phẩm — AIGLOSSA FOOD",
@@ -1761,7 +1774,8 @@
     "share_cta": "Thử phân tích nhãn",
     "daily_ref": "của mức tham chiếu hằng ngày",
     "nutrition_note": "Trên 100 g. Tỷ lệ dựa trên mức tham chiếu hằng ngày của người trưởng thành thông thường, không phải điểm sức khỏe. “Không ghi” không có nghĩa là 0.",
-    "energy_note": "kcal và kJ là hai đơn vị của cùng một năng lượng; 1 kcal ≈ 4.184 kJ."
+    "energy_note": "kcal và kJ là hai đơn vị của cùng một năng lượng; 1 kcal ≈ 4.184 kJ.",
+    "buy_short": "Mua"
   },
   "id": {
     "title": "Pindai label makanan — AIGLOSSA FOOD",
@@ -1887,7 +1901,8 @@
     "share_cta": "Coba analisis label",
     "daily_ref": "dari referensi harian",
     "nutrition_note": "Per 100 g. Persentase berdasarkan referensi harian orang dewasa umum, bukan skor kesehatan. “Tidak tercantum” bukan berarti nol.",
-    "energy_note": "kcal dan kJ adalah dua satuan energi yang sama; 1 kcal ≈ 4.184 kJ."
+    "energy_note": "kcal dan kJ adalah dua satuan energi yang sama; 1 kcal ≈ 4.184 kJ.",
+    "buy_short": "Beli"
   },
   "tr": {
     "title": "Gıda etiketi tarama — AIGLOSSA FOOD",
@@ -2013,6 +2028,7 @@
     "share_cta": "Etiket analizini dene",
     "daily_ref": "günlük referansın",
     "nutrition_note": "100 g için. Yüzdeler ortalama bir yetişkinin günlük referansına göredir, sağlık puanı değildir. “Belirtilmemiş” sıfır anlamına gelmez.",
-    "energy_note": "kcal ve kJ aynı enerjinin iki birimidir; 1 kcal ≈ 4.184 kJ."
+    "energy_note": "kcal ve kJ aynı enerjinin iki birimidir; 1 kcal ≈ 4.184 kJ.",
+    "buy_short": "Satın al"
   }
 }

@@ -59,8 +59,8 @@
   .closing-band .cta{white-space:nowrap}
   .tools-nav{position:sticky;top:0;z-index:40;background:rgba(14,15,17,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
   .tools-actions{display:flex;align-items:center;gap:14px}
-  .tools-lang{position:relative;font-size:12px;color:var(--muted,#96a0b5)}
-  .tools-lang summary{list-style:none;cursor:pointer;padding:8px 4px;border-radius:8px}
+  .tools-lang{position:relative;font-size:12px;color:var(--muted,#96a0b5);border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03);border-radius:999px;padding:0 10px}
+  .tools-lang summary{list-style:none;cursor:pointer;padding:7px 0;border-radius:8px;font-size:12px}
   .tools-lang summary::-webkit-details-marker{display:none}
   .tools-lang summary:hover{color:var(--fg)}
   .tools-lang ul{position:absolute;inset-inline-end:0;top:calc(100% + 8px);min-width:150px;max-height:320px;overflow:auto;background:#16181c;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:6px;list-style:none;box-shadow:0 18px 40px rgba(0,0,0,.35);z-index:50}
@@ -72,8 +72,8 @@
   .foot .brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
   .foot .legal{margin-inline:auto}
   .foot .brand img{width:22px;height:22px;border-radius:6px;display:block}
-  .tools-account{display:inline-flex;align-items:center;gap:7px;color:var(--muted,#96a0b5);font-size:12px;text-decoration:none;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:5px 12px 5px 5px;background:rgba(255,255,255,.03)}
-  .tools-account:hover{border-color:rgba(255,255,255,.24);color:var(--ink)}
+  .tools-account{display:inline-flex;align-items:center;gap:7px;color:var(--muted,#96a0b5);font-size:12px;text-decoration:none;border:0;background:transparent;padding:0}
+  .tools-account:hover{color:var(--ink)}
   .tools-account:hover{color:var(--fg)}
   .tools-avatar{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;
                 border:1px solid rgba(255,255,255,.22);background:rgba(255,122,26,.12);color:#ffb27a;font-size:10px;font-weight:600;overflow:hidden}
@@ -82,17 +82,22 @@
   .tools-account-balance{color:var(--fg);font-variant-numeric:tabular-nums}
   .tools-account-email{display:none}
   .tools-buy{padding:7px 10px;border:1px solid rgba(255,122,26,.28);border-radius:8px;color:#ffc69e;background:rgba(255,122,26,.075);font-size:12px;text-decoration:none;white-space:nowrap}
+  .tools-buy-full{display:inline}
+  .tools-buy-short{display:none}
   .tools-buy:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.13);color:#fff}
   @media(max-width:560px){
     .tools-nav .wrap{padding-inline:14px;gap:10px}
     .tools-brand{font-size:10px;letter-spacing:.15em;gap:7px}
     .tools-brand img{width:24px;height:24px;border-radius:7px}
-    .tools-lang{display:none}
+    .tools-lang{display:block;padding:0 8px}
+    .tools-lang summary{font-size:11px;padding:6px 0}
     .tools-actions{gap:8px}
     .tools-account{padding:4px 9px 4px 4px;font-size:11px;gap:6px}
     .tools-avatar{width:22px;height:22px}
     .tools-account-balance{font-size:11px}
-    .tools-buy{display:none}
+    .tools-buy{padding:6px 9px;font-size:11px}
+    .tools-buy-full{display:none}
+    .tools-buy-short{display:inline}
     .tools-account-email{display:none}
   }
 </style>
@@ -100,7 +105,7 @@
 <body>
 <header class="tools-nav">
   <div class="wrap">
-    <a class="tools-brand" href="./"><img src="{{prefix}}assets/favicon-tools.svg?v={{asset_v}}" alt=""> AIGLOSSA TOOLS</a>
+    <a class="tools-brand" href="./"><img src="{{prefix}}assets/favicon-tools.svg?v={{asset_v}}" alt=""> AIGLOSSA</a>
     <div class="tools-actions">
       <details class="tools-lang"><summary>{{current_name}}</summary><ul>{{switcher}}</ul></details>
       <a class="tools-account" id="toolsAccount" href="login.html?next=./">
@@ -110,7 +115,7 @@
           <span class="tools-account-balance" id="toolsAccountBalance"></span>
         </span>
       </a>
-      <a class="tools-buy" id="toolsBuy" href="https://aiglossa.com/{{lang}}/webpricing">{{buy}}</a>
+      <a class="tools-buy" id="toolsBuy" href="https://aiglossa.com/{{lang}}/webpricing"><span class="tools-buy-full">{{buy}}</span><span class="tools-buy-short">{{buy_short}}</span></a>
     </div>
   </div>
 </header>
@@ -143,7 +148,7 @@
 
 <footer>
   <div class="wrap foot">
-    <span class="brand"><img src="{{prefix}}assets/favicon-tools.svg?v={{asset_v}}" alt=""> AIGLOSSA TOOLS</span>
+    <span class="brand"><img src="{{prefix}}assets/favicon-tools.svg?v={{asset_v}}" alt=""> AIGLOSSA</span>
     <nav class="legal">
       <a href="{{legal_privacy_href}}">{{legal_privacy}}</a>
       <a href="{{legal_terms_href}}">{{legal_terms}}</a>

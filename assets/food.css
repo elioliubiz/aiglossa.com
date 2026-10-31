@@ -434,3 +434,26 @@ body{min-height:100vh}
 
 .nutrition-note{font-size:9.5px;line-height:1.6;color:#8A8F88;margin:10px 0 0}
 .nutrition-note + .nutrition-note{margin-top:3px}
+
+/* header hierarchy: language is the only pill, account is flat */
+.top-lang{border:1px solid var(--line);background:#fff;border-radius:999px;padding:0 10px}
+.top-lang summary{padding:7px 0;font-size:12px}
+.account-flat{display:flex;align-items:center;gap:7px;border:0;background:transparent;color:var(--ink);padding:0;border-radius:8px}
+.account-flat:hover{color:var(--green)}
+.account-flat .avatar{width:24px;height:24px}
+.buy-full{display:inline}
+.buy-short{display:none}
+@media(max-width:640px){
+  .topbar-inner{gap:10px}
+  .top-lang{display:block;padding:0 8px}
+  .top-lang summary{padding:6px 0;font-size:11px}
+  .brand{font-size:10px;letter-spacing:.15em;gap:7px}
+  .brand-mark{width:24px;height:24px;border-radius:8px}
+  .top-actions{gap:8px}
+  .account-flat{gap:6px}
+  .account-flat .avatar{width:22px;height:22px}
+  .buy-full{display:none}
+  .buy-short{display:inline}
+  .buy-btn{padding:6px 9px;font-size:11px}
+}
+@media(max-width:640px){#buyBtn{display:inline-flex}}

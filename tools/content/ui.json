@@ -76,7 +76,8 @@
       "close": "Close",
       "pw_short": "Use at least 8 characters",
       "pw_mismatch": "Passwords do not match",
-      "pw_failed": "Could not update password"
+      "pw_failed": "Could not update password",
+      "buy_short": "Buy"
     },
     "refund": {
       "title": "Refund Policy — aiglossa tools",
@@ -261,7 +262,8 @@
       "close": "閉じる",
       "pw_short": "8文字以上にしてください",
       "pw_mismatch": "パスワードが一致しません",
-      "pw_failed": "更新に失敗しました"
+      "pw_failed": "更新に失敗しました",
+      "buy_short": "購入"
     },
     "make": {
       "title": "AI音楽生成 — 写真から曲へ、長さはぴったり",
@@ -446,7 +448,8 @@
       "close": "닫기",
       "pw_short": "8자 이상 입력하세요",
       "pw_mismatch": "비밀번호가 일치하지 않습니다",
-      "pw_failed": "변경하지 못했습니다"
+      "pw_failed": "변경하지 못했습니다",
+      "buy_short": "구매"
     },
     "make": {
       "title": "AI 음악 생성 — 사진에서 곡으로, 정확한 길이",
@@ -631,7 +634,8 @@
       "close": "关闭",
       "pw_short": "至少 8 位字符",
       "pw_mismatch": "两次输入不一致",
-      "pw_failed": "密码更新失败"
+      "pw_failed": "密码更新失败",
+      "buy_short": "购买"
     },
     "make": {
       "title": "AI 音乐生成 — 照片变歌曲，长度精确",
@@ -816,7 +820,8 @@
       "close": "關閉",
       "pw_short": "至少 8 位字元",
       "pw_mismatch": "兩次輸入不一致",
-      "pw_failed": "密碼更新失敗"
+      "pw_failed": "密碼更新失敗",
+      "buy_short": "購買"
     },
     "make": {
       "title": "AI 音樂生成 — 照片變歌曲，長度精確",
@@ -1001,7 +1006,8 @@
       "close": "Cerrar",
       "pw_short": "Usa al menos 8 caracteres",
       "pw_mismatch": "Las contraseñas no coinciden",
-      "pw_failed": "No se pudo actualizar"
+      "pw_failed": "No se pudo actualizar",
+      "buy_short": "Comprar"
     },
     "make": {
       "title": "Generador de música con IA — de foto a canción, duración exacta",
@@ -1186,7 +1192,8 @@
       "close": "Fermer",
       "pw_short": "Au moins 8 caractères",
       "pw_mismatch": "Les mots de passe ne correspondent pas",
-      "pw_failed": "Échec de la mise à jour"
+      "pw_failed": "Échec de la mise à jour",
+      "buy_short": "Acheter"
     },
     "make": {
       "title": "Générateur de musique IA — de la photo au morceau, durée exacte",
@@ -1371,7 +1378,8 @@
       "close": "Schließen",
       "pw_short": "Mindestens 8 Zeichen",
       "pw_mismatch": "Passwörter stimmen nicht überein",
-      "pw_failed": "Aktualisierung fehlgeschlagen"
+      "pw_failed": "Aktualisierung fehlgeschlagen",
+      "buy_short": "Kaufen"
     },
     "make": {
       "title": "KI-Musikgenerator — vom Foto zum Song, exakte Länge",
@@ -1556,7 +1564,8 @@
       "close": "Fechar",
       "pw_short": "Use pelo menos 8 caracteres",
       "pw_mismatch": "As senhas não coincidem",
-      "pw_failed": "Não foi possível atualizar"
+      "pw_failed": "Não foi possível atualizar",
+      "buy_short": "Comprar"
     },
     "make": {
       "title": "Gerador de música com IA — de foto a música, duração exata",
@@ -1741,7 +1750,8 @@
       "close": "Chiudi",
       "pw_short": "Almeno 8 caratteri",
       "pw_mismatch": "Le password non coincidono",
-      "pw_failed": "Aggiornamento non riuscito"
+      "pw_failed": "Aggiornamento non riuscito",
+      "buy_short": "Acquista"
     },
     "make": {
       "title": "Generatore di musica IA — da foto a brano, durata esatta",
@@ -1926,7 +1936,8 @@
       "close": "Закрыть",
       "pw_short": "Не менее 8 символов",
       "pw_mismatch": "Пароли не совпадают",
-      "pw_failed": "Не удалось обновить"
+      "pw_failed": "Не удалось обновить",
+      "buy_short": "Купить"
     },
     "make": {
       "title": "Генератор музыки на ИИ — из фото в трек, точная длина",
@@ -2111,7 +2122,8 @@
       "close": "إغلاق",
       "pw_short": "استخدم 8 أحرف على الأقل",
       "pw_mismatch": "كلمتا المرور غير متطابقتين",
-      "pw_failed": "تعذّر التحديث"
+      "pw_failed": "تعذّر التحديث",
+      "buy_short": "شراء"
     },
     "make": {
       "title": "مولّد موسيقى بالذكاء الاصطناعي — من صورة إلى أغنية بطول دقيق",
@@ -2296,7 +2308,8 @@
       "close": "ปิด",
       "pw_short": "อย่างน้อย 8 ตัวอักษร",
       "pw_mismatch": "รหัสผ่านไม่ตรงกัน",
-      "pw_failed": "อัปเดตไม่สำเร็จ"
+      "pw_failed": "อัปเดตไม่สำเร็จ",
+      "buy_short": "ซื้อ"
     },
     "make": {
       "title": "เครื่องมือสร้างเพลง AI — จากรูปเป็นเพลง ความยาวแม่นยำ",
@@ -2481,7 +2494,8 @@
       "close": "Đóng",
       "pw_short": "Ít nhất 8 ký tự",
       "pw_mismatch": "Mật khẩu không khớp",
-      "pw_failed": "Không cập nhật được"
+      "pw_failed": "Không cập nhật được",
+      "buy_short": "Mua"
     },
     "make": {
       "title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác",
@@ -2666,7 +2680,8 @@
       "close": "Tutup",
       "pw_short": "Minimal 8 karakter",
       "pw_mismatch": "Kata sandi tidak cocok",
-      "pw_failed": "Gagal memperbarui"
+      "pw_failed": "Gagal memperbarui",
+      "buy_short": "Beli"
     },
     "make": {
       "title": "Pembuat musik AI — dari foto jadi lagu, durasi presisi",
@@ -2851,7 +2866,8 @@
       "close": "Kapat",
       "pw_short": "En az 8 karakter",
       "pw_mismatch": "Şifreler eşleşmiyor",
-      "pw_failed": "Güncellenemedi"
+      "pw_failed": "Güncellenemedi",
+      "buy_short": "Satın al"
     },
     "make": {
       "title": "AI Müzik Üretici — fotoğraftan şarkıya, tam uzunluk",

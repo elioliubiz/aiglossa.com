@@ -489,8 +489,6 @@
   $("confirmScan").onclick = startScan;
   $("accountBtn").onclick = function () { if (state.user) location.href = accountUrl(); else needLogin(); };
   $("buyBtn").onclick = function (e) { e.preventDefault(); openPay(); };
-  $("navPricing").onclick = function (e) { e.preventDefault(); openPay(); };
-  $("navScan").onclick = function (e) { e.preventDefault(); showHome(); };
   Array.prototype.forEach.call(document.querySelectorAll(".scan-actions label"), function (label) {
     label.addEventListener("click", function (e) {
       if (!state.user) { e.preventDefault(); needLogin(); }
