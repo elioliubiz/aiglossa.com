@@ -25,7 +25,7 @@
     if (data.code !== 200 || !data.data || !data.data.report) { fail(); return; }
     var report = data.data.report, p = report.product || {}, a = report.analysis || {};
     var name = p.name || p.name_original || UI.result_title;
-    document.title = name + " · AIGLOSSA FOOD";
+    document.title = name + " · " + UI.share_heading;
     $("shareName").textContent = name;
     var meta = []; if (p.brand) meta.push(p.brand); if (p.category) meta.push(p.category); if (report.serving && report.serving.basis) meta.push(report.serving.basis);
     $("shareMeta").textContent = meta.join(" · ");

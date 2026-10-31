@@ -118,7 +118,9 @@
     "share": "Share",
     "share_text": "I scanned “{product}” — {headline}.",
     "share_copied": "Share link copied",
-    "share_failed": "Could not create share link"
+    "share_failed": "Could not create share link",
+    "share_heading": "Food label analysis",
+    "share_cta": "Scan your own"
   },
   "zh-Hans": {
     "title": "食品标签扫描 — AIGLOSSA FOOD",
@@ -239,7 +241,9 @@
     "share": "分享",
     "share_text": "我扫了「{product}」的标签：{headline}。",
     "share_copied": "分享链接已复制",
-    "share_failed": "分享链接创建失败"
+    "share_failed": "分享链接创建失败",
+    "share_heading": "食品标签分析",
+    "share_cta": "我也要扫一扫"
   },
   "zh-Hant": {
     "title": "食品標籤掃描 — AIGLOSSA FOOD",
@@ -360,7 +364,9 @@
     "share": "分享",
     "share_text": "我掃了「{product}」的標籤：{headline}。",
     "share_copied": "分享連結已複製",
-    "share_failed": "分享連結建立失敗"
+    "share_failed": "分享連結建立失敗",
+    "share_heading": "食品標籤分析",
+    "share_cta": "我也要掃一掃"
   },
   "ja": {
     "title": "食品ラベルスキャン — AIGLOSSA FOOD",
@@ -481,7 +487,9 @@
     "share": "共有",
     "share_text": "「{product}」のラベルをスキャンしました：{headline}。",
     "share_copied": "共有リンクをコピーしました",
-    "share_failed": "共有リンクを作成できませんでした"
+    "share_failed": "共有リンクを作成できませんでした",
+    "share_heading": "食品ラベル分析",
+    "share_cta": "自分でもスキャン"
   },
   "ko": {
     "title": "식품 라벨 스캔 — AIGLOSSA FOOD",
@@ -602,7 +610,9 @@
     "share": "공유",
     "share_text": "“{product}” 라벨을 스캔했습니다: {headline}.",
     "share_copied": "공유 링크를 복사했습니다",
-    "share_failed": "공유 링크를 만들 수 없습니다"
+    "share_failed": "공유 링크를 만들 수 없습니다",
+    "share_heading": "식품 라벨 분석",
+    "share_cta": "나도 스캔하기"
   },
   "es": {
     "title": "Escáner de etiquetas de alimentos — AIGLOSSA FOOD",
@@ -723,7 +733,9 @@
     "share": "Compartir",
     "share_text": "Escaneé «{product}»: {headline}.",
     "share_copied": "Enlace copiado",
-    "share_failed": "No se pudo crear el enlace"
+    "share_failed": "No se pudo crear el enlace",
+    "share_heading": "Análisis de etiqueta",
+    "share_cta": "Probar mi escaneo"
   },
   "fr": {
     "title": "Scan d'étiquettes alimentaires — AIGLOSSA FOOD",
@@ -844,7 +856,9 @@
     "share": "Partager",
     "share_text": "J’ai scanné « {product} » : {headline}.",
     "share_copied": "Lien copié",
-    "share_failed": "Impossible de créer le lien"
+    "share_failed": "Impossible de créer le lien",
+    "share_heading": "Analyse d’étiquette",
+    "share_cta": "Essayer un scan"
   },
   "de": {
     "title": "Lebensmittel-Scan — AIGLOSSA FOOD",
@@ -965,7 +979,9 @@
     "share": "Teilen",
     "share_text": "Ich habe „{product}“ gescannt: {headline}.",
     "share_copied": "Link kopiert",
-    "share_failed": "Link konnte nicht erstellt werden"
+    "share_failed": "Link konnte nicht erstellt werden",
+    "share_heading": "Lebensmittel-Etikettenanalyse",
+    "share_cta": "Selbst scannen"
   },
   "pt": {
     "title": "Scanner de rótulos — AIGLOSSA FOOD",
@@ -1086,7 +1102,9 @@
     "share": "Compartilhar",
     "share_text": "Escancei «{product}»: {headline}.",
     "share_copied": "Link copiado",
-    "share_failed": "Não foi possível criar o link"
+    "share_failed": "Não foi possível criar o link",
+    "share_heading": "Análise de rótulo",
+    "share_cta": "Fazer meu escaneamento"
   },
   "it": {
     "title": "Scansione etichette alimentari — AIGLOSSA FOOD",
@@ -1207,7 +1225,9 @@
     "share": "Condividi",
     "share_text": "Ho scansionato «{product}»: {headline}.",
     "share_copied": "Link copiato",
-    "share_failed": "Impossibile creare il link"
+    "share_failed": "Impossibile creare il link",
+    "share_heading": "Analisi dell’etichetta",
+    "share_cta": "Prova anche tu"
   },
   "ru": {
     "title": "Сканирование этикеток — AIGLOSSA FOOD",
@@ -1328,7 +1348,9 @@
     "share": "Поделиться",
     "share_text": "Я отсканировал «{product}»: {headline}.",
     "share_copied": "Ссылка скопирована",
-    "share_failed": "Не удалось создать ссылку"
+    "share_failed": "Не удалось создать ссылку",
+    "share_heading": "Анализ этикетки",
+    "share_cta": "Попробовать сканирование"
   },
   "ar": {
     "title": "مسح ملصقات الطعام — AIGLOSSA FOOD",
@@ -1449,7 +1471,9 @@
     "share": "مشاركة",
     "share_text": "قمت بمسح «{product}»: {headline}.",
     "share_copied": "تم نسخ الرابط",
-    "share_failed": "تعذر إنشاء رابط المشاركة"
+    "share_failed": "تعذر إنشاء رابط المشاركة",
+    "share_heading": "تحليل ملصق الطعام",
+    "share_cta": "جرّب المسح"
   },
   "th": {
     "title": "สแกนฉลากอาหาร — AIGLOSSA FOOD",
@@ -1570,7 +1594,9 @@
     "share": "แชร์",
     "share_text": "ฉันสแกน «{product}»: {headline}",
     "share_copied": "คัดลอกลิงก์แล้ว",
-    "share_failed": "สร้างลิงก์แชร์ไม่ได้"
+    "share_failed": "สร้างลิงก์แชร์ไม่ได้",
+    "share_heading": "การวิเคราะห์ฉลากอาหาร",
+    "share_cta": "ลองสแกนของคุณ"
   },
   "vi": {
     "title": "Quét nhãn thực phẩm — AIGLOSSA FOOD",
@@ -1691,7 +1717,9 @@
     "share": "Chia sẻ",
     "share_text": "Tôi đã quét «{product}»: {headline}.",
     "share_copied": "Đã sao chép liên kết",
-    "share_failed": "Không thể tạo liên kết chia sẻ"
+    "share_failed": "Không thể tạo liên kết chia sẻ",
+    "share_heading": "Phân tích nhãn thực phẩm",
+    "share_cta": "Thử quét của bạn"
   },
   "id": {
     "title": "Pindai label makanan — AIGLOSSA FOOD",
@@ -1812,7 +1840,9 @@
     "share": "Bagikan",
     "share_text": "Saya memindai «{product}»: {headline}.",
     "share_copied": "Tautan disalin",
-    "share_failed": "Tidak dapat membuat tautan"
+    "share_failed": "Tidak dapat membuat tautan",
+    "share_heading": "Analisis label makanan",
+    "share_cta": "Coba pindai sendiri"
   },
   "tr": {
     "title": "Gıda etiketi tarama — AIGLOSSA FOOD",
@@ -1933,6 +1963,8 @@
     "share": "Paylaş",
     "share_text": "«{product}» etiketini taradım: {headline}.",
     "share_copied": "Bağlantı kopyalandı",
-    "share_failed": "Paylaşım bağlantısı oluşturulamadı"
+    "share_failed": "Paylaşım bağlantısı oluşturulamadı",
+    "share_heading": "Gıda etiketi analizi",
+    "share_cta": "Kendin tara"
   }
 }

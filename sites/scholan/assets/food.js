@@ -469,7 +469,7 @@
       var url = location.origin + "/" + LANG + "/food/share/?token=" + encodeURIComponent(data.data.token);
       var text = String(UI.share_text || "{product}").replace("{product}", name).replace("{headline}", headline);
       if (navigator.share) {
-        navigator.share({ title: name + " · AIGLOSSA FOOD", text: text, url: url }).catch(function () {});
+        navigator.share({ title: name + " · " + UI.share_heading, text: text, url: url }).catch(function () {});
         return;
       }
       copyText(text + "\n" + url).then(function () { toast(UI.share_copied); }).catch(function () { toast(UI.share_failed); });

@@ -2,7 +2,7 @@
 <html lang="{{lang}}" dir="{{dir}}">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>{{result_title}} · AIGLOSSA FOOD</title><meta name="robots" content="noindex"><link rel="canonical" href="{{canonical}}">{{alternates}}
+<title>{{share_heading}} · AIGLOSSA FOOD</title><meta name="robots" content="noindex"><link rel="canonical" href="{{canonical}}">{{alternates}}
 <meta name="description" content="{{footer_disclaimer}}">
 <meta name="theme-color" content="#FBFAF7"><meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="icon" href="{{prefix}}assets/favicon-food.svg?v={{asset_v}}"><link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-food.png?v={{asset_v}}">
@@ -19,33 +19,30 @@
 .share-error{padding:60px 0;text-align:center}
 .share-error h1{font-size:22px}
 .share-error .btn{margin-top:18px}
-.share-cta{margin:24px 0 0;padding:20px;border-radius:16px;background:var(--green-soft);border:1px solid #D7E8DC;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.share-cta p{font-size:13px;color:#335245}
+.share-top-cta{margin-inline-start:auto;border-color:#CFE3D8;background:var(--green-soft);color:var(--green);font-weight:650}
+.share-top-cta:hover{background:#DDF1E5;border-color:#B7D8C5;color:var(--green)}
 .share-page .topbar-inner{height:60px}
 .share-page .brand{font-size:11px}
 @media(max-width:640px){
   .share-main{padding-block:26px 52px}
   .share-head h1{font-size:27px}
-  .share-cta{align-items:flex-start;flex-direction:column}
-  .share-cta .btn{width:100%}
 }
 </style>
 </head>
 <body class="share-page">
 <header class="topbar"><div class="wrap topbar-inner">
   <a class="brand" href="../"><span class="brand-mark food-logo"><img src="{{prefix}}assets/favicon-food.svg?v={{asset_v}}" alt=""></span> AIGLOSSA <b>FOOD</b></a>
-  <a class="pill-btn" href="../">{{cta}}</a>
+  <a class="pill-btn share-top-cta" href="../">{{share_cta}}</a>
 </div></header>
 <main class="wrap share-main">
   <div class="share-loading" id="shareLoading"><span class="spinner"></span><span>{{scan_pending}}</span></div>
   <div class="share-error hidden" id="shareError"><h1>{{scan_failed}}</h1><a class="btn" href="../">{{cta}}</a></div>
   <article class="hidden" id="shareContent">
-    <header class="share-head"><span class="kicker">{{result_title}} · AIGLOSSA FOOD</span><h1 id="shareName">—</h1><p class="share-meta" id="shareMeta"></p></header>
+    <header class="share-head"><span class="kicker">{{share_heading}} · AIGLOSSA FOOD</span><h1 id="shareName">—</h1><p class="share-meta" id="shareMeta"></p></header>
     <section class="card share-verdict" id="shareVerdict"></section>
     <section class="card hidden" id="sharePeople"></section>
     <section class="card"><div class="card-head"><h3>{{nutrition}}</h3><span id="shareServing"></span></div><div class="nut-grid report" id="shareNutrition"></div></section>
     <section class="card"><div class="card-head"><h3>{{ingredients}}</h3><span id="shareIngCount"></span></div><div id="shareIngredients"></div></section>
-    <div class="share-cta"><p>{{scan_title}}</p><a class="btn" href="../">{{cta}}</a></div>
     <p class="report-disclaimer" id="shareDisclaimer"></p>
   </article>
 </main>
