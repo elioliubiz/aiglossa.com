@@ -428,3 +428,6 @@ body{min-height:100vh}
   .nut-value b{font-size:14px}
   .nut-nrv{min-width:40px}
 }
+
+.nut-line{gap:10px}
+.nut-nrv{padding-inline-start:2px}

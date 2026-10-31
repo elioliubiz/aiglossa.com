@@ -34,7 +34,7 @@
     var people = (report.population_notes || []).map(function (x) { var lv = x.level === "high" ? "high" : x.level === "medium" ? "medium" : ""; return '<div class="report-person ' + lv + '"><div class="rp-head"><b>' + esc(x.group || "") + '</b><span class="rp-advice">' + esc(x.advice || "") + '</span></div><p>' + esc(x.reason || "") + '</p></div>'; }).join("");
     if (people) { $("sharePeople").classList.remove("hidden"); $("sharePeople").innerHTML = '<div class="card-head"><h3>' + esc(UI.who_notes) + '</h3><span>' + esc(UI.info) + '</span></div><div class="report-people">' + people + '</div>'; }
     var n = report.nutrition || {};
-    $("shareServing").textContent = (report.serving && report.serving.basis) || UI.per_100g;
+    $("shareServing").textContent = ((report.serving && report.serving.basis) || UI.per_100g) + " · " + UI.nrv;
     $("shareNutrition").innerHTML = nut(UI.energy, n.calories_kcal != null ? n.calories_kcal : (n.energy_kj ? Math.round(n.energy_kj / 4.184) : null), "kcal", n.energy_kj ? n.energy_kj + " kJ" : "", report, "energy") + nut(UI.protein, n.protein_g, "g", "", report, "protein") + nut(UI.fat, n.fat_g, "g", "", report, "fat") + nut(UI.sat_fat, n.saturated_fat_g, "g", "", report, "saturated_fat") + nut(UI.carb, n.carbohydrate_g, "g", "", report, "carbohydrate") + nut(UI.sugar, n.sugars_g, "g", "", report, "sugars") + nut(UI.sodium, n.sodium_mg, "mg", "", report, "sodium") + nut(UI.fiber, n.fiber_g, "g", "", report, "fiber");
     var all = report.ingredients || [];
     var normalize = function (x) { return String(x || "").replace(/\s+/g, "").toLowerCase(); };
