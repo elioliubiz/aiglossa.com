@@ -179,7 +179,7 @@
     var route = "";
     if (routine.am && routine.am.length) route += '<span class="skin-route">AM ' + routine.am.map(function (i) { return Number(i) + 1; }).join(" → ") + '</span>';
     if (routine.pm && routine.pm.length) route += '<span class="skin-route">PM ' + routine.pm.map(function (i) { return Number(i) + 1; }).join(" → ") + '</span>';
-    return '<section class="skin-overview"><div class="skin-overview-kicker">' + esc(UI.result_title) + '</div><h2>' + esc(UI.combined) + '</h2><p class="skin-overview-summary">' + esc(c.summary || "") + '</p>' +
+    return '<section class="skin-overview"><div class="skin-overview-kicker">' + esc(UI.combined) + '</div><p class="skin-overview-summary">' + esc(c.summary || "") + '</p>' +
       (roles ? '<div class="skin-role-row">' + roles + '</div>' : '') +
       (overlaps ? '<div class="skin-overview-block"><h4>' + esc(UI.overlaps) + '</h4><ul class="skin-list">' + overlaps + '</ul></div>' : '') +
       (cautions ? '<div class="skin-overview-block"><h4>' + esc(UI.cautions) + '</h4><ul class="skin-list">' + cautions + '</ul></div>' : '') +
@@ -214,7 +214,7 @@
     var stack = $("resultThumb");
     var imgs = products.map(function (_, i) {
       var img = imageFor(i);
-      return '<span class="scan-stack-item"' + (i > 0 ? ' style="transform:translateX(' + (i * -9) + 'px) rotate(' + (i % 2 ? 3 : -3) + 'deg)"' : '') + '>' + (img ? '<img src="' + esc(img) + '" alt="">' : '<i>' + (i + 1) + '</i>') + '</span>';
+      return '<span class="scan-stack-item">' + (img ? '<img src="' + esc(img) + '" alt="">' : '<i>' + (i + 1) + '</i>') + '</span>';
     }).join("");
     stack.innerHTML = '<div class="scan-stack">' + imgs + '</div>';
   }
@@ -227,7 +227,9 @@
     $("heroView").classList.add("hidden"); $("resultView").classList.remove("hidden");
     var first = products[0] || {}; var pr = first.product || {};
     $("resultKicker").textContent = UI.result_title;
-    $("resultName").textContent = multi ? UI.combined : (pr.name || pr.name_original || UI.product);
+    var productNames = products.map(function (x) { var pp = x.product || {}; return pp.name || pp.name_original || UI.product; });
+    $("resultName").classList.toggle("multi", multi);
+    $("resultName").textContent = multi ? productNames.join(" + ") : productNames[0];
     $("resultMeta").textContent = multi ? (products.length + " " + (UI.product_unit || UI.products)) : ((pr.brand || "") + (pr.category ? " · " + pr.category : ""));
     renderStack(products);
     var tabs = multi ? '<div class="skin-tabs" id="skinTabs" role="tablist"></div>' : "";
