@@ -38,7 +38,7 @@ ASSETS = ROOT / "assets"
 
 # food 只使用自己的少量资源，避免把 scholan 截图等整套 assets 复制过去。
 FOOD_ASSETS = (
-    "food.css", "food.js", "wallet.js", "favicon-tools.svg", "og.png",
+    "food.css", "food.js", "wallet.js", "favicon-food.svg", "apple-touch-icon-food.png", "og.png",
     "food-icon-192.png", "food-icon-512.png", "food-icon-maskable-512.png", "food-sample.jpg",
 )
 
@@ -337,7 +337,7 @@ def _write_food_pwa(site: str, site_langs: list[str], languages: dict) -> None:
         folder.mkdir(parents=True, exist_ok=True)
         manifest = {
             "name": copy["title"],
-            "short_name": "aiglossa food",
+            "short_name": "AIGLOSSA FOOD",
             "description": copy["description"],
             "lang": languages[lang]["hreflang"],
             "dir": languages[lang]["dir"],
@@ -352,7 +352,7 @@ def _write_food_pwa(site: str, site_langs: list[str], languages: dict) -> None:
             json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
         sw = f"""/* aiglossa food service worker — shell only, API is network-only. */
-const CACHE = "aiglossa-food-{lang}-v2";
+const CACHE = "aiglossa-food-{lang}-v4";
 const SHELL = ["./", "../../assets/food.css", "../../assets/food.js", "../../assets/wallet.js", "../../assets/food-icon-192.png", "../../assets/food-icon-512.png", "../../assets/food-sample.jpg"];
 self.addEventListener("install", (event) => {{
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting()));

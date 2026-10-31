@@ -22,13 +22,13 @@
 <meta property="og:type" content="website"><meta property="og:title" content="Lebensmittel-Scan — aiglossa food"><meta property="og:description" content="Scanne ein Lebensmitteletikett und erhalte einen klaren Nährwertbericht, Erklärungen zu Inhaltsstoffen und Hinweise für bestimmte Personengruppen."><meta property="og:url" content="https://food.aiglossa.com/de/food/"><meta property="og:image" content="https://food.aiglossa.com/assets/og.png">
 <meta name="theme-color" content="#FBFAF7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="../../assets/favicon-tools.svg"><link rel="apple-touch-icon" href="../../assets/food-icon-192.png">
+<link rel="icon" href="../../assets/favicon-food.svg"><link rel="apple-touch-icon" href="../../assets/apple-touch-icon-food.png">
 <link rel="stylesheet" href="../../assets/food.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Lebensmittel-Scan — aiglossa food", "description": "Scanne ein Lebensmitteletikett und erhalte einen klaren Nährwertbericht, Erklärungen zu Inhaltsstoffen und Hinweise für bestimmte Personengruppen.", "applicationCategory": "HealthApplication", "operatingSystem": "Web", "url": "https://food.aiglossa.com/de/food/", "inLanguage": "de"}</script>
 </head>
 <body>
 <header class="topbar"><div class="wrap topbar-inner">
-  <a class="brand" href="./"><span class="brand-mark"><svg viewBox="0 0 24 24"><path d="M5 5.5h14v13H5z"/><path d="M8 9h8M8 12h8M8 15h5"/></svg></span> aiglossa <b>food</b></a>
+  <a class="brand" href="./"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3.5" width="13.5" height="17" rx="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 8h6.5M7.5 11.2h6.5M7.5 14.4h4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M17.2 3.8c2.9 1.2 4.3 3.4 4 6.5-2.6-.4-4.5-1.9-5.7-4.3.9-.4 1.5-1.1 1.7-2.2z" fill="#D7F25A"/></svg></span> AIGLOSSA <b>FOOD</b></a>
   <nav class="topnav"><a href="#" id="navScan">Scannen</a><a href="#how">Funktionsweise</a><a href="#" id="navPricing">Preise</a></nav>
   <div class="top-actions">
     <details class="top-lang"><summary>Deutsch</summary><ul>        <li><a href="../../ar/food/index.html" data-lang="ar">العربية</a></li>
@@ -88,7 +88,7 @@
     </div>
   </section>
 
-  <section class="wrap recent">
+  <section class="wrap recent hidden" id="recentSection">
     <div class="recent-head"><h2>Letzte Scans</h2><a href="#" id="historyRefresh">Alle anzeigen →</a></div>
     <div class="history-list" id="historyList"><div class="history-empty">Noch keine Scans.</div></div>
   </section>
@@ -114,8 +114,8 @@
 <div class="toast hidden" id="toast"></div>
 
 <footer><div class="wrap footer-inner">
-  <span class="brand"><span class="brand-mark" style="width:22px;height:22px;border-radius:7px"><svg viewBox="0 0 24 24"><path d="M5 5.5h14v13H5z"/><path d="M8 9h8M8 12h8M8 15h5"/></svg></span> aiglossa <b>food</b></span>
-  <div class="footer-links"><a href="https://aiglossa.com/de/protocol/privacy.html">Datenschutz</a><a href="https://aiglossa.com/de/protocol/term.html">AGB</a><a href="https://tools.aiglossa.com/de/refund.html">Rückerstattung</a><a href="mailto:support@aiglossa.com">Kontakt</a></div>
+  <span class="brand"><span class="brand-mark" style="width:22px;height:22px;border-radius:7px"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3.5" width="13.5" height="17" rx="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 8h6.5M7.5 11.2h6.5M7.5 14.4h4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M17.2 3.8c2.9 1.2 4.3 3.4 4 6.5-2.6-.4-4.5-1.9-5.7-4.3.9-.4 1.5-1.1 1.7-2.2z" fill="#D7F25A"/></svg></span> AIGLOSSA <b>FOOD</b></span>
+  <div class="footer-links"><a href="https://aiglossa.com/de/protocol/privacy.html">Datenschutz</a><a href="https://aiglossa.com/de/protocol/term.html">AGB</a><a href="mailto:support@aiglossa.com">Kontakt</a></div>
   <span>Nur für allgemeine Nährwertinformationen. Kein medizinischer Rat.</span>
 </div></footer>
 

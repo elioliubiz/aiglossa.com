@@ -1,9 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="aiglossa tools">
-  <rect width="64" height="64" rx="14" fill="#16181c"/>
-  <g fill="#ff7a1a">
-    <rect x="13" y="26" width="7" height="12" rx="3.5"/>
-    <rect x="24" y="17" width="7" height="30" rx="3.5"/>
-    <rect x="35" y="22" width="7" height="20" rx="3.5"/>
-    <rect x="46" y="29" width="7" height="6"  rx="3"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="toolsBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF6A12"/>
+      <stop offset="1" stop-color="#FFAF3D"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="118" fill="url(#toolsBg)"/>
+  <g transform="rotate(-6 256 256)">
+    <rect x="104" y="104" width="304" height="304" rx="48" fill="#FFFBF4"/>
+    <path d="M256 150l20 66 66 20-66 20-20 66-20-66-66-20 66-20z" fill="#F26A12"/>
+    <circle cx="330" cy="330" r="20" fill="#F26A12"/>
   </g>
 </svg>

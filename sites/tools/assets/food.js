@@ -49,6 +49,12 @@
     }
   }
 
+  function syncAuth(signedIn) {
+    var recent = $("recentSection");
+    if (recent) recent.classList.toggle("hidden", !signedIn);
+    if (!signedIn && !$("resultView").classList.contains("hidden")) showHome();
+  }
+
   function refreshAccount() {
     return call("/wallet/summary", {}).then(function (data) {
       if (data.code === 200 && data.data) {
@@ -56,17 +62,20 @@
         state.balance = Number(data.data.coins || 0);
         setAvatar(state.user);
         $("balanceText").innerHTML = state.balance.toFixed(2) + "<span>" + esc(UI.credits) + "</span>";
+        syncAuth(true);
         return true;
       }
       state.user = null;
       state.balance = 0;
       setAvatar(null);
       $("balanceText").innerHTML = esc(UI.sign_in) + "<span>" + esc(UI.credits) + "</span>";
+      syncAuth(false);
       return false;
     }).catch(function () {
       state.user = null;
       setAvatar(null);
       $("balanceText").innerHTML = esc(UI.sign_in) + "<span>" + esc(UI.credits) + "</span>";
+      syncAuth(false);
       return false;
     });
   }
@@ -390,6 +399,11 @@
   $("accountBtn").onclick = function () { if (state.user) location.href = accountUrl(); else needLogin(); };
   $("navPricing").onclick = function (e) { e.preventDefault(); openPay(); };
   $("navScan").onclick = function (e) { e.preventDefault(); showHome(); };
+  Array.prototype.forEach.call(document.querySelectorAll(".scan-actions label"), function (label) {
+    label.addEventListener("click", function (e) {
+      if (!state.user) { e.preventDefault(); needLogin(); }
+    });
+  });
   $("historyRefresh").onclick = function (e) { e.preventDefault(); loadHistory(); };
   $("backBtn").onclick = function (e) { e.preventDefault(); showHome(); };
   $("deleteBtn").onclick = deleteScan;
@@ -416,5 +430,9 @@
   function syncOnline() { $("offlineBar").classList.toggle("hidden", navigator.onLine); }
   window.addEventListener("online", syncOnline); window.addEventListener("offline", syncOnline); syncOnline();
 
-  refreshAccount().then(function () { loadHistory(); });
+  window.addEventListener("pageshow", function (event) {
+    if (!event.persisted) return;
+    refreshAccount().then(function (ok) { if (ok) loadHistory(); });
+  });
+  refreshAccount().then(function (ok) { if (ok) loadHistory(); });
 })();
