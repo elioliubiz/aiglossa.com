@@ -1,5 +1,5 @@
 /* aiglossa food service worker — shell only, API is network-only. */
-const CACHE = "aiglossa-food-pt-v1";
+const CACHE = "aiglossa-food-pt-v2";
 const SHELL = ["./", "../../assets/food.css", "../../assets/food.js", "../../assets/wallet.js", "../../assets/food-icon-192.png", "../../assets/food-icon-512.png", "../../assets/food-sample.jpg"];
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting()));
