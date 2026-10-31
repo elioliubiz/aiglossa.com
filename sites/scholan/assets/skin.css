@@ -201,3 +201,6 @@ body{
 .share-head .scan-stack{flex:none;margin-top:4px}
 .share-head .skin-share-title{margin-top:2px}
 @media(max-width:760px){.share-head{gap:10px}.share-head .scan-stack{transform:scale(.9);transform-origin:top left}}
+
+.share-top-cta{margin-inline-start:auto;border-color:#EAD4D4;background:var(--green-soft);color:var(--green);font-weight:650}
+.share-top-cta:hover{background:#FBE7E8;border-color:#DAB8BC;color:var(--green)}
