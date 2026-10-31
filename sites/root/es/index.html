@@ -150,8 +150,8 @@
   .site-head nav a{font-size:12px;color:var(--mut);text-decoration:none}
   .site-head nav a:hover{color:var(--ink)}
   .site-head .web-link{font-size:12px;color:var(--tools);text-decoration:none;border:1px solid rgba(255,122,26,.35);border-radius:999px;padding:8px 13px;white-space:nowrap}
-  .hero{min-height:auto;padding-block:150px 70px}
-  .hero h1{max-width:100%;margin-inline:auto;font-size:clamp(30px,4vw,54px);line-height:1.05;word-break:keep-all;text-wrap:balance}
+  .hero{min-height:auto;padding-block:120px 70px}
+  .hero h1{max-width:100%;margin:0 auto;font-size:clamp(30px,4vw,54px);line-height:1.05;word-break:keep-all;text-wrap:balance}
   .hero .lede{max-width:820px}
   .hero-cta .hbtn.p{background:var(--ink);color:#0a0a0c}
   .hero-cta .hbtn.s{border-color:rgba(255,122,26,.36);color:var(--ink)}
@@ -297,12 +297,10 @@
 <main>
   <section class="hero">
     <div class="hero-in">
-      <p class="kicker">AIGLOSSA</p>
       <h1>Clarificamos lo complejo.</h1>
       <p class="lede">AIGLOSSA crea productos ligeros y enfocados que transforman información complicada en algo que realmente puedes usar.</p>
       <div class="hero-cta">
         <a class="hbtn p" href="#products">Explorar productos</a>
-        <a class="hbtn s" href="https://tools.aiglossa.com/es/">Abrir herramientas web →</a>
       </div>
     </div>
   </section>
@@ -419,7 +417,6 @@
 (function () {
   if (location.hostname.indexOf("staging.aiglossa.com") < 0) return;
   var map = [
-    ["https://scholan.aiglossa.com", "https://scholan.staging.aiglossa.com"],
     ["https://tools.aiglossa.com", "https://tools.staging.aiglossa.com"],
     ["https://food.aiglossa.com", "https://food.staging.aiglossa.com"],
     ["https://skin.aiglossa.com", "https://skin.staging.aiglossa.com"]
