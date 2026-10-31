@@ -288,20 +288,29 @@
         return '<button class="history-item" data-id="' + x.id + '"><span class="history-thumb" data-history-thumb="' + x.id + '">' + (x.has_image ? "◌" : "—") + '</span><span class="history-copy"><b>' + esc(x.product_name || UI.product) + '</b><small>' + esc(x.headline || "") + '</small></span><span class="history-status">' + esc(meta) + '</span></button>';
       }).join("");
       Array.prototype.forEach.call(document.querySelectorAll(".history-item"), function (el) { el.onclick = function () { openHistory(Number(el.dataset.id)); }; });
-      state.history.forEach(function (x) { if (x.has_image) loadHistoryThumb(x.id); });
+      state.history.forEach(function (x) { if (x.has_image) loadHistoryThumb(x.id, x.product_count || 1); });
     });
   }
-  function loadHistoryThumb(id) {
-    fetch(API + "/ai/skin/scan/" + id + "/image?index=0", {
-      method: "POST", credentials: "include",
-      headers: { "Content-Type": "application/json", "X-Client": "web" },
-      body: JSON.stringify({ app_key: "tools", feature: FEATURE, device: device, timestamp: Math.floor(Date.now() / 1000) })
-    }).then(function (r) { return r.ok ? r.blob() : null; }).then(function (blob) {
-      if (!blob) return;
-      var url = URL.createObjectURL(blob); state.historyUrls.push(url);
+  function loadHistoryThumb(id, count) {
+    var jobs = [];
+    for (var i = 0; i < Math.min(count, 3); i++) {
+      jobs.push((function (index) {
+        return fetch(API + "/ai/skin/scan/" + id + "/image?index=" + index, {
+          method: "POST", credentials: "include",
+          headers: { "Content-Type": "application/json", "X-Client": "web" },
+          body: JSON.stringify({ app_key: "tools", feature: FEATURE, device: device, timestamp: Math.floor(Date.now() / 1000) })
+        }).then(function (r) { return r.ok ? r.blob() : null; }).then(function (blob) {
+          if (!blob) return "";
+          var url = URL.createObjectURL(blob); state.historyUrls.push(url); return url;
+        }).catch(function () { return ""; });
+      })(i));
+    }
+    Promise.all(jobs).then(function (urls) {
+      urls = urls.filter(Boolean);
+      if (!urls.length) return;
       var el = document.querySelector('[data-history-thumb="' + id + '"]');
-      if (el) el.innerHTML = '<img src="' + esc(url) + '" alt="">';
-    }).catch(function () {});
+      if (el) el.innerHTML = '<div class="history-stack">' + urls.map(function (u) { return '<img src="' + esc(u) + '" alt="">'; }).join("") + '</div>';
+    });
   }
   function openHistory(id) {
     call("/ai/skin/scan/" + id, {}).then(function (d) {

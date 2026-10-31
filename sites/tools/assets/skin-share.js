@@ -7,8 +7,10 @@
   var LANG = document.documentElement.lang || "en";
   var token = new URLSearchParams(location.search).get("token") || "";
   var $ = function (id) { return document.getElementById(id); };
+  var shareImages = [];
   function esc(v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function call(path, data) { return fetch(API + path, { method: "POST", credentials: "include", headers: { "Content-Type": "application/json", "X-Client": "web" }, body: JSON.stringify(Object.assign({ app_key: "tools", feature: "skin-scan", timestamp: Math.floor(Date.now() / 1000) }, data || {})) }).then(function (r) { return r.json(); }); }
+  function imageFor(i) { return shareImages[i] || ''; }
   function skinTypeText(value) { var key = value === "acne-prone" ? "acne" : value; return UI["skin_" + key] || value || ""; }
   function levelText(value) { var key = value === "generally_suitable" ? "suitable" : value; return UI["level_" + key] || value || ""; }
   function chip(text, level) {
@@ -53,14 +55,16 @@
   }
   function tab(p, i, active) {
     var pr = p.product || {};
-    return '<button class="skin-tab' + (i === active ? ' active' : '') + '" data-tab="' + i + '"><span class="skin-tab-thumb">' + (i + 1) + '</span><span class="skin-tab-copy"><b>' + esc(pr.name || pr.name_original || UI.product) + '</b><small>' + esc(pr.category || "") + '</small></span></button>';
+    var img = imageFor(i);
+    return '<button class="skin-tab' + (i === active ? ' active' : '') + '" data-tab="' + i + '"><span class="skin-tab-thumb">' + (img ? '<img src="' + esc(img) + '" alt="">' : (i + 1)) + '</span><span class="skin-tab-copy"><b>' + esc(pr.name || pr.name_original || UI.product) + '</b><small>' + esc(pr.category || "") + '</small></span></button>';
   }
   function renderShare(report) {
     var products = report.products || [], multi = products.length > 1;
     if (!products.length) { $("shareContent").innerHTML = '<div class="skin-empty">' + esc(UI.scan_failed) + '</div>'; return; }
     var names = products.map(function (x) { var p = x.product || {}; return p.name || p.name_original || UI.product; });
     var active = 0;
-    var head = '<div class="skin-overview-kicker">' + esc(UI.result_title) + '</div><h1 class="skin-share-title">' + esc(multi ? names.join(" + ") : names[0]) + '</h1><p class="skin-share-meta">' + (multi ? products.length + " " + (UI.product_unit || UI.products) : esc((products[0].product || {}).brand || "")) + '</p>';
+    var stack = '<div class="scan-stack">' + products.map(function (_, i) { var img = imageFor(i); return '<span class="scan-stack-item">' + (img ? '<img src="' + esc(img) + '" alt="">' : '<i>' + (i + 1) + '</i>') + '</span>'; }).join("") + '</div>';
+    var head = '<div class="share-head">' + stack + '<div><div class="skin-overview-kicker">' + esc(UI.result_title) + '</div><h1 class="skin-share-title">' + esc(multi ? names.join(" + ") : names[0]) + '</h1><p class="skin-share-meta">' + (multi ? products.length + " " + (UI.product_unit || UI.products) : esc((products[0].product || {}).brand || "")) + '</p></div></div>';
     function panel(index) { return productCard(products[index], index); }
     function tabs() { return '<div class="skin-tabs" id="shareTabs">' + products.map(function (p, i) { return tab(p, i, active); }).join("") + '</div>'; }
     function bind() {
@@ -82,9 +86,21 @@
     update();
     document.title = (multi ? names.join(" + ") : names[0]) + " — AIGLOSSA";
   }
+  function loadShareImages(products) {
+    return Promise.all(products.map(function (_, i) {
+      return fetch(API + "/ai/skin/share/" + encodeURIComponent(token) + "/image?index=" + i, {
+        method: "POST", credentials: "include",
+        headers: { "Content-Type": "application/json", "X-Client": "web" },
+        body: JSON.stringify({ app_key: "tools", feature: "skin-scan", timestamp: Math.floor(Date.now() / 1000) })
+      }).then(function (r) { return r.ok ? r.blob() : null; }).then(function (blob) {
+        if (blob) shareImages[i] = URL.createObjectURL(blob);
+      }).catch(function () {});
+    }));
+  }
   if (!token) { $("shareContent").innerHTML = '<div class="skin-empty">' + esc(UI.no_history) + '</div>'; return; }
   call("/ai/skin/share/" + encodeURIComponent(token), {}).then(function (d) {
     if (d.code !== 200 || !d.data) { $("shareContent").innerHTML = '<div class="skin-empty">' + esc(UI.scan_failed) + '</div>'; return; }
-    renderShare(d.data.report || {});
+    var report = d.data.report || {}, products = report.products || [];
+    loadShareImages(products).then(function () { renderShare(report); });
   }).catch(function () { $("shareContent").innerHTML = '<div class="skin-empty">' + esc(UI.network_error) + '</div>'; });
 })();
