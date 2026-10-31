@@ -20,10 +20,10 @@
 <meta name="theme-color" content="#0e0f11">
 <!-- 结构化数据：告诉 Google 这是一个网页应用，而不是普通文章 -->
 <script type="application/ld+json">{{jsonld}}</script>
-<link rel="icon" href="{{prefix}}assets/favicon-tools.svg" type="image/svg+xml">
-<link rel="icon" href="{{prefix}}assets/favicon-tools.svg" sizes="any">
-<link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-tools.png">
-<link rel="manifest" href="{{prefix}}assets/manifest-tools.webmanifest">
+<link rel="icon" href="{{prefix}}assets/favicon-tools.svg?v={{asset_v}}" type="image/svg+xml">
+<link rel="icon" href="{{prefix}}assets/favicon-tools.svg?v={{asset_v}}" sizes="any">
+<link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-tools.png?v={{asset_v}}">
+<link rel="manifest" href="{{prefix}}assets/manifest-tools.webmanifest?v={{asset_v}}">
 <link rel="stylesheet" href="{{prefix}}assets/theme.css" />
 <style>
   :root{
@@ -840,7 +840,7 @@
 <div class="shell">
   <aside class="rail">
     <div class="rail-scroll">
-    <div class="brand"><i></i><a href="../">aiglossa tools</a></div>
+    <div class="brand"><i></i><a href="../">AIGLOSSA TOOLS</a></div>
     <h1>{{h1}}</h1>
     <p class="sub">{{sub}}</p>
 
@@ -878,7 +878,7 @@
   </aside>
 
   <nav class="utilitybar" aria-label="Account and help">
-    <a class="utility-brand" href="../"><i></i><span>aiglossa tools</span></a>
+    <a class="utility-brand" href="../"><i></i><span>AIGLOSSA TOOLS</span></a>
     <div class="acctbar">
       <button class="av" id="avBtn" type="button" aria-label="account"></button>
       <button class="bal" id="bal" type="button"></button>
@@ -1171,13 +1171,17 @@
   }
 
   // 会话是否存在（cookie 方案下无法本地判断，用一次轻量请求确认）
+  function fmtCoins(value) {
+    var n = Number(value || 0);
+    return Number.isInteger(n) ? String(n) : n.toFixed(2);
+  }
   var sessionOk = false, balanceUnits = -1;
   function checkSession() {
     return call("/wallet/summary", {}, true).then(function (d) {
       sessionOk = d.code === 200;
       if (sessionOk && d.data) {
         balanceUnits = d.data.balance || 0;
-        $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+        $("bal").textContent = fmtCoins(d.data.coins != null ? d.data.coins : balanceUnits / 100) + " " + UI.credits;
         renderAvatar(d.data.user || {});
         syncCost();
       }
@@ -1506,7 +1510,7 @@
     hideTopup();
     if (typeof x.balance === "number") {
       balanceUnits = Math.round(x.balance * 100);
-      $("bal").textContent = UI.balance + " " + Math.round(x.balance) + " " + UI.credits;
+      $("bal").textContent = fmtCoins(x.balance) + " " + UI.credits;
     }
     msg(UI.done_in.replace("{n}", Math.round((Date.now() - startedAt) / 1000)), "ok");
     current = {
@@ -1574,7 +1578,7 @@
       var x = d.data;
       if (typeof x.balance === "number") {
         balanceUnits = Math.round(x.balance * 100);
-        $("bal").textContent = UI.balance + " " + Math.round(x.balance) + " " + UI.credits;
+        $("bal").textContent = fmtCoins(x.balance) + " " + UI.credits;
       }
       pollGeneration(x.id, t0);
     }).catch(function () { $("go").disabled = false; msg(UI.err_net, "err"); });

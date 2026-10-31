@@ -36,6 +36,14 @@ TEMPLATES = ROOT / "tools" / "templates"
 SITES_DIR = ROOT / "sites"
 ASSETS = ROOT / "assets"
 
+# food 只使用自己的少量资源，避免把 scholan 截图等整套 assets 复制过去。
+FOOD_ASSETS = (
+    "food.css", "food.js", "food-share.js", "wallet.js", "favicon-food.svg", "apple-touch-icon-food.png", "og.png",
+    "food-icon-192.png", "food-icon-512.png", "food-icon-maskable-512.png", "food-sample.jpg",
+)
+
+FOOD_ASSET_VERSION = "20261031-23"
+
 # 占位符统一用 {{key}}：模板是纯文件，渲染器只知道这一种语法，
 # 于是"模板里有占位符、文案里没有对应字段"会在构建时报错，而不是静默留下 {{...}}。
 PLACEHOLDER = re.compile(r"\{\{([a-zA-Z0-9_]+)\}\}")
@@ -79,6 +87,8 @@ PAGES = {
     "music-share": ("pages/share.html", "ui", "music/share/index.html"),
     "image": ("pages/image.html", "image", "image/index.html"),
     "image-share": ("pages/image-share.html", "image", "image/share/index.html"),
+    "food": ("pages/food.html", "food", "food/index.html"),
+    "food-share": ("pages/food-share.html", "food", "food/share/index.html"),
     # 指南（内容页）：英文优先，生成到 /en/guides/<slug>.html
     "guides": ("pages/guide.html", "guides", "guides/{slug}.html"),
     # 每个工具一个目录（/{lang}/music/、未来 /{lang}/image/），全局页仍在语言根
@@ -301,6 +311,10 @@ def _site_urls(site: str, spec: dict) -> list[str]:
             urls.append(("music/", None))
         elif page == "image":
             urls.append(("image/", None))
+        elif page == "food":
+            urls.append(("food/", None))
+        elif page == "food-share":
+            continue
         elif page in ("account", "webaccount", "refund", "login", "music-share", "image-share"):
             continue          # noindex / 内部页面，不进 sitemap
         elif page == "webpricing":
@@ -308,6 +322,67 @@ def _site_urls(site: str, spec: dict) -> list[str]:
         else:
             urls.append((f"{page}.html", None))
     return urls
+
+
+def _write_food_pwa(site: str, site_langs: list[str], languages: dict) -> None:
+    """Write per-language manifest + service worker for the food PWA.
+
+    The service worker sits in /<lang>/food/, so its default scope is exactly the
+    language directory. Only the shell is cached; API calls always go to network.
+    """
+    source = json.loads((CONTENT / "food.json").read_text(encoding="utf-8"))
+    icons = [
+        {"src": f"../../assets/food-icon-192.png?v={FOOD_ASSET_VERSION}", "sizes": "192x192", "type": "image/png"},
+        {"src": f"../../assets/food-icon-512.png?v={FOOD_ASSET_VERSION}", "sizes": "512x512", "type": "image/png"},
+        {"src": f"../../assets/food-icon-maskable-512.png?v={FOOD_ASSET_VERSION}", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
+    ]
+    for lang in site_langs:
+        copy = source[lang]
+        folder = SITES_DIR / site / lang / "food"
+        folder.mkdir(parents=True, exist_ok=True)
+        manifest = {
+            "name": copy["title"],
+            "short_name": "AIGLOSSA FOOD",
+            "description": copy["description"],
+            "lang": languages[lang]["hreflang"],
+            "dir": languages[lang]["dir"],
+            "start_url": "./",
+            "scope": "./",
+            "display": "standalone",
+            "background_color": "#FBFAF7",
+            "theme_color": "#FBFAF7",
+            "icons": icons,
+        }
+        (folder / "manifest.webmanifest").write_text(
+            json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+        )
+        sw = f"""/* aiglossa food service worker — network-first; cache is only an offline fallback. */
+const CACHE = "aiglossa-food-{lang}-v27";
+const V = "{FOOD_ASSET_VERSION}";
+const SHELL = ["./", "../../assets/food.css?v=" + V, "../../assets/food.js?v=" + V, "../../assets/wallet.js?v=" + V, "../../assets/food-icon-192.png?v=" + V, "../../assets/food-icon-512.png?v=" + V, "../../assets/food-sample.jpg?v=" + V];
+self.addEventListener("install", (event) => {{
+  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting()));
+}});
+self.addEventListener("activate", (event) => {{
+  event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)))).then(() => self.clients.claim()));
+}});
+self.addEventListener("fetch", (event) => {{
+  const request = event.request;
+  if (request.method !== "GET") return;
+  const url = new URL(request.url);
+  if (url.origin !== self.location.origin) return;
+  event.respondWith(
+    fetch(request).then((response) => {{
+      if (response.ok) {{
+        const copy = response.clone();
+        caches.open(CACHE).then((cache) => cache.put(request, copy));
+      }}
+      return response;
+    }}).catch(() => caches.match(request).then((cached) => cached || (request.mode === "navigate" ? caches.match("./") : undefined)))
+  );
+}});
+"""
+        (folder / "sw.js").write_text(sw, encoding="utf-8")
 
 
 def _write_seo_files(site: str, spec: dict, site_langs: list[str],
@@ -418,6 +493,7 @@ def main() -> int:
             "default": site_default,
             "og_locale": languages[lang]["ogLocale"],
             "prefix": "../" * depth,
+            "asset_v": FOOD_ASSET_VERSION,
             "site_base": site_base,
             "canonical": url_for(site_base, lang, page_path),
             "alternates": alternates_for(site_base, languages, site_default, page_path, site_langs),
@@ -641,6 +717,7 @@ def main() -> int:
                     out["drop"] = copy["drop"]                      # 含 <br>，按 HTML 原样插入
                     out["title"] = esc(copy["title"])
                     out["description"] = esc(copy["description"])
+                    out["asset_v"] = FOOD_ASSET_VERSION
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
                     out["alt_sea"] = esc(copy["title"])
                     out["jsonld"] = json.dumps({
@@ -670,6 +747,30 @@ def main() -> int:
                     return out
 
                 values_builder = share_values
+            elif page in ("food", "food-share"):
+                def food_values(lang: str, base: str, source=source) -> dict[str, str]:
+                    copy = source[lang]
+                    out = {key: (value if isinstance(value, str) else value) for key, value in copy.items()}
+                    out = {key: (esc(value) if isinstance(value, str) else value) for key, value in out.items()}
+                    out["asset_v"] = FOOD_ASSET_VERSION
+                    out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    out["contact_email"] = "support@aiglossa.com"
+                    out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
+                    out["legal_terms"] = esc(marketing[lang]["legal"]["terms"])
+                    out["legal_privacy_href"] = f"{legal_base}/{lang}/protocol/privacy.html"
+                    out["legal_terms_href"] = f"{legal_base}/{lang}/protocol/term.html"
+                    out["refund_href"] = f"https://tools.aiglossa.com/{lang}/refund.html"
+                    out["lang_label"] = esc(marketing[lang]["langLabel"])
+                    out["current_name"] = esc(languages[lang]["name"])
+                    out["brand"] = esc("aiglossa food")
+                    out["jsonld"] = json.dumps({
+                        "@context": "https://schema.org", "@type": "SoftwareApplication",
+                        "name": copy["title"], "description": copy["description"],
+                        "applicationCategory": "HealthApplication", "operatingSystem": "Web",
+                        "url": f"{base}/{lang}/food/", "inLanguage": languages[lang]["hreflang"],
+                    }, ensure_ascii=False).replace("</", "<\\/")
+                    return out
+                values_builder = food_values
             elif page == "image":
                 def image_values(lang: str, base: str, source=source) -> dict[str, str]:
                     common = source["common"]
@@ -677,6 +778,7 @@ def main() -> int:
                     copy["options"] = {**common.get("options", {}), **source[lang].get("options", {})}
                     copy["recipe_names"] = {**common.get("recipe_names", {}), **source[lang].get("recipe_names", {})}
                     out = {key: (value if isinstance(value, (dict, list)) else esc(value)) for key, value in copy.items()}
+                    out["asset_v"] = FOOD_ASSET_VERSION
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
                     out["jsonld"] = json.dumps({
                         "@context": "https://schema.org", "@type": "SoftwareApplication",
@@ -723,6 +825,7 @@ def main() -> int:
                     for k in ("balance", "credits", "not_signed_in"):
                         copy[k] = source[lang]["make"][k]
                     out = {k: esc(v) for k, v in copy.items() if isinstance(v, str)}
+                    out["asset_v"] = FOOD_ASSET_VERSION
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
                     out["refund_note"] = esc(copy["refund_note"])
                     out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
@@ -792,6 +895,9 @@ def main() -> int:
                         "guides_title": esc(locale.get("guides_title", "Guides")),
                         "account_label": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["account_label"]),
                         "credits_unit": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["credits_unit"]),
+                        "buy": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["buy"]),
+                        "buy_short": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["buy_short"]),
+                        "login": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["login"]),
                         "recent_title": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["make"]["mine_title"]),
                         "guides_list": "".join(
                             f'      <li><a href="guides/{slug}.html">{esc(g.get("h1") or g["title"])}</a></li>\n'
@@ -844,11 +950,20 @@ def main() -> int:
 
         if not args.check:
             _write_seo_files(site, spec, site_langs, languages, default)
+            if site == "food":
+                _write_food_pwa(site, site_langs, languages)
         if not args.check and ASSETS.is_dir():
             target_assets = SITES_DIR / site / "assets"
             if target_assets.exists():
                 shutil.rmtree(target_assets)
-            shutil.copytree(ASSETS, target_assets)
+            if site == "food":
+                target_assets.mkdir(parents=True)
+                for name in FOOD_ASSETS:
+                    source_asset = ASSETS / name
+                    if source_asset.exists():
+                        shutil.copy2(source_asset, target_assets / name)
+            else:
+                shutil.copytree(ASSETS, target_assets)
             written.append(f'{site:34s} -> sites/{site}/assets/（资源副本）')
 
     print(("校验通过（未写文件）" if args.check else "已生成页面") + "：")

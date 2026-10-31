@@ -146,3 +146,6 @@ vite.config.ts.timestamp-*
 sites/tools/samples/*.mp3
 sites/tools/samples/*.wav
 sites/tools/samples/*.flac
+
+__pycache__/
+*.pyc

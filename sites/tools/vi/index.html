@@ -32,13 +32,13 @@
 <meta property="og:image" content="https://tools.aiglossa.com/assets/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="aiglossa tools">
+<meta property="og:image:alt" content="AIGLOSSA TOOLS">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "aiglossa tools", "url": "https://tools.aiglossa.com/vi/", "inLanguage": "vi", "publisher": {"@type": "Organization", "name": "aiglossa", "url": "https://aiglossa.com"}}</script>
-<link rel="icon" href="../assets/favicon-tools.svg" type="image/svg+xml">
-<link rel="icon" href="../assets/favicon-tools.svg" sizes="any">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png">
-<link rel="manifest" href="../assets/manifest-tools.webmanifest">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-23" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261031-23" sizes="any">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261031-23">
+<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261031-23">
 <meta name="theme-color" content="#0e0f11">
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/theme.css">
@@ -73,30 +73,76 @@
   .closing-band .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .closing-band p{margin:0;color:var(--muted,#96a0b5);font-size:14px}
   .closing-band .cta{white-space:nowrap}
-  .tools-nav{border-bottom:1px solid rgba(255,255,255,.08)}
+  .tools-nav{position:sticky;top:0;z-index:40;background:rgba(14,15,17,.9);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .tools-actions{display:flex;align-items:center;gap:14px}
+  .tools-lang{position:relative;font-size:12px;color:var(--muted,#96a0b5);border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.03);border-radius:999px;padding:0 10px}
+  .tools-lang summary{list-style:none;cursor:pointer;padding:7px 0;border-radius:8px;font-size:12px}
+  .tools-lang summary::-webkit-details-marker{display:none}
+  .tools-lang summary:hover{color:var(--fg)}
+  .tools-lang ul{position:absolute;inset-inline-end:0;top:calc(100% + 8px);min-width:150px;max-height:320px;overflow:auto;background:#16181c;border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:6px;list-style:none;box-shadow:0 18px 40px rgba(0,0,0,.35);z-index:50}
+  .tools-lang li a{display:block;padding:7px 9px;border-radius:7px;font-size:11.5px;color:var(--ink);white-space:nowrap}
+  .tools-lang li a:hover,.tools-lang li a[aria-current=true]{background:rgba(255,122,26,.12);color:#ffc08d}
   .tools-nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:16px}
-  .tools-brand{font:11px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);text-decoration:none}
-  .tools-account{display:inline-flex;align-items:center;gap:10px;color:var(--muted,#96a0b5);font-size:13px;text-decoration:none}
+  .hidden{display:none!important}
+  .tools-brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--fg);text-decoration:none}
+  .tools-brand img{width:26px;height:26px;border-radius:7px;display:block}
+  .footer-lang{position:relative;color:#8A94A3;font-size:11px}
+  .footer-lang summary{list-style:none;cursor:pointer;padding:4px 0}
+  .footer-lang summary::-webkit-details-marker{display:none}
+  .footer-lang summary:hover{color:var(--fg)}
+  .footer-lang ul{position:absolute;inset-inline-start:0;bottom:calc(100% + 8px);min-width:150px;max-height:300px;overflow:auto;background:#16181c;border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:6px;list-style:none;box-shadow:0 14px 30px rgba(0,0,0,.35);z-index:20}
+  .footer-lang li a{display:block;padding:7px 9px;border-radius:6px;font-size:11px;color:var(--ink);white-space:nowrap}
+  .footer-lang li a:hover{background:rgba(255,122,26,.12);color:#ffc08d}
+  .foot .brand{display:inline-flex;align-items:center;gap:9px;font:11px/1 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;font-weight:400}
+  .foot .legal{margin-inline:auto}
+  .foot .brand img{width:22px;height:22px;border-radius:6px;display:block}
+  .tools-login{color:#ffc69e;font:11px/1 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:7px 0}
+  .tools-login:hover{color:#fff}
+  .tools-account{display:inline-flex;align-items:center;gap:7px;color:var(--muted,#96a0b5);font-size:12px;text-decoration:none;border:0;background:transparent;padding:0}
+  .tools-account:hover{color:var(--ink)}
   .tools-account:hover{color:var(--fg)}
-  .tools-avatar{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;
-                border:1px solid rgba(255,255,255,.22);background:rgba(255,122,26,.12);color:#ffb27a;font-size:12px;font-weight:600}
+  .tools-avatar{display:grid;place-items:center;width:24px;height:24px;border-radius:50%;
+                border:1px solid rgba(255,255,255,.22);background:rgba(255,122,26,.12);color:#ffb27a;font-size:10px;font-weight:600;overflow:hidden}
+  .tools-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%}
   .tools-account-copy{display:flex;align-items:baseline;gap:8px}
-  .tools-account-balance{color:var(--fg);font-variant-numeric:tabular-nums}
-  .tools-account-email{max-width:22ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  @media(max-width:560px){.tools-nav .wrap{padding-inline:20px}.tools-account-email{display:none}}
+  .tools-account-balance{color:var(--fg);font:11px/1 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;letter-spacing:.08em;font-weight:400;font-variant-numeric:tabular-nums}
+  .tools-account-email{display:none}
+  .tools-buy{padding:7px 10px;border:1px solid rgba(255,122,26,.28);border-radius:8px;color:#ffc69e;background:rgba(255,122,26,.075);font-size:12px;text-decoration:none;white-space:nowrap}
+  .tools-buy-full{display:inline}
+  .tools-buy-short{display:none}
+  .tools-buy:hover{border-color:rgba(255,122,26,.5);background:rgba(255,122,26,.13);color:#fff}
+  @media(max-width:560px){
+    .tools-nav .wrap{padding-inline:14px;gap:10px}
+    .tools-brand{font-size:10px;letter-spacing:.15em;gap:7px}
+    .tools-brand img{width:24px;height:24px;border-radius:7px}
+    .tools-lang{display:block;padding:0 8px}
+    .tools-lang summary{font-size:11px;padding:6px 0}
+    .tools-actions{gap:8px}
+    .tools-account{padding:4px 9px 4px 4px;font-size:11px;gap:6px}
+    .tools-avatar{width:22px;height:22px}
+    .tools-account-balance{font-size:11px}
+    .tools-buy{padding:6px 9px;font-size:11px}
+    .tools-buy-full{display:none}
+    .tools-buy-short{display:inline}
+    .tools-account-email{display:none}
+  }
 </style>
 </head>
 <body>
 <header class="tools-nav">
   <div class="wrap">
-    <a class="tools-brand" href="./">aiglossa tools</a>
-    <a class="tools-account" id="toolsAccount" href="login.html?next=./">
-      <span class="tools-avatar" id="toolsAvatar" aria-hidden="true">?</span>
-      <span class="tools-account-copy">
-        <span class="tools-account-email" id="toolsAccountEmail">Tài khoản</span>
-        <span class="tools-account-balance" id="toolsAccountBalance"></span>
-      </span>
-    </a>
+    <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261031-23" alt=""> AIGLOSSA</a>
+    <div class="tools-actions">
+      <a class="tools-login" id="toolsLogin" href="login.html?next=./">Đăng nhập</a>
+      <a class="tools-account hidden" id="toolsAccount" href="login.html?next=./">
+        <span class="tools-avatar" id="toolsAvatar" aria-hidden="true">?</span>
+        <span class="tools-account-copy">
+          <span class="tools-account-email" id="toolsAccountEmail">Tài khoản</span>
+          <span class="tools-account-balance" id="toolsAccountBalance"></span>
+        </span>
+      </a>
+      <a class="tools-buy hidden" id="toolsBuy" href="https://aiglossa.com/vi/webpricing"><span class="tools-buy-full">Mua tín dụng →</span><span class="tools-buy-short">Mua</span></a>
+    </div>
   </div>
 </header>
 <main>
@@ -145,16 +191,7 @@
 
 <footer>
   <div class="wrap foot">
-    <span class="brand">aiglossa tools</span>
-    <nav class="legal">
-      <a href="https://aiglossa.com/vi/protocol/privacy.html">Chính sách Quyền riêng tư</a>
-      <a href="https://aiglossa.com/vi/protocol/term.html">Điều khoản Dịch vụ</a>
-      <a href="acceptable-use.html">Sử dụng được chấp nhận</a>
-    </nav>
-    <details class="switcher">
-      <summary>Ngôn ngữ · Tiếng Việt</summary>
-      <ul>
-        <li><a href="../ar/" data-lang="ar">العربية</a></li>
+    <details class="footer-lang"><summary>Tiếng Việt</summary><ul>        <li><a href="../ar/" data-lang="ar">العربية</a></li>
         <li><a href="../de/" data-lang="de">Deutsch</a></li>
         <li><a href="../en/" data-lang="en">English</a></li>
         <li><a href="../es/" data-lang="es">Español</a></li>
@@ -169,9 +206,11 @@
         <li><a href="../tr/" data-lang="tr">Türkçe</a></li>
         <li><a href="../vi/" data-lang="vi" aria-current="true">Tiếng Việt</a></li>
         <li><a href="../zh-Hans/" data-lang="zh-Hans">简体中文</a></li>
-        <li><a href="../zh-Hant/" data-lang="zh-Hant">繁體中文</a></li>
-      </ul>
-    </details>
+        <li><a href="../zh-Hant/" data-lang="zh-Hant">繁體中文</a></li></ul></details>
+    <nav class="legal">
+      <a href="https://aiglossa.com/vi/protocol/privacy.html">Chính sách Quyền riêng tư</a>
+      <a href="https://aiglossa.com/vi/protocol/term.html">Điều khoản Dịch vụ</a>
+    </nav>
   </div>
 </footer>
 
@@ -188,6 +227,7 @@
       : "https://api.aiglossa.com");
   var root = location.hostname === "tools.staging.aiglossa.com" ? "https://staging.aiglossa.com" : "https://aiglossa.com";
   document.getElementById("toolsAccount").href = root + "/vi/login.html?next=" + encodeURIComponent(location.href);
+  document.getElementById("toolsLogin").href = root + "/vi/login.html?next=" + encodeURIComponent(location.href);
   var device = localStorage.getItem("aig_device") || "";
   if (!device) {
     device = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
@@ -198,12 +238,27 @@
     headers: {"Content-Type": "application/json", "X-Client": "web"},
     body: JSON.stringify({app_key: "tools", device: device, timestamp: Math.floor(Date.now() / 1000)})
   }).then(function (r) { return r.json(); }).then(function (data) {
-    if (data.code === 401 || data.code !== 200 || !data.data) return;
+    function setToolsAuth(signedIn) {
+      document.getElementById("toolsLogin").classList.toggle("hidden", signedIn);
+      document.getElementById("toolsAccount").classList.toggle("hidden", !signedIn);
+      document.getElementById("toolsBuy").classList.toggle("hidden", !signedIn);
+    }
+    if (data.code === 401 || data.code !== 200 || !data.data) { setToolsAuth(false); return; }
+    setToolsAuth(true);
     var user = data.data.user || {};
     var name = user.email || user.nickname || "Tài khoản";
     document.getElementById("toolsAccountEmail").textContent = name;
-    document.getElementById("toolsAccountBalance").textContent = Math.round((data.data.balance || 0) / 100) + " tín dụng";
-    document.getElementById("toolsAvatar").textContent = name.slice(0, 1).toUpperCase();
+    var coins = Number(data.data.coins || 0);
+    document.getElementById("toolsAccountBalance").textContent = (Number.isInteger(coins) ? String(coins) : coins.toFixed(2)) + " tín dụng";
+    var avatar = document.getElementById("toolsAvatar");
+    if (user.avatar) {
+      var avatarSrc = /^https?:\/\//.test(user.avatar) ? user.avatar : api + user.avatar;
+      avatar.innerHTML = '<img src="' + String(avatarSrc).replace(/"/g, "&quot;") + '" alt="">';
+      var avatarImg = avatar.querySelector("img");
+      avatarImg.onerror = function () { avatar.textContent = name.slice(0, 1).toUpperCase(); };
+    } else {
+      avatar.textContent = name.slice(0, 1).toUpperCase();
+    }
     document.getElementById("toolsAccount").href = root + "/vi/account.html";
   }).catch(function () {});
 })();

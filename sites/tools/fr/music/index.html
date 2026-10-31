@@ -36,10 +36,10 @@
 <meta name="theme-color" content="#0e0f11">
 <!-- 结构化数据：告诉 Google 这是一个网页应用，而不是普通文章 -->
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Générateur de musique IA — de la photo au morceau, durée exacte", "description": "Transformez une photo ou une description en musique de fond de 30 à 90 secondes exactes. Les paroles nomment ce que contient votre image, avec voix en 10 langues et boucles sans coupure.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Web", "url": "https://tools.aiglossa.com/fr/music/", "inLanguage": "fr"}</script>
-<link rel="icon" href="../../assets/favicon-tools.svg" type="image/svg+xml">
-<link rel="icon" href="../../assets/favicon-tools.svg" sizes="any">
-<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png">
-<link rel="manifest" href="../../assets/manifest-tools.webmanifest">
+<link rel="icon" href="../../assets/favicon-tools.svg?v=20261031-23" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-tools.svg?v=20261031-23" sizes="any">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png?v=20261031-23">
+<link rel="manifest" href="../../assets/manifest-tools.webmanifest?v=20261031-23">
 <link rel="stylesheet" href="../../assets/theme.css" />
 <style>
   :root{
@@ -856,7 +856,7 @@
 <div class="shell">
   <aside class="rail">
     <div class="rail-scroll">
-    <div class="brand"><i></i><a href="../">aiglossa tools</a></div>
+    <div class="brand"><i></i><a href="../">AIGLOSSA TOOLS</a></div>
     <h1>Créer un morceau</h1>
     <p class="sub">À partir d&#x27;une photo ou d&#x27;une description. Durée exacte, boucles sans coupure.</p>
 
@@ -894,7 +894,7 @@
   </aside>
 
   <nav class="utilitybar" aria-label="Account and help">
-    <a class="utility-brand" href="../"><i></i><span>aiglossa tools</span></a>
+    <a class="utility-brand" href="../"><i></i><span>AIGLOSSA TOOLS</span></a>
     <div class="acctbar">
       <button class="av" id="avBtn" type="button" aria-label="account"></button>
       <button class="bal" id="bal" type="button"></button>
@@ -1187,13 +1187,17 @@
   }
 
   // 会话是否存在（cookie 方案下无法本地判断，用一次轻量请求确认）
+  function fmtCoins(value) {
+    var n = Number(value || 0);
+    return Number.isInteger(n) ? String(n) : n.toFixed(2);
+  }
   var sessionOk = false, balanceUnits = -1;
   function checkSession() {
     return call("/wallet/summary", {}, true).then(function (d) {
       sessionOk = d.code === 200;
       if (sessionOk && d.data) {
         balanceUnits = d.data.balance || 0;
-        $("bal").textContent = UI.balance + " " + Math.round(balanceUnits / 100) + " " + UI.credits;
+        $("bal").textContent = fmtCoins(d.data.coins != null ? d.data.coins : balanceUnits / 100) + " " + UI.credits;
         renderAvatar(d.data.user || {});
         syncCost();
       }
@@ -1522,7 +1526,7 @@
     hideTopup();
     if (typeof x.balance === "number") {
       balanceUnits = Math.round(x.balance * 100);
-      $("bal").textContent = UI.balance + " " + Math.round(x.balance) + " " + UI.credits;
+      $("bal").textContent = fmtCoins(x.balance) + " " + UI.credits;
     }
     msg(UI.done_in.replace("{n}", Math.round((Date.now() - startedAt) / 1000)), "ok");
     current = {
@@ -1590,7 +1594,7 @@
       var x = d.data;
       if (typeof x.balance === "number") {
         balanceUnits = Math.round(x.balance * 100);
-        $("bal").textContent = UI.balance + " " + Math.round(x.balance) + " " + UI.credits;
+        $("bal").textContent = fmtCoins(x.balance) + " " + UI.credits;
       }
       pollGeneration(x.id, t0);
     }).catch(function () { $("go").disabled = false; msg(UI.err_net, "err"); });

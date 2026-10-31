@@ -52,6 +52,10 @@ def outputs_for(page: str) -> list[tuple[str, str]]:
         return [("image/index.html", "image/")]
     if page == "image-share":
         return [("image/share/index.html", "image/share/")]
+    if page == "food":
+        return [("food/index.html", "food/")]
+    if page == "food-share":
+        return [("food/share/index.html", "food/share/")]
     if page in ("refund", "acceptable-use"):
         return [(f"{page}.html", f"{page}.html")]
     if page == "webpricing":
@@ -182,6 +186,16 @@ def main() -> int:
                     want_canonical = f"{base}/{lang}/{url_rel}" if url_rel else f"{base}/{lang}/"
                     if not canonical or canonical.group(1) != want_canonical:
                         problems.append(f"{where}: canonical 为 {canonical.group(1) if canonical else '缺失'}，应为 {want_canonical}")
+
+    # 3.5) food PWA：每种语言都要有 manifest + service worker
+    for site, spec in sites.items():
+        if site != "food":
+            continue
+        for lang in spec.get("langs", codes):
+            for rel in ("food/manifest.webmanifest", "food/sw.js"):
+                f = SITES_DIR / site / lang / rel
+                if not f.exists():
+                    problems.append(f"PWA 产物缺失：{f.relative_to(ROOT)}")
 
     # 4) 协议页只在声明了它的站点
     for site, spec in sites.items():

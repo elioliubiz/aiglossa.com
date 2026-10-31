@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="tr" dir="ltr" data-lang-name="Türkçe">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Gıda etiketi tarama — AIGLOSSA FOOD</title><meta name="description" content="Bir gıda etiketini tarayın; net bir besin raporu, içerik açıklamaları ve dikkat etmesi gerekenler için genel notlar alın."><link rel="canonical" href="https://food.aiglossa.com/tr/food/"><link rel="alternate" hreflang="ar" href="https://food.aiglossa.com/ar/food/">
+<link rel="alternate" hreflang="de" href="https://food.aiglossa.com/de/food/">
+<link rel="alternate" hreflang="en" href="https://food.aiglossa.com/en/food/">
+<link rel="alternate" hreflang="es" href="https://food.aiglossa.com/es/food/">
+<link rel="alternate" hreflang="fr" href="https://food.aiglossa.com/fr/food/">
+<link rel="alternate" hreflang="id" href="https://food.aiglossa.com/id/food/">
+<link rel="alternate" hreflang="it" href="https://food.aiglossa.com/it/food/">
+<link rel="alternate" hreflang="ja" href="https://food.aiglossa.com/ja/food/">
+<link rel="alternate" hreflang="ko" href="https://food.aiglossa.com/ko/food/">
+<link rel="alternate" hreflang="pt" href="https://food.aiglossa.com/pt/food/">
+<link rel="alternate" hreflang="ru" href="https://food.aiglossa.com/ru/food/">
+<link rel="alternate" hreflang="th" href="https://food.aiglossa.com/th/food/">
+<link rel="alternate" hreflang="tr" href="https://food.aiglossa.com/tr/food/">
+<link rel="alternate" hreflang="vi" href="https://food.aiglossa.com/vi/food/">
+<link rel="alternate" hreflang="zh-Hans" href="https://food.aiglossa.com/zh-Hans/food/">
+<link rel="alternate" hreflang="zh-Hant" href="https://food.aiglossa.com/zh-Hant/food/">
+<link rel="alternate" hreflang="x-default" href="https://food.aiglossa.com/en/food/">
+<meta property="og:type" content="website"><meta property="og:title" content="Gıda etiketi tarama — AIGLOSSA FOOD"><meta property="og:description" content="Bir gıda etiketini tarayın; net bir besin raporu, içerik açıklamaları ve dikkat etmesi gerekenler için genel notlar alın."><meta property="og:url" content="https://food.aiglossa.com/tr/food/"><meta property="og:image" content="https://food.aiglossa.com/assets/og.png">
+<meta name="theme-color" content="#FBFAF7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.webmanifest?v=20261031-23">
+<link rel="icon" href="../../assets/favicon-food.svg?v=20261031-23"><link rel="apple-touch-icon" href="../../assets/apple-touch-icon-food.png?v=20261031-23">
+<link rel="stylesheet" href="../../assets/food.css?v=20261031-23">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Gıda etiketi tarama — AIGLOSSA FOOD", "description": "Bir gıda etiketini tarayın; net bir besin raporu, içerik açıklamaları ve dikkat etmesi gerekenler için genel notlar alın.", "applicationCategory": "HealthApplication", "operatingSystem": "Web", "url": "https://food.aiglossa.com/tr/food/", "inLanguage": "tr"}</script>
+</head>
+<body>
+<header class="topbar"><div class="wrap topbar-inner">
+  <a class="brand" href="./" aria-label="AIGLOSSA FOOD"><span class="brand-mark food-logo"><img src="../../assets/favicon-food.svg?v=20261031-23" alt=""></span> AIGLOSSA</a>
+  <div class="top-actions">
+    <a class="login-link" id="loginBtn" href="#">Giriş yap</a>
+    <button class="account-flat hidden" id="accountBtn"><span class="avatar" id="avatar">?</span><span class="balance" id="balanceText">—<span>kredi</span></span></button>
+    <a class="pill-btn buy-btn hidden" id="buyBtn" href="#"><span class="buy-full">Kredi satın al</span><span class="buy-short">Satın al</span></a>
+  </div>
+</div></header>
+<div class="offline-bar hidden" id="offlineBar">Çevrimdışısınız. Tarama için bağlantı gerekir.</div>
+
+<main id="heroView">
+  <section class="wrap hero">
+    <div class="hero-copy">
+      <span class="kicker">FOOD LABEL SCAN</span>
+      <h1>Etiketi okuyun. Gıdayı anlayın.</h1>
+      <p class="lede">İçerikleri, besin değerlerini veya ithal paketleri tarayın. Saniyeler içinde net bir rapor alın — tıbbi tavsiye değildir.</p>
+      <div class="scan-card">
+        <div class="scan-icon"><svg viewBox="0 0 24 24"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2l1.1-1.8h6.4L16.3 6h1.2A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5z"/><circle cx="12" cy="12.3" r="3.2"/></svg></div>
+        <div class="scan-copy"><b>Fotoğraf çek veya yükle</b><span>İçerikler · Besin değerleri · İthal etiketler</span></div>
+        <div class="scan-actions"><label class="btn" for="fileInput">Dosya seç</label><label class="btn ghost" for="cameraInput">Kamera</label></div>
+        <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp">
+        <input class="file-input" id="cameraInput" type="file" accept="image/*" capture="environment">
+        <div class="preview-wrap hidden" id="previewWrap"><img id="preview" alt="Gıda etiketi"></div>
+        <div class="scan-loading hidden" id="scanLoading"><span class="spinner"></span><span id="scanLoadingText">Etiket okunuyor…</span></div>
+        <button class="btn hidden" id="scanButton" style="width:100%;margin-top:12px">Taramayı başlat</button>
+      </div>
+      <div class="meta-row"><span>3 kredi / tarama</span><span>yaklaşık 4 saniye</span><span>16 dil</span></div>
+      <div class="pwa-banner hidden" id="pwaBanner"><span>Daha hızlı tarama için aiglossa food&#x27;u ana ekranınıza ekleyin.</span><button id="installBtn">Uygulamayı yükle</button></div>
+    </div>
+    <div class="hero-visual">
+      <div class="photo-card"><img src="../../assets/food-sample.jpg?v=20261031-23" alt="Örnek etiket"></div>
+      <div class="scan-frame"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+      <div class="result-chip"><span class="dot"></span> Örnek etiket</div>
+      <div class="float-card"><b>Doymuş yağ</b><span>10.5g / 100g</span><i class="bar"></i><small>BRD 53% · Yüksek</small></div>
+    </div>
+  </section>
+
+  <section class="wrap value" id="how">
+    <div class="value-head"><h2>Bir etiket, üç katman</h2><p>İçindekiler, besin değerleri ve kimlerin dikkat etmesi gerektiği — anlaşılır bir dille.</p></div>
+    <div class="value-grid">
+      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M5 6.5h14M5 11h14M5 15.5h9"/><circle cx="18" cy="17" r="3"/><path d="m20.2 19.2 1.6 1.6"/></svg></div><h3>İçerik açıklamaları</h3><p>Bilmediğiniz her kelime açıklandı: ne olduğu, neden bulunduğu ve kimlerin dikkat etmesi gerektiği.</p></article>
+      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M5 19V9M12 19V5M19 19v-6"/><path d="M4 19h16"/></svg></div><h3>Besin analizi</h3><p>100g ve porsiyon başına değerler ile BRD; yüksek, orta ve düşük seviyeler kolay okunabilir şekilde.</p></article>
+      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.5c0 4.2-2.8 7.2-7 9-4.2-1.8-7-4.8-7-9V6z"/><path d="M9.3 11.8 11.4 14l3.6-4"/></svg></div><h3>Dikkat etmesi gerekenler</h3><p>Sodyum, şeker, alerjenler veya katkı maddelerine dikkat etmesi gerekenler için genel notlar.</p></article>
+    </div>
+  </section>
+
+  <section class="wrap recent hidden" id="recentSection">
+    <div class="recent-head"><h2>Son taramalar</h2><a href="#" id="historyRefresh">Hepsini gör →</a></div>
+    <div class="history-list" id="historyList"><div class="history-empty">Henüz tarama yok.</div></div>
+  </section>
+</main>
+
+<section class="result-view hidden" id="resultView">
+  <div class="wrap result-top">
+    <a class="back" href="#" id="backBtn">← Geri</a>
+    <div class="product-row">
+      <div class="thumb" id="resultThumb"></div>
+      <div><span class="kicker" id="resultKicker">Analiz</span><h1 id="resultName">—</h1><p id="resultMeta"></p></div>
+      <div class="result-head-actions"><button class="small-btn" id="shareBtn">Paylaş</button><button class="small-btn" id="deleteBtn">Sil</button></div>
+    </div>
+  </div>
+  <div class="wrap result-grid">
+    <div class="result-main" id="reportMain"></div>
+    <aside class="sidebar"><div class="side-card" id="reportSide"></div></aside>
+  </div>
+</section>
+
+<div class="modal hidden" id="confirmModal"><div class="modal-box"><h3>Taramayı başlat</h3><p id="confirmText"></p><div class="modal-actions"><button class="btn ghost" data-close>İptal</button><button class="btn" id="confirmScan">Taramayı başlat</button></div></div></div>
+<div class="modal hidden" id="payModal"><div class="modal-box"><h3>Kredi satın al</h3><p id="payBalance"></p><div class="pay-packs" id="payPacks"></div><p id="payMsg"></p><div class="modal-actions"><button class="btn ghost" data-close>Kapat</button></div></div></div>
+<div class="toast hidden" id="toast"></div>
+
+<footer><div class="wrap footer-inner">
+  <details class="footer-lang" id="footerLang"><summary>Türkçe</summary><ul>        <li><a href="../../ar/food/index.html" data-lang="ar">العربية</a></li>
+        <li><a href="../../de/food/index.html" data-lang="de">Deutsch</a></li>
+        <li><a href="../../en/food/index.html" data-lang="en">English</a></li>
+        <li><a href="../../es/food/index.html" data-lang="es">Español</a></li>
+        <li><a href="../../fr/food/index.html" data-lang="fr">Français</a></li>
+        <li><a href="../../id/food/index.html" data-lang="id">Bahasa Indonesia</a></li>
+        <li><a href="../../it/food/index.html" data-lang="it">Italiano</a></li>
+        <li><a href="../../ja/food/index.html" data-lang="ja">日本語</a></li>
+        <li><a href="../../ko/food/index.html" data-lang="ko">한국어</a></li>
+        <li><a href="../../pt/food/index.html" data-lang="pt">Português</a></li>
+        <li><a href="../../ru/food/index.html" data-lang="ru">Русский</a></li>
+        <li><a href="../../th/food/index.html" data-lang="th">ไทย</a></li>
+        <li><a href="../../tr/food/index.html" data-lang="tr" aria-current="true">Türkçe</a></li>
+        <li><a href="../../vi/food/index.html" data-lang="vi">Tiếng Việt</a></li>
+        <li><a href="../../zh-Hans/food/index.html" data-lang="zh-Hans">简体中文</a></li>
+        <li><a href="../../zh-Hant/food/index.html" data-lang="zh-Hant">繁體中文</a></li></ul></details>
+  <div class="footer-links"><a href="https://aiglossa.com/tr/protocol/privacy.html">Gizlilik</a><a href="https://aiglossa.com/tr/protocol/term.html">Şartlar</a></div>
+  <span>Sadece genel beslenme bilgisi amaçlıdır. Tıbbi tavsiye değildir.</span>
+</div></footer>
+
+<script type="application/json" id="ui">{"title": "Gıda etiketi tarama — AIGLOSSA FOOD", "description": "Bir gıda etiketini tarayın; net bir besin raporu, içerik açıklamaları ve dikkat etmesi gerekenler için genel notlar alın.", "h1": "Etiketi okuyun. Gıdayı anlayın.", "sub": "İçerikleri, besin değerlerini veya ithal paketleri tarayın. Saniyeler içinde net bir rapor alın — tıbbi tavsiye değildir.", "nav_scan": "Tara", "nav_how": "Nasıl çalışır", "nav_pricing": "Fiyatlandırma", "sign_in": "Giriş yap", "account": "Hesap", "credits": "kredi", "buy": "Kredi satın al", "scan_title": "Etiket tara", "scan_sub": "İçerikler · Besin değerleri · İthal etiketler", "upload": "Fotoğraf çek veya yükle", "upload_hint": "JPG, PNG veya WebP · 8 MB'a kadar", "choose_file": "Dosya seç", "camera": "Kamera", "scan_button": "Taramayı başlat", "scanning": "Etiket okunuyor…", "scan_cost": "3 kredi / tarama", "scan_seconds": "yaklaşık 4 saniye", "scan_languages": "16 dil", "retake": "Yeniden çek", "change_image": "Fotoğrafı değiştir", "login_required": "Taramak için lütfen giriş yapın.", "insufficient": "Yetersiz kredi. Devam etmek için kredi satın alın.", "scan_failed": "Bu etiket analiz edilemedi. Lütfen tekrar deneyin.", "image_invalid": "Bu görsel okunamadı. Daha net bir fotoğraf deneyin.", "network_error": "Ağ hatası. Lütfen tekrar deneyin.", "scan_pending": "Analiz ediliyor…", "scan_timeout": "Bu işlem normalden uzun sürüyor. Geçmişi birazdan kontrol edebilirsiniz.", "unsupported_language": "Bu dil henüz desteklenmiyor.", "result_title": "Analiz", "analyzed_in": "Rapor dili", "original": "Orijinal", "translated": "Çevrilmiş", "save": "Kaydet", "saved": "Kaydedildi", "delete": "Sil", "delete_confirm": "Bu taramayı sil?", "delete_body": "Rapor ve görsel silinecektir.", "new_scan": "Yeni tarama yap", "history": "Son taramalar", "view_all": "Hepsini gör", "no_history": "Henüz tarama yok.", "back": "Geri", "verdict": "Özet", "nutrition": "Besin Değerleri", "ingredients": "İçerikler", "who_notes": "Dikkat etmesi gerekenler", "how_to_eat": "Nasıl tüketilmeli", "data_notes": "Veri notları", "disclaimer_label": "Yasal Uyarı", "per_100g": "100g için", "per_serving": "porsiyon başına", "nrv": "BRD", "not_labeled": "Etiketlenmemiş", "high": "Yüksek", "medium": "Orta", "info": "Bilgi", "avoid": "Kaçının", "caution": "Dikkat", "limit": "Sınırlandırın", "energy": "Enerji", "protein": "Protein", "fat": "Yağ", "sat_fat": "Doymuş yağ", "carb": "Karbonhidrat", "sugar": "Şeker", "sodium": "Sodyum", "fiber": "Lif", "salt": "Tuz", "cholesterol": "Kolesterol", "trans_fat": "Trans yağ", "added_sugar": "İlave şeker", "value_1_title": "İçerik açıklamaları", "value_1_body": "Bilmediğiniz her kelime açıklandı: ne olduğu, neden bulunduğu ve kimlerin dikkat etmesi gerektiği.", "value_2_title": "Besin analizi", "value_2_body": "100g ve porsiyon başına değerler ile BRD; yüksek, orta ve düşük seviyeler kolay okunabilir şekilde.", "value_3_title": "Dikkat etmesi gerekenler", "value_3_body": "Sodyum, şeker, alerjenler veya katkı maddelerine dikkat etmesi gerekenler için genel notlar.", "recent": "Son taramalar", "how_title": "Nasıl çalışır", "how_1": "Etiketin fotoğrafını çekin", "how_2": "İçerikleri ve besin değerlerini okuyoruz", "how_3": "Net ve genel bir rapor alın", "cta": "Taramaya başla", "footer_disclaimer": "Sadece genel beslenme bilgisi amaçlıdır. Tıbbi tavsiye değildir.", "pay_title": "Kredi satın al", "pay_balance": "Bakiye", "pay_waiting": "Ödeme bekleniyor…", "pay_success": "Krediler eklendi.", "pay_failed": "Ödeme başarısız. Lütfen tekrar deneyin.", "pay_close": "Kapat", "credits_unit": "kredi", "one_scan": "1 tarama = 3 kredi", "install": "Uygulamayı yükle", "install_hint": "Daha hızlı tarama için aiglossa food'u ana ekranınıza ekleyin.", "offline": "Çevrimdışısınız. Tarama için bağlantı gerekir.", "update": "Yeni bir sürüm hazır.", "sample": "Örnek etiket", "image_alt": "Gıda etiketi", "privacy": "Gizlilik", "terms": "Şartlar", "refund": "İade", "contact": "İletişim", "cancel": "İptal", "cautions": "Dikkat", "value_head": "Bir etiket, üç katman", "value_intro": "İçindekiler, besin değerleri ve kimlerin dikkat etmesi gerektiği — anlaşılır bir dille.", "status_done": "Tamam", "status_failed": "Başarısız", "status_pending": "Analiz ediliyor", "show_all": "Tümünü göster", "show_less": "Daralt", "share": "Paylaş", "share_text": "«{product}» etiketini taradım: {headline}.", "share_copied": "Bağlantı kopyalandı", "share_failed": "Paylaşım bağlantısı oluşturulamadı", "share_heading": "Gıda etiketi analizi", "share_cta": "Etiket analizini dene", "daily_ref": "günlük referansın", "nutrition_note": "100 g için. Yüzdeler ortalama bir yetişkinin günlük referansına göredir, sağlık puanı değildir. “Belirtilmemiş” sıfır anlamına gelmez.", "energy_note": "kcal ve kJ aynı enerjinin iki birimidir; 1 kcal ≈ 4.184 kJ.", "buy_short": "Satın al"}</script>
+<script src="../../assets/wallet.js?v=20261031-23"></script>
+<script src="../../assets/food.js?v=20261031-23"></script>
+
+<script>
+(function () {
+  var h = location.hostname;
+  if (h.indexOf("staging.aiglossa.com") < 0) return;
+  var main = "https://staging.aiglossa.com";
+  document.querySelectorAll('a[href^="https://aiglossa.com"]').forEach(function (a) {
+    a.href = main + a.getAttribute("href").slice("https://aiglossa.com".length);
+  });
+})();
+</script>
+</body>
+</html>

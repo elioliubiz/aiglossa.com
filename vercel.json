@@ -3,6 +3,508 @@
   "cleanUrls": false,
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh-(TW|HK|MO|Hant|tw|hk|mo).*"
+        }
+      ],
+      "destination": "/zh-Hant/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh.*"
+        }
+      ],
+      "destination": "/zh-Hans/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ja.*"
+        }
+      ],
+      "destination": "/ja/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ko.*"
+        }
+      ],
+      "destination": "/ko/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^es.*"
+        }
+      ],
+      "destination": "/es/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^pt.*"
+        }
+      ],
+      "destination": "/pt/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^fr.*"
+        }
+      ],
+      "destination": "/fr/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^de.*"
+        }
+      ],
+      "destination": "/de/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^it.*"
+        }
+      ],
+      "destination": "/it/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ru.*"
+        }
+      ],
+      "destination": "/ru/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ar.*"
+        }
+      ],
+      "destination": "/ar/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^th.*"
+        }
+      ],
+      "destination": "/th/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^vi.*"
+        }
+      ],
+      "destination": "/vi/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^id.*"
+        }
+      ],
+      "destination": "/id/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^tr.*"
+        }
+      ],
+      "destination": "/tr/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        }
+      ],
+      "destination": "/en/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh-(TW|HK|MO|Hant|tw|hk|mo).*"
+        }
+      ],
+      "destination": "/zh-Hant/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^zh.*"
+        }
+      ],
+      "destination": "/zh-Hans/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ja.*"
+        }
+      ],
+      "destination": "/ja/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ko.*"
+        }
+      ],
+      "destination": "/ko/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^es.*"
+        }
+      ],
+      "destination": "/es/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^pt.*"
+        }
+      ],
+      "destination": "/pt/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^fr.*"
+        }
+      ],
+      "destination": "/fr/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^de.*"
+        }
+      ],
+      "destination": "/de/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^it.*"
+        }
+      ],
+      "destination": "/it/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ru.*"
+        }
+      ],
+      "destination": "/ru/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^ar.*"
+        }
+      ],
+      "destination": "/ar/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^th.*"
+        }
+      ],
+      "destination": "/th/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^vi.*"
+        }
+      ],
+      "destination": "/vi/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^id.*"
+        }
+      ],
+      "destination": "/id/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        },
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^tr.*"
+        }
+      ],
+      "destination": "/tr/food/",
+      "permanent": false
+    },
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/en/food/",
+      "permanent": false
+    },
+    {
       "source": "/music/",
       "has": [
         {
@@ -669,6 +1171,126 @@
   ],
   "rewrites": [
     {
+      "source": "/:lang/food/share/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/share/index.html"
+    },
+    {
+      "source": "/:lang/food/share/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/share/index.html"
+    },
+    {
+      "source": "/:lang/food/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/index.html"
+    },
+    {
+      "source": "/:lang/food/sw.js",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/sw.js"
+    },
+    {
+      "source": "/:lang/food/manifest.webmanifest",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/manifest.webmanifest"
+    },
+    {
+      "source": "/:lang/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:path*"
+    },
+    {
+      "source": "/:lang/food/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/index.html"
+    },
+    {
+      "source": "/:lang/food/sw.js",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/sw.js"
+    },
+    {
+      "source": "/:lang/food/manifest.webmanifest",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/food/manifest.webmanifest"
+    },
+    {
+      "source": "/:lang/",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:lang/index.html"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "food.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/food/:path*"
+    },
+    {
       "source": "/:path*",
       "has": [
         {
@@ -710,32 +1332,62 @@
     },
     {
       "source": "/:lang/music/share/",
-      "has": [{"type": "host", "value": "tools.aiglossa.com"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
       "destination": "/sites/tools/:lang/music/share/index.html"
     },
     {
       "source": "/:lang/image/",
-      "has": [{"type": "host", "value": "tools.aiglossa.com"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
       "destination": "/sites/tools/:lang/image/index.html"
     },
     {
       "source": "/:lang/image/share/",
-      "has": [{"type": "host", "value": "tools.aiglossa.com"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.aiglossa.com"
+        }
+      ],
       "destination": "/sites/tools/:lang/image/share/index.html"
     },
     {
       "source": "/:lang/image/share/",
-      "has": [{"type": "host", "value": "tools.staging.aiglossa.com"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.staging.aiglossa.com"
+        }
+      ],
       "destination": "/sites/tools/:lang/image/share/index.html"
     },
     {
       "source": "/:lang/image/",
-      "has": [{"type": "host", "value": "tools.staging.aiglossa.com"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.staging.aiglossa.com"
+        }
+      ],
       "destination": "/sites/tools/:lang/image/index.html"
     },
     {
       "source": "/:lang/music/share/",
-      "has": [{"type": "host", "value": "tools.staging.aiglossa.com"}],
+      "has": [
+        {
+          "type": "host",
+          "value": "tools.staging.aiglossa.com"
+        }
+      ],
       "destination": "/sites/tools/:lang/music/share/index.html"
     },
     {
@@ -920,6 +1572,32 @@
         {
           "key": "Cache-Control",
           "value": "public, max-age=604800"
+        }
+      ]
+    },
+    {
+      "source": "/:lang/food/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    },
+    {
+      "source": "/:lang/food/manifest.webmanifest",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600"
         }
       ]
     }

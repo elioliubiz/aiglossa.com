@@ -1,0 +1,30 @@
+{
+  "name": "Quét nhãn thực phẩm — AIGLOSSA FOOD",
+  "short_name": "AIGLOSSA FOOD",
+  "description": "Quét nhãn thực phẩm để nhận báo cáo dinh dưỡng rõ ràng, giải thích thành phần và lưu ý cho những người cần quan tâm.",
+  "lang": "vi",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FBFAF7",
+  "theme_color": "#FBFAF7",
+  "icons": [
+    {
+      "src": "../../assets/food-icon-192.png?v=20261031-23",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "../../assets/food-icon-512.png?v=20261031-23",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "../../assets/food-icon-maskable-512.png?v=20261031-23",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

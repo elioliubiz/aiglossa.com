@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Analyse d’étiquette · AIGLOSSA FOOD</title><meta name="robots" content="noindex"><link rel="canonical" href="https://food.aiglossa.com/fr/food/share/"><link rel="alternate" hreflang="ar" href="https://food.aiglossa.com/ar/food/share/">
+<link rel="alternate" hreflang="de" href="https://food.aiglossa.com/de/food/share/">
+<link rel="alternate" hreflang="en" href="https://food.aiglossa.com/en/food/share/">
+<link rel="alternate" hreflang="es" href="https://food.aiglossa.com/es/food/share/">
+<link rel="alternate" hreflang="fr" href="https://food.aiglossa.com/fr/food/share/">
+<link rel="alternate" hreflang="id" href="https://food.aiglossa.com/id/food/share/">
+<link rel="alternate" hreflang="it" href="https://food.aiglossa.com/it/food/share/">
+<link rel="alternate" hreflang="ja" href="https://food.aiglossa.com/ja/food/share/">
+<link rel="alternate" hreflang="ko" href="https://food.aiglossa.com/ko/food/share/">
+<link rel="alternate" hreflang="pt" href="https://food.aiglossa.com/pt/food/share/">
+<link rel="alternate" hreflang="ru" href="https://food.aiglossa.com/ru/food/share/">
+<link rel="alternate" hreflang="th" href="https://food.aiglossa.com/th/food/share/">
+<link rel="alternate" hreflang="tr" href="https://food.aiglossa.com/tr/food/share/">
+<link rel="alternate" hreflang="vi" href="https://food.aiglossa.com/vi/food/share/">
+<link rel="alternate" hreflang="zh-Hans" href="https://food.aiglossa.com/zh-Hans/food/share/">
+<link rel="alternate" hreflang="zh-Hant" href="https://food.aiglossa.com/zh-Hant/food/share/">
+<link rel="alternate" hreflang="x-default" href="https://food.aiglossa.com/en/food/share/">
+<meta name="description" content="À titre d&#x27;information nutritionnelle générale uniquement. Ne constitue pas un avis médical.">
+<meta name="theme-color" content="#FBFAF7"><meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="icon" href="../../../assets/favicon-food.svg?v=20261031-23"><link rel="apple-touch-icon" href="../../../assets/apple-touch-icon-food.png?v=20261031-23">
+<link rel="stylesheet" href="../../../assets/food.css?v=20261031-23">
+<style>
+.share-main{max-width:860px;padding-block:36px 74px}
+.share-head{padding-bottom:22px}
+.share-head h1{font-size:34px;line-height:1.1;letter-spacing:-.04em;margin-top:8px}
+.share-meta{color:var(--muted);font-size:12px;margin-top:8px}
+.share-verdict h2{font-size:23px;line-height:1.25;letter-spacing:-.03em}
+.share-verdict p{font-size:13px;line-height:1.7;color:#4A554D;margin-top:9px}
+.share-verdict ul{margin-top:8px}
+.share-loading{display:flex;align-items:center;justify-content:center;gap:9px;padding:80px 0;color:var(--muted);font-size:13px}
+.share-error{padding:60px 0;text-align:center}
+.share-error h1{font-size:22px}
+.share-error .btn{margin-top:18px}
+.share-top-cta{margin-inline-start:auto;border-color:#CFE3D8;background:var(--green-soft);color:var(--green);font-weight:650}
+.share-top-cta:hover{background:#DDF1E5;border-color:#B7D8C5;color:var(--green)}
+.share-page .topbar-inner{height:60px}
+.share-page .brand{font-size:11px}
+@media(max-width:640px){
+  .share-main{padding-block:26px 52px}
+  .share-head h1{font-size:27px}
+}
+</style>
+</head>
+<body class="share-page">
+<header class="topbar"><div class="wrap topbar-inner">
+  <a class="brand" href="../"><span class="brand-mark food-logo"><img src="../../../assets/favicon-food.svg?v=20261031-23" alt=""></span> AIGLOSSA <b>FOOD</b></a>
+  <a class="pill-btn share-top-cta" href="../">Essayer l’analyse d’étiquette</a>
+</div></header>
+<main class="wrap share-main">
+  <div class="share-loading" id="shareLoading"><span class="spinner"></span><span>Analyse en cours…</span></div>
+  <div class="share-error hidden" id="shareError"><h1>Impossible d&#x27;analyser cette étiquette. Veuillez réessayer.</h1><a class="btn" href="../">Commencer à scanner</a></div>
+  <article class="hidden" id="shareContent">
+    <header class="share-head"><span class="kicker">Analyse d’étiquette · AIGLOSSA FOOD</span><h1 id="shareName">—</h1><p class="share-meta" id="shareMeta"></p></header>
+    <section class="card share-verdict" id="shareVerdict"></section>
+    <section class="card hidden" id="sharePeople"></section>
+    <section class="card"><div class="card-head"><h3>Nutrition</h3><span id="shareServing"></span></div><div class="nut-grid report" id="shareNutrition"></div><p class="nutrition-note">Pour 100 g. Les pourcentages se basent sur la référence journalière d’un adulte moyen, pas sur un score santé. « Non indiqué » ne signifie pas zéro.</p><p class="nutrition-note">kcal et kJ sont deux unités de la même énergie ; 1 kcal ≈ 4.184 kJ.</p></section>
+    <section class="card"><div class="card-head"><h3>Ingrédients</h3><span id="shareIngCount"></span></div><div id="shareIngredients"></div></section>
+    <p class="report-disclaimer" id="shareDisclaimer"></p>
+  </article>
+</main>
+<footer><div class="wrap footer-inner">
+  <span class="brand"><span class="brand-mark food-logo" style="width:22px;height:22px;border-radius:7px"><img src="../../../assets/favicon-food.svg?v=20261031-23" alt=""></span> AIGLOSSA <b>FOOD</b></span>
+  <div class="footer-links"><a href="https://aiglossa.com/fr/protocol/privacy.html">Confidentialité</a><a href="https://aiglossa.com/fr/protocol/term.html">Conditions</a></div>
+  <span>À titre d&#x27;information nutritionnelle générale uniquement. Ne constitue pas un avis médical.</span>
+</div></footer>
+<script type="application/json" id="ui">{"title": "Scan d'étiquettes alimentaires — AIGLOSSA FOOD", "description": "Scannez une étiquette alimentaire pour obtenir un rapport nutritionnel clair, des explications sur les ingrédients et des conseils pour les personnes concernées.", "h1": "Lisez l'étiquette. Comprenez ce que vous mangez.", "sub": "Scannez les ingrédients, les valeurs nutritionnelles ou un emballage importé. Obtenez un rapport clair en quelques secondes — ceci ne constitue pas un avis médical.", "nav_scan": "Scanner", "nav_how": "Comment ça marche", "nav_pricing": "Tarifs", "sign_in": "Connexion", "account": "Compte", "credits": "crédits", "buy": "Acheter des crédits", "scan_title": "Scanner une étiquette", "scan_sub": "Ingrédients · Valeurs nutritionnelles · Étiquettes importées", "upload": "Prendre une photo ou importer", "upload_hint": "JPG, PNG ou WebP · jusqu'à 8 Mo", "choose_file": "Choisir un fichier", "camera": "Appareil photo", "scan_button": "Démarrer le scan", "scanning": "Lecture de l'étiquette…", "scan_cost": "3 crédits / scan", "scan_seconds": "environ 4 secondes", "scan_languages": "16 langues", "retake": "Recommencer", "change_image": "Changer la photo", "login_required": "Veuillez vous connecter pour scanner.", "insufficient": "Crédits insuffisants. Achetez des crédits pour continuer.", "scan_failed": "Impossible d'analyser cette étiquette. Veuillez réessayer.", "image_invalid": "Cette image n'a pas pu être lue. Essayez une photo plus nette.", "network_error": "Erreur réseau. Veuillez réessayer.", "scan_pending": "Analyse en cours…", "scan_timeout": "L'analyse prend plus de temps que prévu. Vous pourrez consulter l'historique dans un instant.", "unsupported_language": "Cette langue n'est pas encore prise en charge.", "result_title": "Analyse", "analyzed_in": "Langue du rapport", "original": "Original", "translated": "Traduit", "save": "Enregistrer", "saved": "Enregistré", "delete": "Supprimer", "delete_confirm": "Supprimer ce scan ?", "delete_body": "Le rapport et l'image seront supprimés.", "new_scan": "Scanner un autre produit", "history": "Scans récents", "view_all": "Voir tout", "no_history": "Aucun scan pour le moment.", "back": "Retour", "verdict": "Résumé", "nutrition": "Nutrition", "ingredients": "Ingrédients", "who_notes": "Qui doit faire attention", "how_to_eat": "Conseils de consommation", "data_notes": "Notes sur les données", "disclaimer_label": "Avertissement", "per_100g": "pour 100g", "per_serving": "par portion", "nrv": "VNR", "not_labeled": "Non étiqueté", "high": "Élevé", "medium": "Moyen", "info": "Info", "avoid": "À éviter", "caution": "Attention", "limit": "À limiter", "energy": "Énergie", "protein": "Protéines", "fat": "Matières grasses", "sat_fat": "Acides gras saturés", "carb": "Glucides", "sugar": "Sucres", "sodium": "Sodium", "fiber": "Fibres", "salt": "Sel", "cholesterol": "Cholestérol", "trans_fat": "Acides gras trans", "added_sugar": "Sucres ajoutés", "value_1_title": "Explication des ingrédients", "value_1_body": "Chaque mot inconnu est expliqué : ce que c'est, pourquoi il est présent et qui doit y prêter attention.", "value_2_title": "Analyse nutritionnelle", "value_2_body": "Par 100g, par portion et VNR combinés — des indicateurs clairs de teneur élevée, moyenne ou faible.", "value_3_title": "Qui doit faire attention", "value_3_body": "Des notes générales pour les personnes attentives au sodium, au sucre, aux allergènes ou aux additifs.", "recent": "Scans récents", "how_title": "Comment ça marche", "how_1": "Prenez l'étiquette en photo", "how_2": "Nous lisons les ingrédients et la nutrition", "how_3": "Obtenez un rapport clair et général", "cta": "Commencer à scanner", "footer_disclaimer": "À titre d'information nutritionnelle générale uniquement. Ne constitue pas un avis médical.", "pay_title": "Acheter des crédits", "pay_balance": "Solde", "pay_waiting": "En attente du paiement…", "pay_success": "Crédits ajoutés.", "pay_failed": "Paiement échoué. Veuillez réessayer.", "pay_close": "Fermer", "credits_unit": "crédits", "one_scan": "1 scan = 3 crédits", "install": "Installer l'application", "install_hint": "Ajoutez aiglossa food à votre écran d'accueil pour scanner plus rapidement.", "offline": "Vous êtes hors ligne. Le scan nécessite une connexion.", "update": "Une nouvelle version est disponible.", "sample": "Exemple d'étiquette", "image_alt": "Étiquette alimentaire", "privacy": "Confidentialité", "terms": "Conditions", "refund": "Remboursement", "contact": "Contact", "cancel": "Annuler", "cautions": "Précautions", "value_head": "Une étiquette, trois niveaux", "value_intro": "Ingrédients, nutrition et personnes à surveiller, expliqués simplement.", "status_done": "Terminé", "status_failed": "Échec", "status_pending": "Analyse", "show_all": "Tout afficher", "show_less": "Réduire", "share": "Partager", "share_text": "J’ai scanné « {product} » : {headline}.", "share_copied": "Lien copié", "share_failed": "Impossible de créer le lien", "share_heading": "Analyse d’étiquette", "share_cta": "Essayer l’analyse d’étiquette", "daily_ref": "de la référence journalière", "nutrition_note": "Pour 100 g. Les pourcentages se basent sur la référence journalière d’un adulte moyen, pas sur un score santé. « Non indiqué » ne signifie pas zéro.", "energy_note": "kcal et kJ sont deux unités de la même énergie ; 1 kcal ≈ 4.184 kJ.", "buy_short": "Acheter"}</script>
+<script src="../../../assets/food-share.js?v=20261031-23"></script>
+
+<script>
+(function () {
+  var h = location.hostname;
+  if (h.indexOf("staging.aiglossa.com") < 0) return;
+  var main = "https://staging.aiglossa.com";
+  document.querySelectorAll('a[href^="https://aiglossa.com"]').forEach(function (a) {
+    a.href = main + a.getAttribute("href").slice("https://aiglossa.com".length);
+  });
+})();
+</script>
+</body>
+</html>
