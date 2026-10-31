@@ -144,7 +144,8 @@
     "no_ingredients": "No complete ingredient list was read.",
     "warning_title": "Before you scan",
     "warning_body": "Currently only skincare ingredient lists are supported. Makeup, hair care, fragrance, nail, oral care, and sunscreen are not supported. You can continue, but the report may not be suitable for those products.",
-    "continue": "Continue"
+    "continue": "Continue",
+    "sample_note": "Fragrance · patch test"
   },
   "zh-Hans": {
     "title": "护肤成分分析 — AIGLOSSA",
@@ -291,7 +292,8 @@
     "no_ingredients": "没有读到完整成分表。",
     "warning_title": "扫描前请确认",
     "warning_body": "目前仅支持护肤品成分表。彩妆、洗护、香水、美甲、口腔护理和防晒暂不支持。你可以继续，但报告可能不适用于这些产品。",
-    "continue": "继续"
+    "continue": "继续",
+    "sample_note": "含香精 · 建议试用"
   },
   "zh-Hant": {
     "title": "保養成分分析 — AIGLOSSA",
@@ -438,7 +440,8 @@
     "no_ingredients": "未能讀取到完整的成分表。",
     "warning_title": "掃描前須知",
     "warning_body": "目前僅支援護膚品成分表。彩妝、護髮、香氛、美甲、口腔護理及防曬產品尚不支援。您可以繼續掃描，但分析結果可能不適用於上述產品。",
-    "continue": "繼續"
+    "continue": "繼續",
+    "sample_note": "香氛 · 皮膚過敏測試"
   },
   "ja": {
     "title": "スキンケア成分解析 — AIGLOSSA",
@@ -585,7 +588,8 @@
     "no_ingredients": "成分表示を正しく読み取れませんでした。",
     "warning_title": "スキャンする前に",
     "warning_body": "現在はスキンケア製品の成分リストのみに対応しています。メイクアップ、ヘアケア、フレグランス、ネイル、オーラルケア、日焼け止めには対応しておりません。そのまま進めることも可能ですが、正確な診断結果が得られない場合があります。",
-    "continue": "続ける"
+    "continue": "続ける",
+    "sample_note": "フレグランス・パッチテスト"
   },
   "ko": {
     "title": "스킨케어 성분 분석 — AIGLOSSA",
@@ -732,7 +736,8 @@
     "no_ingredients": "전체 성분표를 읽어오지 못했습니다.",
     "warning_title": "스캔 전 확인해 주세요",
     "warning_body": "현재 스킨케어 성분 분석만 지원합니다. 메이크업, 헤어, 향수, 네일, 구강 케어, 자외선 차단제는 분석이 어렵습니다. 계속 진행할 수 있으나, 해당 제품군에는 결과가 정확하지 않을 수 있습니다.",
-    "continue": "계속하기"
+    "continue": "계속하기",
+    "sample_note": "향료 · 패치 테스트"
   },
   "es": {
     "title": "Análisis de ingredientes de cuidado de la piel — AIGLOSSA",
@@ -879,7 +884,8 @@
     "no_ingredients": "No se pudo leer una lista completa de ingredientes.",
     "warning_title": "Antes de escanear",
     "warning_body": "Actualmente solo admitimos listas de ingredientes de productos para el cuidado de la piel. No se admiten maquillaje, cuidado capilar, fragancias, uñas, cuidado bucal ni protectores solares. Puedes continuar, pero es posible que el informe no sea adecuado para esos productos.",
-    "continue": "Continuar"
+    "continue": "Continuar",
+    "sample_note": "Fragancia · prueba de parche"
   },
   "fr": {
     "title": "Analyse des ingrédients de soins — AIGLOSSA",
@@ -1026,7 +1032,8 @@
     "no_ingredients": "Aucune liste d'ingrédients complète n'a été détectée.",
     "warning_title": "Avant de scanner",
     "warning_body": "Seules les listes d'ingrédients de soins pour la peau sont actuellement prises en charge. Le maquillage, les soins capillaires, les parfums, les produits pour les ongles, l'hygiène bucco-dentaire et les protections solaires ne sont pas compatibles. Vous pouvez continuer, mais le rapport pourrait ne pas être adapté à ces produits.",
-    "continue": "Continuer"
+    "continue": "Continuer",
+    "sample_note": "Parfum · test cutané"
   },
   "de": {
     "title": "Hautpflege-Inhaltsstoffanalyse — AIGLOSSA",
@@ -1173,7 +1180,8 @@
     "no_ingredients": "Es konnte keine vollständige Inhaltsstoffliste gelesen werden.",
     "warning_title": "Vor dem Scannen",
     "warning_body": "Derzeit werden nur Inhaltsstofflisten für Hautpflege unterstützt. Make-up, Haarpflege, Düfte, Nagel- und Mundpflege sowie Sonnenschutz werden nicht unterstützt. Du kannst fortfahren, aber das Ergebnis ist für diese Produkte möglicherweise nicht aussagekräftig.",
-    "continue": "Weiter"
+    "continue": "Weiter",
+    "sample_note": "Duft · Verträglichkeitstest"
   },
   "pt": {
     "title": "Análise de ingredientes de skincare — AIGLOSSA",
@@ -1320,7 +1328,8 @@
     "no_ingredients": "Nenhuma lista completa de ingredientes foi lida.",
     "warning_title": "Antes de escanear",
     "warning_body": "Atualmente, apenas listas de ingredientes de produtos de skincare são suportadas. Maquiagem, cuidados com o cabelo, fragrâncias, unhas, higiene bucal e protetor solar não são suportados. Você pode continuar, mas o relatório pode não ser adequado para esses produtos.",
-    "continue": "Continuar"
+    "continue": "Continuar",
+    "sample_note": "Fragrância · teste de contato"
   },
   "it": {
     "title": "Analisi degli ingredienti skincare — AIGLOSSA",
@@ -1467,7 +1476,8 @@
     "no_ingredients": "Non è stato rilevato alcun elenco completo di ingredienti.",
     "warning_title": "Prima di scansionare",
     "warning_body": "Al momento sono supportati solo gli elenchi di ingredienti per la cura della pelle. Trucco, prodotti per capelli, profumi, unghie, igiene orale e solari non sono supportati. Puoi continuare, ma il report potrebbe non essere adatto a questi prodotti.",
-    "continue": "Continua"
+    "continue": "Continua",
+    "sample_note": "Fragranza · patch test"
   },
   "ru": {
     "title": "Анализ состава косметики — AIGLOSSA",
@@ -1614,7 +1624,8 @@
     "no_ingredients": "Полный список ингредиентов не был распознан.",
     "warning_title": "Перед сканированием",
     "warning_body": "Сейчас поддерживаются только составы средств по уходу за кожей. Декоративная косметика, средства для волос, парфюмерия, лаки для ногтей, средства для полости рта и солнцезащитные кремы не поддерживаются. Вы можете продолжить, но результат может быть неточным.",
-    "continue": "Продолжить"
+    "continue": "Продолжить",
+    "sample_note": "Аромат · кожная проба"
   },
   "ar": {
     "title": "تحليل مكونات العناية بالبشرة — AIGLOSSA",
@@ -1761,7 +1772,8 @@
     "no_ingredients": "لم يتم قراءة قائمة مكونات كاملة.",
     "warning_title": "قبل البدء بالمسح",
     "warning_body": "ندعم حالياً قوائم مكونات العناية بالبشرة فقط. لا يتم دعم المكياج، العناية بالشعر، العطور، طلاء الأظافر، العناية بالفم، وواقيات الشمس. يمكنك المتابعة، لكن التقرير قد لا يكون دقيقاً لهذه المنتجات.",
-    "continue": "متابعة"
+    "continue": "متابعة",
+    "sample_note": "عطر · اختبار الحساسية"
   },
   "th": {
     "title": "วิเคราะห์ส่วนผสมสกินแคร์ — AIGLOSSA",
@@ -1908,7 +1920,8 @@
     "no_ingredients": "ไม่พบรายการส่วนผสมที่สมบูรณ์",
     "warning_title": "ก่อนเริ่มสแกน",
     "warning_body": "ขณะนี้รองรับเฉพาะรายการส่วนผสมสกินแคร์เท่านั้น ไม่รองรับเครื่องสำอาง ผลิตภัณฑ์ดูแลเส้นผม น้ำหอม ผลิตภัณฑ์ดูแลเล็บ ช่องปาก และครีมกันแดด คุณสามารถดำเนินการต่อได้ แต่ผลลัพธ์อาจไม่แม่นยำสำหรับผลิตภัณฑ์กลุ่มดังกล่าว",
-    "continue": "ดำเนินการต่อ"
+    "continue": "ดำเนินการต่อ",
+    "sample_note": "น้ำหอม · ทดสอบการแพ้"
   },
   "vi": {
     "title": "Phân tích thành phần mỹ phẩm — AIGLOSSA",
@@ -2055,7 +2068,8 @@
     "no_ingredients": "Không đọc được bảng thành phần đầy đủ.",
     "warning_title": "Trước khi quét",
     "warning_body": "Hiện tại ứng dụng chỉ hỗ trợ phân tích bảng thành phần sản phẩm chăm sóc da. Các sản phẩm trang điểm, chăm sóc tóc, nước hoa, chăm sóc móng, chăm sóc răng miệng và kem chống nắng chưa được hỗ trợ. Bạn có thể tiếp tục, nhưng kết quả có thể không chính xác cho các loại sản phẩm này.",
-    "continue": "Tiếp tục"
+    "continue": "Tiếp tục",
+    "sample_note": "Hương thơm · kiểm tra kích ứng"
   },
   "id": {
     "title": "Analisis bahan skincare — AIGLOSSA",
@@ -2202,7 +2216,8 @@
     "no_ingredients": "Daftar bahan lengkap tidak terbaca.",
     "warning_title": "Sebelum memindai",
     "warning_body": "Saat ini hanya daftar bahan perawatan kulit (skincare) yang didukung. Produk makeup, perawatan rambut, wewangian, kuku, perawatan mulut, dan tabir surya tidak didukung. Anda bisa melanjutkan, namun hasilnya mungkin tidak akurat untuk produk tersebut.",
-    "continue": "Lanjutkan"
+    "continue": "Lanjutkan",
+    "sample_note": "Wewangian · uji tempel"
   },
   "tr": {
     "title": "Cilt bakım içerik analizi — AIGLOSSA",
@@ -2349,6 +2364,7 @@
     "no_ingredients": "Eksiksiz bir içerik listesi okunamadı.",
     "warning_title": "Taramadan önce",
     "warning_body": "Şu an sadece cilt bakım ürünlerinin içerik listeleri desteklenmektedir. Makyaj, saç bakımı, parfüm, tırnak, ağız bakımı ve güneş kremleri desteklenmemektedir. Devam edebilirsiniz ancak analiz bu ürünler için uygun olmayabilir.",
-    "continue": "Devam et"
+    "continue": "Devam et",
+    "sample_note": "Parfüm · yama testi"
   }
 }
