@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AIGLOSSA — tools for reading, food, and skin</title>
-<meta name="description" content="A small family of tools for reading original books, understanding food and skincare labels, and making music or images.">
+<title>AIGLOSSA — Make the complex clear.</title>
+<meta name="description" content="AIGLOSSA makes lightweight, focused products that turn complicated information into something you can actually use.">
 <link rel="canonical" href="https://aiglossa.com/en/">
 <link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/">
 <link rel="alternate" hreflang="de" href="https://aiglossa.com/de/">
@@ -25,8 +25,8 @@
 <link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="aiglossa">
-<meta property="og:title" content="AIGLOSSA — tools for reading, food, and skin">
-<meta property="og:description" content="A small family of tools for reading original books, understanding food and skincare labels, and making music or images.">
+<meta property="og:title" content="AIGLOSSA — Make the complex clear.">
+<meta property="og:description" content="AIGLOSSA makes lightweight, focused products that turn complicated information into something you can actually use.">
 <meta property="og:url" content="https://aiglossa.com/en/">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://aiglossa.com/assets/og.png">
@@ -36,9 +36,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://aiglossa.com/assets/og.png">
 <meta name="theme-color" content="#08080a">
-<link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-aiglossa-64.png?v=2">
-<link rel="icon" type="image/svg+xml" href="../assets/favicon-aiglossa.svg?v=2">
-<link rel="shortcut icon" href="../assets/favicon-aiglossa.ico?v=2">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-aiglossa-64.png?v=3">
+<link rel="shortcut icon" href="../assets/favicon-aiglossa.ico?v=3">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon-aiglossa.png">
 <link rel="stylesheet" href="../assets/site.css">
 <style>
@@ -244,7 +243,10 @@
   /* compact equal product tiles */
   .site-head .header-auth{margin-inline-start:auto;color:var(--green,#ff7a1a);font-size:12px;text-decoration:none;border:1px solid rgba(255,122,26,.32);border-radius:999px;padding:8px 13px}
   .site-head .header-auth:hover{color:var(--ink);border-color:rgba(255,255,255,.3)}
-  .product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+  .product-group{margin-top:30px}
+  .group-title{display:flex;align-items:center;gap:10px;margin-bottom:10px;color:var(--mut);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+  .group-title:after{content:"";height:1px;flex:1;background:rgba(255,255,255,.08)}
+  .product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:0}
   .product-tile{position:relative;min-height:256px;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(255,255,255,.018));transition:transform .22s,border-color .22s}
   .product-tile:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.24)}
   .product-tile.food:hover{border-color:rgba(79,191,122,.55)}
@@ -271,7 +273,7 @@
   .more-tile .tile-open{display:none}
   footer .wrap{max-width:1180px;padding:0 32px}
   footer .legal a{margin-inline-end:16px}
-  @media(max-width:1100px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:900px){.product-grid{grid-template-columns:1fr}}
   @media(max-width:760px){
     .site-head .header-auth{padding:7px 10px;font-size:11px}
     .product-grid{grid-template-columns:1fr;gap:10px}
@@ -296,8 +298,8 @@
   <section class="hero">
     <div class="hero-in">
       <p class="kicker">AIGLOSSA</p>
-      <h1>Read. Understand. Create.</h1>
-      <p class="lede">A small family of tools for reading original books, understanding food and skincare labels, and making music or images.</p>
+      <h1>Make the complex clear.</h1>
+      <p class="lede">AIGLOSSA makes lightweight, focused products that turn complicated information into something you can actually use.</p>
       <div class="hero-cta">
         <a class="hbtn p" href="#products">Explore products</a>
         <a class="hbtn s" href="https://tools.aiglossa.com/en/">Open web tools →</a>
@@ -308,53 +310,62 @@
   <section class="family" id="products">
     <div class="wrap">
       <p class="eyebrow">Product family</p>
-      <h2>Five focused tools</h2>
-      <p class="family-intro">Read original books, understand food and skincare labels, and make music or images. Each product does one job.</p>
-      <div class="product-grid">
-        <a class="product-tile scholan" href="https://scholan.aiglossa.com/en/">
-          <div class="tile-bg"><img src="../assets/scholan/welcome.jpg" alt=""></div>
-          <div class="tile-content">
-            <div class="tile-head"><span class="tile-icon"><img src="../assets/scholan/icon.png" alt=""></span><h3>Scholan</h3><span class="tile-status">iOS</span></div>
-            <p class="tile-desc">Read without interruptions</p>
-            <span class="tile-open">About Scholan →</span>
+      <h2>Products</h2>
+
+      <div class="product-group">
+        <div class="group-title">App</div>
+        <div class="product-grid">
+          <a class="product-tile scholan" href="https://scholan.aiglossa.com/en/">
+            <div class="tile-bg"><img src="../assets/scholan/welcome.jpg" alt=""></div>
+            <div class="tile-content">
+              <div class="tile-head"><span class="tile-icon"><img src="../assets/scholan/icon.png" alt=""></span><h3>Scholan</h3><span class="tile-status">iOS</span></div>
+              <p class="tile-desc">Read without interruptions</p>
+              <span class="tile-open">About Scholan →</span>
+            </div>
+          </a>
+          <div class="product-tile more-tile">
+            <div class="tile-content">
+              <div class="tile-head"><span class="tile-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><h3>More apps in development</h3></div>
+            </div>
           </div>
-        </a>
-        <a class="product-tile food" href="https://food.aiglossa.com/en/food/">
-          <div class="tile-bg"><img src="../assets/brand/food.jpg" alt=""></div>
-          <div class="tile-content">
-            <div class="tile-head"><span class="tile-icon"><img src="../assets/food-icon-512.png" alt=""></span><h3>AIGLOSSA FOOD</h3><span class="tile-status">Web</span></div>
-            <p class="tile-desc">Photograph a food label. Read the ingredients, nutrition, and who should pay attention.</p>
-            <span class="tile-open">Open →</span>
-          </div>
-        </a>
-        <a class="product-tile skin" href="https://skin.aiglossa.com/en/skin/">
-          <div class="tile-bg"><img src="../assets/brand/skin.jpg" alt=""></div>
-          <div class="tile-content">
-            <div class="tile-head"><span class="tile-icon"><img src="../assets/skin-icon-512.png" alt=""></span><h3>AIGLOSSA SKIN</h3><span class="tile-status">Web</span></div>
-            <p class="tile-desc">Photograph a skincare ingredient list. Understand the formula, actives, and cautions.</p>
-            <span class="tile-open">Open →</span>
-          </div>
-        </a>
-        <a class="product-tile music" href="https://tools.aiglossa.com/en/music/">
-          <div class="tile-bg"><img src="../assets/brand/music.jpg" alt=""></div>
-          <div class="tile-content">
-            <div class="tile-head"><span class="tile-icon"><img src="../assets/icon-music-512.png" alt=""></span><h3>Music</h3><span class="tile-status">Web</span></div>
-            <p class="tile-desc">Turn a short brief into background music for a video, podcast, or post.</p>
-            <span class="tile-open">Open →</span>
-          </div>
-        </a>
-        <a class="product-tile image" href="https://tools.aiglossa.com/en/image/">
-          <div class="tile-bg"><img src="../assets/brand/image.jpg" alt=""></div>
-          <div class="tile-content">
-            <div class="tile-head"><span class="tile-icon"><img src="../assets/icon-image-512.png" alt=""></span><h3>Image</h3><span class="tile-status">Web</span></div>
-            <p class="tile-desc">Turn a prompt into a clean image for a page, post, or product idea.</p>
-            <span class="tile-open">Open →</span>
-          </div>
-        </a>
-        <div class="product-tile more-tile">
-          <div class="tile-content">
-            <div class="tile-head"><span class="tile-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><h3>More apps in development</h3></div>
-          </div>
+        </div>
+      </div>
+
+      <div class="product-group">
+        <div class="group-title">Web</div>
+        <div class="product-grid">
+          <a class="product-tile food" href="https://food.aiglossa.com/en/food/">
+            <div class="tile-bg"><img src="../assets/brand/food.jpg" alt=""></div>
+            <div class="tile-content">
+              <div class="tile-head"><span class="tile-icon"><img src="../assets/food-icon-512.png" alt=""></span><h3>AIGLOSSA FOOD</h3><span class="tile-status">Web</span></div>
+              <p class="tile-desc">Photograph a food label. Read the ingredients, nutrition, and who should pay attention.</p>
+              <span class="tile-open">Open →</span>
+            </div>
+          </a>
+          <a class="product-tile skin" href="https://skin.aiglossa.com/en/skin/">
+            <div class="tile-bg"><img src="../assets/brand/skin.jpg" alt=""></div>
+            <div class="tile-content">
+              <div class="tile-head"><span class="tile-icon"><img src="../assets/skin-icon-512.png" alt=""></span><h3>AIGLOSSA SKIN</h3><span class="tile-status">Web</span></div>
+              <p class="tile-desc">Photograph a skincare ingredient list. Understand the formula, actives, and cautions.</p>
+              <span class="tile-open">Open →</span>
+            </div>
+          </a>
+          <a class="product-tile music" href="https://tools.aiglossa.com/en/music/">
+            <div class="tile-bg"><img src="../assets/brand/music.jpg" alt=""></div>
+            <div class="tile-content">
+              <div class="tile-head"><span class="tile-icon"><img src="../assets/icon-music-512.png" alt=""></span><h3>Music</h3><span class="tile-status">Web</span></div>
+              <p class="tile-desc">Turn a short brief into background music for a video, podcast, or post.</p>
+              <span class="tile-open">Open →</span>
+            </div>
+          </a>
+          <a class="product-tile image" href="https://tools.aiglossa.com/en/image/">
+            <div class="tile-bg"><img src="../assets/brand/image.jpg" alt=""></div>
+            <div class="tile-content">
+              <div class="tile-head"><span class="tile-icon"><img src="../assets/icon-image-512.png" alt=""></span><h3>Image</h3><span class="tile-status">Web</span></div>
+              <p class="tile-desc">Turn a prompt into a clean image for a page, post, or product idea.</p>
+              <span class="tile-open">Open →</span>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -365,7 +376,7 @@
       <p class="eyebrow">About</p>
       <h2>AIGLOSSA</h2>
       <div class="about">
-        <p>AIGLOSSA is a small family of focused tools: reading original books, understanding food and skincare labels, and making music or images. Each product solves one specific thing, without feature bloat.</p>
+        <p>AIGLOSSA is an independent product studio. We make lightweight, focused products that turn complex information into clear, usable results.</p>
         <p><a href="mailto:support@aiglossa.com">support@aiglossa.com</a></p>
       </div>
     </div>
@@ -455,7 +466,10 @@
   /* compact equal product tiles */
   .site-head .header-auth{margin-inline-start:auto;color:var(--green,#ff7a1a);font-size:12px;text-decoration:none;border:1px solid rgba(255,122,26,.32);border-radius:999px;padding:8px 13px}
   .site-head .header-auth:hover{color:var(--ink);border-color:rgba(255,255,255,.3)}
-  .product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+  .product-group{margin-top:30px}
+  .group-title{display:flex;align-items:center;gap:10px;margin-bottom:10px;color:var(--mut);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+  .group-title:after{content:"";height:1px;flex:1;background:rgba(255,255,255,.08)}
+  .product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:0}
   .product-tile{position:relative;min-height:256px;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(255,255,255,.018));transition:transform .22s,border-color .22s}
   .product-tile:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.24)}
   .product-tile.food:hover{border-color:rgba(79,191,122,.55)}
@@ -482,7 +496,7 @@
   .more-tile .tile-open{display:none}
   footer .wrap{max-width:1180px;padding:0 32px}
   footer .legal a{margin-inline-end:16px}
-  @media(max-width:1100px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:900px){.product-grid{grid-template-columns:1fr}}
   @media(max-width:760px){
     .site-head .header-auth{padding:7px 10px;font-size:11px}
     .product-grid{grid-template-columns:1fr;gap:10px}

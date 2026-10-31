@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AIGLOSSA — 阅读、食品与护肤工具</title>
-<meta name="description" content="一组专注的小工具：读原版书、看懂食品和护肤标签，也可以做音乐和图片。">
+<title>AIGLOSSA — 把复杂，变得清楚。</title>
+<meta name="description" content="AIGLOSSA 做轻量、专注的产品，把难懂的信息整理成能直接使用的答案。">
 <link rel="canonical" href="https://aiglossa.com/zh-Hans/">
 <link rel="alternate" hreflang="ar" href="https://aiglossa.com/ar/">
 <link rel="alternate" hreflang="de" href="https://aiglossa.com/de/">
@@ -25,8 +25,8 @@
 <link rel="alternate" hreflang="x-default" href="https://aiglossa.com/en/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="aiglossa">
-<meta property="og:title" content="AIGLOSSA — 阅读、食品与护肤工具">
-<meta property="og:description" content="一组专注的小工具：读原版书、看懂食品和护肤标签，也可以做音乐和图片。">
+<meta property="og:title" content="AIGLOSSA — 把复杂，变得清楚。">
+<meta property="og:description" content="AIGLOSSA 做轻量、专注的产品，把难懂的信息整理成能直接使用的答案。">
 <meta property="og:url" content="https://aiglossa.com/zh-Hans/">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://aiglossa.com/assets/og.png">
@@ -36,9 +36,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://aiglossa.com/assets/og.png">
 <meta name="theme-color" content="#08080a">
-<link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-aiglossa-64.png?v=2">
-<link rel="icon" type="image/svg+xml" href="../assets/favicon-aiglossa.svg?v=2">
-<link rel="shortcut icon" href="../assets/favicon-aiglossa.ico?v=2">
+<link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-aiglossa-64.png?v=3">
+<link rel="shortcut icon" href="../assets/favicon-aiglossa.ico?v=3">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon-aiglossa.png">
 <link rel="stylesheet" href="../assets/site.css">
 <style>
@@ -244,7 +243,10 @@
   /* compact equal product tiles */
   .site-head .header-auth{margin-inline-start:auto;color:var(--green,#ff7a1a);font-size:12px;text-decoration:none;border:1px solid rgba(255,122,26,.32);border-radius:999px;padding:8px 13px}
   .site-head .header-auth:hover{color:var(--ink);border-color:rgba(255,255,255,.3)}
-  .product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+  .product-group{margin-top:30px}
+  .group-title{display:flex;align-items:center;gap:10px;margin-bottom:10px;color:var(--mut);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+  .group-title:after{content:"";height:1px;flex:1;background:rgba(255,255,255,.08)}
+  .product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:0}
   .product-tile{position:relative;min-height:256px;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(255,255,255,.018));transition:transform .22s,border-color .22s}
   .product-tile:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.24)}
   .product-tile.food:hover{border-color:rgba(79,191,122,.55)}
@@ -271,7 +273,7 @@
   .more-tile .tile-open{display:none}
   footer .wrap{max-width:1180px;padding:0 32px}
   footer .legal a{margin-inline-end:16px}
-  @media(max-width:1100px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:900px){.product-grid{grid-template-columns:1fr}}
   @media(max-width:760px){
     .site-head .header-auth{padding:7px 10px;font-size:11px}
     .product-grid{grid-template-columns:1fr;gap:10px}
@@ -296,8 +298,8 @@
   <section class="hero">
     <div class="hero-in">
       <p class="kicker">AIGLOSSA</p>
-      <h1>读得进去，看得明白，也做得出来。</h1>
-      <p class="lede">一组专注的小工具：读原版书、看懂食品和护肤标签，也可以做音乐和图片。</p>
+      <h1>把复杂，变得清楚。</h1>
+      <p class="lede">AIGLOSSA 做轻量、专注的产品，把难懂的信息整理成能直接使用的答案。</p>
       <div class="hero-cta">
         <a class="hbtn p" href="#products">浏览产品</a>
         <a class="hbtn s" href="https://tools.aiglossa.com/zh-Hans/">打开 Web 工具 →</a>
@@ -308,53 +310,62 @@
   <section class="family" id="products">
     <div class="wrap">
       <p class="eyebrow">产品家族</p>
-      <h2>五个专注的小工具</h2>
-      <p class="family-intro">读原版书、看懂食品和护肤标签，也可以用 AI 做音乐和图片。每个产品只解决一件事。</p>
-      <div class="product-grid">
-        <a class="product-tile scholan" href="https://scholan.aiglossa.com/zh-Hans/">
-          <div class="tile-bg"><img src="../assets/scholan/welcome.jpg" alt=""></div>
-          <div class="tile-content">
-            <div class="tile-head"><span class="tile-icon"><img src="../assets/scholan/icon.png" alt=""></span><h3>Scholan</h3><span class="tile-status">iOS</span></div>
-            <p class="tile-desc">读原版书，别被查词打断</p>
-            <span class="tile-open">了解 Scholan →</span>
+      <h2>产品</h2>
+
+      <div class="product-group">
+        <div class="group-title">App</div>
+        <div class="product-grid">
+          <a class="product-tile scholan" href="https://scholan.aiglossa.com/zh-Hans/">
+            <div class="tile-bg"><img src="../assets/scholan/welcome.jpg" alt=""></div>
+            <div class="tile-content">
+              <div class="tile-head"><span class="tile-icon"><img src="../assets/scholan/icon.png" alt=""></span><h3>Scholan</h3><span class="tile-status">iOS</span></div>
+              <p class="tile-desc">读原版书，别被查词打断</p>
+              <span class="tile-open">了解 Scholan →</span>
+            </div>
+          </a>
+          <div class="product-tile more-tile">
+            <div class="tile-content">
+              <div class="tile-head"><span class="tile-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><h3>更多 App 正在开发中</h3></div>
+            </div>
           </div>
-        </a>
-        <a class="product-tile food" href="https://food.aiglossa.com/zh-Hans/food/">
-          <div class="tile-bg"><img src="../assets/brand/food.jpg" alt=""></div>
-          <div class="tile-content">
-            <div class="tile-head"><span class="tile-icon"><img src="../assets/food-icon-512.png" alt=""></span><h3>AIGLOSSA FOOD</h3><span class="tile-status">Web</span></div>
-            <p class="tile-desc">拍食品标签，看懂配料、营养，以及谁需要注意。</p>
-            <span class="tile-open">打开 →</span>
-          </div>
-        </a>
-        <a class="product-tile skin" href="https://skin.aiglossa.com/zh-Hans/skin/">
-          <div class="tile-bg"><img src="../assets/brand/skin.jpg" alt=""></div>
-          <div class="tile-content">
-            <div class="tile-head"><span class="tile-icon"><img src="../assets/skin-icon-512.png" alt=""></span><h3>AIGLOSSA SKIN</h3><span class="tile-status">Web</span></div>
-            <p class="tile-desc">拍护肤成分表，看懂配方、关键成分和注意事项。</p>
-            <span class="tile-open">打开 →</span>
-          </div>
-        </a>
-        <a class="product-tile music" href="https://tools.aiglossa.com/zh-Hans/music/">
-          <div class="tile-bg"><img src="../assets/brand/music.jpg" alt=""></div>
-          <div class="tile-content">
-            <div class="tile-head"><span class="tile-icon"><img src="../assets/icon-music-512.png" alt=""></span><h3>Music</h3><span class="tile-status">Web</span></div>
-            <p class="tile-desc">用一句需求，生成适合视频、播客或社媒的背景音乐。</p>
-            <span class="tile-open">打开 →</span>
-          </div>
-        </a>
-        <a class="product-tile image" href="https://tools.aiglossa.com/zh-Hans/image/">
-          <div class="tile-bg"><img src="../assets/brand/image.jpg" alt=""></div>
-          <div class="tile-content">
-            <div class="tile-head"><span class="tile-icon"><img src="../assets/icon-image-512.png" alt=""></span><h3>Image</h3><span class="tile-status">Web</span></div>
-            <p class="tile-desc">用一句描述，生成适合页面、帖子或产品想法的图片。</p>
-            <span class="tile-open">打开 →</span>
-          </div>
-        </a>
-        <div class="product-tile more-tile">
-          <div class="tile-content">
-            <div class="tile-head"><span class="tile-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><h3>更多 App 正在开发中</h3></div>
-          </div>
+        </div>
+      </div>
+
+      <div class="product-group">
+        <div class="group-title">Web</div>
+        <div class="product-grid">
+          <a class="product-tile food" href="https://food.aiglossa.com/zh-Hans/food/">
+            <div class="tile-bg"><img src="../assets/brand/food.jpg" alt=""></div>
+            <div class="tile-content">
+              <div class="tile-head"><span class="tile-icon"><img src="../assets/food-icon-512.png" alt=""></span><h3>AIGLOSSA FOOD</h3><span class="tile-status">Web</span></div>
+              <p class="tile-desc">拍食品标签，看懂配料、营养，以及谁需要注意。</p>
+              <span class="tile-open">打开 →</span>
+            </div>
+          </a>
+          <a class="product-tile skin" href="https://skin.aiglossa.com/zh-Hans/skin/">
+            <div class="tile-bg"><img src="../assets/brand/skin.jpg" alt=""></div>
+            <div class="tile-content">
+              <div class="tile-head"><span class="tile-icon"><img src="../assets/skin-icon-512.png" alt=""></span><h3>AIGLOSSA SKIN</h3><span class="tile-status">Web</span></div>
+              <p class="tile-desc">拍护肤成分表，看懂配方、关键成分和注意事项。</p>
+              <span class="tile-open">打开 →</span>
+            </div>
+          </a>
+          <a class="product-tile music" href="https://tools.aiglossa.com/zh-Hans/music/">
+            <div class="tile-bg"><img src="../assets/brand/music.jpg" alt=""></div>
+            <div class="tile-content">
+              <div class="tile-head"><span class="tile-icon"><img src="../assets/icon-music-512.png" alt=""></span><h3>Music</h3><span class="tile-status">Web</span></div>
+              <p class="tile-desc">用一句需求，生成适合视频、播客或社媒的背景音乐。</p>
+              <span class="tile-open">打开 →</span>
+            </div>
+          </a>
+          <a class="product-tile image" href="https://tools.aiglossa.com/zh-Hans/image/">
+            <div class="tile-bg"><img src="../assets/brand/image.jpg" alt=""></div>
+            <div class="tile-content">
+              <div class="tile-head"><span class="tile-icon"><img src="../assets/icon-image-512.png" alt=""></span><h3>Image</h3><span class="tile-status">Web</span></div>
+              <p class="tile-desc">用一句描述，生成适合页面、帖子或产品想法的图片。</p>
+              <span class="tile-open">打开 →</span>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -365,7 +376,7 @@
       <p class="eyebrow">关于</p>
       <h2>AIGLOSSA</h2>
       <div class="about">
-        <p>AIGLOSSA 是一组专注的小工具：读原版书、看懂食品和护肤标签，也可以做音乐和图片。每个产品只解决一件具体的事，不追求功能堆叠。</p>
+        <p>AIGLOSSA 是一个独立产品工作室。我们做轻量、专注的产品，把复杂的信息整理成清楚、可用的结果。</p>
         <p><a href="mailto:support@aiglossa.com">support@aiglossa.com</a></p>
       </div>
     </div>
@@ -455,7 +466,10 @@
   /* compact equal product tiles */
   .site-head .header-auth{margin-inline-start:auto;color:var(--green,#ff7a1a);font-size:12px;text-decoration:none;border:1px solid rgba(255,122,26,.32);border-radius:999px;padding:8px 13px}
   .site-head .header-auth:hover{color:var(--ink);border-color:rgba(255,255,255,.3)}
-  .product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:14px}
+  .product-group{margin-top:30px}
+  .group-title{display:flex;align-items:center;gap:10px;margin-bottom:10px;color:var(--mut);font-size:10px;letter-spacing:.18em;text-transform:uppercase}
+  .group-title:after{content:"";height:1px;flex:1;background:rgba(255,255,255,.08)}
+  .product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:0}
   .product-tile{position:relative;min-height:256px;border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;background:linear-gradient(150deg,rgba(255,255,255,.06),rgba(255,255,255,.018));transition:transform .22s,border-color .22s}
   .product-tile:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.24)}
   .product-tile.food:hover{border-color:rgba(79,191,122,.55)}
@@ -482,7 +496,7 @@
   .more-tile .tile-open{display:none}
   footer .wrap{max-width:1180px;padding:0 32px}
   footer .legal a{margin-inline-end:16px}
-  @media(max-width:1100px){.product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:900px){.product-grid{grid-template-columns:1fr}}
   @media(max-width:760px){
     .site-head .header-auth{padding:7px 10px;font-size:11px}
     .product-grid{grid-template-columns:1fr;gap:10px}
