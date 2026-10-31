@@ -95,3 +95,14 @@ body{
 }
 .result-chip{top:auto;bottom:7%;height:auto;background:#fff;color:var(--muted);border:1px solid var(--line);box-shadow:0 10px 30px rgba(142,78,90,.1)}
 .result-chip .dot{background:#C97B7F;box-shadow:0 0 0 4px rgba(201,123,127,.14)}
+
+.skin-side{background:linear-gradient(160deg,#FFF9F5,#F7E5E5);border:1px solid #EAD4D4;border-radius:18px;padding:18px;color:var(--ink)}
+.skin-side-kicker{font-size:9px;letter-spacing:.18em;color:var(--green);font-weight:700}
+.skin-side-price{font-size:30px;letter-spacing:-.03em;margin:6px 0 12px;color:var(--ink)}
+.skin-side-price span{font-size:11px;color:var(--muted);letter-spacing:0}
+.skin-side .side-line{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid #EAD4D4;font-size:11px}
+.skin-side .side-line span{color:var(--muted)}
+.skin-side .btn{margin-top:12px}
+.skin-side .btn.ghost{background:#fff;color:var(--green);border-color:#EAD4D4}
+.skin-side-buy{width:100%;margin-top:8px}
+.skin-side-note{font-size:9.5px;line-height:1.55;color:var(--muted);margin-top:12px}

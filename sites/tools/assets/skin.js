@@ -177,7 +177,14 @@
     $("resultMeta").textContent = products.length + " " + UI.products + " · " + (row.language || LANG).toUpperCase();
     $("resultThumb").innerHTML = state.previews.length ? '<img src="' + esc(state.previews[0]) + '" alt="">' : '<span class="thumb-skeleton"></span>';
     $("reportMain").innerHTML = (products.length > 1 ? combinedCard(report.combined) : "") + products.map(productCard).join("") + '<p class="nutrition-note">' + esc(report.disclaimer || "") + '</p>';
-    $("reportSide").innerHTML = '<h3>' + esc(UI.skin_types) + '</h3><div class="side-line"><span>' + esc(UI.products) + '</span><b>' + products.length + '</b></div><div class="side-line"><span>' + esc(UI.credits) + '</span><b>' + coinText(row.credits || 0) + '</b></div><div class="side-line"><span>' + esc(UI.credits) + '</span><b>' + coinText(state.balance) + '</b></div><button class="btn full" id="scanAnother">' + esc(UI.scan_button) + '</button><a class="btn ghost full" href="' + pricingUrl() + '">' + esc(UI.buy) + '</a>';
+    $("reportSide").innerHTML = '<div class="skin-side">' +
+      '<div class="skin-side-kicker">ANALYSIS</div>' +
+      '<div class="skin-side-price">' + coinText(row.credits || 0) + '<span> ' + esc(UI.credits) + '</span></div>' +
+      '<div class="side-line"><span>' + esc(UI.products) + '</span><b>' + products.length + '</b></div>' +
+      '<div class="side-line"><span>' + esc(UI.pay_balance) + '</span><b>' + coinText(state.balance) + '</b></div>' +
+      '<button class="btn full" id="scanAnother">' + esc(UI.scan_button) + '</button>' +
+      '<a class="btn ghost full skin-side-buy" href="' + pricingUrl() + '">' + esc(UI.buy) + '</a>' +
+      '<p class="skin-side-note">' + esc(report.disclaimer || "") + '</p></div>';
     $("scanAnother").onclick = resetScan;
     Array.prototype.forEach.call(document.querySelectorAll("[data-more]"), function (btn) {
       btn.onclick = function () { var card = btn.closest(".skin-product"); Array.prototype.forEach.call(card.querySelectorAll(".ing-extra"), function (x) { x.classList.toggle("hidden"); }); btn.textContent = btn.textContent === UI.show_less ? UI.show_all : UI.show_less; };
@@ -205,7 +212,14 @@
     call("/ai/skin/scan/" + id, {}).then(function (d) {
       if (d.code !== 200 || !d.data) { toast(d.msg || UI.scan_failed); return; }
       var row = d.data; state.scan = row;
-      if (row.status === "done") { renderResult(row); } else { toast(row.status === "failed" ? UI.scan_failed : UI.scan_pending); }
+      if (row.status === "done") {
+        renderResult(row);
+        call("/ai/skin/scan/" + id + "/image", {}).then(function (img) {
+          if (img && img.code === 200 && img.data && img.data.image) {
+            $("resultThumb").innerHTML = '<img src="' + esc(img.data.image) + '" alt="">';
+          }
+        }).catch(function () {});
+      } else { toast(row.status === "failed" ? UI.scan_failed : UI.scan_pending); }
     });
   }
   function share() {
