@@ -69,6 +69,15 @@
       $("shareIngredients").appendChild(more);
     }
     $("shareDisclaimer").textContent = report.disclaimer || UI.footer_disclaimer;
+    fetch(API + "/ai/food/share/" + encodeURIComponent(token) + "/image", {
+      method: "POST", credentials: "include",
+      headers: {"Content-Type":"application/json","X-Client":"web"},
+      body: JSON.stringify({app_key:"tools", timestamp: Math.floor(Date.now()/1000)})
+    }).then(function (r) { return r.ok ? r.blob() : null; }).then(function (blob) {
+      if (!blob) return;
+      $("shareImage").src = URL.createObjectURL(blob);
+      $("shareLabel").classList.remove("hidden");
+    }).catch(function () {});
     $("shareLoading").classList.add("hidden"); $("shareContent").classList.remove("hidden");
   }).catch(fail);
 })();

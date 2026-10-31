@@ -146,7 +146,16 @@
     "continue": "Continue",
     "sample_note": "Fragrance · patch test",
     "sample_panel": "Ingredient panel",
-    "sample_action": "Photograph this side"
+    "sample_action": "Photograph this side",
+    "skin_dry": "Dry",
+    "skin_oily": "Oily",
+    "skin_combination": "Combination",
+    "skin_sensitive": "Sensitive",
+    "skin_acne": "Acne-prone",
+    "level_suitable": "Generally suitable",
+    "level_neutral": "Neutral",
+    "level_caution": "Caution",
+    "product_unit": "products"
   },
   "zh-Hans": {
     "title": "护肤成分分析 — AIGLOSSA",
@@ -295,7 +304,16 @@
     "continue": "继续",
     "sample_note": "含香精 · 建议试用",
     "sample_panel": "成分表",
-    "sample_action": "拍这一面"
+    "sample_action": "拍这一面",
+    "skin_dry": "干性",
+    "skin_oily": "油性",
+    "skin_combination": "混合性",
+    "skin_sensitive": "敏感肌",
+    "skin_acne": "痘痘肌",
+    "level_suitable": "一般适用",
+    "level_neutral": "中性",
+    "level_caution": "谨慎",
+    "product_unit": "个产品"
   },
   "zh-Hant": {
     "title": "保養成分分析 — AIGLOSSA",
@@ -444,7 +462,16 @@
     "continue": "繼續",
     "sample_note": "香氛 · 皮膚過敏測試",
     "sample_panel": "成分表",
-    "sample_action": "拍攝此面"
+    "sample_action": "拍攝此面",
+    "skin_dry": "乾性",
+    "skin_oily": "油性",
+    "skin_combination": "混合性",
+    "skin_sensitive": "敏感性",
+    "skin_acne": "痘痘肌",
+    "level_suitable": "一般適用",
+    "level_neutral": "中性",
+    "level_caution": "謹慎使用",
+    "product_unit": "項保養品"
   },
   "ja": {
     "title": "スキンケア成分解析 — AIGLOSSA",
@@ -593,7 +620,16 @@
     "continue": "続ける",
     "sample_note": "フレグランス・パッチテスト",
     "sample_panel": "成分表示パネル",
-    "sample_action": "この面を撮影してください"
+    "sample_action": "この面を撮影してください",
+    "skin_dry": "乾燥肌",
+    "skin_oily": "脂性肌",
+    "skin_combination": "混合肌",
+    "skin_sensitive": "敏感肌",
+    "skin_acne": "ニキビ肌",
+    "level_suitable": "適している",
+    "level_neutral": "中立",
+    "level_caution": "注意",
+    "product_unit": "個のスキンケア製品"
   },
   "ko": {
     "title": "스킨케어 성분 분석 — AIGLOSSA",
@@ -742,7 +778,16 @@
     "continue": "계속하기",
     "sample_note": "향료 · 패치 테스트",
     "sample_panel": "성분 표시창",
-    "sample_action": "이 면을 촬영하세요"
+    "sample_action": "이 면을 촬영하세요",
+    "skin_dry": "건성",
+    "skin_oily": "지성",
+    "skin_combination": "복합성",
+    "skin_sensitive": "민감성",
+    "skin_acne": "여드름성",
+    "level_suitable": "모든 피부용",
+    "level_neutral": "보통",
+    "level_caution": "주의",
+    "product_unit": "개"
   },
   "es": {
     "title": "Análisis de ingredientes de cuidado de la piel — AIGLOSSA",
@@ -891,7 +936,16 @@
     "continue": "Continuar",
     "sample_note": "Fragancia · prueba de parche",
     "sample_panel": "Panel de ingredientes",
-    "sample_action": "Fotografíe este lado"
+    "sample_action": "Fotografíe este lado",
+    "skin_dry": "Seca",
+    "skin_oily": "Grasa",
+    "skin_combination": "Mixta",
+    "skin_sensitive": "Sensible",
+    "skin_acne": "Tendencia acneica",
+    "level_suitable": "Generalmente apto",
+    "level_neutral": "Neutral",
+    "level_caution": "Precaución",
+    "product_unit": "productos"
   },
   "fr": {
     "title": "Analyse des ingrédients de soins — AIGLOSSA",
@@ -1040,7 +1094,16 @@
     "continue": "Continuer",
     "sample_note": "Parfum · test cutané",
     "sample_panel": "Panneau des ingrédients",
-    "sample_action": "Photographiez ce côté"
+    "sample_action": "Photographiez ce côté",
+    "skin_dry": "Sèche",
+    "skin_oily": "Grasse",
+    "skin_combination": "Mixte",
+    "skin_sensitive": "Sensible",
+    "skin_acne": "À tendance acnéique",
+    "level_suitable": "Généralement adapté",
+    "level_neutral": "Neutre",
+    "level_caution": "Prudence",
+    "product_unit": "produits"
   },
   "de": {
     "title": "Hautpflege-Inhaltsstoffanalyse — AIGLOSSA",
@@ -1189,7 +1252,16 @@
     "continue": "Weiter",
     "sample_note": "Duft · Verträglichkeitstest",
     "sample_panel": "Zutatenliste",
-    "sample_action": "Diese Seite fotografieren"
+    "sample_action": "Diese Seite fotografieren",
+    "skin_dry": "Trocken",
+    "skin_oily": "Fettig",
+    "skin_combination": "Mischhaut",
+    "skin_sensitive": "Empfindlich",
+    "skin_acne": "Zu Unreinheiten neigend",
+    "level_suitable": "Allgemein geeignet",
+    "level_neutral": "Neutral",
+    "level_caution": "Vorsicht",
+    "product_unit": "Hautpflegeprodukte"
   },
   "pt": {
     "title": "Análise de ingredientes de skincare — AIGLOSSA",
@@ -1338,7 +1410,16 @@
     "continue": "Continuar",
     "sample_note": "Fragrância · teste de contato",
     "sample_panel": "Painel de ingredientes",
-    "sample_action": "Fotografe este lado"
+    "sample_action": "Fotografe este lado",
+    "skin_dry": "Seca",
+    "skin_oily": "Oleosa",
+    "skin_combination": "Mista",
+    "skin_sensitive": "Sensível",
+    "skin_acne": "Com tendência à acne",
+    "level_suitable": "Geralmente adequado",
+    "level_neutral": "Neutro",
+    "level_caution": "Cuidado",
+    "product_unit": "produtos"
   },
   "it": {
     "title": "Analisi degli ingredienti skincare — AIGLOSSA",
@@ -1487,7 +1568,16 @@
     "continue": "Continua",
     "sample_note": "Fragranza · patch test",
     "sample_panel": "Pannello degli ingredienti",
-    "sample_action": "Fotografa questo lato"
+    "sample_action": "Fotografa questo lato",
+    "skin_dry": "Secca",
+    "skin_oily": "Grassa",
+    "skin_combination": "Mista",
+    "skin_sensitive": "Sensibile",
+    "skin_acne": "A tendenza acneica",
+    "level_suitable": "Generalmente adatta",
+    "level_neutral": "Neutro",
+    "level_caution": "Attenzione",
+    "product_unit": "prodotti"
   },
   "ru": {
     "title": "Анализ состава косметики — AIGLOSSA",
@@ -1636,7 +1726,16 @@
     "continue": "Продолжить",
     "sample_note": "Аромат · кожная проба",
     "sample_panel": "Панель ингредиентов",
-    "sample_action": "Сфотографируйте эту сторону"
+    "sample_action": "Сфотографируйте эту сторону",
+    "skin_dry": "Сухая",
+    "skin_oily": "Жирная",
+    "skin_combination": "Комбинированная",
+    "skin_sensitive": "Чувствительная",
+    "skin_acne": "Проблемная",
+    "level_suitable": "Подходит",
+    "level_neutral": "Нейтрально",
+    "level_caution": "С осторожностью",
+    "product_unit": "средств"
   },
   "ar": {
     "title": "تحليل مكونات العناية بالبشرة — AIGLOSSA",
@@ -1785,7 +1884,16 @@
     "continue": "متابعة",
     "sample_note": "عطر · اختبار الحساسية",
     "sample_panel": "لوحة المكونات",
-    "sample_action": "قم بتصوير هذا الجانب"
+    "sample_action": "قم بتصوير هذا الجانب",
+    "skin_dry": "جافة",
+    "skin_oily": "دهنية",
+    "skin_combination": "مختلطة",
+    "skin_sensitive": "حساسة",
+    "skin_acne": "معرضة للحبوب",
+    "level_suitable": "مناسب للجميع",
+    "level_neutral": "محايد",
+    "level_caution": "يُنصح بالحذر",
+    "product_unit": "منتجات"
   },
   "th": {
     "title": "วิเคราะห์ส่วนผสมสกินแคร์ — AIGLOSSA",
@@ -1934,7 +2042,16 @@
     "continue": "ดำเนินการต่อ",
     "sample_note": "น้ำหอม · ทดสอบการแพ้",
     "sample_panel": "แผงส่วนประกอบ",
-    "sample_action": "ถ่ายภาพด้านนี้"
+    "sample_action": "ถ่ายภาพด้านนี้",
+    "skin_dry": "ผิวแห้ง",
+    "skin_oily": "ผิวมัน",
+    "skin_combination": "ผิวผสม",
+    "skin_sensitive": "ผิวแพ้ง่าย",
+    "skin_acne": "ผิวเป็นสิวง่าย",
+    "level_suitable": "ใช้ได้ทั่วไป",
+    "level_neutral": "ปกติ",
+    "level_caution": "ควรระวัง",
+    "product_unit": "ชิ้น"
   },
   "vi": {
     "title": "Phân tích thành phần mỹ phẩm — AIGLOSSA",
@@ -2083,7 +2200,16 @@
     "continue": "Tiếp tục",
     "sample_note": "Hương thơm · kiểm tra kích ứng",
     "sample_panel": "Bảng thành phần",
-    "sample_action": "Chụp ảnh mặt này"
+    "sample_action": "Chụp ảnh mặt này",
+    "skin_dry": "Da khô",
+    "skin_oily": "Da dầu",
+    "skin_combination": "Da hỗn hợp",
+    "skin_sensitive": "Da nhạy cảm",
+    "skin_acne": "Da mụn",
+    "level_suitable": "Phù hợp",
+    "level_neutral": "Trung tính",
+    "level_caution": "Cần thận trọng",
+    "product_unit": "sản phẩm"
   },
   "id": {
     "title": "Analisis bahan skincare — AIGLOSSA",
@@ -2232,7 +2358,16 @@
     "continue": "Lanjutkan",
     "sample_note": "Wewangian · uji tempel",
     "sample_panel": "Panel bahan",
-    "sample_action": "Foto sisi ini"
+    "sample_action": "Foto sisi ini",
+    "skin_dry": "Kering",
+    "skin_oily": "Berminyak",
+    "skin_combination": "Kombinasi",
+    "skin_sensitive": "Sensitif",
+    "skin_acne": "Berjerawat",
+    "level_suitable": "Umumnya cocok",
+    "level_neutral": "Netral",
+    "level_caution": "Perlu hati-hati",
+    "product_unit": "produk"
   },
   "tr": {
     "title": "Cilt bakım içerik analizi — AIGLOSSA",
@@ -2381,6 +2516,15 @@
     "continue": "Devam et",
     "sample_note": "Parfüm · yama testi",
     "sample_panel": "İçindekiler paneli",
-    "sample_action": "Bu tarafın fotoğrafını çekin"
+    "sample_action": "Bu tarafın fotoğrafını çekin",
+    "skin_dry": "Kuru",
+    "skin_oily": "Yağlı",
+    "skin_combination": "Karma",
+    "skin_sensitive": "Hassas",
+    "skin_acne": "Akneye eğilimli",
+    "level_suitable": "Genel kullanıma uygun",
+    "level_neutral": "Nötr",
+    "level_caution": "Dikkat",
+    "product_unit": "cilt bakım ürünü"
   }
 }

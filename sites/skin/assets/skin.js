@@ -12,7 +12,7 @@
   var FEATURE = "skin-scan";
   var device = localStorage.getItem("aig_device") || (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()));
   localStorage.setItem("aig_device", device);
-  var state = { user: null, balance: 0, files: [], previews: [], scan: null, history: [], warned: false };
+  var state = { user: null, balance: 0, files: [], previews: [], images: [], active: 0, scan: null, history: [], historyUrls: [], warned: false };
 
   function esc(v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function call(path, data) {
@@ -33,6 +33,7 @@
       var img = el.querySelector("img"); img.onerror = function () { el.textContent = initial; };
     } else el.textContent = initial;
   }
+  function statusLabel(status) { return UI["status_" + status] || status; }
   function syncAuth(signedIn) {
     ["accountBtn", "buyBtn"].forEach(function (id) { if ($(id)) $(id).classList.toggle("hidden", !signedIn); });
     if ($("loginBtn")) $("loginBtn").classList.toggle("hidden", signedIn);
@@ -124,8 +125,17 @@
     tick();
   }
 
-  function chip(text, level) { return '<span class="skin-chip ' + (level === "caution" ? "warn" : (level === "avoid_if_allergic" ? "bad" : (level === "generally_suitable" ? "good" : ""))) + '">' + esc(text) + '</span>'; }
-  function list(items) { if (!items || !items.length) return ""; return '<ul class="skin-list">' + items.map(function (x) { return '<li>' + esc(typeof x === "string" ? x : (x.text || x.advice || x.reason || "")) + '</li>'; }).join("") + '</ul>'; }
+  function skinTypeText(value) { var key = value === "acne-prone" ? "acne" : value; return UI["skin_" + key] || value || ""; }
+  function levelText(value) { var key = value === "generally_suitable" ? "suitable" : value; return UI["level_" + key] || value || ""; }
+  function imageFor(index) { return state.images[index] || state.previews[index] || ""; }
+  function chip(text, level) {
+    var cls = level === "caution" ? "warn" : (level === "avoid_if_allergic" ? "bad" : (level === "generally_suitable" || level === "level_suitable" ? "good" : ""));
+    return '<span class="skin-chip ' + cls + '">' + esc(text) + '</span>';
+  }
+  function list(items) {
+    if (!items || !items.length) return "";
+    return '<ul class="skin-list">' + items.map(function (x) { return '<li>' + esc(typeof x === "string" ? x : (x.text || x.advice || x.reason || "")) + '</li>'; }).join("") + '</ul>';
+  }
   function productCard(p, index) {
     var pr = p.product || {};
     var ings = p.ingredients || [];
@@ -136,49 +146,99 @@
     var usage = p.usage || [];
     var notes = p.data_notes || [];
     var unsupported = p.category_supported === false;
-    var ingRows = ings.map(function (x, i) {
-      var orig = String(x.original_text || "").trim(), name = String(x.name || "").trim();
-      var same = orig && orig.toLowerCase() === name.toLowerCase();
-      return '<div class="skin-ing-row' + (i >= 6 ? " ing-extra hidden" : "") + '"><div><b>' + esc(name || orig) + '</b>' + (orig && !same ? '<em>' + esc(UI.original) + ': ' + esc(orig) + '</em>' : '') + '</div><span>' + esc(x.function || x.what_it_is || "") + (x.flags && x.flags.length ? ' · ' + esc(x.flags.join(", ")) : "") + '</span></div>';
-    }).join("");
-    var keyHtml = keys.length ? '<div class="skin-key">' + keys.map(function (k) { return '<div><b>' + esc(k.name) + '</b><span>' + esc(k.why || "") + (k.caution ? ' · ' + esc(k.caution) : "") + '</span></div>'; }).join("") + '</div>' : "";
-    var skinHtml = skins.length ? '<div class="skin-badges">' + skins.map(function (s) { return chip(s.type + ": " + (s.level || ""), s.level); }).join("") + '</div>' : "";
+    var keyHtml = keys.length ? '<div class="skin-key-grid">' + keys.map(function (k) {
+      return '<div class="skin-key-card"><b>' + esc(k.name) + '</b><span>' + esc(k.why || "") + (k.caution ? ' · ' + esc(k.caution) : "") + '</span></div>';
+    }).join("") + '</div>' : "";
+    var skinHtml = skins.length ? '<div class="skin-badges">' + skins.map(function (x) { return chip(skinTypeText(x.type) + " · " + levelText(x.level), x.level); }).join("") + '</div>' : "";
     var popHtml = pops.length ? '<ul class="skin-list">' + pops.map(function (x) { return '<li><b>' + esc(x.group) + '</b> · ' + esc(x.advice || "") + (x.reason ? ' — ' + esc(x.reason) : "") + '</li>'; }).join("") + '</ul>' : "";
-    return '<section class="card skin-product" data-product="' + index + '"><div class="skin-product-head"><div><div class="skin-product-brand">' + esc(pr.brand || "") + ' · ' + esc(pr.category || "") + '</div><div class="skin-product-name">' + esc(pr.name || pr.name_original || UI.product) + '</div></div><span class="skin-chip">' + esc(UI.product) + " " + (index + 1) + '</span></div>' +
+    return '<section class="skin-product" data-product="' + index + '">' +
+      '<div class="skin-product-head"><div><div class="skin-product-brand">' + esc(pr.brand || "") + ' · ' + esc(pr.category || "") + '</div><div class="skin-product-name">' + esc(pr.name || pr.name_original || UI.product) + '</div></div></div>' +
       (unsupported ? '<div class="skin-unsupported">' + esc(UI.unsupported) + '</div>' : '') +
-      '<p class="skin-card">' + esc(p.summary || "") + '</p>' +
-      (keyHtml ? '<h3 class="skin-card">' + esc(UI.key_ingredients) + '</h3>' + keyHtml : '') +
-      (skinHtml ? '<h3 class="skin-card">' + esc(UI.skin_types) + '</h3>' + skinHtml : '') +
-      (popHtml ? '<h3 class="skin-card">' + esc(UI.population) + '</h3>' + popHtml : '') +
-      '<h3 class="skin-card">' + esc(UI.ingredients) + ' <span style="color:var(--muted);font-weight:400">' + ings.length + '</span></h3>' +
-      (ingRows ? '<div class="skin-ing">' + ingRows + '</div>' + (ings.length > 6 ? '<button type="button" class="ing-more" data-more="' + index + '">' + esc(UI.show_all) + ' (' + ings.length + ')</button>' : '') : '<p class="skin-empty">' + esc(UI.no_ingredients) + '</p>') +
-      (cautions.length ? '<h3 class="skin-card">' + esc(UI.cautions) + '</h3>' + list(cautions) : '') +
-      (usage.length ? '<h3 class="skin-card">' + esc(UI.usage) + '</h3>' + list(usage) : '') +
-      (notes.length ? '<h3 class="skin-card">' + esc(UI.data_notes) + '</h3>' + list(notes) : '') +
+      '<p class="skin-summary">' + esc(p.summary || "") + '</p>' +
+      (keyHtml ? '<h3 class="skin-section-title">' + esc(UI.key_ingredients) + '</h3>' + keyHtml : '') +
+      '<div class="skin-duo">' +
+        (skinHtml ? '<div><h3 class="skin-section-title">' + esc(UI.skin_types) + '</h3>' + skinHtml + '</div>' : '') +
+        (popHtml ? '<div><h3 class="skin-section-title">' + esc(UI.population) + '</h3>' + popHtml + '</div>' : '') +
+      '</div>' +
+      (cautions.length ? '<h3 class="skin-section-title">' + esc(UI.cautions) + '</h3>' + list(cautions) : '') +
+      (usage.length ? '<h3 class="skin-section-title">' + esc(UI.usage) + '</h3>' + list(usage) : '') +
+      '<div class="skin-ing-head"><h3 class="skin-section-title">' + esc(UI.ingredients) + ' <span>' + ings.length + '</span></h3>' + (ings.length ? '<button type="button" class="ing-more" data-ing-toggle="' + index + '">' + esc(UI.show_all) + '</button>' : '') + '</div>' +
+      (ings.length ? '<div class="skin-ing hidden" id="skin-ing-' + index + '">' + ings.map(function (x) {
+        var orig = String(x.original_text || "").trim(), name = String(x.name || "").trim();
+        var same = orig && orig.toLowerCase() === name.toLowerCase();
+        return '<div class="skin-ing-row"><div><b>' + esc(name || orig) + '</b>' + (orig && !same ? '<em>' + esc(UI.original) + ': ' + esc(orig) + '</em>' : '') + '</div><span>' + esc(x.function || x.what_it_is || "") + (x.flags && x.flags.length ? ' · ' + esc(x.flags.join(", ")) : "") + '</span></div>';
+      }).join("") + '</div>' : '<p class="skin-empty">' + esc(UI.no_ingredients) + '</p>') +
+      (notes.length ? '<h3 class="skin-section-title">' + esc(UI.data_notes) + '</h3>' + list(notes) : '') +
       '</section>';
   }
-  function combinedCard(c) {
+  function overviewCard(c, products) {
     if (!c || !Object.keys(c).length) return "";
-    var roles = (c.product_roles || []).map(function (r) { return '<div class="skin-role"><b>' + esc(UI.product) + " " + (Number(r.image_index) + 1) + '</b><span>' + esc(r.role || "") + '</span></div>'; }).join("");
+    var roles = (c.product_roles || []).map(function (r) { return '<span class="skin-role-chip"><b>' + (Number(r.image_index) + 1) + '</b>' + esc(r.role || "") + '</span>'; }).join("");
     var overlaps = (c.overlaps || []).map(function (o) { return '<li><b>' + esc(o.ingredient || "") + '</b> · ' + esc(o.note || "") + '</li>'; }).join("");
     var cautions = (c.cautions || []).map(function (o) { return '<li><b>' + esc(o.text || "") + '</b> · ' + esc(o.reason || "") + '</li>'; }).join("");
-    return '<section class="skin-combined skin-card"><h3>' + esc(UI.combined) + '</h3><p>' + esc(c.summary || "") + '</p>' +
-      (roles ? '<h3 class="skin-card">' + esc(UI.roles) + '</h3>' + roles : '') +
-      (overlaps ? '<h3 class="skin-card">' + esc(UI.overlaps) + '</h3><ul class="skin-list">' + overlaps + '</ul>' : '') +
-      (cautions ? '<h3 class="skin-card">' + esc(UI.cautions) + '</h3><ul class="skin-list">' + cautions + '</ul>' : '') +
-      (c.routine && c.routine.notes && c.routine.notes.length ? '<h3 class="skin-card">' + esc(UI.routine) + '</h3>' + list(c.routine.notes) : '') +
+    var routine = c.routine || {};
+    var route = "";
+    if (routine.am && routine.am.length) route += '<span class="skin-route">AM ' + routine.am.map(function (i) { return Number(i) + 1; }).join(" → ") + '</span>';
+    if (routine.pm && routine.pm.length) route += '<span class="skin-route">PM ' + routine.pm.map(function (i) { return Number(i) + 1; }).join(" → ") + '</span>';
+    return '<section class="skin-overview"><div class="skin-overview-kicker">' + esc(UI.combined) + '</div><p class="skin-overview-summary">' + esc(c.summary || "") + '</p>' +
+      (roles ? '<div class="skin-role-row">' + roles + '</div>' : '') +
+      (overlaps ? '<div class="skin-overview-block"><h4>' + esc(UI.overlaps) + '</h4><ul class="skin-list">' + overlaps + '</ul></div>' : '') +
+      (cautions ? '<div class="skin-overview-block"><h4>' + esc(UI.cautions) + '</h4><ul class="skin-list">' + cautions + '</ul></div>' : '') +
+      ((route || (routine.notes && routine.notes.length)) ? '<div class="skin-overview-block"><h4>' + esc(UI.routine) + '</h4>' + (route ? '<div class="skin-route-row">' + route + '</div>' : '') + list(routine.notes) + '</div>' : '') +
       '</section>';
+  }
+  function tabButton(p, index) {
+    var pr = p.product || {};
+    var img = imageFor(index);
+    return '<button type="button" class="skin-tab' + (index === state.active ? ' active' : '') + '" data-tab="' + index + '" role="tab" aria-selected="' + (index === state.active) + '">' +
+      '<span class="skin-tab-thumb">' + (img ? '<img src="' + esc(img) + '" alt="">' : '<span>' + (index + 1) + '</span>') + '</span>' +
+      '<span class="skin-tab-copy"><b>' + esc(pr.name || pr.name_original || UI.product) + '</b><small>' + esc(pr.category || "") + '</small></span></button>';
+  }
+  function renderProductPanel(products) {
+    $("productPanel").innerHTML = productCard(products[state.active], state.active);
+    var toggle = $("productPanel").querySelector("[data-ing-toggle]");
+    if (toggle) toggle.onclick = function () {
+      var box = $("skin-ing-" + state.active);
+      if (box) box.classList.toggle("hidden");
+      toggle.textContent = box && box.classList.contains("hidden") ? UI.show_all : UI.show_less;
+    };
+  }
+  function renderTabs(products) {
+    var tabs = $("skinTabs");
+    if (!tabs) return;
+    tabs.innerHTML = products.map(tabButton).join("");
+    Array.prototype.forEach.call(tabs.querySelectorAll("[data-tab]"), function (btn) {
+      btn.onclick = function () { state.active = Number(btn.dataset.tab); renderTabs(products); renderProductPanel(products); };
+    });
+  }
+  function renderStack(products) {
+    var stack = $("resultThumb");
+    var imgs = products.map(function (_, i) {
+      var img = imageFor(i);
+      return '<span class="scan-stack-item">' + (img ? '<img src="' + esc(img) + '" alt="">' : '<i>' + (i + 1) + '</i>') + '</span>';
+    }).join("");
+    stack.innerHTML = '<div class="scan-stack">' + imgs + '</div>';
   }
   function renderResult(row) {
     var report = row.report || {}; var products = report.products || [];
+    if (!products.length) return;
+    state.active = 0;
+    if (state.previews.length) state.images = state.previews.slice();
+    var multi = products.length > 1;
     $("heroView").classList.add("hidden"); $("resultView").classList.remove("hidden");
     var first = products[0] || {}; var pr = first.product || {};
-    $("resultName").textContent = pr.name || pr.name_original || UI.product;
-    $("resultMeta").textContent = products.length + " " + UI.products + " · " + (row.language || LANG).toUpperCase();
-    $("resultThumb").innerHTML = state.previews.length ? '<img src="' + esc(state.previews[0]) + '" alt="">' : '<span class="thumb-skeleton"></span>';
-    $("reportMain").innerHTML = (products.length > 1 ? combinedCard(report.combined) : "") + products.map(productCard).join("") + '<p class="nutrition-note">' + esc(UI.footer_disclaimer || report.disclaimer || "") + '</p>';
+    $("resultKicker").textContent = UI.result_title;
+    var productNames = products.map(function (x) { var pp = x.product || {}; return pp.name || pp.name_original || UI.product; });
+    $("resultName").classList.toggle("multi", multi);
+    $("resultName").textContent = multi ? productNames.join(" + ") : productNames[0];
+    $("resultMeta").textContent = multi ? (products.length + " " + (UI.product_unit || UI.products)) : ((pr.brand || "") + (pr.category ? " · " + pr.category : ""));
+    renderStack(products);
+    var tabs = multi ? '<div class="skin-tabs" id="skinTabs" role="tablist"></div>' : "";
+    $("reportMain").innerHTML = (multi ? overviewCard(report.combined, products) : "") + tabs + '<div id="productPanel" class="skin-panel"></div>';
+    if (multi) renderTabs(products);
+    renderProductPanel(products);
     $("reportSide").innerHTML = '<div class="skin-side">' +
-      '<div class="skin-side-kicker">ANALYSIS</div>' +
+      '<div class="skin-side-kicker">' + esc(UI.result_title) + '</div>' +
       '<div class="skin-side-price">' + coinText(row.credits || 0) + '<span> ' + esc(UI.credits) + '</span></div>' +
       '<div class="side-line"><span>' + esc(UI.products) + '</span><b>' + products.length + '</b></div>' +
       '<div class="side-line"><span>' + esc(UI.pay_balance) + '</span><b>' + coinText(state.balance) + '</b></div>' +
@@ -186,44 +246,77 @@
       '<a class="btn ghost full skin-side-buy" href="' + pricingUrl() + '">' + esc(UI.buy) + '</a>' +
       '<p class="skin-side-note">' + esc(UI.footer_disclaimer || report.disclaimer || "") + '</p></div>';
     $("scanAnother").onclick = resetScan;
-    Array.prototype.forEach.call(document.querySelectorAll("[data-more]"), function (btn) {
-      btn.onclick = function () { var card = btn.closest(".skin-product"); Array.prototype.forEach.call(card.querySelectorAll(".ing-extra"), function (x) { x.classList.toggle("hidden"); }); btn.textContent = btn.textContent === UI.show_less ? UI.show_all : UI.show_less; };
-    });
+    ensureImages(row, products);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  function ensureImages(row, products) {
+    var jobs = [];
+    for (var i = 0; i < products.length; i++) {
+      if (imageFor(i)) continue;
+      jobs.push((function (index) {
+        return fetch(API + "/ai/skin/scan/" + row.id + "/image?index=" + index, {
+          method: "POST", credentials: "include",
+          headers: { "Content-Type": "application/json", "X-Client": "web" },
+          body: JSON.stringify({ app_key: "tools", feature: FEATURE, device: device, timestamp: Math.floor(Date.now() / 1000) })
+        }).then(function (r) { return r.ok ? r.blob() : null; }).then(function (blob) {
+          if (blob) state.images[index] = URL.createObjectURL(blob);
+        }).catch(function () {});
+      })(i));
+    }
+    if (!jobs.length) return;
+    Promise.all(jobs).then(function () {
+      renderStack(products);
+      if (products.length > 1) renderTabs(products);
+    });
   }
   function showHome() { $("heroView").classList.remove("hidden"); $("resultView").classList.add("hidden"); }
   function resetScan() {
-    state.files = []; state.previews.forEach(function (u) { URL.revokeObjectURL(u); }); state.previews = []; state.scan = null;
+    state.files = []; state.previews.forEach(function (u) { URL.revokeObjectURL(u); }); state.images.forEach(function (u) { if (u) URL.revokeObjectURL(u); }); state.previews = []; state.images = []; state.scan = null;
     filesToPreview(); showHome(); $("scanButton").classList.add("hidden"); $("fileInput").value = ""; $("cameraInput").value = ""; $("reportMain").innerHTML = ""; $("reportSide").innerHTML = "";
   }
   function loadHistory() {
     if (!state.user) return;
+    state.historyUrls.forEach(function (u) { URL.revokeObjectURL(u); });
+    state.historyUrls = [];
     call("/ai/skin/works", {}).then(function (d) {
       if (d.code !== 200 || !d.data) return;
       state.history = d.data.items || [];
       if (!state.history.length) { $("historyList").innerHTML = '<div class="history-empty">' + esc(UI.no_history) + '</div>'; return; }
       $("historyList").innerHTML = state.history.map(function (x) {
-        return '<button class="history-item" data-id="' + x.id + '"><span class="history-thumb">' + (x.has_image ? "◌" : "—") + '</span><span class="history-copy"><b>' + esc(x.product_name || UI.product) + '</b><small>' + esc(x.headline || "") + '</small></span><span class="history-status">' + esc(x.product_count || 1) + ' · ' + esc(x.status) + '</span></button>';
+        var count = x.product_count || 1;
+        var meta = count + " " + (UI.product_unit || UI.products) + " · " + statusLabel(x.status);
+        return '<button class="history-item" data-id="' + x.id + '"><span class="history-thumb" data-history-thumb="' + x.id + '">' + (x.has_image ? "◌" : "—") + '</span><span class="history-copy"><b>' + esc(x.product_name || UI.product) + '</b><small>' + esc(x.headline || "") + '</small></span><span class="history-status">' + esc(meta) + '</span></button>';
       }).join("");
       Array.prototype.forEach.call(document.querySelectorAll(".history-item"), function (el) { el.onclick = function () { openHistory(Number(el.dataset.id)); }; });
+      state.history.forEach(function (x) { if (x.has_image) loadHistoryThumb(x.id, x.product_count || 1); });
+    });
+  }
+  function loadHistoryThumb(id, count) {
+    var jobs = [];
+    for (var i = 0; i < Math.min(count, 3); i++) {
+      jobs.push((function (index) {
+        return fetch(API + "/ai/skin/scan/" + id + "/image?index=" + index, {
+          method: "POST", credentials: "include",
+          headers: { "Content-Type": "application/json", "X-Client": "web" },
+          body: JSON.stringify({ app_key: "tools", feature: FEATURE, device: device, timestamp: Math.floor(Date.now() / 1000) })
+        }).then(function (r) { return r.ok ? r.blob() : null; }).then(function (blob) {
+          if (!blob) return "";
+          var url = URL.createObjectURL(blob); state.historyUrls.push(url); return url;
+        }).catch(function () { return ""; });
+      })(i));
+    }
+    Promise.all(jobs).then(function (urls) {
+      urls = urls.filter(Boolean);
+      if (!urls.length) return;
+      var el = document.querySelector('[data-history-thumb="' + id + '"]');
+      if (el) el.innerHTML = '<div class="history-stack">' + urls.map(function (u) { return '<img src="' + esc(u) + '" alt="">'; }).join("") + '</div>';
     });
   }
   function openHistory(id) {
     call("/ai/skin/scan/" + id, {}).then(function (d) {
       if (d.code !== 200 || !d.data) { toast(d.msg || UI.scan_failed); return; }
       var row = d.data; state.scan = row;
-      if (row.status === "done") {
-        renderResult(row);
-        fetch(API + "/ai/skin/scan/" + id + "/image", {
-          method: "POST", credentials: "include",
-          headers: { "Content-Type": "application/json", "X-Client": "web" },
-          body: JSON.stringify({ app_key: "tools", feature: FEATURE, device: device, timestamp: Math.floor(Date.now() / 1000) })
-        }).then(function (r) { return r.ok ? r.blob() : null; }).then(function (blob) {
-          if (!blob) return;
-          var url = URL.createObjectURL(blob);
-          $("resultThumb").innerHTML = '<img src="' + esc(url) + '" alt="">';
-        }).catch(function () {});
-      } else { toast(row.status === "failed" ? UI.scan_failed : UI.scan_pending); }
+      if (row.status === "done") { state.images = []; renderResult(row); } else { toast(row.status === "failed" ? UI.scan_failed : UI.scan_pending); }
     });
   }
   function share() {
