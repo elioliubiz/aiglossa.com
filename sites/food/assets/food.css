@@ -431,3 +431,6 @@ body{min-height:100vh}
 
 .nut-line{gap:10px}
 .nut-nrv{padding-inline-start:2px}
+
+.nutrition-note{font-size:9.5px;line-height:1.6;color:#8A8F88;margin:10px 0 0}
+.nutrition-note + .nutrition-note{margin-top:3px}

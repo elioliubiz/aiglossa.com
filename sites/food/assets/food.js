@@ -267,14 +267,12 @@
     if (nrv >= 15) return "amber";
     return "";
   }
-  function nutItem(label, value, unit, nrv, secondary) {
-    var level = levelOf(nrv);
-    var width = nrv === null ? 0 : Math.min(100, Math.max(2, nrv));
-    var nrvText = nrv === null ? "—" : esc(UI.nrv) + " " + nrv + "%";
+  function nutItem(label, value, unit, nrv, secondary, limit) {
+    var level = limit ? levelOf(nrv) : "";
+    var nrvText = nrv === null ? "—" : esc(UI.daily_ref) + " " + nrv + "%";
     return '<div class="nut-item"><div class="nut-line"><span class="nut-label">' + esc(label) + '</span>' +
-      '<span class="nut-value"><b>' + fmt(value, unit) + '</b>' + (secondary ? '<em>· ' + esc(secondary) + '</em>' : "") + '</span>' +
-      '<span class="nut-nrv ' + (level === "red" ? "hi" : level === "amber" ? "mid" : "") + '">' + nrvText + '</span></div>' +
-      '<div class="bar"><i class="' + level + '" style="width:' + width + '%"></i></div></div>';
+      '<span class="nut-value"><b>' + fmt(value, unit) + '</b>' + (secondary ? '<em>（' + esc(secondary) + '）</em>' : "") + '</span>' +
+      '<span class="nut-nrv ' + (level === "red" ? "hi" : level === "amber" ? "mid" : "") + '">' + nrvText + '</span></div></div>';
   }
 
   function renderResult(scan) {
@@ -303,16 +301,16 @@
       '<h2>' + esc(analysis.headline || UI.result_title) + '</h2><p>' + esc(analysis.summary || "") + '</p>' +
       (cautions ? '<div class="report-section"><h3>' + esc(UI.cautions) + '</h3><ul class="report-note">' + cautions + '</ul></div>' : '') + '</section>';
 
-    var nut = '<section class="card"><div class="card-head"><h3>' + esc(UI.nutrition) + '</h3><span>' + esc(report.serving && report.serving.basis || UI.per_100g) + ' · ' + esc(UI.nrv) + '</span></div><div class="nut-grid report">';
-    nut += nutItem(UI.energy, nutrition.calories_kcal !== null && nutrition.calories_kcal !== undefined ? nutrition.calories_kcal : (nutrition.energy_kj ? Math.round(nutrition.energy_kj / 4.184) : null), "kcal", nrvOf(report, "energy"), nutrition.energy_kj ? nutrition.energy_kj + " kJ" : "");
-    nut += nutItem(UI.protein, nutrition.protein_g, "g", nrvOf(report, "protein"), "");
-    nut += nutItem(UI.fat, nutrition.fat_g, "g", nrvOf(report, "fat"), "");
-    nut += nutItem(UI.sat_fat, nutrition.saturated_fat_g, "g", nrvOf(report, "saturated_fat"), "");
-    nut += nutItem(UI.carb, nutrition.carbohydrate_g, "g", nrvOf(report, "carbohydrate"), "");
-    nut += nutItem(UI.sugar, nutrition.sugars_g, "g", nrvOf(report, "sugars"), "");
-    nut += nutItem(UI.sodium, nutrition.sodium_mg, "mg", nrvOf(report, "sodium"), "");
-    nut += nutItem(UI.fiber, nutrition.fiber_g, "g", null, "");
-    nut += '</div></section>';
+    var nut = '<section class="card"><div class="card-head"><h3>' + esc(UI.nutrition) + '</h3><span>' + esc(report.serving && report.serving.basis || UI.per_100g) + '</span></div><div class="nut-grid report">';
+    nut += nutItem(UI.energy, nutrition.calories_kcal !== null && nutrition.calories_kcal !== undefined ? nutrition.calories_kcal : (nutrition.energy_kj ? Math.round(nutrition.energy_kj / 4.184) : null), "kcal", nrvOf(report, "energy"), nutrition.energy_kj ? nutrition.energy_kj + " kJ" : "", false);
+    nut += nutItem(UI.protein, nutrition.protein_g, "g", nrvOf(report, "protein"), "", false);
+    nut += nutItem(UI.fat, nutrition.fat_g, "g", nrvOf(report, "fat"), "", false);
+    nut += nutItem(UI.sat_fat, nutrition.saturated_fat_g, "g", nrvOf(report, "saturated_fat"), "", true);
+    nut += nutItem(UI.carb, nutrition.carbohydrate_g, "g", nrvOf(report, "carbohydrate"), "", false);
+    nut += nutItem(UI.sugar, nutrition.sugars_g, "g", nrvOf(report, "sugars"), "", true);
+    nut += nutItem(UI.sodium, nutrition.sodium_mg, "mg", nrvOf(report, "sodium"), "", true);
+    nut += nutItem(UI.fiber, nutrition.fiber_g, "g", null, "", false);
+    nut += '</div><p class="nutrition-note">' + esc(UI.nutrition_note) + '</p><p class="nutrition-note">' + esc(UI.energy_note) + '</p></section>';
 
     var allIng = report.ingredients || [];
     var normalize = function (text) { return String(text || "").replace(/\s+/g, "").toLowerCase(); };
