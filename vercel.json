@@ -1193,6 +1193,26 @@
   ],
   "rewrites": [
     {
+      "source": "/favicon.ico",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/skin/assets/favicon-skin.ico"
+    },
+    {
+      "source": "/favicon.ico",
+      "has": [
+        {
+          "type": "host",
+          "value": "skin.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/skin/assets/favicon-skin.ico"
+    },
+    {
       "source": "/:lang/food/share/",
       "has": [
         {
