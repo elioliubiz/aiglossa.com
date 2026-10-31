@@ -106,3 +106,7 @@ body{
 .skin-side .btn.ghost{background:#fff;color:var(--green);border-color:#EAD4D4}
 .skin-side-buy{width:100%;margin-top:8px}
 .skin-side-note{font-size:9.5px;line-height:1.55;color:var(--muted);margin-top:12px}
+#reportSide{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;color:var(--ink)!important}
+#reportSide .skin-side{box-shadow:0 18px 50px rgba(142,78,90,.08)}
+.skin-side .btn.ghost{color:var(--green)!important;background:#fff!important;border:1px solid #EAD4D4!important}
+.skin-side .btn.full{color:#fff}
