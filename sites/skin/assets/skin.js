@@ -214,10 +214,14 @@
       var row = d.data; state.scan = row;
       if (row.status === "done") {
         renderResult(row);
-        call("/ai/skin/scan/" + id + "/image", {}).then(function (img) {
-          if (img && img.code === 200 && img.data && img.data.image) {
-            $("resultThumb").innerHTML = '<img src="' + esc(img.data.image) + '" alt="">';
-          }
+        fetch(API + "/ai/skin/scan/" + id + "/image", {
+          method: "POST", credentials: "include",
+          headers: { "Content-Type": "application/json", "X-Client": "web" },
+          body: JSON.stringify({ app_key: "tools", feature: FEATURE, device: device, timestamp: Math.floor(Date.now() / 1000) })
+        }).then(function (r) { return r.ok ? r.blob() : null; }).then(function (blob) {
+          if (!blob) return;
+          var url = URL.createObjectURL(blob);
+          $("resultThumb").innerHTML = '<img src="' + esc(url) + '" alt="">';
         }).catch(function () {});
       } else { toast(row.status === "failed" ? UI.scan_failed : UI.scan_pending); }
     });
