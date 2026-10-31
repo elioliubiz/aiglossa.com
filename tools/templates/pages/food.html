@@ -5,14 +5,14 @@
 <title>{{title}}</title><meta name="description" content="{{description}}"><link rel="canonical" href="{{canonical}}">{{alternates}}
 <meta property="og:type" content="website"><meta property="og:title" content="{{title}}"><meta property="og:description" content="{{description}}"><meta property="og:url" content="{{canonical}}"><meta property="og:image" content="{{site_base}}/assets/og.png">
 <meta name="theme-color" content="#FBFAF7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="icon" href="{{prefix}}assets/favicon-food.svg"><link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-food.png">
-<link rel="stylesheet" href="{{prefix}}assets/food.css">
+<link rel="manifest" href="manifest.webmanifest?v={{asset_v}}">
+<link rel="icon" href="{{prefix}}assets/favicon-food.svg?v={{asset_v}}"><link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-food.png?v={{asset_v}}">
+<link rel="stylesheet" href="{{prefix}}assets/food.css?v={{asset_v}}">
 <script type="application/ld+json">{{jsonld}}</script>
 </head>
 <body>
 <header class="topbar"><div class="wrap topbar-inner">
-  <a class="brand" href="./"><span class="brand-mark"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="3.5" width="13.5" height="17" rx="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M7.5 8h6.5M7.5 11.2h6.5M7.5 14.4h4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M17.2 3.8c2.9 1.2 4.3 3.4 4 6.5-2.6-.4-4.5-1.9-5.7-4.3.9-.4 1.5-1.1 1.7-2.2z" fill="#D7F25A" stroke="none"/></svg></span> AIGLOSSA <b>FOOD</b></a>
+  <a class="brand" href="./"><span class="brand-mark food-logo"><img src="{{prefix}}assets/favicon-food.svg" alt=""></span> AIGLOSSA <b>FOOD</b></a>
   <nav class="topnav"><a href="#" id="navScan">{{nav_scan}}</a><a href="#how">{{nav_how}}</a><a href="#" id="navPricing">{{nav_pricing}}</a></nav>
   <div class="top-actions">
     <details class="top-lang"><summary>{{current_name}}</summary><ul>{{switcher}}</ul></details>
@@ -41,7 +41,7 @@
       <div class="pwa-banner hidden" id="pwaBanner"><span>{{install_hint}}</span><button id="installBtn">{{install}}</button></div>
     </div>
     <div class="hero-visual">
-      <div class="photo-card"><img src="{{prefix}}assets/food-sample.jpg" alt="{{sample}}"></div>
+      <div class="photo-card"><img src="{{prefix}}assets/food-sample.jpg?v={{asset_v}}" alt="{{sample}}"></div>
       <div class="scan-frame"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
       <div class="result-chip"><span class="dot"></span> {{sample}}</div>
       <div class="float-card"><b>{{sat_fat}}</b><span>10.5g / 100g</span><i class="bar"></i><small>{{nrv}} 53% · {{high}}</small></div>
@@ -89,7 +89,7 @@
 </div></footer>
 
 <script type="application/json" id="ui">{{ui_json}}</script>
-<script src="{{prefix}}assets/wallet.js"></script>
-<script src="{{prefix}}assets/food.js"></script>
+<script src="{{prefix}}assets/wallet.js?v={{asset_v}}"></script>
+<script src="{{prefix}}assets/food.js?v={{asset_v}}"></script>
 </body>
 </html>

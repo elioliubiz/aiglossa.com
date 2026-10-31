@@ -1,5 +1,5 @@
 {
-  "name": "Gıda etiketi tarama — aiglossa food",
+  "name": "Gıda etiketi tarama — AIGLOSSA FOOD",
   "short_name": "AIGLOSSA FOOD",
   "description": "Bir gıda etiketini tarayın; net bir besin raporu, içerik açıklamaları ve dikkat etmesi gerekenler için genel notlar alın.",
   "lang": "tr",
@@ -11,17 +11,17 @@
   "theme_color": "#FBFAF7",
   "icons": [
     {
-      "src": "../../assets/food-icon-192.png",
+      "src": "../../assets/food-icon-192.png?v=20261031-3",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "../../assets/food-icon-512.png",
+      "src": "../../assets/food-icon-512.png?v=20261031-3",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "../../assets/food-icon-maskable-512.png",
+      "src": "../../assets/food-icon-maskable-512.png?v=20261031-3",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

@@ -1,6 +1,6 @@
 {
   "en": {
-    "title": "Food label scan — aiglossa food",
+    "title": "Food label scan — AIGLOSSA FOOD",
     "description": "Scan a food label and get a clear nutrition report, ingredient explanations, and general notes for who should pay attention.",
     "h1": "Read the label. Understand the food.",
     "sub": "Scan ingredients, nutrition facts, or an imported package. Get a clear report in seconds — not medical advice.",
@@ -111,7 +111,7 @@
     "value_head": "One label, three layers"
   },
   "zh-Hans": {
-    "title": "食品标签扫描 — aiglossa food",
+    "title": "食品标签扫描 — AIGLOSSA FOOD",
     "description": "扫描食品标签，几秒内获得营养分析、配料解释和通用的人群注意事项。",
     "h1": "拍一张标签，读懂它。",
     "sub": "扫描配料表、营养成分表或进口包装，几秒内得到一份看得懂的报告。不是医疗建议。",
@@ -222,7 +222,7 @@
     "value_head": "一张标签，三层信息"
   },
   "zh-Hant": {
-    "title": "食品標籤掃描 — aiglossa food",
+    "title": "食品標籤掃描 — AIGLOSSA FOOD",
     "description": "掃描食品標籤，獲取清晰的營養報告、成分說明以及針對特定族群的注意事項。",
     "h1": "讀懂標籤，吃得明白。",
     "sub": "掃描成分、營養標示或進口食品包裝。秒速獲取清晰報告 — 本服務不提供醫療建議。",
@@ -333,7 +333,7 @@
     "value_head": "一張標籤，三層資訊"
   },
   "ja": {
-    "title": "食品ラベルスキャン — aiglossa food",
+    "title": "食品ラベルスキャン — AIGLOSSA FOOD",
     "description": "食品ラベルをスキャンして、栄養レポート、原材料の解説、注意が必要な方へのアドバイスを分かりやすく表示します。",
     "h1": "ラベルを読み取り、食品を知る。",
     "sub": "原材料、栄養成分、輸入食品のラベルをスキャン。数秒で分かりやすいレポートを作成します（医療アドバイスではありません）。",
@@ -444,7 +444,7 @@
     "value_head": "1枚のラベル、3つの情報"
   },
   "ko": {
-    "title": "식품 라벨 스캔 — aiglossa food",
+    "title": "식품 라벨 스캔 — AIGLOSSA FOOD",
     "description": "식품 라벨을 스캔하여 영양 성분 보고서, 원재료 설명, 주의가 필요한 사람을 위한 일반적인 정보를 확인하세요.",
     "h1": "라벨을 읽고, 식품을 이해하세요.",
     "sub": "원재료, 영양 성분, 수입 식품 라벨을 스캔하세요. 몇 초 만에 명확한 보고서를 제공합니다. (의학적 조언이 아님)",
@@ -555,7 +555,7 @@
     "value_head": "라벨 하나, 세 가지 정보"
   },
   "es": {
-    "title": "Escáner de etiquetas de alimentos — aiglossa food",
+    "title": "Escáner de etiquetas de alimentos — AIGLOSSA FOOD",
     "description": "Escanea una etiqueta de alimentos y obtén un informe nutricional claro, explicaciones de ingredientes y notas generales para quienes deben prestar atención.",
     "h1": "Lee la etiqueta. Entiende lo que comes.",
     "sub": "Escanea ingredientes, información nutricional o etiquetas de productos importados. Obtén un informe claro en segundos; no es asesoramiento médico.",
@@ -666,7 +666,7 @@
     "value_head": "Una etiqueta, tres capas"
   },
   "fr": {
-    "title": "Scan d'étiquettes alimentaires — aiglossa food",
+    "title": "Scan d'étiquettes alimentaires — AIGLOSSA FOOD",
     "description": "Scannez une étiquette alimentaire pour obtenir un rapport nutritionnel clair, des explications sur les ingrédients et des conseils pour les personnes concernées.",
     "h1": "Lisez l'étiquette. Comprenez ce que vous mangez.",
     "sub": "Scannez les ingrédients, les valeurs nutritionnelles ou un emballage importé. Obtenez un rapport clair en quelques secondes — ceci ne constitue pas un avis médical.",
@@ -777,7 +777,7 @@
     "value_head": "Une étiquette, trois niveaux"
   },
   "de": {
-    "title": "Lebensmittel-Scan — aiglossa food",
+    "title": "Lebensmittel-Scan — AIGLOSSA FOOD",
     "description": "Scanne ein Lebensmitteletikett und erhalte einen klaren Nährwertbericht, Erklärungen zu Inhaltsstoffen und Hinweise für bestimmte Personengruppen.",
     "h1": "Etikett scannen. Lebensmittel verstehen.",
     "sub": "Scanne Inhaltsstoffe, Nährwerte oder importierte Verpackungen. Erhalte in Sekunden einen klaren Bericht – kein medizinischer Rat.",
@@ -888,7 +888,7 @@
     "value_head": "Ein Etikett, drei Ebenen"
   },
   "pt": {
-    "title": "Scanner de rótulos — aiglossa food",
+    "title": "Scanner de rótulos — AIGLOSSA FOOD",
     "description": "Digitalize um rótulo de alimento e obtenha um relatório nutricional claro, explicações sobre ingredientes e notas para quem deve ter atenção.",
     "h1": "Leia o rótulo. Entenda o alimento.",
     "sub": "Digitalize ingredientes, informações nutricionais ou embalagens importadas. Obtenha um relatório claro em segundos — não é aconselhamento médico.",
@@ -999,7 +999,7 @@
     "value_head": "Um rótulo, três camadas"
   },
   "it": {
-    "title": "Scansione etichette alimentari — aiglossa food",
+    "title": "Scansione etichette alimentari — AIGLOSSA FOOD",
     "description": "Scansiona un'etichetta alimentare e ottieni un report nutrizionale chiaro, spiegazioni sugli ingredienti e note per chi deve prestare attenzione.",
     "h1": "Leggi l'etichetta. Comprendi il cibo.",
     "sub": "Scansiona ingredienti, valori nutrizionali o etichette di prodotti importati. Ottieni un report chiaro in pochi secondi — non costituisce parere medico.",
@@ -1110,7 +1110,7 @@
     "value_head": "Un'etichetta, tre livelli"
   },
   "ru": {
-    "title": "Сканирование этикеток — aiglossa food",
+    "title": "Сканирование этикеток — AIGLOSSA FOOD",
     "description": "Отсканируйте этикетку продукта и получите понятный отчет о пищевой ценности, разбор состава и рекомендации для тех, кому стоит быть внимательнее.",
     "h1": "Читайте этикетки. Понимайте, что едите.",
     "sub": "Сканируйте состав, пищевую ценность или импортные этикетки. Получите отчет за секунды — не является медицинской консультацией.",
@@ -1221,7 +1221,7 @@
     "value_head": "Одна этикетка — три уровня"
   },
   "ar": {
-    "title": "مسح ملصقات الطعام — aiglossa food",
+    "title": "مسح ملصقات الطعام — AIGLOSSA FOOD",
     "description": "امسح ملصق الطعام واحصل على تقرير غذائي واضح، وشرح للمكونات، وملاحظات عامة لمن يجب عليهم الانتباه.",
     "h1": "اقرأ الملصق. افهم طعامك.",
     "sub": "امسح المكونات، أو الحقائق الغذائية، أو ملصقات المنتجات المستوردة. احصل على تقرير واضح في ثوانٍ — هذه ليست نصيحة طبية.",
@@ -1332,7 +1332,7 @@
     "value_head": "ملصق واحد، ثلاث طبقات"
   },
   "th": {
-    "title": "สแกนฉลากอาหาร — aiglossa food",
+    "title": "สแกนฉลากอาหาร — AIGLOSSA FOOD",
     "description": "สแกนฉลากอาหารเพื่อรับรายงานโภชนาการที่ชัดเจน คำอธิบายส่วนประกอบ และข้อควรระวังสำหรับผู้ที่ต้องดูแลสุขภาพเป็นพิเศษ",
     "h1": "อ่านฉลาก เข้าใจอาหาร",
     "sub": "สแกนส่วนประกอบ ข้อมูลโภชนาการ หรือฉลากสินค้านำเข้า รับรายงานที่เข้าใจง่ายในไม่กี่วินาที (ไม่ใช่คำแนะนำทางการแพทย์)",
@@ -1443,7 +1443,7 @@
     "value_head": "ฉลากหนึ่งใบ สามชั้นข้อมูล"
   },
   "vi": {
-    "title": "Quét nhãn thực phẩm — aiglossa food",
+    "title": "Quét nhãn thực phẩm — AIGLOSSA FOOD",
     "description": "Quét nhãn thực phẩm để nhận báo cáo dinh dưỡng rõ ràng, giải thích thành phần và lưu ý cho những người cần quan tâm.",
     "h1": "Đọc nhãn. Hiểu thực phẩm.",
     "sub": "Quét thành phần, thông tin dinh dưỡng hoặc bao bì nhập khẩu. Nhận báo cáo rõ ràng trong vài giây — không phải lời khuyên y tế.",
@@ -1554,7 +1554,7 @@
     "value_head": "Một nhãn, ba lớp thông tin"
   },
   "id": {
-    "title": "Pindai label makanan — aiglossa food",
+    "title": "Pindai label makanan — AIGLOSSA FOOD",
     "description": "Pindai label makanan untuk mendapatkan laporan nutrisi yang jelas, penjelasan bahan, dan catatan penting bagi mereka yang perlu memperhatikan.",
     "h1": "Baca labelnya. Pahami makanannya.",
     "sub": "Pindai bahan, fakta nutrisi, atau kemasan impor. Dapatkan laporan jelas dalam hitungan detik — bukan saran medis.",
@@ -1665,7 +1665,7 @@
     "value_head": "Satu label, tiga lapisan"
   },
   "tr": {
-    "title": "Gıda etiketi tarama — aiglossa food",
+    "title": "Gıda etiketi tarama — AIGLOSSA FOOD",
     "description": "Bir gıda etiketini tarayın; net bir besin raporu, içerik açıklamaları ve dikkat etmesi gerekenler için genel notlar alın.",
     "h1": "Etiketi okuyun. Gıdayı anlayın.",
     "sub": "İçerikleri, besin değerlerini veya ithal paketleri tarayın. Saniyeler içinde net bir rapor alın — tıbbi tavsiye değildir.",

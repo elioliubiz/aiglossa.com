@@ -42,6 +42,8 @@ FOOD_ASSETS = (
     "food-icon-192.png", "food-icon-512.png", "food-icon-maskable-512.png", "food-sample.jpg",
 )
 
+FOOD_ASSET_VERSION = "20261031-3"
+
 # 占位符统一用 {{key}}：模板是纯文件，渲染器只知道这一种语法，
 # 于是"模板里有占位符、文案里没有对应字段"会在构建时报错，而不是静默留下 {{...}}。
 PLACEHOLDER = re.compile(r"\{\{([a-zA-Z0-9_]+)\}\}")
@@ -327,9 +329,9 @@ def _write_food_pwa(site: str, site_langs: list[str], languages: dict) -> None:
     """
     source = json.loads((CONTENT / "food.json").read_text(encoding="utf-8"))
     icons = [
-        {"src": "../../assets/food-icon-192.png", "sizes": "192x192", "type": "image/png"},
-        {"src": "../../assets/food-icon-512.png", "sizes": "512x512", "type": "image/png"},
-        {"src": "../../assets/food-icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
+        {"src": f"../../assets/food-icon-192.png?v={FOOD_ASSET_VERSION}", "sizes": "192x192", "type": "image/png"},
+        {"src": f"../../assets/food-icon-512.png?v={FOOD_ASSET_VERSION}", "sizes": "512x512", "type": "image/png"},
+        {"src": f"../../assets/food-icon-maskable-512.png?v={FOOD_ASSET_VERSION}", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
     ]
     for lang in site_langs:
         copy = source[lang]
@@ -351,9 +353,10 @@ def _write_food_pwa(site: str, site_langs: list[str], languages: dict) -> None:
         (folder / "manifest.webmanifest").write_text(
             json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
-        sw = f"""/* aiglossa food service worker — shell only, API is network-only. */
-const CACHE = "aiglossa-food-{lang}-v5";
-const SHELL = ["./", "../../assets/food.css", "../../assets/food.js", "../../assets/wallet.js", "../../assets/food-icon-192.png", "../../assets/food-icon-512.png", "../../assets/food-sample.jpg"];
+        sw = f"""/* aiglossa food service worker — network-first; cache is only an offline fallback. */
+const CACHE = "aiglossa-food-{lang}-v7";
+const V = "{FOOD_ASSET_VERSION}";
+const SHELL = ["./", "../../assets/food.css?v=" + V, "../../assets/food.js?v=" + V, "../../assets/wallet.js?v=" + V, "../../assets/food-icon-192.png?v=" + V, "../../assets/food-icon-512.png?v=" + V, "../../assets/food-sample.jpg?v=" + V];
 self.addEventListener("install", (event) => {{
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting()));
 }});
@@ -366,13 +369,13 @@ self.addEventListener("fetch", (event) => {{
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
   event.respondWith(
-    caches.match(request).then((cached) => cached || fetch(request).then((response) => {{
-      if (response.ok && url.pathname.includes("/food/")) {{
+    fetch(request).then((response) => {{
+      if (response.ok) {{
         const copy = response.clone();
         caches.open(CACHE).then((cache) => cache.put(request, copy));
       }}
       return response;
-    }}).catch(() => caches.match("./")))
+    }}).catch(() => caches.match(request).then((cached) => cached || (request.mode === "navigate" ? caches.match("./") : undefined)))
   );
 }});
 """
@@ -710,6 +713,7 @@ def main() -> int:
                     out["drop"] = copy["drop"]                      # 含 <br>，按 HTML 原样插入
                     out["title"] = esc(copy["title"])
                     out["description"] = esc(copy["description"])
+                    out["asset_v"] = FOOD_ASSET_VERSION
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
                     out["alt_sea"] = esc(copy["title"])
                     out["jsonld"] = json.dumps({
@@ -744,6 +748,7 @@ def main() -> int:
                     copy = source[lang]
                     out = {key: (value if isinstance(value, str) else value) for key, value in copy.items()}
                     out = {key: (esc(value) if isinstance(value, str) else value) for key, value in out.items()}
+                    out["asset_v"] = FOOD_ASSET_VERSION
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
                     out["contact_email"] = "support@aiglossa.com"
                     out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])
@@ -769,6 +774,7 @@ def main() -> int:
                     copy["options"] = {**common.get("options", {}), **source[lang].get("options", {})}
                     copy["recipe_names"] = {**common.get("recipe_names", {}), **source[lang].get("recipe_names", {})}
                     out = {key: (value if isinstance(value, (dict, list)) else esc(value)) for key, value in copy.items()}
+                    out["asset_v"] = FOOD_ASSET_VERSION
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
                     out["jsonld"] = json.dumps({
                         "@context": "https://schema.org", "@type": "SoftwareApplication",
@@ -815,6 +821,7 @@ def main() -> int:
                     for k in ("balance", "credits", "not_signed_in"):
                         copy[k] = source[lang]["make"][k]
                     out = {k: esc(v) for k, v in copy.items() if isinstance(v, str)}
+                    out["asset_v"] = FOOD_ASSET_VERSION
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
                     out["refund_note"] = esc(copy["refund_note"])
                     out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])

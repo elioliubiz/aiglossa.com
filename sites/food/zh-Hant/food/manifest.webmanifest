@@ -1,5 +1,5 @@
 {
-  "name": "食品標籤掃描 — aiglossa food",
+  "name": "食品標籤掃描 — AIGLOSSA FOOD",
   "short_name": "AIGLOSSA FOOD",
   "description": "掃描食品標籤，獲取清晰的營養報告、成分說明以及針對特定族群的注意事項。",
   "lang": "zh-Hant",
@@ -11,17 +11,17 @@
   "theme_color": "#FBFAF7",
   "icons": [
     {
-      "src": "../../assets/food-icon-192.png",
+      "src": "../../assets/food-icon-192.png?v=20261031-3",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "../../assets/food-icon-512.png",
+      "src": "../../assets/food-icon-512.png?v=20261031-3",
       "sizes": "512x512",
       "type": "image/png"
     },
     {
-      "src": "../../assets/food-icon-maskable-512.png",
+      "src": "../../assets/food-icon-maskable-512.png?v=20261031-3",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

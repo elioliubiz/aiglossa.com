@@ -1,6 +1,7 @@
-/* aiglossa food service worker — shell only, API is network-only. */
-const CACHE = "aiglossa-food-de-v5";
-const SHELL = ["./", "../../assets/food.css", "../../assets/food.js", "../../assets/wallet.js", "../../assets/food-icon-192.png", "../../assets/food-icon-512.png", "../../assets/food-sample.jpg"];
+/* aiglossa food service worker — network-first; cache is only an offline fallback. */
+const CACHE = "aiglossa-food-de-v7";
+const V = "20261031-3";
+const SHELL = ["./", "../../assets/food.css?v=" + V, "../../assets/food.js?v=" + V, "../../assets/wallet.js?v=" + V, "../../assets/food-icon-192.png?v=" + V, "../../assets/food-icon-512.png?v=" + V, "../../assets/food-sample.jpg?v=" + V];
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)).then(() => self.skipWaiting()));
 });
@@ -13,12 +14,12 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
   event.respondWith(
-    caches.match(request).then((cached) => cached || fetch(request).then((response) => {
-      if (response.ok && url.pathname.includes("/food/")) {
+    fetch(request).then((response) => {
+      if (response.ok) {
         const copy = response.clone();
         caches.open(CACHE).then((cache) => cache.put(request, copy));
       }
       return response;
-    }).catch(() => caches.match("./")))
+    }).catch(() => caches.match(request).then((cached) => cached || (request.mode === "navigate" ? caches.match("./") : undefined)))
   );
 });
