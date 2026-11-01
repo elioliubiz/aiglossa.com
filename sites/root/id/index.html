@@ -326,7 +326,7 @@
 <header class="site-head">
   <div class="wrap">
     <span class="site-brand">AIGLOSSA</span>
-    <a class="header-auth" href="/id/login.html">Masuk</a>
+    <a class="header-auth" id="headerAuth" href="/id/login.html">Masuk</a>
   </div>
 </header>
 
@@ -461,6 +461,36 @@
     var href = a.getAttribute("href") || "";
     map.forEach(function (pair) { if (href.indexOf(pair[0]) === 0) a.setAttribute("href", href.replace(pair[0], pair[1])); });
   });
+})();
+</script>
+<script>
+(function () {
+  var auth = document.getElementById("headerAuth");
+  if (!auth) return;
+  var host = location.hostname;
+  var api = host === "localhost" || host === "127.0.0.1"
+    ? "/api"
+    : (host.indexOf("staging.aiglossa.com") >= 0 ? "https://dev.staging.aiglossa.com" : "https://api.aiglossa.com");
+  var lang = document.documentElement.lang || "en";
+  var device = localStorage.getItem("aig_device") || "web-" + String(Date.now());
+  localStorage.setItem("aig_device", device);
+  function refreshAuth() {
+    fetch(api + "/wallet/summary", {
+      method: "POST", credentials: "include",
+      headers: {"Content-Type": "application/json", "X-Client": "web"},
+      body: JSON.stringify({app_key: "tools", device: device, timestamp: Math.floor(Date.now() / 1000)})
+    }).then(function (r) { return r.json(); }).then(function (d) {
+      if (d.code === 200 && d.data) {
+        auth.textContent = "Akun";
+        auth.href = "/" + lang + "/account.html";
+      } else {
+        auth.textContent = "Masuk";
+        auth.href = "/" + lang + "/login.html";
+      }
+    }).catch(function () {});
+  }
+  refreshAuth();
+  window.addEventListener("pageshow", function (e) { if (e.persisted) refreshAuth(); });
 })();
 </script>
 <script src="../assets/site.js" defer></script>

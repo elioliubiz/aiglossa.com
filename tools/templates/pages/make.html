@@ -2041,6 +2041,10 @@
     history.replaceState(null, "", location.pathname + location.hash);
     setTimeout(function () { checkSession().then(function (ok) { if (ok) toast(UI.pay_success); }); }, 600);
   }
+  window.addEventListener("pageshow", function (e) {
+    if (!e.persisted) return;
+    checkSession();
+  });
   checkSession().then(function (ok) {
     syncCost();
     if (ok) { loadMine(); restoreDraft(); }
