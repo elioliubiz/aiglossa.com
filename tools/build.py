@@ -49,7 +49,7 @@ SKIN_ASSETS = (
     "apple-touch-icon-skin.png", "og-skin.png", "skin-sample.jpg", "favicon-skin-64.png", "favicon-skin.ico", "skin-icon-192.png", "skin-icon-512.png",
     "skin-icon-maskable-512.png",
 )
-SKIN_ASSET_VERSION = "20261101-16"
+SKIN_ASSET_VERSION = "20261101-17"
 
 # 占位符统一用 {{key}}：模板是纯文件，渲染器只知道这一种语法，
 # 于是"模板里有占位符、文案里没有对应字段"会在构建时报错，而不是静默留下 {{...}}。
