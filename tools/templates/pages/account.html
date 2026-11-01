@@ -204,32 +204,7 @@
   }
   function showMsg(el, text, kind) { if (!el) return; el.textContent = text || ""; el.className = "msg" + (kind ? " " + kind : ""); }
 
-  var RETURN_ORIGINS = [
-    location.origin,
-    "https://aiglossa.com",
-    "https://staging.aiglossa.com",
-    "https://tools.aiglossa.com",
-    "https://tools.staging.aiglossa.com",
-    "https://food.aiglossa.com",
-    "https://food.staging.aiglossa.com",
-    "https://skin.aiglossa.com",
-    "https://skin.staging.aiglossa.com",
-    "https://scholan.aiglossa.com"
-  ];
-  function returnTarget() {
-    var candidates = [new URLSearchParams(location.search).get("next"), document.referrer];
-    for (var i = 0; i < candidates.length; i++) {
-      if (!candidates[i]) continue;
-      try {
-        var u = new URL(candidates[i], location.href);
-        if (RETURN_ORIGINS.indexOf(u.origin) < 0) continue;
-        if (/\/account\.html$/.test(u.pathname) || /\/login\.html$/.test(u.pathname)) continue;
-        return u.href;
-      } catch (e) {}
-    }
-    return MAIN + "/" + LANG + "/";
-  }
-  function showLogin() {
+  function renderSignedOut() {
     location.replace("login.html?next=" + encodeURIComponent(location.href));
   }
   function renderSignedOut() {
@@ -284,10 +259,9 @@
     }).catch(function () {});
   }
   $("logout").addEventListener("click", function () {
-    var target = returnTarget();
     call("/auth/logout", {}, true).finally(function () {
-      // A signed-out public page is a valid destination; do not force login.
-      location.replace(target);
+      if (history.length > 1) { history.back(); return; }
+      location.replace(MAIN + "/" + LANG + "/");
     });
   });
   $("activity").addEventListener("click", function () { $("activity-modal").classList.remove("hidden"); loadLedger(); });

@@ -44,6 +44,31 @@ FOOD_ASSETS = (
 
 FOOD_ASSET_VERSION = "20261031-28"
 
+# root / tools / scholan 只复制页面实际引用的资源，避免把整套 assets
+# （Scholan 截图、其他站点图标等）复制进每个站点，造成仓库和部署冗余。
+ROOT_ASSETS = (
+    "site.css", "site.js", "theme.css", "wallet.js", "protocol.css", "share.js",
+    "favicon.svg", "favicon-aiglossa-512.png", "favicon-aiglossa-64.png", "favicon-aiglossa.ico",
+    "apple-touch-icon.png", "apple-touch-icon-aiglossa.png", "apple-touch-icon-tools.png",
+    "favicon-tools.svg", "manifest-tools.webmanifest", "icon-tools-192.png", "icon-tools-512.png",
+    "og.png", "og-brand.png",
+    "food-icon-512.png", "skin-icon-512.png", "icon-music-512.png", "icon-image-512.png",
+    "brand/food.jpg", "brand/skin.jpg", "brand/music.jpg", "brand/image.jpg",
+    "scholan/icon.png", "scholan/welcome.jpg",
+)
+TOOLS_ASSETS = (
+    "site.css", "site.js", "theme.css", "wallet.js", "share.js",
+    "favicon-tools.svg", "apple-touch-icon-tools.png", "manifest-tools.webmanifest",
+    "icon-tools-192.png", "icon-tools-512.png", "og.png",
+)
+SCHOLAN_ASSETS = (
+    "site.css", "site.js", "protocol.css",
+    "favicon-scholan-64.png", "favicon-scholan.ico", "apple-touch-icon-scholan.png",
+    "og.png",
+    "scholan/real/ipad-spread.jpg", "scholan/real/ipad-library.jpg",
+    "scholan/real/phone-reading.jpg", "scholan/real/phone-library.jpg",
+)
+
 SKIN_ASSETS = (
     "food.css", "skin.css", "skin.js", "skin-share.js", "wallet.js", "favicon-skin.svg",
     "apple-touch-icon-skin.png", "og-skin.png", "skin-sample.jpg", "favicon-skin-64.png", "favicon-skin.ico", "skin-icon-192.png", "skin-icon-512.png",
@@ -1058,7 +1083,14 @@ def main() -> int:
                     if source_asset.exists():
                         shutil.copy2(source_asset, target_assets / name)
             else:
-                shutil.copytree(ASSETS, target_assets)
+                target_assets.mkdir(parents=True)
+                names = ROOT_ASSETS if site == "root" else TOOLS_ASSETS if site == "tools" else SCHOLAN_ASSETS
+                for name in names:
+                    source_asset = ASSETS / name
+                    if source_asset.exists():
+                        dest = target_assets / name
+                        dest.parent.mkdir(parents=True, exist_ok=True)
+                        shutil.copy2(source_asset, dest)
             written.append(f'{site:34s} -> sites/{site}/assets/（资源副本）')
 
     print(("校验通过（未写文件）" if args.check else "已生成页面") + "：")

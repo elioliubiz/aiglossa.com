@@ -156,16 +156,10 @@
   }
   function returnAfterLogin() {
     var target = next();
-    // Normal product login: the login page is an intermediate history entry.
-    // Go back to the page that opened it, so history does not end up with two
-    // copies of the same product URL. Product pages refresh auth on pageshow.
-    try {
-      var t = new URL(target, location.href);
-      var r = new URL(document.referrer);
-      var samePage = r.origin === t.origin && r.href.split("#")[0] === t.href.split("#")[0];
-      var isAccount = /\/account\.html$/.test(t.pathname) || /\/login\.html$/.test(t.pathname);
-      if (samePage && !isAccount && history.length > 1) { history.back(); return; }
-    } catch (e) {}
+    // The login page is an intermediate history entry. Returning one step
+    // preserves the page the user actually came from and avoids a duplicate
+    // product-page entry. Only use next() when there is no previous page.
+    if (history.length > 1) { history.back(); return; }
     location.replace(target);
   }
   function accept(data) {
