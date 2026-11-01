@@ -235,34 +235,40 @@
     device = crypto.randomUUID ? crypto.randomUUID() : String(Date.now());
     localStorage.setItem("aig_device", device);
   }
-  fetch(api + "/wallet/summary", {
-    method: "POST", credentials: "include",
-    headers: {"Content-Type": "application/json", "X-Client": "web"},
-    body: JSON.stringify({app_key: "tools", device: device, timestamp: Math.floor(Date.now() / 1000)})
-  }).then(function (r) { return r.json(); }).then(function (data) {
-    function setToolsAuth(signedIn) {
-      document.getElementById("toolsLogin").classList.toggle("hidden", signedIn);
-      document.getElementById("toolsAccount").classList.toggle("hidden", !signedIn);
-      document.getElementById("toolsBuy").classList.toggle("hidden", !signedIn);
-    }
-    if (data.code === 401 || data.code !== 200 || !data.data) { setToolsAuth(false); return; }
-    setToolsAuth(true);
-    var user = data.data.user || {};
-    var name = user.email || user.nickname || "Tài khoản";
-    document.getElementById("toolsAccountEmail").textContent = name;
-    var coins = Number(data.data.coins || 0);
-    document.getElementById("toolsAccountBalance").textContent = (Number.isInteger(coins) ? String(coins) : coins.toFixed(2)) + " tín dụng";
-    var avatar = document.getElementById("toolsAvatar");
-    if (user.avatar) {
-      var avatarSrc = /^https?:\/\//.test(user.avatar) ? user.avatar : api + user.avatar;
-      avatar.innerHTML = '<img src="' + String(avatarSrc).replace(/"/g, "&quot;") + '" alt="">';
-      var avatarImg = avatar.querySelector("img");
-      avatarImg.onerror = function () { avatar.textContent = name.slice(0, 1).toUpperCase(); };
-    } else {
-      avatar.textContent = name.slice(0, 1).toUpperCase();
-    }
-    document.getElementById("toolsAccount").href = root + "/vi/account.html";
-  }).catch(function () {});
+  function refreshToolsAuth() {
+    fetch(api + "/wallet/summary", {
+      method: "POST", credentials: "include",
+      headers: {"Content-Type": "application/json", "X-Client": "web"},
+      body: JSON.stringify({app_key: "tools", device: device, timestamp: Math.floor(Date.now() / 1000)})
+    }).then(function (r) { return r.json(); }).then(function (data) {
+      function setToolsAuth(signedIn) {
+        document.getElementById("toolsLogin").classList.toggle("hidden", signedIn);
+        document.getElementById("toolsAccount").classList.toggle("hidden", !signedIn);
+        document.getElementById("toolsBuy").classList.toggle("hidden", !signedIn);
+      }
+      if (data.code === 401 || data.code !== 200 || !data.data) { setToolsAuth(false); return; }
+      setToolsAuth(true);
+      var user = data.data.user || {};
+      var name = user.email || user.nickname || "Tài khoản";
+      document.getElementById("toolsAccountEmail").textContent = name;
+      var coins = Number(data.data.coins || 0);
+      document.getElementById("toolsAccountBalance").textContent = (Number.isInteger(coins) ? String(coins) : coins.toFixed(2)) + " tín dụng";
+      var avatar = document.getElementById("toolsAvatar");
+      if (user.avatar) {
+        var avatarSrc = /^https?:\/\//.test(user.avatar) ? user.avatar : api + user.avatar;
+        avatar.innerHTML = '<img src="' + String(avatarSrc).replace(/"/g, "&quot;") + '" alt="">';
+        var avatarImg = avatar.querySelector("img");
+        avatarImg.onerror = function () { avatar.textContent = name.slice(0, 1).toUpperCase(); };
+      } else {
+        avatar.textContent = name.slice(0, 1).toUpperCase();
+      }
+      document.getElementById("toolsAccount").href = root + "/vi/account.html";
+    }).catch(function () {});
+  }
+  refreshToolsAuth();
+  window.addEventListener("pageshow", function (e) {
+    if (e.persisted) refreshToolsAuth();
+  });
 })();
 </script>
 
