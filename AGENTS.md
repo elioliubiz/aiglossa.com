@@ -3,6 +3,18 @@
 静态站。生产域名与 staging 域名共用一套构建：品牌站分别为 `aiglossa.com` / `staging.aiglossa.com`，
 工具站分别为 `tools.aiglossa.com` / `tools.staging.aiglossa.com`；staging 域名固定绑定 Vercel `dev` 分支。
 
+## 项目记忆
+
+不要每次重新通读整个仓库。先看 `docs/INDEX.md`，再按任务读取：
+
+- 结构/构建/站点：`docs/ARCHITECTURE.md`
+- 登录、退出、账户状态：`docs/playbooks/auth.md`
+- Creem / 额度：`docs/playbooks/payments.md`
+- 构建、staging、生产：`docs/playbooks/deploy.md`
+- 已发生的回归：`docs/REGRESSIONS.md`
+
+`AGENTS.md` 只保留硬规则和索引；细则放 playbooks，行为优先用测试锁住。
+
 ## 构建
 
 ```bash
