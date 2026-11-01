@@ -88,6 +88,34 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 5. 不提交 `sites/*/assets` 下未被页面引用、由全量复制产生的副本；
 6. sitemap 的 `lastmod` 会随构建日期变化，属于正常构建变更，部署时一起提交。
 
+## Vercel 自动部署（只在标记提交时构建）
+
+Vercel 项目 `aiglossa-com` 的 **Settings → Build & Development Settings → Ignored Build Step** 已设置为 `Custom`，命令：
+
+```bash
+if echo "$VERCEL_GIT_COMMIT_MESSAGE" | grep -q '\[deploy\]'; then exit 1; else exit 0; fi
+```
+
+规则：
+
+- `exit 1` → 正常构建；
+- `exit 0` → 跳过构建；
+- 普通提交不再生成新部署；
+- 需要发布时，提交信息或合并信息必须包含 `[deploy]`：
+
+```text
+Release skin auth fix [deploy]
+Merge dev into main [deploy]
+```
+
+注意：
+
+- Production Overrides 留空，沿用 Project Settings；
+- 如果改成 `Don't build anything` 会连带 `[deploy]` 的提交也不构建；
+- 需要手动发布时可用 `vercel --prod`，但不要把它变成日常流程；
+- 旧部署仍会占用 Deployment Storage，定期保留当前 Production + 最近 2–3 个 Preview/Production，其他删除；
+- 这里只控制 Vercel 构建节奏，不影响本地 `build.py` / `verify.py`。
+
 ## 页面结构变更与 SEO（改结构时必须同步）
 
 改 URL、加删页面、调整 noindex 时，**必须**同时检查下面四处，漏一处就会出现
