@@ -66,67 +66,14 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 - 指向源码站的链接（如法律页）显式带语言：`https://aiglossa.com/<lang>/protocol/privacy.html`。
 - 生成器里的片段若要拼前缀，用 `{{prefix}}`；`render()` 只替换一遍，插入片段里的占位符需要 `emit()` 里补替换（见 `build.py`）。
 
-## 登录 / 退出与页面状态（跨子域必须遵守）
+## 跨站认证、资源与部署
 
-所有网页产品共用主站登录页。登录页只是中间页，不应把产品页写入两次历史。
-
-规则：
-
-- 登录成功后优先 `history.back()`，回到用户原来的页面；只有没有上一页时才用 `next` 兜底。
-- 产品页必须在 `pageshow`（`event.persisted`）时重新请求 `/wallet/summary`，否则从登录页返回后右上角仍是未登录。
-- 个人中心退出登录同样优先 `history.back()`；没有上一页时才回语言首页，不要强制跳登录页。
-- 新增允许登录回跳的 host 时，必须同时更新：
-  - `tools/templates/pages/login.html` 的 `allowedOrigins`
-  - 后端 `WEB_ORIGINS` 环境变量
-  - 相关产品的 `pageshow` 刷新
-- 新增网页产品后要实际测试：登录返回、退出返回、刷新后状态、`history.back()` 不重复。
-- 登录页或相关 JS 改动后按资源规则 bump 版本（如 `SKIN_ASSET_VERSION`），避免旧缓存。
-
-## 静态资源复制（新增站点必须遵守）
-
-`build.py` 不再对 root / tools / scholan 全量 `copytree(ASSETS)`，而是按站点 allowlist 复制实际引用的资源：
-
-- `ROOT_ASSETS`
-- `TOOLS_ASSETS`
-- `SCHOLAN_ASSETS`
-- Food / Skin 继续使用各自的 `FOOD_ASSETS` / `SKIN_ASSETS`
-
-新增子域或新增资源时：
-
-1. 在对应 allowlist 中加入页面/清单/CSS 实际引用的文件；
-2. 不要为了省事恢复全量复制；
-3. `build.py` 后运行 `tools/verify.py`；
-4. 额外检查每个站点 HTML/CSS 引用的 `assets/*` 是否存在；
-5. 不提交 `sites/*/assets` 下未被页面引用、由全量复制产生的副本；
-6. sitemap 的 `lastmod` 会随构建日期变化，属于正常构建变更，部署时一起提交。
-
-## Vercel 自动部署（只在标记提交时构建）
-
-Vercel 项目 `aiglossa-com` 的 **Settings → Build & Development Settings → Ignored Build Step** 已设置为 `Custom`，命令：
-
-```bash
-if echo "$VERCEL_GIT_COMMIT_MESSAGE" | grep -q '\[deploy\]'; then exit 1; else exit 0; fi
-```
-
-规则：
-
-- `exit 1` → 正常构建；
-- `exit 0` → 跳过构建；
-- 普通提交不再生成新部署；
-- 需要发布时，提交信息或合并信息必须包含 `[deploy]`：
-
-```text
-Release skin auth fix [deploy]
-Merge dev into main [deploy]
-```
-
-注意：
-
-- Production Overrides 留空，沿用 Project Settings；
-- 如果改成 `Don't build anything` 会连带 `[deploy]` 的提交也不构建；
-- 需要手动发布时可用 `vercel --prod`，但不要把它变成日常流程；
-- 旧部署仍会占用 Deployment Storage，定期保留当前 Production + 最近 2–3 个 Preview/Production，其他删除；
-- 这里只控制 Vercel 构建节奏，不影响本地 `build.py` / `verify.py`。
+- 登录/退出成功后优先 `history.back()`，没有上一页才用 `next` 或首页兜底；退出后不要强制跳登录页。
+- 有登录状态的产品页必须在 `pageshow`（`event.persisted`）刷新 `/wallet/summary`。
+- 新增可回跳 host 时，同时更新 `login.html` 的 `allowedOrigins`、后端 `WEB_ORIGINS` 和对应页面的 `pageshow`。
+- `build.py` 按站点 allowlist 复制资源，不做全量 `copytree`；新增站点/资源时更新对应 `*_ASSETS`，构建后检查引用。
+- Vercel 只在提交信息含 `[deploy]` 时构建；普通提交跳过，旧部署定期保留 6 个左右。
+- 认证细节见 `docs/playbooks/auth.md`，资源与发布见 `docs/playbooks/deploy.md`。
 
 ## 页面结构变更与 SEO（改结构时必须同步）
 
