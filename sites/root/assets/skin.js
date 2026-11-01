@@ -358,5 +358,9 @@
   }
   document.addEventListener("click", closeLangOutside);
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") { var el = $("footerLang"); if (el) el.open = false; } });
+  window.addEventListener("pageshow", function (e) {
+    if (!e.persisted) return;
+    refreshAccount().then(function (ok) { if (ok) loadHistory(); });
+  });
   refreshAccount();
 })();
