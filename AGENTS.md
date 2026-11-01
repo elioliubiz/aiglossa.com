@@ -54,6 +54,40 @@ ar de en es fr id it ja ko pt ru th tr vi zh-Hans zh-Hant
 - 指向源码站的链接（如法律页）显式带语言：`https://aiglossa.com/<lang>/protocol/privacy.html`。
 - 生成器里的片段若要拼前缀，用 `{{prefix}}`；`render()` 只替换一遍，插入片段里的占位符需要 `emit()` 里补替换（见 `build.py`）。
 
+## 登录 / 退出与页面状态（跨子域必须遵守）
+
+所有网页产品共用主站登录页。登录页只是中间页，不应把产品页写入两次历史。
+
+规则：
+
+- 登录成功后优先 `history.back()`，回到用户原来的页面；只有没有上一页时才用 `next` 兜底。
+- 产品页必须在 `pageshow`（`event.persisted`）时重新请求 `/wallet/summary`，否则从登录页返回后右上角仍是未登录。
+- 个人中心退出登录同样优先 `history.back()`；没有上一页时才回语言首页，不要强制跳登录页。
+- 新增允许登录回跳的 host 时，必须同时更新：
+  - `tools/templates/pages/login.html` 的 `allowedOrigins`
+  - 后端 `WEB_ORIGINS` 环境变量
+  - 相关产品的 `pageshow` 刷新
+- 新增网页产品后要实际测试：登录返回、退出返回、刷新后状态、`history.back()` 不重复。
+- 登录页或相关 JS 改动后按资源规则 bump 版本（如 `SKIN_ASSET_VERSION`），避免旧缓存。
+
+## 静态资源复制（新增站点必须遵守）
+
+`build.py` 不再对 root / tools / scholan 全量 `copytree(ASSETS)`，而是按站点 allowlist 复制实际引用的资源：
+
+- `ROOT_ASSETS`
+- `TOOLS_ASSETS`
+- `SCHOLAN_ASSETS`
+- Food / Skin 继续使用各自的 `FOOD_ASSETS` / `SKIN_ASSETS`
+
+新增子域或新增资源时：
+
+1. 在对应 allowlist 中加入页面/清单/CSS 实际引用的文件；
+2. 不要为了省事恢复全量复制；
+3. `build.py` 后运行 `tools/verify.py`；
+4. 额外检查每个站点 HTML/CSS 引用的 `assets/*` 是否存在；
+5. 不提交 `sites/*/assets` 下未被页面引用、由全量复制产生的副本；
+6. sitemap 的 `lastmod` 会随构建日期变化，属于正常构建变更，部署时一起提交。
+
 ## 页面结构变更与 SEO（改结构时必须同步）
 
 改 URL、加删页面、调整 noindex 时，**必须**同时检查下面四处，漏一处就会出现
