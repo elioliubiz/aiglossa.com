@@ -3,11 +3,12 @@
   "use strict";
   var UI = JSON.parse(document.getElementById("ui").textContent);
   var host = location.hostname;
-  var API = host.indexOf("staging.aiglossa.com") >= 0 ? "https://dev.staging.aiglossa.com" : "https://api.aiglossa.com";
+  var API = host === "localhost" || host === "127.0.0.1" ? "/api" : (host.indexOf("staging.aiglossa.com") >= 0 ? "https://dev.staging.aiglossa.com" : "https://api.aiglossa.com");
   var LANG = document.documentElement.lang || "en";
   var token = new URLSearchParams(location.search).get("token") || "";
   var $ = function (id) { return document.getElementById(id); };
   var shareImages = [];
+  function fail() { if ($("shareLoading")) $("shareLoading").classList.add("hidden"); if ($("shareError")) $("shareError").classList.remove("hidden"); }
   function esc(v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function call(path, data) { return fetch(API + path, { method: "POST", credentials: "include", headers: { "Content-Type": "application/json", "X-Client": "web" }, body: JSON.stringify(Object.assign({ app_key: "tools", feature: "skin-scan", timestamp: Math.floor(Date.now() / 1000) }, data || {})) }).then(function (r) { return r.json(); }); }
   function imageFor(i) { return shareImages[i] || ''; }
@@ -60,11 +61,10 @@
   }
   function renderShare(report) {
     var products = report.products || [], multi = products.length > 1;
-    if (!products.length) { $("shareContent").innerHTML = '<div class="skin-empty">' + esc(UI.scan_failed) + '</div>'; return; }
+    if (!products.length) { fail(); return; }
     var names = products.map(function (x) { var p = x.product || {}; return p.name || p.name_original || UI.product; });
     var active = 0;
-    var stack = '<div class="scan-stack">' + products.map(function (_, i) { var img = imageFor(i); return '<span class="scan-stack-item">' + (img ? '<img src="' + esc(img) + '" alt="">' : '<i>' + (i + 1) + '</i>') + '</span>'; }).join("") + '</div>';
-    var head = '<div class="share-head">' + stack + '<div><div class="skin-overview-kicker">' + esc(UI.result_title) + '</div><h1 class="skin-share-title">' + esc(multi ? names.join(" + ") : names[0]) + '</h1><p class="skin-share-meta">' + (multi ? products.length + " " + (UI.product_unit || UI.products) : esc((products[0].product || {}).brand || "")) + '</p></div></div>';
+    var stack = products.map(function (_, i) { var img = imageFor(i); return '<span class="scan-stack-item">' + (img ? '<img src="' + esc(img) + '" alt="">' : '<i>' + (i + 1) + '</i>') + '</span>'; }).join("");
     function panel(index) { return productCard(products[index], index); }
     function tabs() { return '<div class="skin-tabs" id="shareTabs">' + products.map(function (p, i) { return tab(p, i, active); }).join("") + '</div>'; }
     function bind() {
@@ -80,10 +80,12 @@
       });
     }
     function update() {
-      $("shareContent").innerHTML = head + (multi ? overview(report.combined) + tabs() : "") + '<div id="sharePanel">' + panel(active) + '</div><p class="nutrition-note">' + esc(UI.footer_disclaimer || report.disclaimer || "") + '</p>';
+      $("shareStack").innerHTML = stack; $("shareName").textContent = multi ? names.join(" + ") : names[0]; $("shareMeta").textContent = multi ? products.length + " " + (UI.product_unit || UI.products) : ((products[0].product || {}).brand || "");
+      $("shareReport").innerHTML = (multi ? overview(report.combined) + tabs() : "") + '<div id="sharePanel">' + panel(active) + '</div><p class="nutrition-note">' + esc(UI.footer_disclaimer || report.disclaimer || "") + '</p>';
       bind();
     }
     update();
+    if ($("shareLoading")) $("shareLoading").classList.add("hidden"); if ($("shareError")) $("shareError").classList.add("hidden"); $("shareContent").classList.remove("hidden"); $("shareContent").classList.add("content-enter");
     document.title = (multi ? names.join(" + ") : names[0]) + " — AIGLOSSA";
   }
   function loadShareImages(products) {
@@ -97,10 +99,12 @@
       }).catch(function () {});
     }));
   }
-  if (!token) { $("shareContent").innerHTML = '<div class="skin-empty">' + esc(UI.no_history) + '</div>'; return; }
+  window.AiglossaSkinReport = { render: function(report, images) { shareImages = images || []; renderShare(report); } };
+  if (host === "localhost" || host === "127.0.0.1") window.addEventListener("aiglossa:preview-skin-report", function(event){ if(event.detail&&event.detail.report)window.AiglossaSkinReport.render(event.detail.report,event.detail.images||[]) });
+  if (!token) { if (!document.body.classList.contains("result-page")) fail(); return; }
   call("/ai/skin/share/" + encodeURIComponent(token), {}).then(function (d) {
-    if (d.code !== 200 || !d.data) { $("shareContent").innerHTML = '<div class="skin-empty">' + esc(UI.scan_failed) + '</div>'; return; }
+    if (d.code !== 200 || !d.data) { fail(); return; }
     var report = d.data.report || {}, products = report.products || [];
     loadShareImages(products).then(function () { renderShare(report); });
-  }).catch(function () { $("shareContent").innerHTML = '<div class="skin-empty">' + esc(UI.network_error) + '</div>'; });
+  }).catch(fail);
 })();

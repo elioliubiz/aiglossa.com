@@ -66,6 +66,14 @@ def outputs_for(page: str) -> list[tuple[str, str]]:
         return [("food/share/index.html", "food/share/")]
     if page == "skin":
         return [("skin/index.html", "skin/")]
+    if page == "skin-history":
+        return [("skin/history/index.html", "skin/history/")]
+    if page == "skin-result":
+        return [("skin/result/index.html", "skin/result/")]
+    if page == "skin-guides":
+        slugs = ("read-ingredient-list", "understand-key-actives", "build-a-routine")
+        return ([('skin/guides/index.html', 'skin/guides/')] +
+                [(f'skin/guides/{slug}/index.html', f'skin/guides/{slug}/') for slug in slugs])
     if page == "skin-share":
         return [("skin/share/index.html", "skin/share/")]
     if page in ("refund", "acceptable-use"):

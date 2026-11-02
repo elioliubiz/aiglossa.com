@@ -51,6 +51,9 @@
     "host": "skin.aiglossa.com",
     "pages": [
       "skin",
+      "skin-history",
+      "skin-result",
+      "skin-guides",
       "skin-share"
     ]
   }

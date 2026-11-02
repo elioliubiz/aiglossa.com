@@ -7,7 +7,7 @@
   var IS_LOCAL = host === "localhost" || host === "127.0.0.1";
   var IS_STAGING = host.indexOf("staging.aiglossa.com") >= 0;
   var API = IS_LOCAL ? "/api" : (IS_STAGING ? "https://dev.staging.aiglossa.com" : "https://api.aiglossa.com");
-  var MAIN = IS_LOCAL ? "http://localhost:8000" : (IS_STAGING ? "https://staging.aiglossa.com" : "https://aiglossa.com");
+  var MAIN = IS_LOCAL ? "http://localhost:8301" : (IS_STAGING ? "https://staging.aiglossa.com" : "https://aiglossa.com");
   var LANG = document.documentElement.lang || "en";
   var FEATURE = "skin-scan";
   var device = localStorage.getItem("aig_device") || (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()));
@@ -38,7 +38,6 @@
     ["accountBtn", "buyBtn"].forEach(function (id) { if ($(id)) $(id).classList.toggle("hidden", !signedIn); });
     if ($("loginBtn")) $("loginBtn").classList.toggle("hidden", signedIn);
     if ($("recentSection")) $("recentSection").classList.toggle("hidden", !signedIn);
-    if (!signedIn && !$("resultView").classList.contains("hidden")) showHome();
   }
   function refreshAccount() {
     return call("/wallet/summary", {}).then(function (d) {
@@ -116,7 +115,7 @@
       call("/ai/skin/scan/" + id, {}).then(function (d) {
         if (d.code !== 200 || !d.data) { setScanning(false); toast(d.msg || UI.scan_failed); return; }
         var row = d.data;
-        if (row.status === "done") { setScanning(false); state.scan = row; state.balance = row.balance != null ? Number(row.balance) : state.balance; renderResult(row); refreshAccount(); return; }
+        if (row.status === "done") { setScanning(false); location.href = "result/?id=" + encodeURIComponent(row.id); return; }
         if (row.status === "failed") { setScanning(false); toast(UI.scan_failed); return; }
         if (attempts > 90) { setScanning(false); toast(UI.scan_timeout); return; }
         setTimeout(tick, 1500);
@@ -269,10 +268,10 @@
       if (products.length > 1) renderTabs(products);
     });
   }
-  function showHome() { $("heroView").classList.remove("hidden"); $("resultView").classList.add("hidden"); }
+  function showHome() { $("heroView").classList.remove("hidden"); }
   function resetScan() {
     state.files = []; state.previews.forEach(function (u) { URL.revokeObjectURL(u); }); state.images.forEach(function (u) { if (u) URL.revokeObjectURL(u); }); state.previews = []; state.images = []; state.scan = null;
-    filesToPreview(); showHome(); $("scanButton").classList.add("hidden"); $("fileInput").value = ""; $("cameraInput").value = ""; $("reportMain").innerHTML = ""; $("reportSide").innerHTML = "";
+    filesToPreview(); showHome(); $("scanButton").classList.add("hidden"); $("fileInput").value = ""; $("cameraInput").value = "";
   }
   function loadHistory() {
     if (!state.user) return;
@@ -280,14 +279,13 @@
     state.historyUrls = [];
     call("/ai/skin/works", {}).then(function (d) {
       if (d.code !== 200 || !d.data) return;
-      state.history = d.data.items || [];
+      state.history = (d.data.items || []).slice(0, 5);
       if (!state.history.length) { $("historyList").innerHTML = '<div class="history-empty">' + esc(UI.no_history) + '</div>'; return; }
       $("historyList").innerHTML = state.history.map(function (x) {
         var count = x.product_count || 1;
         var meta = count + " " + (UI.product_unit || UI.products) + " · " + statusLabel(x.status);
-        return '<button class="history-item" data-id="' + x.id + '"><span class="history-thumb" data-history-thumb="' + x.id + '">' + (x.has_image ? "◌" : "—") + '</span><span class="history-copy"><b>' + esc(x.product_name || UI.product) + '</b><small>' + esc(x.headline || "") + '</small></span><span class="history-status">' + esc(meta) + '</span></button>';
+        return '<a class="history-item" href="result/?id=' + encodeURIComponent(x.id) + '"><span class="history-thumb" data-history-thumb="' + x.id + '">' + (x.has_image ? "◌" : "—") + '</span><span class="history-copy"><b>' + esc(x.product_name || UI.product) + '</b><small>' + esc(x.headline || "") + '</small></span><span class="history-status">' + esc(meta) + '</span></a>';
       }).join("");
-      Array.prototype.forEach.call(document.querySelectorAll(".history-item"), function (el) { el.onclick = function () { openHistory(Number(el.dataset.id)); }; });
       state.history.forEach(function (x) { if (x.has_image) loadHistoryThumb(x.id, x.product_count || 1); });
     });
   }
@@ -342,10 +340,6 @@
   $("scanButton").onclick = function () { if (!state.warned) { $("warningModal").classList.remove("hidden"); return; } startScan(); };
   $("warningContinue").onclick = function () { state.warned = true; $("warningModal").classList.add("hidden"); startScan(); };
   $("confirmScan").onclick = function () { $("confirmModal").classList.add("hidden"); startScan(); };
-  $("backBtn").onclick = function (e) { e.preventDefault(); resetScan(); };
-  $("shareBtn").onclick = share;
-  $("deleteBtn").onclick = deleteScan;
-  $("historyRefresh").onclick = function (e) { e.preventDefault(); loadHistory(); };
   $("installBtn").onclick = function () { if (window.__deferredPrompt) { window.__deferredPrompt.prompt(); window.__deferredPrompt = null; } };
   document.querySelectorAll("[data-close]").forEach(function (b) { b.onclick = function () { b.closest(".modal").classList.add("hidden"); }; });
   window.addEventListener("beforeinstallprompt", function (e) { e.preventDefault(); window.__deferredPrompt = e; $("pwaBanner").classList.remove("hidden"); });
@@ -357,7 +351,12 @@
     if (el && el.open && !el.contains(e.target)) el.open = false;
   }
   document.addEventListener("click", closeLangOutside);
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { var el = $("footerLang"); if (el) el.open = false; } });
+  var guideModal = $("guideModal"), guideBody = $("guideBody"), guideClose = $("guideClose"), guideLastFocus = null;
+  function closeGuide() { if (!guideModal || guideModal.classList.contains("hidden")) return; guideModal.classList.add("hidden"); document.body.classList.remove("guide-open"); if (guideLastFocus) guideLastFocus.focus(); }
+  function openGuide(link) { guideLastFocus = link; guideModal.classList.remove("hidden"); document.body.classList.add("guide-open"); fetch(link.href).then(function(r){if(!r.ok)throw Error();return r.text()}).then(function(html){var doc=new DOMParser().parseFromString(html,"text/html"),article=doc.querySelector(".skin-guide-doc");if(!article)throw Error();var crumb=article.querySelector(".page-breadcrumb");if(crumb)crumb.remove();guideBody.innerHTML=article.outerHTML;guideBody.scrollTop=0}).catch(function(){location.href=link.href}) }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-skin-guide]"),function(link){link.onclick=function(e){e.preventDefault();openGuide(link)}}); if(guideClose)guideClose.onclick=closeGuide;if(guideModal)guideModal.onclick=function(e){if(e.target===guideModal)closeGuide()};
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { var el = $("footerLang"); if (el) el.open = false; closeGuide(); } });
+  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion:reduce)").matches) { document.body.classList.add("motion-enhanced"); var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add("is-revealed");observer.unobserve(entry.target)}})},{threshold:.08,rootMargin:"0px 0px -36px"});Array.prototype.forEach.call(document.querySelectorAll(".value,.recent,.skin-workflow,.skin-knowledge"),function(section){observer.observe(section)}) }
   window.addEventListener("pageshow", function (e) {
     if (!e.persisted) return;
     refreshAccount().then(function (ok) { if (ok) loadHistory(); });

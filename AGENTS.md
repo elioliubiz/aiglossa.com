@@ -234,6 +234,8 @@ access token 写入 `localStorage`，也禁止用本地 Bearer Token 覆盖 Cook
 
 产品顶栏品牌文字固定为 `AIGLOSSA`，不要追加产品名；产品名只用于页面标题、面包屑和页脚。历史、结果、分享等页面层级及加载动效必须遵循 `docs/DESIGN_SYSTEM.md`，并保持产品 CSS 相互隔离。
 
+Food 与 Skin 的首页只展示最近记录；完整历史与私有结果分别使用 `/{lang}/<product>/history/`、`result/?id=...`，公开分享使用 `share/?token=...`。历史和结果 noindex，分享 noindex/follow，公开教程进入 sitemap。Skin 必须保留最多三款产品及组合流程分析，不能为了对齐 Food 简化成单产品报告。
+
 ## 官方媒体资源
 
 官方示例音频不属于 Vercel 前端产物，统一由 `https://assets.aiglossa.com/music-samples/` 提供；测试和生产共用这批只读资源。仓库的 `sites/tools/samples/` 只保存示例图片和 `waveforms.json`，禁止提交 MP3、WAV、FLAC 等音频文件。

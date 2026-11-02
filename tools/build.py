@@ -71,11 +71,12 @@ SCHOLAN_ASSETS = (
 )
 
 SKIN_ASSETS = (
-    "skin-base.css", "skin.css", "skin.js", "skin-share.js", "wallet.js", "favicon-skin.svg",
+    "skin-base.css", "skin.css", "skin.js", "skin-history.js", "skin-result.js", "skin-share.js", "wallet.js", "favicon-skin.svg",
     "apple-touch-icon-skin.png", "og-skin.png", "skin-sample.jpg", "favicon-skin-64.png", "favicon-skin.ico", "skin-icon-192.png", "skin-icon-512.png",
     "skin-icon-maskable-512.png",
 )
-SKIN_ASSET_VERSION = "20261101-17"
+SKIN_ASSET_VERSION = "20261102-18"
+SKIN_GUIDE_SLUGS = ("read-ingredient-list", "understand-key-actives", "build-a-routine")
 
 # 占位符统一用 {{key}}：模板是纯文件，渲染器只知道这一种语法，
 # 于是"模板里有占位符、文案里没有对应字段"会在构建时报错，而不是静默留下 {{...}}。
@@ -126,6 +127,9 @@ PAGES = {
     "food-guides": ("pages/food-guide.html", "food-guides", "food/guides/{slug}/index.html"),
     "food-share": ("pages/food-share.html", "food", "food/share/index.html"),
     "skin": ("pages/skin.html", "skin", "skin/index.html"),
+    "skin-history": ("pages/skin-history.html", "skin", "skin/history/index.html"),
+    "skin-result": ("pages/skin-result.html", "skin", "skin/result/index.html"),
+    "skin-guides": ("pages/skin-guide.html", "skin", "skin/guides/{slug}/index.html"),
     "skin-share": ("pages/skin-share.html", "skin", "skin/share/index.html"),
     # 指南（内容页）：英文优先，生成到 /en/guides/<slug>.html
     "guides": ("pages/guide.html", "guides", "guides/{slug}.html"),
@@ -367,6 +371,12 @@ def _site_urls(site: str, spec: dict) -> list[str]:
             continue
         elif page == "skin":
             urls.append(("skin/", None))
+        elif page in ("skin-history", "skin-result"):
+            continue
+        elif page == "skin-guides":
+            urls.append(("skin/guides/", None))
+            for slug in SKIN_GUIDE_SLUGS:
+                urls.append((f"skin/guides/{slug}/", None))
         elif page == "skin-share":
             continue
         elif page in ("account", "webaccount", "refund", "login", "music-share", "image-share"):
@@ -390,7 +400,7 @@ def _write_skin_pwa(site: str, site_langs: list[str], languages: dict) -> None:
         ]
         manifest = {"name": "AIGLOSSA Skin", "short_name": "AIGLOSSA", "start_url": f"/{lang}/skin/", "scope": f"/{lang}/skin/", "display": "standalone", "background_color": "#FBF7F2", "theme_color": "#FBF7F2", "icons": icons, "lang": lang, "dir": "rtl" if lang == "ar" else "ltr"}
         (folder / "manifest.webmanifest").write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
-        sw = "const CACHE = \"aiglossa-skin-" + lang + "-v16\";\n"
+        sw = "const CACHE = \"aiglossa-skin-" + lang + "-v17\";\n"
         sw += "const ASSETS = [\"/" + lang + "/skin/\", \"/assets/skin.css?v=" + SKIN_ASSET_VERSION + "\", \"/assets/skin.js?v=" + SKIN_ASSET_VERSION + "\", \"/assets/wallet.js?v=" + SKIN_ASSET_VERSION + "\"];\n"
         sw += "self.addEventListener(\"install\", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).catch(()=>{})); self.skipWaiting(); });\n"
         sw += "self.addEventListener(\"activate\", e => { e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE && k.indexOf(\"aiglossa-skin-\") === 0).map(k => caches.delete(k))))); self.clients.claim(); });\n"
@@ -956,7 +966,52 @@ def main() -> int:
                     }, ensure_ascii=False).replace("</", "<\\/")
                     return out
                 values_builder = food_values
-            elif page in ("skin", "skin-share"):
+            elif page == "skin-guides":
+                def skin_guide_copy(lang: str, slug: str, source=source) -> tuple[str, str, list[tuple[str, list[str]]]]:
+                    copy = source[lang]
+                    index = SKIN_GUIDE_SLUGS.index(slug) + 1
+                    title = copy[f"value_{index}_title"]
+                    description = copy[f"value_{index}_body"]
+                    sections = [
+                        (title, [description, copy["sub"]]),
+                        (copy["value_head"], [copy["value_1_body"], copy["value_2_body"], copy["value_3_body"]]),
+                        (copy["warning_title"], [copy["warning_body"], copy["footer_disclaimer"]]),
+                    ]
+                    return title, description, sections
+
+                for lang in site_langs:
+                    copy = source[lang]
+                    cards = "".join(
+                        f'<li><a href="{slug}/"><span>{esc(skin_guide_copy(lang, slug)[0])}</span>'
+                        f'<small>{esc(skin_guide_copy(lang, slug)[1])}</small></a></li>'
+                        for slug in SKIN_GUIDE_SLUGS
+                    )
+                    common = {
+                        "asset_v": SKIN_ASSET_VERSION,
+                        "guide_kicker": esc(copy["share_heading"]),
+                        "back_to_skin": esc(copy["back"]),
+                        "legal_privacy": esc(marketing[lang]["legal"]["privacy"]),
+                        "legal_terms": esc(marketing[lang]["legal"]["terms"]),
+                    }
+                    emit(site, lang, 3, "skin/guides/index.html", "pages/skin-guide.html",
+                         lambda lang, base, copy=copy, cards=cards, common=common: {
+                             **common, "title": esc(copy["how_title"] + " — AIGLOSSA SKIN"),
+                             "description": esc(copy["description"]), "guide_title": esc(copy["how_title"]),
+                             "guide_description": esc(copy["value_intro"]),
+                             "guide_body": f'<ul class="skin-guide-list">{cards}</ul>',
+                             "jsonld": json.dumps({"@context":"https://schema.org","@type":"CollectionPage","name":copy["how_title"],"description":copy["description"],"url":f"{base}/{lang}/skin/guides/","inLanguage":languages[lang]["hreflang"]}, ensure_ascii=False).replace("</", "<\\/"),
+                         }, site_langs)
+                    for slug in SKIN_GUIDE_SLUGS:
+                        title, description, sections = skin_guide_copy(lang, slug)
+                        body = "".join(f'<section><h2>{esc(head)}</h2>' + "".join(f'<p>{esc(p)}</p>' for p in paragraphs) + "</section>" for head, paragraphs in sections)
+                        emit(site, lang, 4, f"skin/guides/{slug}/index.html", "pages/skin-guide.html",
+                             lambda lang, base, title=title, description=description, body=body, common=common, slug=slug: {
+                                 **common, "title": esc(title + " — AIGLOSSA SKIN"), "description": esc(description),
+                                 "guide_title": esc(title), "guide_description": esc(description), "guide_body": body,
+                                 "jsonld": json.dumps({"@context":"https://schema.org","@type":"Article","headline":title,"description":description,"url":f"{base}/{lang}/skin/guides/{slug}/","inLanguage":languages[lang]["hreflang"]}, ensure_ascii=False).replace("</", "<\\/"),
+                             }, site_langs)
+                continue
+            elif page in ("skin", "skin-history", "skin-result", "skin-share"):
                 def skin_values(lang: str, base: str, source=source) -> dict[str, str]:
                     copy = source[lang]
                     out = {key: (esc(value) if isinstance(value, str) else value) for key, value in copy.items()}
@@ -972,6 +1027,14 @@ def main() -> int:
                     out["lang_label"] = esc(marketing[lang]["langLabel"])
                     out["current_name"] = esc(languages[lang]["name"])
                     out["brand"] = esc("aiglossa skin")
+                    out["knowledge_cards"] = "".join(
+                        f'<article><span>0{i}</span><h3>{esc(copy[f"value_{i}_title"])}</h3><p>{esc(copy[f"value_{i}_body"])}</p><a href="guides/{slug}/" data-skin-guide>{esc(copy["view_all"])}</a></article>'
+                        for i, slug in enumerate(SKIN_GUIDE_SLUGS, 1)
+                    )
+                    out["faq_items"] = "".join(
+                        f'<details><summary>{esc(question)}</summary><p>{esc(answer)}</p></details>'
+                        for question, answer in ((copy["scan_title"], copy["sub"]), (copy["warning_title"], copy["warning_body"]), (copy["value_head"], copy["value_intro"]))
+                    )
                     out["jsonld"] = json.dumps({
                         "@context": "https://schema.org", "@type": "SoftwareApplication",
                         "name": copy["title"], "description": copy["description"],
