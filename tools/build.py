@@ -75,7 +75,7 @@ SKIN_ASSETS = (
     "apple-touch-icon-skin.png", "og-skin.png", "skin-sample.jpg", "favicon-skin-64.png", "favicon-skin.ico", "skin-icon-192.png", "skin-icon-512.png",
     "skin-icon-maskable-512.png",
 )
-SKIN_ASSET_VERSION = "20261102-18"
+SKIN_ASSET_VERSION = "20261102-19"
 SKIN_GUIDE_SLUGS = ("read-ingredient-list", "understand-key-actives", "build-a-routine")
 
 # 占位符统一用 {{key}}：模板是纯文件，渲染器只知道这一种语法，
@@ -400,7 +400,7 @@ def _write_skin_pwa(site: str, site_langs: list[str], languages: dict) -> None:
         ]
         manifest = {"name": "AIGLOSSA Skin", "short_name": "AIGLOSSA", "start_url": f"/{lang}/skin/", "scope": f"/{lang}/skin/", "display": "standalone", "background_color": "#FBF7F2", "theme_color": "#FBF7F2", "icons": icons, "lang": lang, "dir": "rtl" if lang == "ar" else "ltr"}
         (folder / "manifest.webmanifest").write_text(json.dumps(manifest, ensure_ascii=False), encoding="utf-8")
-        sw = "const CACHE = \"aiglossa-skin-" + lang + "-v17\";\n"
+        sw = "const CACHE = \"aiglossa-skin-" + lang + "-v18\";\n"
         sw += "const ASSETS = [\"/" + lang + "/skin/\", \"/assets/skin.css?v=" + SKIN_ASSET_VERSION + "\", \"/assets/skin.js?v=" + SKIN_ASSET_VERSION + "\", \"/assets/wallet.js?v=" + SKIN_ASSET_VERSION + "\"];\n"
         sw += "self.addEventListener(\"install\", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(ASSETS)).catch(()=>{})); self.skipWaiting(); });\n"
         sw += "self.addEventListener(\"activate\", e => { e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== CACHE && k.indexOf(\"aiglossa-skin-\") === 0).map(k => caches.delete(k))))); self.clients.claim(); });\n"
@@ -1027,6 +1027,9 @@ def main() -> int:
                     out["lang_label"] = esc(marketing[lang]["langLabel"])
                     out["current_name"] = esc(languages[lang]["name"])
                     out["brand"] = esc("aiglossa skin")
+                    out["knowledge_title"] = esc(copy["share_heading"])
+                    out["knowledge_intro"] = esc(copy["description"])
+                    out["faq_title"] = esc(copy["warning_title"])
                     out["knowledge_cards"] = "".join(
                         f'<article><span>0{i}</span><h3>{esc(copy[f"value_{i}_title"])}</h3><p>{esc(copy[f"value_{i}_body"])}</p><a href="guides/{slug}/" data-skin-guide>{esc(copy["view_all"])}</a></article>'
                         for i, slug in enumerate(SKIN_GUIDE_SLUGS, 1)

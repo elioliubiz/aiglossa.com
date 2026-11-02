@@ -356,10 +356,8 @@
   function openGuide(link) { guideLastFocus = link; guideModal.classList.remove("hidden"); document.body.classList.add("guide-open"); fetch(link.href).then(function(r){if(!r.ok)throw Error();return r.text()}).then(function(html){var doc=new DOMParser().parseFromString(html,"text/html"),article=doc.querySelector(".skin-guide-doc");if(!article)throw Error();var crumb=article.querySelector(".page-breadcrumb");if(crumb)crumb.remove();guideBody.innerHTML=article.outerHTML;guideBody.scrollTop=0}).catch(function(){location.href=link.href}) }
   Array.prototype.forEach.call(document.querySelectorAll("[data-skin-guide]"),function(link){link.onclick=function(e){e.preventDefault();openGuide(link)}}); if(guideClose)guideClose.onclick=closeGuide;if(guideModal)guideModal.onclick=function(e){if(e.target===guideModal)closeGuide()};
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") { var el = $("footerLang"); if (el) el.open = false; closeGuide(); } });
-  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion:reduce)").matches) { document.body.classList.add("motion-enhanced"); var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add("is-revealed");observer.unobserve(entry.target)}})},{threshold:.08,rootMargin:"0px 0px -36px"});Array.prototype.forEach.call(document.querySelectorAll(".value,.recent,.skin-workflow,.skin-knowledge"),function(section){observer.observe(section)}) }
-  window.addEventListener("pageshow", function (e) {
-    if (!e.persisted) return;
-    refreshAccount().then(function (ok) { if (ok) loadHistory(); });
+  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion:reduce)").matches) { document.body.classList.add("motion-enhanced"); var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){entry.target.classList.add("is-revealed");observer.unobserve(entry.target)}})},{threshold:.08,rootMargin:"0px 0px -36px"});Array.prototype.forEach.call(document.querySelectorAll(".skin-insight,.recent,.skin-workflow,.skin-knowledge"),function(section){observer.observe(section)}) }
+  window.addEventListener("pageshow", function () {
+    refreshAccount();
   });
-  refreshAccount();
 })();
