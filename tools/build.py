@@ -43,7 +43,7 @@ FOOD_ASSETS = (
 )
 
 FOOD_ASSET_VERSION = "20261102-45"
-GLOBAL_ASSET_VERSION = "20261031-28"
+GLOBAL_ASSET_VERSION = "20261102-29"
 
 # root / tools / scholan 只复制页面实际引用的资源，避免把整套 assets
 # （Scholan 截图、其他站点图标等）复制进每个站点，造成仓库和部署冗余。
@@ -61,6 +61,7 @@ TOOLS_ASSETS = (
     "site.css", "site.js", "theme.css", "wallet.js", "share.js",
     "favicon-tools.svg", "apple-touch-icon-tools.png", "manifest-tools.webmanifest",
     "icon-tools-192.png", "icon-tools-512.png", "og.png",
+    "brand/music.jpg", "brand/image.jpg",
 )
 SCHOLAN_ASSETS = (
     "site.css", "site.js", "protocol.css",
@@ -200,16 +201,25 @@ def render_steps(steps: list[dict]) -> str:
 def render_tools(items: list[dict], site_base: str) -> str:
     """工具列表卡片。live 的给链接，coming soon 的不可点。"""
     out = []
-    for item in items:
+    kinds = ("music", "image", "video")
+    for index, item in enumerate(items):
         name = esc(item["name"])
         desc = esc(item["desc"])
         meta = esc(item.get("meta", ""))
         status = esc(item.get("status", ""))
         href = item.get("href") or ""
-        live = status.lower().startswith("live")
+        live = bool(href)
         cls = "live" if live else "soon"
         badge = f'<span class="badge {cls}">{status}</span>' if status else ""
+        kind = kinds[index] if index < len(kinds) else "tool"
+        if kind in ("music", "image"):
+            media = (f'      <span class="tool-media"><img src="{{{{prefix}}}}assets/brand/{kind}.jpg" '
+                     f'alt="" loading="lazy"><span class="tool-signal" aria-hidden="true"></span></span>\n')
+        else:
+            media = ('      <span class="tool-media tool-media-soon" aria-hidden="true">'
+                     '<i></i><i></i><i></i><b>03</b></span>\n')
         body = (
+            media +
             f'      <div class="tool-top"><span class="tool-name">{name}</span>{badge}</div>\n'
             f'      <p class="tool-desc">{desc}</p>\n'
             f'      <p class="tool-meta">{meta}</p>\n'
@@ -217,11 +227,11 @@ def render_tools(items: list[dict], site_base: str) -> str:
         if href:
             # 用 {{prefix}} 而不是生产的绝对地址：本地预览时绝对地址会指到线上（点开 404）
             out.append(
-                f'    <a class="tool" href="{href.lstrip("/")}">\n{body}'
-                f'      <span class="tool-go">Open →</span>\n    </a>'
+                f'    <a class="tool tool-{kind}" href="{href.lstrip("/")}" aria-label="{name}">\n{body}'
+                '      <span class="tool-go" aria-hidden="true">→</span>\n    </a>'
             )
         else:
-            out.append(f'    <div class="tool soon">\n{body}      <span class="tool-go">Coming soon</span>\n    </div>')
+            out.append(f'    <div class="tool tool-{kind} soon">\n{body}</div>')
     return "\n".join(out)
 
 
