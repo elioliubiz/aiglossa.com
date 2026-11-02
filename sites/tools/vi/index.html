@@ -35,10 +35,10 @@
 <meta property="og:image:alt" content="AIGLOSSA TOOLS">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "aiglossa tools", "url": "https://tools.aiglossa.com/vi/", "inLanguage": "vi", "publisher": {"@type": "Organization", "name": "aiglossa", "url": "https://aiglossa.com"}}</script>
-<link rel="icon" href="../assets/favicon-tools.svg?v=20261102-29" type="image/svg+xml">
-<link rel="icon" href="../assets/favicon-tools.svg?v=20261102-29" sizes="any">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261102-29">
-<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261102-29">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261102-32" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261102-32" sizes="any">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261102-32">
+<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261102-32">
 <meta name="theme-color" content="#0e0f11">
 <script>(function(){var m=matchMedia("(prefers-color-scheme:dark)");function s(){document.documentElement.dataset.theme=m.matches?"dark":"light";var x=document.querySelector('meta[name="theme-color"]');if(x)x.content=m.matches?"#15191F":"#F7F9FC"}s();if(m.addEventListener)m.addEventListener("change",s);else m.addListener(s)})();</script>
 <link rel="stylesheet" href="../assets/site.css">
@@ -46,14 +46,15 @@
 <style>
   :root{color-scheme:light;--page:#F7F9FC;--surface:rgba(255,255,255,.88);--surface-solid:#fff;--ink:#18202B;--muted:#657080;--faint:#929CAA;--line:rgba(36,55,82,.13);--line-strong:rgba(36,55,82,.24);--tools:#08A9DF;--tools-2:#386FE8;--tools-soft:rgba(8,169,223,.11);--shadow:0 18px 50px rgba(41,67,104,.11);--shadow-soft:0 8px 24px rgba(41,67,104,.08)}
   html[data-theme="dark"]{color-scheme:dark;--page:#15191F;--surface:rgba(31,37,46,.9);--surface-solid:#202630;--ink:#F1F5FA;--muted:#AEB8C6;--faint:#7E8998;--line:rgba(224,235,249,.12);--line-strong:rgba(224,235,249,.23);--tools:#2BC4F3;--tools-2:#7198FF;--tools-soft:rgba(43,196,243,.14);--shadow:0 18px 50px rgba(0,0,0,.28);--shadow-soft:0 8px 24px rgba(0,0,0,.2)}
-  body{background:radial-gradient(ellipse 52% 32% at 8% 8%,rgba(56,111,232,.10),transparent 72%),radial-gradient(ellipse 46% 30% at 92% 18%,rgba(8,169,223,.09),transparent 72%),var(--page);color:var(--ink)}
-  .hub-hero{padding:64px 0 34px}
+  body{background:radial-gradient(ellipse 68% 40% at 8% 2%,rgba(56,111,232,.20),transparent 68%),radial-gradient(ellipse 58% 42% at 92% 12%,rgba(8,169,223,.19),transparent 68%),radial-gradient(ellipse 50% 34% at 46% 27%,rgba(155,100,246,.11),transparent 70%),radial-gradient(ellipse 44% 32% at 76% 58%,rgba(239,101,72,.09),transparent 72%),var(--page);color:var(--ink)}
+  .hub-hero{padding:64px 0 34px;position:relative}
   .hub-hero h1{max-width:12ch;font-size:clamp(38px,5.4vw,58px);line-height:1.05;letter-spacing:0;margin:12px 0 0;background:none;-webkit-text-fill-color:currentColor;color:var(--ink);font-weight:680}
   .hub-hero .lede{margin:18px 0 0;max-width:48ch;color:var(--muted);font-size:15px;line-height:1.72}
   .hub-hero .kicker{color:var(--tools);font-size:10px;letter-spacing:.18em}
-  .tools{padding:8px 0 22px}
+  .tools{padding:8px 0 22px;position:relative}
+  .tools:before{content:"";position:absolute;z-index:-1;inset:8% 0 12%;background:linear-gradient(110deg,rgba(36,104,242,.08),rgba(24,200,214,.12) 32%,rgba(255,255,255,0) 48%,rgba(239,101,72,.10) 72%,rgba(49,91,216,.08));filter:blur(32px);pointer-events:none}
   .tool-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;min-width:0}
-  .tool{position:relative;display:grid;grid-template-rows:260px auto auto 1fr;gap:0;min-width:0;padding:0 22px 22px;border:1px solid var(--line);border-radius:8px;background:var(--surface);text-decoration:none;color:inherit;box-shadow:var(--shadow-soft);overflow:hidden;transition:border-color .16s,transform .16s,box-shadow .16s}
+  .tool{position:relative;display:grid;grid-template-rows:260px auto auto 1fr;gap:0;min-width:0;padding:0 22px 22px;border:1px solid var(--line);border-radius:8px;background:var(--surface);text-decoration:none;color:inherit;box-shadow:var(--shadow);overflow:hidden;backdrop-filter:blur(18px);transition:border-color .16s,transform .16s,box-shadow .16s}
   a.tool:hover{border-color:var(--line-strong);transform:translateY(-2px);box-shadow:var(--shadow)}
   .tool.soon{grid-column:1/-1;grid-template-columns:150px 1fr auto;grid-template-rows:auto;align-items:center;gap:20px;min-height:118px;padding:16px 20px;background:color-mix(in srgb,var(--surface) 76%,transparent);box-shadow:none}
   .tool-media{position:relative;display:block;margin:0 -22px 20px;overflow:hidden;background:var(--surface-solid)}
@@ -78,9 +79,9 @@
   .guide-list li a{display:block;padding-block:12px;padding-inline:16px;border:1px solid rgba(255,255,255,.1);
                    border-radius:12px;background:rgba(255,255,255,.02);color:var(--fg);text-decoration:none;font-size:14px}
   .guide-list li a:hover{border-color:rgba(255,255,255,.24);background:rgba(255,255,255,.05)}
-  .closing-band{padding:26px 0 72px;border-top:1px solid var(--line);margin-top:34px}
-  .closing-band .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
-  .closing-band p{margin:0;color:var(--muted);font-size:13px}.closing-band .food-link{color:var(--tools-2);text-decoration:none;margin-inline-start:6px}.closing-band .food-link:hover{color:var(--tools)}.closing-band .cta{white-space:nowrap;border-radius:7px;background:linear-gradient(125deg,var(--tools),var(--tools-2));color:#fff}
+  .closing-band{padding:26px 0 46px;margin-top:30px}
+  .closing-band .wrap{display:flex;align-items:center;gap:20px;padding-block:20px;border-block:1px solid var(--line)}
+  .closing-band p{margin:0;color:var(--muted);font-size:13px}.closing-band .food-link{color:var(--tools-2);text-decoration:none;margin-inline-start:6px}.closing-band .food-link:hover{color:var(--tools)}
   .tools-nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--surface-solid) 82%,transparent);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
   .tools-actions{display:flex;align-items:center;gap:14px}
   .tools-lang{position:relative;font-size:12px;color:var(--muted);border:1px solid var(--line);background:var(--surface-solid);border-radius:7px;padding:0 10px}
@@ -121,7 +122,7 @@
   footer{background:color-mix(in srgb,var(--surface-solid) 88%,transparent);border-color:var(--line)}
   .footer-lang ul{background:var(--surface-solid)!important;border-color:var(--line)!important}.footer-lang li a:hover{background:var(--tools-soft)!important;color:var(--tools)!important}
   @media(max-width:900px){.tool{grid-template-rows:220px auto auto 1fr}}
-  @media(max-width:680px){.wrap{padding-inline:18px}.hub-hero{padding:42px 0 26px}.hub-hero h1{font-size:38px}.tool-grid{grid-template-columns:minmax(0,1fr)}.tool{width:100%;grid-template-rows:190px auto auto 1fr;padding-inline:18px}.tool-media{margin-inline:-18px}.tool.soon{grid-template-columns:76px minmax(0,1fr);gap:12px;padding:14px}.tool.soon .tool-meta{display:none}.tool-media-soon{height:68px;padding:12px}.closing-band .cta{width:100%;text-align:center}}
+  @media(max-width:680px){.wrap{padding-inline:18px}.hub-hero{padding:42px 0 26px}.hub-hero h1{font-size:38px}.tool-grid{grid-template-columns:minmax(0,1fr)}.tool{width:100%;grid-template-rows:190px auto auto 1fr;padding-inline:18px}.tool-media{margin-inline:-18px}.tool.soon{grid-template-columns:76px minmax(0,1fr);gap:12px;padding:14px}.tool.soon .tool-meta{display:none}.tool-media-soon{height:68px;padding:12px}.closing-band{padding-bottom:34px}.closing-band .wrap{padding-block:18px}.closing-band p{line-height:1.8}}
   @media(max-width:560px){
     .tools-nav .wrap{padding-inline:14px;gap:10px}
     .tools-brand{font-size:10px;letter-spacing:.15em;gap:7px}
@@ -142,7 +143,7 @@
 <body>
 <header class="tools-nav">
   <div class="wrap">
-    <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261102-29" alt=""> AIGLOSSA</a>
+    <a class="tools-brand" href="./"><img src="../assets/favicon-tools.svg?v=20261102-32" alt=""> AIGLOSSA</a>
     <div class="tools-actions">
       <a class="tools-login" id="toolsLogin" href="login.html?next=./">Đăng nhập</a>
       <a class="tools-account hidden" id="toolsAccount" href="login.html?next=./">
@@ -197,7 +198,6 @@
   <section class="closing-band">
     <div class="wrap">
       <p>Tín dụng dùng chung cho mọi công cụ: một số dư, không hết hạn, không đăng ký định kỳ. · <a class="food-link" href="https://food.aiglossa.com/vi/food/">Phân tích nhãn thực phẩm →</a> · <a class="food-link" href="https://skin.aiglossa.com/vi/skin/">Phân tích thành phần chăm sóc da →</a></p>
-      <a class="cta" href="music/">Mở AI Music</a>
     </div>
   </section>
 </main>
