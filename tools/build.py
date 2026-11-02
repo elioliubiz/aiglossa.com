@@ -43,7 +43,7 @@ FOOD_ASSETS = (
 )
 
 FOOD_ASSET_VERSION = "20261102-45"
-GLOBAL_ASSET_VERSION = "20261102-33"
+GLOBAL_ASSET_VERSION = "20261102-35"
 
 # root / tools / scholan 只复制页面实际引用的资源，避免把整套 assets
 # （Scholan 截图、其他站点图标等）复制进每个站点，造成仓库和部署冗余。
@@ -67,6 +67,7 @@ SCHOLAN_ASSETS = (
     "site.css", "site.js", "protocol.css",
     "favicon-scholan-64.png", "favicon-scholan.ico", "apple-touch-icon-scholan.png",
     "og.png",
+    "scholan/icon.png",
     "scholan/real/ipad-spread.jpg", "scholan/real/ipad-library.jpg",
     "scholan/real/phone-reading.jpg", "scholan/real/phone-library.jpg",
 )
@@ -76,7 +77,7 @@ SKIN_ASSETS = (
     "apple-touch-icon-skin.png", "og-skin.png", "skin-sample.jpg", "favicon-skin-64.png", "favicon-skin.ico", "skin-icon-192.png", "skin-icon-512.png",
     "skin-icon-maskable-512.png",
 )
-SKIN_ASSET_VERSION = "20261102-20"
+SKIN_ASSET_VERSION = "20261102-21"
 SKIN_GUIDE_SLUGS = ("read-ingredient-list", "understand-key-actives", "build-a-routine")
 
 # 占位符统一用 {{key}}：模板是纯文件，渲染器只知道这一种语法，
@@ -740,6 +741,7 @@ def main() -> int:
             elif page == "marketing":
                 def marketing_values(lang: str, base: str, source=source) -> dict[str, str]:
                     locale = source[lang]
+                    support_copy = json.loads((CONTENT / "support.json").read_text(encoding="utf-8"))[lang]
                     return {
                         "title": esc(locale["title"]),
                         "description": esc(locale["description"]),
@@ -748,6 +750,7 @@ def main() -> int:
                         "steps_1_h": esc(locale["steps"][0]["h"]),
                         "steps_1_p": esc(locale["steps"][0]["p"]),
                         "app_href": "https://apps.apple.com/app/id6811801616",
+                        "support_label": esc(support_copy["title"]),
                         "shot_spread": "/assets/scholan/real/ipad-spread.jpg",
                         "shot_ipad_lib": "/assets/scholan/real/ipad-library.jpg",
                         "shot_phone": "/assets/scholan/real/phone-reading.jpg",
@@ -898,6 +901,12 @@ def main() -> int:
                     out["description"] = esc(copy["description"])
                     out["asset_v"] = GLOBAL_ASSET_VERSION
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    guide_source = json.loads((CONTENT / "guides.json").read_text(encoding="utf-8"))
+                    locale_guides = guide_source.get(lang, {})
+                    out["music_guide_links"] = "".join(
+                        f'<li><a href="../guides/{slug}.html">{esc(item.get("h1") or item["title"])}</a></li>'
+                        for slug, item in locale_guides.items()
+                    )
                     out["alt_sea"] = esc(copy["title"])
                     out["jsonld"] = json.dumps({
                         "@context": "https://schema.org",
@@ -1048,6 +1057,13 @@ def main() -> int:
                         f'<details><summary>{esc(question)}</summary><p>{esc(answer)}</p></details>'
                         for question, answer in ((copy["scan_title"], copy["sub"]), (copy["warning_title"], copy["warning_body"]), (copy["value_head"], copy["value_intro"]))
                     )
+                    faq_pairs = ((copy["scan_title"], copy["sub"]), (copy["warning_title"], copy["warning_body"]), (copy["value_head"], copy["value_intro"]))
+                    out["faq_jsonld"] = json.dumps({
+                        "@context": "https://schema.org", "@type": "FAQPage",
+                        "mainEntity": [{"@type": "Question", "name": question,
+                                        "acceptedAnswer": {"@type": "Answer", "text": answer}}
+                                       for question, answer in faq_pairs],
+                    }, ensure_ascii=False).replace("</", "<\\/")
                     out["jsonld"] = json.dumps({
                         "@context": "https://schema.org", "@type": "SoftwareApplication",
                         "name": copy["title"], "description": copy["description"],
@@ -1065,6 +1081,17 @@ def main() -> int:
                     out = {key: (value if isinstance(value, (dict, list)) else esc(value)) for key, value in copy.items()}
                     out["asset_v"] = GLOBAL_ASSET_VERSION
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
+                    out["image_guide_title"] = esc(copy["h1"])
+                    out["image_guide_intro"] = esc(copy["description"])
+                    guide_items = (
+                        (copy["description_label"], copy["template_note"]),
+                        (copy["references"], copy["sub"]),
+                        (copy["advanced"], copy["text_hint"]),
+                    )
+                    out["image_guide_cards"] = "".join(
+                        f"<article><b>{esc(title)}</b><p>{esc(body)}</p></article>"
+                        for title, body in guide_items
+                    )
                     out["jsonld"] = json.dumps({
                         "@context": "https://schema.org", "@type": "SoftwareApplication",
                         "name": copy["title"], "description": copy["description"],

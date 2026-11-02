@@ -181,6 +181,8 @@ def main() -> int:
                         problems.append(f"{where}: 残留未替换的占位符")
                     if "?lang=" in text:
                         problems.append(f"{where}: 残留旧实现的 ?lang= 链接")
+                    if "/webpricing" in text:
+                        problems.append(f"{where}: 残留不存在的 /webpricing 链接，应指向 /pricing.html")
 
                     html_tag = re.search(r'<html lang="([^"]+)" dir="([^"]+)"', text)
                     if not html_tag:

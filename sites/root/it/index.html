@@ -38,7 +38,8 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://aiglossa.com/assets/og-brand.png">
 <meta name="twitter:image:alt" content="AIGLOSSA — a family of focused products">
-<meta name="theme-color" content="#08080a">
+<meta name="theme-color" content="#f7f8fc" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#151821" media="(prefers-color-scheme: dark)">
 <link rel="icon" type="image/png" sizes="64x64" href="../assets/favicon-aiglossa-64.png?v=3">
 <link rel="shortcut icon" href="../assets/favicon-aiglossa.ico?v=3">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon-aiglossa.png">
@@ -349,7 +350,7 @@
       <div class="product-group">
         <div class="group-title">App</div>
         <div class="product-grid">
-          <a class="product-tile scholan" href="https://scholan.aiglossa.com/it/">
+          <a class="product-tile scholan rv" href="https://scholan.aiglossa.com/it/">
             <div class="tile-bg"><img src="../assets/scholan/welcome.jpg" alt=""></div>
             <div class="tile-content">
               <div class="tile-head"><span class="tile-icon"><img src="../assets/scholan/icon.png" alt=""></span><h3>Scholan</h3><span class="tile-status">iOS</span></div>
@@ -357,7 +358,7 @@
               <span class="tile-open">Scopri Scholan →</span>
             </div>
           </a>
-          <div class="product-tile more-tile">
+          <div class="product-tile more-tile rv">
             <div class="tile-content">
               <div class="tile-head"><span class="tile-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span><h3>Altre app in fase di sviluppo</h3></div>
               <p class="tile-desc">Scholan è online. Nuove app e giochi verranno aggiunti qui man mano che saranno lanciati.</p>
@@ -369,7 +370,7 @@
       <div class="product-group">
         <div class="group-title">Web</div>
         <div class="product-grid">
-          <a class="product-tile food" href="https://food.aiglossa.com/it/food/">
+          <a class="product-tile food rv" href="https://food.aiglossa.com/it/food/">
             <div class="tile-bg"><img src="../assets/brand/food.jpg" alt=""></div>
             <div class="tile-content">
               <div class="tile-head"><span class="tile-icon"><img src="../assets/food-icon-512.png" alt=""></span><h3>AIGLOSSA FOOD</h3><span class="tile-status">Web</span></div>
@@ -377,7 +378,7 @@
               <span class="tile-open">Apri →</span>
             </div>
           </a>
-          <a class="product-tile skin" href="https://skin.aiglossa.com/it/skin/">
+          <a class="product-tile skin rv" href="https://skin.aiglossa.com/it/skin/">
             <div class="tile-bg"><img src="../assets/brand/skin.jpg" alt=""></div>
             <div class="tile-content">
               <div class="tile-head"><span class="tile-icon"><img src="../assets/skin-icon-512.png" alt=""></span><h3>AIGLOSSA SKIN</h3><span class="tile-status">Web</span></div>
@@ -385,7 +386,7 @@
               <span class="tile-open">Apri →</span>
             </div>
           </a>
-          <a class="product-tile music" href="https://tools.aiglossa.com/it/music/">
+          <a class="product-tile music rv" href="https://tools.aiglossa.com/it/music/">
             <div class="tile-bg"><img src="../assets/brand/music.jpg" alt=""></div>
             <div class="tile-content">
               <div class="tile-head"><span class="tile-icon"><img src="../assets/icon-music-512.png?v=2" alt=""></span><h3>Music</h3><span class="tile-status">Web</span></div>
@@ -393,7 +394,7 @@
               <span class="tile-open">Apri →</span>
             </div>
           </a>
-          <a class="product-tile image" href="https://tools.aiglossa.com/it/image/">
+          <a class="product-tile image rv" href="https://tools.aiglossa.com/it/image/">
             <div class="tile-bg"><img src="../assets/brand/image.jpg" alt=""></div>
             <div class="tile-content">
               <div class="tile-head"><span class="tile-icon"><img src="../assets/icon-image-512.png?v=2" alt=""></span><h3>Image</h3><span class="tile-status">Web</span></div>
@@ -575,4 +576,27 @@
 .tile-status{flex:none;background:rgba(8,8,10,.52)}
 .tile-head h3{max-width:calc(100% - 82px)}
 .more-tile .tile-content{justify-content:center;padding-inline:24px}
+</style>
+<style id="platform-visual-system">
+:root{color-scheme:light;--bg:#f7f8fc;--ink:#182033;--mut:#697488;--line:rgba(35,48,74,.13);--line-strong:rgba(35,48,74,.23);--surface:#fff;--surface-2:#eff2f8;--platform:#5268d9;--platform-2:#38bfc7;--platform-3:#f2c94c;--tools:#08a9df;--apps:#7441fe;--shadow:0 20px 62px rgba(43,59,94,.13)}
+@media(prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#151821;--ink:#f3f5f9;--mut:#a7b0bf;--line:rgba(235,240,249,.12);--line-strong:rgba(235,240,249,.23);--surface:#20242f;--surface-2:#282d3a;--platform:#8192f4;--platform-2:#55ccd3;--platform-3:#f2cf63;--shadow:0 22px 68px rgba(0,0,0,.34)}}
+html,body{background:var(--bg);color:var(--ink)}body{background:radial-gradient(ellipse 62% 30% at 82% 4%,rgba(82,104,217,.14),transparent 72%),radial-gradient(ellipse 48% 27% at 24% 18%,rgba(56,191,199,.11),transparent 72%),radial-gradient(ellipse 42% 24% at 70% 58%,rgba(242,201,76,.065),transparent 74%),var(--bg)}
+.bg{display:none}.mesh{opacity:.35;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:80px 80px;mask-image:linear-gradient(#000,transparent 42%)}
+.site-head{border-color:var(--line);background:color-mix(in srgb,var(--surface) 83%,transparent);backdrop-filter:blur(20px)}.site-head .wrap{height:68px;max-width:1180px}.site-brand{color:var(--ink);font-weight:650;letter-spacing:.18em}
+.site-head .header-auth{border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--platform);padding:8px 12px}.site-head .header-auth:hover{border-color:var(--platform);background:color-mix(in srgb,var(--platform) 8%,var(--surface));color:var(--platform)}
+.hero{padding-block:142px 62px;min-height:470px}.hero-in{max-width:1000px}.hero h1{font-size:clamp(42px,6vw,76px);line-height:1.04;letter-spacing:0;font-weight:700;color:var(--ink);text-wrap:balance}.hero .lede{max-width:59ch;margin-top:24px;color:var(--mut);font-size:16px;line-height:1.75}.hero-cta{margin-top:32px}.hbtn{border-radius:7px;min-height:46px;padding:12px 20px}.hero-cta .hbtn.p{background:linear-gradient(125deg,var(--platform),#667ce5);color:#fff;box-shadow:0 12px 28px rgba(82,104,217,.2)}
+.family{padding-block:48px 48px;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--surface) 56%,transparent) 12%,color-mix(in srgb,var(--surface) 56%,transparent) 88%,transparent)}.family .eyebrow,.about-sec .eyebrow{color:var(--platform);font-weight:650;letter-spacing:.15em}.family h2{color:var(--ink);letter-spacing:0;font-weight:680}.group-title{color:var(--mut);font-weight:650}.group-title:after{background:var(--line)}
+.product-grid{gap:14px}.product-tile{min-height:278px;border-color:var(--line);border-radius:10px;background:var(--surface);box-shadow:0 10px 30px rgba(43,59,94,.06)}.product-tile:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--line-strong)}.tile-content{min-height:278px;padding:18px;text-shadow:0 1px 12px rgba(0,0,0,.55)}.tile-bg img{opacity:.96;filter:saturate(.94);transition:transform .45s}.product-tile:hover .tile-bg img{transform:scale(1.018)}
+.product-tile:after{background:linear-gradient(180deg,rgba(10,14,23,.1),rgba(10,14,23,.48) 48%,rgba(10,14,23,.94) 100%)!important}.tile-icon{border-radius:8px}.tile-head h3{color:#fff;font-weight:650;letter-spacing:0}.tile-status{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.78);background:rgba(12,16,24,.5);border-radius:7px}.tile-desc,.tile-open{color:rgba(255,255,255,.8)}
+.product-tile.food:hover{border-color:#25aa72}.product-tile.skin:hover{border-color:#de6f89}.product-tile.music:hover{border-color:#2468f2}.product-tile.image:hover{border-color:#ef6548}
+.more-tile{min-height:278px;background:transparent;box-shadow:none}.more-tile .tile-content{min-height:278px;text-shadow:none}.more-tile .tile-icon{background:color-mix(in srgb,var(--platform) 12%,transparent);color:var(--platform)}.more-tile .tile-head h3{color:var(--ink)}.more-tile .tile-desc{color:var(--mut)}
+.about-sec{padding-block:66px 78px}.about-sec h2{color:var(--ink);font-weight:680;letter-spacing:0}.about-sec .about{color:var(--mut)}.about a{color:var(--platform);border-color:color-mix(in srgb,var(--platform) 35%,transparent)}
+footer{border-color:var(--line);background:color-mix(in srgb,var(--surface) 45%,transparent)}footer .brand,footer nav a{color:var(--mut)}footer nav a:hover{color:var(--ink)}.switcher summary{border-color:var(--line);background:var(--surface);color:var(--mut);border-radius:7px}.switcher ul{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow)}.switcher li a[aria-current],.switcher li a:hover{background:var(--surface-2);color:var(--ink)}
+@media(max-width:760px){.site-head .wrap{height:60px}.hero{padding-block:112px 54px;min-height:0}.hero h1{font-size:clamp(35px,11vw,52px)}.hero .lede{font-size:14px}.family{padding-block:50px 30px}.product-tile,.tile-content,.more-tile,.more-tile .tile-content{min-height:244px}.more-tile{min-height:160px}.more-tile .tile-content{min-height:160px}.about-sec{padding-block:42px 58px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.product-tile,.tile-bg img{transition:none}.product-tile:hover{transform:none}}
+@media(prefers-reduced-motion:no-preference){
+  .product-grid .rv{transition:opacity .58s cubic-bezier(.2,.7,.3,1),transform .58s cubic-bezier(.2,.7,.3,1),box-shadow .2s,border-color .2s}
+  .product-grid .rv:not(.in):nth-child(2){transition-delay:.08s}.product-grid .rv:not(.in):nth-child(3){transition-delay:.04s}.product-grid .rv:not(.in):nth-child(4){transition-delay:.12s}
+  .product-grid .rv.in:hover{transform:translateY(-3px)}
+}
 </style>
