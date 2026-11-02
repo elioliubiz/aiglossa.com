@@ -5,16 +5,19 @@
 <title>{{title}}</title><meta name="description" content="{{description}}"><link rel="canonical" href="{{canonical}}">{{alternates}}
 <meta property="og:type" content="website"><meta property="og:site_name" content="AIGLOSSA FOOD"><meta property="og:locale" content="{{og_locale}}"><meta property="og:title" content="{{title}}"><meta property="og:description" content="{{description}}"><meta property="og:url" content="{{canonical}}"><meta property="og:image" content="{{site_base}}/assets/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="{{image_alt}}">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{title}}"><meta name="twitter:description" content="{{description}}"><meta name="twitter:image" content="{{site_base}}/assets/og.png">
-<meta name="theme-color" content="#FBFAF7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#F5F9F7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script>(function(){try{localStorage.removeItem("aiglossa_theme")}catch(e){}var m=matchMedia("(prefers-color-scheme: dark)");function sync(){var dark=m.matches;document.documentElement.dataset.theme=dark?"dark":"light";var meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=dark?"#121A18":"#F5F9F7"}sync();if(m.addEventListener)m.addEventListener("change",sync);else m.addListener(sync)})();</script>
 <link rel="manifest" href="manifest.webmanifest?v={{asset_v}}">
 <link rel="icon" type="image/png" sizes="64x64" href="{{prefix}}assets/favicon-food-64.png?v={{asset_v}}"><link rel="icon" type="image/svg+xml" href="{{prefix}}assets/favicon-food.svg?v={{asset_v}}"><link rel="shortcut icon" href="{{prefix}}assets/favicon-food.ico?v={{asset_v}}"><link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-food.png?v={{asset_v}}">
 <link rel="stylesheet" href="{{prefix}}assets/food.css?v={{asset_v}}">
 <script type="application/ld+json">{{jsonld}}</script>
+<script type="application/ld+json">{{faq_jsonld}}</script>
 </head>
 <body>
 <header class="topbar"><div class="wrap topbar-inner">
   <a class="brand" href="./" aria-label="AIGLOSSA FOOD"><span class="brand-mark food-logo"><img src="{{prefix}}assets/favicon-food.svg?v={{asset_v}}" alt=""></span> AIGLOSSA</a>
   <div class="top-actions">
+    <span id="themeToggle" hidden></span>
     <a class="login-link" id="loginBtn" href="#">{{sign_in}}</a>
     <button class="account-flat hidden" id="accountBtn"><span class="avatar" id="avatar">?</span><span class="balance" id="balanceText">—<span>{{credits}}</span></span></button>
     <a class="pill-btn buy-btn hidden" id="buyBtn" href="#"><span class="buy-full">{{buy}}</span><span class="buy-short">{{buy_short}}</span></a>
@@ -32,7 +35,7 @@
         <div class="scan-icon"><svg viewBox="0 0 24 24"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2l1.1-1.8h6.4L16.3 6h1.2A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5z"/><circle cx="12" cy="12.3" r="3.2"/></svg></div>
         <div class="scan-copy"><b>{{upload}}</b><span>{{scan_sub}}</span></div>
         <div class="scan-actions"><label class="btn" for="fileInput">{{choose_file}}</label><label class="btn ghost" for="cameraInput">{{camera}}</label></div>
-        <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+        <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp">
         <input class="file-input" id="cameraInput" type="file" accept="image/*" capture="environment">
         <p class="multi-hint">{{multi_hint}}</p>
         <div class="preview-wrap hidden" id="previewWrap"><div class="preview-grid" id="previewGrid"></div></div>
@@ -43,45 +46,73 @@
       <div class="pwa-banner hidden" id="pwaBanner"><span>{{install_hint}}</span><button id="installBtn">{{install}}</button></div>
     </div>
     <div class="hero-visual">
-      <div class="photo-card"><img src="{{prefix}}assets/food-sample.jpg?v={{asset_v}}" alt="{{sample}}"></div>
-      <div class="scan-frame"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
-      <div class="result-chip"><span class="dot"></span> {{sample}}</div>
-      <div class="float-card"><b>{{sat_fat}}</b><span>10.5g / 100g</span><i class="bar"></i><small>{{nrv}} 53% · {{high}}</small></div>
+      <div class="visual-shell">
+        <div class="visual-toolbar"><span><i></i> AIGLOSSA FOOD</span><small>{{sample}}</small></div>
+        <div class="visual-workspace">
+          <div class="visual-media">
+            <div class="photo-card"><img src="{{prefix}}assets/food-sample.jpg?v={{asset_v}}" alt="{{sample}}"></div>
+            <div class="scan-frame"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+            <div class="result-chip"><span class="dot"></span> {{sample}}</div>
+          </div>
+          <div class="visual-results">
+            <span class="visual-status">{{status_done}}</span>
+            <h3>{{result_title}}</h3>
+            <div class="visual-score"><span>{{sat_fat}}</span><b>{{high}}</b><small>10.5g / 100g · {{nrv}} 53%</small></div>
+            <div class="visual-signal"><span>{{ingredients}}</span><b>12</b></div>
+            <div class="visual-signal"><span>{{nutrition}}</span><b>08</b></div>
+            <div class="visual-signal"><span>{{who_notes}}</span><b>03</b></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="wrap value" id="how">
-    <div class="value-head"><h2>{{value_head}}</h2><p>{{value_intro}}</p></div>
-    <div class="value-grid">
-      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M5 6.5h14M5 11h14M5 15.5h9"/><circle cx="18" cy="17" r="3"/><path d="m20.2 19.2 1.6 1.6"/></svg></div><h3>{{value_1_title}}</h3><p>{{value_1_body}}</p></article>
-      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M5 19V9M12 19V5M19 19v-6"/><path d="M4 19h16"/></svg></div><h3>{{value_2_title}}</h3><p>{{value_2_body}}</p></article>
-      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.5c0 4.2-2.8 7.2-7 9-4.2-1.8-7-4.8-7-9V6z"/><path d="M9.3 11.8 11.4 14l3.6-4"/></svg></div><h3>{{value_3_title}}</h3><p>{{value_3_body}}</p></article>
+  <section class="wrap value" id="insight">
+    <div class="value-head"><div><span class="kicker">AIGLOSSA FOOD</span><h2>{{value_head}}</h2></div><p>{{value_intro}}</p></div>
+    <div class="insight-layout">
+      <div class="report-demo">
+        <div class="report-demo-head"><div><span>{{sample}}</span><h3>{{result_title}}</h3></div><b>{{status_done}}</b></div>
+        <div class="demo-summary"><span class="pill warn">{{verdict}}</span><strong>{{sat_fat}} · {{high}}</strong><p>{{value_intro}}</p></div>
+        <div class="demo-cautions"><div><span>{{cautions}}</span><b>{{sat_fat}} · {{high}}</b></div><div><span>{{who_notes}}</span><b>{{caution}} · {{limit}}</b></div></div>
+        <div class="demo-section"><div class="demo-section-head"><i>01</i><b>{{who_notes}}</b><span>03</span></div><div class="demo-person-row"><b>{{caution}}</b><span>{{limit}}</span></div></div>
+        <div class="demo-section"><div class="demo-section-head"><i>02</i><b>{{nutrition}}</b><span>{{per_100g}}</span></div><div class="demo-metric"><span>{{energy}}</span><b>431 kcal</b><small>—</small></div><div class="demo-metric"><span>{{sat_fat}}</span><b>10.5g</b><small>{{daily_ref}} 53%</small></div><div class="demo-metric"><span>{{sugar}}</span><b>12.4g</b><small>{{daily_ref}} 28%</small></div><div class="demo-metric"><span>{{sodium}}</span><b>320mg</b><small>{{daily_ref}} 16%</small></div><p class="demo-note">{{nutrition_note_generic}}</p></div>
+        <div class="demo-section demo-ingredients"><div class="demo-section-head"><i>03</i><b>{{ingredients}}</b><span>12</span></div><div class="demo-ingredient-row"><div><strong>{{ingredients}} 01</strong><small>{{original}} · {{translated}}</small></div><span>{{info}}</span></div><div class="demo-ingredient-row"><div><strong>{{ingredients}} 02</strong><small>{{original}} · {{inferred}}</small></div><span>{{caution}}</span></div></div>
+        <div class="demo-footer"><span>{{how_to_eat}} <b>03</b></span><span>{{data_notes}} <b>02</b></span></div><p class="demo-disclaimer">{{footer_disclaimer}}</p>
+      </div>
+      <div class="value-stack">
+        <article class="value-card"><div class="value-number">01</div><div class="value-card-content"><h3>{{value_1_title}}</h3><p>{{value_1_body}}</p><div class="ingredient-preview"><div><b>{{ingredients}} 01</b><small>{{original}} · {{translated}}</small></div><span>{{info}}</span><div><b>{{ingredients}} 02</b><small>{{original}} · {{inferred}}</small></div><span>{{caution}}</span></div></div></article>
+        <article class="value-card"><div class="value-number">02</div><div class="value-card-content"><h3>{{value_2_title}}</h3><p>{{value_2_body}}</p><div class="nutrition-preview"><span><i>{{sat_fat}}</i><b>10.5g</b><small>{{daily_ref}} 53%</small></span><span><i>{{sugar}}</i><b>12.4g</b><small>{{daily_ref}} 28%</small></span></div></div></article>
+        <article class="value-card"><div class="value-number">03</div><div class="value-card-content"><h3>{{value_3_title}}</h3><p>{{value_3_body}}</p><div class="people-preview"><span><b>03</b>{{who_notes}}</span><span><b>02</b>{{data_notes}}</span></div></div></article>
+      </div>
     </div>
+  </section>
+
+  <section class="workflow-band" id="how"><div class="wrap workflow-inner">
+    <div class="workflow-head"><span class="kicker">AIGLOSSA FOOD</span><h2>{{how_title}}</h2></div>
+    <ol class="workflow-list">
+      <li><span>01</span><div><b>{{how_1}}</b><small>{{scan_sub}}</small></div></li>
+      <li><span>02</span><div><b>{{how_2}}</b><small>{{scan_seconds}}</small></div></li>
+      <li><span>03</span><div><b>{{how_3}}</b><small>{{footer_disclaimer}}</small></div></li>
+    </ol>
+  </div></section>
+
+  <section class="wrap knowledge" id="guides">
+    <div class="knowledge-head"><div><span class="kicker">{{knowledge_kicker}}</span><h2>{{knowledge_title}}</h2></div><p>{{knowledge_intro}}</p></div>
+    <div class="knowledge-grid">{{knowledge_cards}}</div>
+    <div class="faq-block"><h2>{{faq_title}}</h2><div class="faq-list">{{faq_items}}</div></div>
   </section>
 
   <section class="wrap recent hidden" id="recentSection">
-    <div class="recent-head"><h2>{{history}}</h2><a href="#" id="historyRefresh">{{view_all}} →</a></div>
+    <div class="recent-head"><h2>{{history}}</h2><a href="history/" id="historyViewAll">{{view_all}} →</a></div>
     <div class="history-list" id="historyList"><div class="history-empty">{{no_history}}</div></div>
   </section>
 </main>
 
-<section class="result-view hidden" id="resultView">
-  <div class="wrap result-top">
-    <a class="back" href="#" id="backBtn">← {{back}}</a>
-    <div class="product-row">
-      <div class="thumb" id="resultThumb"></div>
-      <div><span class="kicker" id="resultKicker">{{result_title}}</span><h2 id="resultName">—</h2><p id="resultMeta"></p></div>
-      <div class="result-head-actions"><button class="small-btn" id="shareBtn">{{share}}</button><button class="small-btn" id="deleteBtn">{{delete}}</button></div>
-    </div>
-  </div>
-  <div class="wrap result-grid">
-    <div class="result-main" id="reportMain"></div>
-    <aside class="sidebar"><div class="side-card" id="reportSide"></div></aside>
-  </div>
-</section>
-
 <div class="modal hidden" id="confirmModal"><div class="modal-box"><h3>{{scan_button}}</h3><p id="confirmText"></p><div class="modal-actions"><button class="btn ghost" data-close>{{cancel}}</button><button class="btn" id="confirmScan">{{scan_button}}</button></div></div></div>
 <div class="modal hidden" id="payModal"><div class="modal-box"><h3>{{pay_title}}</h3><p id="payBalance"></p><div class="pay-packs" id="payPacks"></div><p id="payMsg"></p><div class="modal-actions"><button class="btn ghost" data-close>{{pay_close}}</button></div></div></div>
+<div class="guide-modal hidden" id="guideModal" role="dialog" aria-modal="true" aria-labelledby="guideModalTitle">
+  <div class="guide-dialog"><div class="guide-dialog-head"><span id="guideModalTitle">{{guides_label}}</span><button type="button" id="guideClose" aria-label="{{guide_close}}">×</button></div><div class="guide-dialog-body" id="guideBody"><p>{{guide_loading}}</p></div></div>
+</div>
 <div class="toast hidden" id="toast"></div>
 
 <footer><div class="wrap footer-inner">

@@ -9,11 +9,13 @@
 用法：
     python3 tools/devproxy.py --site root --port 8301
     python3 tools/devproxy.py --site tools --port 8000
+    python3 tools/devproxy.py --site food --port 8000
 """
 import argparse
 import http.client
 import http.server
 import pathlib
+import re
 import socket
 import socketserver
 import ssl
@@ -37,9 +39,12 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         conn = http.client.HTTPSConnection(UPSTREAM, timeout=120, context=ssl.create_default_context())
         # Origin 必须保留浏览器原值：后端用它做白名单校验，
         # 改写成 dev 域会被当成未授权来源（400）。
+        original_host = self.headers.get("Host", "localhost")
         headers = {k: v for k, v in self.headers.items()
                    if k.lower() not in ("host", "content-length", "accept-encoding")}
         headers["Host"] = UPSTREAM
+        headers["X-Forwarded-Host"] = original_host
+        headers["X-Forwarded-Proto"] = "http"
         conn.request(self.command, target, body=body, headers=headers)
         resp = conn.getresponse()
         data = resp.read()
@@ -52,8 +57,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             if low == "set-cookie":
                 # 本地是 http、且主机是 localhost：去掉 Domain 与 Secure，
                 # 否则浏览器会直接丢弃这个 cookie
-                value = value.replace("; Domain=.aiglossa.com", "").replace("; domain=.aiglossa.com", "")
-                value = value.replace("; Secure", "").replace("; secure", "")
+                value = re.sub(r";\s*Domain=[^;]+", "", value, flags=re.IGNORECASE)
+                value = re.sub(r";\s*Secure", "", value, flags=re.IGNORECASE)
             self.send_header(key, value)
         self.send_header("Content-Length", str(len(data)))
         self.end_headers()
@@ -80,7 +85,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--site", choices=["root", "tools", "scholan"], default="root")
+    ap.add_argument("--site", choices=["root", "tools", "scholan", "food", "skin"], default="root")
     ap.add_argument("--port", type=int, default=8301)
     args = ap.parse_args()
 

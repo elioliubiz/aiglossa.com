@@ -4,48 +4,28 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{{share_heading}} · AIGLOSSA FOOD</title><meta name="robots" content="noindex"><link rel="canonical" href="{{canonical}}">{{alternates}}
 <meta name="description" content="{{footer_disclaimer}}">
-<meta name="theme-color" content="#FBFAF7"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#F5F9F7"><meta name="apple-mobile-web-app-capable" content="yes">
+<script>(function(){try{localStorage.removeItem("aiglossa_theme")}catch(e){}var m=matchMedia("(prefers-color-scheme: dark)");function sync(){var dark=m.matches;document.documentElement.dataset.theme=dark?"dark":"light";var meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=dark?"#121A18":"#F5F9F7"}sync();if(m.addEventListener)m.addEventListener("change",sync);else m.addListener(sync)})();</script>
 <link rel="icon" href="{{prefix}}assets/favicon-food.svg?v={{asset_v}}"><link rel="apple-touch-icon" href="{{prefix}}assets/apple-touch-icon-food.png?v={{asset_v}}">
 <link rel="stylesheet" href="{{prefix}}assets/food.css?v={{asset_v}}">
-<style>
-.share-main{max-width:860px;padding-block:36px 74px}
-.share-head{padding-bottom:22px;display:flex;align-items:flex-start;gap:16px}
-.share-label{width:86px;height:108px;border-radius:10px;overflow:hidden;flex:none;border:1px solid var(--line);background:#fff;box-shadow:0 8px 24px rgba(15,107,79,.08);margin-top:4px}
-.share-label img{width:100%;height:100%;object-fit:cover;display:block}
-.share-head h1{font-size:34px;line-height:1.1;letter-spacing:-.04em;margin-top:8px}
-.share-meta{color:var(--muted);font-size:12px;margin-top:8px}
-.share-verdict h2{font-size:23px;line-height:1.25;letter-spacing:-.03em}
-.share-verdict p{font-size:13px;line-height:1.7;color:#4A554D;margin-top:9px}
-.share-verdict ul{margin-top:8px}
-.share-loading{display:flex;align-items:center;justify-content:center;gap:9px;padding:80px 0;color:var(--muted);font-size:13px}
-.share-error{padding:60px 0;text-align:center}
-.share-error h1{font-size:22px}
-.share-error .btn{margin-top:18px}
-.share-top-cta{margin-inline-start:auto;border-color:#CFE3D8;background:var(--green-soft);color:var(--green);font-weight:650}
-.share-top-cta:hover{background:#DDF1E5;border-color:#B7D8C5;color:var(--green)}
-.share-page .topbar-inner{height:60px}
-.share-page .brand{font-size:11px}
-@media(max-width:640px){
-  .share-main{padding-block:26px 52px}
-  .share-head h1{font-size:27px}
-}
-</style>
 </head>
 <body class="share-page">
 <header class="topbar"><div class="wrap topbar-inner">
-  <a class="brand" href="../"><span class="brand-mark food-logo"><img src="{{prefix}}assets/favicon-food.svg?v={{asset_v}}" alt=""></span> AIGLOSSA <b>FOOD</b></a>
+  <a class="brand" href="../" aria-label="AIGLOSSA FOOD"><span class="brand-mark food-logo"><img src="{{prefix}}assets/favicon-food.svg?v={{asset_v}}" alt=""></span> AIGLOSSA</a>
   <a class="pill-btn share-top-cta" href="../">{{share_cta}}</a>
 </div></header>
-<main class="wrap share-main">
-  <div class="share-loading" id="shareLoading"><span class="spinner"></span><span>{{scan_pending}}</span></div>
-  <div class="share-error hidden" id="shareError"><h1>{{scan_failed}}</h1><a class="btn" href="../">{{cta}}</a></div>
+<main class="share-main">
+  <div class="report-skeleton" id="shareLoading" aria-busy="true" aria-label="{{loading_report}}"><div class="wrap skeleton-hero"><span class="skeleton-cover"></span><div class="skeleton-copy"><i></i><i></i><i></i></div></div><div class="wrap skeleton-report"><div class="skeleton-cards"><span></span><span></span><span></span></div><aside></aside></div><span class="sr-only">{{loading_report}}</span></div>
+  <div class="wrap share-error hidden" id="shareError"><h1>{{scan_failed}}</h1><a class="btn" href="../">{{cta}}</a></div>
   <article class="hidden" id="shareContent">
-    <header class="share-head"><div class="share-label hidden" id="shareLabel"><img id="shareImage" alt=""></div><div class="share-copy"><span class="kicker">{{share_heading}} · AIGLOSSA FOOD</span><h1 id="shareName">—</h1><p class="share-meta" id="shareMeta"></p></div></header>
-    <section class="card share-verdict" id="shareVerdict"></section>
-    <section class="card hidden" id="sharePeople"></section>
-    <section class="card"><div class="card-head"><h3>{{nutrition}}</h3><span id="shareServing"></span></div><div class="nut-grid report" id="shareNutrition"></div><div id="shareNutritionNotes"><p class="nutrition-note">{{nutrition_note_generic}}</p><p class="nutrition-note">{{energy_note}}</p></div></section>
-    <section class="card"><div class="card-head"><h3>{{ingredients}}</h3><span id="shareIngCount"></span></div><div id="shareIngredients"></div></section>
-    <p class="report-disclaimer" id="shareDisclaimer"></p>
+    <header class="share-report-hero"><div class="wrap share-report-top">
+      <div class="share-label" id="shareLabel"><span class="thumb-skeleton"></span><img class="hidden" id="shareImage" alt=""></div>
+      <div class="share-copy"><span class="kicker">{{share_heading}} · AIGLOSSA FOOD</span><h1 id="shareName">—</h1><p class="share-meta" id="shareMeta"></p><div class="result-facts" id="shareFacts"></div></div>
+    </div></header>
+    <div class="wrap share-report-grid">
+      <div class="result-main" id="shareReportMain"></div>
+      <aside class="sidebar"><div class="side-card share-side"><span class="side-kicker">AIGLOSSA FOOD</span><h3>{{share_cta}}</h3><p class="side-intro">{{footer_disclaimer}}</p><a class="btn full" href="../">{{cta}}</a></div></aside>
+    </div>
   </article>
 </main>
 <footer><div class="wrap footer-inner">

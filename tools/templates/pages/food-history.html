@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="{{lang}}" dir="{{dir}}">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>{{history_all}} · AIGLOSSA FOOD</title><meta name="robots" content="noindex"><link rel="canonical" href="{{canonical}}">{{alternates}}<meta name="theme-color" content="#F5F9F7">
+<script>(function(){try{localStorage.removeItem("aiglossa_theme")}catch(e){}var m=matchMedia("(prefers-color-scheme: dark)");function sync(){var dark=m.matches;document.documentElement.dataset.theme=dark?"dark":"light";var meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=dark?"#121A18":"#F5F9F7"}sync();if(m.addEventListener)m.addEventListener("change",sync);else m.addListener(sync)})();</script>
+<link rel="icon" href="{{prefix}}assets/favicon-food.svg?v={{asset_v}}"><link rel="stylesheet" href="{{prefix}}assets/food.css?v={{asset_v}}">
+</head>
+<body class="history-page">
+<header class="topbar"><div class="wrap topbar-inner">
+  <button class="mobile-nav-back" id="historyBack" type="button" aria-label="{{back}}">←</button>
+  <a class="brand" href="../" aria-label="AIGLOSSA FOOD"><span class="brand-mark food-logo"><img src="{{prefix}}assets/favicon-food.svg?v={{asset_v}}" alt=""></span> AIGLOSSA</a>
+  <a class="pill-btn history-new" href="../">{{new_scan}}</a>
+</div></header>
+<main class="wrap history-main">
+  <nav class="page-breadcrumb" aria-label="{{back}}"><a href="../">AIGLOSSA FOOD</a><span>/</span><b>{{history_all}}</b></nav>
+  <header class="history-title"><span class="kicker">AIGLOSSA FOOD</span><h1>{{history_all}}</h1><p>{{footer_disclaimer}}</p></header>
+  <div class="history-page-list" id="historyPageList" aria-busy="true" aria-label="{{loading_history}}">
+    <div class="history-skeleton" aria-hidden="true"><span></span><div><i></i><i></i></div></div><div class="history-skeleton" aria-hidden="true"><span></span><div><i></i><i></i></div></div>
+    <div class="history-skeleton" aria-hidden="true"><span></span><div><i></i><i></i></div></div><div class="history-skeleton" aria-hidden="true"><span></span><div><i></i><i></i></div></div>
+    <div class="history-skeleton" aria-hidden="true"><span></span><div><i></i><i></i></div></div><div class="history-skeleton" aria-hidden="true"><span></span><div><i></i><i></i></div></div>
+    <span class="sr-only">{{loading_history}}</span>
+  </div>
+</main>
+<footer><div class="wrap footer-inner"><span>AIGLOSSA FOOD</span><div class="footer-links"><a href="{{legal_privacy_href}}">{{privacy}}</a><a href="{{legal_terms_href}}">{{terms}}</a></div><span>{{footer_disclaimer}}</span></div></footer>
+<script type="application/json" id="ui">{{ui_json}}</script><script src="{{prefix}}assets/food-history.js?v={{asset_v}}"></script>
+</body></html>

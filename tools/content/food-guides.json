@@ -1,0 +1,1495 @@
+{
+  "slugs": [
+    "read-nutrition-label",
+    "ingredients-and-allergens",
+    "what-the-report-means"
+  ],
+  "en": {
+    "guide_kicker": "Label guide",
+    "index_title": "Food label guides",
+    "index_description": "Practical notes for reading nutrition tables, ingredient lists, and AIGLOSSA FOOD reports.",
+    "knowledge_title": "Know what the label is actually saying",
+    "knowledge_intro": "A report is more useful when you can trace every note back to the package. These short guides explain the numbers, wording, and limits.",
+    "read_guide": "Read guide",
+    "back_to_guides": "All guides",
+    "back_to_food": "Back to label scan",
+    "close": "Close guide",
+    "loading": "Loading guide…",
+    "faq_title": "Before you scan",
+    "faq": [
+      {
+        "q": "What should be visible in the photo?",
+        "a": "Upload one clear photo per scan. Frame the ingredient list or nutrition table you want the report to read."
+      },
+      {
+        "q": "Can it read imported or foreign-language labels?",
+        "a": "Yes. The report keeps relevant original wording and adds a localized explanation when the text is readable."
+      },
+      {
+        "q": "What if the nutrition table is missing?",
+        "a": "The report says the value is unavailable. It does not treat missing information as zero or invent a number."
+      },
+      {
+        "q": "Is NRV a health score?",
+        "a": "No. NRV is a general daily reference used to put a labeled amount in context, not a rating of the food."
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "How to read a nutrition label",
+        "description": "Understand per 100 g, per serving, NRV, sodium, and salt without turning the table into a health score.",
+        "sections": [
+          {
+            "title": "Start with the basis",
+            "paragraphs": [
+              "Check whether values are listed per 100 g, per 100 ml, or per serving. A serving is chosen by the manufacturer and may not match the amount you eat.",
+              "Use the same basis when comparing two products. Per 100 g or 100 ml is usually the most direct comparison."
+            ]
+          },
+          {
+            "title": "Read percentages in context",
+            "paragraphs": [
+              "NRV or daily-reference percentages show how much a labeled amount contributes to a general adult reference. They are not a health score and do not describe your personal needs.",
+              "Sodium and salt are related but not identical labels. The report preserves the unit and wording shown on the package."
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "Ingredients, translations, and allergens",
+        "description": "See how ingredient order, original wording, translations, inferred notes, and allergen cautions should be read.",
+        "sections": [
+          {
+            "title": "The list has an order",
+            "paragraphs": [
+              "Ingredients are generally listed from the largest to the smallest amount by weight. This gives context, but it does not reveal an exact amount unless the package states one.",
+              "For imported labels, keeping the original term beside a translation makes the explanation easier to verify."
+            ]
+          },
+          {
+            "title": "Facts and inference are different",
+            "paragraphs": [
+              "An allergen explicitly printed on the package is different from a possible concern inferred from an ingredient name. AIGLOSSA marks inferred information instead of presenting it as label text.",
+              "If the photo is unclear or a detail is absent, check the physical package before making an allergy-related decision."
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "What an AIGLOSSA FOOD report means",
+        "description": "Learn what the report reads, how missing data is handled, and what the analysis deliberately does not claim.",
+        "sections": [
+          {
+            "title": "From package to report",
+            "paragraphs": [
+              "The report organizes the visible summary, cautions, population notes, nutrition values, ingredient explanations, eating notes, and data notes.",
+              "Values come from readable label content. Missing nutrition is shown as unavailable, and inferred observations are identified."
+            ]
+          },
+          {
+            "title": "Useful boundaries",
+            "paragraphs": [
+              "The report provides general food-label information. It does not diagnose a condition, prescribe a diet, or assign a universal health score.",
+              "Personal needs vary. Use the report to understand the package, and use qualified professional advice for medical or individualized dietary decisions."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "zh-Hans": {
+    "guide_kicker": "标签指南",
+    "index_title": "食品标签指南",
+    "index_description": "读懂营养成分表、配料表和 AIGLOSSA FOOD 报告的实用说明。",
+    "knowledge_title": "看懂标签真正表达的内容",
+    "knowledge_intro": "当报告里的每一条说明都能回到包装核对时，它才真正有用。这些简短指南解释数字、措辞和边界。",
+    "read_guide": "阅读指南",
+    "back_to_guides": "全部指南",
+    "back_to_food": "返回标签扫描",
+    "close": "关闭指南",
+    "loading": "正在加载指南…",
+    "faq_title": "扫描前常见问题",
+    "faq": [
+      {
+        "q": "照片里应该拍到什么？",
+        "a": "每次上传一张清晰照片，请对准希望报告读取的配料表或营养成分表。"
+      },
+      {
+        "q": "可以识别进口或外文标签吗？",
+        "a": "可以。文字清晰时，报告会保留相关原文，并提供当前页面语言的解释。"
+      },
+      {
+        "q": "没有营养成分表怎么办？",
+        "a": "报告会明确显示相关数据不可用，不会把缺失信息当作零，也不会猜测数值。"
+      },
+      {
+        "q": "NRV 是健康评分吗？",
+        "a": "不是。NRV 是帮助理解标示含量的一般成人每日参考值，不是对食品的评分。"
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "如何阅读营养成分表",
+        "description": "正确理解每 100 克、每份、NRV、钠和盐，而不是把表格误当成健康评分。",
+        "sections": [
+          {
+            "title": "先确认计量基准",
+            "paragraphs": [
+              "先看数值是按每 100 克、每 100 毫升还是每份标示。每份由厂商定义，未必等于你实际吃下的量。",
+              "比较两件商品时要使用相同基准；每 100 克或每 100 毫升通常更便于直接比较。"
+            ]
+          },
+          {
+            "title": "结合上下文阅读百分比",
+            "paragraphs": [
+              "NRV 或每日参考值百分比表示标示含量占一般成人参考量的比例，并不是健康评分，也不代表你的个人需求。",
+              "钠和盐相关但不是同一个标示项。报告会保留包装上的单位和表述。"
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "配料、翻译与过敏原",
+        "description": "理解配料顺序、原文、翻译、推断说明与过敏提示应当如何阅读。",
+        "sections": [
+          {
+            "title": "配料表有先后顺序",
+            "paragraphs": [
+              "配料通常按加入量从多到少排列。这能提供大致背景，但包装未注明时不能据此得出精确含量。",
+              "进口标签同时保留原词和翻译，便于你核对解释是否对应原包装。"
+            ]
+          },
+          {
+            "title": "事实与推断要区分",
+            "paragraphs": [
+              "包装明确标出的过敏原，与根据配料名称推断的可能风险并不相同。AIGLOSSA 会标记推断内容，不把它冒充为标签原文。",
+              "照片模糊或信息缺失时，在作出过敏相关决定前应再次核对实物包装。"
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "AIGLOSSA FOOD 报告代表什么",
+        "description": "了解报告读取哪些内容、如何处理缺失数据，以及它刻意不作出的判断。",
+        "sections": [
+          {
+            "title": "从包装到报告",
+            "paragraphs": [
+              "报告会整理可见的总结、注意事项、人群提示、营养数值、逐项配料解释、食用建议和数据说明。",
+              "数值来自可读的标签内容；缺失营养信息会显示为不可用，推断性内容会被明确标注。"
+            ]
+          },
+          {
+            "title": "明确有用的边界",
+            "paragraphs": [
+              "报告提供一般食品标签信息，不诊断疾病、不制定饮食处方，也不提供通用健康评分。",
+              "个人需求各不相同。可用报告理解包装，医疗或个性化饮食决定应咨询合格专业人士。"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "zh-Hant": {
+    "guide_kicker": "標籤指南",
+    "index_title": "食品標籤指南",
+    "index_description": "讀懂營養標示、成分表和 AIGLOSSA FOOD 報告的實用說明。",
+    "knowledge_title": "看懂標籤真正表達的內容",
+    "knowledge_intro": "報告中的每項說明都能回到包裝核對，才真正有用。這些簡短指南解釋數字、措辭和界線。",
+    "read_guide": "閱讀指南",
+    "back_to_guides": "全部指南",
+    "back_to_food": "返回標籤掃描",
+    "close": "關閉指南",
+    "loading": "正在載入指南…",
+    "faq_title": "掃描前常見問題",
+    "faq": [
+      {
+        "q": "照片中應該拍到什麼？",
+        "a": "每次上傳一張清晰照片，請對準希望報告讀取的成分表或營養標示。"
+      },
+      {
+        "q": "可以辨識進口或外文標籤嗎？",
+        "a": "可以。文字清晰時，報告會保留相關原文，並以目前頁面語言解釋。"
+      },
+      {
+        "q": "沒有營養標示怎麼辦？",
+        "a": "報告會明確顯示資料無法取得，不會將缺少資訊視為零或猜測數值。"
+      },
+      {
+        "q": "NRV 是健康評分嗎？",
+        "a": "不是。NRV 是一般成人每日參考值，用來理解標示含量，不是食品評分。"
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "如何閱讀營養標示",
+        "description": "正確理解每 100 克、每份、NRV、鈉和鹽，而非把表格當成健康評分。",
+        "sections": [
+          {
+            "title": "先確認計量基準",
+            "paragraphs": [
+              "先看數值按每 100 克、每 100 毫升或每份標示。每份由廠商設定，未必等於實際食用量。",
+              "比較商品時使用相同基準；每 100 克或 100 毫升通常最便於直接比較。"
+            ]
+          },
+          {
+            "title": "在脈絡中看百分比",
+            "paragraphs": [
+              "NRV 或每日參考值百分比表示標示含量占一般成人參考量的比例，並非健康評分或個人需求。",
+              "鈉與鹽相關但不是相同標示項目；報告會保留包裝上的單位與措辭。"
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "成分、翻譯與過敏原",
+        "description": "理解成分順序、原文、翻譯、推斷說明及過敏提示。",
+        "sections": [
+          {
+            "title": "成分表具有順序",
+            "paragraphs": [
+              "成分通常按使用重量由多至少排列，但未標明時無法由此得出精確含量。",
+              "進口標籤保留原詞與翻譯，讓你能核對說明。"
+            ]
+          },
+          {
+            "title": "區分事實與推斷",
+            "paragraphs": [
+              "包裝明示的過敏原與依成分名稱推斷的可能風險不同；AIGLOSSA 會標示推斷內容。",
+              "照片不清或資訊缺少時，作出過敏相關決定前請核對實物包裝。"
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "AIGLOSSA FOOD 報告代表什麼",
+        "description": "了解報告讀取的內容、缺失資料處理方式，以及它不作出的判斷。",
+        "sections": [
+          {
+            "title": "從包裝到報告",
+            "paragraphs": [
+              "報告整理摘要、注意事項、族群提示、營養數值、成分解釋、食用建議及資料說明。",
+              "數值來自可讀標籤；缺失資料顯示為無法取得，推斷內容會被標示。"
+            ]
+          },
+          {
+            "title": "清楚的使用界線",
+            "paragraphs": [
+              "報告提供一般食品標籤資訊，不診斷疾病、制定飲食處方或給出通用健康評分。",
+              "個人需求不同；醫療或個人化飲食決定應諮詢合格專業人士。"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ja": {
+    "guide_kicker": "ラベルガイド",
+    "index_title": "食品表示ガイド",
+    "index_description": "栄養成分表示、原材料、AIGLOSSA FOOD レポートを読むための実用ガイド。",
+    "knowledge_title": "ラベルが実際に伝えていること",
+    "knowledge_intro": "各説明をパッケージで確認できてこそ、レポートは役立ちます。数字、表現、限界を短く解説します。",
+    "read_guide": "ガイドを読む",
+    "back_to_guides": "ガイド一覧",
+    "back_to_food": "ラベルスキャンへ戻る",
+    "close": "ガイドを閉じる",
+    "loading": "読み込み中…",
+    "faq_title": "スキャン前の質問",
+    "faq": [
+      {
+        "q": "写真には何を写せばよいですか？",
+        "a": "1回につき鮮明な写真1枚を使い、読み取る原材料または栄養表示を収めてください。"
+      },
+      {
+        "q": "輸入品や外国語の表示も読めますか？",
+        "a": "はい。判読できる場合、原文を残してページ言語で説明します。"
+      },
+      {
+        "q": "栄養成分表示がない場合は？",
+        "a": "取得できないと明示し、ゼロ扱いや推測はしません。"
+      },
+      {
+        "q": "NRVは健康スコアですか？",
+        "a": "いいえ。一般成人の一日参照値で、食品の評価ではありません。"
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "栄養成分表示の読み方",
+        "description": "100g当たり、1食当たり、NRV、ナトリウム、食塩を健康スコアと混同せず理解します。",
+        "sections": [
+          {
+            "title": "基準量を確認",
+            "paragraphs": [
+              "100g、100ml、または1食当たりのどれかを確認します。1食分はメーカーの設定で、実際の摂取量とは限りません。",
+              "商品比較では同じ基準を使い、通常は100gまたは100ml当たりが直接的です。"
+            ]
+          },
+          {
+            "title": "割合は文脈とともに",
+            "paragraphs": [
+              "NRVなどの割合は一般成人の参照量に対する比率で、健康スコアでも個人の必要量でもありません。",
+              "ナトリウムと食塩は関連しますが同じ表示ではありません。レポートは包装の単位を保ちます。"
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "原材料、翻訳、アレルゲン",
+        "description": "原材料の順序、原文、翻訳、推定情報、アレルゲン注意の読み方。",
+        "sections": [
+          {
+            "title": "並び順の意味",
+            "paragraphs": [
+              "原材料は通常、重量の多い順です。ただし表示がなければ正確な量までは分かりません。",
+              "輸入表示では原語と翻訳を並べ、説明を確認しやすくします。"
+            ]
+          },
+          {
+            "title": "事実と推定を分ける",
+            "paragraphs": [
+              "包装に明記されたアレルゲンと、名称から推定した可能性は別です。推定情報は明示します。",
+              "画像が不鮮明な場合、アレルギー判断の前に実物を確認してください。"
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "AIGLOSSA FOOD レポートの意味",
+        "description": "読み取る内容、欠損データの扱い、意図的に行わない判断を説明します。",
+        "sections": [
+          {
+            "title": "包装からレポートへ",
+            "paragraphs": [
+              "概要、注意点、対象者向け注記、栄養値、原材料説明、食べ方、データ注記を整理します。",
+              "値は読める表示に基づき、欠損は取得不可、推定は推定として示します。"
+            ]
+          },
+          {
+            "title": "役割の境界",
+            "paragraphs": [
+              "一般的な食品表示情報であり、診断、食事処方、万能な健康評価は行いません。",
+              "医療や個別の食事判断は資格ある専門家に相談してください。"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ko": {
+    "guide_kicker": "라벨 가이드",
+    "index_title": "식품 라벨 가이드",
+    "index_description": "영양표, 원재료 목록과 AIGLOSSA FOOD 보고서를 읽는 실용 안내입니다.",
+    "knowledge_title": "라벨이 실제로 말하는 내용을 이해하세요",
+    "knowledge_intro": "모든 설명을 포장에서 확인할 수 있을 때 보고서가 유용합니다. 숫자, 표현과 한계를 짧게 설명합니다.",
+    "read_guide": "가이드 읽기",
+    "back_to_guides": "전체 가이드",
+    "back_to_food": "라벨 스캔으로",
+    "close": "가이드 닫기",
+    "loading": "가이드 불러오는 중…",
+    "faq_title": "스캔 전 질문",
+    "faq": [
+      {
+        "q": "사진에는 무엇이 보여야 하나요?",
+        "a": "스캔당 선명한 사진 한 장에 읽을 원재료 목록이나 영양표가 보이게 촬영하세요."
+      },
+      {
+        "q": "수입 또는 외국어 라벨도 되나요?",
+        "a": "네. 읽을 수 있으면 원문을 보존하고 현재 페이지 언어로 설명합니다."
+      },
+      {
+        "q": "영양표가 없으면 어떻게 되나요?",
+        "a": "값을 사용할 수 없다고 표시하며 0으로 간주하거나 추측하지 않습니다."
+      },
+      {
+        "q": "NRV는 건강 점수인가요?",
+        "a": "아닙니다. 일반 성인 일일 참고치이며 식품 평가 점수가 아닙니다."
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "영양성분표 읽는 법",
+        "description": "100g당, 1회 제공량, NRV, 나트륨과 소금을 건강 점수로 오해하지 않고 이해합니다.",
+        "sections": [
+          {
+            "title": "기준부터 확인하세요",
+            "paragraphs": [
+              "100g, 100ml 또는 1회 제공량 기준인지 확인하세요. 제조사가 정한 1회분은 실제 섭취량과 다를 수 있습니다.",
+              "제품 비교에는 같은 기준을 사용하며 100g 또는 100ml 기준이 보통 가장 직접적입니다."
+            ]
+          },
+          {
+            "title": "백분율은 맥락과 함께",
+            "paragraphs": [
+              "NRV 비율은 일반 성인 참고량에 대한 비율이며 건강 점수나 개인 필요량이 아닙니다.",
+              "나트륨과 소금은 관련되지만 같은 표시는 아닙니다. 보고서는 포장 단위와 표현을 유지합니다."
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "원재료, 번역과 알레르겐",
+        "description": "원재료 순서, 원문, 번역, 추론 정보와 알레르겐 주의를 읽는 법입니다.",
+        "sections": [
+          {
+            "title": "목록의 순서",
+            "paragraphs": [
+              "원재료는 일반적으로 중량이 많은 순서입니다. 별도 표시가 없으면 정확한 양은 알 수 없습니다.",
+              "수입 라벨은 원문과 번역을 함께 보여 설명을 확인하기 쉽게 합니다."
+            ]
+          },
+          {
+            "title": "사실과 추론의 구분",
+            "paragraphs": [
+              "포장에 명시된 알레르겐과 이름에서 추론한 가능성은 다릅니다. 추론 정보는 별도로 표시합니다.",
+              "사진이 흐리거나 정보가 없으면 알레르기 판단 전에 실제 포장을 확인하세요."
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "AIGLOSSA FOOD 보고서의 의미",
+        "description": "보고서가 읽는 내용, 누락 데이터 처리와 의도적으로 하지 않는 판단을 설명합니다.",
+        "sections": [
+          {
+            "title": "포장에서 보고서로",
+            "paragraphs": [
+              "요약, 주의, 대상별 메모, 영양값, 원재료 설명, 섭취 메모와 데이터 메모를 정리합니다.",
+              "읽을 수 있는 라벨만 사용하며 누락은 사용 불가, 추론은 추론으로 표시합니다."
+            ]
+          },
+          {
+            "title": "명확한 경계",
+            "paragraphs": [
+              "일반 라벨 정보이며 진단, 식단 처방 또는 보편적 건강 점수를 제공하지 않습니다.",
+              "의료 및 개인 식단 결정은 자격 있는 전문가와 상담하세요."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "es": {
+    "guide_kicker": "Guía de etiquetas",
+    "index_title": "Guías de etiquetas alimentarias",
+    "index_description": "Notas prácticas para leer la tabla nutricional, los ingredientes y los informes de AIGLOSSA FOOD.",
+    "knowledge_title": "Entiende lo que realmente dice la etiqueta",
+    "knowledge_intro": "Un informe es útil cuando cada nota se puede comprobar en el envase. Estas guías explican cifras, términos y límites.",
+    "read_guide": "Leer guía",
+    "back_to_guides": "Todas las guías",
+    "back_to_food": "Volver al escáner",
+    "close": "Cerrar guía",
+    "loading": "Cargando guía…",
+    "faq_title": "Antes de escanear",
+    "faq": [
+      {
+        "q": "¿Qué debe verse en la foto?",
+        "a": "Sube una foto nítida por análisis y encuadra los ingredientes o la tabla nutricional que quieras leer."
+      },
+      {
+        "q": "¿Admite etiquetas importadas?",
+        "a": "Sí. Conserva el texto original legible y añade una explicación localizada."
+      },
+      {
+        "q": "¿Y si falta la tabla nutricional?",
+        "a": "Indica que el dato no está disponible; no lo convierte en cero ni lo inventa."
+      },
+      {
+        "q": "¿El VRN es una puntuación saludable?",
+        "a": "No. Es una referencia diaria general, no una valoración del alimento."
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "Cómo leer una etiqueta nutricional",
+        "description": "Entiende por 100 g, por ración, VRN, sodio y sal sin convertir la tabla en una puntuación.",
+        "sections": [
+          {
+            "title": "Empieza por la base",
+            "paragraphs": [
+              "Comprueba si los valores son por 100 g, 100 ml o ración. La ración del fabricante puede no ser la que consumes.",
+              "Compara productos con la misma base; 100 g o 100 ml suele ser lo más directo."
+            ]
+          },
+          {
+            "title": "Porcentajes con contexto",
+            "paragraphs": [
+              "El VRN muestra una proporción de una referencia adulta general; no es una puntuación ni tu necesidad personal.",
+              "Sodio y sal están relacionados, pero no son la misma declaración. Se conserva la unidad del envase."
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "Ingredientes, traducciones y alérgenos",
+        "description": "Cómo leer orden, texto original, traducciones, inferencias y avisos de alérgenos.",
+        "sections": [
+          {
+            "title": "La lista tiene un orden",
+            "paragraphs": [
+              "Los ingredientes suelen ir de mayor a menor peso, pero sin declaración no revelan una cantidad exacta.",
+              "En etiquetas importadas, el original junto a la traducción facilita comprobar la explicación."
+            ]
+          },
+          {
+            "title": "Hecho e inferencia",
+            "paragraphs": [
+              "Un alérgeno impreso no equivale a una posibilidad inferida. AIGLOSSA marca lo inferido.",
+              "Si la foto no es clara, comprueba el envase antes de tomar una decisión sobre alergias."
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "Qué significa un informe AIGLOSSA FOOD",
+        "description": "Qué lee, cómo trata datos ausentes y qué conclusiones no pretende ofrecer.",
+        "sections": [
+          {
+            "title": "Del envase al informe",
+            "paragraphs": [
+              "Organiza resumen, precauciones, notas de población, nutrición, ingredientes, consumo y datos.",
+              "Usa texto legible; muestra ausencias e identifica inferencias."
+            ]
+          },
+          {
+            "title": "Límites útiles",
+            "paragraphs": [
+              "Ofrece información general, no diagnósticos, dietas prescritas ni una puntuación universal.",
+              "Consulta a un profesional para decisiones médicas o dietéticas individuales."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "fr": {
+    "guide_kicker": "Guide des étiquettes",
+    "index_title": "Guides des étiquettes alimentaires",
+    "index_description": "Conseils pratiques pour lire nutrition, ingrédients et rapports AIGLOSSA FOOD.",
+    "knowledge_title": "Comprendre ce que dit réellement l’étiquette",
+    "knowledge_intro": "Un rapport est utile si chaque remarque peut être vérifiée sur l’emballage. Ces guides expliquent chiffres, termes et limites.",
+    "read_guide": "Lire le guide",
+    "back_to_guides": "Tous les guides",
+    "back_to_food": "Retour au scan",
+    "close": "Fermer",
+    "loading": "Chargement…",
+    "faq_title": "Avant le scan",
+    "faq": [
+      {
+        "q": "Que doit montrer la photo ?",
+        "a": "Ajoutez une photo nette par analyse, cadrée sur les ingrédients ou le tableau nutritionnel à lire."
+      },
+      {
+        "q": "Les étiquettes étrangères sont-elles prises en charge ?",
+        "a": "Oui. Le texte lisible d’origine est conservé avec une explication localisée."
+      },
+      {
+        "q": "Si le tableau nutritionnel manque ?",
+        "a": "La donnée est indiquée indisponible, jamais assimilée à zéro ni inventée."
+      },
+      {
+        "q": "Le VNR est-il un score santé ?",
+        "a": "Non. C’est une référence quotidienne générale, pas une note du produit."
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "Lire une étiquette nutritionnelle",
+        "description": "Comprendre 100 g, portion, VNR, sodium et sel sans en faire un score santé.",
+        "sections": [
+          {
+            "title": "Vérifier la base",
+            "paragraphs": [
+              "Repérez 100 g, 100 ml ou portion. La portion du fabricant peut différer de votre consommation.",
+              "Comparez sur la même base; 100 g ou 100 ml est souvent le plus direct."
+            ]
+          },
+          {
+            "title": "Les pourcentages en contexte",
+            "paragraphs": [
+              "Le VNR est une proportion d’une référence adulte générale, pas une note ni votre besoin personnel.",
+              "Sodium et sel sont liés mais distincts; le rapport conserve l’unité de l’emballage."
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "Ingrédients, traductions et allergènes",
+        "description": "Comprendre ordre, texte original, traductions, inférences et alertes allergènes.",
+        "sections": [
+          {
+            "title": "Une liste ordonnée",
+            "paragraphs": [
+              "Les ingrédients sont généralement classés par poids décroissant, sans donner une quantité exacte si elle n’est pas indiquée.",
+              "Original et traduction côte à côte facilitent la vérification des produits importés."
+            ]
+          },
+          {
+            "title": "Fait ou inférence",
+            "paragraphs": [
+              "Un allergène imprimé diffère d’un risque déduit. AIGLOSSA signale les inférences.",
+              "Si l’image est floue, vérifiez l’emballage avant toute décision liée aux allergies."
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "Comprendre le rapport AIGLOSSA FOOD",
+        "description": "Ce que le rapport lit, le traitement des données manquantes et ses limites.",
+        "sections": [
+          {
+            "title": "De l’emballage au rapport",
+            "paragraphs": [
+              "Il organise résumé, précautions, publics, nutrition, ingrédients, consommation et notes de données.",
+              "Il utilise les éléments lisibles, signale les absences et distingue les inférences."
+            ]
+          },
+          {
+            "title": "Des limites claires",
+            "paragraphs": [
+              "Information générale uniquement, sans diagnostic, prescription alimentaire ni score universel.",
+              "Consultez un professionnel pour les décisions médicales ou personnalisées."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "de": {
+    "guide_kicker": "Etiketten-Ratgeber",
+    "index_title": "Ratgeber zu Lebensmitteletiketten",
+    "index_description": "Praktische Hinweise zu Nährwerttabellen, Zutaten und AIGLOSSA FOOD-Berichten.",
+    "knowledge_title": "Verstehen, was das Etikett wirklich sagt",
+    "knowledge_intro": "Ein Bericht hilft, wenn jeder Hinweis auf der Packung prüfbar ist. Diese Guides erklären Zahlen, Begriffe und Grenzen.",
+    "read_guide": "Ratgeber lesen",
+    "back_to_guides": "Alle Ratgeber",
+    "back_to_food": "Zurück zum Scan",
+    "close": "Schließen",
+    "loading": "Wird geladen…",
+    "faq_title": "Vor dem Scan",
+    "faq": [
+      {
+        "q": "Was sollte auf dem Foto zu sehen sein?",
+        "a": "Laden Sie pro Scan ein klares Foto der Zutatenliste oder Nährwerttabelle hoch."
+      },
+      {
+        "q": "Werden fremdsprachige Etiketten gelesen?",
+        "a": "Ja. Lesbarer Originaltext bleibt erhalten und wird lokal erklärt."
+      },
+      {
+        "q": "Was, wenn Nährwerte fehlen?",
+        "a": "Der Wert wird als nicht verfügbar markiert, nicht als null behandelt oder erfunden."
+      },
+      {
+        "q": "Ist NRV eine Gesundheitsnote?",
+        "a": "Nein. NRV ist ein allgemeiner Tagesreferenzwert, keine Produktbewertung."
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "Nährwertangaben richtig lesen",
+        "description": "Pro 100 g, Portion, NRV, Natrium und Salz verstehen, ohne daraus eine Gesundheitsnote zu machen.",
+        "sections": [
+          {
+            "title": "Bezugsgröße prüfen",
+            "paragraphs": [
+              "Achten Sie auf 100 g, 100 ml oder Portion. Die Herstellerportion entspricht nicht zwingend Ihrer Menge.",
+              "Vergleichen Sie auf derselben Basis; 100 g oder 100 ml ist meist am direktesten."
+            ]
+          },
+          {
+            "title": "Prozentwerte im Kontext",
+            "paragraphs": [
+              "NRV bezieht sich auf eine allgemeine Erwachsenenreferenz, nicht auf eine Note oder Ihren persönlichen Bedarf.",
+              "Natrium und Salz hängen zusammen, sind aber nicht dieselbe Angabe. Die Packungseinheit bleibt erhalten."
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "Zutaten, Übersetzungen und Allergene",
+        "description": "Reihenfolge, Originaltext, Übersetzungen, Ableitungen und Allergenhinweise verstehen.",
+        "sections": [
+          {
+            "title": "Die Reihenfolge zählt",
+            "paragraphs": [
+              "Zutaten stehen meist nach Gewicht absteigend, verraten ohne Angabe aber keine genaue Menge.",
+              "Original und Übersetzung nebeneinander erleichtern die Prüfung importierter Etiketten."
+            ]
+          },
+          {
+            "title": "Fakt und Ableitung",
+            "paragraphs": [
+              "Ein gedrucktes Allergen ist etwas anderes als ein abgeleitetes Risiko. Ableitungen werden markiert.",
+              "Bei unklarem Foto prüfen Sie vor allergiebezogenen Entscheidungen die Packung."
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "Was ein AIGLOSSA FOOD-Bericht bedeutet",
+        "description": "Was gelesen wird, wie fehlende Daten behandelt werden und was nicht behauptet wird.",
+        "sections": [
+          {
+            "title": "Von der Packung zum Bericht",
+            "paragraphs": [
+              "Er ordnet Zusammenfassung, Hinweise, Personengruppen, Nährwerte, Zutaten, Verzehr und Datenhinweise.",
+              "Lesbare Angaben werden verwendet; Fehlendes und Ableitungen werden kenntlich gemacht."
+            ]
+          },
+          {
+            "title": "Klare Grenzen",
+            "paragraphs": [
+              "Allgemeine Information, keine Diagnose, Diätverordnung oder universelle Gesundheitsnote.",
+              "Für medizinische oder individuelle Ernährung fragen Sie qualifizierte Fachleute."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "pt": {
+    "guide_kicker": "Guia de rótulos",
+    "index_title": "Guias de rótulos alimentares",
+    "index_description": "Notas práticas para ler nutrição, ingredientes e relatórios AIGLOSSA FOOD.",
+    "knowledge_title": "Entenda o que o rótulo realmente diz",
+    "knowledge_intro": "O relatório é útil quando cada nota pode ser conferida na embalagem. Estes guias explicam números, termos e limites.",
+    "read_guide": "Ler guia",
+    "back_to_guides": "Todos os guias",
+    "back_to_food": "Voltar à leitura",
+    "close": "Fechar",
+    "loading": "Carregando…",
+    "faq_title": "Antes de analisar",
+    "faq": [
+      {
+        "q": "O que deve aparecer na foto?",
+        "a": "Envie uma foto nítida por análise, enquadrando os ingredientes ou a tabela nutricional."
+      },
+      {
+        "q": "Lê rótulos importados?",
+        "a": "Sim. Mantém o texto original legível e adiciona explicação localizada."
+      },
+      {
+        "q": "E se não houver tabela nutricional?",
+        "a": "O dado aparece indisponível; não é tratado como zero nem inventado."
+      },
+      {
+        "q": "VRN é uma nota de saúde?",
+        "a": "Não. É uma referência diária geral, não uma avaliação do alimento."
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "Como ler a tabela nutricional",
+        "description": "Entenda 100 g, porção, VRN, sódio e sal sem transformar a tabela em nota.",
+        "sections": [
+          {
+            "title": "Comece pela base",
+            "paragraphs": [
+              "Veja se é por 100 g, 100 ml ou porção. A porção do fabricante pode não ser a consumida.",
+              "Compare usando a mesma base; 100 g ou 100 ml costuma ser mais direto."
+            ]
+          },
+          {
+            "title": "Percentuais em contexto",
+            "paragraphs": [
+              "VRN é uma proporção de referência adulta geral, não uma nota nem sua necessidade pessoal.",
+              "Sódio e sal se relacionam, mas não são a mesma declaração; a unidade da embalagem é mantida."
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "Ingredientes, traduções e alérgenos",
+        "description": "Entenda ordem, texto original, tradução, inferências e alertas.",
+        "sections": [
+          {
+            "title": "A lista tem ordem",
+            "paragraphs": [
+              "Ingredientes costumam vir do maior para o menor peso, sem indicar quantidade exata quando ela não é declarada.",
+              "Original e tradução juntos ajudam a conferir rótulos importados."
+            ]
+          },
+          {
+            "title": "Fato e inferência",
+            "paragraphs": [
+              "Alérgeno impresso difere de risco inferido. AIGLOSSA identifica inferências.",
+              "Se a foto não estiver clara, confira a embalagem antes de decisões sobre alergia."
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "O que significa o relatório AIGLOSSA FOOD",
+        "description": "O que ele lê, como trata ausências e quais conclusões não oferece.",
+        "sections": [
+          {
+            "title": "Da embalagem ao relatório",
+            "paragraphs": [
+              "Organiza resumo, cuidados, públicos, nutrição, ingredientes, consumo e notas de dados.",
+              "Usa conteúdo legível, mostra ausências e marca inferências."
+            ]
+          },
+          {
+            "title": "Limites úteis",
+            "paragraphs": [
+              "É informação geral, não diagnóstico, prescrição alimentar ou nota universal.",
+              "Procure profissional qualificado para decisões médicas ou individuais."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "it": {
+    "guide_kicker": "Guida alle etichette",
+    "index_title": "Guide alle etichette alimentari",
+    "index_description": "Indicazioni pratiche per leggere nutrizione, ingredienti e report AIGLOSSA FOOD.",
+    "knowledge_title": "Capisci cosa dice davvero l’etichetta",
+    "knowledge_intro": "Un report è utile quando ogni nota è verificabile sulla confezione. Queste guide spiegano numeri, termini e limiti.",
+    "read_guide": "Leggi la guida",
+    "back_to_guides": "Tutte le guide",
+    "back_to_food": "Torna alla scansione",
+    "close": "Chiudi",
+    "loading": "Caricamento…",
+    "faq_title": "Prima della scansione",
+    "faq": [
+      {
+        "q": "Cosa deve essere visibile nella foto?",
+        "a": "Carica una foto nitida per scansione con ingredienti o tabella nutrizionale ben inquadrati."
+      },
+      {
+        "q": "Legge etichette estere?",
+        "a": "Sì. Conserva il testo originale leggibile e aggiunge una spiegazione localizzata."
+      },
+      {
+        "q": "Se manca la tabella nutrizionale?",
+        "a": "Il dato risulta non disponibile, non zero e non viene inventato."
+      },
+      {
+        "q": "VNR è un punteggio salute?",
+        "a": "No. È un riferimento giornaliero generale, non una valutazione del cibo."
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "Come leggere i valori nutrizionali",
+        "description": "Comprendi 100 g, porzione, VNR, sodio e sale senza farne un punteggio.",
+        "sections": [
+          {
+            "title": "Controlla la base",
+            "paragraphs": [
+              "Verifica 100 g, 100 ml o porzione. La porzione del produttore può differire da quella consumata.",
+              "Confronta sulla stessa base; 100 g o 100 ml è spesso più diretto."
+            ]
+          },
+          {
+            "title": "Percentuali nel contesto",
+            "paragraphs": [
+              "Il VNR è una quota di un riferimento adulto generale, non un voto o il tuo fabbisogno.",
+              "Sodio e sale sono collegati ma distinti; il report conserva l’unità della confezione."
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "Ingredienti, traduzioni e allergeni",
+        "description": "Come leggere ordine, originale, traduzioni, inferenze e avvisi allergeni.",
+        "sections": [
+          {
+            "title": "L’elenco ha un ordine",
+            "paragraphs": [
+              "Gli ingredienti sono in genere in ordine di peso, ma non danno quantità esatte se non dichiarate.",
+              "Originale e traduzione insieme aiutano a verificare etichette importate."
+            ]
+          },
+          {
+            "title": "Fatto e inferenza",
+            "paragraphs": [
+              "Un allergene stampato è diverso da un rischio dedotto. Le inferenze vengono indicate.",
+              "Se la foto non è chiara, verifica la confezione prima di decisioni sulle allergie."
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "Cosa significa un report AIGLOSSA FOOD",
+        "description": "Cosa legge, come tratta dati mancanti e cosa non pretende di stabilire.",
+        "sections": [
+          {
+            "title": "Dalla confezione al report",
+            "paragraphs": [
+              "Organizza sintesi, cautele, gruppi, nutrizione, ingredienti, consumo e note sui dati.",
+              "Usa dati leggibili, segnala assenze e inferenze."
+            ]
+          },
+          {
+            "title": "Limiti chiari",
+            "paragraphs": [
+              "Informazione generale, non diagnosi, dieta prescritta o punteggio universale.",
+              "Per scelte mediche o personali consulta un professionista qualificato."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ru": {
+    "guide_kicker": "Гид по этикетке",
+    "index_title": "Гиды по пищевым этикеткам",
+    "index_description": "Практические пояснения к пищевой ценности, составу и отчётам AIGLOSSA FOOD.",
+    "knowledge_title": "Поймите, что действительно написано на этикетке",
+    "knowledge_intro": "Отчёт полезен, когда каждое замечание можно сверить с упаковкой. Гиды объясняют числа, термины и ограничения.",
+    "read_guide": "Читать",
+    "back_to_guides": "Все гиды",
+    "back_to_food": "К сканированию",
+    "close": "Закрыть",
+    "loading": "Загрузка…",
+    "faq_title": "Перед сканированием",
+    "faq": [
+      {
+        "q": "Что должно быть видно на фото?",
+        "a": "Загрузите одно чёткое фото состава или таблицы пищевой ценности на каждое сканирование."
+      },
+      {
+        "q": "Поддерживаются иностранные этикетки?",
+        "a": "Да. Читаемый оригинал сохраняется и дополняется локализованным пояснением."
+      },
+      {
+        "q": "Если таблицы пищевой ценности нет?",
+        "a": "Данные отмечаются как недоступные, а не как ноль и не придумываются."
+      },
+      {
+        "q": "NRV — оценка пользы?",
+        "a": "Нет. Это общий суточный ориентир, а не оценка продукта."
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "Как читать пищевую ценность",
+        "description": "Разберитесь в значениях на 100 г, порцию, NRV, натрии и соли без ложной оценки.",
+        "sections": [
+          {
+            "title": "Сначала база расчёта",
+            "paragraphs": [
+              "Проверьте: на 100 г, 100 мл или порцию. Порция производителя может не совпадать с вашей.",
+              "Сравнивайте на одной базе; 100 г или 100 мл обычно удобнее."
+            ]
+          },
+          {
+            "title": "Проценты в контексте",
+            "paragraphs": [
+              "NRV — доля общего ориентира для взрослого, не рейтинг и не личная потребность.",
+              "Натрий и соль связаны, но это разные обозначения; единицы упаковки сохраняются."
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "Состав, переводы и аллергены",
+        "description": "Порядок ингредиентов, оригинал, перевод, выводы и предупреждения.",
+        "sections": [
+          {
+            "title": "Порядок списка",
+            "paragraphs": [
+              "Ингредиенты обычно идут по убыванию массы, но без маркировки точное количество неизвестно.",
+              "Оригинал рядом с переводом помогает проверить импортную этикетку."
+            ]
+          },
+          {
+            "title": "Факт и вывод",
+            "paragraphs": [
+              "Указанный аллерген отличается от предполагаемого риска. Выводы помечаются.",
+              "При нечётком фото сверяйтесь с упаковкой перед решениями об аллергии."
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "Что означает отчёт AIGLOSSA FOOD",
+        "description": "Что читается, как обрабатываются пропуски и чего отчёт не утверждает.",
+        "sections": [
+          {
+            "title": "От упаковки к отчёту",
+            "paragraphs": [
+              "Он упорядочивает сводку, предостережения, группы, пищевую ценность, состав и примечания.",
+              "Использует читаемые данные, отмечает пропуски и выводы."
+            ]
+          },
+          {
+            "title": "Чёткие границы",
+            "paragraphs": [
+              "Это общая информация, не диагноз, диета или универсальная оценка.",
+              "За медицинскими и индивидуальными советами обращайтесь к специалисту."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "ar": {
+    "guide_kicker": "دليل الملصق",
+    "index_title": "أدلة ملصقات الأغذية",
+    "index_description": "ملاحظات عملية لقراءة القيم الغذائية والمكونات وتقارير AIGLOSSA FOOD.",
+    "knowledge_title": "افهم ما يقوله الملصق فعلاً",
+    "knowledge_intro": "يصبح التقرير مفيداً عندما يمكن مراجعة كل ملاحظة على العبوة. تشرح هذه الأدلة الأرقام والمصطلحات والحدود.",
+    "read_guide": "اقرأ الدليل",
+    "back_to_guides": "كل الأدلة",
+    "back_to_food": "العودة إلى المسح",
+    "close": "إغلاق",
+    "loading": "جارٍ التحميل…",
+    "faq_title": "قبل المسح",
+    "faq": [
+      {
+        "q": "ما الذي يجب أن يظهر في الصورة؟",
+        "a": "ارفع صورة واضحة واحدة لكل مسح تُظهر قائمة المكونات أو جدول التغذية المطلوب قراءته."
+      },
+      {
+        "q": "هل يدعم الملصقات الأجنبية؟",
+        "a": "نعم. يحتفظ بالنص الأصلي المقروء ويضيف شرحاً باللغة الحالية."
+      },
+      {
+        "q": "ماذا لو غاب جدول التغذية؟",
+        "a": "تظهر البيانات كغير متاحة ولا تُعامل كصفر أو تُخمن."
+      },
+      {
+        "q": "هل NRV تقييم صحي؟",
+        "a": "لا. هو مرجع يومي عام وليس تقييماً للغذاء."
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "كيفية قراءة ملصق التغذية",
+        "description": "افهم لكل 100 غ والحصة وNRV والصوديوم والملح دون تحويلها إلى تقييم صحي.",
+        "sections": [
+          {
+            "title": "ابدأ بأساس القياس",
+            "paragraphs": [
+              "تحقق هل القيم لكل 100 غ أو 100 مل أو حصة. حصة الشركة قد لا تساوي ما تتناوله.",
+              "قارن المنتجات على الأساس نفسه؛ غالباً يكون 100 غ أو 100 مل أوضح."
+            ]
+          },
+          {
+            "title": "النسب ضمن سياقها",
+            "paragraphs": [
+              "NRV نسبة من مرجع عام للبالغين وليست تقييماً أو احتياجك الشخصي.",
+              "الصوديوم والملح مرتبطان لكنهما ليسا البيان نفسه؛ يحتفظ التقرير بوحدة العبوة."
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "المكونات والترجمة والحساسيات",
+        "description": "فهم ترتيب المكونات والنص الأصلي والترجمة والاستنتاجات والتنبيهات.",
+        "sections": [
+          {
+            "title": "للقائمة ترتيب",
+            "paragraphs": [
+              "تُرتب المكونات عادة من الأكثر وزناً إلى الأقل، لكن لا تعطي كمية دقيقة دون تصريح.",
+              "عرض الأصل والترجمة معاً يساعد على التحقق من الملصق المستورد."
+            ]
+          },
+          {
+            "title": "الفرق بين الحقيقة والاستنتاج",
+            "paragraphs": [
+              "المسبب المذكور صراحة يختلف عن خطر مستنتج، وتُوسم الاستنتاجات بوضوح.",
+              "إذا كانت الصورة غير واضحة فتحقق من العبوة قبل قرار متعلق بالحساسية."
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "ماذا يعني تقرير AIGLOSSA FOOD",
+        "description": "ما يقرأه التقرير وكيف يتعامل مع النقص وما لا يدعيه.",
+        "sections": [
+          {
+            "title": "من العبوة إلى التقرير",
+            "paragraphs": [
+              "ينظم الملخص والتنبيهات والفئات والتغذية والمكونات وطريقة الأكل وملاحظات البيانات.",
+              "يستخدم ما يمكن قراءته ويبين النقص والاستنتاجات."
+            ]
+          },
+          {
+            "title": "حدود واضحة",
+            "paragraphs": [
+              "معلومات عامة وليست تشخيصاً أو وصفة غذائية أو تقييماً شاملاً.",
+              "استشر مختصاً للقرارات الطبية أو الشخصية."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "th": {
+    "guide_kicker": "คู่มือฉลาก",
+    "index_title": "คู่มือฉลากอาหาร",
+    "index_description": "คำแนะนำเพื่ออ่านโภชนาการ ส่วนประกอบ และรายงาน AIGLOSSA FOOD",
+    "knowledge_title": "เข้าใจสิ่งที่ฉลากบอกจริง ๆ",
+    "knowledge_intro": "รายงานมีประโยชน์เมื่อย้อนตรวจทุกข้อกับบรรจุภัณฑ์ได้ คู่มือนี้อธิบายตัวเลข คำ และขอบเขต",
+    "read_guide": "อ่านคู่มือ",
+    "back_to_guides": "คู่มือทั้งหมด",
+    "back_to_food": "กลับไปสแกน",
+    "close": "ปิด",
+    "loading": "กำลังโหลด…",
+    "faq_title": "ก่อนสแกน",
+    "faq": [
+      {
+        "q": "ภาพควรแสดงอะไร?",
+        "a": "อัปโหลดภาพชัดเจนหนึ่งภาพต่อการสแกน โดยให้เห็นส่วนประกอบหรือตารางโภชนาการที่ต้องการอ่าน"
+      },
+      {
+        "q": "อ่านฉลากต่างประเทศได้ไหม?",
+        "a": "ได้ หากอ่านได้ ระบบจะคงข้อความเดิมและเพิ่มคำอธิบายภาษาปัจจุบัน"
+      },
+      {
+        "q": "ถ้าไม่มีตารางโภชนาการ?",
+        "a": "จะแสดงว่าไม่มีข้อมูล ไม่ถือเป็นศูนย์และไม่เดาค่า"
+      },
+      {
+        "q": "NRV คือคะแนนสุขภาพไหม?",
+        "a": "ไม่ใช่ เป็นค่าอ้างอิงรายวันทั่วไป ไม่ใช่คะแนนอาหาร"
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "วิธีอ่านฉลากโภชนาการ",
+        "description": "เข้าใจต่อ 100 กรัม ต่อหนึ่งหน่วยบริโภค NRV โซเดียม และเกลือโดยไม่ใช้เป็นคะแนนสุขภาพ",
+        "sections": [
+          {
+            "title": "ดูฐานการคำนวณ",
+            "paragraphs": [
+              "ตรวจว่าค่าต่อ 100 กรัม 100 มล. หรือหนึ่งหน่วยบริโภค ซึ่งอาจไม่เท่าปริมาณที่คุณกิน",
+              "เปรียบเทียบด้วยฐานเดียวกัน โดย 100 กรัมหรือ 100 มล. มักตรงที่สุด"
+            ]
+          },
+          {
+            "title": "อ่านร้อยละในบริบท",
+            "paragraphs": [
+              "NRV เป็นสัดส่วนจากค่าอ้างอิงผู้ใหญ่ทั่วไป ไม่ใช่คะแนนหรือความต้องการส่วนตัว",
+              "โซเดียมและเกลือเกี่ยวข้องแต่ไม่เหมือนกัน รายงานคงหน่วยบนฉลาก"
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "ส่วนประกอบ คำแปล และสารก่อภูมิแพ้",
+        "description": "เข้าใจลำดับ ข้อความเดิม คำแปล การอนุมาน และคำเตือน",
+        "sections": [
+          {
+            "title": "ลำดับมีความหมาย",
+            "paragraphs": [
+              "ส่วนประกอบมักเรียงตามน้ำหนัก แต่ไม่บอกปริมาณแน่นอนหากไม่ระบุ",
+              "ข้อความเดิมคู่คำแปลช่วยตรวจสอบฉลากนำเข้า"
+            ]
+          },
+          {
+            "title": "ข้อเท็จจริงกับการอนุมาน",
+            "paragraphs": [
+              "สารก่อภูมิแพ้ที่พิมพ์ไว้ต่างจากความเสี่ยงที่อนุมาน และระบบจะทำเครื่องหมาย",
+              "หากภาพไม่ชัด ให้ตรวจบรรจุภัณฑ์ก่อนตัดสินใจเรื่องภูมิแพ้"
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "รายงาน AIGLOSSA FOOD หมายถึงอะไร",
+        "description": "สิ่งที่รายงานอ่าน วิธีจัดการข้อมูลขาดหาย และสิ่งที่ไม่กล่าวอ้าง",
+        "sections": [
+          {
+            "title": "จากบรรจุภัณฑ์สู่รายงาน",
+            "paragraphs": [
+              "จัดระเบียบสรุป ข้อควรระวัง กลุ่มคน โภชนาการ ส่วนประกอบ การกิน และหมายเหตุ",
+              "ใช้ข้อมูลที่อ่านได้ แสดงข้อมูลที่ขาดและการอนุมาน"
+            ]
+          },
+          {
+            "title": "ขอบเขตชัดเจน",
+            "paragraphs": [
+              "เป็นข้อมูลทั่วไป ไม่ใช่การวินิจฉัย คำสั่งอาหาร หรือคะแนนสากล",
+              "ปรึกษาผู้เชี่ยวชาญสำหรับการตัดสินใจทางการแพทย์หรือเฉพาะบุคคล"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "vi": {
+    "guide_kicker": "Hướng dẫn nhãn",
+    "index_title": "Hướng dẫn nhãn thực phẩm",
+    "index_description": "Ghi chú thực tế để đọc dinh dưỡng, thành phần và báo cáo AIGLOSSA FOOD.",
+    "knowledge_title": "Hiểu nhãn thực sự nói gì",
+    "knowledge_intro": "Báo cáo hữu ích khi mỗi ghi chú đều có thể đối chiếu với bao bì. Các hướng dẫn giải thích số liệu, thuật ngữ và giới hạn.",
+    "read_guide": "Đọc hướng dẫn",
+    "back_to_guides": "Tất cả hướng dẫn",
+    "back_to_food": "Về quét nhãn",
+    "close": "Đóng",
+    "loading": "Đang tải…",
+    "faq_title": "Trước khi quét",
+    "faq": [
+      {
+        "q": "Ảnh cần hiển thị nội dung gì?",
+        "a": "Mỗi lần quét tải một ảnh rõ nét, căn vào danh sách thành phần hoặc bảng dinh dưỡng cần đọc."
+      },
+      {
+        "q": "Có đọc nhãn nước ngoài không?",
+        "a": "Có. Văn bản gốc đọc được được giữ lại cùng giải thích bản địa hóa."
+      },
+      {
+        "q": "Nếu thiếu bảng dinh dưỡng?",
+        "a": "Dữ liệu được ghi là không có, không coi là 0 hay tự đoán."
+      },
+      {
+        "q": "NRV có phải điểm sức khỏe?",
+        "a": "Không. Đây là tham chiếu hằng ngày chung, không phải điểm thực phẩm."
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "Cách đọc nhãn dinh dưỡng",
+        "description": "Hiểu trên 100 g, khẩu phần, NRV, natri và muối mà không biến chúng thành điểm sức khỏe.",
+        "sections": [
+          {
+            "title": "Kiểm tra cơ sở",
+            "paragraphs": [
+              "Xem giá trị tính trên 100 g, 100 ml hay khẩu phần. Khẩu phần của hãng có thể khác lượng bạn ăn.",
+              "So sánh trên cùng cơ sở; 100 g hoặc 100 ml thường trực tiếp nhất."
+            ]
+          },
+          {
+            "title": "Tỷ lệ trong ngữ cảnh",
+            "paragraphs": [
+              "NRV là tỷ lệ của tham chiếu người lớn chung, không phải điểm hay nhu cầu cá nhân.",
+              "Natri và muối liên quan nhưng không giống nhau; báo cáo giữ nguyên đơn vị bao bì."
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "Thành phần, bản dịch và dị ứng",
+        "description": "Hiểu thứ tự, nguyên văn, bản dịch, suy luận và cảnh báo dị ứng.",
+        "sections": [
+          {
+            "title": "Danh sách có thứ tự",
+            "paragraphs": [
+              "Thành phần thường xếp theo khối lượng giảm dần nhưng không cho lượng chính xác nếu không ghi.",
+              "Nguyên văn cạnh bản dịch giúp kiểm tra nhãn nhập khẩu."
+            ]
+          },
+          {
+            "title": "Sự thật và suy luận",
+            "paragraphs": [
+              "Chất dị ứng được in khác với nguy cơ suy luận. Suy luận được đánh dấu.",
+              "Nếu ảnh mờ, hãy kiểm tra bao bì trước quyết định liên quan dị ứng."
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "Báo cáo AIGLOSSA FOOD có ý nghĩa gì",
+        "description": "Nội dung được đọc, cách xử lý dữ liệu thiếu và điều báo cáo không khẳng định.",
+        "sections": [
+          {
+            "title": "Từ bao bì đến báo cáo",
+            "paragraphs": [
+              "Sắp xếp tóm tắt, lưu ý, nhóm người, dinh dưỡng, thành phần, cách ăn và ghi chú dữ liệu.",
+              "Dùng nội dung đọc được, nêu phần thiếu và đánh dấu suy luận."
+            ]
+          },
+          {
+            "title": "Giới hạn rõ ràng",
+            "paragraphs": [
+              "Thông tin chung, không chẩn đoán, kê chế độ ăn hay cho điểm phổ quát.",
+              "Hãy hỏi chuyên gia cho quyết định y tế hoặc cá nhân."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "id": {
+    "guide_kicker": "Panduan label",
+    "index_title": "Panduan label makanan",
+    "index_description": "Catatan praktis untuk membaca nutrisi, bahan, dan laporan AIGLOSSA FOOD.",
+    "knowledge_title": "Pahami apa yang benar-benar dikatakan label",
+    "knowledge_intro": "Laporan berguna bila setiap catatan dapat dicek pada kemasan. Panduan ini menjelaskan angka, istilah, dan batasannya.",
+    "read_guide": "Baca panduan",
+    "back_to_guides": "Semua panduan",
+    "back_to_food": "Kembali memindai",
+    "close": "Tutup",
+    "loading": "Memuat…",
+    "faq_title": "Sebelum memindai",
+    "faq": [
+      {
+        "q": "Apa yang harus terlihat di foto?",
+        "a": "Unggah satu foto jelas per pemindaian yang membingkai daftar bahan atau tabel nutrisi."
+      },
+      {
+        "q": "Bisa membaca label impor?",
+        "a": "Ya. Teks asli yang terbaca dipertahankan dengan penjelasan lokal."
+      },
+      {
+        "q": "Jika tabel nutrisi tidak ada?",
+        "a": "Data ditandai tidak tersedia, bukan dianggap nol atau ditebak."
+      },
+      {
+        "q": "Apakah NRV skor kesehatan?",
+        "a": "Tidak. Ini acuan harian umum, bukan penilaian makanan."
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "Cara membaca label nutrisi",
+        "description": "Pahami per 100 g, porsi, NRV, natrium, dan garam tanpa menjadikannya skor kesehatan.",
+        "sections": [
+          {
+            "title": "Periksa dasarnya",
+            "paragraphs": [
+              "Lihat apakah per 100 g, 100 ml, atau porsi. Porsi produsen mungkin berbeda dari yang Anda makan.",
+              "Bandingkan dengan dasar sama; 100 g atau 100 ml biasanya paling langsung."
+            ]
+          },
+          {
+            "title": "Persentase dalam konteks",
+            "paragraphs": [
+              "NRV adalah bagian dari acuan dewasa umum, bukan skor atau kebutuhan pribadi.",
+              "Natrium dan garam terkait tetapi berbeda; laporan mempertahankan unit kemasan."
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "Bahan, terjemahan, dan alergen",
+        "description": "Pahami urutan, teks asli, terjemahan, inferensi, dan peringatan.",
+        "sections": [
+          {
+            "title": "Daftar memiliki urutan",
+            "paragraphs": [
+              "Bahan biasanya dari bobot terbesar, tetapi tidak memberi jumlah tepat bila tidak dinyatakan.",
+              "Teks asli bersama terjemahan membantu memeriksa label impor."
+            ]
+          },
+          {
+            "title": "Fakta dan inferensi",
+            "paragraphs": [
+              "Alergen tercetak berbeda dari risiko yang disimpulkan. Inferensi ditandai.",
+              "Jika foto tidak jelas, cek kemasan sebelum keputusan alergi."
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "Arti laporan AIGLOSSA FOOD",
+        "description": "Apa yang dibaca, cara menangani data hilang, dan hal yang tidak diklaim.",
+        "sections": [
+          {
+            "title": "Dari kemasan ke laporan",
+            "paragraphs": [
+              "Menata ringkasan, perhatian, kelompok, nutrisi, bahan, cara makan, dan catatan data.",
+              "Menggunakan teks terbaca, menunjukkan kekosongan dan inferensi."
+            ]
+          },
+          {
+            "title": "Batas yang jelas",
+            "paragraphs": [
+              "Informasi umum, bukan diagnosis, resep diet, atau skor universal.",
+              "Konsultasikan ahli untuk keputusan medis atau pribadi."
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "tr": {
+    "guide_kicker": "Etiket rehberi",
+    "index_title": "Gıda etiketi rehberleri",
+    "index_description": "Besin tablosu, içerikler ve AIGLOSSA FOOD raporlarını okumak için pratik notlar.",
+    "knowledge_title": "Etiketin gerçekten ne söylediğini anlayın",
+    "knowledge_intro": "Her not ambalajda doğrulanabiliyorsa rapor yararlıdır. Bu rehberler sayıları, terimleri ve sınırları açıklar.",
+    "read_guide": "Rehberi oku",
+    "back_to_guides": "Tüm rehberler",
+    "back_to_food": "Taramaya dön",
+    "close": "Kapat",
+    "loading": "Yükleniyor…",
+    "faq_title": "Taramadan önce",
+    "faq": [
+      {
+        "q": "Fotoğrafta ne görünmeli?",
+        "a": "Her tarama için içerik listesini veya besin tablosunu gösteren tek net fotoğraf yükleyin."
+      },
+      {
+        "q": "Yabancı etiketleri okuyabilir mi?",
+        "a": "Evet. Okunabilen özgün metin korunur ve yerel açıklama eklenir."
+      },
+      {
+        "q": "Besin tablosu yoksa?",
+        "a": "Veri kullanılamıyor olarak gösterilir; sıfır sayılmaz veya tahmin edilmez."
+      },
+      {
+        "q": "NRV sağlık puanı mı?",
+        "a": "Hayır. Genel günlük referanstır, gıda puanı değildir."
+      }
+    ],
+    "articles": {
+      "read-nutrition-label": {
+        "title": "Besin etiketi nasıl okunur",
+        "description": "100 g, porsiyon, NRV, sodyum ve tuzu sağlık puanına dönüştürmeden anlayın.",
+        "sections": [
+          {
+            "title": "Ölçüm temelini kontrol edin",
+            "paragraphs": [
+              "Değerlerin 100 g, 100 ml veya porsiyon başına olup olmadığına bakın. Üretici porsiyonu yediğiniz miktar olmayabilir.",
+              "Ürünleri aynı temelde karşılaştırın; 100 g veya 100 ml genellikle daha doğrudandır."
+            ]
+          },
+          {
+            "title": "Yüzdeleri bağlamıyla okuyun",
+            "paragraphs": [
+              "NRV genel yetişkin referansının oranıdır; puan veya kişisel ihtiyacınız değildir.",
+              "Sodyum ve tuz ilişkili ama aynı beyan değildir; ambalaj birimi korunur."
+            ]
+          }
+        ]
+      },
+      "ingredients-and-allergens": {
+        "title": "İçerikler, çeviriler ve alerjenler",
+        "description": "Sıra, özgün metin, çeviri, çıkarım ve alerjen uyarılarını anlayın.",
+        "sections": [
+          {
+            "title": "Listenin sırası vardır",
+            "paragraphs": [
+              "İçerikler genellikle ağırlığa göre azalır; belirtilmedikçe kesin miktarı vermez.",
+              "Özgün metin ve çeviri ithal etiketi doğrulamayı kolaylaştırır."
+            ]
+          },
+          {
+            "title": "Gerçek ve çıkarım",
+            "paragraphs": [
+              "Basılı alerjen ile çıkarılan risk farklıdır. Çıkarımlar işaretlenir.",
+              "Fotoğraf net değilse alerji kararı öncesi ambalajı kontrol edin."
+            ]
+          }
+        ]
+      },
+      "what-the-report-means": {
+        "title": "AIGLOSSA FOOD raporu ne anlama gelir",
+        "description": "Neyi okuduğunu, eksikleri nasıl ele aldığını ve ne iddia etmediğini öğrenin.",
+        "sections": [
+          {
+            "title": "Ambalajdan rapora",
+            "paragraphs": [
+              "Özet, uyarı, gruplar, besinler, içerikler, tüketim ve veri notlarını düzenler.",
+              "Okunabilen veriyi kullanır; eksikleri ve çıkarımları gösterir."
+            ]
+          },
+          {
+            "title": "Açık sınırlar",
+            "paragraphs": [
+              "Genel bilgidir; tanı, diyet reçetesi veya evrensel puan değildir.",
+              "Tıbbi ya da kişisel kararlar için uzman görüşü alın."
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

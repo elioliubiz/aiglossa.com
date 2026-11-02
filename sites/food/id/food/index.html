@@ -21,16 +21,19 @@
 <link rel="alternate" hreflang="x-default" href="https://food.aiglossa.com/en/food/">
 <meta property="og:type" content="website"><meta property="og:site_name" content="AIGLOSSA FOOD"><meta property="og:locale" content="id_ID"><meta property="og:title" content="Analisis label makanan: bahan &amp; nutrisi — AIGLOSSA FOOD"><meta property="og:description" content="Analisis label makanan: pahami bahan, fakta nutrisi, zat aditif, dan siapa yang perlu waspada. Bukan saran medis."><meta property="og:url" content="https://food.aiglossa.com/id/food/"><meta property="og:image" content="https://food.aiglossa.com/assets/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Label makanan">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Analisis label makanan: bahan &amp; nutrisi — AIGLOSSA FOOD"><meta name="twitter:description" content="Analisis label makanan: pahami bahan, fakta nutrisi, zat aditif, dan siapa yang perlu waspada. Bukan saran medis."><meta name="twitter:image" content="https://food.aiglossa.com/assets/og.png">
-<meta name="theme-color" content="#FBFAF7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="manifest" href="manifest.webmanifest?v=20261031-28">
-<link rel="icon" type="image/png" sizes="64x64" href="../../assets/favicon-food-64.png?v=20261031-28"><link rel="icon" type="image/svg+xml" href="../../assets/favicon-food.svg?v=20261031-28"><link rel="shortcut icon" href="../../assets/favicon-food.ico?v=20261031-28"><link rel="apple-touch-icon" href="../../assets/apple-touch-icon-food.png?v=20261031-28">
-<link rel="stylesheet" href="../../assets/food.css?v=20261031-28">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Analisis label makanan: bahan & nutrisi — AIGLOSSA FOOD", "description": "Analisis label makanan: pahami bahan, fakta nutrisi, zat aditif, dan siapa yang perlu waspada. Bukan saran medis.", "applicationCategory": "HealthApplication", "operatingSystem": "Web", "url": "https://food.aiglossa.com/id/food/", "inLanguage": "id"}</script>
+<meta name="theme-color" content="#F5F9F7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script>(function(){try{localStorage.removeItem("aiglossa_theme")}catch(e){}var m=matchMedia("(prefers-color-scheme: dark)");function sync(){var dark=m.matches;document.documentElement.dataset.theme=dark?"dark":"light";var meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=dark?"#121A18":"#F5F9F7"}sync();if(m.addEventListener)m.addEventListener("change",sync);else m.addListener(sync)})();</script>
+<link rel="manifest" href="manifest.webmanifest?v=20261102-45">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/favicon-food-64.png?v=20261102-45"><link rel="icon" type="image/svg+xml" href="../../assets/favicon-food.svg?v=20261102-45"><link rel="shortcut icon" href="../../assets/favicon-food.ico?v=20261102-45"><link rel="apple-touch-icon" href="../../assets/apple-touch-icon-food.png?v=20261102-45">
+<link rel="stylesheet" href="../../assets/food.css?v=20261102-45">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Analisis label makanan: bahan & nutrisi — AIGLOSSA FOOD", "description": "Analisis label makanan: pahami bahan, fakta nutrisi, zat aditif, dan siapa yang perlu waspada. Bukan saran medis.", "applicationCategory": "LifestyleApplication", "operatingSystem": "Web", "url": "https://food.aiglossa.com/id/food/", "inLanguage": "id", "featureList": ["Bahan", "Nutrisi", "Catatan penting"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Apa yang harus terlihat di foto?", "acceptedAnswer": {"@type": "Answer", "text": "Unggah satu foto jelas per pemindaian yang membingkai daftar bahan atau tabel nutrisi."}}, {"@type": "Question", "name": "Bisa membaca label impor?", "acceptedAnswer": {"@type": "Answer", "text": "Ya. Teks asli yang terbaca dipertahankan dengan penjelasan lokal."}}, {"@type": "Question", "name": "Jika tabel nutrisi tidak ada?", "acceptedAnswer": {"@type": "Answer", "text": "Data ditandai tidak tersedia, bukan dianggap nol atau ditebak."}}, {"@type": "Question", "name": "Apakah NRV skor kesehatan?", "acceptedAnswer": {"@type": "Answer", "text": "Tidak. Ini acuan harian umum, bukan penilaian makanan."}}]}</script>
 </head>
 <body>
 <header class="topbar"><div class="wrap topbar-inner">
-  <a class="brand" href="./" aria-label="AIGLOSSA FOOD"><span class="brand-mark food-logo"><img src="../../assets/favicon-food.svg?v=20261031-28" alt=""></span> AIGLOSSA</a>
+  <a class="brand" href="./" aria-label="AIGLOSSA FOOD"><span class="brand-mark food-logo"><img src="../../assets/favicon-food.svg?v=20261102-45" alt=""></span> AIGLOSSA</a>
   <div class="top-actions">
+    <span id="themeToggle" hidden></span>
     <a class="login-link" id="loginBtn" href="#">Masuk</a>
     <button class="account-flat hidden" id="accountBtn"><span class="avatar" id="avatar">?</span><span class="balance" id="balanceText">—<span>kredit</span></span></button>
     <a class="pill-btn buy-btn hidden" id="buyBtn" href="#"><span class="buy-full">Beli kredit</span><span class="buy-short">Beli</span></a>
@@ -48,9 +51,9 @@
         <div class="scan-icon"><svg viewBox="0 0 24 24"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2l1.1-1.8h6.4L16.3 6h1.2A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5z"/><circle cx="12" cy="12.3" r="3.2"/></svg></div>
         <div class="scan-copy"><b>Ambil foto atau unggah</b><span>Bahan · Fakta nutrisi · Label impor</span></div>
         <div class="scan-actions"><label class="btn" for="fileInput">Pilih file</label><label class="btn ghost" for="cameraInput">Kamera</label></div>
-        <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+        <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp">
         <input class="file-input" id="cameraInput" type="file" accept="image/*" capture="environment">
-        <p class="multi-hint">Produk sama: hingga 3 foto — depan, komposisi, nutrisi.</p>
+        <p class="multi-hint">Satu foto yang jelas per pemindaian. Pilih daftar bahan atau tabel nutrisi yang ingin dibaca.</p>
         <div class="preview-wrap hidden" id="previewWrap"><div class="preview-grid" id="previewGrid"></div></div>
         <div class="scan-loading hidden" id="scanLoading"><span class="spinner"></span><span id="scanLoadingText">Membaca label…</span></div>
         <button class="btn hidden" id="scanButton" style="width:100%;margin-top:12px">Mulai pindai</button>
@@ -59,45 +62,73 @@
       <div class="pwa-banner hidden" id="pwaBanner"><span>Tambahkan aiglossa food ke layar utama Anda untuk memindai lebih cepat.</span><button id="installBtn">Pasang aplikasi</button></div>
     </div>
     <div class="hero-visual">
-      <div class="photo-card"><img src="../../assets/food-sample.jpg?v=20261031-28" alt="Contoh label"></div>
-      <div class="scan-frame"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
-      <div class="result-chip"><span class="dot"></span> Contoh label</div>
-      <div class="float-card"><b>Lemak jenuh</b><span>10.5g / 100g</span><i class="bar"></i><small>NRV 53% · Tinggi</small></div>
+      <div class="visual-shell">
+        <div class="visual-toolbar"><span><i></i> AIGLOSSA FOOD</span><small>Contoh label</small></div>
+        <div class="visual-workspace">
+          <div class="visual-media">
+            <div class="photo-card"><img src="../../assets/food-sample.jpg?v=20261102-45" alt="Contoh label"></div>
+            <div class="scan-frame"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+            <div class="result-chip"><span class="dot"></span> Contoh label</div>
+          </div>
+          <div class="visual-results">
+            <span class="visual-status">Selesai</span>
+            <h3>Analisis</h3>
+            <div class="visual-score"><span>Lemak jenuh</span><b>Tinggi</b><small>10.5g / 100g · NRV 53%</small></div>
+            <div class="visual-signal"><span>Bahan</span><b>12</b></div>
+            <div class="visual-signal"><span>Nutrisi</span><b>08</b></div>
+            <div class="visual-signal"><span>Catatan penting</span><b>03</b></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="wrap value" id="how">
-    <div class="value-head"><h2>Satu label, tiga lapisan</h2><p>Bahan, nutrisi, dan siapa yang perlu berhati-hati — dijelaskan dengan jelas.</p></div>
-    <div class="value-grid">
-      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M5 6.5h14M5 11h14M5 15.5h9"/><circle cx="18" cy="17" r="3"/><path d="m20.2 19.2 1.6 1.6"/></svg></div><h3>Penjelasan bahan</h3><p>Setiap kata asing dijelaskan: apa itu, mengapa ada di sana, dan siapa yang harus memperhatikannya.</p></article>
-      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M5 19V9M12 19V5M19 19v-6"/><path d="M4 19h16"/></svg></div><h3>Analisis nutrisi</h3><p>Per 100g, per sajian, dan NRV disajikan bersama — tinggi, sedang, dan rendah dalam format yang mudah dibaca.</p></article>
-      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.5c0 4.2-2.8 7.2-7 9-4.2-1.8-7-4.8-7-9V6z"/><path d="M9.3 11.8 11.4 14l3.6-4"/></svg></div><h3>Catatan penting</h3><p>Catatan umum bagi orang yang perlu memperhatikan natrium, gula, alergen, atau aditif.</p></article>
+  <section class="wrap value" id="insight">
+    <div class="value-head"><div><span class="kicker">AIGLOSSA FOOD</span><h2>Satu label, tiga lapisan</h2></div><p>Bahan, nutrisi, dan siapa yang perlu berhati-hati — dijelaskan dengan jelas.</p></div>
+    <div class="insight-layout">
+      <div class="report-demo">
+        <div class="report-demo-head"><div><span>Contoh label</span><h3>Analisis</h3></div><b>Selesai</b></div>
+        <div class="demo-summary"><span class="pill warn">Ringkasan</span><strong>Lemak jenuh · Tinggi</strong><p>Bahan, nutrisi, dan siapa yang perlu berhati-hati — dijelaskan dengan jelas.</p></div>
+        <div class="demo-cautions"><div><span>Perhatian</span><b>Lemak jenuh · Tinggi</b></div><div><span>Catatan penting</span><b>Perhatian · Batasi</b></div></div>
+        <div class="demo-section"><div class="demo-section-head"><i>01</i><b>Catatan penting</b><span>03</span></div><div class="demo-person-row"><b>Perhatian</b><span>Batasi</span></div></div>
+        <div class="demo-section"><div class="demo-section-head"><i>02</i><b>Nutrisi</b><span>per 100g</span></div><div class="demo-metric"><span>Energi</span><b>431 kcal</b><small>—</small></div><div class="demo-metric"><span>Lemak jenuh</span><b>10.5g</b><small>dari referensi harian 53%</small></div><div class="demo-metric"><span>Gula</span><b>12.4g</b><small>dari referensi harian 28%</small></div><div class="demo-metric"><span>Natrium</span><b>320mg</b><small>dari referensi harian 16%</small></div><p class="demo-note">Persentase berdasarkan referensi harian orang dewasa, bukan skor kesehatan. “Tidak tertera” bukan berarti nol.</p></div>
+        <div class="demo-section demo-ingredients"><div class="demo-section-head"><i>03</i><b>Bahan</b><span>12</span></div><div class="demo-ingredient-row"><div><strong>Bahan 01</strong><small>Asli · Terjemahan</small></div><span>Info</span></div><div class="demo-ingredient-row"><div><strong>Bahan 02</strong><small>Asli · disimpulkan</small></div><span>Perhatian</span></div></div>
+        <div class="demo-footer"><span>Saran konsumsi <b>03</b></span><span>Catatan data <b>02</b></span></div><p class="demo-disclaimer">Hanya untuk informasi nutrisi umum. Bukan saran medis.</p>
+      </div>
+      <div class="value-stack">
+        <article class="value-card"><div class="value-number">01</div><div class="value-card-content"><h3>Penjelasan bahan</h3><p>Setiap kata asing dijelaskan: apa itu, mengapa ada di sana, dan siapa yang harus memperhatikannya.</p><div class="ingredient-preview"><div><b>Bahan 01</b><small>Asli · Terjemahan</small></div><span>Info</span><div><b>Bahan 02</b><small>Asli · disimpulkan</small></div><span>Perhatian</span></div></div></article>
+        <article class="value-card"><div class="value-number">02</div><div class="value-card-content"><h3>Analisis nutrisi</h3><p>Per 100g, per sajian, dan NRV disajikan bersama — tinggi, sedang, dan rendah dalam format yang mudah dibaca.</p><div class="nutrition-preview"><span><i>Lemak jenuh</i><b>10.5g</b><small>dari referensi harian 53%</small></span><span><i>Gula</i><b>12.4g</b><small>dari referensi harian 28%</small></span></div></div></article>
+        <article class="value-card"><div class="value-number">03</div><div class="value-card-content"><h3>Catatan penting</h3><p>Catatan umum bagi orang yang perlu memperhatikan natrium, gula, alergen, atau aditif.</p><div class="people-preview"><span><b>03</b>Catatan penting</span><span><b>02</b>Catatan data</span></div></div></article>
+      </div>
     </div>
+  </section>
+
+  <section class="workflow-band" id="how"><div class="wrap workflow-inner">
+    <div class="workflow-head"><span class="kicker">AIGLOSSA FOOD</span><h2>Cara kerja</h2></div>
+    <ol class="workflow-list">
+      <li><span>01</span><div><b>Foto labelnya</b><small>Bahan · Fakta nutrisi · Label impor</small></div></li>
+      <li><span>02</span><div><b>Kami membaca bahan dan nutrisi</b><small>sekitar 4 detik</small></div></li>
+      <li><span>03</span><div><b>Dapatkan laporan umum yang jelas</b><small>Hanya untuk informasi nutrisi umum. Bukan saran medis.</small></div></li>
+    </ol>
+  </div></section>
+
+  <section class="wrap knowledge" id="guides">
+    <div class="knowledge-head"><div><span class="kicker">Panduan label</span><h2>Pahami apa yang benar-benar dikatakan label</h2></div><p>Laporan berguna bila setiap catatan dapat dicek pada kemasan. Panduan ini menjelaskan angka, istilah, dan batasannya.</p></div>
+    <div class="knowledge-grid"><article><span>01</span><h3>Cara membaca label nutrisi</h3><p>Pahami per 100 g, porsi, NRV, natrium, dan garam tanpa menjadikannya skor kesehatan.</p><a href="guides/read-nutrition-label/" data-food-guide="read-nutrition-label">Baca panduan</a></article><article><span>02</span><h3>Bahan, terjemahan, dan alergen</h3><p>Pahami urutan, teks asli, terjemahan, inferensi, dan peringatan.</p><a href="guides/ingredients-and-allergens/" data-food-guide="ingredients-and-allergens">Baca panduan</a></article><article><span>03</span><h3>Arti laporan AIGLOSSA FOOD</h3><p>Apa yang dibaca, cara menangani data hilang, dan hal yang tidak diklaim.</p><a href="guides/what-the-report-means/" data-food-guide="what-the-report-means">Baca panduan</a></article></div>
+    <div class="faq-block"><h2>Sebelum memindai</h2><div class="faq-list"><details><summary>Apa yang harus terlihat di foto?</summary><p>Unggah satu foto jelas per pemindaian yang membingkai daftar bahan atau tabel nutrisi.</p></details><details><summary>Bisa membaca label impor?</summary><p>Ya. Teks asli yang terbaca dipertahankan dengan penjelasan lokal.</p></details><details><summary>Jika tabel nutrisi tidak ada?</summary><p>Data ditandai tidak tersedia, bukan dianggap nol atau ditebak.</p></details><details><summary>Apakah NRV skor kesehatan?</summary><p>Tidak. Ini acuan harian umum, bukan penilaian makanan.</p></details></div></div>
   </section>
 
   <section class="wrap recent hidden" id="recentSection">
-    <div class="recent-head"><h2>Riwayat pindai</h2><a href="#" id="historyRefresh">Lihat semua →</a></div>
+    <div class="recent-head"><h2>Riwayat pindai</h2><a href="history/" id="historyViewAll">Lihat semua →</a></div>
     <div class="history-list" id="historyList"><div class="history-empty">Belum ada riwayat pindai.</div></div>
   </section>
 </main>
 
-<section class="result-view hidden" id="resultView">
-  <div class="wrap result-top">
-    <a class="back" href="#" id="backBtn">← Kembali</a>
-    <div class="product-row">
-      <div class="thumb" id="resultThumb"></div>
-      <div><span class="kicker" id="resultKicker">Analisis</span><h2 id="resultName">—</h2><p id="resultMeta"></p></div>
-      <div class="result-head-actions"><button class="small-btn" id="shareBtn">Bagikan</button><button class="small-btn" id="deleteBtn">Hapus</button></div>
-    </div>
-  </div>
-  <div class="wrap result-grid">
-    <div class="result-main" id="reportMain"></div>
-    <aside class="sidebar"><div class="side-card" id="reportSide"></div></aside>
-  </div>
-</section>
-
 <div class="modal hidden" id="confirmModal"><div class="modal-box"><h3>Mulai pindai</h3><p id="confirmText"></p><div class="modal-actions"><button class="btn ghost" data-close>Batal</button><button class="btn" id="confirmScan">Mulai pindai</button></div></div></div>
 <div class="modal hidden" id="payModal"><div class="modal-box"><h3>Beli kredit</h3><p id="payBalance"></p><div class="pay-packs" id="payPacks"></div><p id="payMsg"></p><div class="modal-actions"><button class="btn ghost" data-close>Tutup</button></div></div></div>
+<div class="guide-modal hidden" id="guideModal" role="dialog" aria-modal="true" aria-labelledby="guideModalTitle">
+  <div class="guide-dialog"><div class="guide-dialog-head"><span id="guideModalTitle">Panduan label makanan</span><button type="button" id="guideClose" aria-label="Tutup">×</button></div><div class="guide-dialog-body" id="guideBody"><p>Memuat…</p></div></div>
+</div>
 <div class="toast hidden" id="toast"></div>
 
 <footer><div class="wrap footer-inner">
@@ -121,9 +152,9 @@
   <span>Hanya untuk informasi nutrisi umum. Bukan saran medis.</span>
 </div></footer>
 
-<script type="application/json" id="ui">{"title": "Analisis label makanan: bahan & nutrisi — AIGLOSSA FOOD", "description": "Analisis label makanan: pahami bahan, fakta nutrisi, zat aditif, dan siapa yang perlu waspada. Bukan saran medis.", "h1": "Baca labelnya. Pahami makanannya.", "sub": "Pindai bahan, informasi nilai gizi, atau label kemasan impor. Dapatkan laporan lengkap dalam hitungan detik.", "nav_scan": "Pindai", "nav_how": "Cara kerja", "nav_pricing": "Harga", "sign_in": "Masuk", "account": "Akun", "credits": "kredit", "buy": "Beli kredit", "scan_title": "Pindai label", "scan_sub": "Bahan · Fakta nutrisi · Label impor", "upload": "Ambil foto atau unggah", "upload_hint": "JPG, PNG atau WebP · maksimal 8 MB", "choose_file": "Pilih file", "camera": "Kamera", "scan_button": "Mulai pindai", "scanning": "Membaca label…", "scan_cost": "3 kredit / pindai", "scan_seconds": "sekitar 4 detik", "retake": "Ambil ulang", "change_image": "Ganti foto", "login_required": "Silakan masuk untuk memindai.", "insufficient": "Kredit tidak cukup. Beli kredit untuk melanjutkan.", "scan_failed": "Tidak dapat menganalisis label ini. Silakan coba lagi.", "image_invalid": "Gambar ini tidak dapat dibaca. Coba foto yang lebih jelas.", "network_error": "Kesalahan jaringan. Silakan coba lagi.", "scan_pending": "Menganalisis…", "scan_timeout": "Proses ini memakan waktu lebih lama dari biasanya. Anda dapat memeriksa riwayat nanti.", "unsupported_language": "Bahasa ini belum didukung.", "result_title": "Analisis", "analyzed_in": "Bahasa laporan", "original": "Asli", "translated": "Terjemahan", "save": "Simpan", "saved": "Tersimpan", "delete": "Hapus", "delete_confirm": "Hapus hasil pindai ini?", "delete_body": "Laporan dan gambar akan dihapus.", "new_scan": "Pindai lagi", "history": "Riwayat pindai", "view_all": "Lihat semua", "no_history": "Belum ada riwayat pindai.", "back": "Kembali", "verdict": "Ringkasan", "nutrition": "Nutrisi", "ingredients": "Bahan", "who_notes": "Catatan penting", "how_to_eat": "Saran konsumsi", "data_notes": "Catatan data", "disclaimer_label": "Penafian", "per_100g": "per 100g", "per_serving": "per sajian", "nrv": "NRV", "not_labeled": "Tidak ada label", "high": "Tinggi", "medium": "Sedang", "info": "Info", "avoid": "Hindari", "caution": "Perhatian", "limit": "Batasi", "energy": "Energi", "protein": "Protein", "fat": "Lemak", "sat_fat": "Lemak jenuh", "carb": "Karbohidrat", "sugar": "Gula", "sodium": "Natrium", "fiber": "Serat", "salt": "Garam", "cholesterol": "Kolesterol", "trans_fat": "Lemak trans", "added_sugar": "Gula tambahan", "value_1_title": "Penjelasan bahan", "value_1_body": "Setiap kata asing dijelaskan: apa itu, mengapa ada di sana, dan siapa yang harus memperhatikannya.", "value_2_title": "Analisis nutrisi", "value_2_body": "Per 100g, per sajian, dan NRV disajikan bersama — tinggi, sedang, dan rendah dalam format yang mudah dibaca.", "value_3_title": "Catatan penting", "value_3_body": "Catatan umum bagi orang yang perlu memperhatikan natrium, gula, alergen, atau aditif.", "recent": "Riwayat pindai", "how_title": "Cara kerja", "how_1": "Foto labelnya", "how_2": "Kami membaca bahan dan nutrisi", "how_3": "Dapatkan laporan umum yang jelas", "cta": "Mulai memindai", "footer_disclaimer": "Hanya untuk informasi nutrisi umum. Bukan saran medis.", "pay_title": "Beli kredit", "pay_balance": "Saldo", "pay_waiting": "Menunggu pembayaran…", "pay_success": "Kredit telah ditambahkan.", "pay_failed": "Pembayaran gagal. Silakan coba lagi.", "pay_close": "Tutup", "credits_unit": "kredit", "one_scan": "1 pindai = 3 kredit", "install": "Pasang aplikasi", "install_hint": "Tambahkan aiglossa food ke layar utama Anda untuk memindai lebih cepat.", "offline": "Anda sedang offline. Pemindaian memerlukan koneksi internet.", "update": "Versi baru sudah tersedia.", "sample": "Contoh label", "image_alt": "Label makanan", "privacy": "Privasi", "terms": "Ketentuan", "refund": "Pengembalian dana", "contact": "Kontak", "cancel": "Batal", "cautions": "Perhatian", "value_head": "Satu label, tiga lapisan", "value_intro": "Bahan, nutrisi, dan siapa yang perlu berhati-hati — dijelaskan dengan jelas.", "status_done": "Selesai", "status_failed": "Gagal", "status_pending": "Menganalisis", "show_all": "Lihat semua", "show_less": "Tutup", "share": "Bagikan", "share_text": "Saya memindai «{product}»: {headline}.", "share_copied": "Tautan disalin", "share_failed": "Tidak dapat membuat tautan", "share_heading": "Analisis label makanan", "share_cta": "Coba analisis label", "daily_ref": "dari referensi harian", "nutrition_note": "Per 100 g. Persentase berdasarkan referensi harian orang dewasa umum, bukan skor kesehatan. “Tidak tercantum” bukan berarti nol.", "energy_note": "kcal dan kJ adalah dua satuan energi yang sama; 1 kcal ≈ 4.184 kJ.", "buy_short": "Beli", "multi_hint": "Produk sama: hingga 3 foto — depan, komposisi, nutrisi.", "nutrition_empty_title": "Nutrisi tidak tersedia", "nutrition_empty_body": "Label ini tidak memiliki tabel informasi nilai gizi yang terbaca.", "nutrition_note_generic": "Persentase berdasarkan referensi harian orang dewasa, bukan skor kesehatan. “Tidak tertera” bukan berarti nol.", "inferred": "disimpulkan"}</script>
-<script src="../../assets/wallet.js?v=20261031-28"></script>
-<script src="../../assets/food.js?v=20261031-28"></script>
+<script type="application/json" id="ui">{"title": "Analisis label makanan: bahan & nutrisi — AIGLOSSA FOOD", "description": "Analisis label makanan: pahami bahan, fakta nutrisi, zat aditif, dan siapa yang perlu waspada. Bukan saran medis.", "h1": "Baca labelnya. Pahami makanannya.", "sub": "Pindai bahan, informasi nilai gizi, atau label kemasan impor. Dapatkan laporan lengkap dalam hitungan detik.", "nav_scan": "Pindai", "nav_how": "Cara kerja", "nav_pricing": "Harga", "sign_in": "Masuk", "account": "Akun", "credits": "kredit", "buy": "Beli kredit", "scan_title": "Pindai label", "scan_sub": "Bahan · Fakta nutrisi · Label impor", "upload": "Ambil foto atau unggah", "upload_hint": "JPG, PNG atau WebP · maksimal 8 MB", "choose_file": "Pilih file", "camera": "Kamera", "scan_button": "Mulai pindai", "scanning": "Membaca label…", "scan_cost": "3 kredit / pindai", "scan_seconds": "sekitar 4 detik", "retake": "Ambil ulang", "change_image": "Ganti foto", "login_required": "Silakan masuk untuk memindai.", "insufficient": "Kredit tidak cukup. Beli kredit untuk melanjutkan.", "scan_failed": "Tidak dapat menganalisis label ini. Silakan coba lagi.", "image_invalid": "Gambar ini tidak dapat dibaca. Coba foto yang lebih jelas.", "network_error": "Kesalahan jaringan. Silakan coba lagi.", "scan_pending": "Menganalisis…", "loading_report": "Memuat laporan…", "loading_history": "Memuat riwayat pindai…", "scan_timeout": "Proses ini memakan waktu lebih lama dari biasanya. Anda dapat memeriksa riwayat nanti.", "unsupported_language": "Bahasa ini belum didukung.", "result_title": "Analisis", "analyzed_in": "Bahasa laporan", "original": "Asli", "translated": "Terjemahan", "save": "Simpan", "saved": "Tersimpan", "delete": "Hapus", "delete_confirm": "Hapus hasil pindai ini?", "delete_body": "Laporan dan gambar akan dihapus.", "new_scan": "Pindai lagi", "history": "Riwayat pindai", "history_all": "Semua pemindaian", "view_all": "Lihat semua", "no_history": "Belum ada riwayat pindai.", "back": "Kembali", "verdict": "Ringkasan", "nutrition": "Nutrisi", "ingredients": "Bahan", "who_notes": "Catatan penting", "how_to_eat": "Saran konsumsi", "data_notes": "Catatan data", "disclaimer_label": "Penafian", "per_100g": "per 100g", "per_serving": "per sajian", "nrv": "NRV", "not_labeled": "Tidak ada label", "high": "Tinggi", "medium": "Sedang", "info": "Info", "avoid": "Hindari", "caution": "Perhatian", "limit": "Batasi", "energy": "Energi", "protein": "Protein", "fat": "Lemak", "sat_fat": "Lemak jenuh", "carb": "Karbohidrat", "sugar": "Gula", "sodium": "Natrium", "fiber": "Serat", "salt": "Garam", "cholesterol": "Kolesterol", "trans_fat": "Lemak trans", "added_sugar": "Gula tambahan", "value_1_title": "Penjelasan bahan", "value_1_body": "Setiap kata asing dijelaskan: apa itu, mengapa ada di sana, dan siapa yang harus memperhatikannya.", "value_2_title": "Analisis nutrisi", "value_2_body": "Per 100g, per sajian, dan NRV disajikan bersama — tinggi, sedang, dan rendah dalam format yang mudah dibaca.", "value_3_title": "Catatan penting", "value_3_body": "Catatan umum bagi orang yang perlu memperhatikan natrium, gula, alergen, atau aditif.", "recent": "Riwayat pindai", "how_title": "Cara kerja", "how_1": "Foto labelnya", "how_2": "Kami membaca bahan dan nutrisi", "how_3": "Dapatkan laporan umum yang jelas", "cta": "Mulai memindai", "footer_disclaimer": "Hanya untuk informasi nutrisi umum. Bukan saran medis.", "pay_title": "Beli kredit", "pay_balance": "Saldo", "pay_waiting": "Menunggu pembayaran…", "pay_success": "Kredit telah ditambahkan.", "pay_failed": "Pembayaran gagal. Silakan coba lagi.", "pay_close": "Tutup", "credits_unit": "kredit", "one_scan": "1 pindai = 3 kredit", "install": "Pasang aplikasi", "install_hint": "Tambahkan aiglossa food ke layar utama Anda untuk memindai lebih cepat.", "offline": "Anda sedang offline. Pemindaian memerlukan koneksi internet.", "update": "Versi baru sudah tersedia.", "sample": "Contoh label", "image_alt": "Label makanan", "privacy": "Privasi", "terms": "Ketentuan", "refund": "Pengembalian dana", "contact": "Kontak", "cancel": "Batal", "cautions": "Perhatian", "value_head": "Satu label, tiga lapisan", "value_intro": "Bahan, nutrisi, dan siapa yang perlu berhati-hati — dijelaskan dengan jelas.", "status_done": "Selesai", "status_failed": "Gagal", "status_pending": "Menganalisis", "show_all": "Lihat semua", "show_less": "Tutup", "share": "Bagikan", "share_text": "Saya memindai «{product}»: {headline}.", "share_copied": "Tautan disalin", "share_failed": "Tidak dapat membuat tautan", "share_heading": "Analisis label makanan", "share_cta": "Coba analisis label", "daily_ref": "dari referensi harian", "nutrition_note": "Per 100 g. Persentase berdasarkan referensi harian orang dewasa umum, bukan skor kesehatan. “Tidak tercantum” bukan berarti nol.", "energy_note": "kcal dan kJ adalah dua satuan energi yang sama; 1 kcal ≈ 4.184 kJ.", "buy_short": "Beli", "multi_hint": "Satu foto yang jelas per pemindaian. Pilih daftar bahan atau tabel nutrisi yang ingin dibaca.", "nutrition_empty_title": "Nutrisi tidak tersedia", "nutrition_empty_body": "Label ini tidak memiliki tabel informasi nilai gizi yang terbaca.", "nutrition_note_generic": "Persentase berdasarkan referensi harian orang dewasa, bukan skor kesehatan. “Tidak tertera” bukan berarti nol.", "inferred": "disimpulkan"}</script>
+<script src="../../assets/wallet.js?v=20261102-45"></script>
+<script src="../../assets/food.js?v=20261102-45"></script>
 
 <script>
 (function () {

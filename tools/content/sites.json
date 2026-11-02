@@ -41,6 +41,9 @@
     "host": "food.aiglossa.com",
     "pages": [
       "food",
+      "food-history",
+      "food-result",
+      "food-guides",
       "food-share"
     ]
   },

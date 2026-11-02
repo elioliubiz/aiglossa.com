@@ -21,16 +21,19 @@
 <link rel="alternate" hreflang="x-default" href="https://food.aiglossa.com/en/food/">
 <meta property="og:type" content="website"><meta property="og:site_name" content="AIGLOSSA FOOD"><meta property="og:locale" content="zh_TW"><meta property="og:title" content="食品標籤分析：成分與營養 — AIGLOSSA FOOD"><meta property="og:description" content="分析食品標籤：了解成分、營養資訊、添加物及注意事項。本內容不構成醫療建議。"><meta property="og:url" content="https://food.aiglossa.com/zh-Hant/food/"><meta property="og:image" content="https://food.aiglossa.com/assets/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="食品標籤">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="食品標籤分析：成分與營養 — AIGLOSSA FOOD"><meta name="twitter:description" content="分析食品標籤：了解成分、營養資訊、添加物及注意事項。本內容不構成醫療建議。"><meta name="twitter:image" content="https://food.aiglossa.com/assets/og.png">
-<meta name="theme-color" content="#FBFAF7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="manifest" href="manifest.webmanifest?v=20261031-28">
-<link rel="icon" type="image/png" sizes="64x64" href="../../assets/favicon-food-64.png?v=20261031-28"><link rel="icon" type="image/svg+xml" href="../../assets/favicon-food.svg?v=20261031-28"><link rel="shortcut icon" href="../../assets/favicon-food.ico?v=20261031-28"><link rel="apple-touch-icon" href="../../assets/apple-touch-icon-food.png?v=20261031-28">
-<link rel="stylesheet" href="../../assets/food.css?v=20261031-28">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "食品標籤分析：成分與營養 — AIGLOSSA FOOD", "description": "分析食品標籤：了解成分、營養資訊、添加物及注意事項。本內容不構成醫療建議。", "applicationCategory": "HealthApplication", "operatingSystem": "Web", "url": "https://food.aiglossa.com/zh-Hant/food/", "inLanguage": "zh-Hant"}</script>
+<meta name="theme-color" content="#F5F9F7"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default">
+<script>(function(){try{localStorage.removeItem("aiglossa_theme")}catch(e){}var m=matchMedia("(prefers-color-scheme: dark)");function sync(){var dark=m.matches;document.documentElement.dataset.theme=dark?"dark":"light";var meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=dark?"#121A18":"#F5F9F7"}sync();if(m.addEventListener)m.addEventListener("change",sync);else m.addListener(sync)})();</script>
+<link rel="manifest" href="manifest.webmanifest?v=20261102-45">
+<link rel="icon" type="image/png" sizes="64x64" href="../../assets/favicon-food-64.png?v=20261102-45"><link rel="icon" type="image/svg+xml" href="../../assets/favicon-food.svg?v=20261102-45"><link rel="shortcut icon" href="../../assets/favicon-food.ico?v=20261102-45"><link rel="apple-touch-icon" href="../../assets/apple-touch-icon-food.png?v=20261102-45">
+<link rel="stylesheet" href="../../assets/food.css?v=20261102-45">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "食品標籤分析：成分與營養 — AIGLOSSA FOOD", "description": "分析食品標籤：了解成分、營養資訊、添加物及注意事項。本內容不構成醫療建議。", "applicationCategory": "LifestyleApplication", "operatingSystem": "Web", "url": "https://food.aiglossa.com/zh-Hant/food/", "inLanguage": "zh-Hant", "featureList": ["成分", "營養成分", "注意事項"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "照片中應該拍到什麼？", "acceptedAnswer": {"@type": "Answer", "text": "每次上傳一張清晰照片，請對準希望報告讀取的成分表或營養標示。"}}, {"@type": "Question", "name": "可以辨識進口或外文標籤嗎？", "acceptedAnswer": {"@type": "Answer", "text": "可以。文字清晰時，報告會保留相關原文，並以目前頁面語言解釋。"}}, {"@type": "Question", "name": "沒有營養標示怎麼辦？", "acceptedAnswer": {"@type": "Answer", "text": "報告會明確顯示資料無法取得，不會將缺少資訊視為零或猜測數值。"}}, {"@type": "Question", "name": "NRV 是健康評分嗎？", "acceptedAnswer": {"@type": "Answer", "text": "不是。NRV 是一般成人每日參考值，用來理解標示含量，不是食品評分。"}}]}</script>
 </head>
 <body>
 <header class="topbar"><div class="wrap topbar-inner">
-  <a class="brand" href="./" aria-label="AIGLOSSA FOOD"><span class="brand-mark food-logo"><img src="../../assets/favicon-food.svg?v=20261031-28" alt=""></span> AIGLOSSA</a>
+  <a class="brand" href="./" aria-label="AIGLOSSA FOOD"><span class="brand-mark food-logo"><img src="../../assets/favicon-food.svg?v=20261102-45" alt=""></span> AIGLOSSA</a>
   <div class="top-actions">
+    <span id="themeToggle" hidden></span>
     <a class="login-link" id="loginBtn" href="#">登入</a>
     <button class="account-flat hidden" id="accountBtn"><span class="avatar" id="avatar">?</span><span class="balance" id="balanceText">—<span>點數</span></span></button>
     <a class="pill-btn buy-btn hidden" id="buyBtn" href="#"><span class="buy-full">購買點數</span><span class="buy-short">購買</span></a>
@@ -48,9 +51,9 @@
         <div class="scan-icon"><svg viewBox="0 0 24 24"><path d="M4 8.5A2.5 2.5 0 0 1 6.5 6h1.2l1.1-1.8h6.4L16.3 6h1.2A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5z"/><circle cx="12" cy="12.3" r="3.2"/></svg></div>
         <div class="scan-copy"><b>拍照或上傳圖片</b><span>成分 · 營養標示 · 進口標籤</span></div>
         <div class="scan-actions"><label class="btn" for="fileInput">選擇檔案</label><label class="btn ghost" for="cameraInput">相機</label></div>
-        <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+        <input class="file-input" id="fileInput" type="file" accept="image/jpeg,image/png,image/webp">
         <input class="file-input" id="cameraInput" type="file" accept="image/*" capture="environment">
-        <p class="multi-hint">同一產品：最多可拍攝 3 張照片（正面、成分表、營養標示）。</p>
+        <p class="multi-hint">每次掃描一張清晰照片，請選擇要讀取的成分表或營養標示。</p>
         <div class="preview-wrap hidden" id="previewWrap"><div class="preview-grid" id="previewGrid"></div></div>
         <div class="scan-loading hidden" id="scanLoading"><span class="spinner"></span><span id="scanLoadingText">正在讀取標籤…</span></div>
         <button class="btn hidden" id="scanButton" style="width:100%;margin-top:12px">開始掃描</button>
@@ -59,45 +62,73 @@
       <div class="pwa-banner hidden" id="pwaBanner"><span>將 aiglossa food 加入主畫面，掃描更快速。</span><button id="installBtn">安裝應用程式</button></div>
     </div>
     <div class="hero-visual">
-      <div class="photo-card"><img src="../../assets/food-sample.jpg?v=20261031-28" alt="標籤範例"></div>
-      <div class="scan-frame"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
-      <div class="result-chip"><span class="dot"></span> 標籤範例</div>
-      <div class="float-card"><b>飽和脂肪</b><span>10.5g / 100g</span><i class="bar"></i><small>NRV 53% · 高</small></div>
+      <div class="visual-shell">
+        <div class="visual-toolbar"><span><i></i> AIGLOSSA FOOD</span><small>標籤範例</small></div>
+        <div class="visual-workspace">
+          <div class="visual-media">
+            <div class="photo-card"><img src="../../assets/food-sample.jpg?v=20261102-45" alt="標籤範例"></div>
+            <div class="scan-frame"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i></div>
+            <div class="result-chip"><span class="dot"></span> 標籤範例</div>
+          </div>
+          <div class="visual-results">
+            <span class="visual-status">已完成</span>
+            <h3>分析結果</h3>
+            <div class="visual-score"><span>飽和脂肪</span><b>高</b><small>10.5g / 100g · NRV 53%</small></div>
+            <div class="visual-signal"><span>成分</span><b>12</b></div>
+            <div class="visual-signal"><span>營養成分</span><b>08</b></div>
+            <div class="visual-signal"><span>注意事項</span><b>03</b></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="wrap value" id="how">
-    <div class="value-head"><h2>一張標籤，三層資訊</h2><p>配料、營養，以及哪些人需要注意，用看得懂的方式講清楚。</p></div>
-    <div class="value-grid">
-      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M5 6.5h14M5 11h14M5 15.5h9"/><circle cx="18" cy="17" r="3"/><path d="m20.2 19.2 1.6 1.6"/></svg></div><h3>成分解析</h3><p>解析所有陌生詞彙：說明其用途、來源以及需要注意的族群。</p></article>
-      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M5 19V9M12 19V5M19 19v-6"/><path d="M4 19h16"/></svg></div><h3>營養分析</h3><p>結合每 100 克、每份及 NRV 數據，以易讀方式呈現高、中、低含量。</p></article>
-      <article class="value-card"><div class="value-icon"><svg viewBox="0 0 24 24"><path d="M12 3.5 19 6v5.5c0 4.2-2.8 7.2-7 9-4.2-1.8-7-4.8-7-9V6z"/><path d="M9.3 11.8 11.4 14l3.6-4"/></svg></div><h3>注意事項</h3><p>對鈉、糖、過敏原、添加劑等需要留意的人群，給出通用提示。</p></article>
+  <section class="wrap value" id="insight">
+    <div class="value-head"><div><span class="kicker">AIGLOSSA FOOD</span><h2>一張標籤，三層資訊</h2></div><p>配料、營養，以及哪些人需要注意，用看得懂的方式講清楚。</p></div>
+    <div class="insight-layout">
+      <div class="report-demo">
+        <div class="report-demo-head"><div><span>標籤範例</span><h3>分析結果</h3></div><b>已完成</b></div>
+        <div class="demo-summary"><span class="pill warn">總結</span><strong>飽和脂肪 · 高</strong><p>配料、營養，以及哪些人需要注意，用看得懂的方式講清楚。</p></div>
+        <div class="demo-cautions"><div><span>注意事項</span><b>飽和脂肪 · 高</b></div><div><span>注意事項</span><b>注意 · 限制</b></div></div>
+        <div class="demo-section"><div class="demo-section-head"><i>01</i><b>注意事項</b><span>03</span></div><div class="demo-person-row"><b>注意</b><span>限制</span></div></div>
+        <div class="demo-section"><div class="demo-section-head"><i>02</i><b>營養成分</b><span>每 100 克</span></div><div class="demo-metric"><span>熱量</span><b>431 kcal</b><small>—</small></div><div class="demo-metric"><span>飽和脂肪</span><b>10.5g</b><small>佔每日參考量 53%</small></div><div class="demo-metric"><span>糖</span><b>12.4g</b><small>佔每日參考量 28%</small></div><div class="demo-metric"><span>鈉</span><b>320mg</b><small>佔每日參考量 16%</small></div><p class="demo-note">百分比基於一般成人每日參考攝取量，非健康評分。「未標示」不代表含量為零。</p></div>
+        <div class="demo-section demo-ingredients"><div class="demo-section-head"><i>03</i><b>成分</b><span>12</span></div><div class="demo-ingredient-row"><div><strong>成分 01</strong><small>原文 · 已翻譯</small></div><span>資訊</span></div><div class="demo-ingredient-row"><div><strong>成分 02</strong><small>原文 · 推算</small></div><span>注意</span></div></div>
+        <div class="demo-footer"><span>食用建議 <b>03</b></span><span>數據說明 <b>02</b></span></div><p class="demo-disclaimer">僅供一般營養資訊參考，不具備醫療建議效力。</p>
+      </div>
+      <div class="value-stack">
+        <article class="value-card"><div class="value-number">01</div><div class="value-card-content"><h3>成分解析</h3><p>解析所有陌生詞彙：說明其用途、來源以及需要注意的族群。</p><div class="ingredient-preview"><div><b>成分 01</b><small>原文 · 已翻譯</small></div><span>資訊</span><div><b>成分 02</b><small>原文 · 推算</small></div><span>注意</span></div></div></article>
+        <article class="value-card"><div class="value-number">02</div><div class="value-card-content"><h3>營養分析</h3><p>結合每 100 克、每份及 NRV 數據，以易讀方式呈現高、中、低含量。</p><div class="nutrition-preview"><span><i>飽和脂肪</i><b>10.5g</b><small>佔每日參考量 53%</small></span><span><i>糖</i><b>12.4g</b><small>佔每日參考量 28%</small></span></div></div></article>
+        <article class="value-card"><div class="value-number">03</div><div class="value-card-content"><h3>注意事項</h3><p>對鈉、糖、過敏原、添加劑等需要留意的人群，給出通用提示。</p><div class="people-preview"><span><b>03</b>注意事項</span><span><b>02</b>數據說明</span></div></div></article>
+      </div>
     </div>
+  </section>
+
+  <section class="workflow-band" id="how"><div class="wrap workflow-inner">
+    <div class="workflow-head"><span class="kicker">AIGLOSSA FOOD</span><h2>運作方式</h2></div>
+    <ol class="workflow-list">
+      <li><span>01</span><div><b>拍攝標籤照片</b><small>成分 · 營養標示 · 進口標籤</small></div></li>
+      <li><span>02</span><div><b>我們讀取成分與營養資訊</b><small>約 4 秒</small></div></li>
+      <li><span>03</span><div><b>獲取清晰的綜合報告</b><small>僅供一般營養資訊參考，不具備醫療建議效力。</small></div></li>
+    </ol>
+  </div></section>
+
+  <section class="wrap knowledge" id="guides">
+    <div class="knowledge-head"><div><span class="kicker">標籤指南</span><h2>看懂標籤真正表達的內容</h2></div><p>報告中的每項說明都能回到包裝核對，才真正有用。這些簡短指南解釋數字、措辭和界線。</p></div>
+    <div class="knowledge-grid"><article><span>01</span><h3>如何閱讀營養標示</h3><p>正確理解每 100 克、每份、NRV、鈉和鹽，而非把表格當成健康評分。</p><a href="guides/read-nutrition-label/" data-food-guide="read-nutrition-label">閱讀指南</a></article><article><span>02</span><h3>成分、翻譯與過敏原</h3><p>理解成分順序、原文、翻譯、推斷說明及過敏提示。</p><a href="guides/ingredients-and-allergens/" data-food-guide="ingredients-and-allergens">閱讀指南</a></article><article><span>03</span><h3>AIGLOSSA FOOD 報告代表什麼</h3><p>了解報告讀取的內容、缺失資料處理方式，以及它不作出的判斷。</p><a href="guides/what-the-report-means/" data-food-guide="what-the-report-means">閱讀指南</a></article></div>
+    <div class="faq-block"><h2>掃描前常見問題</h2><div class="faq-list"><details><summary>照片中應該拍到什麼？</summary><p>每次上傳一張清晰照片，請對準希望報告讀取的成分表或營養標示。</p></details><details><summary>可以辨識進口或外文標籤嗎？</summary><p>可以。文字清晰時，報告會保留相關原文，並以目前頁面語言解釋。</p></details><details><summary>沒有營養標示怎麼辦？</summary><p>報告會明確顯示資料無法取得，不會將缺少資訊視為零或猜測數值。</p></details><details><summary>NRV 是健康評分嗎？</summary><p>不是。NRV 是一般成人每日參考值，用來理解標示含量，不是食品評分。</p></details></div></div>
   </section>
 
   <section class="wrap recent hidden" id="recentSection">
-    <div class="recent-head"><h2>近期掃描</h2><a href="#" id="historyRefresh">查看全部 →</a></div>
+    <div class="recent-head"><h2>近期掃描</h2><a href="history/" id="historyViewAll">查看全部 →</a></div>
     <div class="history-list" id="historyList"><div class="history-empty">尚無掃描紀錄。</div></div>
   </section>
 </main>
 
-<section class="result-view hidden" id="resultView">
-  <div class="wrap result-top">
-    <a class="back" href="#" id="backBtn">← 返回</a>
-    <div class="product-row">
-      <div class="thumb" id="resultThumb"></div>
-      <div><span class="kicker" id="resultKicker">分析結果</span><h2 id="resultName">—</h2><p id="resultMeta"></p></div>
-      <div class="result-head-actions"><button class="small-btn" id="shareBtn">分享</button><button class="small-btn" id="deleteBtn">刪除</button></div>
-    </div>
-  </div>
-  <div class="wrap result-grid">
-    <div class="result-main" id="reportMain"></div>
-    <aside class="sidebar"><div class="side-card" id="reportSide"></div></aside>
-  </div>
-</section>
-
 <div class="modal hidden" id="confirmModal"><div class="modal-box"><h3>開始掃描</h3><p id="confirmText"></p><div class="modal-actions"><button class="btn ghost" data-close>取消</button><button class="btn" id="confirmScan">開始掃描</button></div></div></div>
 <div class="modal hidden" id="payModal"><div class="modal-box"><h3>購買點數</h3><p id="payBalance"></p><div class="pay-packs" id="payPacks"></div><p id="payMsg"></p><div class="modal-actions"><button class="btn ghost" data-close>關閉</button></div></div></div>
+<div class="guide-modal hidden" id="guideModal" role="dialog" aria-modal="true" aria-labelledby="guideModalTitle">
+  <div class="guide-dialog"><div class="guide-dialog-head"><span id="guideModalTitle">食品標籤指南</span><button type="button" id="guideClose" aria-label="關閉指南">×</button></div><div class="guide-dialog-body" id="guideBody"><p>正在載入指南…</p></div></div>
+</div>
 <div class="toast hidden" id="toast"></div>
 
 <footer><div class="wrap footer-inner">
@@ -121,9 +152,9 @@
   <span>僅供一般營養資訊參考，不具備醫療建議效力。</span>
 </div></footer>
 
-<script type="application/json" id="ui">{"title": "食品標籤分析：成分與營養 — AIGLOSSA FOOD", "description": "分析食品標籤：了解成分、營養資訊、添加物及注意事項。本內容不構成醫療建議。", "h1": "讀懂標籤，吃得明白。", "sub": "掃描成分、營養標示或進口包裝，秒速獲取清晰報告。", "nav_scan": "掃描", "nav_how": "運作方式", "nav_pricing": "方案價格", "sign_in": "登入", "account": "帳戶", "credits": "點數", "buy": "購買點數", "scan_title": "掃描標籤", "scan_sub": "成分 · 營養標示 · 進口標籤", "upload": "拍照或上傳圖片", "upload_hint": "JPG, PNG 或 WebP · 最大 8 MB", "choose_file": "選擇檔案", "camera": "相機", "scan_button": "開始掃描", "scanning": "正在讀取標籤…", "scan_cost": "每次掃描 3 點", "scan_seconds": "約 4 秒", "retake": "重拍", "change_image": "更換照片", "login_required": "請登入以進行掃描。", "insufficient": "點數不足。請購買點數以繼續。", "scan_failed": "無法分析此標籤，請再試一次。", "image_invalid": "無法讀取此圖片，請嘗試更清晰的照片。", "network_error": "網路錯誤，請再試一次。", "scan_pending": "分析中…", "scan_timeout": "處理時間比預期長，您可以稍後查看歷史紀錄。", "unsupported_language": "目前不支援此語言。", "result_title": "分析結果", "analyzed_in": "報告語言", "original": "原文", "translated": "已翻譯", "save": "儲存", "saved": "已儲存", "delete": "刪除", "delete_confirm": "確定要刪除此掃描紀錄嗎？", "delete_body": "報告與圖片將會被刪除。", "new_scan": "再次掃描", "history": "近期掃描", "view_all": "查看全部", "no_history": "尚無掃描紀錄。", "back": "返回", "verdict": "總結", "nutrition": "營養成分", "ingredients": "成分", "who_notes": "注意事項", "how_to_eat": "食用建議", "data_notes": "數據說明", "disclaimer_label": "免責聲明", "per_100g": "每 100 克", "per_serving": "每份", "nrv": "NRV", "not_labeled": "未標示", "high": "高", "medium": "中", "info": "資訊", "avoid": "避免", "caution": "注意", "limit": "限制", "energy": "熱量", "protein": "蛋白質", "fat": "脂肪", "sat_fat": "飽和脂肪", "carb": "碳水化合物", "sugar": "糖", "sodium": "鈉", "fiber": "膳食纖維", "salt": "鹽", "cholesterol": "膽固醇", "trans_fat": "反式脂肪", "added_sugar": "添加糖", "value_1_title": "成分解析", "value_1_body": "解析所有陌生詞彙：說明其用途、來源以及需要注意的族群。", "value_2_title": "營養分析", "value_2_body": "結合每 100 克、每份及 NRV 數據，以易讀方式呈現高、中、低含量。", "value_3_title": "注意事項", "value_3_body": "對鈉、糖、過敏原、添加劑等需要留意的人群，給出通用提示。", "recent": "近期掃描", "how_title": "運作方式", "how_1": "拍攝標籤照片", "how_2": "我們讀取成分與營養資訊", "how_3": "獲取清晰的綜合報告", "cta": "開始掃描", "footer_disclaimer": "僅供一般營養資訊參考，不具備醫療建議效力。", "pay_title": "購買點數", "pay_balance": "餘額", "pay_waiting": "等待付款中…", "pay_success": "點數已儲值。", "pay_failed": "付款失敗，請再試一次。", "pay_close": "關閉", "credits_unit": "點", "one_scan": "1 次掃描 = 3 點", "install": "安裝應用程式", "install_hint": "將 aiglossa food 加入主畫面，掃描更快速。", "offline": "您目前離線，掃描功能需要網路連線。", "update": "已有新版本。", "sample": "標籤範例", "image_alt": "食品標籤", "privacy": "隱私權政策", "terms": "服務條款", "refund": "退款政策", "contact": "聯絡我們", "cancel": "取消", "cautions": "注意事項", "value_head": "一張標籤，三層資訊", "value_intro": "配料、營養，以及哪些人需要注意，用看得懂的方式講清楚。", "status_done": "已完成", "status_failed": "失敗", "status_pending": "分析中", "show_all": "展開全部", "show_less": "收起", "share": "分享", "share_text": "我掃了「{product}」的標籤：{headline}。", "share_copied": "分享連結已複製", "share_failed": "分享連結建立失敗", "share_heading": "食品標籤分析", "share_cta": "試試標籤分析", "daily_ref": "佔每日參考量", "nutrition_note": "以下為每100g的含量；百分比按一般成年人每日參考量估算，不是健康評分。「未標示」不等於 0。", "energy_note": "kcal 和 kJ 是同一能量的兩種單位；1 kcal ≈ 4.184 kJ。", "buy_short": "購買", "multi_hint": "同一產品：最多可拍攝 3 張照片（正面、成分表、營養標示）。", "nutrition_empty_title": "未提供營養資訊", "nutrition_empty_body": "此標籤未包含可讀取的營養成分表。", "nutrition_note_generic": "百分比基於一般成人每日參考攝取量，非健康評分。「未標示」不代表含量為零。", "inferred": "推算"}</script>
-<script src="../../assets/wallet.js?v=20261031-28"></script>
-<script src="../../assets/food.js?v=20261031-28"></script>
+<script type="application/json" id="ui">{"title": "食品標籤分析：成分與營養 — AIGLOSSA FOOD", "description": "分析食品標籤：了解成分、營養資訊、添加物及注意事項。本內容不構成醫療建議。", "h1": "讀懂標籤，吃得明白。", "sub": "掃描成分、營養標示或進口包裝，秒速獲取清晰報告。", "nav_scan": "掃描", "nav_how": "運作方式", "nav_pricing": "方案價格", "sign_in": "登入", "account": "帳戶", "credits": "點數", "buy": "購買點數", "scan_title": "掃描標籤", "scan_sub": "成分 · 營養標示 · 進口標籤", "upload": "拍照或上傳圖片", "upload_hint": "JPG, PNG 或 WebP · 最大 8 MB", "choose_file": "選擇檔案", "camera": "相機", "scan_button": "開始掃描", "scanning": "正在讀取標籤…", "scan_cost": "每次掃描 3 點", "scan_seconds": "約 4 秒", "retake": "重拍", "change_image": "更換照片", "login_required": "請登入以進行掃描。", "insufficient": "點數不足。請購買點數以繼續。", "scan_failed": "無法分析此標籤，請再試一次。", "image_invalid": "無法讀取此圖片，請嘗試更清晰的照片。", "network_error": "網路錯誤，請再試一次。", "scan_pending": "分析中…", "loading_report": "正在載入報告……", "loading_history": "正在載入紀錄……", "scan_timeout": "處理時間比預期長，您可以稍後查看歷史紀錄。", "unsupported_language": "目前不支援此語言。", "result_title": "分析結果", "analyzed_in": "報告語言", "original": "原文", "translated": "已翻譯", "save": "儲存", "saved": "已儲存", "delete": "刪除", "delete_confirm": "確定要刪除此掃描紀錄嗎？", "delete_body": "報告與圖片將會被刪除。", "new_scan": "再次掃描", "history": "近期掃描", "history_all": "全部掃描紀錄", "view_all": "查看全部", "no_history": "尚無掃描紀錄。", "back": "返回", "verdict": "總結", "nutrition": "營養成分", "ingredients": "成分", "who_notes": "注意事項", "how_to_eat": "食用建議", "data_notes": "數據說明", "disclaimer_label": "免責聲明", "per_100g": "每 100 克", "per_serving": "每份", "nrv": "NRV", "not_labeled": "未標示", "high": "高", "medium": "中", "info": "資訊", "avoid": "避免", "caution": "注意", "limit": "限制", "energy": "熱量", "protein": "蛋白質", "fat": "脂肪", "sat_fat": "飽和脂肪", "carb": "碳水化合物", "sugar": "糖", "sodium": "鈉", "fiber": "膳食纖維", "salt": "鹽", "cholesterol": "膽固醇", "trans_fat": "反式脂肪", "added_sugar": "添加糖", "value_1_title": "成分解析", "value_1_body": "解析所有陌生詞彙：說明其用途、來源以及需要注意的族群。", "value_2_title": "營養分析", "value_2_body": "結合每 100 克、每份及 NRV 數據，以易讀方式呈現高、中、低含量。", "value_3_title": "注意事項", "value_3_body": "對鈉、糖、過敏原、添加劑等需要留意的人群，給出通用提示。", "recent": "近期掃描", "how_title": "運作方式", "how_1": "拍攝標籤照片", "how_2": "我們讀取成分與營養資訊", "how_3": "獲取清晰的綜合報告", "cta": "開始掃描", "footer_disclaimer": "僅供一般營養資訊參考，不具備醫療建議效力。", "pay_title": "購買點數", "pay_balance": "餘額", "pay_waiting": "等待付款中…", "pay_success": "點數已儲值。", "pay_failed": "付款失敗，請再試一次。", "pay_close": "關閉", "credits_unit": "點", "one_scan": "1 次掃描 = 3 點", "install": "安裝應用程式", "install_hint": "將 aiglossa food 加入主畫面，掃描更快速。", "offline": "您目前離線，掃描功能需要網路連線。", "update": "已有新版本。", "sample": "標籤範例", "image_alt": "食品標籤", "privacy": "隱私權政策", "terms": "服務條款", "refund": "退款政策", "contact": "聯絡我們", "cancel": "取消", "cautions": "注意事項", "value_head": "一張標籤，三層資訊", "value_intro": "配料、營養，以及哪些人需要注意，用看得懂的方式講清楚。", "status_done": "已完成", "status_failed": "失敗", "status_pending": "分析中", "show_all": "展開全部", "show_less": "收起", "share": "分享", "share_text": "我掃了「{product}」的標籤：{headline}。", "share_copied": "分享連結已複製", "share_failed": "分享連結建立失敗", "share_heading": "食品標籤分析", "share_cta": "試試標籤分析", "daily_ref": "佔每日參考量", "nutrition_note": "以下為每100g的含量；百分比按一般成年人每日參考量估算，不是健康評分。「未標示」不等於 0。", "energy_note": "kcal 和 kJ 是同一能量的兩種單位；1 kcal ≈ 4.184 kJ。", "buy_short": "購買", "multi_hint": "每次掃描一張清晰照片，請選擇要讀取的成分表或營養標示。", "nutrition_empty_title": "未提供營養資訊", "nutrition_empty_body": "此標籤未包含可讀取的營養成分表。", "nutrition_note_generic": "百分比基於一般成人每日參考攝取量，非健康評分。「未標示」不代表含量為零。", "inferred": "推算"}</script>
+<script src="../../assets/wallet.js?v=20261102-45"></script>
+<script src="../../assets/food.js?v=20261102-45"></script>
 
 <script>
 (function () {

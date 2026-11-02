@@ -38,11 +38,12 @@ ASSETS = ROOT / "assets"
 
 # food 只使用自己的少量资源，避免把 scholan 截图等整套 assets 复制过去。
 FOOD_ASSETS = (
-    "food.css", "food.js", "food-share.js", "wallet.js", "favicon-food.svg", "favicon-food-64.png", "favicon-food.ico", "apple-touch-icon-food.png", "og.png",
+    "food.css", "food.js", "food-history.js", "food-result.js", "food-share.js", "wallet.js", "favicon-food.svg", "favicon-food-64.png", "favicon-food.ico", "apple-touch-icon-food.png", "og.png",
     "food-icon-192.png", "food-icon-512.png", "food-icon-maskable-512.png", "food-sample.jpg",
 )
 
-FOOD_ASSET_VERSION = "20261031-28"
+FOOD_ASSET_VERSION = "20261102-45"
+GLOBAL_ASSET_VERSION = "20261031-28"
 
 # root / tools / scholan 只复制页面实际引用的资源，避免把整套 assets
 # （Scholan 截图、其他站点图标等）复制进每个站点，造成仓库和部署冗余。
@@ -70,7 +71,7 @@ SCHOLAN_ASSETS = (
 )
 
 SKIN_ASSETS = (
-    "food.css", "skin.css", "skin.js", "skin-share.js", "wallet.js", "favicon-skin.svg",
+    "skin-base.css", "skin.css", "skin.js", "skin-share.js", "wallet.js", "favicon-skin.svg",
     "apple-touch-icon-skin.png", "og-skin.png", "skin-sample.jpg", "favicon-skin-64.png", "favicon-skin.ico", "skin-icon-192.png", "skin-icon-512.png",
     "skin-icon-maskable-512.png",
 )
@@ -120,6 +121,9 @@ PAGES = {
     "image": ("pages/image.html", "image", "image/index.html"),
     "image-share": ("pages/image-share.html", "image", "image/share/index.html"),
     "food": ("pages/food.html", "food", "food/index.html"),
+    "food-history": ("pages/food-history.html", "food", "food/history/index.html"),
+    "food-result": ("pages/food-result.html", "food", "food/result/index.html"),
+    "food-guides": ("pages/food-guide.html", "food-guides", "food/guides/{slug}/index.html"),
     "food-share": ("pages/food-share.html", "food", "food/share/index.html"),
     "skin": ("pages/skin.html", "skin", "skin/index.html"),
     "skin-share": ("pages/skin-share.html", "skin", "skin/share/index.html"),
@@ -327,6 +331,10 @@ def _site_urls(site: str, spec: dict) -> list[str]:
     gpath = CONTENT / "guides.json"
     if gpath.exists():
         guides = json.loads(gpath.read_text(encoding="utf-8"))
+    food_guides = {}
+    fgpath = CONTENT / "food-guides.json"
+    if fgpath.exists():
+        food_guides = json.loads(fgpath.read_text(encoding="utf-8"))
 
     urls: list[str] = []
     for page in spec["pages"]:
@@ -347,6 +355,14 @@ def _site_urls(site: str, spec: dict) -> list[str]:
             urls.append(("image/", None))
         elif page == "food":
             urls.append(("food/", None))
+        elif page == "food-history":
+            continue
+        elif page == "food-result":
+            continue
+        elif page == "food-guides":
+            urls.append(("food/guides/", None))
+            for slug in food_guides.get("slugs", []):
+                urls.append((f"food/guides/{slug}/", None))
         elif page == "food-share":
             continue
         elif page == "skin":
@@ -415,7 +431,7 @@ def _write_food_pwa(site: str, site_langs: list[str], languages: dict) -> None:
             json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
         sw = f"""/* aiglossa food service worker — network-first; cache is only an offline fallback. */
-const CACHE = "aiglossa-food-{lang}-v32";
+const CACHE = "aiglossa-food-{lang}-v48";
 const V = "{FOOD_ASSET_VERSION}";
 const SHELL = ["./", "../../assets/food.css?v=" + V, "../../assets/food.js?v=" + V, "../../assets/wallet.js?v=" + V, "../../assets/food-icon-192.png?v=" + V, "../../assets/food-icon-512.png?v=" + V, "../../assets/food-sample.jpg?v=" + V];
 self.addEventListener("install", (event) => {{
@@ -551,7 +567,7 @@ def main() -> int:
             "default": site_default,
             "og_locale": languages[lang]["ogLocale"],
             "prefix": "../" * depth,
-            "asset_v": FOOD_ASSET_VERSION,
+            "asset_v": GLOBAL_ASSET_VERSION,
             "site_base": site_base,
             "canonical": url_for(site_base, lang, page_path),
             "alternates": alternates_for(site_base, languages, site_default, page_path, site_langs),
@@ -614,7 +630,7 @@ def main() -> int:
                 print(f"✗ 缺文案源：tools/content/{source_key}.json", file=sys.stderr)
                 return 1
             source = json.loads(source_path.read_text(encoding="utf-8"))
-            # 指南目前只有英文：不走"缺语言即报错"的检查，按 guides.json 里的语言生成
+            # Tools 指南可逐步翻译；Food 指南要求与产品页一样覆盖全部站点语言。
             langs_to_check = ["en"] if page == "guides" else site_langs
             missing = [c for c in langs_to_check if c not in source]
             if missing:
@@ -786,6 +802,69 @@ def main() -> int:
                         emit(site, lang, 2, f"guides/{slug}.html", "pages/guide.html",
                              lambda lang, base, slug=slug: guide_values(lang, base, slug), have)
                 continue
+            elif page == "food-guides":
+                food_copy = json.loads((CONTENT / "food.json").read_text(encoding="utf-8"))
+                slugs = source["slugs"]
+
+                def food_guide_values(lang: str, base: str, slug: str, source=source) -> dict[str, str]:
+                    locale = source[lang]
+                    article = locale["articles"][slug]
+                    sections = "".join(
+                        f'<section><h2>{esc(section["title"])}</h2>'
+                        + "".join(f'<p>{esc(paragraph)}</p>' for paragraph in section["paragraphs"])
+                        + "</section>"
+                        for section in article["sections"]
+                    )
+                    return {
+                        "title": esc(article["title"] + " — AIGLOSSA FOOD"),
+                        "description": esc(article["description"]),
+                        "guide_kicker": esc(locale["guide_kicker"]),
+                        "guide_title": esc(article["title"]),
+                        "guide_description": esc(article["description"]),
+                        "guide_body": sections,
+                        "back_to_guides": esc(locale["back_to_guides"]),
+                        "back_to_food": esc(locale["back_to_food"]),
+                        "legal_privacy": esc(marketing[lang]["legal"]["privacy"]),
+                        "legal_terms": esc(marketing[lang]["legal"]["terms"]),
+                        "asset_v": FOOD_ASSET_VERSION,
+                        "jsonld": json.dumps({
+                            "@context": "https://schema.org", "@type": "Article",
+                            "headline": article["title"], "description": article["description"],
+                            "url": f"{base}/{lang}/food/guides/{slug}/",
+                            "inLanguage": languages[lang]["hreflang"],
+                            "publisher": {"@type": "Organization", "name": "aiglossa", "url": "https://aiglossa.com"},
+                        }, ensure_ascii=False).replace("</", "<\\/"),
+                    }
+
+                for lang in site_langs:
+                    locale = source[lang]
+                    cards = "".join(
+                        f'<li><a href="{slug}/"><span>{esc(locale["articles"][slug]["title"])}</span>'
+                        f'<small>{esc(locale["articles"][slug]["description"])}</small></a></li>'
+                        for slug in slugs
+                    )
+                    emit(site, lang, 3, "food/guides/index.html", "pages/food-guide.html",
+                         lambda lang, base, locale=locale, cards=cards: {
+                             "title": esc(locale["index_title"] + " — AIGLOSSA FOOD"),
+                             "description": esc(locale["index_description"]),
+                             "guide_kicker": esc(locale["guide_kicker"]),
+                             "guide_title": esc(locale["index_title"]),
+                             "guide_description": esc(locale["index_description"]),
+                             "guide_body": f'<ul class="food-guide-list">{cards}</ul>',
+                             "back_to_guides": esc(locale["index_title"]),
+                             "back_to_food": esc(locale["back_to_food"]),
+                             "legal_privacy": esc(marketing[lang]["legal"]["privacy"]),
+                             "legal_terms": esc(marketing[lang]["legal"]["terms"]),
+                             "asset_v": FOOD_ASSET_VERSION,
+                             "jsonld": json.dumps({"@context": "https://schema.org", "@type": "CollectionPage",
+                                                   "name": locale["index_title"], "description": locale["index_description"],
+                                                   "url": f"{base}/{lang}/food/guides/",
+                                                   "inLanguage": languages[lang]["hreflang"]}, ensure_ascii=False).replace("</", "<\\/"),
+                         }, site_langs)
+                    for slug in slugs:
+                        emit(site, lang, 4, f"food/guides/{slug}/index.html", "pages/food-guide.html",
+                             lambda lang, base, slug=slug: food_guide_values(lang, base, slug), site_langs)
+                continue
             elif page == "music":
                 def make_values(lang: str, base: str, source=source) -> dict[str, str]:
                     copy = source[lang].get("make") or source["en"]["make"]
@@ -797,7 +876,7 @@ def main() -> int:
                     out["drop"] = copy["drop"]                      # 含 <br>，按 HTML 原样插入
                     out["title"] = esc(copy["title"])
                     out["description"] = esc(copy["description"])
-                    out["asset_v"] = FOOD_ASSET_VERSION
+                    out["asset_v"] = GLOBAL_ASSET_VERSION
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
                     out["alt_sea"] = esc(copy["title"])
                     out["jsonld"] = json.dumps({
@@ -827,7 +906,7 @@ def main() -> int:
                     return out
 
                 values_builder = share_values
-            elif page in ("food", "food-share"):
+            elif page in ("food", "food-history", "food-result", "food-share"):
                 def food_values(lang: str, base: str, source=source) -> dict[str, str]:
                     copy = source[lang]
                     out = {key: (value if isinstance(value, str) else value) for key, value in copy.items()}
@@ -843,11 +922,37 @@ def main() -> int:
                     out["lang_label"] = esc(marketing[lang]["langLabel"])
                     out["current_name"] = esc(languages[lang]["name"])
                     out["brand"] = esc("aiglossa food")
+                    guide_source = json.loads((CONTENT / "food-guides.json").read_text(encoding="utf-8"))
+                    guide_locale = guide_source[lang]
+                    out["knowledge_cards"] = "".join(
+                        f'<article><span>0{i}</span><h3>{esc(guide_locale["articles"][slug]["title"])}</h3>'
+                        f'<p>{esc(guide_locale["articles"][slug]["description"])}</p>'
+                        f'<a href="guides/{slug}/" data-food-guide="{slug}">{esc(guide_locale["read_guide"])}</a></article>'
+                        for i, slug in enumerate(guide_source["slugs"], 1)
+                    )
+                    out["knowledge_kicker"] = esc(guide_locale["guide_kicker"])
+                    out["knowledge_title"] = esc(guide_locale["knowledge_title"])
+                    out["knowledge_intro"] = esc(guide_locale["knowledge_intro"])
+                    out["guides_label"] = esc(guide_locale["index_title"])
+                    out["guide_close"] = esc(guide_locale["close"])
+                    out["guide_loading"] = esc(guide_locale["loading"])
+                    out["faq_title"] = esc(guide_locale["faq_title"])
+                    out["faq_items"] = "".join(
+                        f'<details><summary>{esc(item["q"])}</summary><p>{esc(item["a"])}</p></details>'
+                        for item in guide_locale["faq"]
+                    )
                     out["jsonld"] = json.dumps({
-                        "@context": "https://schema.org", "@type": "SoftwareApplication",
+                        "@context": "https://schema.org", "@type": "WebApplication",
                         "name": copy["title"], "description": copy["description"],
-                        "applicationCategory": "HealthApplication", "operatingSystem": "Web",
+                        "applicationCategory": "LifestyleApplication", "operatingSystem": "Web",
                         "url": f"{base}/{lang}/food/", "inLanguage": languages[lang]["hreflang"],
+                        "featureList": [copy["ingredients"], copy["nutrition"], copy["who_notes"]],
+                    }, ensure_ascii=False).replace("</", "<\\/")
+                    out["faq_jsonld"] = json.dumps({
+                        "@context": "https://schema.org", "@type": "FAQPage",
+                        "mainEntity": [{"@type": "Question", "name": item["q"],
+                                        "acceptedAnswer": {"@type": "Answer", "text": item["a"]}}
+                                       for item in guide_locale["faq"]],
                     }, ensure_ascii=False).replace("</", "<\\/")
                     return out
                 values_builder = food_values
@@ -882,7 +987,7 @@ def main() -> int:
                     copy["options"] = {**common.get("options", {}), **source[lang].get("options", {})}
                     copy["recipe_names"] = {**common.get("recipe_names", {}), **source[lang].get("recipe_names", {})}
                     out = {key: (value if isinstance(value, (dict, list)) else esc(value)) for key, value in copy.items()}
-                    out["asset_v"] = FOOD_ASSET_VERSION
+                    out["asset_v"] = GLOBAL_ASSET_VERSION
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
                     out["jsonld"] = json.dumps({
                         "@context": "https://schema.org", "@type": "SoftwareApplication",
@@ -929,7 +1034,7 @@ def main() -> int:
                     for k in ("balance", "credits", "not_signed_in"):
                         copy[k] = source[lang]["make"][k]
                     out = {k: esc(v) for k, v in copy.items() if isinstance(v, str)}
-                    out["asset_v"] = FOOD_ASSET_VERSION
+                    out["asset_v"] = GLOBAL_ASSET_VERSION
                     out["ui_json"] = json.dumps(copy, ensure_ascii=False).replace("</", "<\\/")
                     out["refund_note"] = esc(copy["refund_note"])
                     out["legal_privacy"] = esc(marketing[lang]["legal"]["privacy"])

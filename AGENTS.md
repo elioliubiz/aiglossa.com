@@ -11,6 +11,7 @@
 - 登录、退出、账户状态：`docs/playbooks/auth.md`
 - Creem / 额度：`docs/playbooks/payments.md`
 - 构建、staging、生产：`docs/playbooks/deploy.md`
+- 视觉系统、产品色、明暗主题：`docs/DESIGN_SYSTEM.md`
 - 已发生的回归：`docs/REGRESSIONS.md`
 
 `AGENTS.md` 只保留硬规则和索引；细则放 playbooks，行为优先用测试锁住。
@@ -229,7 +230,9 @@ access token 写入 `localStorage`，也禁止用本地 Bearer Token 覆盖 Cook
 
 ## 设计
 
-工具站配色与创作页一致：`#0e0f11` 背景、`#ff7a1a` 主色、白色波形。共享主题在 `assets/theme.css`（只由工具站页面引入，避免污染品牌站的蓝紫色）。
+全站视觉规则、产品色和明暗主题见 `docs/DESIGN_SYSTEM.md`。统一的是排版、间距、材质、控件和交互，不是让所有产品使用相同主色或模板；修改正式页面前先按文档确认其产品色角色。
+
+产品顶栏品牌文字固定为 `AIGLOSSA`，不要追加产品名；产品名只用于页面标题、面包屑和页脚。历史、结果、分享等页面层级及加载动效必须遵循 `docs/DESIGN_SYSTEM.md`，并保持产品 CSS 相互隔离。
 
 ## 官方媒体资源
 

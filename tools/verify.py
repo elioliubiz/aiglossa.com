@@ -54,6 +54,14 @@ def outputs_for(page: str) -> list[tuple[str, str]]:
         return [("image/share/index.html", "image/share/")]
     if page == "food":
         return [("food/index.html", "food/")]
+    if page == "food-history":
+        return [("food/history/index.html", "food/history/")]
+    if page == "food-result":
+        return [("food/result/index.html", "food/result/")]
+    if page == "food-guides":
+        source = json.loads((CONTENT / "food-guides.json").read_text(encoding="utf-8"))
+        return ([('food/guides/index.html', 'food/guides/')] +
+                [(f'food/guides/{slug}/index.html', f'food/guides/{slug}/') for slug in source["slugs"]])
     if page == "food-share":
         return [("food/share/index.html", "food/share/")]
     if page == "skin":

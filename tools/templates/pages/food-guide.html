@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="{{lang}}" dir="{{dir}}">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{title}}</title><meta name="description" content="{{description}}"><link rel="canonical" href="{{canonical}}">{{alternates}}
+<meta property="og:type" content="article"><meta property="og:site_name" content="AIGLOSSA FOOD"><meta property="og:title" content="{{title}}"><meta property="og:description" content="{{description}}"><meta property="og:url" content="{{canonical}}"><meta property="og:image" content="{{site_base}}/assets/og.png">
+<meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#F5F9F7">
+<script>(function(){try{localStorage.removeItem("aiglossa_theme")}catch(e){}var m=matchMedia("(prefers-color-scheme: dark)");function sync(){var dark=m.matches;document.documentElement.dataset.theme=dark?"dark":"light";var meta=document.querySelector('meta[name="theme-color"]');if(meta)meta.content=dark?"#121A18":"#F5F9F7"}sync();if(m.addEventListener)m.addEventListener("change",sync);else m.addListener(sync)})();</script>
+<link rel="icon" type="image/svg+xml" href="{{prefix}}assets/favicon-food.svg?v={{asset_v}}"><link rel="stylesheet" href="{{prefix}}assets/food.css?v={{asset_v}}">
+<script type="application/ld+json">{{jsonld}}</script>
+</head>
+<body class="guide-page">
+<header class="topbar"><div class="wrap topbar-inner"><a class="brand" href="{{prefix}}{{lang}}/food/"><span class="brand-mark food-logo"><img src="{{prefix}}assets/favicon-food.svg?v={{asset_v}}" alt=""></span> AIGLOSSA</a><a class="guide-back" href="{{prefix}}{{lang}}/food/">{{back_to_food}}</a></div></header>
+<main class="food-guide-doc">
+  <nav class="guide-breadcrumb"><a href="{{prefix}}{{lang}}/food/guides/">{{back_to_guides}}</a></nav>
+  <header><span class="kicker">{{guide_kicker}}</span><h1>{{guide_title}}</h1><p>{{guide_description}}</p></header>
+  <div class="food-guide-body">{{guide_body}}</div>
+</main>
+<footer><div class="wrap footer-inner"><a href="{{prefix}}{{lang}}/food/">AIGLOSSA FOOD</a><div class="footer-links"><a href="https://aiglossa.com/{{lang}}/protocol/privacy.html">{{legal_privacy}}</a><a href="https://aiglossa.com/{{lang}}/protocol/term.html">{{legal_terms}}</a></div></div></footer>
+</body>
+</html>
