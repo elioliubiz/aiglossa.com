@@ -26,6 +26,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "tools" / "content"
 SITES_DIR = ROOT / "sites"
 INDEXNOW_KEY_FILE = ROOT / "tools" / "indexnow-key.txt"
+YANDEX_VERIFICATION_FILE = ROOT / "tools" / "yandex_aecf751203567a9a.html"
 PROTOCOL_PAGES = ("privacy", "term", "delete-account")
 # 页面登记（与 build.py 的 PAGES 对应）：页面名 -> [(产物文件, URL 路径)]。
 # 两者刻意分开：营销页的 URL 是 `<lang>/`，产物文件却是 `<lang>/index.html`。
@@ -113,9 +114,15 @@ def main() -> int:
             problems.append(f"IndexNow 验证文件缺失：{key_file.relative_to(ROOT)}")
         elif key_file.read_text(encoding="utf-8").strip() != indexnow_key:
             problems.append(f"IndexNow 验证文件内容错误：{key_file.relative_to(ROOT)}")
+        yandex_file = SITES_DIR / site / YANDEX_VERIFICATION_FILE.name
+        if not yandex_file.exists():
+            problems.append(f"Yandex 验证文件缺失：{yandex_file.relative_to(ROOT)}")
+        elif yandex_file.read_bytes() != YANDEX_VERIFICATION_FILE.read_bytes():
+            problems.append(f"Yandex 验证文件内容错误：{yandex_file.relative_to(ROOT)}")
 
     # 1) 产物与声明一一对应
     expected: set[Path] = set()
+    expected.update(SITES_DIR / site / YANDEX_VERIFICATION_FILE.name for site in sites)
     declared_extras: list[Path] = []
     for site, spec in sites.items():
         site_codes = spec.get("langs", codes)
