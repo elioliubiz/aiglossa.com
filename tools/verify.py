@@ -25,6 +25,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT = ROOT / "tools" / "content"
 SITES_DIR = ROOT / "sites"
+INDEXNOW_KEY_FILE = ROOT / "tools" / "indexnow-key.txt"
 PROTOCOL_PAGES = ("privacy", "term", "delete-account")
 # 页面登记（与 build.py 的 PAGES 对应）：页面名 -> [(产物文件, URL 路径)]。
 # 两者刻意分开：营销页的 URL 是 `<lang>/`，产物文件却是 `<lang>/index.html`。
@@ -103,6 +104,15 @@ def main() -> int:
     vercel = json.loads((ROOT / "vercel.json").read_text(encoding="utf-8"))
 
     problems: list[str] = []
+    indexnow_key = INDEXNOW_KEY_FILE.read_text(encoding="utf-8").strip()
+    if not re.fullmatch(r"[A-Za-z0-9-]{8,128}", indexnow_key):
+        problems.append("tools/indexnow-key.txt 不是有效的 IndexNow key")
+    for site in sites:
+        key_file = SITES_DIR / site / f"{indexnow_key}.txt"
+        if not key_file.exists():
+            problems.append(f"IndexNow 验证文件缺失：{key_file.relative_to(ROOT)}")
+        elif key_file.read_text(encoding="utf-8").strip() != indexnow_key:
+            problems.append(f"IndexNow 验证文件内容错误：{key_file.relative_to(ROOT)}")
 
     # 1) 产物与声明一一对应
     expected: set[Path] = set()
