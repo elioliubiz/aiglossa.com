@@ -85,10 +85,12 @@ footer{padding:56px 0 72px;background:#0e1118;border-top:1px solid rgba(255,255,
 .foot{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
 .foot .brand{font-size:13px;color:var(--dim)}
 .footer-main{display:flex;align-items:center;gap:18px;flex-wrap:wrap;min-width:0}
-.copyright{font-size:12px;color:var(--dim);white-space:nowrap}
+.copyright{font-size:13px;color:var(--muted);white-space:nowrap}
 .legal{display:flex;gap:18px;font-size:13px}
 .legal a{color:var(--muted);text-decoration:none}
 .legal a:hover{color:#fff}
+.footer-select{max-width:180px;border:0;background:transparent;color:var(--muted);font:inherit;font-size:13px;padding:8px 22px 8px 4px;cursor:pointer;color-scheme:light dark}
+.footer-select:focus{outline:1px solid var(--line);outline-offset:4px;border-radius:3px}
 
 .switcher{position:relative}
 .switcher summary{

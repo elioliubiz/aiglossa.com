@@ -110,7 +110,7 @@
   .hero .kicker{display:none}.hero h1{font-size:clamp(40px,6vw,72px);line-height:1.04;letter-spacing:0;font-weight:700;color:var(--ink)}.hero .lede{max-width:56ch;color:var(--mut);font-size:16px;line-height:1.75}.store{border-radius:8px;background:var(--ink);color:var(--bg);box-shadow:0 12px 30px rgba(52,46,88,.18)}
   .hero::before{top:-24%;background:radial-gradient(ellipse at 50% 42%,rgba(116,65,254,.15),rgba(95,127,212,.06) 48%,transparent 70%)}.stage{max-width:1160px;margin-top:40px}.devices{max-height:650px}.frame{background:linear-gradient(155deg,#777986,#292b35 46%,#545663 72%,#242630);box-shadow:var(--shadow)}
   .features{max-width:1040px;margin-top:clamp(48px,7vh,76px);gap:0;border-block:1px solid var(--line)}.features>div{border:0;padding:25px 28px 28px}.features>div+div{border-inline-start:1px solid var(--line)}.features .n{color:var(--acc);font-weight:700}.features h3{color:var(--ink);font-weight:680}.features p{color:var(--mut)}
-  .closing{color:var(--mut);max-width:680px}.closing:before{content:"";display:block;width:42px;height:3px;margin:0 auto 20px;background:linear-gradient(90deg,var(--acc),var(--acc-2),var(--gold))}
+  .closing{color:var(--mut);max-width:680px}
   footer{border-color:var(--line);background:color-mix(in srgb,var(--surface) 48%,transparent)}footer nav a{color:var(--mut)}footer nav a:hover{color:var(--ink)}.switcher summary{background:transparent;color:var(--mut)}.switcher ul{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow)}.switcher li a[aria-current],.switcher li a:hover{background:var(--surface-2);color:var(--ink)}
   @media(max-width:760px){.product-nav{height:60px}.product-brand img{width:30px;height:30px}.hero{padding-top:44px}.app-lockup img{width:40px;height:40px}.hero h1{font-size:clamp(36px,11vw,52px)}.hero .lede{font-size:14px}.stage{margin-top:28px;padding-inline:14px}.devices{aspect-ratio:4/3}.frame.tab{inset-inline-start:1%;width:82%}.frame.ph{inset-inline-start:auto;inset-inline-end:1%;width:29%}.features{display:block;margin-inline:18px;padding-inline:0}.features>div{padding-inline:4px}.features>div+div{border-inline-start:0;border-block-start:1px solid var(--line)}}
   @media(prefers-reduced-motion:reduce){.store{transition:none}.store:hover{transform:none}}
@@ -158,12 +158,7 @@
       <a href="{{legal_privacy_href}}">{{legal_privacy}}</a>
       <a href="{{legal_terms_href}}">{{legal_terms}}</a>
     </nav></div>
-    <details class="switcher">
-      <summary>{{current_name}}</summary>
-      <ul>
-{{switcher}}
-      </ul>
-    </details>
+    {{native_switcher}}
   </div>
 </footer>
 
