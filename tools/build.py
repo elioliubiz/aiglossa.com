@@ -35,6 +35,7 @@ CONTENT = ROOT / "tools" / "content"
 TEMPLATES = ROOT / "tools" / "templates"
 SITES_DIR = ROOT / "sites"
 ASSETS = ROOT / "assets"
+INDEXNOW_KEY_FILE = ROOT / "tools" / "indexnow-key.txt"
 
 # food 只使用自己的少量资源，避免把 scholan 截图等整套 assets 复制过去。
 FOOD_ASSETS = (
@@ -532,6 +533,10 @@ def _write_seo_files(site: str, spec: dict, site_langs: list[str],
     """
     base = f'https://{spec["host"]}'.rstrip("/")
     targets = SITES_DIR / site
+    indexnow_key = INDEXNOW_KEY_FILE.read_text(encoding="utf-8").strip()
+    if not re.fullmatch(r"[A-Za-z0-9-]{8,128}", indexnow_key):
+        raise ValueError("tools/indexnow-key.txt 不是有效的 IndexNow key")
+    (targets / f"{indexnow_key}.txt").write_text(indexnow_key, encoding="utf-8")
     xdef = default if default in site_langs else site_langs[0]
     paths = _site_urls(site, spec)
 

@@ -11,6 +11,7 @@
 - 登录、退出、账户状态：`docs/playbooks/auth.md`
 - Creem / 额度：`docs/playbooks/payments.md`
 - 构建、staging、生产：`docs/playbooks/deploy.md`
+- sitemap、搜索引擎提交、IndexNow：`docs/playbooks/seo.md`
 - 视觉系统、产品色、明暗主题：`docs/DESIGN_SYSTEM.md`
 - 已发生的回归：`docs/REGRESSIONS.md`
 
