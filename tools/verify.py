@@ -27,6 +27,13 @@ CONTENT = ROOT / "tools" / "content"
 SITES_DIR = ROOT / "sites"
 INDEXNOW_KEY_FILE = ROOT / "tools" / "indexnow-key.txt"
 YANDEX_VERIFICATION_FILE = ROOT / "tools" / "yandex_aecf751203567a9a.html"
+NAVER_VERIFICATION_FILES = {
+    "root": "navera478cab4109917326bd2ce483b98bfe0.html",
+    "tools": "naver14957b6e5cf01fec6c946f2e1ea389de.html",
+    "food": "naver8e00ffd617f18c734c2638430708c0ed.html",
+    "skin": "naver7cc379b62a3aa2d30d0a92315f2d86db.html",
+    "scholan": "naverba6167b98da84b8384161e7a5fb11c11.html",
+}
 PROTOCOL_PAGES = ("privacy", "term", "delete-account")
 # 页面登记（与 build.py 的 PAGES 对应）：页面名 -> [(产物文件, URL 路径)]。
 # 两者刻意分开：营销页的 URL 是 `<lang>/`，产物文件却是 `<lang>/index.html`。
@@ -119,10 +126,17 @@ def main() -> int:
             problems.append(f"Yandex 验证文件缺失：{yandex_file.relative_to(ROOT)}")
         elif yandex_file.read_bytes() != YANDEX_VERIFICATION_FILE.read_bytes():
             problems.append(f"Yandex 验证文件内容错误：{yandex_file.relative_to(ROOT)}")
+        naver_file = SITES_DIR / site / NAVER_VERIFICATION_FILES[site]
+        naver_content = f"naver-site-verification: {NAVER_VERIFICATION_FILES[site]}"
+        if not naver_file.exists():
+            problems.append(f"Naver 验证文件缺失：{naver_file.relative_to(ROOT)}")
+        elif naver_file.read_text(encoding="utf-8") != naver_content:
+            problems.append(f"Naver 验证文件内容错误：{naver_file.relative_to(ROOT)}")
 
     # 1) 产物与声明一一对应
     expected: set[Path] = set()
     expected.update(SITES_DIR / site / YANDEX_VERIFICATION_FILE.name for site in sites)
+    expected.update(SITES_DIR / site / filename for site, filename in NAVER_VERIFICATION_FILES.items())
     declared_extras: list[Path] = []
     for site, spec in sites.items():
         site_codes = spec.get("langs", codes)

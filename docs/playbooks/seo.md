@@ -25,3 +25,7 @@ python3 tools/submit_indexnow.py --submit
 ## Yandex Webmaster
 
 子域使用 Vercel CNAME，避免用同名 TXT 验证。统一 HTML 验证文件保存在 `tools/yandex_aecf751203567a9a.html`，构建时复制到五个站点根目录。Yandex 中每个生产 host 仍需作为独立网站添加，并分别提交自己的 `sitemap.xml`。
+
+## Naver Search Advisor
+
+五个生产 host 使用各自独立的 HTML 验证文件，文件名映射维护在 `tools/build.py` 的 `NAVER_VERIFICATION_FILES`。构建器按 Naver 标准内容生成文件，校验器检查站点与文件一一对应。验证后每个站点分别提交自己的 `sitemap.xml`，仅对韩语核心页按需请求抓取。
