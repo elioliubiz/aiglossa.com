@@ -38,7 +38,7 @@ ASSETS = ROOT / "assets"
 
 # food 只使用自己的少量资源，避免把 scholan 截图等整套 assets 复制过去。
 FOOD_ASSETS = (
-    "food.css", "food.js", "food-history.js", "food-result.js", "food-share.js", "wallet.js", "favicon-food.svg", "favicon-food-64.png", "favicon-food.ico", "apple-touch-icon-food.png", "og.png",
+    "food.css", "food.js", "food-history.js", "food-result.js", "food-share.js", "wallet.js", "favicon-food.svg", "favicon-food-64.png", "favicon-food.ico", "apple-touch-icon-food.png", "og-food.png",
     "food-icon-192.png", "food-icon-512.png", "food-icon-maskable-512.png", "food-sample.jpg",
 )
 
@@ -60,13 +60,13 @@ ROOT_ASSETS = (
 TOOLS_ASSETS = (
     "site.css", "site.js", "theme.css", "wallet.js", "share.js",
     "favicon-tools.svg", "apple-touch-icon-tools.png", "manifest-tools.webmanifest",
-    "icon-tools-192.png", "icon-tools-512.png", "og.png",
+    "icon-tools-192.png", "icon-tools-512.png", "og-tools.png", "og-music.png", "og-image.png",
     "brand/music.jpg", "brand/image.jpg",
 )
 SCHOLAN_ASSETS = (
     "site.css", "site.js", "protocol.css",
     "favicon-scholan-64.png", "favicon-scholan.ico", "apple-touch-icon-scholan.png",
-    "og.png",
+    "og-scholan.png",
     "scholan/icon.png",
     "scholan/real/ipad-spread.jpg", "scholan/real/ipad-library.jpg",
     "scholan/real/phone-reading.jpg", "scholan/real/phone-library.jpg",
@@ -74,7 +74,7 @@ SCHOLAN_ASSETS = (
 
 SKIN_ASSETS = (
     "skin-base.css", "skin.css", "skin.js", "skin-history.js", "skin-result.js", "skin-share.js", "wallet.js", "favicon-skin.svg",
-    "apple-touch-icon-skin.png", "og-skin.png", "skin-sample.jpg", "favicon-skin-64.png", "favicon-skin.ico", "skin-icon-192.png", "skin-icon-512.png",
+    "apple-touch-icon-skin.png", "og-skin-v2.png", "skin-sample.jpg", "favicon-skin-64.png", "favicon-skin.ico", "skin-icon-192.png", "skin-icon-512.png",
     "skin-icon-maskable-512.png",
 )
 SKIN_ASSET_VERSION = "20261102-21"
