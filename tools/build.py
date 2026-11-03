@@ -42,8 +42,8 @@ FOOD_ASSETS = (
     "food-icon-192.png", "food-icon-512.png", "food-icon-maskable-512.png", "food-sample.jpg",
 )
 
-FOOD_ASSET_VERSION = "20261103-46"
-GLOBAL_ASSET_VERSION = "20261103-36"
+FOOD_ASSET_VERSION = "20261103-47"
+GLOBAL_ASSET_VERSION = "20261103-37"
 
 # root / tools / scholan 只复制页面实际引用的资源，避免把整套 assets
 # （Scholan 截图、其他站点图标等）复制进每个站点，造成仓库和部署冗余。
@@ -77,7 +77,7 @@ SKIN_ASSETS = (
     "apple-touch-icon-skin.png", "og-skin-v2.png", "skin-sample.jpg", "favicon-skin-64.png", "favicon-skin.ico", "skin-icon-192.png", "skin-icon-512.png",
     "skin-icon-maskable-512.png",
 )
-SKIN_ASSET_VERSION = "20261103-22"
+SKIN_ASSET_VERSION = "20261103-23"
 SKIN_GUIDE_SLUGS = ("read-ingredient-list", "understand-key-actives", "build-a-routine")
 
 COPYRIGHTS = {
