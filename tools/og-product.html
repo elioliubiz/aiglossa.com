@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        width: 1200px;
+        height: 630px;
+        overflow: hidden;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+        background: #090b10;
+        color: #f8fafc;
+      }
+      .card {
+        --accent: #6c8cff;
+        --accent2: #4de0d2;
+        position: relative;
+        width: 1200px;
+        height: 630px;
+        padding: 58px 64px;
+        background:
+          radial-gradient(
+            640px 440px at 8% 100%,
+            color-mix(in srgb, var(--accent) 23%, transparent),
+            transparent 70%
+          ),
+          radial-gradient(
+            650px 430px at 95% 0,
+            color-mix(in srgb, var(--accent2) 17%, transparent),
+            transparent 72%
+          ),
+          linear-gradient(120deg, #090b10, #10131b 56%, #0a0c12);
+        overflow: hidden;
+      }
+      .card:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.035) 1px,
+            transparent 1px
+          );
+        background-size: 128px 128px;
+        mask-image: linear-gradient(90deg, #000, transparent 90%);
+      }
+      .top,
+      .hero,
+      .foot {
+        position: relative;
+        z-index: 1;
+      }
+      .top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+      .brand {
+        font-size: 19px;
+        font-weight: 700;
+        letter-spacing: 0.25em;
+      }
+      .brand:after {
+        content: "";
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        margin-inline-start: 13px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+      .studio,
+      .domain {
+        margin-top: 8px;
+        color: #7f899c;
+        font-size: 11px;
+        font-weight: 650;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+      }
+      .domain {
+        margin: 3px 0 0;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        align-items: center;
+        gap: 58px;
+        margin-top: 52px;
+      }
+      .icon-shell {
+        width: 238px;
+        height: 238px;
+        display: grid;
+        place-items: center;
+        filter: drop-shadow(
+          0 30px 42px color-mix(in srgb, var(--accent) 26%, transparent)
+        );
+        transform: rotate(-3deg);
+      }
+      .icon-shell img {
+        width: 238px;
+        height: 238px;
+  border-radius: 52px;
+        object-fit: contain;
+        transform: rotate(3deg);
+      }
+      .kicker {
+        margin: 0 0 14px;
+        color: var(--accent2);
+        font-size: 13px;
+        font-weight: 750;
+        letter-spacing: 0.19em;
+        text-transform: uppercase;
+      }
+      .copy h1 {
+        max-width: 760px;
+        margin: 0;
+        font-size: 58px;
+        line-height: 1.02;
+        letter-spacing: -0.035em;
+        font-weight: 740;
+      }
+      .copy p {
+        max-width: 650px;
+        margin: 22px 0 0;
+        color: #aab3c2;
+        font-size: 19px;
+        line-height: 1.5;
+      }
+      .foot {
+        position: absolute;
+        inset-inline: 64px;
+        inset-block-end: 42px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-block-start: 18px;
+        border-block-start: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .product {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .meta {
+        color: #7f899c;
+        font-size: 12px;
+        letter-spacing: 0.1em;
+      }
+      .tools {
+        --accent: #586eff;
+        --accent2: #43d8e8;
+      }
+      .music {
+        --accent: #286ff0;
+        --accent2: #a8d62d;
+      }
+      .image {
+        --accent: #6f57f7;
+        --accent2: #ef6b9b;
+      }
+      .food {
+        --accent: #21a270;
+        --accent2: #9bd448;
+      }
+      .skin {
+        --accent: #e56f9a;
+        --accent2: #f2b05e;
+      }
+      .scholan {
+        --accent: #8657f5;
+        --accent2: #f0ae44;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card" id="card">
+      <header class="top">
+        <div>
+          <div class="brand">AIGLOSSA</div>
+          <div class="studio">Product studio</div>
+        </div>
+        <div class="domain">AIGLOSSA.COM</div>
+      </header>
+      <section class="hero">
+        <div class="icon-shell"><img id="icon" alt="" /></div>
+        <div class="copy">
+          <p class="kicker" id="kicker"></p>
+          <h1 id="title"></h1>
+          <p id="body"></p>
+        </div>
+      </section>
+      <footer class="foot">
+        <span class="product" id="product"></span
+        ><span class="meta" id="meta"></span>
+      </footer>
+    </main>
+    <script>
+      const products = {
+        tools: {
+          icon: "../assets/icon-tools-512.png",
+          kicker: "Creative tools",
+          title: "Make ideas tangible.",
+          body: "Focused AI tools for creating music, images, and what comes next.",
+          product: "AIGLOSSA TOOLS",
+          meta: "MUSIC · IMAGE · MORE",
+        },
+        music: {
+          icon: "../assets/icon-music-512.png",
+          kicker: "AI music creation",
+          title: "Turn an idea into a track.",
+          body: "Create music from a photo or prompt, with reusable templates and a natural ending.",
+          product: "AIGLOSSA MUSIC",
+          meta: "PHOTO · PROMPT · AUDIO",
+        },
+        image: {
+          icon: "../assets/icon-image-512.png",
+          kicker: "AI image creation",
+          title: "Shape a brief into an image.",
+          body: "Create polished visuals with reusable templates, visual styles, and reference images.",
+          product: "AIGLOSSA IMAGE",
+          meta: "BRIEF · STYLE · REFERENCES",
+        },
+        food: {
+          icon: "../assets/food-icon-512.png",
+          kicker: "Food label analysis",
+          title: "Read the label. Know your food.",
+          body: "Understand ingredients, nutrition, and cautions from one clear package photo.",
+          product: "AIGLOSSA FOOD",
+          meta: "INGREDIENTS · NUTRITION · CONTEXT",
+        },
+        skin: {
+          icon: "../assets/skin-icon-512.png",
+          kicker: "Skincare analysis",
+          title: "Read the formula. Know your skin.",
+          body: "Understand ingredients, key actives, cautions, and how products fit together.",
+          product: "AIGLOSSA SKIN",
+          meta: "ACTIVES · CAUTIONS · ROUTINE",
+        },
+        scholan: {
+          icon: "../assets/scholan/icon.png",
+          kicker: "Reading companion",
+          title: "Read foreign books with a head start.",
+          body: "Understand the story, people, and ideas before difficult language slows you down.",
+          product: "SCHOLAN",
+          meta: "READ · UNDERSTAND · REMEMBER",
+        },
+      };
+      const key = location.hash.slice(1) || "tools",
+        data = products[key] || products.tools,
+        card = document.getElementById("card");
+      card.classList.add(key);
+      document.getElementById("icon").src = data.icon;
+      for (const id of ["kicker", "title", "body", "product", "meta"])
+        document.getElementById(id).textContent = data[id];
+    </script>
+  </body>
+</html>

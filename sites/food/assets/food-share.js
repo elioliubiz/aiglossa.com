@@ -1,83 +1,42 @@
-/* Public read-only food report page. No auth, no user identity, no label image. */
+/* Public read-only food report page. No auth or user identity; the shared label image is read-only. */
 (function () {
   "use strict";
   var UI = JSON.parse(document.getElementById("ui").textContent);
-  var host = location.hostname;
-  var API = host === "localhost" || host === "127.0.0.1" ? "/api" : (host.indexOf("staging.aiglossa.com") >= 0 ? "https://dev.staging.aiglossa.com" : "https://api.aiglossa.com");
-  var params = new URLSearchParams(location.search);
-  var token = params.get("token") || "";
-  var $ = function (id) { return document.getElementById(id); };
+  var host = location.hostname, IS_LOCAL = host === "localhost" || host === "127.0.0.1";
+  var API = IS_LOCAL ? "/api" : (host.indexOf("staging.aiglossa.com") >= 0 ? "https://dev.staging.aiglossa.com" : "https://api.aiglossa.com");
+  var token = new URLSearchParams(location.search).get("token") || "", $ = function (id) { return document.getElementById(id); };
   function esc(v) { return String(v == null ? "" : v).replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
   function fmt(v, unit) { return v === null || v === undefined || v === "" ? UI.not_labeled : esc(v) + (unit ? " " + esc(unit) : ""); }
-  function hasNutrition(n) {
-    return ["energy_kj", "calories_kcal", "protein_g", "fat_g", "saturated_fat_g", "carbohydrate_g", "sugars_g", "sodium_mg", "fiber_g"].some(function (key) {
-      return n[key] !== null && n[key] !== undefined && n[key] !== "";
-    });
-  }
-  function nrv(report, key) { var n = (report.nrv_percent || {})[key]; return n == null ? "—" : esc(UI.daily_ref) + " " + n + "%"; }
-  function level(n) { return n >= 30 ? "red" : n >= 15 ? "amber" : ""; }
-  function nut(label, value, unit, value2, report, key, limit) {
-    var n = (report.nrv_percent || {})[key]; var lv = limit && n != null ? level(Number(n)) : "";
-    return '<div class="nut-item"><div class="nut-line"><span class="nut-label">' + esc(label) + '</span><span class="nut-value"><b>' + fmt(value, unit) + '</b>' + (value2 ? '<em>（' + esc(value2) + '）</em>' : '') + '</span><span class="nut-nrv ' + (lv === "red" ? "hi" : lv === "amber" ? "mid" : "") + '">' + nrv(report, key) + '</span></div></div>';
+  function hasNutrition(n) { return ["energy_kj", "calories_kcal", "protein_g", "fat_g", "saturated_fat_g", "carbohydrate_g", "sugars_g", "sodium_mg", "fiber_g"].some(function (key) { return n[key] !== null && n[key] !== undefined && n[key] !== ""; }); }
+  function nrvOf(report, key) { var n = (report.nrv_percent || {})[key]; return n == null ? null : Number(n); }
+  function nutItem(label, value, unit, nrv, secondary, limit) {
+    var level = limit && nrv != null ? (nrv >= 30 ? "hi" : nrv >= 15 ? "mid" : "") : "";
+    return '<div class="nut-item"><div class="nut-line"><span class="nut-label">' + esc(label) + '</span><span class="nut-value"><b>' + fmt(value, unit) + '</b>' + (secondary ? '<em>（' + esc(secondary) + '）</em>' : '') + '</span><span class="nut-nrv ' + level + '">' + (nrv == null ? "—" : esc(UI.daily_ref) + " " + nrv + "%") + '</span></div></div>';
   }
   function fail() { $("shareLoading").classList.add("hidden"); $("shareError").classList.remove("hidden"); }
-  if (!token) { fail(); return; }
-  fetch(API + "/ai/food/share/" + encodeURIComponent(token), {
-    method: "POST", credentials: "include",
-    headers: {"Content-Type":"application/json","X-Client":"web"},
-    body: JSON.stringify({app_key:"tools", timestamp: Math.floor(Date.now()/1000)})
-  }).then(function (r) { return r.json(); }).then(function (data) {
-    if (data.code !== 200 || !data.data || !data.data.report) { fail(); return; }
-    var report = data.data.report, p = report.product || {}, a = report.analysis || {};
-    var name = p.name || p.name_original || UI.result_title;
-    document.title = name + " · " + UI.share_heading;
-    $("shareName").textContent = name;
-    var meta = []; if (p.brand) meta.push(p.brand); if (p.category) meta.push(p.category); if (report.serving && report.serving.basis) meta.push(report.serving.basis);
-    $("shareMeta").textContent = meta.join(" · ");
-    var cautions = (a.cautions || []).map(function (x) { return "<li>" + esc(x.text || "") + "</li>"; }).join("");
-    $("shareVerdict").innerHTML = '<span class="pill ' + (cautions ? "warn" : "good") + '">' + esc(UI.verdict) + '</span><h2>' + esc(a.headline || UI.result_title) + '</h2><p>' + esc(a.summary || "") + '</p>' + (cautions ? '<ul class="report-note">' + cautions + '</ul>' : "");
+  function renderShare(report) {
+    var p = report.product || {}, a = report.analysis || {}, nutrition = report.nutrition || {}, name = p.name || p.name_original || UI.result_title;
+    document.title = name + " · " + UI.share_heading; $("shareName").textContent = name;
+    var meta = []; if (p.brand) meta.push(p.brand); if (p.category) meta.push(p.category); if (report.serving && report.serving.basis) meta.push(report.serving.basis); $("shareMeta").textContent = meta.join(" · ");
+    var facts = []; if ((report.ingredients || []).length) facts.push('<span><b>' + report.ingredients.length + '</b>' + esc(UI.ingredients) + '</span>'); if (hasNutrition(nutrition)) facts.push('<span><i></i>' + esc(UI.nutrition) + '</span>'); if ((report.population_notes || []).length) facts.push('<span><b>' + report.population_notes.length + '</b>' + esc(UI.who_notes) + '</span>'); $("shareFacts").innerHTML = facts.join("");
+    var cautions = (a.cautions || []).map(function (x) { return '<li>' + esc(x.text || "") + '</li>'; }).join("");
+    var main = '<section class="card verdict"><div class="verdict-top"><span class="pill ' + (cautions ? "warn" : "good") + '">' + esc(UI.verdict) + '</span></div><h2>' + esc(a.headline || UI.result_title) + '</h2><p>' + esc(a.summary || "") + '</p>' + (cautions ? '<div class="report-section"><h3>' + esc(UI.cautions) + '</h3><ul class="report-note">' + cautions + '</ul></div>' : '') + '</section>';
     var people = (report.population_notes || []).map(function (x) { var lv = x.level === "high" ? "high" : x.level === "medium" ? "medium" : ""; return '<div class="report-person ' + lv + '"><div class="rp-head"><b>' + esc(x.group || "") + '</b><span class="rp-advice">' + esc(x.advice || "") + '</span></div><p>' + esc(x.reason || "") + '</p></div>'; }).join("");
-    if (people) { $("sharePeople").classList.remove("hidden"); $("sharePeople").innerHTML = '<div class="card-head"><h3>' + esc(UI.who_notes) + '</h3><span>' + esc(UI.info) + '</span></div><div class="report-people">' + people + '</div>'; }
-    var n = report.nutrition || {};
-    if (!hasNutrition(n)) {
-      $("shareServing").textContent = UI.not_labeled;
-      $("shareNutrition").innerHTML = '<div class="nutrition-empty"><b>' + esc(UI.nutrition_empty_title) + '</b><p>' + esc(UI.nutrition_empty_body) + '</p></div>';
-      $("shareNutritionNotes").classList.add("hidden");
-    } else {
-      $("shareServing").textContent = ((report.serving && report.serving.basis) || UI.per_100g);
-      $("shareNutritionNotes").classList.remove("hidden");
-      $("shareNutrition").innerHTML = nut(UI.energy, n.calories_kcal != null ? n.calories_kcal : (n.energy_kj ? Math.round(n.energy_kj / 4.184) : null), "kcal", n.energy_kj ? n.energy_kj + " kJ" : "", report, "energy", false) + nut(UI.protein, n.protein_g, "g", "", report, "protein", false) + nut(UI.fat, n.fat_g, "g", "", report, "fat", false) + nut(UI.sat_fat, n.saturated_fat_g, "g", "", report, "saturated_fat", true) + nut(UI.carb, n.carbohydrate_g, "g", "", report, "carbohydrate", false) + nut(UI.sugar, n.sugars_g, "g", "", report, "sugars", true) + nut(UI.sodium, n.sodium_mg, "mg", "", report, "sodium", true) + nut(UI.fiber, n.fiber_g, "g", "", report, "fiber", false);
-    }
-    var all = report.ingredients || [];
-    var normalize = function (x) { return String(x || "").replace(/\s+/g, "").toLowerCase(); };
-    var hasInferred = false;
-    var ing = all.slice(0, 80).map(function (x, i) {
-      var orig = String(x.original_text || "").trim(), nm = String(x.name || "").trim();
-      var origHtml = orig && normalize(orig) !== normalize(nm) ? ' <span class="orig-inline">' + esc(UI.original) + ': ' + esc(orig) + '</span>' : "";
-      var fn = String(x.function || "").trim();
-      var flags = (x.flags || []).map(function (f) { return String(f || "").trim(); }).filter(Boolean);
-      var inferred = x.flags_source === "inferred" || x.flags_source === "mixed";
-      if (inferred && flags.length) hasInferred = true;
-      var badges = (fn || flags.length) ? '<div class="ing-badges">' + (fn ? '<span class="ing-badge">' + esc(fn) + '</span>' : "") + flags.map(function (f) { return '<span class="ing-badge add' + (inferred ? " inferred" : "") + '">' + esc(f) + (inferred ? "*" : "") + '</span>'; }).join("") + '</div>' : "";
-      return '<div class="report-ing' + (i >= 6 ? ' ing-extra hidden' : '') + '"><div class="ing-title"><div class="nm">' + esc(nm) + origHtml + '</div></div><div class="why">' + esc([x.what_it_is || "", x.note || ""].filter(Boolean).join(" ")) + '</div>' + badges + '</div>';
-    }).join("");
-    $("shareIngCount").textContent = all.length;
-    $("shareIngredients").innerHTML = (ing || '<p class="report-note">' + esc(UI.not_labeled) + '</p>') + (hasInferred ? '<p class="ing-legend">* ' + esc(UI.inferred) + '</p>' : "");
-    if (all.length > 6) {
-      var more = document.createElement("button"); more.className = "ing-more"; more.textContent = UI.show_all + " (" + all.length + ")";
-      more.onclick = function () { var open = more.dataset.open === "1"; Array.prototype.forEach.call(document.querySelectorAll(".ing-extra"), function (row) { row.classList.toggle("hidden", open); }); more.dataset.open = open ? "0" : "1"; more.textContent = open ? UI.show_all + " (" + all.length + ")" : UI.show_less; };
-      $("shareIngredients").appendChild(more);
-    }
-    $("shareDisclaimer").textContent = report.disclaimer || UI.footer_disclaimer;
-    fetch(API + "/ai/food/share/" + encodeURIComponent(token) + "/image", {
-      method: "POST", credentials: "include",
-      headers: {"Content-Type":"application/json","X-Client":"web"},
-      body: JSON.stringify({app_key:"tools", timestamp: Math.floor(Date.now()/1000)})
-    }).then(function (r) { return r.ok ? r.blob() : null; }).then(function (blob) {
-      if (!blob) return;
-      $("shareImage").src = URL.createObjectURL(blob);
-      $("shareLabel").classList.remove("hidden");
-    }).catch(function () {});
-    $("shareLoading").classList.add("hidden"); $("shareContent").classList.remove("hidden");
-  }).catch(fail);
+    if (people) main += '<section class="card"><div class="card-head"><h3>' + esc(UI.who_notes) + '</h3><span>' + esc(UI.info) + '</span></div><div class="report-people">' + people + '</div></section>';
+    if (!hasNutrition(nutrition)) main += '<section class="card"><div class="card-head"><h3>' + esc(UI.nutrition) + '</h3><span>' + esc(UI.not_labeled) + '</span></div><div class="nutrition-empty"><b>' + esc(UI.nutrition_empty_title) + '</b><p>' + esc(UI.nutrition_empty_body) + '</p></div></section>';
+    else main += '<section class="card"><div class="card-head"><h3>' + esc(UI.nutrition) + '</h3><span>' + esc((report.serving && report.serving.basis) || UI.per_100g) + '</span></div><div class="nut-grid report">' + nutItem(UI.energy, nutrition.calories_kcal != null ? nutrition.calories_kcal : (nutrition.energy_kj ? Math.round(nutrition.energy_kj / 4.184) : null), "kcal", nrvOf(report, "energy"), nutrition.energy_kj ? nutrition.energy_kj + " kJ" : "", false) + nutItem(UI.protein, nutrition.protein_g, "g", nrvOf(report, "protein"), "", false) + nutItem(UI.fat, nutrition.fat_g, "g", nrvOf(report, "fat"), "", false) + nutItem(UI.sat_fat, nutrition.saturated_fat_g, "g", nrvOf(report, "saturated_fat"), "", true) + nutItem(UI.carb, nutrition.carbohydrate_g, "g", nrvOf(report, "carbohydrate"), "", false) + nutItem(UI.sugar, nutrition.sugars_g, "g", nrvOf(report, "sugars"), "", true) + nutItem(UI.sodium, nutrition.sodium_mg, "mg", nrvOf(report, "sodium"), "", true) + nutItem(UI.fiber, nutrition.fiber_g, "g", null, "", false) + '</div><p class="nutrition-note">' + esc(UI.nutrition_note_generic) + '</p><p class="nutrition-note">' + esc(UI.energy_note) + '</p></section>';
+    var all = report.ingredients || [], inferred = false, normalize = function (x) { return String(x || "").replace(/\s+/g, "").toLowerCase(); };
+    var rows = all.slice(0, 80).map(function (x, i) { var orig = String(x.original_text || "").trim(), nm = String(x.name || "").trim(), fn = String(x.function || "").trim(), flags = (x.flags || []).map(function (f) { return String(f || "").trim(); }).filter(Boolean), isInferred = x.flags_source === "inferred" || x.flags_source === "mixed"; if (isInferred && flags.length) inferred = true; var original = orig && normalize(orig) !== normalize(nm) ? ' <span class="orig-inline">' + esc(UI.original) + ': ' + esc(orig) + '</span>' : ""; var badges = fn || flags.length ? '<div class="ing-badges">' + (fn ? '<span class="ing-badge">' + esc(fn) + '</span>' : '') + flags.map(function (f) { return '<span class="ing-badge add' + (isInferred ? ' inferred' : '') + '">' + esc(f) + (isInferred ? '*' : '') + '</span>'; }).join('') + '</div>' : ''; return '<div class="report-ing' + (i >= 6 ? ' ing-extra hidden' : '') + '"><div class="ing-title"><div class="nm">' + esc(nm) + original + '</div></div><div class="why">' + esc([x.what_it_is || "", x.note || ""].filter(Boolean).join(" ")) + '</div>' + badges + '</div>'; }).join("");
+    main += '<section class="card"><div class="card-head"><h3>' + esc(UI.ingredients) + '</h3><span>' + all.length + '</span></div>' + (rows || '<p class="report-note">' + esc(UI.not_labeled) + '</p>') + (inferred ? '<p class="ing-legend">* ' + esc(UI.inferred) + '</p>' : '') + (all.length > 6 ? '<button class="ing-more" id="shareIngMore">' + esc(UI.show_all) + ' (' + all.length + ')</button>' : '') + '</section>';
+    var eat = (a.how_to_eat || []).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join(""); if (eat) main += '<section class="card eat"><h3>' + esc(UI.how_to_eat) + '</h3><ul>' + eat + '</ul></section>';
+    var notes = (a.data_notes || []).map(function (x) { return '<li>' + esc(x) + '</li>'; }).join(""); if (notes) main += '<section class="card"><h3>' + esc(UI.data_notes) + '</h3><ul class="report-note">' + notes + '</ul></section>';
+    main += '<p class="report-disclaimer">' + esc(report.disclaimer || UI.footer_disclaimer) + '</p>'; $("shareReportMain").innerHTML = main;
+    var more = $("shareIngMore"); if (more) more.onclick = function () { var open = more.dataset.open === "1"; Array.prototype.forEach.call(document.querySelectorAll("#shareReportMain .ing-extra"), function (row) { row.classList.toggle("hidden", open); }); more.dataset.open = open ? "0" : "1"; more.textContent = open ? UI.show_all + " (" + all.length + ")" : UI.show_less; };
+    $("shareLoading").classList.add("hidden"); $("shareError").classList.add("hidden"); $("shareContent").classList.remove("hidden"); $("shareContent").classList.add("content-enter");
+  }
+  function loadImage() { if (!token) return; fetch(API + "/ai/food/share/" + encodeURIComponent(token) + "/image", {method:"POST", credentials:"include", headers:{"Content-Type":"application/json","X-Client":"web"}, body:JSON.stringify({app_key:"tools", timestamp:Math.floor(Date.now()/1000)})}).then(function (r) { return r.ok ? r.blob() : null; }).then(function (blob) { if (!blob) return; $("shareImage").src = URL.createObjectURL(blob); $("shareImage").classList.remove("hidden"); var skeleton = $("shareLabel").querySelector(".thumb-skeleton"); if (skeleton) skeleton.classList.add("hidden"); }).catch(function () {}); }
+  window.AiglossaFoodReport = { render: renderShare };
+  if (IS_LOCAL) window.addEventListener("aiglossa:preview-food-share", function (event) { if (event.detail && event.detail.report) renderShare(event.detail.report); });
+  if (!token) { if (!IS_LOCAL && !document.body.classList.contains("result-page")) fail(); return; }
+  fetch(API + "/ai/food/share/" + encodeURIComponent(token), {method:"POST", credentials:"include", headers:{"Content-Type":"application/json","X-Client":"web"}, body:JSON.stringify({app_key:"tools", timestamp:Math.floor(Date.now()/1000)})}).then(function (r) { return r.json(); }).then(function (data) { if (data.code !== 200 || !data.data || !data.data.report) { fail(); return; } renderShare(data.data.report); loadImage(); }).catch(fail);
 })();

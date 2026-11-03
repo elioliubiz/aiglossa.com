@@ -54,10 +54,26 @@ def outputs_for(page: str) -> list[tuple[str, str]]:
         return [("image/share/index.html", "image/share/")]
     if page == "food":
         return [("food/index.html", "food/")]
+    if page == "food-history":
+        return [("food/history/index.html", "food/history/")]
+    if page == "food-result":
+        return [("food/result/index.html", "food/result/")]
+    if page == "food-guides":
+        source = json.loads((CONTENT / "food-guides.json").read_text(encoding="utf-8"))
+        return ([('food/guides/index.html', 'food/guides/')] +
+                [(f'food/guides/{slug}/index.html', f'food/guides/{slug}/') for slug in source["slugs"]])
     if page == "food-share":
         return [("food/share/index.html", "food/share/")]
     if page == "skin":
         return [("skin/index.html", "skin/")]
+    if page == "skin-history":
+        return [("skin/history/index.html", "skin/history/")]
+    if page == "skin-result":
+        return [("skin/result/index.html", "skin/result/")]
+    if page == "skin-guides":
+        slugs = ("read-ingredient-list", "understand-key-actives", "build-a-routine")
+        return ([('skin/guides/index.html', 'skin/guides/')] +
+                [(f'skin/guides/{slug}/index.html', f'skin/guides/{slug}/') for slug in slugs])
     if page == "skin-share":
         return [("skin/share/index.html", "skin/share/")]
     if page in ("refund", "acceptable-use"):
@@ -165,6 +181,8 @@ def main() -> int:
                         problems.append(f"{where}: 残留未替换的占位符")
                     if "?lang=" in text:
                         problems.append(f"{where}: 残留旧实现的 ?lang= 链接")
+                    if "/webpricing" in text:
+                        problems.append(f"{where}: 残留不存在的 /webpricing 链接，应指向 /pricing.html")
 
                     html_tag = re.search(r'<html lang="([^"]+)" dir="([^"]+)"', text)
                     if not html_tag:

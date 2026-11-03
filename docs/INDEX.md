@@ -9,6 +9,7 @@
 |---|---|
 | `AGENTS.md` | 每次任务 |
 | `docs/ARCHITECTURE.md` | 不熟悉项目结构、构建、站点拓扑时 |
+| `docs/DESIGN_SYSTEM.md` | 修改页面风格、主题、组件或产品色时 |
 | `docs/playbooks/auth.md` | 登录、退出、账户状态、跨子域回跳 |
 | `docs/playbooks/payments.md` | Creem、充值、额度、支付回调 |
 | `docs/playbooks/deploy.md` | 构建、staging、生产、Vercel、资源版本 |

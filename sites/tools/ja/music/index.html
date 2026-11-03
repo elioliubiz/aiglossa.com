@@ -29,17 +29,19 @@
 <meta property="og:description" content="写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。" />
 <meta property="og:url" content="https://tools.aiglossa.com/ja/music/" />
 <meta property="og:locale" content="ja_JP" />
-<meta property="og:image" content="https://tools.aiglossa.com/assets/og.png" />
+<meta property="og:image" content="https://tools.aiglossa.com/assets/og-music.png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="theme-color" content="#0e0f11">
+<meta name="twitter:image" content="https://tools.aiglossa.com/assets/og-music.png" />
+<meta name="theme-color" content="#f5f7fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111720" media="(prefers-color-scheme: dark)">
 <!-- 结构化数据：告诉 Google 这是一个网页应用，而不是普通文章 -->
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "AI音楽生成 — 写真から曲へ、長さはぴったり", "description": "写真やプロンプトから、30〜90秒ちょうどのBGMを作ります。歌詞は写真の中身を歌い、10言語のボーカルとシームレスループに対応。", "applicationCategory": "MultimediaApplication", "operatingSystem": "Web", "url": "https://tools.aiglossa.com/ja/music/", "inLanguage": "ja"}</script>
-<link rel="icon" href="../../assets/favicon-tools.svg?v=20261031-28" type="image/svg+xml">
-<link rel="icon" href="../../assets/favicon-tools.svg?v=20261031-28" sizes="any">
-<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png?v=20261031-28">
-<link rel="manifest" href="../../assets/manifest-tools.webmanifest?v=20261031-28">
+<link rel="icon" href="../../assets/favicon-tools.svg?v=20261102-35" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-tools.svg?v=20261102-35" sizes="any">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png?v=20261102-35">
+<link rel="manifest" href="../../assets/manifest-tools.webmanifest?v=20261102-35">
 <link rel="stylesheet" href="../../assets/theme.css" />
 <style>
   :root{
@@ -193,6 +195,8 @@
   .policy{margin:26px 0 8px;display:flex;gap:16px;flex-wrap:wrap;font-size:11.5px}
   .policy a{color:var(--mut);text-decoration:none}
   .policy a:hover{color:var(--ink)}
+  .crawl-guides{margin:30px 0 8px;padding-block:22px;border-block-start:1px solid var(--line)}
+  .crawl-guides h2{margin:0 0 12px;font-size:15px;font-weight:600}.crawl-guides ul{display:flex;flex-wrap:wrap;gap:8px 18px;list-style:none;margin:0;padding:0}.crawl-guides a{color:var(--muted);font-size:12px;text-decoration:none}.crawl-guides a:hover{color:var(--ink)}
   .msg{font-size:11.5px;margin-top:9px;min-height:15px;text-align:center}
   .msg.err{color:#ff9b9b}.msg.ok{color:#9be7b0}
   /* 悬浮在视口底部的播放条：左侧让开参数栏，右侧与内容区对齐 */
@@ -850,13 +854,95 @@
   }
   @media(max-width:370px){.utility-brand span{display:none}.utilitybar .bal{max-width:84px}}
   .template-help{margin:6px 0 0;color:var(--mut);font-size:10.5px;line-height:1.45}
+
+  /* Music workspace visual system. This final layer retires the legacy orange/dark-only skin. */
+  :root{
+    color-scheme:light;--bg:#f5f7fb;--panel:rgba(255,255,255,.88);--surface:#fff;
+    --surface-2:#eef2f8;--ink:#182131;--mut:#69768a;--muted:#69768a;
+    --line:rgba(31,49,79,.13);--line-strong:rgba(31,49,79,.24);--acc:#2468f2;
+    --acc-2:#18aebb;--signal:#9bbb24;--on-bg:rgba(36,104,242,.12);--on-fg:#174fb9;
+    --chip-on-bg:rgba(36,104,242,.1);--chip-on-fg:#174fb9;
+    --shadow:0 18px 54px rgba(42,62,98,.12);--wave-idle:rgba(39,91,166,.62);--wave-played:#2468f2
+  }
+  @media(prefers-color-scheme:dark){
+    :root{color-scheme:dark;--bg:#111720;--panel:rgba(25,33,45,.9);--surface:#202a38;
+      --surface-2:#283443;--ink:#f2f6fb;--mut:#a8b4c5;--muted:#a8b4c5;
+      --line:rgba(231,239,250,.12);--line-strong:rgba(231,239,250,.23);--acc:#6c98ff;
+      --acc-2:#45cbd4;--signal:#c9e84a;--on-bg:rgba(108,152,255,.16);--on-fg:#dce7ff;
+      --chip-on-bg:rgba(108,152,255,.15);--chip-on-fg:#dce7ff;--shadow:0 22px 60px rgba(0,0,0,.34);
+      --wave-idle:rgba(172,200,244,.7);--wave-played:#6c98ff}
+  }
+  html,body{background:var(--bg);color:var(--ink)}
+  body{background:radial-gradient(ellipse 58% 34% at 78% 2%,rgba(36,104,242,.13),transparent 72%),
+    radial-gradient(ellipse 42% 28% at 48% 20%,rgba(24,200,214,.1),transparent 72%),var(--bg)}
+  .rail{position:relative;background:var(--panel);backdrop-filter:blur(20px);border-inline-end:1px solid var(--line);border-right:0}
+  .rail:before{content:"";position:absolute;z-index:2;inset-block-start:0;inset-inline:0;height:3px;
+    background:linear-gradient(90deg,var(--acc),var(--acc-2),var(--signal))}
+  .rail-scroll{padding:25px 25px 10px}.brand{color:var(--mut);letter-spacing:.16em}.brand i{width:8px;height:8px;border-radius:2px;background:linear-gradient(145deg,#08a9df,#386fe8)}
+  h1{font-size:24px;letter-spacing:0;font-weight:680;color:var(--ink)!important;-webkit-text-fill-color:var(--ink)!important;background:none!important}.sub{font-size:12.5px;line-height:1.55;margin-bottom:18px}
+  .drop,.seg,.modes,#panelText textarea,.note textarea,.select{background:var(--surface);border-color:var(--line);color:var(--ink)}
+  .drop{border-radius:8px}.drop.over{border-color:var(--acc);background:var(--on-bg)}
+  .drop.has{border-color:var(--line-strong)}.drop .rm{color:var(--acc)}
+  .lbl{color:var(--mut);font-weight:650;letter-spacing:.12em}.seg,.modes{border-radius:8px;padding:3px}
+  .seg button,.mode{border-radius:6px;color:var(--mut)}.seg button:hover,.mode:hover{background:var(--surface-2)}
+  .seg button.on,.mode.on{background:var(--on-bg);color:var(--on-fg);box-shadow:none}
+  .chip{min-height:34px;border-radius:7px;background:var(--surface);color:var(--mut)}
+  .chip:hover{border-color:var(--line-strong);color:var(--ink)}.chip.on{border-color:var(--acc);background:var(--chip-on-bg);color:var(--chip-on-fg)}
+  #panelText textarea::placeholder,.note textarea::placeholder{color:color-mix(in srgb,var(--mut) 62%,transparent)}
+  #panelText textarea:focus,.note textarea:focus,.select:focus{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--on-bg)}
+  .shared,.prechip{background:var(--on-bg);border-color:color-mix(in srgb,var(--acc) 34%,transparent);color:var(--on-fg)}
+  .prechip .k{color:var(--mut)}.prechip b{color:var(--acc)}.prechip .x{color:var(--mut)}
+  .rail-foot{padding:12px 25px 16px;background:color-mix(in srgb,var(--panel) 95%,transparent);border-block-start:1px solid var(--line);box-shadow:0 -12px 28px rgba(38,57,90,.06)}
+  .go{min-height:46px;border-radius:7px;background:linear-gradient(125deg,#2468f2,#3581f0);color:#fff;box-shadow:0 9px 24px rgba(36,104,242,.2)}
+  .go.flash{box-shadow:0 0 0 3px var(--on-bg),0 9px 24px rgba(36,104,242,.2)}
+  .utilitybar{background:color-mix(in srgb,var(--panel) 91%,transparent);border-block-end:1px solid var(--line)}
+  .utility-brand i{border-radius:2px;background:linear-gradient(145deg,#08a9df,#386fe8)}
+  .utilitybar .alink{background:var(--surface);border-color:var(--line);color:var(--mut)}
+  .utilitybar .alink:hover{color:var(--ink);border-color:var(--line-strong);background:var(--surface-2)}
+  .utilitybar #priceLink{border-color:color-mix(in srgb,var(--acc) 32%,transparent);color:var(--acc);background:var(--on-bg)}
+  .utilitybar #priceLink:hover{border-color:var(--acc);background:var(--on-bg)}
+  .av{background:var(--surface);color:var(--acc);box-shadow:0 0 0 1.5px var(--line-strong)}
+  .av .inner{background:var(--on-bg)}
+  .works{background:radial-gradient(ellipse 68% 31% at 91% 0,rgba(36,104,242,.18),transparent 71%),
+    radial-gradient(ellipse 48% 25% at 14% 8%,rgba(24,200,214,.13),transparent 72%),
+    radial-gradient(ellipse 45% 24% at 66% 52%,rgba(201,232,74,.075),transparent 74%),
+    radial-gradient(ellipse 56% 27% at 92% 90%,rgba(96,115,244,.08),transparent 72%),var(--bg);
+    padding:26px clamp(22px,3vw,38px) 40px}
+  .whead{margin-bottom:13px!important}.whead .t{font-size:16px!important;font-weight:680!important}.whead .n{color:var(--mut)!important}
+  .view-all{border-color:var(--line);background:var(--surface);color:var(--acc)}
+  .view-all:hover{border-color:var(--acc);background:var(--on-bg);color:var(--acc)}
+  .photos,.recipes,.minerow{scrollbar-color:var(--line-strong) transparent}
+  .photos::-webkit-scrollbar-track,.recipes::-webkit-scrollbar-track,.minerow::-webkit-scrollbar-track{background:transparent}
+  .photos::-webkit-scrollbar-thumb,.recipes::-webkit-scrollbar-thumb,.minerow::-webkit-scrollbar-thumb{background:var(--line-strong)}
+  .item-card,.photos .item-card,.recipes .item-card,.minerow .item-card{border-color:var(--line)!important;border-radius:8px!important;background:var(--surface)!important;box-shadow:0 8px 24px rgba(43,60,91,.07)}
+  .item-card:hover{border-color:var(--line-strong)!important;background:var(--surface)!important;box-shadow:var(--shadow);transform:translateY(-2px)}
+  .item-card.on{border-color:var(--acc)!important;box-shadow:0 0 0 2px var(--on-bg)}
+  .item-card .card-media{background:linear-gradient(145deg,color-mix(in srgb,var(--acc) 9%,var(--surface-2)),color-mix(in srgb,var(--acc-2) 10%,var(--surface-2)))}
+  .item-card .card-info{padding:10px 12px 12px}.item-card .card-title{font-weight:650}.item-card .card-meta{color:var(--mut)}
+  .item-card .media-play canvas{opacity:1}.item-card .card-menu{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow)}
+  .item-card .card-menu button{color:var(--ink)}.item-card .card-menu button:hover{background:var(--surface-2)}
+  .tile.add{background:var(--surface);border-color:var(--line-strong);color:var(--mut)}
+  .playerwrap{background:color-mix(in srgb,var(--panel) 91%,transparent);border-block-start:1px solid var(--line);backdrop-filter:blur(20px) saturate(125%)}
+  .player .pp{background:var(--acc);color:#fff}.player .ptrack{background:var(--line-strong)}
+  .player .acts button,.player .acts a{background:var(--surface);border-color:var(--line);color:var(--ink)}
+  .gm .bd,.modal{background:rgba(12,18,27,.62)}.gm .panel,.mbox{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow)}
+  .gm .list a[aria-current="true"]{background:var(--on-bg);color:var(--on-fg)}
+  .mbtn,.pack{background:var(--surface-2);border-color:var(--line);color:var(--ink)}.mbtn.primary{background:var(--acc);color:#fff}
+  .pack:hover{border-color:var(--acc);background:var(--on-bg)}.topup{border-color:color-mix(in srgb,var(--acc) 35%,transparent);background:var(--on-bg);color:var(--on-fg)}
+  .topup a{color:var(--acc)}.toast{background:var(--surface);border-color:var(--line);color:var(--ink);box-shadow:var(--shadow)}
+  @media(max-width:1080px){
+    .rail{border-block-start:1px solid var(--line);border-inline-end:0}.rail-scroll{padding:22px 16px 9px}.rail-foot{padding-inline:16px}
+    .works{padding:22px 16px 12px!important}.utilitybar{background:color-mix(in srgb,var(--panel) 94%,transparent)}
+  }
+  @media(max-width:480px){.utility-brand{display:none}.utilitybar .acctbar{width:100%;margin-inline-start:0;justify-content:flex-end}}
+  @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.item-card,.item-card img{transition:none!important}.item-card:hover{transform:none}}
 </style>
 </head>
 <body>
 <div class="shell">
   <aside class="rail">
     <div class="rail-scroll">
-    <div class="brand"><i></i><a href="../">AIGLOSSA TOOLS</a></div>
+    <div class="brand"><i></i><a href="../">AIGLOSSA</a></div>
     <h1>曲を作る</h1>
     <p class="sub">写真またはプロンプトから。長さは正確に、ループはシームレスに。</p>
 
@@ -894,7 +980,7 @@
   </aside>
 
   <nav class="utilitybar" aria-label="Account and help">
-    <a class="utility-brand" href="../"><i></i><span>AIGLOSSA TOOLS</span></a>
+    <a class="utility-brand" href="../"><i></i><span>AIGLOSSA</span></a>
     <div class="acctbar">
       <button class="av" id="avBtn" type="button" aria-label="account"></button>
       <button class="bal" id="bal" type="button"></button>
@@ -929,6 +1015,8 @@
       <div class="rail-head-actions"><span class="n">用途を選ぶと設定が入ります</span><span class="rail-nav" data-rail="recipes"><button type="button" data-dir="-1" aria-label="Previous">‹</button><button type="button" data-dir="1" aria-label="Next">›</button></span></div>
     </div>
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
+
+    <section class="crawl-guides" aria-labelledby="crawlGuidesTitle"><h2 id="crawlGuidesTitle">ガイド</h2><ul><li><a href="../guides/exact-30-second-background-music.html">ちょうど30秒のBGM</a></li><li><a href="../guides/photo-to-song-lyrics.html">写真から曲へ：歌詞が写真の中身を歌う</a></li><li><a href="../guides/seamless-loop-seam.html">シームレスループ：継ぎ目こそが本題</a></li><li><a href="../guides/commercial-use.html">AI生成の音楽は商用利用できる？</a></li><li><a href="../guides/video-length.html">編集に音楽を合わせる：長さの決め方</a></li></ul></section>
 
   </main>
   <div class="modal hidden" id="payModal" role="dialog" aria-modal="true">
@@ -1035,7 +1123,7 @@
       var box = canvas.getBoundingClientRect(), dpr = window.devicePixelRatio || 1;
       canvas.width = Math.max(1, Math.round(box.width * dpr)); canvas.height = Math.max(1, Math.round(box.height * dpr));
       var ctx = canvas.getContext("2d"), gap = 2 * dpr, step = canvas.width / peaks.length, bar = Math.max(1 * dpr, step - gap);
-      ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = "rgba(255,255,255,.62)";
+      ctx.clearRect(0, 0, canvas.width, canvas.height); ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue("--wave-idle").trim() || "rgba(39,91,166,.62)";
       peaks.forEach(function (peak, i) { var h = Math.max(2 * dpr, peak / 255 * canvas.height); ctx.fillRect(i * step, (canvas.height - h) / 2, bar, h); });
     });
   }

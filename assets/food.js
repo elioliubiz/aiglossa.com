@@ -7,7 +7,7 @@
   var IS_LOCAL = host === "localhost" || host === "127.0.0.1";
   var IS_STAGING = host.indexOf("staging.aiglossa.com") >= 0;
   var API = IS_LOCAL ? "/api" : (IS_STAGING ? "https://dev.staging.aiglossa.com" : "https://api.aiglossa.com");
-  var MAIN = IS_LOCAL ? "http://localhost:8000" : (IS_STAGING ? "https://staging.aiglossa.com" : "https://aiglossa.com");
+  var MAIN = IS_LOCAL ? "http://localhost:8301" : (IS_STAGING ? "https://staging.aiglossa.com" : "https://aiglossa.com");
   var LANG = document.documentElement.lang || "en";
   var LANG_NAME = document.documentElement.getAttribute("data-lang-name") || LANG;
   var FEATURE = "food-scan";
@@ -77,7 +77,6 @@
     if (account) account.classList.toggle("hidden", !signedIn);
     if (login) login.classList.toggle("hidden", signedIn);
     if (buy) buy.classList.toggle("hidden", !signedIn);
-    if (!signedIn && !$("resultView").classList.contains("hidden")) showHome();
   }
 
   function refreshAccount() {
@@ -157,18 +156,14 @@
   }
 
   function handleFiles(files) {
-    var remaining = 3 - state.files.length;
-    if (remaining <= 0) { toast(UI.multi_hint); return; }
-    var accepted = [];
-    Array.prototype.forEach.call(files || [], function (file) {
-      if (accepted.length >= remaining) return;
-      if (!/^image\/(jpeg|png|webp)$/.test(file.type || "")) { toast(UI.image_invalid); return; }
-      if (file.size > 8 * 1024 * 1024) { toast(UI.image_invalid); return; }
-      accepted.push(file);
-    });
-    if (!accepted.length) return;
-    state.files = state.files.concat(accepted).slice(0, 3);
-    accepted.forEach(function (file) { state.previews.push(URL.createObjectURL(file)); });
+    var file = files && files[0];
+    if (!file) return;
+    if (!/^image\/(jpeg|png|webp)$/.test(file.type || "") || file.size > 8 * 1024 * 1024) {
+      toast(UI.image_invalid); return;
+    }
+    state.previews.forEach(function (url) { URL.revokeObjectURL(url); });
+    state.files = [file];
+    state.previews = [URL.createObjectURL(file)];
     renderPreviews();
   }
 
@@ -224,9 +219,9 @@
     if (!state.files.length) return;
     setScanning(true, UI.scanning);
     toast(UI.scanning);
-    Promise.all(state.files.map(compress)).then(function (items) {
+    compress(state.files[0]).then(function (item) {
       return call("/ai/food/scan", {
-        language: LANG, request_id: requestId(), images: items.map(function (x) { return x.image; }), mime: "image/jpeg"
+        language: LANG, request_id: requestId(), image: item.image, mime: "image/jpeg"
       });
     }).then(function (data) {
       if (data.code === 401) { needLogin(); return; }
@@ -250,8 +245,7 @@
           state.balance = Number(row.balance || state.balance);
           $("balanceText").innerHTML = coinHtml(state.balance);
           setScanning(false);
-          renderResult(row);
-          loadHistory();
+          location.href = "result/?id=" + encodeURIComponent(row.id);
           return;
         }
         if (row.status === "failed") {
@@ -276,6 +270,7 @@
     var footerLang = $("footerLang"); if (footerLang) footerLang.classList.remove("hidden");
     $("resultView").classList.add("hidden");
     $("heroView").classList.remove("hidden");
+    if (new URLSearchParams(location.search).has("scan")) history.replaceState(null, "", location.pathname);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -319,6 +314,11 @@
     if (product.category) meta.push(product.category);
     if (report.serving && report.serving.basis) meta.push(report.serving.basis);
     $("resultMeta").textContent = meta.join(" · ");
+    var factItems = [];
+    if ((report.ingredients || []).length) factItems.push('<span><b>' + (report.ingredients || []).length + '</b>' + esc(UI.ingredients) + '</span>');
+    if (hasNutrition(report.nutrition || {})) factItems.push('<span><i></i>' + esc(UI.nutrition) + '</span>');
+    if ((report.population_notes || []).length) factItems.push('<span><b>' + (report.population_notes || []).length + '</b>' + esc(UI.who_notes) + '</span>');
+    $("resultFacts").innerHTML = factItems.join("");
     var thumb = $("resultThumb");
     thumb.innerHTML = state.previews.length ? '<img src="' + esc(state.previews[0]) + '" alt="' + esc(UI.image_alt) + '">' : '<span class="thumb-skeleton" aria-label=""></span>';
     loadScanImage(scan);
@@ -391,13 +391,12 @@
       };
     }
 
-    $("reportSide").innerHTML = '<h3>' + esc(UI.result_title) + '</h3><div class="sc-stats">' +
-      '<div class="sc-row"><span>' + esc(UI.scan_cost) + '</span><b>' + SCAN_CREDITS + ' ' + esc(UI.credits) + '</b></div>' +
+    $("reportSide").innerHTML = '<span class="side-kicker">AIGLOSSA FOOD</span><h3>' + esc(UI.result_title) + '</h3><p class="side-intro">' + esc(UI.footer_disclaimer) + '</p><div class="sc-stats">' +
       '<div class="sc-row"><span>' + esc(UI.analyzed_in) + '</span><b>' + esc(LANG_NAME) + '</b></div>' +
       '<div class="sc-row"><span>' + esc(UI.pay_balance) + '</span><b>' + coinText(state.balance) + ' ' + esc(UI.credits) + '</b></div>' +
-      '</div><hr><button class="btn full" id="newScan">' + esc(UI.new_scan) + '</button>' +
+      '</div><button class="btn full" id="newScan">' + esc(UI.new_scan) + '</button>' +
       '<button class="btn ghost full" id="sideBuy">' + esc(UI.buy) + '</button>' +
-      '<p class="small">' + esc(UI.footer_disclaimer) + '</p>';
+      '<p class="small">' + esc(UI.scan_cost) + '</p>';
     $("newScan").onclick = function () { showHome(); resetScan(); };
     $("sideBuy").onclick = openPay;
     showResult();
@@ -426,7 +425,7 @@
 
   function loadHistory() {
     if (!state.user) { $("historyList").innerHTML = '<div class="history-empty">' + esc(UI.login_required) + '</div>'; return; }
-    call("/ai/food/works?limit=20", {}).then(function (data) {
+    call("/ai/food/works?limit=5", {}).then(function (data) {
       if (data.code !== 200 || !data.data) return;
       state.history = data.data.items || [];
       if (!state.history.length) { $("historyList").innerHTML = '<div class="history-empty">' + esc(UI.no_history) + '</div>'; return; }
@@ -443,9 +442,7 @@
         btn.onclick = function () {
           var item = state.history[Number(btn.dataset.index)];
           if (!item) return;
-          call("/ai/food/scan/" + item.id, {}).then(function (data) {
-            if (data.code === 200 && data.data) { state.previews = []; renderResult(data.data); }
-          });
+          location.href = "result/?id=" + encodeURIComponent(item.id);
         };
       });
     });
@@ -533,10 +530,6 @@
       if (!state.user) { e.preventDefault(); needLogin(); }
     });
   });
-  $("historyRefresh").onclick = function (e) { e.preventDefault(); loadHistory(); };
-  $("backBtn").onclick = function (e) { e.preventDefault(); showHome(); };
-  $("deleteBtn").onclick = deleteScan;
-  $("shareBtn").onclick = shareScan;
   Array.prototype.forEach.call(document.querySelectorAll("[data-close]"), function (btn) {
     btn.onclick = function () { btn.closest(".modal").classList.add("hidden"); };
   });
@@ -559,7 +552,6 @@
   }
   function syncOnline() { $("offlineBar").classList.toggle("hidden", navigator.onLine); }
   window.addEventListener("online", syncOnline); window.addEventListener("offline", syncOnline); syncOnline();
-
   window.addEventListener("pageshow", function (event) {
     if (!event.persisted) return;
     refreshAccount().then(function (ok) { if (ok) loadHistory(); });
@@ -569,6 +561,75 @@
     if (el && el.open && !el.contains(e.target)) el.open = false;
   }
   document.addEventListener("click", closeLangOutside);
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { var el = $("footerLang"); if (el) el.open = false; } });
+  var guideModal = $("guideModal");
+  var guideBody = $("guideBody");
+  var guideClose = $("guideClose");
+  var guideLoadingText = guideBody ? guideBody.textContent.trim() : "";
+  var guideLastFocus = null;
+  function closeGuide() {
+    if (!guideModal || guideModal.classList.contains("hidden")) return;
+    guideModal.classList.add("hidden");
+    document.body.classList.remove("guide-open");
+    if (guideLastFocus) guideLastFocus.focus();
+  }
+  function openGuide(link) {
+    if (!guideModal || !guideBody) return;
+    guideLastFocus = link;
+    guideModal.classList.remove("hidden");
+    document.body.classList.add("guide-open");
+    guideBody.innerHTML = '<div class="guide-loading"><span class="spinner"></span><p>' + esc(guideLoadingText) + '</p></div>';
+    if (guideClose) guideClose.focus();
+    fetch(link.href, { credentials: "same-origin" }).then(function (response) {
+      if (!response.ok) throw new Error("guide");
+      return response.text();
+    }).then(function (html) {
+      var doc = new DOMParser().parseFromString(html, "text/html");
+      var article = doc.querySelector(".food-guide-doc");
+      if (!article) throw new Error("guide");
+      var breadcrumb = article.querySelector(".guide-breadcrumb");
+      if (breadcrumb) breadcrumb.remove();
+      // Keep the article wrapper: it owns the modal reading width and padding.
+      guideBody.innerHTML = article.outerHTML;
+      guideBody.scrollTop = 0;
+      var heading = guideBody.querySelector("h1");
+      if (heading) $("guideModalTitle").textContent = heading.textContent;
+    }).catch(function () {
+      location.href = link.href;
+    });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-food-guide]"), function (link) {
+    link.addEventListener("click", function (event) { event.preventDefault(); openGuide(link); });
+  });
+  if (guideClose) guideClose.addEventListener("click", closeGuide);
+  if (guideModal) guideModal.addEventListener("click", function (event) { if (event.target === guideModal) closeGuide(); });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") { var el = $("footerLang"); if (el) el.open = false; closeGuide(); }
+    if (e.key === "Tab" && guideModal && !guideModal.classList.contains("hidden")) {
+      var focusable = guideModal.querySelectorAll('button,a[href]');
+      if (!focusable.length) return;
+      var first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+  });
+  if (IS_LOCAL) {
+    window.addEventListener("aiglossa:preview-food-result", function (event) {
+      if (event.detail && event.detail.report) renderResult(event.detail);
+    });
+  }
+  (function setupSectionReveal() {
+    if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var sections = document.querySelectorAll(".value, .workflow-band, .knowledge, .recent");
+    if (!sections.length) return;
+    document.body.classList.add("motion-enhanced");
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-revealed");
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.08, rootMargin: "0px 0px -36px" });
+    Array.prototype.forEach.call(sections, function (section) { observer.observe(section); });
+  })();
   refreshAccount().then(function (ok) { if (ok) loadHistory(); });
 })();

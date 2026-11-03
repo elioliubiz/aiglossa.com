@@ -2133,6 +2133,46 @@
       "destination": "/sites/skin/:lang/skin/share/index.html"
     },
     {
+      "source": "/:lang/skin/history/",
+      "has": [{ "type": "host", "value": "skin.aiglossa.com" }],
+      "destination": "/sites/skin/:lang/skin/history/index.html"
+    },
+    {
+      "source": "/:lang/skin/history/",
+      "has": [{ "type": "host", "value": "skin.staging.aiglossa.com" }],
+      "destination": "/sites/skin/:lang/skin/history/index.html"
+    },
+    {
+      "source": "/:lang/skin/result/",
+      "has": [{ "type": "host", "value": "skin.aiglossa.com" }],
+      "destination": "/sites/skin/:lang/skin/result/index.html"
+    },
+    {
+      "source": "/:lang/skin/result/",
+      "has": [{ "type": "host", "value": "skin.staging.aiglossa.com" }],
+      "destination": "/sites/skin/:lang/skin/result/index.html"
+    },
+    {
+      "source": "/:lang/skin/guides/",
+      "has": [{ "type": "host", "value": "skin.aiglossa.com" }],
+      "destination": "/sites/skin/:lang/skin/guides/index.html"
+    },
+    {
+      "source": "/:lang/skin/guides/",
+      "has": [{ "type": "host", "value": "skin.staging.aiglossa.com" }],
+      "destination": "/sites/skin/:lang/skin/guides/index.html"
+    },
+    {
+      "source": "/:lang/skin/guides/:slug/",
+      "has": [{ "type": "host", "value": "skin.aiglossa.com" }],
+      "destination": "/sites/skin/:lang/skin/guides/:slug/index.html"
+    },
+    {
+      "source": "/:lang/skin/guides/:slug/",
+      "has": [{ "type": "host", "value": "skin.staging.aiglossa.com" }],
+      "destination": "/sites/skin/:lang/skin/guides/:slug/index.html"
+    },
+    {
       "source": "/:lang/skin/",
       "has": [
         {

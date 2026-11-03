@@ -41,6 +41,9 @@
     "host": "food.aiglossa.com",
     "pages": [
       "food",
+      "food-history",
+      "food-result",
+      "food-guides",
       "food-share"
     ]
   },
@@ -48,6 +51,9 @@
     "host": "skin.aiglossa.com",
     "pages": [
       "skin",
+      "skin-history",
+      "skin-result",
+      "skin-guides",
       "skin-share"
     ]
   }
