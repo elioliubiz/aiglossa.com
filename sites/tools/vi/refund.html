@@ -32,10 +32,10 @@
 <meta property="og:image" content="https://tools.aiglossa.com/assets/og-brand.png"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="https://tools.aiglossa.com/assets/og-brand.png">
 <meta name="robots" content="noindex">
 <meta name="theme-color" content="#0e0f11">
-<link rel="icon" href="../assets/favicon-tools.svg?v=20261102-35" type="image/svg+xml">
-<link rel="icon" href="../assets/favicon-tools.svg?v=20261102-35" sizes="any">
-<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261102-35">
-<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261102-35">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261103-36" type="image/svg+xml">
+<link rel="icon" href="../assets/favicon-tools.svg?v=20261103-36" sizes="any">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon-tools.png?v=20261103-36">
+<link rel="manifest" href="../assets/manifest-tools.webmanifest?v=20261103-36">
 <link rel="stylesheet" href="../assets/site.css">
 <link rel="stylesheet" href="../assets/theme.css">
 <style>
@@ -54,7 +54,8 @@
   footer nav a{color:var(--muted);font-size:12.5px;text-decoration:none;margin-inline-end:14px}
   .switcher{position:relative}
   .switcher summary{list-style:none;cursor:pointer;font-size:12.5px;color:var(--muted);
-                    border:1px solid var(--line);border-radius:999px;padding-block:7px;padding-inline:14px}
+                    border:0;padding-block:8px;padding-inline:0}
+  .switcher summary::after{content:"⌄";margin-inline-start:7px}
   .switcher summary::-webkit-details-marker{display:none}
   .switcher ul{position:absolute;inset-inline-end:0;bottom:calc(100% + 8px);z-index:5;margin:0;
                padding:6px;list-style:none;background:#16181c;border:1px solid var(--line);
@@ -110,13 +111,12 @@
 
 <footer>
   <div class="wrap">
-    <span class="brand">AIGLOSSA TOOLS</span>
-    <nav>
+    <div class="footer-main"><span class="copyright">Bản quyền © 2026 Aiglossa. Bảo lưu mọi quyền.</span><nav>
       <a href="https://aiglossa.com/vi/protocol/privacy.html">Chính sách Quyền riêng tư</a>
       <a href="https://aiglossa.com/vi/protocol/term.html">Điều khoản Dịch vụ</a>
-    </nav>
+    </nav></div>
     <details class="switcher">
-      <summary>Ngôn ngữ · Tiếng Việt</summary>
+      <summary>Tiếng Việt</summary>
       <ul>
         <li><a href="../ar/refund.html" data-lang="ar">العربية</a></li>
         <li><a href="../de/refund.html" data-lang="de">Deutsch</a></li>

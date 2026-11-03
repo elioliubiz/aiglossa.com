@@ -9,14 +9,13 @@
     <link rel="stylesheet" href="{{prefix}}assets/protocol.css">
 </head>
 <body>
-
+<header class="site-header"><a href="{{prefix}}">AIGLOSSA</a></header>
 <div class="container">
     <div class="top-bar">
         <div class="header">
             <h1>{{main_title}}</h1>
             <p>{{sub_title}}</p>
         </div>
-        {{switcher}}
     </div>
 
     <div class="alert-box">
@@ -58,12 +57,7 @@
         <p><span>{{sec4_desc}}</span></p>
         <p>Email: support@aiglossa.com</p>
     </div>
-<!--
-    <div class="footer">
-        <p id="footerText">{{footer}}</p>
-    </div> -->
 </div>
-
-
+<footer class="protocol-footer"><div class="footer-inner"><span>{{copyright}}</span><details class="switcher"><summary>{{current_name}}</summary><ul>{{switcher}}</ul></details></div></footer>
 </body>
 </html>
