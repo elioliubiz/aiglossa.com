@@ -90,7 +90,8 @@
   footer nav a{color:var(--muted);font-size:12.5px;text-decoration:none;margin-inline-end:14px}
   .switcher{position:relative}
   .switcher summary{list-style:none;cursor:pointer;font-size:12.5px;color:var(--muted);
-                    border:1px solid var(--line);border-radius:999px;padding-block:7px;padding-inline:14px}
+                    border:0;padding-block:8px;padding-inline:0}
+  .switcher summary::after{content:"⌄";margin-inline-start:7px}
   .switcher summary::-webkit-details-marker{display:none}
   .switcher ul{position:absolute;inset-inline-end:0;bottom:calc(100% + 8px);z-index:5;margin:0;
                padding:6px;list-style:none;background:#16181c;border:1px solid var(--line);
@@ -167,13 +168,12 @@
 
 <footer>
   <div class="wrap">
-    <span class="brand">aiglossa</span>
-    <nav>
+    <div class="footer-main"><span class="copyright">Copyright © 2026 Aiglossa. All rights reserved.</span><nav>
       <a href="https://aiglossa.com/ja/protocol/privacy.html">プライバシーポリシー</a>
       <a href="https://aiglossa.com/ja/protocol/term.html">利用規約</a>
-    </nav>
+    </nav></div>
     <details class="switcher">
-      <summary>言語 · 日本語</summary>
+      <summary>日本語</summary>
       <ul>
         <li><a href="../ar/account.html" data-lang="ar">العربية</a></li>
         <li><a href="../de/account.html" data-lang="de">Deutsch</a></li>

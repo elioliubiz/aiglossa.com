@@ -42,8 +42,8 @@ FOOD_ASSETS = (
     "food-icon-192.png", "food-icon-512.png", "food-icon-maskable-512.png", "food-sample.jpg",
 )
 
-FOOD_ASSET_VERSION = "20261102-45"
-GLOBAL_ASSET_VERSION = "20261102-35"
+FOOD_ASSET_VERSION = "20261103-46"
+GLOBAL_ASSET_VERSION = "20261103-36"
 
 # root / tools / scholan 只复制页面实际引用的资源，避免把整套 assets
 # （Scholan 截图、其他站点图标等）复制进每个站点，造成仓库和部署冗余。
@@ -77,8 +77,27 @@ SKIN_ASSETS = (
     "apple-touch-icon-skin.png", "og-skin-v2.png", "skin-sample.jpg", "favicon-skin-64.png", "favicon-skin.ico", "skin-icon-192.png", "skin-icon-512.png",
     "skin-icon-maskable-512.png",
 )
-SKIN_ASSET_VERSION = "20261102-21"
+SKIN_ASSET_VERSION = "20261103-22"
 SKIN_GUIDE_SLUGS = ("read-ingredient-list", "understand-key-actives", "build-a-routine")
+
+COPYRIGHTS = {
+    "ar": "حقوق النشر © 2026 Aiglossa. جميع الحقوق محفوظة.",
+    "de": "Copyright © 2026 Aiglossa. Alle Rechte vorbehalten.",
+    "en": "Copyright © 2026 Aiglossa. All rights reserved.",
+    "es": "Copyright © 2026 Aiglossa. Todos los derechos reservados.",
+    "fr": "Copyright © 2026 Aiglossa. Tous droits réservés.",
+    "id": "Hak Cipta © 2026 Aiglossa. Seluruh hak dilindungi.",
+    "it": "Copyright © 2026 Aiglossa. Tutti i diritti riservati.",
+    "ja": "Copyright © 2026 Aiglossa. All rights reserved.",
+    "ko": "Copyright © 2026 Aiglossa. All rights reserved.",
+    "pt": "Copyright © 2026 Aiglossa. Todos os direitos reservados.",
+    "ru": "Copyright © 2026 Aiglossa. Все права защищены.",
+    "th": "Copyright © 2026 Aiglossa. สงวนลิขสิทธิ์",
+    "tr": "Copyright © 2026 Aiglossa. Tüm hakları saklıdır.",
+    "vi": "Bản quyền © 2026 Aiglossa. Bảo lưu mọi quyền.",
+    "zh-Hans": "Copyright © 2026 Aiglossa. 保留所有权利。",
+    "zh-Hant": "Copyright © 2026 Aiglossa. 保留所有權利。",
+}
 
 # 占位符统一用 {{key}}：模板是纯文件，渲染器只知道这一种语法，
 # 于是"模板里有占位符、文案里没有对应字段"会在构建时报错，而不是静默留下 {{...}}。
@@ -593,6 +612,9 @@ def main() -> int:
             "canonical": url_for(site_base, lang, page_path),
             "alternates": alternates_for(site_base, languages, site_default, page_path, site_langs),
             "switcher": switcher_details(depth, lang, page_path, languages, site_langs),
+            "current_name": esc(languages[lang]["name"]),
+            "lang_label": esc(marketing[lang]["langLabel"]),
+            "copyright": esc(COPYRIGHTS[lang]),
         }
         values.update(values_builder(lang, site_base))
         # builder 生成的 HTML 片段里可能含 {{prefix}}（如工具卡链接）：
@@ -635,7 +657,6 @@ def main() -> int:
                                  # 只有进 <title> 的 page_title 需要转义。
                                  **copy[lang],
                                  "page_title": esc(copy[lang]["page_title"]),
-                                 "switcher": switcher_select(2, lang, f"protocol/{name}.html", languages, site_langs),
                              }, site_langs)
                 continue
 

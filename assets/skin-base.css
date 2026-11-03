@@ -121,7 +121,11 @@ button{font:inherit;cursor:pointer}
 .recent-item .mini{margin-inline-start:auto;font-size:10px;color:var(--green);background:var(--green-soft);padding:4px 8px;border-radius:999px;white-space:nowrap}
 
 footer{background:#F3EFE5;color:var(--muted);padding-block:26px;border-top:1px solid var(--line)}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:11.5px}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:11.5px}
+.footer-note{flex-basis:100%;margin:0;color:var(--muted);font-size:11.5px;line-height:1.7}
+.footer-rule{flex-basis:100%;height:1px;background:var(--line)}
+.footer-main{display:flex;align-items:center;gap:18px;flex-wrap:wrap;min-width:0}
+.copyright{color:var(--muted);white-space:nowrap}
 .footer-inner .brand{font-size:11px;letter-spacing:.2em;font-weight:400;color:var(--ink)}
 .footer-inner a:hover{color:var(--green)}
 .footer-links{display:flex;gap:18px;flex-wrap:wrap}
@@ -258,7 +262,7 @@ footer{background:#F3EFE5;color:var(--muted);padding-block:26px;border-top:1px s
   .side-card .stats{grid-template-columns:1fr;margin-top:12px}
   .side-card .btn.full{margin-top:8px}
   .footer-inner{display:block}
-  .footer-links{margin-top:10px}
+  .footer-main{align-items:flex-start;flex-direction:column;gap:10px}.footer-links{margin-top:0}.footer-lang{margin-top:12px}.copyright{white-space:normal}.footer-rule{margin-block:15px}
 }
 
 /* ---------- app states / dynamic report ---------- */
@@ -459,7 +463,8 @@ body{min-height:100vh}
 @media(max-width:640px){#buyBtn{display:inline-flex}}
 
 .footer-lang{position:relative;color:#8A8F88;font-size:10.5px;letter-spacing:.02em}
-.footer-lang summary{list-style:none;cursor:pointer;padding:4px 0}
+.footer-lang summary{list-style:none;cursor:pointer;padding:8px 17px 8px 0;position:relative}
+.footer-lang summary:after{content:"⌄";position:absolute;inset-inline-end:0}
 .footer-lang summary::-webkit-details-marker{display:none}
 .footer-lang summary:hover{color:var(--ink)}
 .footer-lang ul{position:absolute;inset-inline-start:0;bottom:calc(100% + 8px);min-width:150px;max-height:300px;overflow:auto;background:#fff;border:1px solid var(--line);border-radius:10px;padding:6px;list-style:none;box-shadow:0 14px 30px rgba(20,32,27,.12);z-index:20}

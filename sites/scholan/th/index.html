@@ -121,13 +121,13 @@
   @media(prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#171923;--ink:#f4f4f8;--mut:#a8afc0;--line:rgba(238,239,248,.12);--line-strong:rgba(238,239,248,.23);--surface:#21242f;--surface-2:#292d3a;--acc:#9b7aff;--acc-2:#8099e8;--gold:#e0b758;--shadow:0 26px 80px rgba(0,0,0,.38)}}
   body{background:radial-gradient(ellipse 58% 32% at 18% 5%,rgba(116,65,254,.15),transparent 72%),radial-gradient(ellipse 50% 30% at 88% 20%,rgba(95,127,212,.12),transparent 72%),radial-gradient(ellipse 42% 24% at 52% 68%,rgba(212,164,62,.06),transparent 74%),var(--bg);color:var(--ink)}
   .aurora{display:none}.product-nav{position:relative;z-index:10;height:66px;display:flex;align-items:center;justify-content:space-between;padding-inline:max(20px,calc((100vw - 1180px)/2));border-block-end:1px solid var(--line);background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(20px)}
-  .product-brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-size:12px;font-weight:650}.product-brand img{width:32px;height:32px;border-radius:8px;box-shadow:0 7px 18px rgba(116,65,254,.2)}.product-brand span{letter-spacing:.06em}.product-nav>a:last-child{min-height:36px;display:inline-flex;align-items:center;padding-inline:11px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--acc);font-size:11.5px;text-decoration:none}
+  .product-brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-size:12px;font-weight:650}.product-brand img{width:32px;height:32px;border-radius:8px;box-shadow:0 7px 18px rgba(116,65,254,.2)}.product-brand span{letter-spacing:.06em}.support-link{color:var(--mut);font-size:12px;text-decoration:none;padding-block:8px}.support-link:hover{color:var(--acc)}
   .hero{padding-block:clamp(60px,9vh,94px) 0}.hero .wrap{max-width:900px}.app-lockup{display:flex;align-items:center;justify-content:center;gap:11px;margin-bottom:20px}.app-lockup img{width:46px;height:46px;border-radius:12px;box-shadow:0 10px 28px rgba(116,65,254,.22)}.app-lockup span{font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--acc)}
   .hero .kicker{display:none}.hero h1{font-size:clamp(40px,6vw,72px);line-height:1.04;letter-spacing:0;font-weight:700;color:var(--ink)}.hero .lede{max-width:56ch;color:var(--mut);font-size:16px;line-height:1.75}.store{border-radius:8px;background:var(--ink);color:var(--bg);box-shadow:0 12px 30px rgba(52,46,88,.18)}
   .hero::before{top:-24%;background:radial-gradient(ellipse at 50% 42%,rgba(116,65,254,.15),rgba(95,127,212,.06) 48%,transparent 70%)}.stage{max-width:1160px;margin-top:40px}.devices{max-height:650px}.frame{background:linear-gradient(155deg,#777986,#292b35 46%,#545663 72%,#242630);box-shadow:var(--shadow)}
   .features{max-width:1040px;margin-top:clamp(48px,7vh,76px);gap:0;border-block:1px solid var(--line)}.features>div{border:0;padding:25px 28px 28px}.features>div+div{border-inline-start:1px solid var(--line)}.features .n{color:var(--acc);font-weight:700}.features h3{color:var(--ink);font-weight:680}.features p{color:var(--mut)}
   .closing{color:var(--mut);max-width:680px}.closing:before{content:"";display:block;width:42px;height:3px;margin:0 auto 20px;background:linear-gradient(90deg,var(--acc),var(--acc-2),var(--gold))}
-  footer{border-color:var(--line);background:color-mix(in srgb,var(--surface) 48%,transparent)}footer .brand,footer nav a{color:var(--mut)}footer nav a:hover{color:var(--ink)}.switcher summary{border-color:var(--line);background:var(--surface);color:var(--mut);border-radius:7px}.switcher ul{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow)}.switcher li a[aria-current],.switcher li a:hover{background:var(--surface-2);color:var(--ink)}
+  footer{border-color:var(--line);background:color-mix(in srgb,var(--surface) 48%,transparent)}footer nav a{color:var(--mut)}footer nav a:hover{color:var(--ink)}.switcher summary{background:transparent;color:var(--mut)}.switcher ul{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow)}.switcher li a[aria-current],.switcher li a:hover{background:var(--surface-2);color:var(--ink)}
   @media(max-width:760px){.product-nav{height:60px}.product-brand img{width:30px;height:30px}.hero{padding-top:44px}.app-lockup img{width:40px;height:40px}.hero h1{font-size:clamp(36px,11vw,52px)}.hero .lede{font-size:14px}.stage{margin-top:28px;padding-inline:14px}.devices{aspect-ratio:4/3}.frame.tab{inset-inline-start:1%;width:82%}.frame.ph{inset-inline-start:auto;inset-inline-end:1%;width:29%}.features{display:block;margin-inline:18px;padding-inline:0}.features>div{padding-inline:4px}.features>div+div{border-inline-start:0;border-block-start:1px solid var(--line)}}
   @media(prefers-reduced-motion:reduce){.store{transition:none}.store:hover{transform:none}}
 </style>
@@ -135,7 +135,7 @@
 <body>
 <div class="aurora" aria-hidden="true"><i class="a"></i><i class="b"></i></div>
 
-<header class="product-nav"><a class="product-brand" href="./"><img src="../assets/scholan/icon.png" alt=""><span>Scholan</span></a><a href="support.html">ฝ่ายสนับสนุน Scholan</a></header>
+<header class="product-nav"><a class="product-brand" href="./"><img src="../assets/scholan/icon.png" alt=""><span>Scholan</span></a><a class="support-link" href="support.html">ฝ่ายสนับสนุน Scholan</a></header>
 
 <main>
   <section class="hero">
@@ -183,13 +183,13 @@
 
 <footer>
   <div class="wrap">
-    <span class="brand">Scholan · scholan.aiglossa.com</span>
-    <nav class="legal">
+    <div class="footer-main"><span class="copyright">Copyright © 2026 Aiglossa. สงวนลิขสิทธิ์</span><nav class="legal">
+      <a href="support.html">ฝ่ายสนับสนุน Scholan</a>
       <a href="https://aiglossa.com/th/protocol/privacy.html">นโยบายความเป็นส่วนตัว</a>
       <a href="https://aiglossa.com/th/protocol/term.html">ข้อกำหนดการให้บริการ</a>
-    </nav>
+    </nav></div>
     <details class="switcher">
-      <summary>ภาษา · ไทย</summary>
+      <summary>ไทย</summary>
       <ul>
         <li><a href="../ar/" data-lang="ar">العربية</a></li>
         <li><a href="../de/" data-lang="de">Deutsch</a></li>

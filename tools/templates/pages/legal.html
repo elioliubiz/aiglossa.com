@@ -38,7 +38,8 @@
   footer nav a{color:var(--muted);font-size:12.5px;text-decoration:none;margin-inline-end:14px}
   .switcher{position:relative}
   .switcher summary{list-style:none;cursor:pointer;font-size:12.5px;color:var(--muted);
-                    border:1px solid var(--line);border-radius:999px;padding-block:7px;padding-inline:14px}
+                    border:0;padding-block:8px;padding-inline:0}
+  .switcher summary::after{content:"⌄";margin-inline-start:7px}
   .switcher summary::-webkit-details-marker{display:none}
   .switcher ul{position:absolute;inset-inline-end:0;bottom:calc(100% + 8px);z-index:5;margin:0;
                padding:6px;list-style:none;background:#16181c;border:1px solid var(--line);
@@ -56,13 +57,12 @@
 
 <footer>
   <div class="wrap">
-    <span class="brand">AIGLOSSA TOOLS</span>
-    <nav>
+    <div class="footer-main"><span class="copyright">{{copyright}}</span><nav>
       <a href="https://aiglossa.com/{{lang}}/protocol/privacy.html">{{legal_privacy}}</a>
       <a href="https://aiglossa.com/{{lang}}/protocol/term.html">{{legal_terms}}</a>
-    </nav>
+    </nav></div>
     <details class="switcher">
-      <summary>{{lang_label}} · {{current_name}}</summary>
+      <summary>{{current_name}}</summary>
       <ul>
 {{switcher}}
       </ul>

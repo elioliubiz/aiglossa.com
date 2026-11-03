@@ -14,6 +14,7 @@
 | 根站说明文字异常换行 | 用 `ch` 做宽度，中文实际宽度偏差 | 改成固定 px 上限 | 中文/多语言文本不要用 `ch` 估算换行 |
 | 测试页产品链接跳到生产 | 静态链接写死生产 host，staging 未改写 | staging 运行时改写 Web 产品链接；App 例外 | 新增跨站链接时检查 staging 行为 |
 | Scholan 网页图标仍旧 | 只改 App 图标，网页仍用旧 favicon | 生成 Scholan 专用 favicon/ICO/touch icon | 网站图标变更必须检查 `/favicon.ico` 和页面 `<link>` |
+| Scholan 根路径始终进入英文 | Scholan 专用 `/` → `/en/` 永久跳转先于语言规则 | 为正式 host 补齐 16 条按浏览器语言排序的根路径跳转 | 修改 `vercel.json` 后用中英文 `Accept-Language` 分别验证 |
 
 ## 新增回归的格式
 
