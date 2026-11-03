@@ -37,6 +37,13 @@ SITES_DIR = ROOT / "sites"
 ASSETS = ROOT / "assets"
 INDEXNOW_KEY_FILE = ROOT / "tools" / "indexnow-key.txt"
 YANDEX_VERIFICATION_FILE = ROOT / "tools" / "yandex_aecf751203567a9a.html"
+NAVER_VERIFICATION_FILES = {
+    "root": "navera478cab4109917326bd2ce483b98bfe0.html",
+    "tools": "naver14957b6e5cf01fec6c946f2e1ea389de.html",
+    "food": "naver8e00ffd617f18c734c2638430708c0ed.html",
+    "skin": "naver7cc379b62a3aa2d30d0a92315f2d86db.html",
+    "scholan": "naverba6167b98da84b8384161e7a5fb11c11.html",
+}
 
 # food 只使用自己的少量资源，避免把 scholan 截图等整套 assets 复制过去。
 FOOD_ASSETS = (
@@ -539,6 +546,8 @@ def _write_seo_files(site: str, spec: dict, site_langs: list[str],
         raise ValueError("tools/indexnow-key.txt 不是有效的 IndexNow key")
     (targets / f"{indexnow_key}.txt").write_text(indexnow_key, encoding="utf-8")
     shutil.copy2(YANDEX_VERIFICATION_FILE, targets / YANDEX_VERIFICATION_FILE.name)
+    naver_file = NAVER_VERIFICATION_FILES[site]
+    (targets / naver_file).write_text(f"naver-site-verification: {naver_file}", encoding="utf-8")
     xdef = default if default in site_langs else site_langs[0]
     paths = _site_urls(site, spec)
 
