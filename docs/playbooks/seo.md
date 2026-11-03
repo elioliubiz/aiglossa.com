@@ -21,3 +21,7 @@ python3 tools/submit_indexnow.py --submit
 ```
 
 提交工具只读取生产 `sites.json` host 和各站 sitemap，不会提交 staging、分享页或其他 noindex 页面。IndexNow 用于通知新增、修改和删除，不要把未变化 URL 当作定时任务反复提交。
+
+## Yandex Webmaster
+
+子域使用 Vercel CNAME，避免用同名 TXT 验证。统一 HTML 验证文件保存在 `tools/yandex_aecf751203567a9a.html`，构建时复制到五个站点根目录。Yandex 中每个生产 host 仍需作为独立网站添加，并分别提交自己的 `sitemap.xml`。

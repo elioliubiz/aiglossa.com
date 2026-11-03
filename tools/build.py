@@ -36,6 +36,7 @@ TEMPLATES = ROOT / "tools" / "templates"
 SITES_DIR = ROOT / "sites"
 ASSETS = ROOT / "assets"
 INDEXNOW_KEY_FILE = ROOT / "tools" / "indexnow-key.txt"
+YANDEX_VERIFICATION_FILE = ROOT / "tools" / "yandex_aecf751203567a9a.html"
 
 # food 只使用自己的少量资源，避免把 scholan 截图等整套 assets 复制过去。
 FOOD_ASSETS = (
@@ -537,6 +538,7 @@ def _write_seo_files(site: str, spec: dict, site_langs: list[str],
     if not re.fullmatch(r"[A-Za-z0-9-]{8,128}", indexnow_key):
         raise ValueError("tools/indexnow-key.txt 不是有效的 IndexNow key")
     (targets / f"{indexnow_key}.txt").write_text(indexnow_key, encoding="utf-8")
+    shutil.copy2(YANDEX_VERIFICATION_FILE, targets / YANDEX_VERIFICATION_FILE.name)
     xdef = default if default in site_langs else site_langs[0]
     paths = _site_urls(site, spec)
 
