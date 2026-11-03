@@ -126,7 +126,7 @@
   .hero .kicker{display:none}.hero h1{font-size:clamp(40px,6vw,72px);line-height:1.04;letter-spacing:0;font-weight:700;color:var(--ink)}.hero .lede{max-width:56ch;color:var(--mut);font-size:16px;line-height:1.75}.store{border-radius:8px;background:var(--ink);color:var(--bg);box-shadow:0 12px 30px rgba(52,46,88,.18)}
   .hero::before{top:-24%;background:radial-gradient(ellipse at 50% 42%,rgba(116,65,254,.15),rgba(95,127,212,.06) 48%,transparent 70%)}.stage{max-width:1160px;margin-top:40px}.devices{max-height:650px}.frame{background:linear-gradient(155deg,#777986,#292b35 46%,#545663 72%,#242630);box-shadow:var(--shadow)}
   .features{max-width:1040px;margin-top:clamp(48px,7vh,76px);gap:0;border-block:1px solid var(--line)}.features>div{border:0;padding:25px 28px 28px}.features>div+div{border-inline-start:1px solid var(--line)}.features .n{color:var(--acc);font-weight:700}.features h3{color:var(--ink);font-weight:680}.features p{color:var(--mut)}
-  .closing{color:var(--mut);max-width:680px}.closing:before{content:"";display:block;width:42px;height:3px;margin:0 auto 20px;background:linear-gradient(90deg,var(--acc),var(--acc-2),var(--gold))}
+  .closing{color:var(--mut);max-width:680px}
   footer{border-color:var(--line);background:color-mix(in srgb,var(--surface) 48%,transparent)}footer nav a{color:var(--mut)}footer nav a:hover{color:var(--ink)}.switcher summary{background:transparent;color:var(--mut)}.switcher ul{background:var(--surface);border-color:var(--line);box-shadow:var(--shadow)}.switcher li a[aria-current],.switcher li a:hover{background:var(--surface-2);color:var(--ink)}
   @media(max-width:760px){.product-nav{height:60px}.product-brand img{width:30px;height:30px}.hero{padding-top:44px}.app-lockup img{width:40px;height:40px}.hero h1{font-size:clamp(36px,11vw,52px)}.hero .lede{font-size:14px}.stage{margin-top:28px;padding-inline:14px}.devices{aspect-ratio:4/3}.frame.tab{inset-inline-start:1%;width:82%}.frame.ph{inset-inline-start:auto;inset-inline-end:1%;width:29%}.features{display:block;margin-inline:18px;padding-inline:0}.features>div{padding-inline:4px}.features>div+div{border-inline-start:0;border-block-start:1px solid var(--line)}}
   @media(prefers-reduced-motion:reduce){.store{transition:none}.store:hover{transform:none}}
@@ -135,7 +135,7 @@
 <body>
 <div class="aurora" aria-hidden="true"><i class="a"></i><i class="b"></i></div>
 
-<header class="product-nav"><a class="product-brand" href="./"><img src="../assets/scholan/icon.png" alt=""><span>Scholan</span></a><a class="support-link" href="support.html">Assistance Scholan</a></header>
+<header class="product-nav"><a class="product-brand" href="./"><img src="../assets/scholan/icon.png" alt=""><span>Scholan</span></a><a class="support-link" href="support.html">Assistance</a></header>
 
 <main>
   <section class="hero">
@@ -184,31 +184,11 @@
 <footer>
   <div class="wrap">
     <div class="footer-main"><span class="copyright">Copyright © 2026 Aiglossa. Tous droits réservés.</span><nav class="legal">
-      <a href="support.html">Assistance Scholan</a>
+      <a href="support.html">Assistance</a>
       <a href="https://aiglossa.com/fr/protocol/privacy.html">Politique de Confidentialité</a>
       <a href="https://aiglossa.com/fr/protocol/term.html">Conditions d&#x27;utilisation</a>
     </nav></div>
-    <details class="switcher">
-      <summary>Français</summary>
-      <ul>
-        <li><a href="../ar/" data-lang="ar">العربية</a></li>
-        <li><a href="../de/" data-lang="de">Deutsch</a></li>
-        <li><a href="../en/" data-lang="en">English</a></li>
-        <li><a href="../es/" data-lang="es">Español</a></li>
-        <li><a href="../fr/" data-lang="fr" aria-current="true">Français</a></li>
-        <li><a href="../id/" data-lang="id">Bahasa Indonesia</a></li>
-        <li><a href="../it/" data-lang="it">Italiano</a></li>
-        <li><a href="../ja/" data-lang="ja">日本語</a></li>
-        <li><a href="../ko/" data-lang="ko">한국어</a></li>
-        <li><a href="../pt/" data-lang="pt">Português</a></li>
-        <li><a href="../ru/" data-lang="ru">Русский</a></li>
-        <li><a href="../th/" data-lang="th">ไทย</a></li>
-        <li><a href="../tr/" data-lang="tr">Türkçe</a></li>
-        <li><a href="../vi/" data-lang="vi">Tiếng Việt</a></li>
-        <li><a href="../zh-Hans/" data-lang="zh-Hans">简体中文</a></li>
-        <li><a href="../zh-Hant/" data-lang="zh-Hant">繁體中文</a></li>
-      </ul>
-    </details>
+    <select class="footer-select" aria-label="Langue" onchange="if(this.value)location.href=this.value"><option value="../ar/">العربية</option><option value="../de/">Deutsch</option><option value="../en/">English</option><option value="../es/">Español</option><option value="../fr/" selected>Français</option><option value="../id/">Bahasa Indonesia</option><option value="../it/">Italiano</option><option value="../ja/">日本語</option><option value="../ko/">한국어</option><option value="../pt/">Português</option><option value="../ru/">Русский</option><option value="../th/">ไทย</option><option value="../tr/">Türkçe</option><option value="../vi/">Tiếng Việt</option><option value="../zh-Hans/">简体中文</option><option value="../zh-Hant/">繁體中文</option></select>
   </div>
 </footer>
 

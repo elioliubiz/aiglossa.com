@@ -99,6 +99,13 @@ COPYRIGHTS = {
     "zh-Hant": "Copyright © 2026 Aiglossa. 保留所有權利。",
 }
 
+SUPPORT_LABELS = {
+    "ar": "الدعم", "de": "Support", "en": "Support", "es": "Soporte",
+    "fr": "Assistance", "id": "Dukungan", "it": "Supporto", "ja": "サポート",
+    "ko": "지원", "pt": "Suporte", "ru": "Поддержка", "th": "บริการช่วยเหลือ",
+    "tr": "Destek", "vi": "Hỗ trợ", "zh-Hans": "支持", "zh-Hant": "支援",
+}
+
 # 占位符统一用 {{key}}：模板是纯文件，渲染器只知道这一种语法，
 # 于是"模板里有占位符、文案里没有对应字段"会在构建时报错，而不是静默留下 {{...}}。
 PLACEHOLDER = re.compile(r"\{\{([a-zA-Z0-9_]+)\}\}")
@@ -359,6 +366,23 @@ def switcher_select(depth: int, current: str, page_path: str, languages: dict, o
     )
 
 
+def switcher_native(depth: int, current: str, page_path: str, languages: dict,
+                    order: list[str], label: str) -> str:
+    """Stable footer language control using the browser's native select UI."""
+    options = "".join(
+        '<option value="{href}"{sel}>{name}</option>'.format(
+            href=rel_link(depth, code, page_path),
+            sel=" selected" if code == current else "",
+            name=esc(languages[code]["name"]),
+        )
+        for code in order
+    )
+    return (
+        f'<select class="footer-select" aria-label="{esc(label)}" '
+        f'onchange="if(this.value)location.href=this.value">{options}</select>'
+    )
+
+
 def _site_urls(site: str, spec: dict) -> list[str]:
     """该站点所有可索引页面的路径（不含语言前缀），用于生成 sitemap。"""
     guides = {}
@@ -615,6 +639,9 @@ def main() -> int:
             "current_name": esc(languages[lang]["name"]),
             "lang_label": esc(marketing[lang]["langLabel"]),
             "copyright": esc(COPYRIGHTS[lang]),
+            "native_switcher": switcher_native(
+                depth, lang, page_path, languages, site_langs, marketing[lang]["langLabel"]
+            ),
         }
         values.update(values_builder(lang, site_base))
         # builder 生成的 HTML 片段里可能含 {{prefix}}（如工具卡链接）：
@@ -771,7 +798,7 @@ def main() -> int:
                         "steps_1_h": esc(locale["steps"][0]["h"]),
                         "steps_1_p": esc(locale["steps"][0]["p"]),
                         "app_href": "https://apps.apple.com/app/id6811801616",
-                        "support_label": esc(support_copy["title"]),
+                        "support_label": esc(SUPPORT_LABELS[lang]),
                         "shot_spread": "/assets/scholan/real/ipad-spread.jpg",
                         "shot_ipad_lib": "/assets/scholan/real/ipad-library.jpg",
                         "shot_phone": "/assets/scholan/real/phone-reading.jpg",
