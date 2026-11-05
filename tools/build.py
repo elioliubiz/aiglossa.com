@@ -52,7 +52,7 @@ FOOD_ASSETS = (
 )
 
 FOOD_ASSET_VERSION = "20261103-47"
-GLOBAL_ASSET_VERSION = "20261103-37"
+GLOBAL_ASSET_VERSION = "20261105-45"
 
 # root / tools / scholan 只复制页面实际引用的资源，避免把整套 assets
 # （Scholan 截图、其他站点图标等）复制进每个站点，造成仓库和部署冗余。
@@ -67,6 +67,7 @@ ROOT_ASSETS = (
     "scholan/icon.png", "scholan/welcome.jpg",
 )
 TOOLS_ASSETS = (
+    "tool-topbar.css",
     "site.css", "site.js", "theme.css", "wallet.js", "share.js",
     "favicon-tools.svg", "apple-touch-icon-tools.png", "manifest-tools.webmanifest",
     "icon-tools-192.png", "icon-tools-512.png", "og-tools.png", "og-music.png", "og-image.png",

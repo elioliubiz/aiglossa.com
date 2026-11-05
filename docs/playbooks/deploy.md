@@ -99,3 +99,7 @@ curl -s -o /dev/null -w "%{http_code}\n" https://skin.aiglossa.com/zh-Hans/skin/
 - 生产 sitemap 提交一次即可，不要反复重提；
 - 分享页/登录页/账户页 noindex；
 - 结构变化后检查 sitemap、canonical、hreflang、robots。
+
+## 官方创作示例（2026-11-05）
+
+音乐/图片共用版本化资源入口 `https://assets.aiglossa.com/showcase/20261105-v1/`，服务器仅公开 `/opt/glossa-shared/public/showcase/`。Nginx 指定 JSON/JPEG/FLAC 类型、CORS 和 Range。清单保存作品参数与歌词数据，媒体不提交静态站仓库。新版本先上传并核对资源，再更新前端 URL；旧版媒体须等生产与 staging 都没有引用后再删除，防止旧部署播放失败。不要公开 shared 根目录。
