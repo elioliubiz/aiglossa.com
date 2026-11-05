@@ -38,11 +38,11 @@
 <meta name="theme-color" content="#111720" media="(prefers-color-scheme: dark)">
 <!-- 结构化数据：告诉 Google 这是一个网页应用，而不是普通文章 -->
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác", "description": "Biến ảnh hoặc mô tả thành nhạc nền dài đúng 30–90 giây. Lời bài hát gọi tên những gì trong ảnh, với giọng hát 10 ngôn ngữ và vòng lặp liền mạch.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Web", "url": "https://tools.aiglossa.com/vi/music/", "inLanguage": "vi"}</script>
-<link rel="icon" href="../../assets/favicon-tools.svg?v=20261103-37" type="image/svg+xml">
-<link rel="icon" href="../../assets/favicon-tools.svg?v=20261103-37" sizes="any">
-<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png?v=20261103-37">
-<link rel="manifest" href="../../assets/manifest-tools.webmanifest?v=20261103-37">
-<link rel="stylesheet" href="../../assets/theme.css?v=20261103-37" />
+<link rel="icon" href="../../assets/favicon-tools.svg?v=20261105-45" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-tools.svg?v=20261105-45" sizes="any">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png?v=20261105-45">
+<link rel="manifest" href="../../assets/manifest-tools.webmanifest?v=20261105-45">
+<link rel="stylesheet" href="../../assets/theme.css?v=20261105-45" />
 <style>
   :root{
     --bg:#0e0f11; --panel:#16181c; --ink:#f2f1ec; --mut:#92959c; --muted:#92959c;
@@ -936,7 +936,65 @@
   }
   @media(max-width:480px){.utility-brand{display:none}.utilitybar .acctbar{width:100%;margin-inline-start:0;justify-content:flex-end}}
   @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.item-card,.item-card img{transition:none!important}.item-card:hover{transform:none}}
-</style>
+
+.rail,.rail-scroll,.sect,.recipe-group{min-inline-size:0}
+.rail-scroll{overflow-x:hidden}
+.select,.recipe-text{max-inline-size:100%;min-inline-size:0;box-sizing:border-box}
+.recipe-text{inline-size:100%;resize:vertical;padding:10px 11px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font:inherit;font-size:12px;line-height:1.6}
+.recipe-group{border-block-start:1px solid var(--line);padding-block:10px;margin-block:8px}
+.recipe-group>summary{cursor:pointer;color:var(--ink);font-size:12px;font-weight:650;padding-block:4px 10px;overflow-wrap:anywhere}
+.lbl{gap:8px;line-height:1.4;letter-spacing:.04em}.lbl>span{min-inline-size:0;overflow-wrap:anywhere}.lbl .r{flex-shrink:0}
+.template-help{line-height:1.6;overflow-wrap:anywhere}
+
+.recipe-multi{border:1px solid var(--line);border-radius:8px;background:var(--surface);min-inline-size:0}
+.recipe-multi>summary{padding:10px 11px;font-size:12px;cursor:pointer;overflow-wrap:anywhere}
+.recipe-multi-options{padding:4px 10px 10px;display:grid;gap:7px;max-block-size:240px;overflow-y:auto}
+.recipe-choice{display:flex;align-items:center;gap:8px;font-size:12px;line-height:1.5;cursor:pointer;min-inline-size:0}
+.recipe-choice input{inline-size:16px;block-size:16px;flex-shrink:0;accent-color:var(--acc)}
+.recipe-choice span{overflow-wrap:anywhere}.recipe-choice:has(input:disabled){opacity:.45}
+.recipe-auto{justify-self:start;border:0;background:transparent;color:var(--acc);font:inherit;font-size:12px;padding:3px 0;cursor:pointer}
+.recipe-switch{display:flex;align-items:center;gap:10px;font-size:12px}
+.recipe-switch input{appearance:none;-webkit-appearance:none;inline-size:36px;block-size:22px;border-radius:20px;background:var(--line-strong);position:relative;cursor:pointer;margin:0;flex-shrink:0}
+.recipe-switch input::after{content:"";position:absolute;inline-size:16px;block-size:16px;inset-block-start:3px;inset-inline-start:3px;border-radius:50%;background:#fff;transition:inset-inline-start .15s}
+.recipe-switch input:checked{background:var(--acc)}.recipe-switch input:checked::after{inset-inline-start:17px}
+.recipe-switch input:focus-visible,.recipe-multi summary:focus-visible{outline:2px solid var(--acc);outline-offset:3px}
+
+
+.recipe-region{min-inline-size:0;border-block-start:1px solid var(--line);margin-block:14px;padding-block:12px}
+.recipe-region>summary,.recipe-region>h3{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:13px;font-weight:650;margin:0;padding-block:4px 10px;list-style:none}
+.recipe-region>summary{cursor:pointer}.recipe-region>summary::before{content:"+";color:var(--acc)}.recipe-region[open]>summary::before{content:"−"}
+.recipe-region>summary::-webkit-details-marker{display:none}.recipe-change-count{color:var(--acc);font-size:10px;font-weight:500;overflow-wrap:anywhere}
+.recipe-edits{font-size:11px;line-height:1.6;color:var(--mut);margin-block:0 10px;overflow-wrap:anywhere}
+.recipe-tabs{display:flex;flex-wrap:wrap;gap:5px;margin-block:3px 16px}
+.recipe-tabs button{flex:1 0 auto;max-inline-size:100%;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--mut);padding:8px 10px;font:inherit;font-size:11px;cursor:pointer;overflow-wrap:anywhere}
+.recipe-tabs button[aria-selected="true"]{border-color:var(--acc);color:var(--acc);background:var(--on-bg)}
+.recipe-tabs button:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.recipe-layout-group{min-inline-size:0}.recipe-layout-group>h4{font-size:11px;font-weight:600;color:var(--mut);margin-block:14px 10px}
+.recipe-layout-group+.recipe-layout-group{border-block-start:1px solid var(--line);padding-block-start:4px}
+.recipe-slider input[type="range"]{inline-size:100%;accent-color:var(--acc);margin-block:12px 5px;cursor:pointer}
+.recipe-slider-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.recipe-slider-head input[type="number"]{inline-size:76px;min-inline-size:0;background:var(--surface);border:1px solid var(--line);border-radius:7px;color:var(--ink);padding:7px;font:inherit;font-size:12px;text-align:center}
+.recipe-slider-limits{display:flex;justify-content:space-between;font-size:10px;color:var(--mut);font-variant-numeric:tabular-nums}
+.recipe-slider input:disabled{opacity:.45}
+.recipe-segmented{display:flex;flex-wrap:wrap;gap:5px}.recipe-segmented label{flex:1;min-inline-size:40px;cursor:pointer;position:relative}
+.recipe-segmented input{position:absolute;opacity:0;inline-size:1px;block-size:1px}.recipe-segmented span{display:block;text-align:center;border:1px solid var(--line);background:var(--surface);border-radius:7px;padding:8px 6px;font-size:11px;line-height:1.4;overflow-wrap:anywhere}
+.recipe-segmented input:checked+span{border-color:var(--acc);color:var(--acc);background:var(--on-bg)}.recipe-segmented input:focus-visible+span{outline:2px solid var(--acc);outline-offset:2px}
+
+
+.recipe-region>summary,.recipe-region>h3{flex-wrap:wrap}.recipe-region .recipe-edits{flex-basis:100%;font-weight:400;margin-block:0 4px}
+
+.recipe-region>summary>span:first-child,.recipe-region>h3>span:first-child{flex:1}
+.recipe-sticky-tabs .recipe-tabs{position:sticky;inset-block-start:0;z-index:4;background:var(--panel,var(--surface));padding-block:8px}
+@media(max-width:1080px){.recipe-sticky-tabs .recipe-tabs{inset-block-start:64px}}
+
+#recipes .official-sample{height:auto!important;min-height:0!important;display:flex!important;flex-direction:column!important;padding:0!important}
+#recipes .official-sample .card-media{position:relative;height:auto!important;flex:none!important;aspect-ratio:1;overflow:hidden;background:var(--surface-2)}
+#recipes .official-sample .card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+#recipes .official-sample .card-info{position:static!important;flex:1;display:flex;flex-direction:column;gap:6px;padding:12px!important}
+#recipes .official-sample .card-title{white-space:normal;overflow-wrap:anywhere;margin:0}
+#recipes .official-sample .card-meta{white-space:normal;margin:0}
+#recipes .official-sample .card-use{position:static;align-self:flex-start;margin-block-start:auto;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink);padding:7px 10px;font:inherit;font-size:11.5px;cursor:pointer}
+#recipes .official-sample .official-play{position:absolute;inset-block-start:10px;inset-inline-start:10px;pointer-events:none}
+</style><link rel="stylesheet" href="../../assets/tool-topbar.css?v=20261105-45">
 </head>
 <body>
 <div class="shell">
@@ -948,7 +1006,7 @@
 
     <div class="prechip" id="prechip"></div>
 
-    <div class="sect template-picker"><div class="lbl"><span>Mẫu sáng tạo</span></div><select class="select" id="templateSelect"><option value="">Không</option></select><p class="template-help">Chọn mục đích, thông số đã đặt sẵn</p></div>
+    <div class="sect template-picker"><div class="lbl"><span>Mẫu sáng tạo</span></div><select class="select" id="templateSelect"><option value="">Không</option></select><p class="template-help">Một tác phẩm hoàn chỉnh cho mỗi mẫu</p></div>
 
     <div class="shared hidden" id="shared"></div>
 
@@ -979,13 +1037,13 @@
     </div>
   </aside>
 
-  <nav class="utilitybar" aria-label="Account and help">
+  <nav class="utilitybar tool-topbar" aria-label="Account and help">
     <a class="utility-brand" href="../"><i></i><span>AIGLOSSA</span></a>
-    <div class="acctbar">
-      <button class="av" id="avBtn" type="button" aria-label="account"></button>
-      <button class="bal" id="bal" type="button"></button>
-      <a class="alink" href="#" id="priceLink">Mua tín dụng →</a>
-      <a class="alink" href="#" id="guideLink">Hướng dẫn →</a>
+    <div class="acctbar tool-account">
+      <button class="tool-avatar av" id="avBtn" type="button" aria-label="account"></button>
+      <button class="tool-balance bal" id="bal" type="button"></button>
+      <a class="tool-buy alink" href="#" id="priceLink">Mua tín dụng</a>
+      <a class="tool-guide alink" href="#" id="guideLink">Hướng dẫn</a>
     </div>
   </nav>
 
@@ -1007,16 +1065,14 @@
       <div class="minerow" id="mineRow"></div>
     </div>
 
-    <div class="whead"><span class="t">Nghe thử</span><div class="rail-head-actions"><span class="n">Ảnh → lời → bản nhạc</span><span class="rail-nav" data-rail="photos"><button type="button" data-dir="-1" aria-label="Previous">‹</button><button type="button" data-dir="1" aria-label="Next">›</button></span></div></div>
-    <div class="photos" id="photos"></div>
 
     <div class="whead" style="margin-top:24px">
-      <span class="t">Từ mục đích dùng</span>
-      <div class="rail-head-actions"><span class="n">Chọn mục đích, thông số đã đặt sẵn</span><span class="rail-nav" data-rail="recipes"><button type="button" data-dir="-1" aria-label="Previous">‹</button><button type="button" data-dir="1" aria-label="Next">›</button></span></div>
+      <span class="t">Ví dụ mẫu</span>
+      <div class="rail-head-actions"><span class="n">Một tác phẩm hoàn chỉnh cho mỗi mẫu</span><span class="rail-nav" data-rail="recipes"><button type="button" data-dir="-1" aria-label="Previous">‹</button><button type="button" data-dir="1" aria-label="Next">›</button></span></div>
     </div>
     <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
 
-    <section class="crawl-guides" aria-labelledby="crawlGuidesTitle"><h2 id="crawlGuidesTitle">Hướng dẫn</h2><ul><li><a href="../guides/exact-30-second-background-music.html">Nhạc nền dài đúng 30 giây</a></li><li><a href="../guides/photo-to-song-lyrics.html">Từ ảnh thành bài hát: khi lời bài hát gọi tên thứ trong ảnh</a></li><li><a href="../guides/seamless-loop-seam.html">Vòng lặp liền mạch: mối nối là tất cả</a></li><li><a href="../guides/commercial-use.html">Có được dùng nhạc do AI tạo cho mục đích thương mại không?</a></li><li><a href="../guides/video-length.html">Khớp nhạc với bản dựng: chọn độ dài thế nào</a></li></ul></section>
+
 
   </main>
   <div class="modal hidden" id="payModal" role="dialog" aria-modal="true">
@@ -1052,7 +1108,7 @@
   </div>
 </div>
 
-<script type="application/json" id="ui">{"title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác", "description": "Biến ảnh hoặc mô tả thành nhạc nền dài đúng 30–90 giây. Lời bài hát gọi tên những gì trong ảnh, với giọng hát 10 ngôn ngữ và vòng lặp liền mạch.", "h1": "Tạo một bản nhạc", "sub": "Từ ảnh hoặc mô tả. Độ dài chính xác, vòng lặp liền mạch.", "drop": "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh", "generate": "Tạo bản nhạc", "how_credits": "Tín dụng hoạt động thế nào →", "grp_photo": "Nghe thử", "grp_recipe": "Từ mục đích dùng", "download": "Tải xuống", "save_recipe": "Lưu thành mẫu", "use_recipe": "Tạo tương tự", "remove_photo": "Xóa ảnh", "photo_here": "Ảnh của bạn ở đây", "note": "Mọi thứ bên phải đều được tạo ở đây", "legal_aup": "Sử dụng được chấp nhận", "legal_refund": "Hoàn tiền", "sign_in_first": "Đăng nhập để tạo", "generating": "Đang tạo… khoảng 20 giây.", "just_generated": "Vừa tạo xong", "your_track": "Bản nhạc của bạn", "from_recipe": "Từ mẫu", "from_photo": "Tạo từ ảnh", "err_load": "Không tải được tuỳ chọn", "done_in": "Xong sau {n} giây", "gen_cost": "Tạo · {n}", "err_gen": "Tạo thất bại", "my_track": "Bản nhạc của tôi", "err_net": "Lỗi mạng", "recipe_name": "Tên mẫu", "err_save": "Lưu thất bại", "saved": "Đã lưu: {name}", "up_to": "Tối đa {n}", "credits": "tín dụng", "guides_link": "Hướng dẫn →", "guides_title": "Hướng dẫn", "close": "Đóng", "loading": "Đang tải…", "off": "Tắt", "loop_on": "Vòng lặp liền mạch", "buy_credits": "Mua tín dụng →", "desc_label": "Mô tả (không bắt buộc)", "desc_ph": "Mô tả bản nhạc: quán cà phê mưa, piano nhẹ", "mode_photo": "Ảnh", "mode_text": "Chữ", "field_density": "Độ dày của hòa âm", "opt_sparse": "Thưa", "opt_medium": "Vừa", "opt_full": "Dày", "pro_title": "Tùy chọn nâng cao", "grp_photo_sub": "Ảnh → lời → bản nhạc", "grp_recipe_sub": "Chọn mục đích, thông số đã đặt sẵn", "recipe_names": {"short-form-cut": "คลิปสั้น", "hook-sting": "ฮุกเปิดคลิป", "product-loop": "ลูปสินค้า", "podcast-bed": "เพลงประกอบพอดแคสต์", "documentary-underscore": "เพลงประกอบสารคดี", "game-menu-loop": "ลูปเมนูเกม", "calm-focus": "สมาธิ", "kids-learning": "เด็กและการเรียนรู้"}, "applied": "Dùng", "current_recipe": "Mẫu sáng tạo", "template_none": "Không", "mine_title": "Bản nhạc của tôi", "share_link": "Chia sẻ liên kết", "delete_track": "Xóa", "delete_track_confirm": "Xóa vĩnh viễn bản nhạc này? Thao tác này không thể hoàn tác.", "more_actions": "Thao tác khác", "dl_audio": "Tải âm thanh", "copied": "Đã sao chép", "shared_note": "Bạn đang nghe bản nhạc được chia sẻ — tạo bản của bạn bên dưới", "my_account": "Tài khoản", "balance": "Số dư", "pricing_label": "Giá", "confirm_gen": "Tạo bản nhạc {sec} giây? Sẽ tiêu {n}.", "confirm_gen_approx": "Tạo bản nhạc khoảng {sec} giây? Sẽ tiêu {n}.", "duration_integrity_note": "Để giữ trọn câu nhạc và phần kết tự nhiên, thời lượng thực tế của bản nhạc không lặp có thể chênh lệch đôi chút.", "err_insufficient": "Không đủ tín dụng", "topup_hint": "Nạp thêm để tiếp tục tạo.", "topup_cta": "Mua tín dụng", "cancel": "Hủy", "confirm": "Xác nhận", "not_signed_in": "Chưa đăng nhập", "traveler": "Người lữ hành", "view_all": "Xem tất cả", "my_works_pick": "Chọn một bản để dùng lại cấu hình", "pay_title": "Mua tín dụng", "pay_success": "Đã nhận thanh toán — đã cộng tín dụng.", "pay_opening": "Đang mở thanh toán…"}</script>
+<script type="application/json" id="ui">{"title": "Trình tạo nhạc AI — từ ảnh thành bài hát, độ dài chính xác", "description": "Biến ảnh hoặc mô tả thành nhạc nền dài đúng 30–90 giây. Lời bài hát gọi tên những gì trong ảnh, với giọng hát 10 ngôn ngữ và vòng lặp liền mạch.", "h1": "Tạo một bản nhạc", "sub": "Từ ảnh hoặc mô tả. Độ dài chính xác, vòng lặp liền mạch.", "drop": "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh", "generate": "Tạo bản nhạc", "how_credits": "Tín dụng hoạt động thế nào →", "download": "Tải xuống", "save_recipe": "Lưu thành mẫu", "use_recipe": "Tạo tương tự", "remove_photo": "Xóa ảnh", "photo_here": "Ảnh của bạn ở đây", "note": "Mọi thứ bên phải đều được tạo ở đây", "legal_aup": "Sử dụng được chấp nhận", "legal_refund": "Hoàn tiền", "sign_in_first": "Đăng nhập để tạo", "generating": "Đang tạo… khoảng 20 giây.", "just_generated": "Vừa tạo xong", "your_track": "Bản nhạc của bạn", "from_recipe": "Từ mẫu", "from_photo": "Tạo từ ảnh", "err_load": "Không tải được tuỳ chọn", "done_in": "Xong sau {n} giây", "gen_cost": "Tạo · {n}", "err_gen": "Tạo thất bại", "my_track": "Bản nhạc của tôi", "err_net": "Lỗi mạng", "recipe_name": "Tên mẫu", "err_save": "Lưu thất bại", "saved": "Đã lưu: {name}", "up_to": "Tối đa {n}", "credits": "tín dụng", "guides_link": "Hướng dẫn", "guides_title": "Hướng dẫn", "close": "Đóng", "loading": "Đang tải…", "off": "Tắt", "loop_on": "Vòng lặp liền mạch", "buy_credits": "Mua tín dụng", "desc_label": "Mô tả (không bắt buộc)", "desc_ph": "Mô tả bản nhạc: quán cà phê mưa, piano nhẹ", "mode_photo": "Ảnh", "mode_text": "Chữ", "field_density": "Độ dày của hòa âm", "opt_sparse": "Thưa", "opt_medium": "Vừa", "opt_full": "Dày", "pro_title": "Tùy chọn nâng cao", "recipe_names": {}, "applied": "Dùng", "current_recipe": "Mẫu sáng tạo", "template_none": "Không", "mine_title": "Bản nhạc của tôi", "share_link": "Chia sẻ liên kết", "delete_track": "Xóa", "delete_track_confirm": "Xóa vĩnh viễn bản nhạc này? Thao tác này không thể hoàn tác.", "more_actions": "Thao tác khác", "dl_audio": "Tải âm thanh", "copied": "Đã sao chép", "shared_note": "Bạn đang nghe bản nhạc được chia sẻ — tạo bản của bạn bên dưới", "my_account": "Tài khoản", "balance": "Số dư", "pricing_label": "Giá", "confirm_gen": "Tạo bản nhạc {sec} giây? Sẽ tiêu {n}.", "confirm_gen_approx": "Tạo bản nhạc khoảng {sec} giây? Sẽ tiêu {n}.", "duration_integrity_note": "Để giữ trọn câu nhạc và phần kết tự nhiên, thời lượng thực tế của bản nhạc không lặp có thể chênh lệch đôi chút.", "err_insufficient": "Không đủ tín dụng", "topup_hint": "Nạp thêm để tiếp tục tạo.", "topup_cta": "Mua tín dụng", "cancel": "Hủy", "confirm": "Xác nhận", "not_signed_in": "Chưa đăng nhập", "traveler": "Người lữ hành", "view_all": "Xem tất cả", "my_works_pick": "Chọn một bản để dùng lại cấu hình", "pay_title": "Mua tín dụng", "pay_success": "Đã nhận thanh toán — đã cộng tín dụng.", "pay_opening": "Đang mở thanh toán…", "reference_large": "Mỗi hình ảnh phải dưới 20 MB", "template_examples": "Ví dụ mẫu", "template_examples_sub": "Một tác phẩm hoàn chỉnh cho mỗi mẫu"}</script>
 <script src="../../assets/wallet.js"></script>
 <script src="../../assets/share.js"></script>
 <script>
@@ -1083,25 +1139,18 @@
   }
   function msg(t, kind) { var el = $("msg"); el.textContent = t || ""; el.className = "msg" + (kind ? " " + kind : ""); }
 
-  var DEMOS = [
-    { title: "Sea — gentle", meta: "English · 0:30", img: "../../samples/demo-sea.jpg", audio: "https://assets.aiglossa.com/music-samples/demo-sea.flac",
-      lyrics: "Gentle <b>sea</b> breathes on the sand. Every <b>wave</b> that meets the <b>beach</b>.",
-      params: { duration_seconds:30, loop:false, bpm:72, mood:"calm", genre:"ambient", instrumentation:["piano","synth_pad"], density:"minimal", drums:"soft", vocal:"female", vocal_language:"en" } },
-    { title: "Night rain — neon", meta: "English · 0:45", img: "../../samples/demo-city.jpg", audio: "https://assets.aiglossa.com/music-samples/demo-city.flac",
-      lyrics: "A yellow <b>taxi</b> cuts through the <b>neon</b> haze.",
-      params: { duration_seconds:45, loop:false, bpm:96, mood:"dramatic", genre:"electronic", instrumentation:["synth_pad","bass"], density:"medium", drums:"drive", vocal:"female", vocal_language:"en" } },
-    { title: "Coffee — cálido", meta: "Español · 0:30", img: "../../samples/demo-coffee.jpg", audio: "https://assets.aiglossa.com/music-samples/demo-coffee.flac",
-      lyrics: "Huele a <b>café</b>. Mi <b>libro</b>, un amigo.",
-      params: { duration_seconds:30, loop:false, bpm:80, mood:"warm", genre:"lofi", instrumentation:["piano","guitar"], density:"minimal", drums:"soft", vocal:"female", vocal_language:"es" } },
-    { title: "Bicycle — 古い壁", meta: "日本語 · 0:30", img: "../../samples/demo-bike.jpg", audio: "https://assets.aiglossa.com/music-samples/demo-bike.flac",
-      lyrics: "古い<b>壁</b>にもたれた<b>自転車</b>。",
-      params: { duration_seconds:30, loop:false, bpm:92, mood:"hopeful", genre:"acoustic", instrumentation:["guitar","bells"], density:"medium", drums:"soft", vocal:"female", vocal_language:"ja" } }
-  ];
+  var officialSamples = [];
 
   var schema = null, values = {}, imagePayload = null, templates = [], currentTemplate = null;
   var templatesLoaded = false, pendingSharedRecipe = null;
-  var audio = new Audio(), current = null;
-  audio.preload = "none";   // 预览音频只在点击时下载，首屏不拉 13MB
+  // Keep one real media element in the document. Safari is stricter about
+  // detached Audio objects and needs an explicit load before starting FLAC.
+  var audio = document.createElement("audio"), current = null;
+  audio.preload = "none";
+  audio.setAttribute("playsinline", "");
+  audio.setAttribute("aria-hidden", "true");
+  audio.style.display = "none";
+  document.body.appendChild(audio);
 
   audio.addEventListener("timeupdate", function () {
     var pct = audio.duration ? (audio.currentTime / audio.duration) * 100 : 0;
@@ -1111,10 +1160,15 @@
     if (tm) tm.textContent = fmt(audio.currentTime) + " / " + fmt(audio.duration || 0);
   });
   audio.addEventListener("ended", function () { renderBig(); });
+  audio.addEventListener("error", function () {
+    if (current && current.audio === audio.dataset.src) {
+      msg(UI.audio_error || "Audio could not be played", "err");
+      syncPlayer();
+    }
+  });
+  audio.addEventListener("waiting", function () { syncPlayer(); });
 
   function fmt(s) { if (!isFinite(s)) s = 0; var m = Math.floor(s / 60), r = Math.floor(s % 60); return m + ":" + (r < 10 ? "0" : "") + r; }
-  var WAVEFORMS = {};
-  function waveformForAudio(url) { var name = (url || "").split("/").pop().replace(/\.(mp3|flac)$/i, ""); return WAVEFORMS[name] || null; }
   function wave(wf) { var peaks = wf && wf.peaks && wf.peaks.length ? wf.peaks : []; return '<canvas class="wave-canvas" data-peaks="' + peaks.join(",") + '" aria-hidden="true"></canvas>'; }
   function drawWaveforms(root) {
     Array.prototype.forEach.call((root || document).querySelectorAll("canvas.wave-canvas"), function (canvas) {
@@ -1128,45 +1182,7 @@
     });
   }
 
-  function renderPhotos() {
-    var box = $("photos"); box.innerHTML = "";
 
-    // 小图统一包一层：桌面端用 display:contents 让它们照旧参与 4 列网格；
-    // 移动端则变成一条横滑缩略图。
-    var thumbs = document.createElement("div"); thumbs.className = "thumbs"; box.appendChild(thumbs);
-
-    var smalls = DEMOS.slice();
-    while (smalls.length < 4) smalls.push(null);
-
-    smalls.forEach(function (d) {
-      if (!d) {
-        var add = document.createElement("div");
-        add.className = "tile add";
-        add.innerHTML = "<div>＋<br>Ảnh của bạn ở đây</div>";
-        add.addEventListener("click", function () { $("file").click(); });
-        thumbs.appendChild(add);
-        return;
-      }
-      var el = document.createElement("div");
-      el.className = "tile item-card";
-      el.innerHTML = '<div class="card-media image"><img src="' + d.img + '" alt="' + d.title + '">' +
-        '<button type="button" class="media-play" aria-label="' + d.title + '"></button>' +
-        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + (UI.create_similar||UI.use_recipe) + '">' + (UI.create_similar||UI.use_recipe) + '</button></div></div>' +
-        '<div class="card-info"><p class="card-title">' + d.title + '</p><p class="card-meta">' + d.meta + '</p></div>';
-      el.dataset.audio = d.audio || "";
-      function playDemo() { select(Object.assign({ kind: "demo" }, d)); }
-      el.querySelector(".media-play").addEventListener("click", playDemo);
-      el.querySelector(".card-use").addEventListener("click", function () {
-        Object.keys(d.params || {}).forEach(function (k) { if (values[k] !== undefined) values[k] = d.params[k]; });
-        currentTemplate = null; renderTemplateSelect();
-        fetch(d.img).then(function(r){return r.blob()}).then(function(blob){var reader=new FileReader();reader.onload=function(){var raw=String(reader.result);imagePayload={data:raw.split(",")[1],mime:blob.type||"image/jpeg"};setMode("photo");renderRail();applied(d.title)};reader.readAsDataURL(blob)}).catch(function(){renderRail();applied(d.title)});
-      });
-      thumbs.appendChild(el);
-    });
-
-    renderBig();
-    requestAnimationFrame(updateRailNav);
-  }
 
   // 正在播放的那一项在列表里高亮，列表本身不重排
   function markPlaying() {
@@ -1269,8 +1285,22 @@
     if (!src) return;
     var same = audio.dataset.src === src;
     if (same && !audio.paused) { audio.pause(); }
-    else if (same && audio.paused) { audio.play().catch(function () {}); }
-    else { audio.dataset.src = src; audio.src = src; audio.play().catch(function () {}); }
+    else if (same && audio.paused) {
+      audio.play().catch(function () { syncPlayer(); });
+    } else {
+      audio.pause();
+      audio.dataset.src = src;
+      audio.src = src;
+      audio.load();
+      // Safari may resolve play() before it has decoded the first frame.
+      // Waiting for canplay avoids showing a false pause state at 0:00.
+      var start = function () {
+        audio.removeEventListener("canplay", start);
+        audio.play().catch(function () { syncPlayer(); });
+      };
+      audio.addEventListener("canplay", start, { once: true });
+      if (audio.readyState >= 3) start();
+    }
     syncPlayer();
   }
 
@@ -1296,7 +1326,7 @@
   // 登录前保存草稿（参数 + 压缩照片），回来恢复；不自动生成
   function saveDraft() {
     try {
-      var d = { params: values, mode: (typeof mode === "string" ? mode : "photo"), ts: Date.now() };
+      var d = { template_id:currentTemplate&&currentTemplate.id, description:$("desc").value, params: values, mode: (typeof mode === "string" ? mode : "photo"), ts: Date.now() };
       if (imagePayload && imagePayload.data) {
         var img = (document.getElementById("prevImg") || {}).src || "";
         if (img.length < 900000) d.img = img;
@@ -1305,17 +1335,20 @@
     } catch (e) {}
   }
   function restoreDraft() {
+    if(!schema||!templatesLoaded||!sessionOk)return;
     var raw = sessionStorage.getItem("aig_draft");
     if (!raw) return;
     sessionStorage.removeItem("aig_draft");
     try {
       var d = JSON.parse(raw);
-      if (d.params) Object.keys(d.params).forEach(function (k) { if (values[k] !== undefined) values[k] = d.params[k]; });
+      var template=templates.filter(function(t){return t.id===d.template_id})[0]||null;
+      selectTemplate(template,d.params||{});$("desc").value=d.description||"";
       if (d.mode) setMode(d.mode);
       if (d.img) {
         imagePayload = { data: d.img.slice(d.img.indexOf(",") + 1), mime: "image/jpeg" };
         $("drop").classList.add("has");
-        $("dropText").innerHTML = '<img id="prevImg" src="' + d.img + '" alt=""><span class="rm">Xóa ảnh</span>';
+        applyVisibility();
+      $("dropText").innerHTML = '<img id="prevImg" src="' + d.img + '" alt=""><span class="rm">Xóa ảnh</span>';
       }
     } catch (e) {}
   }
@@ -1356,18 +1389,12 @@
     if (!l) return "";
     return l[LANG] || l[LANG.split("-")[0]] || l.en || "";
   }
-  // 少数后端字段的措辞在前端覆写，避免为改一个词去动后端
-  function override(f, o) {
-    if (f.key === "density") {
-      if (o === undefined) return UI.field_density;
-      return { minimal: UI.opt_sparse, medium: UI.opt_medium, full: UI.opt_full }[o] || null;
-    }
-    return null;
-  }
-  function label(f) { return override(f) || pick(f.label) || f.key; }
+  function label(f) { return pick(f.label) || f.key; }
 
   // 基础项常显；其余归入「专业」并默认折叠
-  var BASIC = { duration_seconds:1, loop:1, vocal:1, vocal_language:1, bpm:1, mood:1, genre:1, instrumentation:1 };
+  function templateName(r) { return pick(r.name_i18n) || r.name; }
+  function schemaCopy(key) { return pick(schema && schema.copy && schema.copy[key]) || key; }
+  function defaults() { var out = {}; (schema ? schema.fields : []).forEach(function(f){out[f.key]=f.default}); return out; }
   function fieldEditable(key) {
     var contract = currentTemplate && currentTemplate.contract;
     return !contract || (contract.editable_fields || []).indexOf(key) >= 0;
@@ -1375,123 +1402,104 @@
   function renderTemplateSelect() {
     var box = $("templateSelect"); if (!box) return;
     box.innerHTML = '<option value="">' + UI.template_none + '</option>';
-    templates.filter(function(r){return r.is_system}).forEach(function(r){var o=document.createElement("option");o.value=String(r.id);o.textContent=(UI.recipe_names&&UI.recipe_names[r.slug])||r.name;o.selected=!!(currentTemplate&&currentTemplate.id===r.id);box.appendChild(o)});
+    templates.filter(function(r){return r.is_system}).forEach(function(r){var o=document.createElement("option");o.value=String(r.id);o.textContent=templateName(r);o.selected=!!(currentTemplate&&currentTemplate.id===r.id);box.appendChild(o)});
     box.onchange=function(){var found=templates.filter(function(r){return String(r.id)===box.value})[0]||null;selectTemplate(found)};
   }
   function selectTemplate(template, snapshot) {
     currentTemplate=template||null;
-    if (currentTemplate) Object.keys(currentTemplate.params||{}).forEach(function(k){values[k]=currentTemplate.params[k]});
+    values = Object.assign(defaults(), currentTemplate && currentTemplate.params || {});
     Object.keys(snapshot||{}).forEach(function(k){if(values[k]!==undefined)values[k]=snapshot[k]});
-    renderTemplateSelect();renderRail();applied(currentTemplate?((UI.recipe_names&&UI.recipe_names[currentTemplate.slug])||currentTemplate.name):UI.template_none);
-  }
-  function renderRail() {
-    var box = $("rail"); box.innerHTML = "";
-    var basic = [], pro = [];
-    schema.fields.filter(function(f){return fieldEditable(f.key)}).forEach(function (f) { (BASIC[f.key] ? basic : pro).push(f); });
-    basic.forEach(function (f) { box.appendChild(groupOf(f)); });
-    if (pro.length) {
-      var head = document.createElement("button");
-      head.type = "button"; head.className = "prohead";
-      head.innerHTML = '<span>' + UI.pro_title + '</span><span class="chev">▾</span>';
-      var wrap = document.createElement("div");
-      wrap.className = "probody collapsed";
-      pro.forEach(function (f) { wrap.appendChild(groupOf(f)); });
-      head.addEventListener("click", function () {
-        var open = wrap.classList.toggle("collapsed");
-        head.classList.toggle("open", !open);
-      });
-      box.appendChild(head); box.appendChild(wrap);
-    }
-    applyVisibility(); syncCost();
+    renderTemplateSelect();renderRail();applied(currentTemplate?templateName(currentTemplate):UI.template_none);
   }
 
+var musicLayoutState={};
+function musicRules(rule){return Object.keys(rule||{}).every(function(k){var expected=rule[k],v=values[k];if(expected&&typeof expected==="object"){if(expected.$in&&expected.$in.indexOf(v)<0)return false;if(expected.$ne!==undefined&&v===expected.$ne)return false;return true}return v===expected})}
+function musicBuildLayout(root,makeField){
+ root.innerHTML="";var regions={};
+ schema.regions.slice().sort(function(a,b){return a.order-b.order}).forEach(function(r){
+  var memory=musicLayoutState[r.key];if(!memory){try{memory=JSON.parse(sessionStorage.getItem("music-layout-"+r.key)||"null")}catch(e){}memory=memory||{open:!!r.default_open,tab:null};musicLayoutState[r.key]=memory}
+  var section=document.createElement(r.collapsible?"details":"section");section.className="recipe-region";section.dataset.region=r.key;section.dataset.layout=r.layout;if(r.sticky_tabs)section.classList.add("recipe-sticky-tabs");if(r.collapsible)section.open=memory.open;
+  var heading=document.createElement(r.collapsible?"summary":"h3"),title=document.createElement("span"),count=document.createElement("small");title.textContent=pick(r.label);count.className="recipe-change-count";heading.appendChild(title);heading.appendChild(count);section.appendChild(heading);
+  var edits=document.createElement("p");edits.className="recipe-edits hidden";heading.appendChild(edits);
+  var content=document.createElement("div");content.className="recipe-region-content";section.appendChild(content);root.appendChild(section);regions[r.key]={node:section,body:content,panels:{}};
+  if(r.collapsible)section.addEventListener("toggle",function(){memory.open=section.open;sessionStorage.setItem("music-layout-"+r.key,JSON.stringify(memory))});
+  if(r.layout==="tabs"){
+   var nav=document.createElement("div");nav.className="recipe-tabs";nav.setAttribute("role","tablist");nav.setAttribute("aria-label",pick(r.label));content.appendChild(nav);
+   r.tabs.slice().sort(function(a,b){return a.order-b.order}).forEach(function(t){
+    var button=document.createElement("button"),panel=document.createElement("div");button.type="button";button.dataset.tab=t.key;button.id="music-tab-"+r.key+"-"+t.key;button.setAttribute("role","tab");button.textContent=pick(t.label);
+    panel.id="music-panel-"+r.key+"-"+t.key;panel.dataset.tabPanel=t.key;panel.setAttribute("role","tabpanel");panel.setAttribute("aria-labelledby",button.id);button.setAttribute("aria-controls",panel.id);panel.className="recipe-tab-panel";nav.appendChild(button);content.appendChild(panel);regions[r.key].panels[t.key]=panel;
+    button.onclick=function(){memory.tab=t.key;sessionStorage.setItem("music-layout-"+r.key,JSON.stringify(memory));musicRefreshLayout()};
+    button.onkeydown=function(e){var buttons=Array.from(nav.querySelectorAll('button:not(.hidden)')),index=buttons.indexOf(button),rtl=document.documentElement.dir==="rtl",delta=e.key==="ArrowRight"?(rtl?-1:1):e.key==="ArrowLeft"?(rtl?1:-1):0;if(!delta&&e.key!=="Home"&&e.key!=="End")return;e.preventDefault();var target=e.key==="Home"?buttons[0]:e.key==="End"?buttons[buttons.length-1]:buttons[(index+delta+buttons.length)%buttons.length];target.click();target.focus()};
+   });
+  }
+ });
+ Object.keys(schema.groups).sort(function(a,b){return schema.groups[a].order-schema.groups[b].order}).forEach(function(key){var g=schema.groups[key],region=regions[g.region],parent=g.tab?region.panels[g.tab]:region.body,section=document.createElement("section");section.className="recipe-layout-group";section.dataset.group=key;
+ if(g.show_label!==false){var title=document.createElement("h4");title.textContent=pick(g.label);section.appendChild(title)}
+ parent.appendChild(section);schema.fields.filter(function(f){return f.group===key&&fieldEditable(f.key)}).sort(function(a,b){return a.order-b.order}).forEach(function(f){section.appendChild(makeField(f))});
+ });
+}
+function musicRefreshLayout(){
+ if(!schema)return;var root=$("rail"),baseline=Object.assign(defaults(),currentTemplate&&currentTemplate.params||{});
+ function changed(f){return JSON.stringify(values[f.key])!==JSON.stringify(baseline[f.key])}
+ function displayed(f){var value=values[f.key];if(f.options){var selected=Array.isArray(value)?value:[value];return f.options.filter(function(o){return selected.indexOf(o.value)>=0}).map(function(o){return pick(o.label)}).join(" / ")}if(f.type==="bool")return schemaCopy(value?"On":"Off");if(f.type==="text")return pick(f.label);return String(value)}
+ root.querySelectorAll('[data-group]').forEach(function(node){var g=schema.groups[node.dataset.group];var active=musicRules(g.visible_when)&&!!node.querySelector('.sect'+':not(.hidden)');node.dataset.applicable=String(active);node.classList.toggle("hidden",!active)});
+ schema.regions.forEach(function(r){var node=root.querySelector('[data-region="'+r.key+'"]'),memory=musicLayoutState[r.key];if(!node)return;
+  var available=Array.from(node.querySelectorAll('[data-group][data-applicable="true"]'));node.classList.toggle("hidden",!musicRules(r.visible_when)||!available.length);
+  var edited=schema.fields.filter(function(f){var group=root.querySelector('[data-group="'+f.group+'"]'),field=root.querySelector('.sect'+'[data-key="'+f.key+'"]');return schema.groups[f.group].region===r.key&&group&&group.dataset.applicable==="true"&&field&&!field.classList.contains("hidden")&&changed(f)});
+  var count=node.querySelector('.recipe-change-count'),edits=node.querySelector('.recipe-edits');count.textContent=r.show_changes&&edited.length?schemaCopy("{n} adjusted").replace("{n}",edited.length):"";
+  edits.classList.toggle("hidden",!r.show_changes||!edited.length);edits.textContent=edited.slice(0,3).map(function(f){return f.type==="text"?pick(f.label):pick(f.label)+": "+displayed(f)}).join(" · ");
+  if(r.layout==="tabs"){
+   var usable=r.tabs.filter(function(t){var panel=node.querySelector('[data-tab-panel="'+t.key+'"]');return musicRules(t.visible_when)&&!!panel.querySelector('[data-group][data-applicable="true"]')});
+   if(!usable.some(function(t){return t.key===memory.tab}))memory.tab=usable.length?usable[0].key:null;
+   r.tabs.forEach(function(t){var button=node.querySelector('[data-tab="'+t.key+'"]'),panel=node.querySelector('[data-tab-panel="'+t.key+'"]'),visible=usable.some(function(x){return x.key===t.key}),selected=visible&&memory.tab===t.key,n=edited.filter(function(f){return schema.groups[f.group].tab===t.key}).length;
+    button.classList.toggle("hidden",!visible);button.setAttribute("aria-selected",String(selected));button.tabIndex=selected?0:-1;button.textContent=pick(t.label)+(n?" · "+n:"");button.setAttribute("aria-label",pick(t.label)+(n?" · "+schemaCopy("{n} adjusted").replace("{n}",n):""));panel.classList.toggle("hidden",!selected);
+   });
+  }
+ });
+}
+
+function musicSlider(f){
+ var box=document.createElement("div"),row=document.createElement("div"),autoLabel=document.createElement("label"),auto=document.createElement("input"),autoText=document.createElement("span"),number=document.createElement("input"),range=document.createElement("input"),limits=document.createElement("div"),min=document.createElement("span"),max=document.createElement("span");box.className="recipe-slider";box.dataset.control="slider";row.className="recipe-slider-head";autoLabel.className="recipe-choice";auto.type="checkbox";auto.setAttribute("role","switch");auto.id="recipe-"+f.key+"-auto";autoText.textContent=schemaCopy("Automatic");autoLabel.appendChild(auto);autoLabel.appendChild(autoText);row.appendChild(autoLabel);number.type="number";number.id="recipe-"+f.key+"-value";number.setAttribute("aria-label",pick(f.label)+(f.ui.unit?" "+f.ui.unit:""));range.type="range";range.id="recipe-"+f.key;[number,range].forEach(function(el){el.min=f.min;el.max=f.max;el.step=f.step||1});row.appendChild(number);box.appendChild(row);box.appendChild(range);limits.className="recipe-slider-limits";min.textContent=f.min+(f.ui.unit?" "+f.ui.unit:"");max.textContent=f.max+(f.ui.unit?" "+f.ui.unit:"");limits.appendChild(min);limits.appendChild(max);box.appendChild(limits);
+ var manual=values[f.key]===f.automatic_value?f.ui.manual_default:values[f.key];
+ function sync(){var automatic=values[f.key]===f.automatic_value;auto.checked=automatic;number.disabled=range.disabled=automatic;number.value=range.value=manual;range.setAttribute("aria-valuetext",manual+(f.ui.unit?" "+f.ui.unit:""))}
+ function change(raw){var value=Math.max(f.min,Math.min(f.max,Number(raw)||f.ui.manual_default));manual=Math.min(f.max,f.min+Math.round((value-f.min)/(f.step||1))*(f.step||1));values[f.key]=manual;sync();applyVisibility()}
+ auto.onchange=function(){values[f.key]=auto.checked?f.automatic_value:manual;sync();applyVisibility()};range.oninput=function(){change(range.value)};number.onchange=function(){change(number.value)};sync();return box;
+}
+function musicSegmented(f){var box=document.createElement("div");box.className="recipe-segmented";box.dataset.control="segmented";box.setAttribute("role","radiogroup");box.setAttribute("aria-label",pick(f.label));f.options.forEach(function(o){var label=document.createElement("label"),input=document.createElement("input"),text=document.createElement("span");input.type="radio";input.name="recipe-"+f.key;input.value=String(o.value);input.checked=values[f.key]===o.value;text.textContent=pick(o.label);input.onchange=function(){values[f.key]=o.value;applyVisibility()};label.appendChild(input);label.appendChild(text);box.appendChild(label)});return box}
+  function renderRail(){if(!schema)return;musicBuildLayout($("rail"),groupOf);var help=document.querySelector(".template-help");if(help)help.textContent=currentTemplate?pick(currentTemplate.description_i18n):UI.grp_recipe_sub;applyVisibility();syncCost()}
+  function musicChoices(f) {
+    var box=document.createElement("details"),summary=document.createElement("summary"),list=document.createElement("div");box.className="recipe-multi";list.className="recipe-multi-options";box.appendChild(summary);box.appendChild(list);
+    function draw(){var chosen=values[f.key]||[];summary.textContent=(chosen.length?f.options.filter(function(o){return chosen.indexOf(o.value)>=0}).map(function(o){return pick(o.label)}).join(" · "):schemaCopy("Automatic"))+" ("+chosen.length+"/"+f.max_selected+")";list.innerHTML="";
+      var reset=document.createElement("button");reset.type="button";reset.className="recipe-auto";reset.textContent=schemaCopy("Automatic");reset.onclick=function(){values[f.key]=[];draw();applyVisibility()};list.appendChild(reset);
+      f.options.forEach(function(o){var label=document.createElement("label"),input=document.createElement("input"),text=document.createElement("span");label.className="recipe-choice";input.type="checkbox";input.value=o.value;input.checked=chosen.indexOf(o.value)>=0;input.disabled=!input.checked&&chosen.length>=f.max_selected;text.textContent=pick(o.label);input.onchange=function(){values[f.key]=input.checked?chosen.concat([o.value]):chosen.filter(function(v){return v!==o.value});draw();applyVisibility()};label.appendChild(input);label.appendChild(text);list.appendChild(label)});
+    }draw();return box;
+  }
   function groupOf(f) {
-    var wrap = document.createElement("div");
-    wrap.className = "sect"; wrap.dataset.key = f.key;
-    var head = document.createElement("div"); head.className = "lbl";
-    var right = "";
-    if (f.key === "duration_seconds") right = '<span class="r" id="cost">' + cost() + " " + UI.credits + '</span>';
-    if (f.type === "multi") right = '<span class="r">' + UI.up_to.replace("{n}", f.max) + '</span>';
-    if (f.key === "vocal_language") right = '<span class="r">vocal tracks</span>';
-    head.innerHTML = "<span>" + label(f) + "</span>" + right;
+    var wrap=document.createElement("div");wrap.className="sect";wrap.dataset.key=f.key;
+    var head=document.createElement("label");head.className="lbl";head.htmlFor="recipe-"+f.key;
+    var title=document.createElement("span");title.textContent=pick(f.label);head.appendChild(title);
+    if(f.key==="duration_seconds"){var price=document.createElement("span");price.className="r";price.id="cost";price.textContent=cost()+" "+UI.credits;head.appendChild(price)}
     wrap.appendChild(head);
-
-    if (f.type === "int") {
-      var inp = document.createElement("input");
-      inp.type = "range"; inp.min = f.min; inp.max = f.max; inp.step = f.step || 1; inp.value = values[f.key];
-      var out = document.createElement("div");
-      out.style.cssText = "font-size:10.5px;color:var(--mut);margin-top:4px";
-      out.textContent = values[f.key] + " BPM";
-      inp.addEventListener("input", function () { values[f.key] = Number(inp.value); out.textContent = inp.value + " BPM"; });
-      wrap.appendChild(inp); wrap.appendChild(out);
-      return wrap;
+    var control;
+    if(f.ui.control==="slider"){control=musicSlider(f);
+    }else if(f.ui.control==="segmented"){control=musicSegmented(f);
+    }else if(f.ui.control==="multiselect"){control=musicChoices(f);
+    }else if(f.ui.control==="switch"){
+      control=document.createElement("div");control.className="recipe-switch";var toggle=document.createElement("input"),status=document.createElement("span");toggle.type="checkbox";toggle.setAttribute("role","switch");toggle.id="recipe-"+f.key;toggle.checked=!!values[f.key];status.textContent=schemaCopy(toggle.checked?"On":"Off");toggle.onchange=function(){values[f.key]=toggle.checked;status.textContent=schemaCopy(toggle.checked?"On":"Off");applyVisibility()};control.appendChild(toggle);control.appendChild(status);
+    }else if(f.ui.control==="textarea"){
+      control=document.createElement("textarea");control.className="recipe-text";control.maxLength=f.max_length;control.rows=f.ui.rows||2;control.dir="auto";control.value=values[f.key]||"";
+      control.addEventListener("input",function(){values[f.key]=control.value;applyVisibility()});
+    }else if(f.ui.control==="number"){
+      control=document.createElement("input");control.className="select";control.type="number";control.min=f.min;control.max=f.max;control.step=f.step||1;
+      control.value=values[f.key]||"";control.placeholder=schemaCopy("Automatic");
+      control.addEventListener("input",function(){values[f.key]=control.value===""?0:Number(control.value)});
+    }else{
+      control=document.createElement("select");control.className="select";
+      var options=f.options;
+      options.forEach(function(o){var opt=document.createElement("option");opt.value=String(o.value);opt.textContent=pick(o.label);opt.selected=values[f.key]===o.value;control.appendChild(opt)});
+      control.addEventListener("change",function(){var chosen=options.filter(function(o){return String(o.value)===control.value})[0];values[f.key]=chosen.value;applyVisibility();syncCost()});
     }
-
-    // 选项多的枚举用下拉框：列表会越来越长，芯片行会占掉整屏
-    if (f.type === "enum" && f.options.length > 10) {
-      var sel = document.createElement("select");
-      sel.className = "select";
-      f.options.forEach(function (o) {
-        var op = document.createElement("option");
-        op.value = o.value;
-        op.textContent = override(f, o.value) || pick(o.label) || o.value;
-        if (values[f.key] === o.value) op.selected = true;
-        sel.appendChild(op);
-      });
-      sel.addEventListener("change", function () {
-        values[f.key] = sel.value; applyVisibility(); syncCost();
-      });
-      wrap.appendChild(sel);
-      return wrap;
-    }
-
-    var asSeg = f.type === "bool" || (f.type === "enum" && f.options.length <= 5);
-    if (asSeg) {
-      var row = document.createElement("div"); row.className = "seg";
-      var opts = f.type === "bool" ? [{ value: false, label: { en: UI.off } }, { value: true, label: { en: UI.loop_on } }] : f.options;
-      opts.forEach(function (o) {
-        var b = document.createElement("button");
-        b.type = "button";
-        b.textContent = override(f, o.value) || pick(o.label) || o.value;
-        if (values[f.key] === o.value) b.classList.add("on");
-        b.addEventListener("click", function () {
-          values[f.key] = o.value;
-          Array.prototype.forEach.call(row.children, function (x) { x.classList.remove("on"); });
-          b.classList.add("on"); applyVisibility(); syncCost();
-        });
-        row.appendChild(b);
-      });
-      wrap.appendChild(row);
-      return wrap;
-    }
-
-    var chips = document.createElement("div"); chips.className = "chips";
-    f.options.forEach(function (o) {
-      var b = document.createElement("button");
-      b.type = "button"; b.className = "chip";
-      b.textContent = pick(o.label) || o.value;
-      var on = f.type === "multi" ? (values[f.key] || []).indexOf(o.value) >= 0 : values[f.key] === o.value;
-      if (on) b.classList.add("on");
-      b.addEventListener("click", function () {
-        if (f.type === "multi") {
-          var cur = values[f.key] || [], i = cur.indexOf(o.value);
-          if (i >= 0) { cur.splice(i, 1); b.classList.remove("on"); }
-          else {
-            if (cur.length >= (f.max || 99)) { msg(UI.up_to.replace("{n}", f.max), "err"); return; }
-            cur.push(o.value); b.classList.add("on");
-          }
-          values[f.key] = cur;
-        } else {
-          values[f.key] = o.value;
-          Array.prototype.forEach.call(chips.children, function (x) { x.classList.remove("on"); });
-          b.classList.add("on");
-        }
-        applyVisibility(); syncCost();
-      });
-      chips.appendChild(b);
-    });
-    wrap.appendChild(chips);
-    return wrap;
+    if(f.ui.control!=="switch")control.id="recipe-"+f.key+(f.ui.control==="slider"?"-control":"");wrap.appendChild(control);return wrap;
   }
 
   function cond(cv, actual) {
@@ -1503,24 +1511,15 @@
   }
 
   function applyVisibility() {
-    schema.fields.forEach(function (f) {
-      if (!f.visible_when) return;
-      var el = document.querySelector('.sect[data-key="' + f.key + '"]');
-      if (!el) return;
-      var show = Object.keys(f.visible_when).every(function (k) { return cond(f.visible_when[k], values[k]); });
-      el.classList.toggle("hidden", !show);
+    if(!schema)return;
+    schema.fields.forEach(function(f){if(f.exclude_same_as){var control=document.getElementById("recipe-"+f.key);if(values[f.key]===values[f.exclude_same_as])values[f.key]=f.default;if(control){if(control.tagName==="SELECT"){control.value=values[f.key];Array.from(control.options).forEach(function(o){o.disabled=o.value!==String(f.default)&&o.value===String(values[f.exclude_same_as])})}else control.querySelectorAll('input[type="radio"]').forEach(function(o){o.checked=o.value===String(values[f.key]);o.disabled=o.value!==String(f.default)&&o.value===String(values[f.exclude_same_as])})}}});
+    schema.fields.forEach(function(f){
+      var el=document.querySelector('.sect[data-key="'+f.key+'"]');if(!el)return;
+      var show=Object.keys(f.visible_when||{}).every(function(k){return cond(f.visible_when[k],values[k])});
+      if(f.requires_reference)show=show&&mode==="photo"&&!!imagePayload;
+      el.classList.toggle("hidden",!show);
     });
-    if (values.loop) {
-      var bf = schema.fields.filter(function (f) { return f.key === "bpm"; })[0] || {};
-      var legal = (bf.bpm_by_duration || {})[String(values.duration_seconds)] || [];
-      if (legal.length && legal.indexOf(values.bpm) < 0) {
-        values.bpm = legal[0];
-        var inp = document.querySelector('.sect[data-key="bpm"] input');
-        if (inp) inp.value = values.bpm;
-        var out = document.querySelector('.sect[data-key="bpm"] div');
-        if (out) out.textContent = values.bpm + " BPM";
-      }
-    }
+    musicRefreshLayout();
   }
 
   function cost() {
@@ -1543,7 +1542,7 @@
     var f = fields.filter(function (x) { return x.key === key; })[0];
     if (!f || !f.options) return value;
     var o = f.options.filter(function (x) { return x.value === value; })[0];
-    return o ? (override(f, value) || pick(o.label) || value) : value;
+    return o ? (pick(o.label) || value) : value;
   }
   function paramSummary(p) {
     var bits = [optLabel("genre", p.genre), optLabel("mood", p.mood)];
@@ -1553,30 +1552,28 @@
 
   // ---- 配方 ----
   function renderRecipes(items) {
-    templates = items || []; templatesLoaded = true; renderTemplateSelect();
-    var box = $("recipes"); box.innerHTML = "";
-    items.filter(function (r) { return r.is_system; }).forEach(function (r) {
-      var el = document.createElement("div");
-      el.className = "rec item-card";
-      var p = r.params || {};
-      var locName = (UI.recipe_names && UI.recipe_names[r.slug]) || r.name;
-      el.dataset.audio = r.sample_url || "";
-      el.innerHTML = '<div class="card-media"><button type="button" class="media-play" aria-label="' + locName + '">' + wave(waveformForAudio(r.sample_url)) + '</button>' +
-        '<div class="card-actions"><span class="play-mark" aria-hidden="true">▶</span><button type="button" class="card-use" title="' + (UI.create_similar||UI.use_recipe) + '">' + (UI.create_similar||UI.use_recipe) + '</button></div></div>' +
-        '<div class="card-info"><p class="card-title">' + locName + '</p><p class="card-meta">' + paramSummary(p) + '</p></div>';
-      function playRecipe() { if (r.sample_url) select({ kind: "recipe", audio: r.sample_url, title: locName, meta: "preset" }); }
-      function useRecipe() {
-        selectTemplate(r, p);
-      }
-      el.querySelector(".media-play").addEventListener("click", playRecipe);
-      el.querySelector(".card-use").addEventListener("click", useRecipe);
-      box.appendChild(el);
-    });
-    drawWaveforms(box);
-    requestAnimationFrame(updateRailNav);
-    restoreSharedRecipe();
+    templates = items || []; templatesLoaded = true; renderTemplateSelect(); renderOfficialSamples();
+    restoreSharedRecipe();restoreDraft();
   }
-
+  function renderOfficialSamples() {
+    if(!schema||!templatesLoaded)return;
+    var box=$("recipes");box.innerHTML="";
+    officialSamples.forEach(function(sample){
+      var template=templates.find(function(r){return r.slug===sample.recipe_slug});
+      var name=template?templateName(template):(UI.recipe_names||{})[sample.recipe_slug]||sample.recipe_slug;
+      var el=document.createElement("article");el.className="rec item-card official-sample";el.dataset.sample=sample.sample_key;el.dataset.audio=sample.url;
+      var media=document.createElement("div");media.className="card-media image";
+      var img=document.createElement("img");img.src=sample.display_cover;img.alt=name;img.loading="lazy";media.appendChild(img);
+      var play=document.createElement("button");play.type="button";play.className="media-play";play.setAttribute("aria-label",name);media.appendChild(play);
+      var mark=document.createElement("span");mark.className="official-play play-mark";mark.textContent="▶";media.appendChild(mark);
+      var info=document.createElement("div");info.className="card-info";var title=document.createElement("p");title.className="card-title";title.textContent=name;info.appendChild(title);
+      var meta=document.createElement("p");meta.className="card-meta";meta.textContent=fmtT(sample.duration_ms/1000)+" · "+optLabel("vocal",sample.params.vocal)+(sample.params.vocal!=="instrumental"?" · "+optLabel("vocal_language",sample.params.vocal_language):"");info.appendChild(meta);
+      var use=document.createElement("button");use.type="button";use.className="card-use";use.textContent=UI.create_similar||UI.use_recipe;use.disabled=!schema||!template;
+      use.onclick=function(){applyMine(sample);applied(name)};info.appendChild(use);
+      play.onclick=function(){select(Object.assign({},sample,{kind:"recipe",audio:sample.url,title:name,img:sample.display_cover}))};
+      el.appendChild(media);el.appendChild(info);box.appendChild(el);
+    });requestAnimationFrame(updateRailNav);
+  }
   // 套用配方后的反馈：按钮上方出现"将使用…"，并把生成按钮滚进视野
   // 套用的配方常驻显示在表单顶部，用户随时知道当前参数来自哪
   function applied(name) {
@@ -1698,33 +1695,26 @@
   }
 
   // ---- 图片 ----
-  function loadPhoto(f) {
-    var reader = new FileReader();
-    reader.onload = function () {
-      var url = String(reader.result || "");
-      imagePayload = { data: url.slice(url.indexOf(",") + 1), mime: f.type || "image/jpeg" };
-      $("drop").classList.add("has");
-      $("dropText").innerHTML = '<img id="prevImg" src="' + url + '" alt=""><span class="rm">Xóa ảnh</span>';
-      $("dropText").onclick = function (ev) {
-        ev.preventDefault(); ev.stopPropagation();
-        imagePayload = null;
-        $("drop").classList.remove("has");
-        $("dropText").innerHTML = UI.drop;
-        $("dropText").onclick = null; $("file").value = "";
-      };
-    };
-    reader.readAsDataURL(f);
+  async function loadPhoto(f) {
+    if(f.size>20000000){msg(UI.reference_large,"err");return;}
+    if(["image/jpeg","image/png","image/webp"].indexOf(f.type)<0){msg(UI.err_load,"err");return;}
+    var source=URL.createObjectURL(f);
+    try{
+      var img=new Image();await new Promise(function(resolve,reject){img.onload=resolve;img.onerror=reject;img.src=source});
+      var scale=Math.min(1,1600/Math.max(img.naturalWidth,img.naturalHeight)),canvas=document.createElement("canvas");canvas.width=Math.max(1,Math.round(img.naturalWidth*scale));canvas.height=Math.max(1,Math.round(img.naturalHeight*scale));
+      var ctx=canvas.getContext("2d");ctx.fillStyle="#fff";ctx.fillRect(0,0,canvas.width,canvas.height);ctx.drawImage(img,0,0,canvas.width,canvas.height);
+      var url=canvas.toDataURL("image/jpeg",.88);imagePayload={data:url.split(",")[1],mime:"image/jpeg"};
+      $("drop").classList.add("has");$("dropText").innerHTML='<img id="prevImg" src="'+url+'" alt=""><span class="rm">Xóa ảnh</span>';
+      $("dropText").onclick=function(ev){ev.preventDefault();ev.stopPropagation();imagePayload=null;$("drop").classList.remove("has");applyVisibility();$("dropText").textContent=UI.drop;$("dropText").onclick=null;$("file").value=""};applyVisibility();
+    }catch(e){msg(UI.err_load,"err")}finally{URL.revokeObjectURL(source)}
   }
   function loadPhotoFromUrl(url) {
-    var img = new Image();
-    img.onload = function () { imagePayload = { data: url, mime: "image/url" }; };
-    img.onerror = function () {};
-    img.src = url;
+    fetch(url).then(function(r){if(!r.ok)throw Error();return r.blob()}).then(loadPhoto).catch(function(){msg(UI.err_load,"err")});
     $("drop").classList.add("has");
     $("dropText").innerHTML = '<img id="prevImg" src="' + url + '" alt=""><span class="rm">Xóa ảnh</span>';
     $("dropText").onclick = function (ev) {
       ev.preventDefault(); ev.stopPropagation();
-      imagePayload = null; $("drop").classList.remove("has"); $("dropText").textContent = "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh";
+      imagePayload = null; applyVisibility(); $("drop").classList.remove("has"); $("dropText").textContent = "Kéo thả hoặc chọn ảnh<br>lời bài hát sẽ gọi tên những gì trong ảnh";
       $("dropText").onclick = null; $("file").value = "";
     };
   }
@@ -1741,6 +1731,7 @@
     $("modeText").classList.toggle("on", m === "text");
     $("panelPhoto").classList.toggle("hidden", m !== "photo");
     $("panelText").classList.toggle("hidden", m !== "text");
+    applyVisibility();
     if (m === "text") $("desc").focus();
   }
   $("modePhoto").addEventListener("click", function () { setMode("photo"); });
@@ -1839,10 +1830,11 @@
   // ---- 我的作品（登录后显示） ----
   var mineItems = [];
   function applyMine(it) {
-    var template=templates.filter(function(r){return r.id===it.recipe_id||r.slug===it.recipe_slug})[0]||null;
-    currentTemplate=template;
+    var template=templates.filter(function(r){return (it.recipe_slug?r.slug===it.recipe_slug:r.id===it.recipe_id)})[0]||null;
+    currentTemplate=template;values=Object.assign(defaults(),template&&template.params||{});
+    imagePayload=null;$("desc").value="";$("drop").classList.remove("has");$("dropText").textContent=UI.drop;
     Object.keys(it.params || {}).forEach(function (k) { if (values[k] !== undefined) values[k] = it.params[k]; });
-    if(it.description){$("desc").value=it.description;setMode("text")}else if(it.reference_url){loadPhotoFromUrl(it.cover);imagePayload={mime:"image/url",reference_url:it.reference_url};setMode("photo")}
+    setMode("text");if(it.description){$("desc").value=it.description;}if(it.reference_url){$("drop").classList.add("has");$("dropText").innerHTML='<img id="prevImg" src="'+it.cover+'" alt="">';imagePayload={mime:"image/url",reference_url:it.reference_url};setMode("photo")}
     renderTemplateSelect();renderRail(); applied(UI.my_track);
   }
 
@@ -2155,23 +2147,18 @@
     else { $("bal").textContent = UI.not_signed_in; renderAvatar({}); }
   });
   loadSharedRecipe();
+  fetch("https://assets.aiglossa.com/showcase/20261105-v1/music.json").then(function(r){if(!r.ok)throw Error();return r.json()}).then(function(data){officialSamples=data.items;renderOfficialSamples()}).catch(function(){msg(UI.err_load,"err")});
   call("/ai/music/schema", {}, false).then(function (d) {
     if (d.code !== 200) { msg(UI.err_load, "err"); return; }
     schema = d.data;
     schema.fields.forEach(function (f) { values[f.key] = f.type === "multi" ? (f.default || []).slice() : f.default; });
-    if (mineItems.length) renderMineRow();
+    if (mineItems.length) renderMineRow();renderOfficialSamples();
     // 先定"当前这首"，再渲染照片墙——否则墙里会出现和大画幅重复的那一张
-    var d0 = DEMOS[0];
-    current = { kind: "demo", img: d0.img, audio: d0.audio, lyrics: d0.lyrics, meta: d0.meta, title: d0.title };
     renderRail(); syncCost();
-    fetch("../../samples/waveforms.json").then(function (r) { return r.json(); }).then(function (w) { WAVEFORMS = w || {}; }).catch(function () {}).then(function () {
-      renderPhotos();
-      call("/ai/music/recipes/list", {}, false).then(function (r) {
-        if (r.code === 200) renderRecipes(r.data || []);
-        else { templatesLoaded = true; restoreSharedRecipe(); }
-      }).catch(function () { templatesLoaded = true; restoreSharedRecipe(); });
-    });
-  });
+    call("/ai/music/recipes/list", {}, false).then(function(r){
+      if(r.code===200)renderRecipes(r.data||[]);else msg(UI.err_load,"err");
+    }).catch(function(){msg(UI.err_load,"err")});
+  }).catch(function(){msg(UI.err_load,"err")});
   // 指南：弹窗内切换，不跳页；文章页本身仍可直接访问（SEO）
   (function () {
     var gm = document.getElementById("gm");
