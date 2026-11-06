@@ -52,7 +52,7 @@ FOOD_ASSETS = (
 )
 
 FOOD_ASSET_VERSION = "20261103-47"
-GLOBAL_ASSET_VERSION = "20261105-45"
+GLOBAL_ASSET_VERSION = "20261106-46"
 
 # root / tools / scholan 只复制页面实际引用的资源，避免把整套 assets
 # （Scholan 截图、其他站点图标等）复制进每个站点，造成仓库和部署冗余。

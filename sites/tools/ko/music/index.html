@@ -38,11 +38,11 @@
 <meta name="theme-color" content="#111720" media="(prefers-color-scheme: dark)">
 <!-- 结构化数据：告诉 Google 这是一个网页应用，而不是普通文章 -->
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "SoftwareApplication", "name": "AI 음악 생성 — 사진에서 곡으로, 정확한 길이", "description": "사진이나 프롬프트로 30~90초에 딱 맞는 배경 음악을 만듭니다. 가사는 사진 속 내용을 노래하고, 10개 언어 보컬과 이음새 없는 루프를 지원합니다.", "applicationCategory": "MultimediaApplication", "operatingSystem": "Web", "url": "https://tools.aiglossa.com/ko/music/", "inLanguage": "ko"}</script>
-<link rel="icon" href="../../assets/favicon-tools.svg?v=20261105-45" type="image/svg+xml">
-<link rel="icon" href="../../assets/favicon-tools.svg?v=20261105-45" sizes="any">
-<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png?v=20261105-45">
-<link rel="manifest" href="../../assets/manifest-tools.webmanifest?v=20261105-45">
-<link rel="stylesheet" href="../../assets/theme.css?v=20261105-45" />
+<link rel="icon" href="../../assets/favicon-tools.svg?v=20261106-46" type="image/svg+xml">
+<link rel="icon" href="../../assets/favicon-tools.svg?v=20261106-46" sizes="any">
+<link rel="apple-touch-icon" href="../../assets/apple-touch-icon-tools.png?v=20261106-46">
+<link rel="manifest" href="../../assets/manifest-tools.webmanifest?v=20261106-46">
+<link rel="stylesheet" href="../../assets/theme.css?v=20261106-46" />
 <style>
   :root{
     --bg:#0e0f11; --panel:#16181c; --ink:#f2f1ec; --mut:#92959c; --muted:#92959c;
@@ -986,7 +986,7 @@
 .recipe-sticky-tabs .recipe-tabs{position:sticky;inset-block-start:0;z-index:4;background:var(--panel,var(--surface));padding-block:8px}
 @media(max-width:1080px){.recipe-sticky-tabs .recipe-tabs{inset-block-start:64px}}
 
-#recipes .official-sample{height:auto!important;min-height:0!important;display:flex!important;flex-direction:column!important;padding:0!important}
+.loading-recipes{min-height:300px}.loading-recipes .loading-card{display:flex;flex:0 0 clamp(180px,22vw,260px);aspect-ratio:1/1.22;border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:10px;flex-direction:column;gap:10px}.loading-recipes .loading-card div{aspect-ratio:1;background:var(--surface-2);border-radius:7px}.loading-recipes .loading-card span,.loading-recipes .loading-card i{display:block;height:10px;border-radius:4px;background:var(--surface-2);width:72%}.loading-recipes .loading-card i{width:42%}.loading-recipes .loading-card,.loading-recipes .loading-card div,.loading-recipes .loading-card span,.loading-recipes .loading-card i{background-image:linear-gradient(110deg,transparent 25%,rgba(255,255,255,.42) 45%,transparent 65%);background-size:220% 100%;animation:media-shimmer 1.4s ease-in-out infinite}#recipes .official-sample{height:auto!important;min-height:0!important;display:flex!important;flex-direction:column!important;padding:0!important}
 #recipes .official-sample .card-media{position:relative;height:auto!important;flex:none!important;aspect-ratio:1;overflow:hidden;background:var(--surface-2)}
 #recipes .official-sample .card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
 #recipes .official-sample .card-info{position:static!important;flex:1;display:flex;flex-direction:column;gap:6px;padding:12px!important}
@@ -994,7 +994,11 @@
 #recipes .official-sample .card-meta{white-space:normal;margin:0}
 #recipes .official-sample .card-use{position:static;align-self:flex-start;margin-block-start:auto;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink);padding:7px 10px;font:inherit;font-size:11.5px;cursor:pointer}
 #recipes .official-sample .official-play{position:absolute;inset-block-start:10px;inset-inline-start:10px;pointer-events:none}
-</style><link rel="stylesheet" href="../../assets/tool-topbar.css?v=20261105-45">
+
+.param-loading{display:flex;flex-direction:column;gap:12px;padding-block:12px}.param-skeleton{height:42px;border-radius:7px;background:linear-gradient(110deg,var(--surface-2) 25%,color-mix(in srgb,var(--surface-2),var(--surface) 35%) 45%,var(--surface-2) 65%);background-size:220% 100%;animation:media-shimmer 1.4s ease-in-out infinite}.param-skeleton.wide{height:58px}.param-skeleton.short{width:62%}@media(prefers-reduced-motion:reduce){.param-skeleton{animation:none}}
+@keyframes media-shimmer{to{background-position:-120% 0}}
+@media(prefers-reduced-motion:reduce){.loading-card,.loading-card div,.loading-card span,.loading-card i{animation:none!important}}
+</style><link rel="stylesheet" href="../../assets/tool-topbar.css?v=20261106-46">
 </head>
 <body>
 <div class="shell">
@@ -1026,7 +1030,7 @@
       <textarea id="desc" rows="3" maxlength="300" placeholder="원하는 곡을 설명하세요: 비 오는 카페, 피아노 중심"></textarea>
     </div>
 
-    <div id="rail"></div>
+    <div id="rail"><div class="param-loading" aria-busy="true"><div class="param-skeleton wide"></div><div class="param-skeleton"></div><div class="param-skeleton"></div><div class="param-skeleton short"></div></div></div>
 
 
     </div>
@@ -1070,7 +1074,7 @@
       <span class="t">템플릿 예시</span>
       <div class="rail-head-actions"><span class="n">각 제작 템플릿으로 완성한 작품</span><span class="rail-nav" data-rail="recipes"><button type="button" data-dir="-1" aria-label="Previous">‹</button><button type="button" data-dir="1" aria-label="Next">›</button></span></div>
     </div>
-    <div class="rec-wrap"><div class="recipes" id="recipes"></div></div>
+    <div class="rec-wrap"><div class="recipes loading-recipes" id="recipes" aria-busy="true"><div class="loading-card"><div></div><span></span><i></i></div><div class="loading-card"><div></div><span></span><i></i></div><div class="loading-card"><div></div><span></span><i></i></div><div class="loading-card"><div></div><span></span><i></i></div><div class="loading-card"><div></div><span></span><i></i></div><div class="loading-card"><div></div><span></span><i></i></div></div></div>
 
 
 
@@ -1556,14 +1560,14 @@ function musicSegmented(f){var box=document.createElement("div");box.className="
     restoreSharedRecipe();restoreDraft();
   }
   function renderOfficialSamples() {
-    if(!schema||!templatesLoaded)return;
-    var box=$("recipes");box.innerHTML="";
+    if(!schema||!templatesLoaded||!officialSamples.length)return;
+    var box=$("recipes");box.innerHTML="";box.classList.remove("loading-recipes");box.removeAttribute("aria-busy");
     officialSamples.forEach(function(sample){
       var template=templates.find(function(r){return r.slug===sample.recipe_slug});
       var name=template?templateName(template):(UI.recipe_names||{})[sample.recipe_slug]||sample.recipe_slug;
       var el=document.createElement("article");el.className="rec item-card official-sample";el.dataset.sample=sample.sample_key;el.dataset.audio=sample.url;
       var media=document.createElement("div");media.className="card-media image";
-      var img=document.createElement("img");img.src=sample.display_cover;img.alt=name;img.loading="lazy";media.appendChild(img);
+      var img=document.createElement("img");img.src=sample.display_cover;img.alt=name;img.loading="lazy";img.onload=function(){img.classList.add("is-loaded")};if(img.complete)img.classList.add("is-loaded");media.appendChild(img);
       var play=document.createElement("button");play.type="button";play.className="media-play";play.setAttribute("aria-label",name);media.appendChild(play);
       var mark=document.createElement("span");mark.className="official-play play-mark";mark.textContent="▶";media.appendChild(mark);
       var info=document.createElement("div");info.className="card-info";var title=document.createElement("p");title.className="card-title";title.textContent=name;info.appendChild(title);
