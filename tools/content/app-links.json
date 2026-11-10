@@ -1,0 +1,18 @@
+{
+  "ar": {"title": "افتح في {app}", "body": "هذا الرابط مخصص للتطبيق. نزّل التطبيق من App Store للمتابعة.", "button": "تنزيل {app}"},
+  "de": {"title": "In {app} öffnen", "body": "Dieser Link ist für die App bestimmt. Lade sie aus dem App Store, um fortzufahren.", "button": "{app} laden"},
+  "en": {"title": "Open in {app}", "body": "This link is for the app. Get it from the App Store to continue.", "button": "Get {app}"},
+  "es": {"title": "Abrir en {app}", "body": "Este enlace es para la app. Descárgala del App Store para continuar.", "button": "Descargar {app}"},
+  "fr": {"title": "Ouvrir dans {app}", "body": "Ce lien est destiné à l’app. Téléchargez-la sur l’App Store pour continuer.", "button": "Télécharger {app}"},
+  "id": {"title": "Buka di {app}", "body": "Tautan ini ditujukan untuk aplikasi. Unduh dari App Store untuk melanjutkan.", "button": "Unduh {app}"},
+  "it": {"title": "Apri in {app}", "body": "Questo link è destinato all’app. Scaricala dall’App Store per continuare.", "button": "Scarica {app}"},
+  "ja": {"title": "{app}で開く", "body": "このリンクはアプリ内で開くためのものです。App Storeからアプリをダウンロードして続けてください。", "button": "{app}をダウンロード"},
+  "ko": {"title": "{app}에서 열기", "body": "앱에서 사용하는 링크입니다. 계속하려면 App Store에서 앱을 다운로드하세요.", "button": "{app} 다운로드"},
+  "pt": {"title": "Abrir no {app}", "body": "Este link é para o app. Baixe-o na App Store para continuar.", "button": "Baixar {app}"},
+  "ru": {"title": "Открыть в {app}", "body": "Эта ссылка предназначена для приложения. Загрузите его из App Store, чтобы продолжить.", "button": "Загрузить {app}"},
+  "th": {"title": "เปิดใน {app}", "body": "ลิงก์นี้ใช้ภายในแอป ดาวน์โหลดแอปจาก App Store เพื่อดำเนินการต่อ", "button": "ดาวน์โหลด {app}"},
+  "tr": {"title": "{app} ile aç", "body": "Bu bağlantı uygulama içindir. Devam etmek için uygulamayı App Store’dan indirin.", "button": "{app} uygulamasını indir"},
+  "vi": {"title": "Mở trong {app}", "body": "Liên kết này dành cho ứng dụng. Tải ứng dụng từ App Store để tiếp tục.", "button": "Tải {app}"},
+  "zh-Hans": {"title": "在 {app} 中打开", "body": "这个链接需要在应用内打开。请从 App Store 下载应用后继续。", "button": "下载 {app}"},
+  "zh-Hant": {"title": "在 {app} 中開啟", "body": "這個連結需要在 App 內開啟。請從 App Store 下載 App 後繼續。", "button": "下載 {app}"}
+}

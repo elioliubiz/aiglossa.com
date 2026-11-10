@@ -14,6 +14,7 @@
 | `docs/playbooks/payments.md` | Creem、充值、额度、支付回调 |
 | `docs/playbooks/deploy.md` | 构建、staging、生产、Vercel、资源版本 |
 | `docs/playbooks/seo.md` | sitemap、搜索引擎资产、IndexNow 提交 |
+| `docs/playbooks/app-links.md` | 产品通用链接、AASA、未安装回落 |
 | `docs/REGRESSIONS.md` | 改到相关模块前，先看有没有踩过坑 |
 
 不要把全部文档一次塞进上下文。  

@@ -7,10 +7,11 @@
       "login",
       "protocol",
       "webaccount",
-      "webpricing"
+      "webpricing",
+      "app-links"
     ],
     "extra": [
-      "inapp.html",
+      "app-link.html",
       ".well-known/apple-app-site-association"
     ]
   },

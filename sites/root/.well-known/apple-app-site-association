@@ -2,11 +2,22 @@
   "applinks": {
     "details": [
       {
-        "appIDs": ["3MF99LAN4K.com.eliobiz.scholan"],
+        "appIDs": [
+          "3MF99LAN4K.com.eliobiz.scholan"
+        ],
         "components": [
           {
-            "/": "/inapp",
-            "comment": "行为串入口：https://aiglossa.com/inapp?action=<密封串>；App 未安装时回落到同名页面"
+            "/": "/scholan/inapp"
+          }
+        ]
+      },
+      {
+        "appIDs": [
+          "3MF99LAN4K.com.eliobiz.coeia"
+        ],
+        "components": [
+          {
+            "/": "/coeia/inapp"
           }
         ]
       }
