@@ -7,7 +7,7 @@
 ## 维护
 
 1. 在 `tools/content/app-links-registry.json` 配置产品名、TeamID.BundleID、商店地址。
-2. 新产品同时补 `vercel.json` 产品入口正则与客户端路径解析。
+2. 新产品同时补 `vercel.json` 产品入口正则与客户端路径解析。产品入口必须排在生产和 staging 各自的 `/:path*` 通用重写之前。
 3. 文案在 `tools/content/app-links.json`，覆盖站点全部 16 种语言。
 4. 执行 `python3 tools/build.py` 与 `python3 tools/verify.py`。AASA、分流页及多语言下载页均由构建生成。
 

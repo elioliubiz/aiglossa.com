@@ -5,6 +5,7 @@
 
 | 问题 | 根因 | 修复 | 预防 |
 |---|---|---|---|
+| staging 产品通用链接返回 404 | 产品入口排在 host 通用重写之后 | 将产品入口移到重写列表前面 | `verify.py` 校验生产与 staging 顺序；部署后访问真实入口 |
 | skin 登录后跳到音乐页 | 登录页 `allowedOrigins` 漏了 skin | 加 skin 生产/测试 origin | 新 host 必须同时改前端白名单和后端 `WEB_ORIGINS` |
 | 登录后返回栈多一层 | 登录页 `location.replace(next)` 替换登录页，原产品页仍在 | 有上一页时 `history.back()` | 产品页 `pageshow` 刷新；手动测试返回栈 |
 | 登录后右上角仍显示未登录 | 回到 bfcache/原页面后没有重新请求账户 | 增加 `pageshow` 刷新 `wallet/summary` | 有登录 UI 的页面必须有 pageshow 测试 |

@@ -277,6 +277,14 @@ def main() -> int:
                       for app, entry in registry.items()]
     if aasa.get("applinks", {}).get("details") != expected_links:
         problems.append("AASA 与产品链接注册表不一致")
+    # 特定产品入口必须先于 host 的通用重写，否则 staging 会直接返回 404。
+    for host in ("aiglossa.com", "staging.aiglossa.com"):
+        host_rules = [rule for rule in vercel.get("rewrites", [])
+                      if {"type": "host", "value": host} in rule.get("has", [])]
+        sources = [rule.get("source") for rule in host_rules]
+        entry = "/:app(" + "|".join(registry) + ")/inapp"
+        if entry not in sources or "/:path*" not in sources or sources.index(entry) > sources.index("/:path*"):
+            problems.append(f"{host}: 产品入口必须在通用重写之前")
     for app, entry in registry.items():
         for lang in sites["root"].get("langs", codes):
             page = SITES_DIR / "root" / lang / app / "inapp.html"

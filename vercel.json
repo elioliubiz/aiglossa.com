@@ -1913,6 +1913,26 @@
   ],
   "rewrites": [
     {
+      "source": "/:app(scholan|coeia)/inapp",
+      "has": [
+        {
+          "type": "host",
+          "value": "aiglossa.com"
+        }
+      ],
+      "destination": "/sites/root/app-link.html"
+    },
+    {
+      "source": "/:app(scholan|coeia)/inapp",
+      "has": [
+        {
+          "type": "host",
+          "value": "staging.aiglossa.com"
+        }
+      ],
+      "destination": "/sites/root/app-link.html"
+    },
+    {
       "source": "/favicon.ico",
       "has": [
         {
@@ -2221,26 +2241,6 @@
         }
       ],
       "destination": "/sites/tools/:lang/guides/index.html"
-    },
-    {
-      "source": "/:app(scholan|coeia)/inapp",
-      "has": [
-        {
-          "type": "host",
-          "value": "aiglossa.com"
-        }
-      ],
-      "destination": "/sites/root/app-link.html"
-    },
-    {
-      "source": "/:app(scholan|coeia)/inapp",
-      "has": [
-        {
-          "type": "host",
-          "value": "staging.aiglossa.com"
-        }
-      ],
-      "destination": "/sites/root/app-link.html"
     },
     {
       "source": "/:lang/guides/",
