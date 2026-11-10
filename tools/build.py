@@ -443,7 +443,7 @@ def _site_urls(site: str, spec: dict) -> list[str]:
                 urls.append((f"skin/guides/{slug}/", None))
         elif page == "skin-share":
             continue
-        elif page in ("account", "webaccount", "refund", "login", "music-share", "image-share"):
+        elif page in ("account", "webaccount", "refund", "login", "music-share", "image-share", "app-links"):
             continue          # noindex / 内部页面，不进 sitemap
         elif page == "webpricing":
             urls.append(("pricing.html", None))   # 输出文件名与页面键不同
@@ -686,6 +686,33 @@ def main() -> int:
             print(f"✗ {site}: langs 里有未定义的语言 {unknown}", file=sys.stderr)
             return 1
         for page in spec["pages"]:
+            if page == "app-links":
+                registry = json.loads((CONTENT / "app-links-registry.json").read_text(encoding="utf-8"))
+                copy = json.loads((CONTENT / "app-links.json").read_text(encoding="utf-8"))
+                assert set(site_langs) <= set(copy), "app-links 缺语言"
+                for app_key, app in registry.items():
+                    assert re.fullmatch(r"[a-z0-9-]+", app_key), "非法 app_key"
+                    for lang in site_langs:
+                        emit(site, lang, 2, f"{app_key}/inapp.html", "pages/app-link.html",
+                             lambda lang, base, app=app: {
+                                 "page_title": esc(copy[lang]["title"].replace("{app}", app["name"])),
+                                 "body": esc(copy[lang]["body"]),
+                                 "button": esc(copy[lang]["button"].replace("{app}", app["name"])),
+                                 "store_url": esc(app["store_url"]),
+                             }, site_langs)
+                association = {"applinks": {"details": [
+                    {"appIDs": [app["app_id"]], "components": [{"/": f"/{key}/inapp"}]}
+                    for key, app in registry.items()
+                ]}}
+                dispatch = render((TEMPLATES / "pages/app-link-dispatch.html").read_text(encoding="utf-8"),
+                                  {"apps_json": json.dumps(list(registry)), "languages_json": json.dumps(site_langs)},
+                                  "app-link-dispatch")
+                if not args.check:
+                    folder = SITES_DIR / site
+                    (folder / ".well-known").mkdir(parents=True, exist_ok=True)
+                    (folder / ".well-known/apple-app-site-association").write_text(json.dumps(association, indent=2) + "\n", encoding="utf-8")
+                    (folder / "app-link.html").write_text(dispatch, encoding="utf-8")
+                continue
             if page == "protocol":
                 protocol = json.loads((CONTENT / "protocol.json").read_text(encoding="utf-8"))
                 for name in PROTOCOL_PAGES:

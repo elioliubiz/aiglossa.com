@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="robots" content="noindex"><meta name="referrer" content="no-referrer"><title>Aiglossa</title></head>
+<body><script>
+/* 语言无关的分流入口；不执行 action，也不把行为串发送给下载平台。 */
+(function () {
+  var apps = {{apps_json}}, supported = {{languages_json}};
+  var match = location.pathname.match(/^\/([a-z0-9-]+)\/inapp$/);
+  if (!match || apps.indexOf(match[1]) < 0) return;
+  var code = 'en';
+  var requested = navigator.languages || [navigator.language || 'en'];
+  for (var i = 0; i < requested.length; i++) {
+    var language = requested[i].toLowerCase();
+    var candidate = language.indexOf('zh') === 0
+      ? (/hant|tw|hk|mo/.test(language) ? 'zh-Hant' : 'zh-Hans')
+      : language.split('-')[0];
+    if (supported.indexOf(candidate) >= 0) { code = candidate; break; }
+  }
+  location.replace('/' + code + '/' + match[1] + '/inapp.html');
+})();
+</script></body></html>

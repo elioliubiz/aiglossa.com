@@ -46,6 +46,9 @@ PAGES: dict[str, list[tuple[str, str]]] = {
 
 
 def outputs_for(page: str) -> list[tuple[str, str]]:
+    if page == "app-links":
+        registry = json.loads((CONTENT / "app-links-registry.json").read_text(encoding="utf-8"))
+        return [(f"{key}/inapp.html", f"{key}/inapp.html") for key in registry]
     if page == "guides":
         guides = json.loads((CONTENT / "guides.json").read_text(encoding="utf-8"))
         slugs = set()
@@ -266,6 +269,29 @@ def main() -> int:
             problems.append(f"vercel.json 缺 {spec['host']} 的 Host 重写")
         if spec["host"] not in redirects:
             problems.append(f"vercel.json 缺 {spec['host']} 的根路径 301")
+
+    # 产品路径必须与 AASA 一一对应，防止多个 App 争抢行为入口。
+    registry = json.loads((ROOT / "tools/content/app-links-registry.json").read_text())
+    aasa = json.loads((SITES_DIR / "root/.well-known/apple-app-site-association").read_text())
+    expected_links = [{"appIDs": [entry["app_id"]], "components": [{"/": f"/{app}/inapp"}]}
+                      for app, entry in registry.items()]
+    if aasa.get("applinks", {}).get("details") != expected_links:
+        problems.append("AASA 与产品链接注册表不一致")
+    # 特定产品入口必须先于 host 的通用重写，否则 staging 会直接返回 404。
+    for host in ("aiglossa.com", "staging.aiglossa.com"):
+        host_rules = [rule for rule in vercel.get("rewrites", [])
+                      if {"type": "host", "value": host} in rule.get("has", [])]
+        sources = [rule.get("source") for rule in host_rules]
+        entry = "/:app(" + "|".join(registry) + ")/inapp"
+        if entry not in sources or "/:path*" not in sources or sources.index(entry) > sources.index("/:path*"):
+            problems.append(f"{host}: 产品入口必须在通用重写之前")
+    for app, entry in registry.items():
+        for lang in sites["root"].get("langs", codes):
+            page = SITES_DIR / "root" / lang / app / "inapp.html"
+            if page.exists():
+                html = page.read_text()
+                if entry["store_url"] not in html or 'content="noindex"' not in html:
+                    problems.append(f"{page}: 下载地址或 noindex 缺失")
 
     if problems:
         for problem in problems:
