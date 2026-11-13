@@ -57,5 +57,13 @@
       "skin-guides",
       "skin-share"
     ]
+  },
+  "coeia": {
+    "host": "coeia.aiglossa.com",
+    "legal": false,
+    "pages": [
+      "coeia-marketing",
+      "coeia-support"
+    ]
   }
 }

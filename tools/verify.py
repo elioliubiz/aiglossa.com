@@ -20,6 +20,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+from html.parser import HTMLParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -41,8 +42,25 @@ PAGES: dict[str, list[tuple[str, str]]] = {
     "brand": [("index.html", "")],
     "marketing": [("index.html", "")],
     "support": [("support.html", "support.html")],
+    "coeia-marketing": [("index.html", "")],
+    "coeia-support": [("support.html", "support.html")],
     "tools": [("index.html", "")],
 }
+
+
+class MetadataParser(HTMLParser):
+    """Inspect actual head fields, rather than matching arbitrary text in the page body."""
+    def __init__(self):
+        super().__init__()
+        self.meta = {}
+        self.h1_count = 0
+
+    def handle_starttag(self, tag, attrs):
+        values = dict(attrs)
+        if tag == "meta":
+            self.meta[values.get("name") or values.get("property")] = values.get("content", "")
+        if tag == "h1":
+            self.h1_count += 1
 
 
 def outputs_for(page: str) -> list[tuple[str, str]]:
@@ -129,12 +147,13 @@ def main() -> int:
             problems.append(f"Yandex 验证文件缺失：{yandex_file.relative_to(ROOT)}")
         elif yandex_file.read_bytes() != YANDEX_VERIFICATION_FILE.read_bytes():
             problems.append(f"Yandex 验证文件内容错误：{yandex_file.relative_to(ROOT)}")
-        naver_file = SITES_DIR / site / NAVER_VERIFICATION_FILES[site]
-        naver_content = f"naver-site-verification: {NAVER_VERIFICATION_FILES[site]}"
-        if not naver_file.exists():
-            problems.append(f"Naver 验证文件缺失：{naver_file.relative_to(ROOT)}")
-        elif naver_file.read_text(encoding="utf-8") != naver_content:
-            problems.append(f"Naver 验证文件内容错误：{naver_file.relative_to(ROOT)}")
+        if site in NAVER_VERIFICATION_FILES:
+            naver_file = SITES_DIR / site / NAVER_VERIFICATION_FILES[site]
+            naver_content = f"naver-site-verification: {NAVER_VERIFICATION_FILES[site]}"
+            if not naver_file.exists():
+                problems.append(f"Naver 验证文件缺失：{naver_file.relative_to(ROOT)}")
+            elif naver_file.read_text(encoding="utf-8") != naver_content:
+                problems.append(f"Naver 验证文件内容错误：{naver_file.relative_to(ROOT)}")
 
     # 1) 产物与声明一一对应
     expected: set[Path] = set()
@@ -269,6 +288,52 @@ def main() -> int:
             problems.append(f"vercel.json 缺 {spec['host']} 的 Host 重写")
         if spec["host"] not in redirects:
             problems.append(f"vercel.json 缺 {spec['host']} 的根路径 301")
+
+    # A product host must negotiate languages before the global English fallback.
+    for host in ("coeia.aiglossa.com", "coeia.staging.aiglossa.com"):
+        rules = [r for r in vercel["redirects"] if r["source"] == "/" and
+                 any(h.get("type") == "host" and h.get("value") == host for h in r.get("has", []))]
+        actual_order = [r["destination"] for r in rules]
+        required_order = [f"/{c}/" for c in ("zh-Hant", "zh-Hans", "ja", "ko", "es", "pt", "fr", "de", "it", "ru", "ar", "th", "vi", "id", "tr", "en")]
+        if actual_order != required_order:
+            problems.append(f"{host}: root language order or fallback incorrect")
+        for value, expected in (("zh-CN", "/zh-Hans/"), ("zh-TW", "/zh-Hant/"), ("en-US", "/en/")):
+            for rule in vercel["redirects"]:
+                if rule["source"] != "/":
+                    continue
+                conditions = rule.get("has", [])
+                if all((h["value"] == host if h["type"] == "host" else bool(re.match(h["value"], value))) for h in conditions):
+                    if rule["destination"] != expected:
+                        problems.append(f"{host}: {value} redirects incorrectly")
+                    break
+    # Product media and legal links must be valid on every language page.
+    for code in codes:
+        for filename in ("index.html", "support.html"):
+            path = SITES_DIR / "coeia" / code / filename
+            if not path.exists():
+                continue
+            html = path.read_text()
+            if "Scholan" in html:
+                problems.append(f"{path}: copied Scholan branding")
+            parsed = MetadataParser()
+            parsed.feed(html)
+            for key in ("description", "robots", "og:title", "og:description", "og:site_name", "og:locale",
+                        "og:url", "og:image", "og:image:width", "og:image:height", "og:image:alt",
+                        "twitter:card", "twitter:title", "twitter:description", "twitter:image", "twitter:image:alt"):
+                if not parsed.meta.get(key):
+                    problems.append(f"{path}: missing SEO metadata {key}")
+            if parsed.h1_count != 1:
+                problems.append(f"{path}: expected one main heading")
+            for raw in re.findall(r'<script type="application/ld\+json">(.*?)</script>', html, re.S):
+                try:
+                    structured = json.loads(raw)
+                    if structured.get("@context") != "https://schema.org":
+                        problems.append(f"{path}: invalid structured data context")
+                except ValueError:
+                    problems.append(f"{path}: invalid JSON-LD")
+            for ref in re.findall(r'(?:src|href)="(\.\./assets/[^"?]+)', html):
+                if not (path.parent / ref).is_file():
+                    problems.append(f"{path}: missing product asset {ref}")
 
     # 产品路径必须与 AASA 一一对应，防止多个 App 争抢行为入口。
     registry = json.loads((ROOT / "tools/content/app-links-registry.json").read_text())

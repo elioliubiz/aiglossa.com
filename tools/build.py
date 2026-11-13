@@ -53,6 +53,14 @@ FOOD_ASSETS = (
 
 FOOD_ASSET_VERSION = "20261103-47"
 GLOBAL_ASSET_VERSION = "20261106-46"
+COEIA_ASSET_VERSION = "20261113-1"
+
+# Coeia has its own product media and stylesheet; do not ship Scholan assets here.
+COEIA_ASSETS = (
+    "protocol.css", "coeia/site.css", "coeia/icon.png", "coeia/favicon.png",
+    "coeia/favicon.ico", "coeia/apple-touch-icon.png", "coeia/og.jpg",
+    "coeia/translation.jpg", "coeia/library.jpg", "coeia/reader.jpg", "coeia/cards.jpg",
+)
 
 # root / tools / scholan 只复制页面实际引用的资源，避免把整套 assets
 # （Scholan 截图、其他站点图标等）复制进每个站点，造成仓库和部署冗余。
@@ -151,6 +159,8 @@ PAGES = {
     "webpricing": ("pages/pricing-root.html", "ui", "pricing.html"),
     "marketing": ("marketing.html", "marketing", ""),
     "support": ("support.html", "support", "support.html"),
+    "coeia-marketing": ("coeia-marketing.html", "coeia-marketing", ""),
+    "coeia-support": ("coeia-support.html", "coeia-support", "support.html"),
     "tools": ("tools.html", "tools", ""),
     # 法律页：正文整体从 ui.json 取（与 protocol 页同样的做法），页面数固定
     "refund": ("pages/legal.html", "ui", "refund.html"),
@@ -406,8 +416,10 @@ def _site_urls(site: str, spec: dict) -> list[str]:
 
     urls: list[str] = []
     for page in spec["pages"]:
-        if page in ("brand", "marketing", "tools"):
+        if page in ("brand", "marketing", "tools", "coeia-marketing"):
             urls.append(("", None))
+        elif page == "coeia-support":
+            urls.append(("support.html", None))
         elif page == "protocol":
             for name in PROTOCOL_PAGES:
                 urls.append((f"protocol/{name}.html", None))
@@ -547,8 +559,10 @@ def _write_seo_files(site: str, spec: dict, site_langs: list[str],
         raise ValueError("tools/indexnow-key.txt 不是有效的 IndexNow key")
     (targets / f"{indexnow_key}.txt").write_text(indexnow_key, encoding="utf-8")
     shutil.copy2(YANDEX_VERIFICATION_FILE, targets / YANDEX_VERIFICATION_FILE.name)
-    naver_file = NAVER_VERIFICATION_FILES[site]
-    (targets / naver_file).write_text(f"naver-site-verification: {naver_file}", encoding="utf-8")
+    # A new host has no Naver token until it is registered; never borrow another site's token.
+    naver_file = NAVER_VERIFICATION_FILES.get(site)
+    if naver_file:
+        (targets / naver_file).write_text(f"naver-site-verification: {naver_file}", encoding="utf-8")
     xdef = default if default in site_langs else site_langs[0]
     paths = _site_urls(site, spec)
 
@@ -830,6 +844,41 @@ def main() -> int:
                         "current_name": esc(languages[lang]["name"]),
                     }
                 values_builder = brand_values
+            elif page == "coeia-marketing":
+                def coeia_values(lang: str, base: str, source=source) -> dict[str, str]:
+                    # Website copy is maintained per language, independently of store metadata.
+                    locale = source[lang]
+                    features = []
+                    for i, (feature, image) in enumerate(zip(locale["features"], ("translation", "library", "reader", "cards")), 1):
+                        features.append(
+                            f'<section class="feature"><div class="feature-copy"><div class="feature-number">0{i}</div>'
+                            f'<h2>{esc(feature["title"])}</h2><p>{esc(feature["body"])}</p></div>'
+                            f'<div class="feature-art"><img class="screen" src="../assets/coeia/{image}.jpg" '
+                            f'alt="{esc(feature["title"])}" width="1200" height="1600" loading="lazy"></div></section>'
+                        )
+                    return {
+                        **{k: esc(locale[k]) for k in ("title", "description", "h1", "lede", "intro", "notes_title", "export", "original", "translated")},
+                        "features": "".join(features),
+                        "notes": "".join(f'<p>{esc(note)}</p>' for note in locale["notes"]),
+                        "feature_1_title": esc(locale["features"][0]["title"]),
+                        "asset_v": COEIA_ASSET_VERSION,
+                        "app_href": "https://apps.apple.com/app/id6820339883",
+                        "brand_href": f"{legal_base}/{lang}/",
+                        "support_label": esc(SUPPORT_LABELS[lang]),
+                        "legal_privacy": esc(marketing[lang]["legal"]["privacy"]),
+                        "legal_terms": esc(marketing[lang]["legal"]["terms"]),
+                        "legal_privacy_href": f"{legal_base}/{lang}/protocol/privacy.html",
+                        "legal_terms_href": f"{legal_base}/{lang}/protocol/term.html",
+                        "jsonld": '<script type="application/ld+json">' + json.dumps({
+                            "@context": "https://schema.org", "@type": "SoftwareApplication", "name": "Coeia",
+                            "applicationCategory": "EntertainmentApplication", "operatingSystem": "iOS, iPadOS",
+                            "url": f"{base}/{lang}/", "inLanguage": languages[lang]["hreflang"],
+                            "downloadUrl": "https://apps.apple.com/app/id6820339883",
+                            "image": f"{base}/assets/coeia/og.jpg",
+                            "publisher": {"@type": "Organization", "name": "AIGLOSSA", "url": legal_base},
+                        }, ensure_ascii=False).replace("</", "<\\/") + '</script>',
+                    }
+                values_builder = coeia_values
             elif page == "marketing":
                 def marketing_values(lang: str, base: str, source=source) -> dict[str, str]:
                     locale = source[lang]
@@ -1346,10 +1395,24 @@ def main() -> int:
                             for i in range(1, 7)
                         ],
                     }
+                    if page == "coeia-support":
+                        # Give support its own localized identity, rather than reusing product-page metadata.
+                        faq.update({"@id": f"{base}/{lang}/support.html#faq", "inLanguage": languages[lang]["hreflang"]})
+                        structured = {"@context": "https://schema.org", "@graph": [
+                            {"@type": "ContactPage", "@id": f"{base}/{lang}/support.html", "url": f"{base}/{lang}/support.html",
+                             "name": locale["title"], "description": locale["sub_title"], "inLanguage": languages[lang]["hreflang"],
+                             "about": {"@type": "SoftwareApplication", "name": "Coeia", "url": f"{base}/{lang}/"},
+                             "publisher": {"@type": "Organization", "name": "AIGLOSSA", "url": legal_base,
+                                           "contactPoint": {"@type": "ContactPoint", "contactType": "customer support", "email": "support@aiglossa.com"}}},
+                            faq,
+                        ]}
+                    else:
+                        structured = faq
                     return {
                         **locale,
+                        **({"asset_v": COEIA_ASSET_VERSION} if page == "coeia-support" else {}),
                         "title": esc(locale["title"]),
-                        "jsonld": '<script type="application/ld+json">' + json.dumps(faq, ensure_ascii=False).replace("</", "<\\/") + '</script>',
+                        "jsonld": '<script type="application/ld+json">' + json.dumps(structured, ensure_ascii=False).replace("</", "<\\/") + '</script>',
                         "legal_privacy": esc(marketing[lang]["legal"]["privacy"]),
                         "legal_terms": esc(marketing[lang]["legal"]["terms"]),
                         "legal_delete_label": esc(protocol["delete-account"][lang]["page_title"]),
@@ -1384,7 +1447,7 @@ def main() -> int:
                         shutil.copy2(source_asset, target_assets / name)
             else:
                 target_assets.mkdir(parents=True)
-                names = ROOT_ASSETS if site == "root" else TOOLS_ASSETS if site == "tools" else SCHOLAN_ASSETS
+                names = ROOT_ASSETS if site == "root" else TOOLS_ASSETS if site == "tools" else COEIA_ASSETS if site == "coeia" else SCHOLAN_ASSETS
                 for name in names:
                     source_asset = ASSETS / name
                     if source_asset.exists():

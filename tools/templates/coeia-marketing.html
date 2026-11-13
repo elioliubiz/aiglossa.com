@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="{{lang}}" dir="{{dir}}" data-default-lang="{{default}}">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{title}}</title><meta name="description" content="{{description}}">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<link rel="canonical" href="{{canonical}}">{{alternates}}
+<meta property="og:type" content="website"><meta property="og:site_name" content="Coeia">
+<meta property="og:title" content="{{title}}"><meta property="og:description" content="{{description}}">
+<meta property="og:url" content="{{canonical}}"><meta property="og:locale" content="{{og_locale}}">
+<meta property="og:image" content="{{site_base}}/assets/coeia/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Coeia">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{{title}}"><meta name="twitter:description" content="{{description}}"><meta name="twitter:image" content="{{site_base}}/assets/coeia/og.jpg"><meta name="twitter:image:alt" content="Coeia">
+<meta name="theme-color" content="#f7f3f4" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#1b1922" media="(prefers-color-scheme: dark)">
+<link rel="icon" type="image/png" sizes="64x64" href="{{prefix}}assets/coeia/favicon.png?v={{asset_v}}">
+<link rel="apple-touch-icon" href="{{prefix}}assets/coeia/apple-touch-icon.png?v={{asset_v}}">
+<link rel="stylesheet" href="{{prefix}}assets/coeia/site.css?v={{asset_v}}">
+{{jsonld}}
+</head>
+<body>
+<header class="topbar"><a class="brand" href="{{brand_href}}">AIGLOSSA</a><a href="support.html">{{support_label}}</a></header>
+<main>
+<section class="hero wrap">
+ <div class="hero-copy"><div class="app-name"><img src="{{prefix}}assets/coeia/icon.png" alt="" width="52" height="52"><span>Coeia</span></div><h1>{{h1}}</h1><p class="lede">{{lede}}</p><a class="store" href="{{app_href}}">App Store <span aria-hidden="true">↗</span></a><p class="platform">iPhone · iPad</p></div>
+ <div class="hero-art"><div class="comparison-labels"><span dir="auto">{{original}}</span><span dir="auto">{{translated}}</span></div><img class="screen" src="{{prefix}}assets/coeia/translation.jpg" alt="{{feature_1_title}}" width="1200" height="1600" fetchpriority="high"></div>
+</section>
+<p class="intro wrap">{{intro}}</p>
+<div class="features wrap">{{features}}</div>
+<section class="export wrap"><p>{{export}}</p><a class="store" href="{{app_href}}">App Store <span aria-hidden="true">↗</span></a></section>
+<section class="notes wrap"><h2>{{notes_title}}</h2>{{notes}}</section>
+</main>
+<footer class="wrap"><div class="footer-main"><span>{{copyright}}</span><nav><a href="support.html">{{support_label}}</a><a href="{{legal_privacy_href}}">{{legal_privacy}}</a><a href="{{legal_terms_href}}">{{legal_terms}}</a></nav></div>{{native_switcher}}</footer>
+</body></html>
