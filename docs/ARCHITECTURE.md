@@ -4,12 +4,13 @@
 
 ## 这是什么
 
-多站点静态站生成器。一个仓库生成 5 个站点、16 种语言，提交生成产物到 Git，由 Vercel 直接托管，不在 Vercel 上运行构建脚本。
+多站点静态站生成器。一个仓库生成 6 个站点、16 种语言，提交生成产物到 Git，由 Vercel 直接托管，不在 Vercel 上运行构建脚本。
 
 ```text
 root      aiglossa.com                 品牌 / 登录 / 账户 / 定价 / 法律
 tools     tools.aiglossa.com           音乐、图片、指南、法律
 scholan   scholan.aiglossa.com         Scholan 营销 / 支持
+coeia     coeia.aiglossa.com           Coeia 营销 / 支持
 food      food.aiglossa.com            食品标签分析
 skin      skin.aiglossa.com            护肤成分分析
 ```
@@ -21,6 +22,7 @@ staging.aiglossa.com
 tools.staging.aiglossa.com
 food.staging.aiglossa.com
 skin.staging.aiglossa.com
+coeia.staging.aiglossa.com
 ```
 
 Scholan 没有独立 staging 站；测试页上的 Scholan 卡片指向生产。
@@ -58,6 +60,7 @@ python3 tools/verify.py
 - `ROOT_ASSETS`
 - `TOOLS_ASSETS`
 - `SCHOLAN_ASSETS`
+- `COEIA_ASSETS`
 - `FOOD_ASSETS`
 - `SKIN_ASSETS`
 

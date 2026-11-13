@@ -1,0 +1,546 @@
+{
+  "en": {
+    "title": "Coeia — Read comics. Keep the moments.",
+    "description": "Don’t let language end the story. Read translations right on the page, then turn the moments you love into cards to keep.",
+    "h1": "Read comics. Keep the moments.",
+    "lede": "Don’t let language end the story. Read translations right on the page, then turn the moments you love into cards to keep.",
+    "intro": "Bring your comics into Coeia. Follow dialogue in another language, lose yourself in the artwork, and keep the moments that stay with you.",
+    "notes_title": "BEFORE YOU BEGIN",
+    "notes": [
+      "Coeia is a reading tool and does not provide comics. Please import your own files.",
+      "Comics, translations, and cards are stored on this device. Content does not sync through the cloud; export backups to keep it safe.",
+      "Translation is a paid feature. Results vary with image clarity, lettering, and backgrounds. Try a few pages first to see whether it suits your comics before continuing."
+    ],
+    "export": "Export original comic files and completed translations for backup or to keep reading elsewhere.",
+    "features": [
+      {
+        "title": "LET THE STORY MOVE FORWARD",
+        "body": "Stop switching between your comic and a translation tool. Coeia places translated text on the original page, keeping dialogue beside the characters and you inside the story. Switch back to the original whenever you want to compare."
+      },
+      {
+        "title": "A PLACE FOR YOUR FAVORITES",
+        "body": "Gather your comics into a personal library, organize them in folders, and pick up where you left off. Import PDF, CBZ, CBR, ZIP, RAR, and other supported formats. Upload over Wi-Fi or connect your own SMB, WebDAV, and OPDS sources."
+      },
+      {
+        "title": "OPEN A COMIC. SETTLE IN.",
+        "body": "Turn pages smoothly and browse thumbnails to find the panel you want to revisit. Smart two-page mode pairs adjacent portrait pages while letting landscape spreads stand on their own. Find your comfortable way into the story."
+      },
+      {
+        "title": "KEEP MORE THAN WHOLE BOOKS",
+        "body": "An expression, a composition, a panel that makes you pause: turn it into a card. Choose a shape, create still or animated effects, and collect, share, or display it in a Home Screen widget. Bring a little of your favorite stories into everyday life."
+      }
+    ],
+    "original": "Original",
+    "translated": "Translated"
+  },
+  "zh-Hans": {
+    "title": "Coeia — 读懂漫画故事，留住心动画面",
+    "description": "喜欢的漫画，不必止步于语言。让译文回到画面里，让阅读连贯而投入；再把舍不得翻过的瞬间，收藏成属于你的画片。",
+    "h1": "读懂漫画故事，留住心动画面",
+    "lede": "喜欢的漫画，不必止步于语言。让译文回到画面里，让阅读连贯而投入；再把舍不得翻过的瞬间，收藏成属于你的画片。",
+    "intro": "把你的漫画带进 Coeia。读懂另一种语言里的对白，沉浸在一页页画面中，再把喜欢的瞬间留下来。",
+    "notes_title": "开始之前",
+    "notes": [
+      "Coeia 是阅读工具，不提供漫画资源，请导入自己的漫画文件。",
+      "漫画、译文与画片保存在当前设备，不提供内容云同步，请及时导出备份。",
+      "翻译为付费功能，效果会受到原图清晰度、文字样式与背景影响。建议先少量尝试，确认适合你的漫画后再继续使用。"
+    ],
+    "export": "原始漫画与已完成的翻译版本均可导出，方便备份，也方便换一种方式继续阅读。",
+    "features": [
+      {
+        "title": "让语言退后，让故事向前",
+        "body": "不必在漫画与翻译工具之间来回切换。Coeia 将译文呈现在原来的页面上，让对白回到人物身边，让故事接着发生。想对照时，也可以随时切回原文。"
+      },
+      {
+        "title": "给喜欢的作品，一个自己的位置",
+        "body": "将零散的漫画整理成自己的书库，用文件夹归置收藏，下次打开，接着读。支持 PDF、CBZ、CBR、ZIP、RAR 等常见格式，也能通过 Wi-Fi 上传，或连接个人的 SMB、WebDAV 与 OPDS 来源。"
+      },
+      {
+        "title": "翻开之后，专心喜欢",
+        "body": "流畅翻阅，快速浏览缩略图，找到想重看的那一页。开启智能双页，让相邻的竖页并肩呈现，横向跨页独立展开。用舒服的方式，读进故事里。"
+      },
+      {
+        "title": "收藏的不只是整本漫画",
+        "body": "一个表情，一幅构图，一格让你停留的画面，都可以成为画片。选择喜欢的形状，制作静态或动态效果，收藏、分享，或放在桌面上，让故事里的喜欢走进日常。"
+      }
+    ],
+    "original": "原文",
+    "translated": "译文"
+  },
+  "zh-Hant": {
+    "title": "Coeia — 讀懂漫畫故事，留住心動畫面",
+    "description": "喜歡的漫畫，不必止步於語言。讓譯文回到畫面裡，讓閱讀連貫而投入；再把捨不得翻過的瞬間，收藏成屬於你的畫片。",
+    "h1": "讀懂漫畫故事，留住心動畫面",
+    "lede": "喜歡的漫畫，不必止步於語言。讓譯文回到畫面裡，讓閱讀連貫而投入；再把捨不得翻過的瞬間，收藏成屬於你的畫片。",
+    "intro": "把你的漫畫帶進 Coeia。讀懂另一種語言裡的對白，沉浸在一頁頁畫面中，再把喜歡的瞬間留下來。",
+    "notes_title": "開始之前",
+    "notes": [
+      "Coeia 是閱讀工具，不提供漫畫資源，請匯入自己的漫畫檔案。",
+      "漫畫、譯文與畫片儲存在目前的裝置，不提供內容雲端同步，請及時匯出備份。",
+      "翻譯為付費功能，效果會受到原圖清晰度、文字樣式與背景影響。建議先少量嘗試，確認適合你的漫畫後再繼續使用。"
+    ],
+    "export": "原始漫畫與已完成的翻譯版本皆可匯出，方便備份，也方便換一種方式繼續閱讀。",
+    "features": [
+      {
+        "title": "讓語言退後，讓故事向前",
+        "body": "不必在漫畫與翻譯工具之間來回切換。Coeia 將譯文呈現在原來的頁面上，讓對白回到人物身邊，讓故事接著發生。想對照時，也可以隨時切回原文。"
+      },
+      {
+        "title": "給喜歡的作品，一個自己的位置",
+        "body": "將零散的漫畫整理成自己的書庫，用檔案夾歸置收藏，下次打開，接著讀。支援 PDF、CBZ、CBR、ZIP、RAR 等常見格式，也能透過 Wi-Fi 上傳，或連接個人的 SMB、WebDAV 與 OPDS 來源。"
+      },
+      {
+        "title": "翻開之後，專心喜歡",
+        "body": "流暢翻閱，快速瀏覽縮圖，找到想重看的那一頁。開啟智慧雙頁，讓相鄰的直式頁面並肩呈現，橫向跨頁獨立展開。用舒服的方式，讀進故事裡。"
+      },
+      {
+        "title": "收藏的不只是整本漫畫",
+        "body": "一個表情，一幅構圖，一格讓你停留的畫面，都可以成為畫片。選擇喜歡的形狀，製作靜態或動態效果，收藏、分享，或放在主畫面上，讓故事裡的喜歡走進日常。"
+      }
+    ],
+    "original": "原文",
+    "translated": "譯文"
+  },
+  "es": {
+    "title": "Coeia — Lee cómics, guarda momentos",
+    "description": "Que el idioma no frene la historia. Lee la traducción en la propia página y convierte tus momentos favoritos en tarjetas para guardar.",
+    "h1": "Lee cómics, guarda momentos",
+    "lede": "Que el idioma no frene la historia. Lee la traducción en la propia página y convierte tus momentos favoritos en tarjetas para guardar.",
+    "intro": "Trae tus cómics a Coeia. Sigue los diálogos en otro idioma, sumérgete en cada página y guarda esos momentos que se quedan contigo.",
+    "notes_title": "ANTES DE EMPEZAR",
+    "notes": [
+      "Coeia es una herramienta de lectura y no proporciona cómics. Importa tus propios archivos.",
+      "Los cómics, las traducciones y las tarjetas se guardan en este dispositivo. No hay sincronización de contenido en la nube; exporta copias de seguridad.",
+      "La traducción es una función de pago. Los resultados dependen de la nitidez, el estilo de letra y el fondo. Prueba primero unas pocas páginas para comprobar si se adapta a tus cómics antes de continuar."
+    ],
+    "export": "Exporta los archivos originales y las traducciones terminadas para hacer copias de seguridad o seguir leyendo en otro lugar.",
+    "features": [
+      {
+        "title": "QUE LA HISTORIA SIGA",
+        "body": "Deja de alternar entre el cómic y una herramienta de traducción. Coeia muestra el texto traducido en la página original, junto a los personajes, para que sigas dentro de la historia. Vuelve al original cuando quieras comparar."
+      },
+      {
+        "title": "UN LUGAR PARA TUS FAVORITOS",
+        "body": "Reúne tus cómics en una biblioteca personal, ordénalos en carpetas y retoma la lectura donde la dejaste. Importa PDF, CBZ, CBR, ZIP, RAR y otros formatos compatibles. Sube archivos por Wi-Fi o conecta tus propias fuentes SMB, WebDAV y OPDS."
+      },
+      {
+        "title": "ABRE UN CÓMIC. DISFRÚTALO.",
+        "body": "Pasa páginas con fluidez y busca en las miniaturas esa viñeta que quieres volver a ver. El modo de doble página inteligente une páginas verticales consecutivas y muestra las panorámicas por separado. Encuentra tu forma más cómoda de leer."
+      },
+      {
+        "title": "COLECCIONA TAMBIÉN LOS INSTANTES",
+        "body": "Una expresión, una composición, una viñeta que te hace detenerte: conviértela en tarjeta. Elige una forma y efectos estáticos o animados. Colecciona, comparte o decora tu pantalla de inicio con un widget. Lleva un poco de tus historias favoritas al día a día."
+      }
+    ],
+    "original": "Original",
+    "translated": "Traducción"
+  },
+  "ja": {
+    "title": "Coeia — 漫画を読み解き、心に残る一コマを",
+    "description": "言葉が違っても、好きな漫画をあきらめない。訳文を元のページで読み、物語に浸る。お気に入りの瞬間は、あなただけのカードに。",
+    "h1": "漫画を読み解き、心に残る一コマを",
+    "lede": "言葉が違っても、好きな漫画をあきらめない。訳文を元のページで読み、物語に浸る。お気に入りの瞬間は、あなただけのカードに。",
+    "intro": "あなたの漫画を Coeia へ。別の言語のセリフを読み解き、ページいっぱいの絵に浸り、好きな瞬間を手元に残しましょう。",
+    "notes_title": "ご利用の前に",
+    "notes": [
+      "Coeia は閲覧ツールです。漫画コンテンツは提供していません。お持ちのファイルを読み込んでください。",
+      "漫画・訳文・カードは使用中の端末に保存され、コンテンツのクラウド同期には対応していません。適宜書き出してバックアップしてください。",
+      "翻訳は有料機能です。画像の鮮明さ、文字のデザイン、背景によって結果が異なります。まず数ページで仕上がりを確認してから、続きをご利用ください。"
+    ],
+    "export": "元の漫画ファイルと翻訳が完了したバージョンは、バックアップや別の環境で読むために書き出せます。",
+    "features": [
+      {
+        "title": "言葉の壁を越えて、物語の先へ",
+        "body": "漫画と翻訳ツールを行き来する必要はありません。Coeia は訳文を元のページに表示。登場人物のそばにセリフがあるから、物語の流れを追えます。読み比べたいときは、いつでも原文に戻せます。"
+      },
+      {
+        "title": "好きな作品に、自分だけの居場所を",
+        "body": "漫画を自分のライブラリにまとめ、フォルダで整理。次に開いたときも、続きから読めます。PDF、CBZ、CBR、ZIP、RAR などの形式に対応し、Wi-Fi アップロードや、自分の SMB・WebDAV・OPDS ソースへの接続も可能です。"
+      },
+      {
+        "title": "開いたら、物語に夢中に",
+        "body": "なめらかにページをめくり、サムネイルから読み返したいページへ。スマート見開きでは隣り合う縦長ページを並べ、横長の見開きページは単独で表示します。自分に心地よい読み方で楽しめます。"
+      },
+      {
+        "title": "一冊だけでなく、一コマもコレクション",
+        "body": "表情、構図、思わず目を留めた場面をカードに。好きな形や静止画・アニメーションの効果を選び、集めたり、共有したり、ホーム画面のウィジェットに飾ったり。物語の「好き」を日常へ連れ出しましょう。"
+      }
+    ],
+    "original": "原文",
+    "translated": "訳文"
+  },
+  "ko": {
+    "title": "Coeia — 만화를 읽고, 마음에 든 장면을 간직하세요",
+    "description": "언어 때문에 좋아하는 만화를 포기하지 마세요. 원래 페이지에서 번역을 읽고 이야기에 빠져보세요. 오래 보고 싶은 순간은 나만의 카드로 간직하세요.",
+    "h1": "만화를 읽고, 마음에 든 장면을 간직하세요",
+    "lede": "언어 때문에 좋아하는 만화를 포기하지 마세요. 원래 페이지에서 번역을 읽고 이야기에 빠져보세요. 오래 보고 싶은 순간은 나만의 카드로 간직하세요.",
+    "intro": "내 만화를 Coeia로 가져오세요. 다른 언어의 대화를 이해하고, 한 장 한 장 그림에 빠져들고, 좋아하는 순간을 간직하세요.",
+    "notes_title": "시작하기 전에",
+    "notes": [
+      "Coeia는 읽기 도구이며 만화 콘텐츠를 제공하지 않습니다. 직접 보유한 파일을 가져와 주세요.",
+      "만화, 번역본, 카드는 현재 기기에 저장됩니다. 콘텐츠 클라우드 동기화는 제공하지 않으므로 내보내기로 백업해 주세요.",
+      "번역은 유료 기능입니다. 원본 이미지의 선명도, 글자 스타일, 배경에 따라 결과가 달라집니다. 먼저 몇 페이지를 시험해 보고 내 만화에 적합한지 확인한 뒤 계속 이용하세요."
+    ],
+    "export": "원본 만화 파일과 번역이 완료된 버전을 내보내 백업하거나 다른 환경에서 이어 읽을 수 있습니다.",
+    "features": [
+      {
+        "title": "언어의 벽을 넘어, 이야기 속으로",
+        "body": "만화와 번역 도구를 오갈 필요가 없습니다. Coeia는 원래 페이지에 번역문을 표시합니다. 등장인물 곁에서 대사를 읽으며 이야기를 이어가세요. 비교하고 싶을 때는 언제든 원문으로 전환할 수 있습니다."
+      },
+      {
+        "title": "좋아하는 작품을 위한 나만의 공간",
+        "body": "흩어진 만화를 나만의 서재에 모으고 폴더로 정리하세요. 다음에 열면 이어서 읽을 수 있습니다. PDF, CBZ, CBR, ZIP, RAR 등 일반적인 형식을 지원하며, Wi-Fi 업로드나 개인 SMB, WebDAV, OPDS 소스 연결도 가능합니다."
+      },
+      {
+        "title": "펼친 뒤에는, 읽는 즐거움에 집중",
+        "body": "부드럽게 페이지를 넘기고 썸네일로 다시 보고 싶은 페이지를 찾으세요. 스마트 두 페이지 모드는 연속된 세로 페이지를 나란히 보여주고, 가로로 펼쳐진 페이지는 한 장으로 표시합니다. 편안한 방식으로 이야기에 빠져보세요."
+      },
+      {
+        "title": "한 권뿐 아니라, 한 장면도 소장",
+        "body": "표정 하나, 마음에 든 구도, 눈길을 붙잡는 한 컷을 카드로 만드세요. 모양을 고르고 정적 또는 애니메이션 효과를 더해 수집하거나 공유하고, 홈 화면 위젯으로 꾸밀 수 있습니다. 이야기 속 좋아하는 순간을 일상에 담아보세요."
+      }
+    ],
+    "original": "원문",
+    "translated": "번역"
+  },
+  "de": {
+    "title": "Coeia — Comics lesen, Momente bewahren",
+    "description": "Lass Sprache nicht das Ende der Geschichte sein. Lies Übersetzungen direkt auf der Comicseite und bewahre Lieblingsmomente als Karten.",
+    "h1": "Comics lesen, Momente bewahren",
+    "lede": "Lass Sprache nicht das Ende der Geschichte sein. Lies Übersetzungen direkt auf der Comicseite und bewahre Lieblingsmomente als Karten.",
+    "intro": "Bring deine Comics in Coeia. Verstehe Dialoge in einer anderen Sprache, tauche in die Bilder ein und bewahre die Momente, die dir etwas bedeuten.",
+    "notes_title": "BEVOR DU BEGINNST",
+    "notes": [
+      "Coeia ist ein Lesewerkzeug und stellt keine Comics bereit. Bitte importiere eigene Dateien.",
+      "Comics, Übersetzungen und Karten werden auf diesem Gerät gespeichert. Es gibt keine Cloud-Synchronisierung der Inhalte. Sichere sie regelmäßig durch Export.",
+      "Übersetzungen sind kostenpflichtig. Die Ergebnisse hängen von Bildschärfe, Schriftgestaltung und Hintergrund ab. Probiere zunächst einige Seiten aus, bevor du weitere übersetzen lässt."
+    ],
+    "export": "Exportiere Originaldateien und fertig übersetzte Fassungen als Sicherung oder zum Weiterlesen an anderer Stelle.",
+    "features": [
+      {
+        "title": "DIE GESCHICHTE GEHT WEITER",
+        "body": "Wechsle nicht ständig zwischen Comic und Übersetzungstool. Coeia zeigt übersetzten Text auf der Originalseite, direkt bei den Figuren. So bleibst du in der Geschichte. Zum Vergleichen kannst du jederzeit zum Original wechseln."
+      },
+      {
+        "title": "EIN PLATZ FÜR DEINE LIEBLINGE",
+        "body": "Fasse deine Comics in einer eigenen Bibliothek zusammen, ordne sie in Ordnern und lies später dort weiter, wo du aufgehört hast. Importiere PDF, CBZ, CBR, ZIP, RAR und weitere unterstützte Formate. Lade Dateien per WLAN hoch oder verbinde eigene SMB-, WebDAV- und OPDS-Quellen."
+      },
+      {
+        "title": "AUFSCHLAGEN UND EINTAUCHEN",
+        "body": "Blättere flüssig und finde über die Miniaturansichten die Seite, die du noch einmal sehen möchtest. Der intelligente Doppelseitenmodus zeigt benachbarte Hochformatseiten nebeneinander und breite Seiten einzeln. Lies so, wie es für dich angenehm ist."
+      },
+      {
+        "title": "SAMMLE AUCH DIE KLEINEN MOMENTE",
+        "body": "Ein Gesichtsausdruck, eine Bildkomposition, ein Panel, das dich innehalten lässt: Mach eine Karte daraus. Wähle eine Form und statische oder animierte Effekte. Sammle, teile oder platziere deine Karten als Widget auf dem Home-Bildschirm. Nimm ein Stück deiner Lieblingsgeschichten mit in den Alltag."
+      }
+    ],
+    "original": "Original",
+    "translated": "Übersetzung"
+  },
+  "fr": {
+    "title": "Coeia — BD à lire, instants à garder",
+    "description": "Ne laissez pas la langue arrêter le récit. Lisez la traduction sur la page, puis transformez vos moments préférés en cartes à garder.",
+    "h1": "BD à lire, instants à garder",
+    "lede": "Ne laissez pas la langue arrêter le récit. Lisez la traduction sur la page, puis transformez vos moments préférés en cartes à garder.",
+    "intro": "Apportez vos BD dans Coeia. Suivez les dialogues dans une autre langue, plongez dans les dessins et conservez les instants qui vous touchent.",
+    "notes_title": "AVANT DE COMMENCER",
+    "notes": [
+      "Coeia est un outil de lecture et ne fournit pas de BD. Importez vos propres fichiers.",
+      "BD, traductions et cartes sont conservées sur cet appareil. Le contenu n'est pas synchronisé dans le cloud ; pensez à l'exporter pour le sauvegarder.",
+      "La traduction est payante. Les résultats varient selon la netteté des images, le lettrage et les arrière-plans. Essayez d'abord quelques pages pour vérifier le résultat avant de continuer."
+    ],
+    "export": "Exportez les fichiers originaux et les traductions terminées pour les sauvegarder ou poursuivre votre lecture ailleurs.",
+    "features": [
+      {
+        "title": "LAISSEZ LE RÉCIT CONTINUER",
+        "body": "Plus besoin de passer de la BD à un outil de traduction. Coeia affiche le texte traduit sur la page d'origine, auprès des personnages, pour rester dans l'histoire. Revenez à l'original à tout moment pour comparer."
+      },
+      {
+        "title": "UNE PLACE POUR VOS FAVORIS",
+        "body": "Rassemblez vos BD dans une bibliothèque personnelle, classez-les dans des dossiers et reprenez là où vous en étiez. Importez des fichiers PDF, CBZ, CBR, ZIP, RAR et d'autres formats compatibles. Transférez-les par Wi-Fi ou connectez vos propres sources SMB, WebDAV et OPDS."
+      },
+      {
+        "title": "OUVREZ UNE BD. PLONGEZ DEDANS.",
+        "body": "Tournez les pages avec fluidité et parcourez les miniatures pour retrouver celle qui vous plaît. Le mode double page intelligent associe les pages verticales voisines et affiche les pages panoramiques seules. Trouvez votre façon de lire, tout simplement."
+      },
+      {
+        "title": "COLLECTIONNEZ AUSSI LES INSTANTS",
+        "body": "Une expression, une composition, une case qui vous arrête : faites-en une carte. Choisissez une forme et des effets fixes ou animés. Collectionnez, partagez ou décorez votre écran d'accueil avec un widget. Faites entrer un peu de vos histoires préférées dans votre quotidien."
+      }
+    ],
+    "original": "Original",
+    "translated": "Traduction"
+  },
+  "pt": {
+    "title": "Coeia — Quadrinhos para ler e guardar",
+    "description": "Não deixe o idioma interromper a história. Leia a tradução na própria página e transforme seus momentos favoritos em cartões para guardar.",
+    "h1": "Quadrinhos para ler e guardar",
+    "lede": "Não deixe o idioma interromper a história. Leia a tradução na própria página e transforme seus momentos favoritos em cartões para guardar.",
+    "intro": "Traga seus quadrinhos para o Coeia. Entenda diálogos em outro idioma, mergulhe na arte de cada página e guarde os momentos que ficam com você.",
+    "notes_title": "ANTES DE COMEÇAR",
+    "notes": [
+      "O Coeia é uma ferramenta de leitura e não fornece quadrinhos. Importe seus próprios arquivos.",
+      "Quadrinhos, traduções e cartões ficam armazenados neste dispositivo. Não há sincronização de conteúdo na nuvem; exporte cópias de segurança.",
+      "A tradução é um recurso pago. Os resultados variam conforme a nitidez da imagem, o estilo das letras e o fundo. Experimente primeiro algumas páginas para conferir o resultado antes de continuar."
+    ],
+    "export": "Exporte os arquivos originais e as traduções concluídas para fazer backup ou continuar a leitura em outro lugar.",
+    "features": [
+      {
+        "title": "DEIXE A HISTÓRIA CONTINUAR",
+        "body": "Chega de alternar entre o quadrinho e uma ferramenta de tradução. O Coeia apresenta o texto traduzido na página original, junto dos personagens, para você continuar dentro da história. Volte ao original sempre que quiser comparar."
+      },
+      {
+        "title": "UM LUGAR PARA OS SEUS FAVORITOS",
+        "body": "Reúna seus quadrinhos em uma biblioteca pessoal, organize em pastas e continue de onde parou. Importe PDF, CBZ, CBR, ZIP, RAR e outros formatos compatíveis. Envie arquivos por Wi-Fi ou conecte suas próprias fontes SMB, WebDAV e OPDS."
+      },
+      {
+        "title": "ABRA UM QUADRINHO. ENTRE NA HISTÓRIA.",
+        "body": "Vire as páginas com fluidez e navegue pelas miniaturas para reencontrar aquela cena. O modo de página dupla inteligente combina páginas verticais consecutivas e exibe páginas panorâmicas separadamente. Leia do jeito que for mais confortável."
+      },
+      {
+        "title": "COLECIONE TAMBÉM OS MOMENTOS",
+        "body": "Uma expressão, uma composição, um quadro que faz você parar: transforme em cartão. Escolha uma forma e efeitos estáticos ou animados. Colecione, compartilhe ou decore a Tela de Início com um widget. Leve um pouco das suas histórias favoritas para o dia a dia."
+      }
+    ],
+    "original": "Original",
+    "translated": "Tradução"
+  },
+  "ar": {
+    "title": "Coeia — قصص مصورة تُقرأ وتُقتنى",
+    "description": "لا تدع اللغة توقف القصة. اقرأ الترجمة على الصفحة نفسها، وحوّل اللحظات التي تحبها إلى بطاقات تحتفظ بها.",
+    "h1": "قصص مصورة تُقرأ وتُقتنى",
+    "lede": "لا تدع اللغة توقف القصة. اقرأ الترجمة على الصفحة نفسها، وحوّل اللحظات التي تحبها إلى بطاقات تحتفظ بها.",
+    "intro": "أحضر قصصك المصورة إلى Coeia. افهم الحوارات بلغة أخرى، وانغمس في رسوم كل صفحة، واحتفظ باللحظات التي تعني لك الكثير.",
+    "notes_title": "قبل أن تبدأ",
+    "notes": [
+      "Coeia أداة قراءة ولا يوفر قصصًا مصورة. يرجى استيراد ملفاتك الخاصة.",
+      "تُحفظ القصص والترجمات والبطاقات على هذا الجهاز. لا تتوفر مزامنة المحتوى عبر السحابة؛ يرجى تصدير نسخ احتياطية.",
+      "الترجمة ميزة مدفوعة. تختلف النتائج بحسب وضوح الصورة وشكل الحروف والخلفيات. جرّب بضع صفحات أولًا للتأكد من ملاءمة النتيجة لقصصك قبل المتابعة."
+    ],
+    "export": "صدّر ملفات القصص الأصلية والترجمات المكتملة لحفظ نسخة احتياطية أو لمواصلة القراءة في مكان آخر.",
+    "features": [
+      {
+        "title": "دع القصة تمضي",
+        "body": "لا حاجة للتنقل بين القصة وأداة الترجمة. يعرض Coeia النص المترجم على الصفحة الأصلية، بجوار الشخصيات، لتبقى داخل القصة. ويمكنك العودة إلى الأصل في أي وقت للمقارنة."
+      },
+      {
+        "title": "مكان خاص لقصصك المفضلة",
+        "body": "اجمع قصصك في مكتبة شخصية، ورتبها في مجلدات، ثم تابع من حيث توقفت. استورد PDF وCBZ وCBR وZIP وRAR وغيرها من الصيغ المدعومة. ارفع الملفات عبر Wi-Fi أو اتصل بمصادرك الشخصية عبر SMB وWebDAV وOPDS."
+      },
+      {
+        "title": "افتح القصة، واستمتع بها",
+        "body": "قلّب الصفحات بسلاسة، وتصفح الصور المصغرة لتجد الصفحة التي تريد رؤيتها مجددًا. يجمع وضع الصفحتين الذكي الصفحات الرأسية المتجاورة، ويعرض الصفحات الأفقية منفردة. اقرأ بالطريقة التي تريحك."
+      },
+      {
+        "title": "احتفظ باللحظات أيضًا",
+        "body": "تعبير وجه، أو تكوين فني، أو مشهد يجعلك تتوقف: حوّله إلى بطاقة. اختر شكلًا وتأثيرات ثابتة أو متحركة، ثم اجمع بطاقاتك أو شاركها أو اعرضها في أداة على الشاشة الرئيسية. اصطحب شيئًا من قصصك المفضلة إلى يومك."
+      }
+    ],
+    "original": "الأصل",
+    "translated": "الترجمة"
+  },
+  "ru": {
+    "title": "Coeia — Комиксы: читать и сохранять",
+    "description": "Пусть язык не прерывает историю. Читайте перевод прямо на странице комикса, а любимые моменты сохраняйте в виде карточек.",
+    "h1": "Комиксы: читать и сохранять",
+    "lede": "Пусть язык не прерывает историю. Читайте перевод прямо на странице комикса, а любимые моменты сохраняйте в виде карточек.",
+    "intro": "Перенесите свои комиксы в Coeia. Понимайте диалоги на другом языке, погружайтесь в рисунки и сохраняйте моменты, которые вам дороги.",
+    "notes_title": "ПЕРЕД НАЧАЛОМ",
+    "notes": [
+      "Coeia — инструмент для чтения. Комиксы не предоставляются: импортируйте собственные файлы.",
+      "Комиксы, переводы и карточки хранятся на этом устройстве. Облачной синхронизации содержимого нет; создавайте резервные копии с помощью экспорта.",
+      "Перевод — платная функция. Результат зависит от чёткости изображения, оформления текста и фона. Сначала попробуйте несколько страниц, оцените результат и только затем продолжайте."
+    ],
+    "export": "Экспортируйте исходные файлы и завершённые переводы для резервного копирования или чтения в другом приложении.",
+    "features": [
+      {
+        "title": "ПУСТЬ ИСТОРИЯ ПРОДОЛЖАЕТСЯ",
+        "body": "Не нужно переключаться между комиксом и переводчиком. Coeia размещает переведённый текст на исходной странице, рядом с героями, чтобы вы оставались внутри истории. Для сравнения всегда можно вернуться к оригиналу."
+      },
+      {
+        "title": "МЕСТО ДЛЯ ЛЮБИМЫХ КОМИКСОВ",
+        "body": "Соберите личную библиотеку, разложите комиксы по папкам и продолжайте с того места, где остановились. Поддерживаются PDF, CBZ, CBR, ZIP, RAR и другие форматы. Загружайте файлы по Wi-Fi или подключайте собственные источники SMB, WebDAV и OPDS."
+      },
+      {
+        "title": "ОТКРОЙТЕ КОМИКС И ПОГРУЗИТЕСЬ В НЕГО",
+        "body": "Плавно листайте страницы и находите нужную по миниатюрам. Умный двухстраничный режим объединяет соседние вертикальные страницы и показывает широкие развороты отдельно. Читайте так, как удобно вам."
+      },
+      {
+        "title": "СОБИРАЙТЕ НЕ ТОЛЬКО ЦЕЛЫЕ КНИГИ",
+        "body": "Выражение лица, композиция, кадр, на котором хочется задержаться, — превратите их в карточку. Выберите форму, добавьте статичный или анимированный эффект. Собирайте, делитесь или украшайте экран «Домой» с помощью виджета. Пусть любимые истории остаются рядом в повседневной жизни."
+      }
+    ],
+    "original": "Оригинал",
+    "translated": "Перевод"
+  },
+  "it": {
+    "title": "Coeia — Fumetti da leggere e custodire",
+    "description": "Non lasciare che la lingua fermi la storia. Leggi la traduzione sulla pagina e trasforma i tuoi momenti preferiti in cartoline da conservare.",
+    "h1": "Fumetti da leggere e custodire",
+    "lede": "Non lasciare che la lingua fermi la storia. Leggi la traduzione sulla pagina e trasforma i tuoi momenti preferiti in cartoline da conservare.",
+    "intro": "Porta i tuoi fumetti in Coeia. Segui i dialoghi in un'altra lingua, immergiti nei disegni e conserva i momenti che ti restano nel cuore.",
+    "notes_title": "PRIMA DI INIZIARE",
+    "notes": [
+      "Coeia è uno strumento di lettura e non fornisce fumetti. Importa i tuoi file.",
+      "Fumetti, traduzioni e cartoline sono salvati su questo dispositivo. Non è prevista la sincronizzazione dei contenuti nel cloud: esporta copie di backup.",
+      "La traduzione è a pagamento. I risultati dipendono dalla nitidezza delle immagini, dallo stile delle scritte e dagli sfondi. Prova prima qualche pagina per valutare il risultato, poi decidi se continuare."
+    ],
+    "export": "Esporta i file originali e le traduzioni completate per un backup o per continuare a leggere altrove.",
+    "features": [
+      {
+        "title": "LASCIA CHE LA STORIA CONTINUI",
+        "body": "Non passare più dal fumetto a uno strumento di traduzione. Coeia mostra il testo tradotto sulla pagina originale, accanto ai personaggi, per farti restare nella storia. Torna all'originale quando vuoi fare un confronto."
+      },
+      {
+        "title": "UN POSTO PER I TUOI PREFERITI",
+        "body": "Riunisci i fumetti in una libreria personale, organizzali in cartelle e riprendi da dove eri rimasto. Importa PDF, CBZ, CBR, ZIP, RAR e altri formati compatibili. Carica i file via Wi-Fi o collega le tue fonti SMB, WebDAV e OPDS."
+      },
+      {
+        "title": "APRI UN FUMETTO. LASCIATI COINVOLGERE.",
+        "body": "Sfoglia con fluidità e cerca tra le miniature la pagina che vuoi rivedere. La doppia pagina intelligente affianca le pagine verticali consecutive e mostra da sole quelle panoramiche. Trova il tuo modo più comodo di leggere."
+      },
+      {
+        "title": "COLLEZIONA ANCHE GLI ISTANTI",
+        "body": "Un'espressione, una composizione, una vignetta che ti fa fermare: trasformala in una cartolina. Scegli una forma ed effetti statici o animati. Colleziona, condividi o decora la schermata Home con un widget. Porta un po' delle tue storie preferite nella vita di ogni giorno."
+      }
+    ],
+    "original": "Originale",
+    "translated": "Traduzione"
+  },
+  "th": {
+    "title": "Coeia — อ่านการ์ตูน เก็บภาพที่ชอบ",
+    "description": "อย่าให้ภาษาหยุดเรื่องราว อ่านคำแปลบนหน้าการ์ตูนเดิม แล้วเก็บช่วงเวลาที่ชอบเป็นการ์ดของคุณเอง",
+    "h1": "อ่านการ์ตูน เก็บภาพที่ชอบ",
+    "lede": "อย่าให้ภาษาหยุดเรื่องราว อ่านคำแปลบนหน้าการ์ตูนเดิม แล้วเก็บช่วงเวลาที่ชอบเป็นการ์ดของคุณเอง",
+    "intro": "นำการ์ตูนของคุณมาไว้ใน Coeia เข้าใจบทสนทนาต่างภาษา ดื่มด่ำกับภาพในแต่ละหน้า แล้วเก็บช่วงเวลาที่คุณชอบไว้",
+    "notes_title": "ก่อนเริ่มใช้งาน",
+    "notes": [
+      "Coeia เป็นเครื่องมืออ่านและไม่มีเนื้อหาการ์ตูนให้บริการ โปรดนำเข้าไฟล์ของคุณเอง",
+      "การ์ตูน คำแปล และการ์ดจะเก็บไว้บนอุปกรณ์นี้ ไม่มีการซิงค์เนื้อหาผ่านคลาวด์ โปรดส่งออกเพื่อสำรองข้อมูล",
+      "การแปลเป็นฟีเจอร์แบบชำระเงิน ผลลัพธ์ขึ้นอยู่กับความคมชัดของภาพ รูปแบบตัวอักษร และพื้นหลัง แนะนำให้ลองแปลไม่กี่หน้าก่อน เพื่อดูว่าเหมาะกับการ์ตูนของคุณหรือไม่ แล้วจึงใช้งานต่อ"
+    ],
+    "export": "ส่งออกไฟล์ต้นฉบับและฉบับแปลที่เสร็จสมบูรณ์เพื่อสำรองข้อมูล หรืออ่านต่อที่อื่นได้",
+    "features": [
+      {
+        "title": "ให้เรื่องราวดำเนินต่อไป",
+        "body": "ไม่ต้องสลับไปมาระหว่างการ์ตูนกับเครื่องมือแปล Coeia วางคำแปลลงบนหน้าต้นฉบับ ให้บทสนทนาอยู่เคียงข้างตัวละครและคุณอยู่กับเรื่องราว หากอยากเทียบ ก็สลับกลับไปอ่านต้นฉบับได้ทุกเมื่อ"
+      },
+      {
+        "title": "พื้นที่สำหรับเรื่องโปรดของคุณ",
+        "body": "รวมการ์ตูนไว้ในคลังส่วนตัว จัดเก็บด้วยโฟลเดอร์ แล้วกลับมาอ่านต่อจากจุดเดิม รองรับ PDF, CBZ, CBR, ZIP, RAR และรูปแบบอื่นที่รองรับ อัปโหลดผ่าน Wi-Fi หรือเชื่อมต่อแหล่ง SMB, WebDAV และ OPDS ของคุณเอง"
+      },
+      {
+        "title": "เปิดอ่าน แล้วเพลิดเพลินไปกับเรื่องราว",
+        "body": "พลิกหน้าได้ลื่นไหล ใช้ภาพย่อค้นหาหน้าที่อยากกลับไปอ่าน โหมดสองหน้าอัจฉริยะจับคู่หน้าแนวตั้งที่อยู่ติดกัน และแสดงหน้ากว้างแบบแยกหน้า อ่านในรูปแบบที่สบายสำหรับคุณ"
+      },
+      {
+        "title": "สะสมได้มากกว่าการ์ตูนทั้งเล่ม",
+        "body": "สีหน้า องค์ประกอบภาพ หรือช่องการ์ตูนที่ทำให้คุณหยุดมอง เปลี่ยนเป็นการ์ดได้ เลือกรูปทรงและเอฟเฟ็กต์ภาพนิ่งหรือภาพเคลื่อนไหว แล้วสะสม แชร์ หรือตกแต่งหน้าจอโฮมด้วยวิดเจ็ต นำสิ่งที่ชอบจากเรื่องราวมาไว้ในชีวิตประจำวัน"
+      }
+    ],
+    "original": "ต้นฉบับ",
+    "translated": "คำแปล"
+  },
+  "vi": {
+    "title": "Coeia — Truyện tranh và khoảnh khắc",
+    "description": "Đừng để ngôn ngữ ngắt mạch câu chuyện. Đọc bản dịch ngay trên trang truyện, rồi lưu những khoảnh khắc yêu thích thành thẻ ảnh của riêng bạn.",
+    "h1": "Truyện tranh và khoảnh khắc",
+    "lede": "Đừng để ngôn ngữ ngắt mạch câu chuyện. Đọc bản dịch ngay trên trang truyện, rồi lưu những khoảnh khắc yêu thích thành thẻ ảnh của riêng bạn.",
+    "intro": "Mang truyện tranh của bạn vào Coeia. Hiểu lời thoại bằng một ngôn ngữ khác, đắm mình trong từng trang vẽ và giữ lại những khoảnh khắc yêu thích.",
+    "notes_title": "TRƯỚC KHI BẮT ĐẦU",
+    "notes": [
+      "Coeia là công cụ đọc, không cung cấp truyện tranh. Vui lòng nhập tệp của chính bạn.",
+      "Truyện, bản dịch và thẻ ảnh được lưu trên thiết bị này. Không có đồng bộ nội dung qua đám mây; hãy xuất tệp để sao lưu.",
+      "Dịch là tính năng trả phí. Kết quả phụ thuộc vào độ rõ của ảnh, kiểu chữ và nền. Hãy thử vài trang trước để xem kết quả có phù hợp với truyện của bạn không rồi mới tiếp tục."
+    ],
+    "export": "Xuất tệp truyện gốc và các bản dịch đã hoàn tất để sao lưu hoặc đọc tiếp ở nơi khác.",
+    "features": [
+      {
+        "title": "ĐỂ CÂU CHUYỆN TIẾP DIỄN",
+        "body": "Không cần chuyển qua lại giữa truyện và công cụ dịch. Coeia hiển thị bản dịch trên trang gốc, đặt lời thoại bên cạnh nhân vật để bạn tiếp tục theo dõi câu chuyện. Bạn có thể chuyển về bản gốc bất cứ lúc nào để đối chiếu."
+      },
+      {
+        "title": "MỘT NƠI CHO TRUYỆN YÊU THÍCH",
+        "body": "Tập hợp truyện trong thư viện cá nhân, sắp xếp bằng thư mục và tiếp tục từ nơi đã dừng. Nhập PDF, CBZ, CBR, ZIP, RAR và các định dạng được hỗ trợ khác. Tải lên qua Wi-Fi hoặc kết nối nguồn SMB, WebDAV và OPDS của riêng bạn."
+      },
+      {
+        "title": "MỞ TRUYỆN VÀ TẬN HƯỞNG",
+        "body": "Lật trang mượt mà, duyệt hình thu nhỏ để tìm lại trang muốn xem. Chế độ hai trang thông minh ghép các trang dọc liền nhau và hiển thị riêng các trang ngang. Đọc theo cách thoải mái nhất với bạn."
+      },
+      {
+        "title": "SƯU TẦM CẢ NHỮNG KHOẢNH KHẮC",
+        "body": "Một biểu cảm, một bố cục, một khung truyện khiến bạn dừng lại: hãy biến thành thẻ ảnh. Chọn hình dạng và hiệu ứng tĩnh hoặc động, rồi sưu tầm, chia sẻ hay trang trí Màn hình chính bằng tiện ích. Mang một chút điều yêu thích từ câu chuyện vào cuộc sống mỗi ngày."
+      }
+    ],
+    "original": "Bản gốc",
+    "translated": "Bản dịch"
+  },
+  "id": {
+    "title": "Coeia — Baca komik, simpan momen",
+    "description": "Jangan biarkan bahasa menghentikan cerita. Baca terjemahan di halaman aslinya, lalu ubah momen favorit menjadi kartu untuk disimpan.",
+    "h1": "Baca komik, simpan momen",
+    "lede": "Jangan biarkan bahasa menghentikan cerita. Baca terjemahan di halaman aslinya, lalu ubah momen favorit menjadi kartu untuk disimpan.",
+    "intro": "Bawa komikmu ke Coeia. Pahami dialog dalam bahasa lain, nikmati gambar di setiap halaman, dan simpan momen yang berarti buatmu.",
+    "notes_title": "SEBELUM MEMULAI",
+    "notes": [
+      "Coeia adalah alat baca dan tidak menyediakan komik. Impor berkas milikmu sendiri.",
+      "Komik, terjemahan, dan kartu disimpan di perangkat ini. Tidak ada sinkronisasi konten melalui cloud; ekspor salinan cadangan secara berkala.",
+      "Terjemahan adalah fitur berbayar. Hasil bergantung pada kejernihan gambar, gaya huruf, dan latar belakang. Coba beberapa halaman terlebih dahulu untuk melihat apakah hasilnya sesuai sebelum melanjutkan."
+    ],
+    "export": "Ekspor berkas asli dan terjemahan yang sudah selesai untuk cadangan atau untuk melanjutkan membaca di tempat lain.",
+    "features": [
+      {
+        "title": "BIARKAN CERITA BERLANJUT",
+        "body": "Tak perlu bolak-balik antara komik dan alat penerjemah. Coeia menampilkan terjemahan di halaman asli, di dekat para tokoh, agar kamu tetap larut dalam cerita. Beralih ke teks asli kapan saja untuk membandingkan."
+      },
+      {
+        "title": "TEMPAT UNTUK KOMIK FAVORITMU",
+        "body": "Kumpulkan komik dalam perpustakaan pribadi, tata dengan folder, dan lanjutkan dari tempat terakhir membaca. Impor PDF, CBZ, CBR, ZIP, RAR, dan format lain yang didukung. Unggah lewat Wi-Fi atau hubungkan sumber SMB, WebDAV, dan OPDS milikmu sendiri."
+      },
+      {
+        "title": "BUKA KOMIK. NIKMATI CERITANYA.",
+        "body": "Balik halaman dengan mulus dan telusuri gambar mini untuk menemukan halaman yang ingin dilihat lagi. Mode dua halaman pintar memasangkan halaman vertikal berurutan dan menampilkan halaman lebar secara terpisah. Temukan cara membaca yang nyaman buatmu."
+      },
+      {
+        "title": "KOLEKSIKAN JUGA MOMENNYA",
+        "body": "Ekspresi, komposisi, atau panel yang membuatmu berhenti sejenak: jadikan kartu. Pilih bentuk dan efek diam atau animasi. Koleksikan, bagikan, atau hias Layar Utama lewat widget. Bawa sedikit cerita favoritmu ke keseharian."
+      }
+    ],
+    "original": "Asli",
+    "translated": "Terjemahan"
+  },
+  "tr": {
+    "title": "Coeia — Çizgi roman oku, anı biriktir",
+    "description": "Dil, hikâyeyi yarıda bırakmasın. Çeviriyi özgün sayfada okuyun, sevdiğiniz anları saklayabileceğiniz kartlara dönüştürün.",
+    "h1": "Çizgi roman oku, anı biriktir",
+    "lede": "Dil, hikâyeyi yarıda bırakmasın. Çeviriyi özgün sayfada okuyun, sevdiğiniz anları saklayabileceğiniz kartlara dönüştürün.",
+    "intro": "Çizgi romanlarınızı Coeia'ya getirin. Başka bir dildeki diyalogları anlayın, her sayfanın çizimlerine dalın ve sevdiğiniz anları saklayın.",
+    "notes_title": "BAŞLAMADAN ÖNCE",
+    "notes": [
+      "Coeia bir okuma aracıdır; çizgi roman içeriği sağlamaz. Lütfen kendi dosyalarınızı içe aktarın.",
+      "Çizgi romanlar, çeviriler ve kartlar bu cihazda saklanır. İçerik için bulut eşzamanlaması sunulmaz; dışa aktararak yedek alın.",
+      "Çeviri ücretli bir özelliktir. Sonuçlar görüntü netliğine, yazı stiline ve arka plana göre değişir. Devam etmeden önce birkaç sayfayı deneyerek çizgi romanınıza uygun olup olmadığını değerlendirin."
+    ],
+    "export": "Özgün dosyaları ve tamamlanmış çevirileri yedeklemek ya da başka bir yerde okumaya devam etmek için dışa aktarın.",
+    "features": [
+      {
+        "title": "HİKÂYE DEVAM ETSİN",
+        "body": "Çizgi roman ile çeviri aracı arasında gidip gelmeyin. Coeia, çevrilmiş metni özgün sayfada, karakterlerin yanında gösterir; siz de hikâyenin içinde kalırsınız. Karşılaştırmak istediğinizde özgün metne dönebilirsiniz."
+      },
+      {
+        "title": "SEVDİKLERİNİZE ÖZEL BİR YER",
+        "body": "Çizgi romanlarınızı kişisel kitaplığınızda toplayın, klasörlerle düzenleyin ve kaldığınız yerden devam edin. PDF, CBZ, CBR, ZIP, RAR ve desteklenen diğer biçimleri içe aktarın. Wi-Fi üzerinden yükleyin veya kendi SMB, WebDAV ve OPDS kaynaklarınıza bağlanın."
+      },
+      {
+        "title": "BİR ÇİZGİ ROMAN AÇIN, HİKÂYEYE DALIN",
+        "body": "Sayfaları akıcı biçimde çevirin, yeniden görmek istediğiniz sayfayı küçük resimlerden bulun. Akıllı çift sayfa modu, art arda gelen dikey sayfaları yan yana getirir; geniş sayfaları ise tek başına gösterir. Size en rahat gelen biçimde okuyun."
+      },
+      {
+        "title": "SADECE KİTAPLARI DEĞİL, ANLARI DA BİRİKTİRİN",
+        "body": "Bir yüz ifadesi, bir kompozisyon, durup baktığınız bir kare: Onu bir karta dönüştürün. Bir şekil seçin, sabit veya hareketli efektler oluşturun. Biriktirin, paylaşın ya da Ana Ekran'ınızı bir araç takımıyla süsleyin. Sevdiğiniz hikâyelerden bir parçayı günlük yaşamınıza taşıyın."
+      }
+    ],
+    "original": "Orijinal",
+    "translated": "Çeviri"
+  }
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="{{lang}}" dir="{{dir}}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="{{canonical}}">
+{{alternates}}
+    <title>{{title}}</title>
+    <meta name="description" content="{{sub_title}}">
+    <meta name="robots" content="index,follow,max-image-preview:large">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Coeia">
+    <meta property="og:locale" content="{{og_locale}}">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{sub_title}}">
+    <meta property="og:url" content="{{canonical}}">
+    <meta property="og:image" content="{{site_base}}/assets/coeia/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{title}}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{title}}">
+    <meta name="twitter:description" content="{{sub_title}}">
+    <meta name="twitter:image" content="{{site_base}}/assets/coeia/og.jpg">
+    <meta name="twitter:image:alt" content="{{title}}">
+    <meta name="theme-color" content="#f7f8fc" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#171923" media="(prefers-color-scheme: dark)">
+    {{jsonld}}
+    <link rel="icon" type="image/png" sizes="64x64" href="{{prefix}}assets/coeia/favicon.png?v={{asset_v}}">
+    <link rel="shortcut icon" href="{{prefix}}assets/coeia/favicon.ico?v={{asset_v}}">
+    <link rel="apple-touch-icon" href="{{prefix}}assets/coeia/apple-touch-icon.png?v={{asset_v}}">
+    <link rel="stylesheet" href="{{prefix}}assets/protocol.css?v={{asset_v}}">
+    <style>
+      :root{color-scheme:light;--page:#f7f8fc;--surface:#fff;--surface-2:#eff1f8;--ink:#192034;--muted:#68758a;--line:rgba(39,48,78,.13);--strong:rgba(39,48,78,.23);--acc:#c34663;--acc-2:#9679c8;--shadow:0 20px 60px rgba(49,54,93,.12)}
+      @media(prefers-color-scheme:dark){:root{color-scheme:dark;--page:#171923;--surface:#21242f;--surface-2:#292d3a;--ink:#f4f4f8;--muted:#a8afc0;--line:rgba(238,239,248,.12);--strong:rgba(238,239,248,.23);--acc:#f498ae;--acc-2:#8099e8;--shadow:0 24px 70px rgba(0,0,0,.34)}}
+      *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--page);color:var(--ink)}body{padding:0!important;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;background:radial-gradient(ellipse 55% 28% at 12% 0,rgba(116,65,254,.12),transparent 72%),radial-gradient(ellipse 45% 24% at 90% 16%,rgba(95,127,212,.1),transparent 72%),var(--page)}
+      .support-nav{height:64px;display:flex;align-items:center;padding-inline:max(20px,calc((100vw - 980px)/2));border-block-end:1px solid var(--line);background:color-mix(in srgb,var(--surface) 82%,transparent);backdrop-filter:blur(20px)}.support-brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:12px;font-weight:650;text-decoration:none}.support-brand img{width:32px;height:32px;border-radius:8px;box-shadow:0 7px 18px rgba(116,65,254,.2)}
+      .container{width:min(900px,calc(100% - 36px));max-width:none;margin:0 auto;padding:54px 0 40px;background:transparent;border:0;border-radius:0;box-shadow:none}.top-bar{display:block;margin:0 0 34px;padding:0;border:0;background:transparent}.header h1{margin:0;font-size:clamp(34px,5vw,52px);line-height:1.08;letter-spacing:0;color:var(--ink)}.header p{max-width:58ch;margin:12px 0 0;color:var(--muted);font-size:14px;line-height:1.7}.top-bar>details,.top-bar>.language-switcher{margin-top:18px}
+      .section{margin:0;padding:28px 0;border:0;border-block-start:1px solid var(--line);border-radius:0;background:none;box-shadow:none}.section h2{margin:0 0 20px;color:var(--acc);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}.section p{max-width:72ch;margin:0;color:var(--muted);font-size:14px;line-height:1.75}.section p strong{display:block;margin-top:18px;color:var(--ink);font-size:14px;font-weight:680}.section p:first-of-type strong{margin-top:0}.section p+p:not(:has(strong)){margin-top:5px}.section a{color:var(--acc);text-underline-offset:3px}
+      .footer{display:flex;align-items:center;justify-content:space-between;gap:16px;margin:12px 0 0;padding:24px 0;border-block-start:1px solid var(--line);color:var(--muted)}.footer p{margin:0;font-size:11.5px}.footer a{color:var(--muted);text-decoration:none}.footer a:hover{color:var(--ink)}
+      .support-footer{border-block-start:1px solid var(--line);color:var(--muted);font-size:11.5px}.support-footer-inner{max-width:920px;margin-inline:auto;padding:24px 24px 34px;display:flex;align-items:center;justify-content:space-between;gap:18px}.support-footer-main{display:flex;align-items:center;gap:18px;flex-wrap:wrap}.support-footer nav{display:flex;gap:16px}.support-footer a{color:var(--muted);text-decoration:none}.support-footer a:hover{color:var(--ink)}.support-switcher{position:relative}.support-switcher summary{list-style:none;cursor:pointer;padding:8px 0}.support-switcher summary:after{content:"⌄";margin-inline-start:7px}.support-switcher summary::-webkit-details-marker{display:none}.support-switcher ul{position:absolute;inset-inline-end:0;bottom:calc(100% + 6px);min-width:160px;max-height:280px;overflow:auto;list-style:none;padding:6px;background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:var(--shadow)}.support-switcher li a{display:block;padding:7px 9px;border-radius:5px;white-space:nowrap}.support-switcher li a:hover,.support-switcher li a[aria-current]{background:var(--surface-2);color:var(--ink)}
+      .footer-select{max-width:180px;border:0;background:transparent;color:var(--muted);font:inherit;font-size:11.5px;padding:8px 22px 8px 4px;cursor:pointer;color-scheme:light dark}.footer-select:focus{outline:1px solid var(--line);outline-offset:4px;border-radius:3px}
+      select{border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink);padding:8px 10px}
+      @media(max-width:620px){.support-nav{height:60px}.container{padding-top:38px}.section{padding-block:24px}.footer{align-items:flex-start;flex-direction:column}.support-footer-inner,.support-footer-main{align-items:flex-start;flex-direction:column}.support-footer-main{gap:10px}.support-footer nav{flex-wrap:wrap}}
+      body{background:var(--bg-color)}
+      .container{max-width:760px;width:auto;margin:0 auto;padding:64px 28px 72px}
+      .top-bar{margin-bottom:38px}
+      .header h1{font-size:clamp(30px,5vw,44px);line-height:1.12;color:var(--text-color)}
+      .header p{color:var(--text-secondary)}
+      .section{padding:0;margin-bottom:24px;border:0}
+      .section h2{margin-bottom:12px;color:var(--primary-color);font-size:18px;letter-spacing:0;text-transform:none;border-bottom:2px solid var(--border-color);padding-bottom:6px}
+      .section p{color:var(--text-secondary);font-size:14px;line-height:1.6}
+      @media(max-width:650px){.container{padding:42px 20px 56px}}
+    </style>
+</head>
+<body>
+
+    <header class="site-header"><a href="{{prefix}}">AIGLOSSA</a></header>
+
+    <div class="container">
+        <div class="top-bar">
+            <div class="header">
+                <h1>{{title}}</h1>
+                <p>{{sub_title}}</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>{{faq_title}}</h2>
+
+            <p><strong>{{q1}}</strong></p>
+            <p>{{a1}}</p>
+
+            <p><strong>{{q2}}</strong></p>
+            <p>{{a2}}</p>
+
+            <p><strong>{{q3}}</strong></p>
+            <p>{{a3}}</p>
+
+            <p><strong>{{q4}}</strong></p>
+            <p>{{a4}}</p>
+
+            <p><strong>{{q5}}</strong></p>
+            <p>{{a5}}</p>
+
+            <p><strong>{{q6}}</strong></p>
+            <p>{{a6}}</p>
+            <p><a href="{{legal_delete_href}}">{{legal_delete_label}}</a></p>
+        </div>
+
+        <div class="section">
+            <h2>{{contact_title}}</h2>
+            <p>{{contact_text}}</p>
+            <p>{{contact_note}}</p>
+        </div>
+
+    </div>
+    <footer class="protocol-footer"><div class="footer-inner"><div><span>{{copyright}}</span><nav><a href="{{legal_privacy_href}}">{{legal_privacy}}</a> · <a href="{{legal_terms_href}}">{{legal_terms}}</a></nav></div>{{native_switcher}}</div></footer>
+</body>
+</html>
