@@ -53,6 +53,7 @@ FOOD_ASSETS = (
 
 FOOD_ASSET_VERSION = "20261103-47"
 GLOBAL_ASSET_VERSION = "20261106-46"
+BRAND_ASSET_VERSION = "20261127-47"
 COEIA_ASSET_VERSION = "20261127-1"
 
 # Coeia has its own product media and stylesheet; do not ship Scholan assets here.
@@ -73,6 +74,7 @@ ROOT_ASSETS = (
     "food-icon-512.png", "skin-icon-512.png", "icon-music-512.png", "icon-image-512.png",
     "brand/food.jpg", "brand/skin.jpg", "brand/music.jpg", "brand/image.jpg",
     "scholan/icon.png", "scholan/welcome.jpg",
+    "coeia/icon.png", "brand/coeia.jpg",
 )
 TOOLS_ASSETS = (
     "tool-topbar.css",
@@ -777,8 +779,7 @@ def main() -> int:
             depth = page_path.count("/") + 1
             if page == "brand":
                 # 品牌页（根域首页）：自我介绍 + 应用列表。
-                # 目前只列 Scholan 一个应用，且**域名取自 sites.json**（不硬编码）；
-                # 将来加第二个 App 时，在模板里复制一个 .app 块并加一组 {{app2_*}} 文案即可。
+                coeia_copy = json.loads((CONTENT / "coeia-marketing.json").read_text(encoding="utf-8"))
                 def brand_values(lang: str, base: str, source=source) -> dict[str, str]:
                     locale = source[lang]
                     # Scholan 的一句话简介直接取自营销文案的 <title>（形如 "Scholan — …"），
@@ -832,6 +833,10 @@ def main() -> int:
                         "more_apps_desc": esc(locale.get("more_apps_desc", "")),
                         "support_label": esc(locale["support_label"]),
                         "scholan_desc": esc(_capitalize(marketing_title.split("—", 1)[1].strip())),
+                        "asset_v": BRAND_ASSET_VERSION,
+                        "coeia_href": f'https://{sites["coeia"]["host"]}/{lang}/',
+                        "coeia_learn_more": esc(locale["learn_more"].replace("Scholan", "Coeia")),
+                        "coeia_subtitle": esc(coeia_copy[lang]["h1"]),
                         "scholan_href": f"{scholan_base}/{lang}/",
                         "scholan_support_href": f"{scholan_base}/{lang}/support.html",
                         "signin": esc(json.loads((CONTENT / "ui.json").read_text(encoding="utf-8"))[lang]["account"]["signin"]),
