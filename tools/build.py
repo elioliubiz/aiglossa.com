@@ -53,7 +53,7 @@ FOOD_ASSETS = (
 
 FOOD_ASSET_VERSION = "20261103-47"
 GLOBAL_ASSET_VERSION = "20261106-46"
-COEIA_ASSET_VERSION = "20261113-1"
+COEIA_ASSET_VERSION = "20261127-1"
 
 # Coeia has its own product media and stylesheet; do not ship Scholan assets here.
 COEIA_ASSETS = (
